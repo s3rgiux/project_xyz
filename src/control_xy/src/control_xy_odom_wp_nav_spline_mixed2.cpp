@@ -559,10 +559,8 @@ if(mode_follow && danger!=true){
         if(tracking_people && (yolo_status>0 || lidar_people_status>0) && stop_functions==false){
             //ang_peop_lidar = 90+ atan2(cx, cy) * 180 / 3.1416 ;
             //ang_peop_lidar = -90+ atan2(cx, cy) * 180 / 3.1416 ;
-            
             //ang_peop_lidar = 90- atan2(cx, cy) * 180 / 3.1416;
             //distanciaPeople2 = sqrt(cx*cx+cy*cy)*100;
-
             //if( (lidar_people_status>1 ||  lidar_people_status<1)&& yolo_status >0){
             if(dist_peop_cam>250 && distanciaPeople2<150 && yolo_status >0 || lidar_people_status<1){
                     alert_collision_no_sound();
