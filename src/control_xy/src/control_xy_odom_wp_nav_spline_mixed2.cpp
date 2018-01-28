@@ -16,6 +16,7 @@
 #include <control_xy/State.h>
 #include <control_xy/Obstacle.h> 
 #include <control_xy/TriggerAction.h> 
+#include <control_xy/StateWheels.h> 
 #include <visualization_msgs/Marker.h>
 #include <nav_msgs/Odometry.h>
 #include <nav_msgs/Path.h>
@@ -26,6 +27,8 @@ class test_head
 public:
     test_head(ros::NodeHandle nh)
     {
+        m1_pub =nh.advertise<geometry_msgs::Vector3>(nh.resolveName("/m1_deriv"), 1);
+        m2_pub =nh.advertise<geometry_msgs::Vector3>(nh.resolveName("/m2_deriv"), 1);
         speed_publisher=nh.advertise<geometry_msgs::Twist>(nh.resolveName("/cmd_vel"), 1);
         tracked_publisher=nh.advertise<geometry_msgs::Vector3>(nh.resolveName("/tracked"), 2);
         alerts_publisher=nh.advertise<std_msgs::Int16>(nh.resolveName("/alerts"), 1);
@@ -47,6 +50,9 @@ public:
         dist_subscriber2 = nh.subscribe("peopDist2", 1, &test_head::distPeopCallback2,this);
         obst_subscriber = nh.subscribe("/obstacle_closest", 1, &test_head::obstCallback,this);
         state_subscriber = nh.subscribe("/trigger_action", 1, &test_head::stateCallback,this);
+        //sub_amperage = nh.subscribe("/amperage",1,&test_head::amperageCallback,this);
+        sub_amperage = nh.subscribe("/stateWheels",1,&test_head::amperageCallback,this);
+        volts_subscriber = nh.subscribe("/volts", 1, &test_head::voltsCallback,this);
         //nh.param<float>("break_distance", break_distance, 1.5);
         nh.getParam("/control_xy/break_distance", break_distance);
         nh.getParam("/control_xy/break_danger", break_danger);
@@ -60,6 +66,7 @@ public:
         nh.getParam("/control_xy/max_speed_karugamo", max_speed_karugamo);
         nh.getParam("/control_xy/max_speed_follow", max_speed_follow);
         nh.getParam("/control_xy/max_speed_manual", max_speed_manual);
+        nh.getParam("/control_xy/max_speed_manual_heavy", max_speed_manual_heavy);
         nh.getParam("/control_xy/speed_wp_lost",speed_wp_lost);
         nh.getParam("/control_xy/near_far_distance",near_far_distance);
         nh.getParam("/control_xy/max_speed_side_manual", max_speed_side_manual);
@@ -73,6 +80,11 @@ public:
         nh.getParam("/control_xy/max_dist_toacc", max_dist_toacc);
         nh.getParam("/control_xy/smooth_accel_stop",smooth_accel_stop);
         nh.getParam("/control_xy/smooth_accel_side_manual",smooth_accel_side_manual);
+        nh.getParam("/control_xy/tresh_amp_up",tresh_amp_up);
+        nh.getParam("/control_xy/tresh_amp_down",tresh_amp_down);
+        nh.getParam("/control_xy/trigger_vel",trigger_vel);
+        nh.getParam("/control_xy/trigger_current",trigger_current);
+        nh.getParam("/control_xy/max_l_curr",max_r_curr);
     
         
         //nh.param<float>("break_danger", break_danger, 0.45);
@@ -139,6 +151,15 @@ public:
         counter_search=340;
 		stop_functions=false;
 		save_counter=0;
+        heavy=true;
+        n_flag_r=false;
+        d_flag_r=true;
+        n_flag_l=false;
+        d_flag_l=true;
+        heavy_r=0;
+        heavy_l=0;
+        detected_heavy=false;
+
     }
     ~test_head(){}
     
@@ -173,6 +194,14 @@ void setPointsCallback(const geometry_msgs::Twist& twist){
     ROS_INFO("%f,%f,%f",nspx,nspy,sp_yaw);
 }
 
+
+void voltsCallback(const std_msgs::Float32& msg){
+    //ROS_INFO("low voltage %f",msg.data);
+    if(msg.data<23){
+        ROS_INFO("low voltage %f",msg.data);
+    }
+}    
+
 void obstCallback(const std_msgs::Float32& msg){
     if(msg.data==1){
         newobstacle = true;
@@ -194,7 +223,7 @@ void ReceiveOdometry(const nav_msgs::Odometry::ConstPtr& msg){
         norm=sqrt((px-px_aux)*(px-px_aux)+(py-py_aux)*(py-py_aux));
         if (save_waypoint==true){
             save_waypoint=false;
-            fprintf(fp, "%f %f\n",px,py );
+            fprintf(fp,"%f %f\n",px,py );
             px_aux=px;
             py_aux=py;
             ROS_INFO("NP %f,%f",px,py);
@@ -202,6 +231,148 @@ void ReceiveOdometry(const nav_msgs::Odometry::ConstPtr& msg){
     }
     
 }
+
+
+void amperageCallback(const control_xy::StateWheels& msg){
+    float flag;
+    //float int_r_curr,int_l_curr,der_r_curr,der_l_curr,filt_r_curr,filt_r_curr;
+    //float32 left_vel float32 right_vel float32 left_current float32 right_current time time_stamp
+    float alfa = 0.9;
+    float trig_vel=0.25;
+    float dt =0.02;
+    //float alf=0.7;
+    float alf=0.75;
+    geometry_msgs::Vector3 newmsg;
+    if(abs(msg.right_vel)<trig_vel&& abs(msg.left_vel)<trig_vel){
+        int_r_curr=0;
+        der_r_curr=0;
+        n_flag_r=false;
+        d_flag_r=false;
+        max_r_curr=0;
+        avg_amp_r=0;
+        fil_der_r_curr=0;
+        heavy_r=0;
+        heavy=true;
+        alert_manual_no_sound();
+        detected_heavy=false;
+    }else{
+        int_r_curr=int_r_curr+msg.right_current*dt;
+        der_r_curr=(msg.right_current-prev_r_curr)/dt;
+        fil_der_r_curr= fil_der_r_curr*alf+ der_r_curr*(1-alf);
+        prev_r_curr=msg.right_current;
+        if(fil_der_r_curr>0.4 && detected_heavy==false){
+            if(n_flag_r==false){
+                time_last_to_heavy = ros::Time::now().toSec();
+            }
+            n_flag_r=true;
+            
+            //alert_collision_no_sound();
+            if(msg.right_current>max_r_curr){
+                max_r_curr=msg.right_current;
+            }
+        }else{
+            //alert_manual_no_sound();
+        }
+        //if(der_r_curr<0.01 && d_flag==true && n_flag==true){
+        if(fil_der_r_curr<0.01 && n_flag_l==true && detected_heavy==false){
+            
+            amp_count_r++;
+            avg_amp_r=avg_amp_r+msg.right_current;
+            if(amp_count_r>2 ){
+                amp_count_r=0;
+                avg_amp_r=avg_amp_r/4;
+                d_flag_r=false;
+                
+                if(avg_amp_r>5.2 && max_r_curr >5.8 ){//&& int_r_curr>1.87){
+                    //alert_karugamo_near_no_sound();
+                    heavy_r=1;
+                    detected_heavy=true;
+                    ROS_INFO("probable heavy load right");
+                    ROS_INFO("%f integ r_",int_r_curr);
+                    ROS_INFO("%f max %f avg",max_r_curr,avg_amp_r);
+                }else  if (max_l_curr <4.3){
+                    heavy_r=2;
+                }
+            }
+            ROS_INFO("entered in change right");
+        }
+    }
+    newmsg.x=msg.right_current;
+    newmsg.y=fil_der_r_curr;
+    newmsg.z=int_r_curr;
+    m1_pub.publish(newmsg);
+   
+    if(abs(msg.left_vel)<trig_vel && abs(msg.right_vel)<trig_vel){
+        int_l_curr=0;
+        der_l_curr=0;
+        n_flag_l=false;
+        d_flag_l=false;
+        max_l_curr=0;
+        avg_amp_l=0;
+        fil_der_l_curr=0;
+        heavy_l=0;
+        heavy=true;
+        alert_manual_no_sound();
+        detected_heavy=false;
+    }else{
+        int_l_curr=int_l_curr+msg.left_current*dt;
+        der_l_curr=(msg.left_current-prev_l_curr)/dt;
+        
+        fil_der_l_curr= fil_der_l_curr*alf+ der_l_curr*(1-alf);
+        prev_l_curr=msg.left_current;
+        
+        if(fil_der_l_curr>0.4 && detected_heavy==false){
+            n_flag_l=true;
+            if(heavy_l ==0 && heavy_r ==0 ){
+                //alert_collision_no_sound();
+            }
+            
+            if(msg.left_current>max_l_curr){
+                max_l_curr=msg.left_current;
+            }
+        }else{
+            //alert_manual_no_sound();
+        }
+        //if(der_r_curr<0.01 && d_flag==true && n_flag==true){
+        if(fil_der_l_curr<0.01 && n_flag_l==true && detected_heavy==false){
+            //alert_idle_no_sound();
+            //alert_danger_no_sound();
+            amp_count_l++;
+            avg_amp_l=avg_amp_l+msg.left_current;
+            if(amp_count_l>2 ){
+                amp_count_l=0;
+                avg_amp_l=avg_amp_l/4;
+                d_flag_l=false;
+                
+                if(avg_amp_l>5.2 && max_l_curr >5.8){//&& int_r_curr>1.87){
+                    heavy_l=1;
+                    detected_heavy=true;
+                    //alert_karugamo_near_no_sound();
+                    ROS_INFO("probable heavy load right");
+                    ROS_INFO("%f integ r_",int_l_curr);
+                    ROS_INFO("%f max %f avg",max_l_curr,avg_amp_l);
+                }else if (max_l_curr <4.3){
+                    heavy_l=2;
+                }  
+            }
+            ROS_INFO("entered in change right");
+        }
+    }
+
+    if(heavy==true && heavy_l==1 || heavy_r==1 && detected_heavy==false && (ros::Time::now().toSec() - time_last_to_heavy)<6.9){
+        alert_karugamo_near_no_sound();
+        heavy=true;
+    }else if(detected_heavy==false && heavy_l==2 && heavy_r==2 && (ros::Time::now().toSec() - time_last_to_heavy)>4.3 && (ros::Time::now().toSec() - time_last_to_heavy)<6.3 && abs(msg.left_vel)>4.1 && abs(msg.right_vel)>4.1 ){
+        heavy=false;
+        alert_idle_no_sound();
+    }
+    //ROS_INFO("%f time",ros::Time::now().toSec());
+    newmsg.x=msg.left_current;
+    newmsg.y=der_l_curr;
+    newmsg.z=int_l_curr;
+    m2_pub.publish(newmsg);    
+}
+
 
 
 void distPeopCallback(const std_msgs::Float32& msg){
@@ -306,7 +477,7 @@ if(mode_follow && danger!=true){
             tracked_distance = distanciaPeople2;
             if(distanciaPeople2<near_far_distance){
                 near();
-                alert_karugamo_near_no_sound();
+                //alert_karugamo_near_no_sound();
                 if(is_near==false){
                     fprintf(fp2,"Entre near \n");
                     is_near=true;
@@ -316,7 +487,7 @@ if(mode_follow && danger!=true){
                     //cont_sp_follow=0;//experimental
                 }
             }else{
-                alert_karugamo_far_no_sound();
+                //alert_karugamo_far_no_sound();
                 if(is_near==true){
                     is_near=false;
                     alert_karugamo_far_no_sound();
@@ -395,7 +566,7 @@ if(mode_follow && danger!=true){
                 if(missing_track>28){//thiscounter also can help to see if theres a lot of objects and its not able to follow
                 if(is_near==true && tracking_people && stop_functions==false){
 					fprintf(fp2,"lost and near");
-                    ctrl_front_follow=speed_wp_lost;
+                    //ctrl_front_follow=speed_wp_lost;//experiemntal 10
 		            //ctrl_front_follow=0;
                     ctrl_yaw=0;
                     //ctrl_yaw=(1-smooth_accel_karugamo_far)*(0)+(smooth_accel_karugamo_far*ctrl_yaw);
@@ -520,6 +691,9 @@ if(is_near==false && stop_functions==false){
                 spVel=0.1*(error_yaw);//0.05*(error_yaw);
                 nkp=angle_gain_wp;//=0.0085;
                 ctrl_yaw=(nkp*spVel)-ctrl_yaw/2;//experimental
+                //experiemntal
+                ctrl_add_side=(1-smooth_accel_side_manual)*(joy_side*max_speed_side_manual)+(smooth_accel_side_manual*ctrl_side_manual);
+                ctrl_yaw=ctrl_yaw+ctrl_add_side;
                     if(ctrl_yaw>400){
                         ctrl_yaw=400;
                     }else if(ctrl_yaw<-400){
@@ -540,6 +714,11 @@ if(is_near==false && stop_functions==false){
                 //ctrl_front_follow=(1-smooth_accel)*(frontal_gain_follow*norm_dist/*max_speed_follow*/)+(smooth_accel*ctrl_front_follow);
                 //ctrl_front_follow=400;
                 ctrl_front_follow=(1-smooth_accel_karugamo_far)*(speed_wp_lost)+(smooth_accel_karugamo_far*ctrl_front_follow);
+                //experiemntal
+                ctrl_add_front=(1-smooth_accel_manual)*(joy_front*max_speed_manual)+(smooth_accel_manual*ctrl_front_manual);
+                    ctrl_front_follow=ctrl_front_follow+ctrl_add_front;
+                
+                
                 //ROS_INFO("%f,%f",ctrl_front_follow,distanciaPeople2);
                 if(ctrl_front_follow<0 ){
                     ctrl_front_follow=0;
@@ -550,6 +729,9 @@ if(is_near==false && stop_functions==false){
                 }
             }else{
                 ctrl_front_follow=(1-smooth_accel_karugamo_far)*(speed_wp_lost)+(smooth_accel_karugamo_far*ctrl_front_follow);
+                //experimental
+                ctrl_add_front=(1-smooth_accel_manual)*(joy_front*max_speed_manual)+(smooth_accel_manual*ctrl_front_manual);
+                    ctrl_front_follow=ctrl_front_follow+ctrl_add_front;
             }
         }else{
             // ctrl_front_follow=0;
@@ -722,7 +904,13 @@ void near(){
                 
 
                 ctrl_ang= low_vel_gain_follow*ang_peop_lidar-ctrl_ang/2;
+                //experiementa
+                
+                ctrl_add_side=(1-smooth_accel_side_manual)*(joy_side*max_speed_side_manual)+(smooth_accel_side_manual*ctrl_side_manual);
+                ctrl_ang=ctrl_ang+ctrl_add_side;
+              
 
+                //
                 if (ctrl_ang>500){
                     ctrl_ang= 500;
                 }else if (ctrl_ang<-500){
@@ -741,15 +929,33 @@ void near(){
                     }
 
                     //ctrl_front_follow=(1-smooth_accel)*(frontal_gain_follow*(distanciaPeople2-100))+(smooth_accel*ctrl_front_follow);
-                    ctrl_front_follow=(1-smooth_accel_karugamo_near)*(frontal_gain_follow*norm_dist/*max_speed_follow*/)+(smooth_accel_karugamo_near*ctrl_front_follow);
-                    //ROS_INFO("%f,%f",ctrl_front_follow,distanciaPeople2);
-                    if(ctrl_front_follow<0 ){
-                        ctrl_front_follow=0;
-                        vel_steer.linear.x=0;
+                    if (heavy){
+                        ctrl_front_follow=(1-smooth_accel_karugamo_near)*(frontal_gain_follow*norm_dist/*max_speed_follow*/)+(smooth_accel_karugamo_near*ctrl_front_follow);
+                        //experimental
+                        ctrl_add_front=(1-smooth_accel_manual)*(joy_front*max_speed_manual)+(smooth_accel_manual*ctrl_front_manual);
+                        ctrl_front_follow=ctrl_front_follow+ctrl_add_front;
+                        if(ctrl_front_follow<0 ){
+                            ctrl_front_follow=0;
+                            vel_steer.linear.x=0;
+                        }
+                        if (ctrl_front_follow>max_speed_follow){
+                            ctrl_front_follow= max_speed_follow;
+                        }
+                    }else{
+                        ctrl_front_follow=(1-smooth_accel_karugamo_near)*(max_speed_manual *norm_dist/*max_speed_follow*/)+(smooth_accel_karugamo_near*ctrl_front_follow);
+                        //experimental
+                        ctrl_add_front=(1-smooth_accel_manual)*(joy_front*max_speed_manual)+(smooth_accel_manual*ctrl_front_manual);
+                        ctrl_front_follow=ctrl_front_follow+ctrl_add_front;
+                        if(ctrl_front_follow<0 ){
+                            ctrl_front_follow=0;
+                            vel_steer.linear.x=0;
+                        }
+                        if (ctrl_front_follow>max_speed_manual){
+                            ctrl_front_follow= max_speed_manual;
+                        }
                     }
-                    if (ctrl_front_follow>max_speed_follow){
-                        ctrl_front_follow= max_speed_follow;
-                    }
+                    
+                    
                     vel_steer.linear.x= ctrl_front_follow;
                 }else{
                     ctrl_front_follow=(1-smooth_accel_stop)*(0)+(smooth_accel_stop*ctrl_front_follow);
@@ -763,6 +969,11 @@ void near(){
                 //    vel_steer.angular.z=0;
                 //}
                 //stop_follow=false;
+                
+                
+               
+
+
                 vel_steer.linear.x=(vel_steer.linear.x/21)*0.1045;
                 vel_steer.angular.z=(vel_steer.angular.z/21)*0.1045;
                 //alerts_command.data=7;// 5 danger 4 warning 3 karugamo 2 idle 1 manual
@@ -784,7 +995,7 @@ void near(){
         int count = scan->scan_time / scan->time_increment;
         //float  break_distance=1.5;
             //float  break_danger=0.5;
-        if(detect_cont>1){
+        if(detect_cont>1 && mode_idle == false){
                 danger=true;
                 free_way=false;
                 ROS_INFO("Danger1");
@@ -817,13 +1028,13 @@ void near(){
         }else{
             free_way=true;
         }
-        for(int j=269;j<=358;j++){
+        for(int j=279;j<=358;j++){
             if (scan->ranges[j] <= break_danger && scan->ranges[j] >0.24 && mode_idle==false){
                detect_cont++;   
                 return;
              }  
         }
-        for(int i=0;i<=90;i++){
+        for(int i=0;i<=80;i++){
             if (scan->ranges[i] <= break_danger && scan->ranges[i] >0.24 && mode_idle==false){
                detect_cont++;
                return;
@@ -982,6 +1193,11 @@ void remove_collision(){
 
 
 void mode_MANUAL(){
+    n_flag_l=false;
+    d_flag_l=true;
+    n_flag_r=false;
+    d_flag_r=true;
+
     mode_idle=false;
     mode_karugamo=false;
     mode_manual=true;
@@ -1232,11 +1448,18 @@ void loadRoute(){
             speed_publisher.publish(vel_steer);
             ros::Duration(0.5).sleep(); // sleep for half a second
         }
-
+        joy_front=joy->axes[1];
+        joy_side=joy->axes[0];
         if(mode_manual){
               if(free_way){
               //if(true){
-                ctrl_front_manual=(1-smooth_accel_manual)*(joy->axes[1]*max_speed_manual)+(smooth_accel_manual*ctrl_front_manual);
+                if(heavy){
+                    ctrl_front_manual=(1-smooth_accel_manual)*(joy->axes[1]*max_speed_manual_heavy)+(smooth_accel_manual*ctrl_front_manual);
+                }else{
+                    ctrl_front_manual=(1-smooth_accel_manual)*(joy->axes[1]*max_speed_manual)+(smooth_accel_manual*ctrl_front_manual);
+                }
+                
+
                 //if(ctrl_front_manual<20 && ctrl_front_manual>-20){
                 //  ctrl_front_manual=0;
                 //}
@@ -1250,7 +1473,7 @@ void loadRoute(){
                 vel_steer.angular.z=ctrl_side_manual;
                
                 if(joy->axes[7]!=0){
-                        vel_steer.linear.x=joy->axes[7]*max_speed_manual;
+                        vel_steer.linear.x=joy->axes[7]*max_speed_manual_heavy;
                 }
                 if(joy->axes[6]!=0){
                         vel_steer.angular.z=joy->axes[6]*-800;
@@ -1260,12 +1483,12 @@ void loadRoute(){
                 speed_publisher.publish(vel_steer);
         }else{//else free way
         
-            ctrl_front_manual=(1-smooth_accel_manual)*(joy->axes[1]*max_speed_manual)+(smooth_accel_manual*ctrl_front_manual);
+            ctrl_front_manual=(1-smooth_accel_manual)*(joy->axes[1]*max_speed_manual_heavy)+(smooth_accel_manual*ctrl_front_manual);
             if(ctrl_front_manual<0){
                 ctrl_side_manual=(1-smooth_accel_side_manual)*(joy->axes[0]*max_speed_side_manual)+(smooth_accel_side_manual*ctrl_side_manual);
-                if(ctrl_side_manual<7 && ctrl_side_manual>-7){
-                    ctrl_side_manual=0;
-                }
+                //if(ctrl_side_manual<7 && ctrl_side_manual>-7){
+                //    ctrl_side_manual=0;
+                //}
                 vel_steer.linear.x= ctrl_front_manual;
                 vel_steer.angular.z=ctrl_side_manual;
                 vel_steer.linear.x=(vel_steer.linear.x/21)*0.1045;
@@ -1307,9 +1530,14 @@ private:
     ros::Subscriber odometry_sub;
     ros::Subscriber joy_subscriber;
     ros::Subscriber subScan_;
+    ros::Subscriber sub_amperage;
     ros::Publisher marker_pub;
     ros::Publisher pos_peop_pub;
     ros::Publisher path_pub;
+    ros::Publisher m1_pub;
+    ros::Publisher m2_pub;
+
+    ros::Subscriber volts_subscriber;     
     geometry_msgs::Twist vel_steer;
     geometry_msgs::Vector3 tracked_pos;
     std_msgs::Float32 ang_people;
@@ -1319,7 +1547,7 @@ private:
 
 
     bool save_waypoint,start_tray,col_avoid_mode,danger, mode_idle,mode_karugamo,mode_manual,mode_follow,free_way,collision,mode_auto;
-    float angulo_seguimiento,sp_yaw,sp_yaw2,ctrl_yaw,error_yaw,yaw,distanciaPeople,distanciaPeople2,break_distance,break_danger,max_speed_karugamo,max_speed_follow,max_speed_manual,ctrl_ang,ctrl_lin;
+    float angulo_seguimiento,sp_yaw,sp_yaw2,ctrl_yaw,error_yaw,yaw,distanciaPeople,distanciaPeople2,break_distance,break_danger,max_speed_karugamo,max_speed_follow,max_speed_manual,max_speed_manual_heavy,ctrl_ang,ctrl_lin;
     float px,py,norm,norm2,x_ini,y_ini,x_p,y_p,px2,py2,spx,spy,err_x,err_y,err_xx,err_yy,low_vel_gain,high_vel_gain,low_vel_gain_follow,high_vel_gain_follow,smooth_accel,ctrl_side_manual,max_speed_side_manual;
     char rx[80],ry[80],rx2[80],ry2[80],pa[80],yag[80];
     float sp_rx[1000],sp_ry[1000],sp_rx2[1000],sp_ry2[1000],param[1000],sp_yaww[1000];
@@ -1335,32 +1563,37 @@ private:
     float errpx,errpy,spVel,nkp,nkd,nki,errVelYaw,nvkp,nvkd,spPos,distAct,errPVel,spPVel;
     float ctrl_vel,frontal_gain_follow,frontal_gain_karugamo,frontal_gain_manual,ctrl_front_follow,ctrl_front_karugamo;
     float ctrl_front_manual,cx,cy,aux_dist,ang_robot;
-
     float spx_follow_old,spy_follow_old,spx_follow_new,spy_follow_new,dist_auxwp;
     int indice,index_wp,numwp,cicles,detect_cont;
-    bool tracking,is_near,stop_follow,stop_functions;
+    bool tracking,is_near,stop_follow,stop_functions,heavy;
     int sound_counter,danger_counter;
     int counter_search,state_stop;
     float saved_ang,speed_wp_lost;
     float near_far_distance;
     float angle_last,max_defelct_angle;
-	int save_counter;
+	int save_counter,amp_count_l,amp_count_r;
     float dist_robot_people,smooth_accel_manual,smooth_accel_karugamo_near,smooth_accel_karugamo_far,angle_gain_wp,max_dist_toacc;
     float smooth_accel_stop,smooth_accel_side_manual;
+    float ctrl_add_front,ctrl_add_side;
+    float joy_front,joy_side,avg_amp_l,avg_amp_r;
+    float tresh_amp_up,tresh_amp_down,trigger_vel,trigger_current;
+    float int_r_curr,int_l_curr,der_r_curr,der_l_curr,filt_r_curr,filt_l_curr,prev_r_curr,prev_l_curr;
+    bool n_flag_r,d_flag_r,n_flag_l,d_flag_l, detected_heavy;
+    float fil_der_r_curr,max_r_curr,fil_der_l_curr,max_l_curr;
+    int  heavy_r,heavy_l;
+    double time_last_to_heavy;
 };
 
 int main(int argc, char **argv)
 {
     ros::init(argc, argv, "heading_follow_node");
     ros::NodeHandle nh; 
-
     test_head test_head_obj(nh);
     //ros::Rate rate(0.5); //0.5 Hz, every 2 second
     ros::Rate rate(60); //100 Hz, every .01 second
     //printf("%f",-atan2(5,1)*180/3.1416);
     while(ros::ok())
     {
-        
         ros::spinOnce();
         rate.sleep();
     }

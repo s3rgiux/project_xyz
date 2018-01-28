@@ -10,6 +10,8 @@
     (:file "_package_Obstacle" :depends-on ("_package"))
     (:file "State" :depends-on ("_package_State"))
     (:file "_package_State" :depends-on ("_package"))
+    (:file "StateWheels" :depends-on ("_package_StateWheels"))
+    (:file "_package_StateWheels" :depends-on ("_package"))
     (:file "TriggerAction" :depends-on ("_package_TriggerAction"))
     (:file "_package_TriggerAction" :depends-on ("_package"))
   ))

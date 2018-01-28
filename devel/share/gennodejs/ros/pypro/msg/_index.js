@@ -1,0 +1,1 @@
+/home/xavier/catkin_ws/devel/.private/pypro/share/gennodejs/ros/pypro/msg/_index.js

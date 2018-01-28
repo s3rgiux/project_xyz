@@ -1,0 +1,8 @@
+prefix=/home/xavier/catkin_ws/devel/.private/plotjuggler
+
+Name: plotjuggler
+Description: Description of plotjuggler
+Version: 3.0.7
+Cflags: -I/home/xavier/catkin_ws/src/PlotJuggler/include
+Libs: -L${prefix}/lib -lplotjuggler_plugin_base
+Requires: roslib

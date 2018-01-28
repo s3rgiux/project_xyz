@@ -27,7 +27,7 @@ from pyproacmd import Utils
 import struct
 import time
 
-
+from pypro.msg import StateWheels
 
 
 import rosparam
@@ -114,6 +114,8 @@ class KeyCtrlr:
         self.id_R = id_R
         self.velm=0
         self.posm=0
+        #self.current_motor_left=0
+        self.current_motor=0
         
 
     def runvel_handler(self,vel):
@@ -142,6 +144,8 @@ class KeyCtrlr:
         result = self.pc.send_receive(cmd.ReadFOC(self.id_R))
         if result is not None and result.resp.body[1] < 700 and result.resp.body[1] > -700:
             self.velm=result.resp.body[1]
+            if result.resp.body[2] < 30 and result.resp.body[2] > -30:
+                self.current_motor=result.resp.body[2]
         #print('VR#{0}'.format(velm))
         #self.posm=result.resp.body[0]
     
@@ -159,6 +163,7 @@ class KeyCtrll:
         self.id_R = id_R
         self.velm=0
         self.posm=0
+        self.current_motor=0
         
     
     def runvel_handler(self,vel):
@@ -193,6 +198,8 @@ class KeyCtrll:
         result = self.pc.send_receive(cmd.ReadFOC(self.id_L))
         if result is not None and result.resp.body[1] < 700 and result.resp.body[1] > -700:
             self.velm=result.resp.body[1]
+            if result.resp.body[2] < 30 and result.resp.body[2] > -30:
+                self.current_motor=result.resp.body[2]
         #self.posm=result.resp.body[0]
         #result = self.pc.send_receive(cmd.ReadFOC(self.id_R))
     
@@ -210,6 +217,8 @@ class PitWheels:
         self.right_pub = rospy.Publisher('right_wheel', Float32, queue_size=1)
         self.dbg_pub = rospy.Publisher('test', Float32, queue_size=1)
         self.wheels_pub = rospy.Publisher('wheels_wheels', Vector3, queue_size=1)
+        self.current_pub = rospy.Publisher('amperage', Vector3, queue_size=1)
+        self.state_wheels_pub = rospy.Publisher('stateWheels',StateWheels, queue_size=1)
         '''
         left wheel: front:x,left:-z,top:-y left-handed cordinate
         '''
@@ -261,6 +270,8 @@ class PitWheels:
         self.max_speed = rospy.get_param("/pitakuru_wheels/max_speed")
         self.joint_pub = rospy.Publisher('joint_states', JointState, queue_size=10)
         self.can_correct=False
+        self.l_curr=0
+        self.r_curr=0
 
         rospy.Subscriber('/cmd_vel', Twist, self.teleop_callback, queue_size=1)
         rospy.Subscriber('/poseupdate', PoseWithCovarianceStamped, self.correct_callback, queue_size=1)
@@ -302,24 +313,36 @@ class PitWheels:
             left_velocity = (self.left_w_dev.velm/21)*1# float v_=round(msg.linear.x / (5.68))*31;//rad/s and gear ratio: 5.5  and the wheel Radius 31 milimeter
             #print('LV#{0}'.format(left_velocity))
             #left_position = self.left_w_dev.posm #lvalues['position']
-
             #rvalues = self.left_w_dev.read_foc_handler #self.right_w_dev.read_motor_measurement()
-            
-            
             #rospy.sleep(0.01)
             right_velocity = (self.right_w_dev.velm/21)*1#self.right_w_dev.velm#rvalues['velocity']
-            self.left_w_rpm.data=self.left_w_dev.velm
+            self.left_w_rpm.data = self.left_w_dev.velm
             #self.right_w_rpm=self.right_w_dev.velm
             #rospy.logerr("hello pypro")
             self.left_pub.publish(self.left_w_rpm)
             self.right_pub.publish(self.right_w_rpm)
             
+            ampere = Vector3()
+            alfa=0.94
+            self.l_curr=self.l_curr*alfa+(1-alfa)*abs(self.left_w_dev.current_motor)
+            self.r_curr=self.r_curr*alfa+(1-alfa)*abs(self.right_w_dev.current_motor)
+            ampere.x=self.r_curr
+            ampere.y=self.l_curr
+            ampere.z=self.current_time
+            self.current_pub.publish(ampere)
 
             vec2 = Vector3()
             vec2.x = right_velocity
             vec2.y = left_velocity
             vec2.z = self.current_time
             self.wheels_pub.publish(vec2)
+            state_wheels = StateWheels()
+            state_wheels.left_vel = left_velocity
+            state_wheels.right_vel = right_velocity
+            state_wheels.left_current = self.l_curr #abs(self.left_w_dev.current_motor)
+            state_wheels.right_current = self.r_curr#abs(self.right_w_dev.current_motor)
+            state_wheels.time_stamp = rospy.Time.now()
+            self.state_wheels_pub.publish(state_wheels)
             #rospy.logerr("hello pypro2")
             
             #float v_=round(msg.linear.x / (5.68))*31;//rad/s and gear ratio: 5.5  and the wheel Radius 31 milimeter

@@ -1,0 +1,25 @@
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:[m[K In member function ‘[01m[Kvoid test_head::amperageCallback(const StateWheels&)[m[K’:
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:231:5:[m[K [01;31m[Kerror: [m[K‘[01m[KVector3[m[K’ was not declared in this scope
+     [01;31m[KVector3[m[K newmsg;
+     [01;31m[K^~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:231:5:[m[K [01;36m[Knote: [m[Ksuggested alternative:
+In file included from [01m[K/opt/ros/melodic/include/geometry_msgs/Twist.h:18:0[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:6[m[K:
+[01m[K/opt/ros/melodic/include/geometry_msgs/Vector3.h:58:58:[m[K [01;36m[Knote: [m[K  ‘[01m[Kgeometry_msgs::Vector3[m[K’
+ typedef ::geometry_msgs::Vector3_<std::allocator<void> > [01;36m[KVector3[m[K;
+                                                          [01;36m[K^~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:247:5:[m[K [01;31m[Kerror: [m[K‘[01m[Knewmsg[m[K’ was not declared in this scope
+     [01;31m[Knewmsg[m[K.x=msg.right_current;
+     [01;31m[K^~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:247:5:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kmsg[m[K’
+     [01;36m[Knewmsg[m[K.x=msg.right_current;
+     [01;36m[K^~~~~~[m[K
+     [32m[Kmsg[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:[m[K In member function ‘[01m[Kvoid test_head::loadRoute()[m[K’:
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:1184:44:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%s[m[K’ expects argument of type ‘[01m[Kchar*[m[K’, but argument 3 has type ‘[01m[Kchar (*)[80][m[K’ [[01;35m[K-Wformat=[m[K]
+             sscanf(mystring,"%s %s",[32m[K&rx[m[K,&ry[01;35m[K)[m[K;
+                                     [32m[K~~~[m[K    [01;35m[K^[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:1184:44:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%s[m[K’ expects argument of type ‘[01m[Kchar*[m[K’, but argument 4 has type ‘[01m[Kchar (*)[80][m[K’ [[01;35m[K-Wformat=[m[K]
+make[2]: *** [CMakeFiles/control_xy_node_spline_follow_mixed.dir/src/control_xy_odom_wp_nav_spline_mixed2.cpp.o] Error 1
+make[1]: *** [CMakeFiles/control_xy_node_spline_follow_mixed.dir/all] Error 2
+make: *** [all] Error 2

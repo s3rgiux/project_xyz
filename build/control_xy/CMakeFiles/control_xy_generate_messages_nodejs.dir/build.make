@@ -54,6 +54,7 @@ CMAKE_BINARY_DIR = /home/xavier/catkin_ws/build/control_xy
 include CMakeFiles/control_xy_generate_messages_nodejs.dir/progress.make
 
 CMakeFiles/control_xy_generate_messages_nodejs: /home/xavier/catkin_ws/devel/.private/control_xy/share/gennodejs/ros/control_xy/msg/DriveWheel.js
+CMakeFiles/control_xy_generate_messages_nodejs: /home/xavier/catkin_ws/devel/.private/control_xy/share/gennodejs/ros/control_xy/msg/StateWheels.js
 CMakeFiles/control_xy_generate_messages_nodejs: /home/xavier/catkin_ws/devel/.private/control_xy/share/gennodejs/ros/control_xy/msg/TriggerAction.js
 CMakeFiles/control_xy_generate_messages_nodejs: /home/xavier/catkin_ws/devel/.private/control_xy/share/gennodejs/ros/control_xy/msg/Obstacle.js
 CMakeFiles/control_xy_generate_messages_nodejs: /home/xavier/catkin_ws/devel/.private/control_xy/share/gennodejs/ros/control_xy/msg/State.js
@@ -64,23 +65,29 @@ CMakeFiles/control_xy_generate_messages_nodejs: /home/xavier/catkin_ws/devel/.pr
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xavier/catkin_ws/build/control_xy/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Javascript code from control_xy/DriveWheel.msg"
 	catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/xavier/catkin_ws/src/control_xy/msg/DriveWheel.msg -Icontrol_xy:/home/xavier/catkin_ws/src/control_xy/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/melodic/share/actionlib_msgs/cmake/../msg -p control_xy -o /home/xavier/catkin_ws/devel/.private/control_xy/share/gennodejs/ros/control_xy/msg
 
+/home/xavier/catkin_ws/devel/.private/control_xy/share/gennodejs/ros/control_xy/msg/StateWheels.js: /opt/ros/melodic/lib/gennodejs/gen_nodejs.py
+/home/xavier/catkin_ws/devel/.private/control_xy/share/gennodejs/ros/control_xy/msg/StateWheels.js: /home/xavier/catkin_ws/src/control_xy/msg/StateWheels.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xavier/catkin_ws/build/control_xy/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Javascript code from control_xy/StateWheels.msg"
+	catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/xavier/catkin_ws/src/control_xy/msg/StateWheels.msg -Icontrol_xy:/home/xavier/catkin_ws/src/control_xy/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/melodic/share/actionlib_msgs/cmake/../msg -p control_xy -o /home/xavier/catkin_ws/devel/.private/control_xy/share/gennodejs/ros/control_xy/msg
+
 /home/xavier/catkin_ws/devel/.private/control_xy/share/gennodejs/ros/control_xy/msg/TriggerAction.js: /opt/ros/melodic/lib/gennodejs/gen_nodejs.py
 /home/xavier/catkin_ws/devel/.private/control_xy/share/gennodejs/ros/control_xy/msg/TriggerAction.js: /home/xavier/catkin_ws/src/control_xy/msg/TriggerAction.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xavier/catkin_ws/build/control_xy/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Javascript code from control_xy/TriggerAction.msg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xavier/catkin_ws/build/control_xy/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating Javascript code from control_xy/TriggerAction.msg"
 	catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/xavier/catkin_ws/src/control_xy/msg/TriggerAction.msg -Icontrol_xy:/home/xavier/catkin_ws/src/control_xy/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/melodic/share/actionlib_msgs/cmake/../msg -p control_xy -o /home/xavier/catkin_ws/devel/.private/control_xy/share/gennodejs/ros/control_xy/msg
 
 /home/xavier/catkin_ws/devel/.private/control_xy/share/gennodejs/ros/control_xy/msg/Obstacle.js: /opt/ros/melodic/lib/gennodejs/gen_nodejs.py
 /home/xavier/catkin_ws/devel/.private/control_xy/share/gennodejs/ros/control_xy/msg/Obstacle.js: /home/xavier/catkin_ws/src/control_xy/msg/Obstacle.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xavier/catkin_ws/build/control_xy/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating Javascript code from control_xy/Obstacle.msg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xavier/catkin_ws/build/control_xy/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating Javascript code from control_xy/Obstacle.msg"
 	catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/xavier/catkin_ws/src/control_xy/msg/Obstacle.msg -Icontrol_xy:/home/xavier/catkin_ws/src/control_xy/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/melodic/share/actionlib_msgs/cmake/../msg -p control_xy -o /home/xavier/catkin_ws/devel/.private/control_xy/share/gennodejs/ros/control_xy/msg
 
 /home/xavier/catkin_ws/devel/.private/control_xy/share/gennodejs/ros/control_xy/msg/State.js: /opt/ros/melodic/lib/gennodejs/gen_nodejs.py
 /home/xavier/catkin_ws/devel/.private/control_xy/share/gennodejs/ros/control_xy/msg/State.js: /home/xavier/catkin_ws/src/control_xy/msg/State.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xavier/catkin_ws/build/control_xy/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating Javascript code from control_xy/State.msg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xavier/catkin_ws/build/control_xy/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating Javascript code from control_xy/State.msg"
 	catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/xavier/catkin_ws/src/control_xy/msg/State.msg -Icontrol_xy:/home/xavier/catkin_ws/src/control_xy/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/melodic/share/actionlib_msgs/cmake/../msg -p control_xy -o /home/xavier/catkin_ws/devel/.private/control_xy/share/gennodejs/ros/control_xy/msg
 
 control_xy_generate_messages_nodejs: CMakeFiles/control_xy_generate_messages_nodejs
 control_xy_generate_messages_nodejs: /home/xavier/catkin_ws/devel/.private/control_xy/share/gennodejs/ros/control_xy/msg/DriveWheel.js
+control_xy_generate_messages_nodejs: /home/xavier/catkin_ws/devel/.private/control_xy/share/gennodejs/ros/control_xy/msg/StateWheels.js
 control_xy_generate_messages_nodejs: /home/xavier/catkin_ws/devel/.private/control_xy/share/gennodejs/ros/control_xy/msg/TriggerAction.js
 control_xy_generate_messages_nodejs: /home/xavier/catkin_ws/devel/.private/control_xy/share/gennodejs/ros/control_xy/msg/Obstacle.js
 control_xy_generate_messages_nodejs: /home/xavier/catkin_ws/devel/.private/control_xy/share/gennodejs/ros/control_xy/msg/State.js

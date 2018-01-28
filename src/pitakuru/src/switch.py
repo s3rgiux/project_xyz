@@ -5,7 +5,7 @@ import serial
 
 import rospy
 from pitakuru.msg import State, TriggerAction
-from std_msgs.msg import Int16
+from std_msgs.msg import Int16,Float32
 
 
 class SwitchInput(object):
@@ -15,14 +15,16 @@ class SwitchInput(object):
         self.ser = serial.Serial(rospy.get_param('/switch/port_name'), rospy.get_param('/switch/baudrate'), timeout=rospy.get_param('/switch/timeout'))
         self.button_states = dict()
         self.current_bumper = 1 
+        self.volts=0
 
         #self.sub = rospy.Subscriber('state', State, self.callback)
         self.sub_alerts = rospy.Subscriber('/alerts', Int16, self.alerts_cb,queue_size=1)
-        self.pub = rospy.Publisher('trigger_action', TriggerAction, queue_size=5)
+        self.pub = rospy.Publisher('trigger_action', TriggerAction, queue_size=2)
+        self.pub_volt = rospy.Publisher('volts', Float32, queue_size=1)
         rospy.on_shutdown(self.shutdown)
         self.alert = 0
         self.mode = 2
-        self.collision=False
+        self.collision = False
 #//6 collision 5 danger 4 warning 3 karugamo 2 idle 1 manual
 #//8 peop follow 6 collision 5 danger 4 warning 3 nothing 2 idle 1 manual with sound
 #//78 peop follow 6 collision 75 danger 74 warning 73 nothing 72 idle 71 manual no sound
@@ -85,6 +87,7 @@ class SwitchInput(object):
             self.button_states["release"] = 0
             self.button_states["karugamo"] = 0
             self.button_states["idle"] = 0
+            
             return
 
         current_states = json.loads(current_states_str)
@@ -101,6 +104,10 @@ class SwitchInput(object):
         self.current_bumper = tmp
         self.button_states["karugamo"] = current_states['SW0']
         self.button_states["idle"] = current_states['SW1']
+        self.volts=current_states['A0']
+        volts_read = Float32()
+        volts_read.data=self.volts*0.03205#according to the resistor divider
+        self.pub_volt.publish(volts_read)
 
         trigger_action = TriggerAction()
         rospy.logerr(self.button_states)

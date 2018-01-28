@@ -1,6 +1,6 @@
 # generated from genmsg/cmake/pkg-genmsg.cmake.em
 
-message(STATUS "control_xy: 4 messages, 0 services")
+message(STATUS "control_xy: 5 messages, 0 services")
 
 set(MSG_I_FLAGS "-Icontrol_xy:/home/xavier/catkin_ws/src/control_xy/msg;-Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg;-Iactionlib_msgs:/opt/ros/melodic/share/actionlib_msgs/cmake/../msg")
 
@@ -17,14 +17,19 @@ add_custom_target(control_xy_generate_messages ALL)
 
 
 
+get_filename_component(_filename "/home/xavier/catkin_ws/src/control_xy/msg/Obstacle.msg" NAME_WE)
+add_custom_target(_control_xy_generate_messages_check_deps_${_filename}
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "control_xy" "/home/xavier/catkin_ws/src/control_xy/msg/Obstacle.msg" ""
+)
+
 get_filename_component(_filename "/home/xavier/catkin_ws/src/control_xy/msg/DriveWheel.msg" NAME_WE)
 add_custom_target(_control_xy_generate_messages_check_deps_${_filename}
   COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "control_xy" "/home/xavier/catkin_ws/src/control_xy/msg/DriveWheel.msg" ""
 )
 
-get_filename_component(_filename "/home/xavier/catkin_ws/src/control_xy/msg/Obstacle.msg" NAME_WE)
+get_filename_component(_filename "/home/xavier/catkin_ws/src/control_xy/msg/StateWheels.msg" NAME_WE)
 add_custom_target(_control_xy_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "control_xy" "/home/xavier/catkin_ws/src/control_xy/msg/Obstacle.msg" ""
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "control_xy" "/home/xavier/catkin_ws/src/control_xy/msg/StateWheels.msg" ""
 )
 
 get_filename_component(_filename "/home/xavier/catkin_ws/src/control_xy/msg/TriggerAction.msg" NAME_WE)
@@ -45,6 +50,12 @@ add_custom_target(_control_xy_generate_messages_check_deps_${_filename}
 ### Generating Messages
 _generate_msg_cpp(control_xy
   "/home/xavier/catkin_ws/src/control_xy/msg/DriveWheel.msg"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/control_xy
+)
+_generate_msg_cpp(control_xy
+  "/home/xavier/catkin_ws/src/control_xy/msg/StateWheels.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/control_xy
@@ -82,9 +93,11 @@ add_custom_target(control_xy_generate_messages_cpp
 add_dependencies(control_xy_generate_messages control_xy_generate_messages_cpp)
 
 # add dependencies to all check dependencies targets
+get_filename_component(_filename "/home/xavier/catkin_ws/src/control_xy/msg/Obstacle.msg" NAME_WE)
+add_dependencies(control_xy_generate_messages_cpp _control_xy_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/xavier/catkin_ws/src/control_xy/msg/DriveWheel.msg" NAME_WE)
 add_dependencies(control_xy_generate_messages_cpp _control_xy_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/xavier/catkin_ws/src/control_xy/msg/Obstacle.msg" NAME_WE)
+get_filename_component(_filename "/home/xavier/catkin_ws/src/control_xy/msg/StateWheels.msg" NAME_WE)
 add_dependencies(control_xy_generate_messages_cpp _control_xy_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/xavier/catkin_ws/src/control_xy/msg/TriggerAction.msg" NAME_WE)
 add_dependencies(control_xy_generate_messages_cpp _control_xy_generate_messages_check_deps_${_filename})
@@ -102,6 +115,12 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS control_xy_generate_messages_cpp)
 ### Generating Messages
 _generate_msg_eus(control_xy
   "/home/xavier/catkin_ws/src/control_xy/msg/DriveWheel.msg"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/control_xy
+)
+_generate_msg_eus(control_xy
+  "/home/xavier/catkin_ws/src/control_xy/msg/StateWheels.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/control_xy
@@ -139,9 +158,11 @@ add_custom_target(control_xy_generate_messages_eus
 add_dependencies(control_xy_generate_messages control_xy_generate_messages_eus)
 
 # add dependencies to all check dependencies targets
+get_filename_component(_filename "/home/xavier/catkin_ws/src/control_xy/msg/Obstacle.msg" NAME_WE)
+add_dependencies(control_xy_generate_messages_eus _control_xy_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/xavier/catkin_ws/src/control_xy/msg/DriveWheel.msg" NAME_WE)
 add_dependencies(control_xy_generate_messages_eus _control_xy_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/xavier/catkin_ws/src/control_xy/msg/Obstacle.msg" NAME_WE)
+get_filename_component(_filename "/home/xavier/catkin_ws/src/control_xy/msg/StateWheels.msg" NAME_WE)
 add_dependencies(control_xy_generate_messages_eus _control_xy_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/xavier/catkin_ws/src/control_xy/msg/TriggerAction.msg" NAME_WE)
 add_dependencies(control_xy_generate_messages_eus _control_xy_generate_messages_check_deps_${_filename})
@@ -159,6 +180,12 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS control_xy_generate_messages_eus)
 ### Generating Messages
 _generate_msg_lisp(control_xy
   "/home/xavier/catkin_ws/src/control_xy/msg/DriveWheel.msg"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/control_xy
+)
+_generate_msg_lisp(control_xy
+  "/home/xavier/catkin_ws/src/control_xy/msg/StateWheels.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/control_xy
@@ -196,9 +223,11 @@ add_custom_target(control_xy_generate_messages_lisp
 add_dependencies(control_xy_generate_messages control_xy_generate_messages_lisp)
 
 # add dependencies to all check dependencies targets
+get_filename_component(_filename "/home/xavier/catkin_ws/src/control_xy/msg/Obstacle.msg" NAME_WE)
+add_dependencies(control_xy_generate_messages_lisp _control_xy_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/xavier/catkin_ws/src/control_xy/msg/DriveWheel.msg" NAME_WE)
 add_dependencies(control_xy_generate_messages_lisp _control_xy_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/xavier/catkin_ws/src/control_xy/msg/Obstacle.msg" NAME_WE)
+get_filename_component(_filename "/home/xavier/catkin_ws/src/control_xy/msg/StateWheels.msg" NAME_WE)
 add_dependencies(control_xy_generate_messages_lisp _control_xy_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/xavier/catkin_ws/src/control_xy/msg/TriggerAction.msg" NAME_WE)
 add_dependencies(control_xy_generate_messages_lisp _control_xy_generate_messages_check_deps_${_filename})
@@ -216,6 +245,12 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS control_xy_generate_messages_lisp)
 ### Generating Messages
 _generate_msg_nodejs(control_xy
   "/home/xavier/catkin_ws/src/control_xy/msg/DriveWheel.msg"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/control_xy
+)
+_generate_msg_nodejs(control_xy
+  "/home/xavier/catkin_ws/src/control_xy/msg/StateWheels.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/control_xy
@@ -253,9 +288,11 @@ add_custom_target(control_xy_generate_messages_nodejs
 add_dependencies(control_xy_generate_messages control_xy_generate_messages_nodejs)
 
 # add dependencies to all check dependencies targets
+get_filename_component(_filename "/home/xavier/catkin_ws/src/control_xy/msg/Obstacle.msg" NAME_WE)
+add_dependencies(control_xy_generate_messages_nodejs _control_xy_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/xavier/catkin_ws/src/control_xy/msg/DriveWheel.msg" NAME_WE)
 add_dependencies(control_xy_generate_messages_nodejs _control_xy_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/xavier/catkin_ws/src/control_xy/msg/Obstacle.msg" NAME_WE)
+get_filename_component(_filename "/home/xavier/catkin_ws/src/control_xy/msg/StateWheels.msg" NAME_WE)
 add_dependencies(control_xy_generate_messages_nodejs _control_xy_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/xavier/catkin_ws/src/control_xy/msg/TriggerAction.msg" NAME_WE)
 add_dependencies(control_xy_generate_messages_nodejs _control_xy_generate_messages_check_deps_${_filename})
@@ -273,6 +310,12 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS control_xy_generate_messages_nodejs
 ### Generating Messages
 _generate_msg_py(control_xy
   "/home/xavier/catkin_ws/src/control_xy/msg/DriveWheel.msg"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/control_xy
+)
+_generate_msg_py(control_xy
+  "/home/xavier/catkin_ws/src/control_xy/msg/StateWheels.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/control_xy
@@ -310,9 +353,11 @@ add_custom_target(control_xy_generate_messages_py
 add_dependencies(control_xy_generate_messages control_xy_generate_messages_py)
 
 # add dependencies to all check dependencies targets
+get_filename_component(_filename "/home/xavier/catkin_ws/src/control_xy/msg/Obstacle.msg" NAME_WE)
+add_dependencies(control_xy_generate_messages_py _control_xy_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/xavier/catkin_ws/src/control_xy/msg/DriveWheel.msg" NAME_WE)
 add_dependencies(control_xy_generate_messages_py _control_xy_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/xavier/catkin_ws/src/control_xy/msg/Obstacle.msg" NAME_WE)
+get_filename_component(_filename "/home/xavier/catkin_ws/src/control_xy/msg/StateWheels.msg" NAME_WE)
 add_dependencies(control_xy_generate_messages_py _control_xy_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/xavier/catkin_ws/src/control_xy/msg/TriggerAction.msg" NAME_WE)
 add_dependencies(control_xy_generate_messages_py _control_xy_generate_messages_check_deps_${_filename})

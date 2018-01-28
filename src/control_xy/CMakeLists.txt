@@ -51,6 +51,7 @@ add_message_files(
   Obstacle.msg
   State.msg
   TriggerAction.msg
+  StateWheels.msg
 )
 
 ## Generate messages in the 'msg' folder

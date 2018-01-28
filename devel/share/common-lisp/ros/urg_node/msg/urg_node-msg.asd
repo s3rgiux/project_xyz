@@ -1,0 +1,1 @@
+/home/xavier/catkin_ws/devel/.private/urg_node/share/common-lisp/ros/urg_node/msg/urg_node-msg.asd

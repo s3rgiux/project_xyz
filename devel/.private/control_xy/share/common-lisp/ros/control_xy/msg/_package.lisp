@@ -7,6 +7,8 @@
    "OBSTACLE"
    "<STATE>"
    "STATE"
+   "<STATEWHEELS>"
+   "STATEWHEELS"
    "<TRIGGERACTION>"
    "TRIGGERACTION"
   ))

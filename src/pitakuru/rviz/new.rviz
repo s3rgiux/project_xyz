@@ -8,6 +8,8 @@ Panels:
         - /Status1
         - /RobotModel1
         - /TF1
+        - /LaserScan1
+        - /Obstacles1
       Splitter Ratio: 0.5
     Tree Height: 233
   - Class: rviz/Selection
@@ -96,11 +98,11 @@ Visualization Manager:
       Show Names: true
       Tree:
         map:
+          my_frame:
+            {}
           odom:
             base_link:
               laser:
-                {}
-              my_frame:
                 {}
       Update Interval: 0
       Value: true
@@ -114,11 +116,11 @@ Visualization Manager:
       Channel Name: intensity
       Class: rviz/LaserScan
       Color: 255; 255; 255
-      Color Transformer: Intensity
+      Color Transformer: FlatColor
       Decay Time: 0
       Enabled: true
       Invert Rainbow: false
-      Max Color: 255; 255; 255
+      Max Color: 239; 41; 41
       Max Intensity: 47
       Min Color: 0; 0; 0
       Min Intensity: 47
@@ -127,7 +129,7 @@ Visualization Manager:
       Queue Size: 10
       Selectable: true
       Size (Pixels): 3
-      Size (m): 0.009999999776482582
+      Size (m): 0.03999999910593033
       Style: Flat Squares
       Topic: /scan
       Unreliable: false
@@ -187,6 +189,17 @@ Visualization Manager:
       Topic: /pathpeop
       Unreliable: false
       Value: true
+    - Circles color: 170; 0; 0
+      Class: Obstacles
+      Enabled: true
+      Margin color: 0; 170; 0
+      Name: Obstacles
+      Opacity: 0.75
+      Segments color: 170; 170; 0
+      Segments thickness: 0.029999999329447746
+      Topic: /obstacles
+      Unreliable: false
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -215,7 +228,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 15
+      Distance: 29.527250289916992
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -230,10 +243,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.6503967046737671
+      Pitch: 0.8803964853286743
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 0.9385817646980286
+      Yaw: 1.3335816860198975
     Saved: ~
 Window Geometry:
   Displays:

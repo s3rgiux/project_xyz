@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/control_xy_generate_messages_eus"
   "/home/xavier/catkin_ws/devel/.private/control_xy/share/roseus/ros/control_xy/msg/DriveWheel.l"
+  "/home/xavier/catkin_ws/devel/.private/control_xy/share/roseus/ros/control_xy/msg/StateWheels.l"
   "/home/xavier/catkin_ws/devel/.private/control_xy/share/roseus/ros/control_xy/msg/TriggerAction.l"
   "/home/xavier/catkin_ws/devel/.private/control_xy/share/roseus/ros/control_xy/msg/Obstacle.l"
   "/home/xavier/catkin_ws/devel/.private/control_xy/share/roseus/ros/control_xy/msg/State.l"

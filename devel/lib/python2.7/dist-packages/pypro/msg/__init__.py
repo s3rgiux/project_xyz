@@ -1,0 +1,1 @@
+/home/xavier/catkin_ws/devel/.private/pypro/lib/python2.7/dist-packages/pypro/msg/__init__.py

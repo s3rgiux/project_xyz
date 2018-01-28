@@ -1,6 +1,6 @@
 # generated from genmsg/cmake/pkg-genmsg.context.in
 
-messages_str = "/home/xavier/catkin_ws/src/control_xy/msg/DriveWheel.msg;/home/xavier/catkin_ws/src/control_xy/msg/Obstacle.msg;/home/xavier/catkin_ws/src/control_xy/msg/State.msg;/home/xavier/catkin_ws/src/control_xy/msg/TriggerAction.msg"
+messages_str = "/home/xavier/catkin_ws/src/control_xy/msg/DriveWheel.msg;/home/xavier/catkin_ws/src/control_xy/msg/Obstacle.msg;/home/xavier/catkin_ws/src/control_xy/msg/State.msg;/home/xavier/catkin_ws/src/control_xy/msg/TriggerAction.msg;/home/xavier/catkin_ws/src/control_xy/msg/StateWheels.msg"
 services_str = ""
 pkg_name = "control_xy"
 dependencies_str = "std_msgs;actionlib_msgs"
