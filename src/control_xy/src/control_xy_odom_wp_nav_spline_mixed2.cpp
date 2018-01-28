@@ -53,6 +53,7 @@ public:
         //sub_amperage = nh.subscribe("/amperage",1,&test_head::amperageCallback,this);
         sub_amperage = nh.subscribe("/stateWheels",1,&test_head::amperageCallback,this);
         volts_subscriber = nh.subscribe("/volts", 1, &test_head::voltsCallback,this);
+        cost_subscriber = nh.subscribe("/costdetect", 1, &test_head::costCallback,this);
         //nh.param<float>("break_distance", break_distance, 1.5);
         nh.getParam("/control_xy/break_distance", break_distance);
         nh.getParam("/control_xy/break_danger", break_danger);
@@ -90,6 +91,12 @@ public:
         nh.getParam("/control_xy/avg_curr_tresh",avg_curr_tresh);
         nh.getParam("/control_xy/peak_curr_tresh",peak_curr_tresh);
         nh.getParam("/control_xy/peak_not_heavy_curr",peak_not_heavy_curr);
+        nh.getParam("/control_xy/count_to_miss",count_to_miss);
+        nh.getParam("/control_xy/gain_to_costmap",gain_to_costmap);
+        nh.getParam("/control_xy/smooth_accel_costmap",smooth_accel_costmap);
+        
+
+        
         
         //nh.param<float>("break_danger", break_danger, 0.45);
         subScan_ = nh.subscribe("/scan", 1, &test_head::scanCallback,this);
@@ -221,6 +228,11 @@ void obstCallback(const std_msgs::Float32& msg){
 
 void headCallback(const std_msgs::Float64& head){   
     ang_robot=head.data;
+}
+
+void costCallback(const geometry_msgs::Vector3& vector){   
+    cost_obst=vector.x;
+    //ROS_INFO("lcost %f",cost_obst);
 }
 
 void ReceiveOdometry(const nav_msgs::Odometry::ConstPtr& msg){
@@ -437,7 +449,8 @@ void distPeopCallback2(const std_msgs::Float32& msg){
                     dist_auxwp=0; 
                     state_stop=0;
                     is_near==true;  
-                    stop_functions=false;         
+                    stop_functions=false; 
+                    ctrl_side_costmap=0;      
                     //fp = fopen ("/home/xavier/catkin_ws/src/control_xy/people.txt" , "w+");
             }
         }
@@ -509,7 +522,7 @@ if(mode_follow && danger!=true){
                     }
                 }
             }//endif not near
-            ROS_INFO("hello1");
+            //ROS_INFO("hello1");
             missing_track=0;
             tracked_cx=cx;
             tracked_cy=cy;
@@ -517,7 +530,7 @@ if(mode_follow && danger!=true){
             tracked_pos.y=cy;
             tracked_pos.z=tracked_angle;
             tracked_publisher.publish(tracked_pos);
-            ROS_INFO("hello2");
+            //ROS_INFO("hello2");
             geometry_msgs::Twist vel_steer;     
             /////////////////////////new implement
             float dobs,angobs,npcx,npcy;
@@ -562,8 +575,7 @@ if(mode_follow && danger!=true){
                 odom.pose.pose.position.z=0.0;
                 odom.pose.pose.orientation.w=1.0;
                 pos_peop_pub.publish(odom);
-                
-                ROS_INFO("added %f,%f,%f,%f,%f,%f",npcx,npcy,px,py,angobs,ang_robot);
+                //ROS_INFO("added %f,%f,%f,%f,%f,%f",npcx,npcy,px,py,angobs,ang_robot);
                 //fprintf(fp2,"%f,%f,%f,%f,%f,%f,%i\n",npcx,npcy,px,py,angobs,ang_robot,cont_sp_follow);
                 fprintf(fp2,"a%f,%f,%f,%f,%f,%f,%i\n",npcx,npcy,px,py,angobs,ang_robot,cont_sp_follow);
             }
@@ -574,7 +586,7 @@ if(mode_follow && danger!=true){
         else if(danger==false){//losted
             //if(is_near==false){
             missing_track+=1;
-                if(missing_track>28){//thiscounter also can help to see if theres a lot of objects and its not able to follow
+                if(missing_track>count_to_miss){//thiscounter also can help to see if theres a lot of objects and its not able to follow
                 if(is_near==true && tracking_people && stop_functions==false){
 					fprintf(fp2,"lost and near");
                     //ctrl_front_follow=speed_wp_lost;//experiemntal 10
@@ -605,6 +617,7 @@ if(mode_follow && danger!=true){
                 tracked_cx=0;
                 tracked_cy=0;
                 aux_dist=5000;
+                ctrl_side_costmap=0; 
                 tracked_pos.x=-50;
                 tracked_pos.y=-50;
                 missing_track=0;
@@ -691,7 +704,7 @@ if(is_near==false && stop_functions==false){
                 }
                 /////////////////experimental
                 if(error_yaw>max_defelct_angle || error_yaw<-max_defelct_angle){
-		    fprintf(fp2,"too much error_ang %f, index %i, cont %i \n",error_yaw,index_wp,cont_sp_follow);
+		            fprintf(fp2,"too much error_ang %f, index %i, cont %i \n",error_yaw,index_wp,cont_sp_follow);
                     if(index_wp<cont_sp_follow){
                         index_wp=index_wp+1;
                         calc_spline();
@@ -699,16 +712,18 @@ if(is_near==false && stop_functions==false){
                 }
                 /////////////////experiemental
 
-                spVel=0.1*(error_yaw);//0.05*(error_yaw);
+                spVel=0.1*(error_yaw);//0.0r5*(error_yaw);
                 nkp=angle_gain_wp;//=0.0085;
                 ctrl_yaw=(nkp*spVel)-ctrl_yaw/2;//experimental
                 //experiemntal
                 ctrl_add_side=(1-smooth_accel_side_manual)*(joy_side*max_speed_side_manual)+(smooth_accel_side_manual*ctrl_side_manual);
-                ctrl_yaw=ctrl_yaw+ctrl_add_side;
-                    if(ctrl_yaw>400){
-                        ctrl_yaw=400;
-                    }else if(ctrl_yaw<-400){
-                        ctrl_yaw=-400;
+                //ctrl_side_costmap=(1-smooth_accel_side_manual)*(cost_obst*max_speed_side_manual)+(smooth_accel_side_manual*ctrl_side_costmap);
+                //ROS_INFO("cost%f",ctrl_side_costmap);
+                ctrl_yaw=ctrl_yaw+ctrl_add_side;//+//ctrl_side_costmap*gain_to_costmap;
+                    if(ctrl_yaw>450){
+                        ctrl_yaw=450;
+                    }else if(ctrl_yaw<-450){
+                        ctrl_yaw=-450;
                     }
             
             if(distanciaPeople2>100 && tracking_people ==true){
@@ -883,7 +898,6 @@ void calc_spline(){
 ///////////////////
 
 void near(){
-
         //cx = msg.x;
         //cy = msg.y;
         //ang_peop_lidar = 90- atan2(cx, cy) * 180 / 3.1416 ;//-90+ atan2(cx, cy) * 180 / 3.1416 ;
@@ -901,7 +915,7 @@ void near(){
                 ang_peop_lidar = 90- atan2(cx,cy) * 180 / 3.1416 ;// ;  -90+ atan2(cx, cy) * 180 / 3.1416 
                 //ang_peop_lidar = 90- atan2(cx, cy) * 180 / 3.1416 ;//-90+ atan2(cx, cy) * 180 / 3.1416 ;
                 distanciaPeople2 = sqrt(cx*cx+cy*cy)*100;
-                ROS_INFO("T%f,%f",tracked_cx,tracked_cy);
+                //ROS_INFO("T%f,%f",tracked_cx,tracked_cy);
                 tracked_angle= ang_peop_lidar;
                 tracked_distance = distanciaPeople2;
                 missing_track=0;
@@ -912,20 +926,18 @@ void near(){
                 tracked_pos.z=tracked_angle;
                 tracked_publisher.publish(tracked_pos);
                 geometry_msgs::Twist vel_steer;     
-                
-
                 ctrl_ang= low_vel_gain_follow*ang_peop_lidar-ctrl_ang/2;
                 //experiementa
-                
                 ctrl_add_side=(1-smooth_accel_side_manual)*(joy_side*max_speed_side_manual)+(smooth_accel_side_manual*ctrl_side_manual);
-                ctrl_ang=ctrl_ang+ctrl_add_side;
-              
-
+                ctrl_side_costmap=(1-smooth_accel_side_manual)*(cost_obst*max_speed_side_manual)+(smooth_accel_side_manual*ctrl_side_costmap);
+                ROS_INFO("cost%f",ctrl_side_costmap);
+                ctrl_ang=ctrl_ang+ctrl_add_side+ctrl_side_costmap*gain_to_costmap;
                 //
-                if (ctrl_ang>500){
-                    ctrl_ang= 500;
-                }else if (ctrl_ang<-500){
-                    ctrl_ang= -500;
+                float restriction=450;
+                if (ctrl_ang>restriction){
+                    ctrl_ang= restriction;
+                }else if (ctrl_ang<-restriction){
+                    ctrl_ang= -restriction;
                 }
                 vel_steer.angular.z=ctrl_ang;//low_vel_gain*msg.data;//*(distanciaPeople/40);
 
@@ -971,6 +983,7 @@ void near(){
                 }else{
                     ctrl_front_follow=(1-smooth_accel_stop)*(0)+(smooth_accel_stop*ctrl_front_follow);
                     vel_steer.linear.x=0;
+                    ctrl_side_costmap=0; 
                     //ctrl_front_follow=0;
                 }
                 //if(stop_follow==true||tracking_people==false){
@@ -1053,26 +1066,26 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan){
             free_way=true;
         }
         for(int j=279;j<=358;j++){
-            if (scan->ranges[j] <= break_danger && scan->ranges[j] >0.24 ){
+            if (scan->ranges[j] <= break_danger && scan->ranges[j] >0.14 ){
                detect_cont++;   
                 return;
              }  
         }
         for(int i=0;i<=80;i++){
-            if (scan->ranges[i] <= break_danger && scan->ranges[i] >0.24 ){
+            if (scan->ranges[i] <= break_danger && scan->ranges[i] >0.14 ){
                detect_cont++;
                return;
                 }
             
         }
         for(int j=328;j<=358;j++){
-            if (scan->ranges[j] <= break_distance && scan->ranges[j] >0.24 ){
+            if (scan->ranges[j] <= break_distance && scan->ranges[j] >0.14 ){
                  detect_cont++;
                      return;
             }
         }
         for(int i=0;i<=30;i++){
-            if (scan->ranges[i] <= break_distance && scan->ranges[i] >0.24 ){
+            if (scan->ranges[i] <= break_distance && scan->ranges[i] >0.14 ){
                detect_cont++;
                return;
             }
@@ -1439,7 +1452,9 @@ void loadRoute(){
                 //if(ctrl_side_manual<7 && ctrl_side_manual>-7){
                 //    ctrl_side_manual=0;
                 //}
-                vel_steer.angular.z=ctrl_side_manual;
+                //ctrl_side_costmap=(1-smooth_accel_side_manual)*(cost_obst*max_speed_side_manual)+(smooth_accel_side_manual*ctrl_side_costmap);
+                //ROS_INFO("cost%f",ctrl_side_costmap);
+                vel_steer.angular.z=ctrl_side_manual;//+ctrl_side_costmap;
                
                 if(joy->axes[7]!=0){
                         vel_steer.linear.x=joy->axes[7]*max_speed_manual_heavy;
@@ -1506,7 +1521,8 @@ private:
     ros::Publisher m1_pub;
     ros::Publisher m2_pub;
 
-    ros::Subscriber volts_subscriber;     
+    ros::Subscriber volts_subscriber; 
+    ros::Subscriber cost_subscriber;    
     geometry_msgs::Twist vel_steer;
     geometry_msgs::Vector3 tracked_pos;
     std_msgs::Float32 ang_people;
@@ -1549,9 +1565,11 @@ private:
     float int_r_curr,int_l_curr,der_r_curr,der_l_curr,filt_r_curr,filt_l_curr,prev_r_curr,prev_l_curr;
     bool n_flag_r,d_flag_r,n_flag_l,d_flag_l, detected_heavy;
     float fil_der_r_curr,max_r_curr,fil_der_l_curr,max_l_curr;
-    int  heavy_r,heavy_l;
+    int  heavy_r,heavy_l,count_to_miss;
     double time_last_to_heavy;
     float vel_m1,vel_m2,vel_detect_scan,volts_charge,peak_curr_tresh,avg_curr_tresh,peak_not_heavy_curr;
+    float cost_obst,ctrl_side_costmap,gain_to_costmap,smooth_accel_costmap;
+    
 };
 
 int main(int argc, char **argv)

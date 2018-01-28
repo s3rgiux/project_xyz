@@ -1,5 +1,0 @@
-pobx,poby,px,py,ang,angr,num 
-lost 
-lost 
-lost 
-lost 

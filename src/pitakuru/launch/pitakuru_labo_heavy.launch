@@ -67,19 +67,20 @@
 
 <!-- control xy is the main program build in c++ to make it more fast needs to be compiled if a modification is made-->
 <node pkg="control_xy" type="control_xy_node_spline_follow_mixed" name="control_xy" output="screen">
-<param name="break_distance"    type="double"	value="0.75"/> <!-- breaking distance to  enter in danger zone  -->
-<param name="break_danger"    type="double"	value="0.39"/><!-- 0.9--><!-- (not used depercated)distance to  enter in warning zone  -->	
+<param name="break_distance"    type="double"	value="0.25"/> <!-- 0.75--><!-- breaking distance to  enter in danger zone  -->
+<param name="break_danger"    type="double"	value="0.25"/><!-- 0.39--><!-- (not used depercated)distance to  enter in warning zone  -->	
 <param name="low_vel_gain_karugamo"    type="double"	value="15"/> <!-- (not used depercated)karugamo gain  angle control   -->
 <param name="high_vel_gain_karugamo"    type="double"	value="17"/><!-- 10--> <!-- (not used depercated)karugamo gain  angle control   -->
 <param name="low_vel_gain_follow"    type="double"	value="12"/><!-- 17--><!-- people follow gain  angle control   -->
 <param name="high_vel_gain_follow"    type="double"	value="12"/> <!-- 17--><!-- people follow gain  angle control   -->
 <param name="frontal_gain_karugamo"    type="double"	value="17"/> <!-- (not used depercated)karugamo gain  angle control   -->
-<param name="frontal_gain_follow"    type="double"	value="1400"/><!-- 2500--> <!-- gain for frontal control   -->
+<param name="frontal_gain_follow"    type="double"	value="1600"/><!-- 2500--> <!-- gain for frontal control   -->
 <param name="frontal_gain_manual"    type="double"	value="00"/> <!-- (not used depercated)gain frontal control   -->
 <param name="smooth_accel_karugamo_near"    type="double"	value="0.985"/> <!-- acceletartion smooth max value up to 0.99   -->
 <param name="smooth_accel_karugamo_far"    type="double"	value="0.985"/> <!-- acceletartion smooth max value up to 0.99   -->
 <param name="smooth_accel_manual"    type="double"	value="0.985"/> <!-- acceletartion smooth max value up to 0.99   -->
-<param name="smooth_accel_side_manual"    type="double"	value="0.92"/> <!-- acceletartion smooth max value up to 0.99   -->
+<param name="smooth_accel_side_manual"    type="double"	value="0.91"/> <!-- acceletartion smooth max value up to 0.99   -->
+<param name="smooth_accel_costmap"    type="double"	value="0.7"/> <!-- acceletartion smooth max value up to 0.99   -->
 <param name="smooth_accel_stop"    type="double"	value="0.99"/> <!-- acceletartion smooth max value up to 0.99   -->
 <param name="max_speed_karugamo"    type="double"	value="1200"/> <!-- (not used depercated)max speed value for karugamo   -->
 <param name="max_speed_follow"    type="double"	value="1200"/> <!--1500--><!--3000--> <!--max speed value for frontal people follow-->
@@ -102,12 +103,18 @@
 <param name="avg_curr_tresh"    type="double"	value="5.2"/> <!--vel to start detect collision-->
 <param name="peak_curr_tresh"    type="double"	value="5.9"/> <!--vel to start detect collision-->
 <param name="peak_not_heavy_curr"    type="double"	value="4.3"/> <!--vel to start detect collision-->
+<param name="count_to_miss"    type="double"	value="45"/> <!--counter that if overpass this then we lost people-->
+<param name="gain_to_costmap"    type="double"	value="1.0"/> <!--counter that if overpass this then we lost people-->
 </node>
 
 <!-- extract obstacles form region of interest and send to control_xy -->
 <node pkg="obs_extract" type="main.py" name="obj_track" >
-<param name="front_detection"    type="double"	value="6"/> <!-- 3.5 --><!-- 5 -->
+<param name="front_detection"    type="double"	value="7"/> <!-- 3.5 --><!-- 5 -->
 <param name="side_detection"    type="double"	value="2.5"/>  <!-- 1.2 --><!-- 2.2 -->
+</node>
+
+<node pkg="costmap" type="main.py" name="cost_detect" >
+<param name="dilation"    type="int"	value="4"/> <!-- 3.5 --><!-- 5 -->
 </node>
 <!--  
 <node pkg="tf" type="static_transform_publisher" name="base_link_map_broadcaster" args="0 0 0 0 0 0 map base_link 50" />
@@ -142,6 +149,12 @@
    if = "$(arg record_flag)" />
 
 
+<arg name="record_flag2" default="true" /> <!-- set to true if i want to record-->
+
+<node pkg="rosbag" type="record" name="rosbag_record"
+ args = "record -o /home/xavier/sea.bag  /scan "  
+   if = "$(arg record_flag2)" />
+
 <arg name="record_load_flag" default="false" /> <!-- set to true if i want to record-->
 
 <node pkg="rosbag" type="record" name="rosbag_record"
@@ -151,7 +164,7 @@
 <arg name="record_m_flag" default="false" /> <!-- set to true if i want to record-->
 
 <node pkg="rosbag" type="record" name="rosbag_record"
- args = "record -o /home/xavier/bags4/1111.bag /stateWheels /alerts /state /m1_deriv /m2_deriv"  
+ args = "record -o /home/xavier/test_scan.bag /stateWheels /alerts /state /m1_deriv /m2_deriv"  
    if = "$(arg record_m_flag)" />
 
 
