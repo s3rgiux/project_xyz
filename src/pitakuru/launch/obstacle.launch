@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="rvizconfig" default="$(find pitakuru)/rviz/rplidar.rviz"/>
+
+    <!-- RPLidar -->
+    <node pkg="rplidar_ros" type="rplidarNode" name="rplidarNode">
+        <rosparam command="load" file="$(find pitakuru)/config/obstacle/rplidar.yaml" />
+    </node>
+
+    <!-- obstacle detector -->
+    <rosparam command="load" file="$(find pitakuru)/config/obstacle/obstacle_detector.yaml" />
+    <node name="obstacle_extractor" pkg="obstacle_detector" type="obstacle_extractor_node">
+        <remap from="scan" to="/scan" />
+    </node>
+    <node name="obstacle_tracker" pkg="obstacle_detector" type="obstacle_tracker_node" />
+
+    <!-- 危険物の検知 -->
+    <node pkg="pitakuru" type="find_obstacle.py" name="find_obstacle">
+        <rosparam command="load" file="$(find pitakuru)/config/obstacle/obstacle.yaml" />
+    </node>
+
+    <!-- rviz設定 -->
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="true" />
+</launch>

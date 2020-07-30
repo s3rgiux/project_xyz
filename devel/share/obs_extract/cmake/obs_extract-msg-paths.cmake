@@ -1,0 +1,1 @@
+/home/xavier/catkin_ws/devel/.private/obs_extract/share/obs_extract/cmake/obs_extract-msg-paths.cmake

@@ -1,0 +1,1 @@
+/home/xavier/catkin_ws/devel/.private/obs_extract/lib/python2.7/dist-packages/obs_extract/__init__.py

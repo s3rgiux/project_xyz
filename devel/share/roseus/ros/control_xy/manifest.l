@@ -1,0 +1,1 @@
+/home/xavier/catkin_ws/devel/.private/control_xy/share/roseus/ros/control_xy/manifest.l

@@ -1,0 +1,1 @@
+/home/xavier/catkin_ws/devel/.private/opencv_scanner/share/opencv_scanner/cmake/opencv_scannerConfig.cmake

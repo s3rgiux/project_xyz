@@ -1,0 +1,8 @@
+prefix=/home/xavier/catkin_ws/devel/.private/hector_geotiff_plugins
+
+Name: hector_geotiff_plugins
+Description: Description of hector_geotiff_plugins
+Version: 0.4.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

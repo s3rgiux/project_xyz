@@ -1,0 +1,26 @@
+# カルガモモード
+karugamo:
+  max_speed_rpm: 2000
+  speed_p: 5.0 # 距離-速さの比例係数 5
+  steer_p: 300.0 # 300.0 # 500.0 # 角度-ステアリング比例ゲイン
+  steer_i: 1.0 # 50.0 # 角度-ステアリング積分ゲイン
+  steer_d: 50.0
+  joy_interrupt_rpm: 800 # カルガモ中にリモコン操作で割り込みを入れる[rpm]
+
+karugamo2:
+  karugamo_base_speed: 2000 # カルガモ時基準となるモーター速度[RPM]（絶対値）
+  karugamo_max_speed: 2000 # カルガモ時モーターの最大速度[RPM]（絶対値）
+  view_angle: 120 # angle of view of Jevois cam [rad] = 120 degree
+  inactive_area_d: 800 # [mm]
+  min_stop_d: 400 # [mm]
+  theta_old: 0 # 前回のカメラ方向（中心線）に対するマーカーの角度
+  rpm_left: 0 # タイマーから送る左の速度
+  rpm_right: 0 # タイマーから送る右の速度
+  dec_area: 2000 # 減速するエリア[mm]
+
+# ジョイスティックマニュアル操作
+manual:
+  max_ud: 1200 # 前後進速度
+  max_lr: 800 # 左右旋回速度
+  interval: 300 # 指定速度まで到達するまでの時間 [loop]
+  manual_max_speed: 1000

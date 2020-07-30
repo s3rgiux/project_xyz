@@ -1,0 +1,8 @@
+prefix=/home/xavier/catkin_ws/install
+
+Name: conversion
+Description: Description of conversion
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib -lconversion
+Requires: std_msgs sensor_msgs geometry_msgs

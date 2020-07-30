@@ -1,0 +1,31 @@
+
+(cl:in-package :asdf)
+
+(defsystem "pitakuru-msg"
+  :depends-on (:roslisp-msg-protocol :roslisp-utils :actionlib_msgs-msg
+               :std_msgs-msg
+)
+  :components ((:file "_package")
+    (:file "DriveWheel" :depends-on ("_package_DriveWheel"))
+    (:file "_package_DriveWheel" :depends-on ("_package"))
+    (:file "Obstacle" :depends-on ("_package_Obstacle"))
+    (:file "_package_Obstacle" :depends-on ("_package"))
+    (:file "SoundAction" :depends-on ("_package_SoundAction"))
+    (:file "_package_SoundAction" :depends-on ("_package"))
+    (:file "SoundActionFeedback" :depends-on ("_package_SoundActionFeedback"))
+    (:file "_package_SoundActionFeedback" :depends-on ("_package"))
+    (:file "SoundActionGoal" :depends-on ("_package_SoundActionGoal"))
+    (:file "_package_SoundActionGoal" :depends-on ("_package"))
+    (:file "SoundActionResult" :depends-on ("_package_SoundActionResult"))
+    (:file "_package_SoundActionResult" :depends-on ("_package"))
+    (:file "SoundFeedback" :depends-on ("_package_SoundFeedback"))
+    (:file "_package_SoundFeedback" :depends-on ("_package"))
+    (:file "SoundGoal" :depends-on ("_package_SoundGoal"))
+    (:file "_package_SoundGoal" :depends-on ("_package"))
+    (:file "SoundResult" :depends-on ("_package_SoundResult"))
+    (:file "_package_SoundResult" :depends-on ("_package"))
+    (:file "State" :depends-on ("_package_State"))
+    (:file "_package_State" :depends-on ("_package"))
+    (:file "TriggerAction" :depends-on ("_package_TriggerAction"))
+    (:file "_package_TriggerAction" :depends-on ("_package"))
+  ))

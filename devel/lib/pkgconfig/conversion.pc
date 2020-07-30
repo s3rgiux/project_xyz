@@ -1,0 +1,1 @@
+/home/xavier/catkin_ws/devel/.private/conversion/lib/pkgconfig/conversion.pc

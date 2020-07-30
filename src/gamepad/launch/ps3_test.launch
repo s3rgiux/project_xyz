@@ -1,0 +1,10 @@
+<launch>
+
+
+<include file="$(find ps3joy)/launch/ps3.launch"/>
+
+<node pkg="gamepad" type="gamepad_node" name="gamepad_node" output="screen">	
+</node>
+
+
+</launch>

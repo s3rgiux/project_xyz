@@ -1,0 +1,1 @@
+/home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/__init__.py

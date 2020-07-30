@@ -1,0 +1,1 @@
+/home/xavier/catkin_ws/devel/.private/obs_extract/share/roseus/ros/obs_extract/msg/CircleObstacle.l

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<launch>
+
+
+<node pkg="obs_extract" type="main.py" name="obj_track" >
+<param name="front_detection"    type="double"	value="4"/>
+<param name="side_detection"    type="double"	value="2"/>
+</node>
+
+
+</launch>

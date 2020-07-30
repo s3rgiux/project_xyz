@@ -1,0 +1,6 @@
+devel_space: /home/xavier/catkin_ws/devel
+install: false
+install_space: /home/xavier/catkin_ws/install
+profile: default
+source_space: /home/xavier/catkin_ws/src
+workspace: /home/xavier/catkin_ws

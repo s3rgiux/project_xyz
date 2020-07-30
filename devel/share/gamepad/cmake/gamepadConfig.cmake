@@ -1,0 +1,1 @@
+/home/xavier/catkin_ws/devel/.private/gamepad/share/gamepad/cmake/gamepadConfig.cmake

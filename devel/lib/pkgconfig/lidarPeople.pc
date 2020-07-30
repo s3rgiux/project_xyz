@@ -1,0 +1,1 @@
+/home/xavier/catkin_ws/devel/.private/lidarPeople/lib/pkgconfig/lidarPeople.pc

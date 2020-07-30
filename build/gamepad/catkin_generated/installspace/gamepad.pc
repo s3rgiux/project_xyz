@@ -1,0 +1,8 @@
+prefix=/home/xavier/catkin_ws/install
+
+Name: gamepad
+Description: Description of gamepad
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib -lgamepad
+Requires: std_msgs sensor_msgs geometry_msgs

@@ -1,0 +1,1 @@
+/home/xavier/catkin_ws/devel/.private/obstacle_detector/share/gennodejs/ros/obstacle_detector/msg/CircleObstacle.js

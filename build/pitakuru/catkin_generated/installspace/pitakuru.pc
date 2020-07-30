@@ -1,0 +1,8 @@
+prefix=/home/xavier/catkin_ws/install
+
+Name: pitakuru
+Description: Description of pitakuru
+Version: 0.0.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib -lpitakuru
+Requires: message_runtime roscpp rospy

@@ -1,0 +1,1 @@
+/home/xavier/catkin_ws/devel/.private/map_msgs/share/roseus/ros/map_msgs/manifest.l

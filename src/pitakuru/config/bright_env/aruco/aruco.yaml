@@ -1,0 +1,6 @@
+dictionary: 0 # DICT_4X4_50
+fiducial_len: 25
+ignore_fiducials: 1-2,4-12
+
+marker_length: 250 #(mm)
+adaptive_threshold: 7

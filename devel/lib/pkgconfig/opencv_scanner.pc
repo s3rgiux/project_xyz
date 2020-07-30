@@ -1,0 +1,1 @@
+/home/xavier/catkin_ws/devel/.private/opencv_scanner/lib/pkgconfig/opencv_scanner.pc

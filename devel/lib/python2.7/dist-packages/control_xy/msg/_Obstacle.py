@@ -1,0 +1,1 @@
+/home/xavier/catkin_ws/devel/.private/control_xy/lib/python2.7/dist-packages/control_xy/msg/_Obstacle.py

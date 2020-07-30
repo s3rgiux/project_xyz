@@ -1,0 +1,1 @@
+/home/xavier/catkin_ws/devel/.private/pitakuru/share/pitakuru/cmake/pitakuru-msg-paths.cmake

@@ -1,0 +1,862 @@
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:475:4:[m[K [01;31m[Kerror: [m[Kexpected unqualified-id before ‘[01m[Kelse[m[K’
+   }[01;31m[Kelse[m[K if(joy->buttons[0]){//square
+    [01;31m[K^~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:487:3:[m[K [01;31m[Kerror: [m[Kexpected unqualified-id before ‘[01m[Kif[m[K’
+   [01;31m[Kif[m[K(mode_manual){
+   [01;31m[K^~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:510:4:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K;[m[K’ after class definition
+   }
+    [01;31m[K^[m[K
+    [32m[K;[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:[m[K In constructor ‘[01m[Ktest_head::test_head(ros::NodeHandle)[m[K’:
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:23:10:[m[K [01;31m[Kerror: [m[K‘[01m[Kspeed_publisher[m[K’ was not declared in this scope
+          [01;31m[Kspeed_publisher[m[K=nh.advertise<geometry_msgs::Twist>(nh.resolveName("/cmd_vel"), 2);
+          [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:24:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kalerts_publisher[m[K’ was not declared in this scope
+   [01;31m[Kalerts_publisher[m[K=nh.advertise<std_msgs::Int16>(nh.resolveName("/alerts"), 1);
+   [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:25:17:[m[K [01;31m[Kerror: [m[K‘[01m[Khead_subscriber[m[K’ was not declared in this scope
+                 [01;31m[Khead_subscriber[m[K = nh.subscribe("/euler", 1, &test_head::headCallback,this);
+                 [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:26:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kodometry_sub[m[K’ was not declared in this scope
+   [01;31m[Kodometry_sub[m[K = nh.subscribe("odom",1,&test_head::ReceiveOdometry,this);
+   [01;31m[K^~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:26:3:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Ktimersub[m[K’
+   [01;36m[Kodometry_sub[m[K = nh.subscribe("odom",1,&test_head::ReceiveOdometry,this);
+   [01;36m[K^~~~~~~~~~~~[m[K
+   [32m[Ktimersub[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:28:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kjoy_subscriber[m[K’ was not declared in this scope
+   [01;31m[Kjoy_subscriber[m[K = nh.subscribe("/j0/joy", 1, &test_head::joyCallback,this);
+   [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:29:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kpose_subscriber[m[K’ was not declared in this scope
+   [01;31m[Kpose_subscriber[m[K = nh.subscribe("setPoints", 1, &test_head::setPointsCallback,this);
+   [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:30:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kang_subscriber[m[K’ was not declared in this scope
+   [01;31m[Kang_subscriber[m[K = nh.subscribe("peopAng", 1, &test_head::angPeopCallback,this);
+   [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:31:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kdist_subscriber[m[K’ was not declared in this scope
+   [01;31m[Kdist_subscriber[m[K = nh.subscribe("peopDist", 1, &test_head::distPeopCallback,this);
+   [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:32:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kobst_subscriber[m[K’ was not declared in this scope
+                 [01;31m[Kobst_subscriber[m[K = nh.subscribe("/obstacle_closest", 1, &test_head::obstCallback,this);
+                 [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:35:45:[m[K [01;31m[Kerror: [m[K‘[01m[Kbreak_distance[m[K’ was not declared in this scope
+   nh.getParam("/control_xy/break_distance", [01;31m[Kbreak_distance[m[K);
+                                             [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:35:45:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kpthread_testcancel[m[K’
+   nh.getParam("/control_xy/break_distance", [01;36m[Kbreak_distance[m[K);
+                                             [01;36m[K^~~~~~~~~~~~~~[m[K
+                                             [32m[Kpthread_testcancel[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:36:43:[m[K [01;31m[Kerror: [m[K‘[01m[Kbreak_danger[m[K’ was not declared in this scope
+   nh.getParam("/control_xy/break_danger", [01;31m[Kbreak_danger[m[K);
+                                           [01;31m[K^~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:36:43:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kpthread_cancel[m[K’
+   nh.getParam("/control_xy/break_danger", [01;36m[Kbreak_danger[m[K);
+                                           [01;36m[K^~~~~~~~~~~~[m[K
+                                           [32m[Kpthread_cancel[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:37:43:[m[K [01;31m[Kerror: [m[K‘[01m[Klow_vel_gain[m[K’ was not declared in this scope
+   nh.getParam("/control_xy/low_vel_gain", [01;31m[Klow_vel_gain[m[K);
+                                           [01;31m[K^~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:38:44:[m[K [01;31m[Kerror: [m[K‘[01m[Khigh_vel_gain[m[K’ was not declared in this scope
+   nh.getParam("/control_xy/high_vel_gain", [01;31m[Khigh_vel_gain[m[K);
+                                            [01;31m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:39:47:[m[K [01;31m[Kerror: [m[K‘[01m[Kmax_speed_follow[m[K’ was not declared in this scope
+   nh.getParam("/control_xy/max_speed_follow", [01;31m[Kmax_speed_follow[m[K);
+                                               [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:40:47:[m[K [01;31m[Kerror: [m[K‘[01m[Kmax_speed_manual[m[K’ was not declared in this scope
+   nh.getParam("/control_xy/max_speed_manual", [01;31m[Kmax_speed_manual[m[K);
+                                               [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:42:3:[m[K [01;31m[Kerror: [m[K‘[01m[KsubScan_[m[K’ was not declared in this scope
+   [01;31m[KsubScan_[m[K = nh.subscribe("/scan", 1, &test_head::scanCallback,this);
+   [01;31m[K^~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:42:3:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kswscanf[m[K’
+   [01;36m[KsubScan_[m[K = nh.subscribe("/scan", 1, &test_head::scanCallback,this);
+   [01;36m[K^~~~~~~~[m[K
+   [32m[Kswscanf[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:45:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kstart_tray[m[K’ was not declared in this scope
+   [01;31m[Kstart_tray[m[K=false;
+   [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:45:3:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kstrfry[m[K’
+   [01;36m[Kstart_tray[m[K=false;
+   [01;36m[K^~~~~~~~~~[m[K
+   [32m[Kstrfry[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:46:3:[m[K [01;31m[Kerror: [m[K‘[01m[Ksp_yaw[m[K’ was not declared in this scope
+   [01;31m[Ksp_yaw[m[K=90;
+   [01;31m[K^~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:47:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kca[m[K’ was not declared in this scope
+   [01;31m[Kca[m[K=0;
+   [01;31m[K^~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:48:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kruta_learn[m[K’ was not declared in this scope
+   [01;31m[Kruta_learn[m[K=false;
+   [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:48:3:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kualarm[m[K’
+   [01;36m[Kruta_learn[m[K=false;
+   [01;36m[K^~~~~~~~~~[m[K
+   [32m[Kualarm[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:49:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kloaded_route[m[K’ was not declared in this scope
+   [01;31m[Kloaded_route[m[K=false;
+   [01;31m[K^~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:49:3:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[KloadRoute[m[K’
+   [01;36m[Kloaded_route[m[K=false;
+   [01;36m[K^~~~~~~~~~~~[m[K
+   [32m[KloadRoute[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:50:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kn_aux[m[K’ was not declared in this scope
+   [01;31m[Kn_aux[m[K=3000;
+   [01;31m[K^~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:51:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kk_idx[m[K’ was not declared in this scope
+   [01;31m[Kk_idx[m[K=0;
+   [01;31m[K^~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:52:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kpx_aux[m[K’ was not declared in this scope
+   [01;31m[Kpx_aux[m[K=1000000000000;
+   [01;31m[K^~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:53:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kpy_aux[m[K’ was not declared in this scope
+   [01;31m[Kpy_aux[m[K=1000000000000;
+   [01;31m[K^~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:54:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kcarril[m[K’ was not declared in this scope
+   [01;31m[Kcarril[m[K=0;//0 externo 1 interno
+   [01;31m[K^~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:54:3:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kceil[m[K’
+   [01;36m[Kcarril[m[K=0;//0 externo 1 interno
+   [01;36m[K^~~~~~[m[K
+   [32m[Kceil[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:55:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kvelocity[m[K’ was not declared in this scope
+   [01;31m[Kvelocity[m[K=0;
+   [01;31m[K^~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:55:3:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kselect[m[K’
+   [01;36m[Kvelocity[m[K=0;
+   [01;36m[K^~~~~~~~[m[K
+   [32m[Kselect[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:56:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kalfa[m[K’ was not declared in this scope
+   [01;31m[Kalfa[m[K=0.8;
+   [01;31m[K^~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:57:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kobstaculo[m[K’ was not declared in this scope
+   [01;31m[Kobstaculo[m[K=false;
+   [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:57:3:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kobstack[m[K’
+   [01;36m[Kobstaculo[m[K=false;
+   [01;36m[K^~~~~~~~~[m[K
+   [32m[Kobstack[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:58:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kchanged[m[K’ was not declared in this scope
+   [01;31m[Kchanged[m[K=false;
+   [01;31m[K^~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:58:3:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kvhangup[m[K’
+   [01;36m[Kchanged[m[K=false;
+   [01;36m[K^~~~~~~[m[K
+   [32m[Kvhangup[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:59:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kerrpx[m[K’ was not declared in this scope
+   [01;31m[Kerrpx[m[K=0;
+   [01;31m[K^~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:59:3:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kerrno[m[K’
+   [01;36m[Kerrpx[m[K=0;
+   [01;36m[K^~~~~[m[K
+   [32m[Kerrno[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:60:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kerrpy[m[K’ was not declared in this scope
+   [01;31m[Kerrpy[m[K=0;
+   [01;31m[K^~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:60:3:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kerrno[m[K’
+   [01;36m[Kerrpy[m[K=0;
+   [01;36m[K^~~~~[m[K
+   [32m[Kerrno[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:61:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kerror_yaw[m[K’ was not declared in this scope
+   [01;31m[Kerror_yaw[m[K=0;
+   [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:61:3:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kerror_t[m[K’
+   [01;36m[Kerror_yaw[m[K=0;
+   [01;36m[K^~~~~~~~~[m[K
+   [32m[Kerror_t[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:62:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kpx[m[K’ was not declared in this scope
+   [01;31m[Kpx[m[K=0;
+   [01;31m[K^~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:63:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kpy[m[K’ was not declared in this scope
+   [01;31m[Kpy[m[K=0;
+   [01;31m[K^~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:64:3:[m[K [01;31m[Kerror: [m[K‘[01m[Knspx[m[K’ was not declared in this scope
+   [01;31m[Knspx[m[K=0.00;
+   [01;31m[K^~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:65:3:[m[K [01;31m[Kerror: [m[K‘[01m[Knspy[m[K’ was not declared in this scope
+   [01;31m[Knspy[m[K=0.05;
+   [01;31m[K^~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:66:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kyaw[m[K’ was not declared in this scope
+   [01;31m[Kyaw[m[K=0;
+   [01;31m[K^~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:67:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kconta[m[K’ was not declared in this scope
+   [01;31m[Kconta[m[K=0;
+   [01;31m[K^~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:67:3:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kconfstr[m[K’
+   [01;36m[Kconta[m[K=0;
+   [01;36m[K^~~~~[m[K
+   [32m[Kconfstr[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:68:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kmode[m[K’ was not declared in this scope
+   [01;31m[Kmode[m[K=1;
+   [01;31m[K^~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:68:3:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kmodf[m[K’
+   [01;36m[Kmode[m[K=1;
+   [01;36m[K^~~~[m[K
+   [32m[Kmodf[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:69:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kstart_route[m[K’ was not declared in this scope
+   [01;31m[Kstart_route[m[K=false;
+   [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:69:3:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kstrtoull[m[K’
+   [01;36m[Kstart_route[m[K=false;
+   [01;36m[K^~~~~~~~~~~[m[K
+   [32m[Kstrtoull[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:71:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kobstacle_front[m[K’ was not declared in this scope
+   [01;31m[Kobstacle_front[m[K=false;
+   [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:71:3:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kobstack_printf[m[K’
+   [01;36m[Kobstacle_front[m[K=false;
+   [01;36m[K^~~~~~~~~~~~~~[m[K
+   [32m[Kobstack_printf[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:72:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kobstacle_front1[m[K’ was not declared in this scope
+   [01;31m[Kobstacle_front1[m[K=false;
+   [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:72:3:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kobstack_printf[m[K’
+   [01;36m[Kobstacle_front1[m[K=false;
+   [01;36m[K^~~~~~~~~~~~~~~[m[K
+   [32m[Kobstack_printf[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:73:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kobstacle_front2[m[K’ was not declared in this scope
+   [01;31m[Kobstacle_front2[m[K=false;
+   [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:73:3:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kobstack_printf[m[K’
+   [01;36m[Kobstacle_front2[m[K=false;
+   [01;36m[K^~~~~~~~~~~~~~~[m[K
+   [32m[Kobstack_printf[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:75:3:[m[K [01;31m[Kerror: [m[K‘[01m[Ksave_waypoint[m[K’ was not declared in this scope
+   [01;31m[Ksave_waypoint[m[K=false;
+   [01;31m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:76:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kmode_seguir[m[K’ was not declared in this scope
+   [01;31m[Kmode_seguir[m[K=false;
+   [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:77:17:[m[K [01;31m[Kerror: [m[K‘[01m[Knewobstacle[m[K’ was not declared in this scope
+                 [01;31m[Knewobstacle[m[K=false;
+                 [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:77:17:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kobstack[m[K’
+                 [01;36m[Knewobstacle[m[K=false;
+                 [01;36m[K^~~~~~~~~~~[m[K
+                 [32m[Kobstack[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:78:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kcol_avoid_mode[m[K’ was not declared in this scope
+                 [01;31m[Kcol_avoid_mode[m[K=false;
+                 [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:79:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kmode_idle[m[K’ was not declared in this scope
+   [01;31m[Kmode_idle[m[K=true;
+   [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:79:3:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kmode_t[m[K’
+   [01;36m[Kmode_idle[m[K=true;
+   [01;36m[K^~~~~~~~~[m[K
+   [32m[Kmode_t[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:80:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kmode_manual[m[K’ was not declared in this scope
+   [01;31m[Kmode_manual[m[K=false;
+   [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:[m[K In member function ‘[01m[Kvoid test_head::setPointsCallback(const Twist&)[m[K’:
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:88:2:[m[K [01;31m[Kerror: [m[K‘[01m[Knspx[m[K’ was not declared in this scope
+  [01;31m[Knspx[m[K=twist.linear.x;
+  [01;31m[K^~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:89:2:[m[K [01;31m[Kerror: [m[K‘[01m[Knspy[m[K’ was not declared in this scope
+  [01;31m[Knspy[m[K=twist.linear.y;
+  [01;31m[K^~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:90:9:[m[K [01;31m[Kerror: [m[K‘[01m[Ksp_yaw[m[K’ was not declared in this scope
+         [01;31m[Ksp_yaw[m[K=-atan2(nspx,nspy)*180/3.1416;
+         [01;31m[K^~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:[m[K In member function ‘[01m[Kvoid test_head::obstCallback(const Float32&)[m[K’:
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:97:15:[m[K [01;31m[Kerror: [m[K‘[01m[Knewobstacle[m[K’ was not declared in this scope
+               [01;31m[Knewobstacle[m[K=true;
+               [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:97:15:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kobstack[m[K’
+               [01;36m[Knewobstacle[m[K=true;
+               [01;36m[K^~~~~~~~~~~[m[K
+               [32m[Kobstack[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:99:15:[m[K [01;31m[Kerror: [m[K‘[01m[Knewobstacle[m[K’ was not declared in this scope
+               [01;31m[Knewobstacle[m[K =false;
+               [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:99:15:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kobstack[m[K’
+               [01;36m[Knewobstacle[m[K =false;
+               [01;36m[K^~~~~~~~~~~[m[K
+               [32m[Kobstack[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:[m[K In member function ‘[01m[Kvoid test_head::headCallback(const Float64&)[m[K’:
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:107:6:[m[K [01;31m[Kerror: [m[K‘[01m[Kmode[m[K’ was not declared in this scope
+   if([01;31m[Kmode[m[K!=3){
+      [01;31m[K^~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:107:6:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kmodf[m[K’
+   if([01;36m[Kmode[m[K!=3){
+      [01;36m[K^~~~[m[K
+      [32m[Kmodf[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:109:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kerrpx[m[K’ was not declared in this scope
+    [01;31m[Kerrpx[m[K=nspx-px;
+    [01;31m[K^~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:109:4:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kerrno[m[K’
+    [01;36m[Kerrpx[m[K=nspx-px;
+    [01;36m[K^~~~~[m[K
+    [32m[Kerrno[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:109:10:[m[K [01;31m[Kerror: [m[K‘[01m[Knspx[m[K’ was not declared in this scope
+    errpx=[01;31m[Knspx[m[K-px;
+          [01;31m[K^~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:109:15:[m[K [01;31m[Kerror: [m[K‘[01m[Kpx[m[K’ was not declared in this scope
+    errpx=nspx-[01;31m[Kpx[m[K;
+               [01;31m[K^~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:110:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kerrpy[m[K’ was not declared in this scope
+    [01;31m[Kerrpy[m[K=nspy-py;
+    [01;31m[K^~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:110:4:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kerrno[m[K’
+    [01;36m[Kerrpy[m[K=nspy-py;
+    [01;36m[K^~~~~[m[K
+    [32m[Kerrno[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:110:10:[m[K [01;31m[Kerror: [m[K‘[01m[Knspy[m[K’ was not declared in this scope
+    errpy=[01;31m[Knspy[m[K-py;
+          [01;31m[K^~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:110:15:[m[K [01;31m[Kerror: [m[K‘[01m[Kpy[m[K’ was not declared in this scope
+    errpy=nspy-[01;31m[Kpy[m[K;
+               [01;31m[K^~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:112:4:[m[K [01;31m[Kerror: [m[K‘[01m[Ksp_yaw[m[K’ was not declared in this scope
+    [01;31m[Ksp_yaw[m[K=atan2(errpx,errpy)*180/3.1416;
+    [01;31m[K^~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:114:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kyaw[m[K’ was not declared in this scope
+    [01;31m[Kyaw[m[K=head.data;//head.data;//quitamos el offset
+    [01;31m[K^~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:116:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kerror_yaw[m[K’ was not declared in this scope
+    [01;31m[Kerror_yaw[m[K=(sp_yaw-yaw);
+    [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:116:4:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kerror_t[m[K’
+    [01;36m[Kerror_yaw[m[K=(sp_yaw-yaw);
+    [01;36m[K^~~~~~~~~[m[K
+    [32m[Kerror_t[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:123:4:[m[K [01;31m[Kerror: [m[K‘[01m[KspVel[m[K’ was not declared in this scope
+    [01;31m[KspVel[m[K=20*0.05*(error_yaw);
+    [01;31m[K^~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:124:4:[m[K [01;31m[Kerror: [m[K‘[01m[Knkp[m[K’ was not declared in this scope
+    [01;31m[Knkp[m[K=40*0.3;//=0.0085;
+    [01;31m[K^~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:125:4:[m[K [01;31m[Kerror: [m[K‘[01m[Knkd[m[K’ was not declared in this scope
+    [01;31m[Knkd[m[K=5*0.05;
+    [01;31m[K^~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:126:4:[m[K [01;31m[Kerror: [m[K‘[01m[Knki[m[K’ was not declared in this scope
+    [01;31m[Knki[m[K=0.002;
+    [01;31m[K^~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:127:4:[m[K [01;31m[Kerror: [m[K‘[01m[KerrVelYaw[m[K’ was not declared in this scope
+    [01;31m[KerrVelYaw[m[K=spVel-velyaw;
+    [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:127:20:[m[K [01;31m[Kerror: [m[K‘[01m[Kvelyaw[m[K’ was not declared in this scope
+    errVelYaw=spVel-[01;31m[Kvelyaw[m[K;
+                    [01;31m[K^~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:128:4:[m[K [01;31m[Kerror: [m[K‘[01m[KintErr[m[K’ was not declared in this scope
+    [01;31m[KintErr[m[K=intErr+errVelYaw;
+    [01;31m[K^~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:128:4:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kopterr[m[K’
+    [01;36m[KintErr[m[K=intErr+errVelYaw;
+    [01;36m[K^~~~~~[m[K
+    [32m[Kopterr[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:135:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kctrl_yaw[m[K’ was not declared in this scope
+    [01;31m[Kctrl_yaw[m[K=(nkp*spVel);//-nkd*velyaw+nki*intErr;//+0.5*(error_yaw-last_error));//+0.5*(error_yaw-last_error));//2*(error_yaw);
+    [01;31m[K^~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:135:4:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kfilter_yaw[m[K’
+    [01;36m[Kctrl_yaw[m[K=(nkp*spVel);//-nkd*velyaw+nki*intErr;//+0.5*(error_yaw-last_error));//+0.5*(error_yaw-last_error));//2*(error_yaw);
+    [01;36m[K^~~~~~~~[m[K
+    [32m[Kfilter_yaw[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:145:4:[m[K [01;31m[Kerror: [m[K‘[01m[Knvkp[m[K’ was not declared in this scope
+    [01;31m[Knvkp[m[K=30*0.0095;//=0.0085;
+    [01;31m[K^~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:146:4:[m[K [01;31m[Kerror: [m[K‘[01m[Knvkd[m[K’ was not declared in this scope
+    [01;31m[Knvkd[m[K=30*0.04;
+    [01;31m[K^~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:147:4:[m[K [01;31m[Kerror: [m[K‘[01m[KspPos[m[K’ was not declared in this scope
+    [01;31m[KspPos[m[K=sqrt((nspx*nspx)+(nspy*nspy));
+    [01;31m[K^~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:148:4:[m[K [01;31m[Kerror: [m[K‘[01m[KdistAct[m[K’ was not declared in this scope
+    [01;31m[KdistAct[m[K=sqrt((px*px)+(py*py));
+    [01;31m[K^~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:150:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kconta[m[K’ was not declared in this scope
+     [01;31m[Kconta[m[K++;
+     [01;31m[K^~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:150:5:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kconfstr[m[K’
+     [01;36m[Kconta[m[K++;
+     [01;36m[K^~~~~[m[K
+     [32m[Kconfstr[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:152:5:[m[K [01;31m[Kerror: [m[K‘[01m[Karrived[m[K’ was not declared in this scope
+     [01;31m[Karrived[m[K=true;
+     [01;31m[K^~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:157:61:[m[K [01;31m[Kerror: [m[K‘[01m[Karrived[m[K’ was not declared in this scope
+    if(error_yaw<10&&error_yaw>-10&&abs(spPos-distAct)>0.10&&[01;31m[Karrived[m[K==true){
+                                                             [01;31m[K^~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:158:6:[m[K [01;31m[Kerror: [m[K‘[01m[KspPVel[m[K’ was not declared in this scope
+      [01;31m[KspPVel[m[K=60*0.8*(spPos-distAct);
+      [01;31m[K^~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:159:6:[m[K [01;31m[Kerror: [m[K‘[01m[KerrPVel[m[K’ was not declared in this scope
+      [01;31m[KerrPVel[m[K=(spPVel-velx);
+      [01;31m[K^~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:159:22:[m[K [01;31m[Kerror: [m[K‘[01m[Kvelx[m[K’ was not declared in this scope
+      errPVel=(spPVel-[01;31m[Kvelx[m[K);
+                      [01;31m[K^~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:160:6:[m[K [01;31m[Kerror: [m[K‘[01m[Kctrl_vel[m[K’ was not declared in this scope
+      [01;31m[Kctrl_vel[m[K=60*5*errPVel;
+      [01;31m[K^~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:160:6:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kstrlen[m[K’
+      [01;36m[Kctrl_vel[m[K=60*5*errPVel;
+      [01;36m[K^~~~~~~~[m[K
+      [32m[Kstrlen[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:162:6:[m[K [01;31m[Kerror: [m[K‘[01m[Kctrl_vel[m[K’ was not declared in this scope
+      [01;31m[Kctrl_vel[m[K=0;
+      [01;31m[K^~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:162:6:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kstrlen[m[K’
+      [01;36m[Kctrl_vel[m[K=0;
+      [01;36m[K^~~~~~~~[m[K
+      [32m[Kstrlen[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:164:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kstart_route[m[K’ was not declared in this scope
+      if([01;31m[Kstart_route[m[K==true&&loaded_route==true&&abs(spPos-distAct)<=0.1){
+         [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:164:9:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kstrtoull[m[K’
+      if([01;36m[Kstart_route[m[K==true&&loaded_route==true&&abs(spPos-distAct)<=0.1){
+         [01;36m[K^~~~~~~~~~~[m[K
+         [32m[Kstrtoull[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:164:28:[m[K [01;31m[Kerror: [m[K‘[01m[Kloaded_route[m[K’ was not declared in this scope
+      if(start_route==true&&[01;31m[Kloaded_route[m[K==true&&abs(spPos-distAct)<=0.1){
+                            [01;31m[K^~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:164:28:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[KloadRoute[m[K’
+      if(start_route==true&&[01;36m[Kloaded_route[m[K==true&&abs(spPos-distAct)<=0.1){
+                            [01;36m[K^~~~~~~~~~~~[m[K
+                            [32m[KloadRoute[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:165:7:[m[K [01;31m[Kerror: [m[K‘[01m[Kindx[m[K’ was not declared in this scope
+       [01;31m[Kindx[m[K++;
+       [01;31m[K^~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:165:7:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kindex[m[K’
+       [01;36m[Kindx[m[K++;
+       [01;36m[K^~~~[m[K
+       [32m[Kindex[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:166:16:[m[K [01;31m[Kerror: [m[K‘[01m[Kh[m[K’ was not declared in this scope
+       if(indx>=[01;31m[Kh[m[K){
+                [01;31m[K^[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:168:11:[m[K [01;31m[Kerror: [m[K‘[01m[Ksp_rx[m[K’ was not declared in this scope
+      nspx=[01;31m[Ksp_rx[m[K[indx];
+           [01;31m[K^~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:169:11:[m[K [01;31m[Kerror: [m[K‘[01m[Ksp_ry[m[K’ was not declared in this scope
+      nspy=[01;31m[Ksp_ry[m[K[indx];
+           [01;31m[K^~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:169:11:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kstrfry[m[K’
+      nspy=[01;36m[Ksp_ry[m[K[indx];
+           [01;36m[K^~~~~[m[K
+           [32m[Kstrfry[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:174:7:[m[K [01;31m[Kerror: [m[K‘[01m[Kctrl_vel[m[K’ was not declared in this scope
+    if([01;31m[Kctrl_vel[m[K>60){
+       [01;31m[K^~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:174:7:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kstrlen[m[K’
+    if([01;36m[Kctrl_vel[m[K>60){
+       [01;36m[K^~~~~~~~[m[K
+       [32m[Kstrlen[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:180:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kvel_steer[m[K’ was not declared in this scope
+    [01;31m[Kvel_steer[m[K.angular.z= ctrl_yaw;
+    [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:180:4:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kregister[m[K’
+    [01;36m[Kvel_steer[m[K.angular.z= ctrl_yaw;
+    [01;36m[K^~~~~~~~~[m[K
+    [32m[Kregister[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:181:27:[m[K [01;31m[Kerror: [m[K‘[01m[Kctrl_vel[m[K’ was not declared in this scope
+    vel_steer.linear.x=abs([01;31m[Kctrl_vel[m[K);
+                           [01;31m[K^~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:181:27:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kstrlen[m[K’
+    vel_steer.linear.x=abs([01;36m[Kctrl_vel[m[K);
+                           [01;36m[K^~~~~~~~[m[K
+                           [32m[Kstrlen[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:184:8:[m[K [01;31m[Kerror: [m[K‘[01m[Kobstacle_front[m[K’ was not declared in this scope
+     if([01;31m[Kobstacle_front[m[K==true){
+        [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:184:8:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kobstack_printf[m[K’
+     if([01;36m[Kobstacle_front[m[K==true){
+        [01;36m[K^~~~~~~~~~~~~~[m[K
+        [32m[Kobstack_printf[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:187:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kspeed_publisher[m[K’ was not declared in this scope
+    [01;31m[Kspeed_publisher[m[K.publish(vel_steer);
+    [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:[m[K In member function ‘[01m[Kvoid test_head::ReceiveOdometry(const ConstPtr&)[m[K’:
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:195:6:[m[K [01;31m[Kerror: [m[K‘[01m[Kvelyaw[m[K’ was not declared in this scope
+      [01;31m[Kvelyaw[m[K=msg->twist.twist.angular.z;
+      [01;31m[K^~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:196:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kpx[m[K’ was not declared in this scope
+             [01;31m[Kpx[m[K=msg->pose.pose.position.x;
+             [01;31m[K^~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:197:10:[m[K [01;31m[Kerror: [m[K‘[01m[Kpy[m[K’ was not declared in this scope
+          [01;31m[Kpy[m[K=msg->pose.pose.position.y;
+          [01;31m[K^~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:198:6:[m[K [01;31m[Kerror: [m[K‘[01m[Kvelx[m[K’ was not declared in this scope
+      [01;31m[Kvelx[m[K=msg->twist.twist.linear.x;
+      [01;31m[K^~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:200:7:[m[K [01;31m[Kerror: [m[K‘[01m[Kruta_learn[m[K’ was not declared in this scope
+   if ([01;31m[Kruta_learn[m[K==true){
+       [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:200:7:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kualarm[m[K’
+   if ([01;36m[Kruta_learn[m[K==true){
+       [01;36m[K^~~~~~~~~~[m[K
+       [32m[Kualarm[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:201:12:[m[K [01;31m[Kerror: [m[K‘[01m[Knorm[m[K’ was not declared in this scope
+            [01;31m[Knorm[m[K=sqrt((px-px_aux)*(px-px_aux)+(py-py_aux)*(py-py_aux));
+            [01;31m[K^~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:201:12:[m[K [01;36m[Knote: [m[Ksuggested alternative:
+In file included from [01m[K/usr/include/boost/config/no_tr1/complex.hpp:21:0[m[K,
+                 from [01m[K/usr/include/boost/math/policies/error_handling.hpp:17[m[K,
+                 from [01m[K/usr/include/boost/math/special_functions/round.hpp:14[m[K,
+                 from [01m[K/opt/ros/melodic/include/ros/time.h:58[m[K,
+                 from [01m[K/opt/ros/melodic/include/ros/ros.h:38[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:1[m[K:
+[01m[K/usr/include/c++/7/complex:1851:5:[m[K [01;36m[Knote: [m[K  ‘[01m[Kstd::norm[m[K’
+     [01;36m[Knorm[m[K(_Tp __x)
+     [01;36m[K^~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:201:26:[m[K [01;31m[Kerror: [m[K‘[01m[Kpx_aux[m[K’ was not declared in this scope
+            norm=sqrt((px-[01;31m[Kpx_aux[m[K)*(px-px_aux)+(py-py_aux)*(py-py_aux));
+                          [01;31m[K^~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:201:50:[m[K [01;31m[Kerror: [m[K‘[01m[Kpy_aux[m[K’ was not declared in this scope
+            norm=sqrt((px-px_aux)*(px-px_aux)+(py-[01;31m[Kpy_aux[m[K)*(py-py_aux));
+                                                  [01;31m[K^~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:202:16:[m[K [01;31m[Kerror: [m[K‘[01m[Ksave_waypoint[m[K’ was not declared in this scope
+            if ([01;31m[Ksave_waypoint[m[K==true){
+                [01;31m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:204:21:[m[K [01;31m[Kerror: [m[K‘[01m[Kfp[m[K’ was not declared in this scope
+             fprintf([01;31m[Kfp[m[K, "%f %f\n",px,py );
+                     [01;31m[K^~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:[m[K In member function ‘[01m[Kvoid test_head::angPeopCallback(const Float32&)[m[K’:
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:215:6:[m[K [01;31m[Kerror: [m[K‘[01m[Kmode_seguir[m[K’ was not declared in this scope
+   if([01;31m[Kmode_seguir[m[K){
+      [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:218:36:[m[K [01;31m[Kerror: [m[K‘[01m[KdistanciaPeople[m[K’ was not declared in this scope
+    if (msg.data>-5 && msg.data<5&& [01;31m[KdistanciaPeople[m[K<40){
+                                    [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:223:26:[m[K [01;31m[Kerror: [m[K‘[01m[Klow_vel_gain[m[K’ was not declared in this scope
+      vel_steer.angular.z=[01;31m[Klow_vel_gain[m[K*msg.data;//*(distanciaPeople/40);
+                          [01;31m[K^~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:231:26:[m[K [01;31m[Kerror: [m[K‘[01m[Khigh_vel_gain[m[K’ was not declared in this scope
+      vel_steer.angular.z=[01;31m[Khigh_vel_gain[m[K*msg.data;
+                          [01;31m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:247:28:[m[K [01;31m[Kerror: [m[K‘[01m[Kmax_speed_follow[m[K’ was not declared in this scope
+     if (vel_steer.linear.x>[01;31m[Kmax_speed_follow[m[K){
+                            [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:256:14:[m[K [01;31m[Kerror: [m[K‘[01m[Kobstacle_front[m[K’ was not declared in this scope
+           if([01;31m[Kobstacle_front[m[K && col_avoid_mode){
+              [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:256:14:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kobstack_printf[m[K’
+           if([01;36m[Kobstacle_front[m[K && col_avoid_mode){
+              [01;36m[K^~~~~~~~~~~~~~[m[K
+              [32m[Kobstack_printf[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:256:32:[m[K [01;31m[Kerror: [m[K‘[01m[Kcol_avoid_mode[m[K’ was not declared in this scope
+           if(obstacle_front && [01;31m[Kcol_avoid_mode[m[K){
+                                [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:260:7:[m[K [01;31m[Kerror: [m[K‘[01m[Kspeed_publisher[m[K’ was not declared in this scope
+       [01;31m[Kspeed_publisher[m[K.publish(vel_steer);
+       [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:262:34:[m[K [01;31m[Kerror: [m[K‘[01m[Kdanger[m[K’ was not declared in this scope
+                         }else if([01;31m[Kdanger[m[K && col_avoid_mode){
+                                  [01;31m[K^~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:262:34:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Krand_r[m[K’
+                         }else if([01;36m[Kdanger[m[K && col_avoid_mode){
+                                  [01;36m[K^~~~~~[m[K
+                                  [32m[Krand_r[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:265:7:[m[K [01;31m[Kerror: [m[K‘[01m[Kspeed_publisher[m[K’ was not declared in this scope
+       [01;31m[Kspeed_publisher[m[K.publish(vel_steer);
+       [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:269:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kspeed_publisher[m[K’ was not declared in this scope
+    [01;31m[Kspeed_publisher[m[K.publish(vel_steer);
+    [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:271:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kvel_steer[m[K’ was not declared in this scope
+    [01;31m[Kvel_steer[m[K.linear.x= 0;
+    [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:271:4:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kregister[m[K’
+    [01;36m[Kvel_steer[m[K.linear.x= 0;
+    [01;36m[K^~~~~~~~~[m[K
+    [32m[Kregister[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:273:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kspeed_publisher[m[K’ was not declared in this scope
+    [01;31m[Kspeed_publisher[m[K.publish(vel_steer);
+    [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:[m[K In member function ‘[01m[Kvoid test_head::distPeopCallback(const Float32&)[m[K’:
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:281:4:[m[K [01;31m[Kerror: [m[K‘[01m[KdistanciaPeople[m[K’ was not declared in this scope
+    [01;31m[KdistanciaPeople[m[K=msg.data;
+    [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:[m[K In member function ‘[01m[Kvoid test_head::scanCallback(const ConstPtr&)[m[K’:
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:292:29:[m[K [01;31m[Kerror: [m[K‘[01m[Kbreak_danger[m[K’ was not declared in this scope
+      if (scan->ranges[i] <= [01;31m[Kbreak_danger[m[K && scan->ranges[i] >0.25){
+                             [01;31m[K^~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:292:29:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kpthread_cancel[m[K’
+      if (scan->ranges[i] <= [01;36m[Kbreak_danger[m[K && scan->ranges[i] >0.25){
+                             [01;36m[K^~~~~~~~~~~~[m[K
+                             [32m[Kpthread_cancel[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:293:10:[m[K [01;31m[Kerror: [m[K‘[01m[Kdanger[m[K’ was not declared in this scope
+          [01;31m[Kdanger[m[K=true;
+          [01;31m[K^~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:293:10:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Krand_r[m[K’
+          [01;36m[Kdanger[m[K=true;
+          [01;36m[K^~~~~~[m[K
+          [32m[Krand_r[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:295:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kalerts_command[m[K’ was not declared in this scope
+     [01;31m[Kalerts_command[m[K.data=5;//danger
+     [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:296:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kalerts_publisher[m[K’ was not declared in this scope
+                 [01;31m[Kalerts_publisher[m[K.publish(alerts_command);
+                 [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:299:12:[m[K [01;31m[Kerror: [m[K‘[01m[Kdanger[m[K’ was not declared in this scope
+            [01;31m[Kdanger[m[K=false;
+            [01;31m[K^~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:299:12:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Krand_r[m[K’
+            [01;36m[Kdanger[m[K=false;
+            [01;36m[K^~~~~~[m[K
+            [32m[Krand_r[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:304:27:[m[K [01;31m[Kerror: [m[K‘[01m[Kbreak_danger[m[K’ was not declared in this scope
+    if (scan->ranges[i] <= [01;31m[Kbreak_danger[m[K&& scan->ranges[i] >0.25){
+                           [01;31m[K^~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:304:27:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kpthread_cancel[m[K’
+    if (scan->ranges[i] <= [01;36m[Kbreak_danger[m[K&& scan->ranges[i] >0.25){
+                           [01;36m[K^~~~~~~~~~~~[m[K
+                           [32m[Kpthread_cancel[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:305:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kdanger[m[K’ was not declared in this scope
+         [01;31m[Kdanger[m[K=true;
+         [01;31m[K^~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:305:9:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Krand_r[m[K’
+         [01;36m[Kdanger[m[K=true;
+         [01;36m[K^~~~~~[m[K
+         [32m[Krand_r[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:307:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kalerts_command[m[K’ was not declared in this scope
+         [01;31m[Kalerts_command[m[K.data=5;//danger
+         [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:308:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kalerts_publisher[m[K’ was not declared in this scope
+                 [01;31m[Kalerts_publisher[m[K.publish(alerts_command);
+                 [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:311:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kdanger[m[K’ was not declared in this scope
+         [01;31m[Kdanger[m[K=false;
+         [01;31m[K^~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:311:9:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Krand_r[m[K’
+         [01;36m[Kdanger[m[K=false;
+         [01;36m[K^~~~~~[m[K
+         [32m[Krand_r[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:315:29:[m[K [01;31m[Kerror: [m[K‘[01m[Kbreak_distance[m[K’ was not declared in this scope
+      if (scan->ranges[i] <= [01;31m[Kbreak_distance[m[K&& scan->ranges[i] >0.5){
+                             [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:315:29:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kpthread_testcancel[m[K’
+      if (scan->ranges[i] <= [01;36m[Kbreak_distance[m[K&& scan->ranges[i] >0.5){
+                             [01;36m[K^~~~~~~~~~~~~~[m[K
+                             [32m[Kpthread_testcancel[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:316:10:[m[K [01;31m[Kerror: [m[K‘[01m[Kobstacle_front[m[K’ was not declared in this scope
+          [01;31m[Kobstacle_front[m[K=true;
+          [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:316:10:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kobstack_printf[m[K’
+          [01;36m[Kobstacle_front[m[K=true;
+          [01;36m[K^~~~~~~~~~~~~~[m[K
+          [32m[Kobstack_printf[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:318:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kalerts_command[m[K’ was not declared in this scope
+     [01;31m[Kalerts_command[m[K.data=4;//warning
+     [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:319:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kalerts_publisher[m[K’ was not declared in this scope
+                 [01;31m[Kalerts_publisher[m[K.publish(alerts_command);
+                 [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:322:12:[m[K [01;31m[Kerror: [m[K‘[01m[Kobstacle_front[m[K’ was not declared in this scope
+            [01;31m[Kobstacle_front[m[K=false;
+            [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:322:12:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kobstack_printf[m[K’
+            [01;36m[Kobstacle_front[m[K=false;
+            [01;36m[K^~~~~~~~~~~~~~[m[K
+            [32m[Kobstack_printf[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:327:27:[m[K [01;31m[Kerror: [m[K‘[01m[Kbreak_distance[m[K’ was not declared in this scope
+    if (scan->ranges[i] <= [01;31m[Kbreak_distance[m[K&& scan->ranges[i] >0.5){
+                           [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:327:27:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kpthread_testcancel[m[K’
+    if (scan->ranges[i] <= [01;36m[Kbreak_distance[m[K&& scan->ranges[i] >0.5){
+                           [01;36m[K^~~~~~~~~~~~~~[m[K
+                           [32m[Kpthread_testcancel[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:328:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kobstacle_front[m[K’ was not declared in this scope
+         [01;31m[Kobstacle_front[m[K=true;
+         [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:328:9:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kobstack_printf[m[K’
+         [01;36m[Kobstacle_front[m[K=true;
+         [01;36m[K^~~~~~~~~~~~~~[m[K
+         [32m[Kobstack_printf[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:330:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kalerts_command[m[K’ was not declared in this scope
+         [01;31m[Kalerts_command[m[K.data=4;//warning
+         [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:331:14:[m[K [01;31m[Kerror: [m[K‘[01m[Kalerts_publisher[m[K’ was not declared in this scope
+              [01;31m[Kalerts_publisher[m[K.publish(alerts_command);
+              [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:334:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kobstacle_front[m[K’ was not declared in this scope
+         [01;31m[Kobstacle_front[m[K=false;
+         [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:334:9:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kobstack_printf[m[K’
+         [01;36m[Kobstacle_front[m[K=false;
+         [01;36m[K^~~~~~~~~~~~~~[m[K
+         [32m[Kobstack_printf[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:[m[K In member function ‘[01m[Kvoid test_head::loadRoute()[m[K’:
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:343:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kfp[m[K’ was not declared in this scope
+    [01;31m[Kfp[m[K = fopen ("/home/xavier/catkin_ws/src/control_xy/ruta.txt" , "r");
+    [01;31m[K^~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:344:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kh[m[K’ was not declared in this scope
+    [01;31m[Kh[m[K=0;
+    [01;31m[K^[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:351:37:[m[K [01;31m[Kerror: [m[K‘[01m[Krx[m[K’ was not declared in this scope
+            sscanf(mystring,"%s %s",&[01;31m[Krx[m[K,&ry);
+                                     [01;31m[K^~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:351:41:[m[K [01;31m[Kerror: [m[K‘[01m[Kry[m[K’ was not declared in this scope
+            sscanf(mystring,"%s %s",&rx,&[01;31m[Kry[m[K);
+                                         [01;31m[K^~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:352:12:[m[K [01;31m[Kerror: [m[K‘[01m[Ksp_rx[m[K’ was not declared in this scope
+            [01;31m[Ksp_rx[m[K[h]=atof(rx);
+            [01;31m[K^~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:353:12:[m[K [01;31m[Kerror: [m[K‘[01m[Ksp_ry[m[K’ was not declared in this scope
+            [01;31m[Ksp_ry[m[K[h]=atof(ry);
+            [01;31m[K^~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:353:12:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kstrfry[m[K’
+            [01;36m[Ksp_ry[m[K[h]=atof(ry);
+            [01;36m[K^~~~~[m[K
+            [32m[Kstrfry[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:361:4:[m[K [01;31m[Kerror: [m[K‘[01m[Knum_sp[m[K’ was not declared in this scope
+    [01;31m[Knum_sp[m[K=h;
+    [01;31m[K^~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:363:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kloaded_route[m[K’ was not declared in this scope
+    [01;31m[Kloaded_route[m[K=true;
+    [01;31m[K^~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:363:4:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[KloadRoute[m[K’
+    [01;36m[Kloaded_route[m[K=true;
+    [01;36m[K^~~~~~~~~~~~[m[K
+    [32m[KloadRoute[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:[m[K In member function ‘[01m[Kvoid test_head::joyCallback(const ConstPtr&)[m[K’:
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:376:30:[m[K [01;31m[Kerror: [m[K‘[01m[Kloaded_route[m[K’ was not declared in this scope
+   }else if(joy->buttons[13]&&[01;31m[Kloaded_route[m[K==true){//start
+                              [01;31m[K^~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:376:30:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[KloadRoute[m[K’
+   }else if(joy->buttons[13]&&[01;36m[Kloaded_route[m[K==true){//start
+                              [01;36m[K^~~~~~~~~~~~[m[K
+                              [32m[KloadRoute[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:377:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kstart_route[m[K’ was not declared in this scope
+    [01;31m[Kstart_route[m[K=true;
+    [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:377:4:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kstrtoull[m[K’
+    [01;36m[Kstart_route[m[K=true;
+    [01;36m[K^~~~~~~~~~~[m[K
+    [32m[Kstrtoull[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:379:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kindx[m[K’ was not declared in this scope
+    [01;31m[Kindx[m[K=0;
+    [01;31m[K^~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:379:4:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kindex[m[K’
+    [01;36m[Kindx[m[K=0;
+    [01;36m[K^~~~[m[K
+    [32m[Kindex[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:380:4:[m[K [01;31m[Kerror: [m[K‘[01m[Knspx[m[K’ was not declared in this scope
+    [01;31m[Knspx[m[K=sp_rx[indx];
+    [01;31m[K^~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:380:9:[m[K [01;31m[Kerror: [m[K‘[01m[Ksp_rx[m[K’ was not declared in this scope
+    nspx=[01;31m[Ksp_rx[m[K[indx];
+         [01;31m[K^~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:381:4:[m[K [01;31m[Kerror: [m[K‘[01m[Knspy[m[K’ was not declared in this scope
+    [01;31m[Knspy[m[K=sp_ry[indx];
+    [01;31m[K^~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:381:9:[m[K [01;31m[Kerror: [m[K‘[01m[Ksp_ry[m[K’ was not declared in this scope
+    nspy=[01;31m[Ksp_ry[m[K[indx];
+         [01;31m[K^~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:381:9:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kstrfry[m[K’
+    nspy=[01;36m[Ksp_ry[m[K[indx];
+         [01;36m[K^~~~~[m[K
+         [32m[Kstrfry[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:382:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kmode[m[K’ was not declared in this scope
+    [01;31m[Kmode[m[K=0;
+    [01;31m[K^~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:382:4:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kmodf[m[K’
+    [01;36m[Kmode[m[K=0;
+    [01;36m[K^~~~[m[K
+    [32m[Kmodf[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:385:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kstart_route[m[K’ was not declared in this scope
+    [01;31m[Kstart_route[m[K=false;
+    [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:385:4:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kstrtoull[m[K’
+    [01;36m[Kstart_route[m[K=false;
+    [01;36m[K^~~~~~~~~~~[m[K
+    [32m[Kstrtoull[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:387:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kmode[m[K’ was not declared in this scope
+    [01;31m[Kmode[m[K=1;
+    [01;31m[K^~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:387:4:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kmodf[m[K’
+    [01;36m[Kmode[m[K=1;
+    [01;36m[K^~~~[m[K
+    [32m[Kmodf[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:389:54:[m[K [01;31m[Kerror: [m[K‘[01m[Kruta_learn[m[K’ was not declared in this scope
+   }else if(joy->buttons[6]==1&&joy->buttons[7]==1 && [01;31m[Kruta_learn[m[K==false ){//L2R2
+                                                      [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:389:54:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kualarm[m[K’
+   }else if(joy->buttons[6]==1&&joy->buttons[7]==1 && [01;36m[Kruta_learn[m[K==false ){//L2R2
+                                                      [01;36m[K^~~~~~~~~~[m[K
+                                                      [32m[Kualarm[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:390:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kfp[m[K’ was not declared in this scope
+    [01;31m[Kfp[m[K = fopen ("/home/xavier/catkin_ws/src/control_xy/ruta.txt" , "w+");
+    [01;31m[K^~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:394:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kpx_aux[m[K’ was not declared in this scope
+    [01;31m[Kpx_aux[m[K=1000000000000;
+    [01;31m[K^~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:395:7:[m[K [01;31m[Kerror: [m[K‘[01m[Kpy_aux[m[K’ was not declared in this scope
+       [01;31m[Kpy_aux[m[K=1000000000000;
+       [01;31m[K^~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:399:11:[m[K [01;31m[Kerror: [m[K‘[01m[Kfp[m[K’ was not declared in this scope
+    fclose([01;31m[Kfp[m[K);
+           [01;31m[K^~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:407:34:[m[K [01;31m[Kerror: [m[K‘[01m[Kdanger[m[K’ was not declared in this scope
+   }else if(joy->buttons[2]==1 && [01;31m[Kdanger[m[K==false){//circulo
+                                  [01;31m[K^~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:407:34:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Krand_r[m[K’
+   }else if(joy->buttons[2]==1 && [01;36m[Kdanger[m[K==false){//circulo
+                                  [01;36m[K^~~~~~[m[K
+                                  [32m[Krand_r[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:408:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kmode_idle[m[K’ was not declared in this scope
+    [01;31m[Kmode_idle[m[K=true;
+    [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:408:4:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kmode_t[m[K’
+    [01;36m[Kmode_idle[m[K=true;
+    [01;36m[K^~~~~~~~~[m[K
+    [32m[Kmode_t[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:409:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kmode_seguir[m[K’ was not declared in this scope
+    [01;31m[Kmode_seguir[m[K=false;
+    [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:410:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kmode_manual[m[K’ was not declared in this scope
+    [01;31m[Kmode_manual[m[K=false;
+    [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:414:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kmode_idle[m[K’ was not declared in this scope
+    [01;31m[Kmode_idle[m[K=false;
+    [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:414:4:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kmode_t[m[K’
+    [01;36m[Kmode_idle[m[K=false;
+    [01;36m[K^~~~~~~~~[m[K
+    [32m[Kmode_t[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:415:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kmode_seguir[m[K’ was not declared in this scope
+    [01;31m[Kmode_seguir[m[K=false;
+    [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:416:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kmode_manual[m[K’ was not declared in this scope
+    [01;31m[Kmode_manual[m[K=true;
+    [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:438:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kmode_idle[m[K’ was not declared in this scope
+    [01;31m[Kmode_idle[m[K=true;
+    [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:438:4:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kmode_t[m[K’
+    [01;36m[Kmode_idle[m[K=true;
+    [01;36m[K^~~~~~~~~[m[K
+    [32m[Kmode_t[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:439:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kmode_seguir[m[K’ was not declared in this scope
+    [01;31m[Kmode_seguir[m[K=false;
+    [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:440:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kmode_manual[m[K’ was not declared in this scope
+    [01;31m[Kmode_manual[m[K=false;
+    [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:444:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kspeed_publisher[m[K’ was not declared in this scope
+    [01;31m[Kspeed_publisher[m[K.publish(vel_steer);
+    [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:447:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kmode_idle[m[K’ was not declared in this scope
+    [01;31m[Kmode_idle[m[K=false;
+    [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:447:4:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kmode_t[m[K’
+    [01;36m[Kmode_idle[m[K=false;
+    [01;36m[K^~~~~~~~~[m[K
+    [32m[Kmode_t[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:448:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kmode_seguir[m[K’ was not declared in this scope
+    [01;31m[Kmode_seguir[m[K=true;
+    [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:449:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kmode_manual[m[K’ was not declared in this scope
+    [01;31m[Kmode_manual[m[K=false;
+    [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:453:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kspeed_publisher[m[K’ was not declared in this scope
+    [01;31m[Kspeed_publisher[m[K.publish(vel_steer);
+    [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:[m[K At global scope:
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:513:1:[m[K [01;31m[Kerror: [m[Kexpected unqualified-id before ‘[01m[Kprivate[m[K’
+ [01;31m[Kprivate[m[K:
+ [01;31m[K^~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:547:1:[m[K [01;31m[Kerror: [m[Kexpected declaration before ‘[01m[K}[m[K’ token
+ [01;31m[K}[m[K;
+ [01;31m[K^[m[K
+make[2]: *** [CMakeFiles/control_xy_node.dir/src/control_xy_node_yaw.cpp.o] Error 1
+make[1]: *** [CMakeFiles/control_xy_node.dir/all] Error 2
+make: *** [all] Error 2

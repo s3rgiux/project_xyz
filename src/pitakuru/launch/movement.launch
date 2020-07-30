@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+    <node pkg="pitakuru" type="movement.py" name="movement">
+        <rosparam command="load" file="$(find pitakuru)/config/movement.yaml" />
+    </node>
+</launch>

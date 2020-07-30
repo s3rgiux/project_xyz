@@ -1,0 +1,8 @@
+prefix=/home/xavier/catkin_ws/install
+
+Name: cmt_test_python
+Description: Description of cmt_test_python
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

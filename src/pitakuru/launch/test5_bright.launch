@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="publish_images" default="true"/>
+    <arg name="jsdev" default="/dev/input/js0"/>
+    <rosparam file="$(find pitakuru)/config/bright_env/pitakuru.yaml" command="load" ns="pitakuru" />
+
+    
+
+    <node pkg="pitakuru" type="controller.py" name="controller"/>
+
+
+
+<include file="$(find joy)/launch/joytestps4.launch"/>
+<!-- <node pkg="gamepad" type="gamepad_node" name="gamepad_node" output="screen">	
+</node>-->
+
+<node pkg="conversion" type="quatCo.py" name="quatCo" output="screen">	
+</node>
+
+<node pkg="conversion" type="quatCo2.py" name="quatCo2" output="screen">	
+</node>
+
+
+
+
+    <!-- スイッチの入出力制御 -->
+    <node pkg="pitakuru" type="switch.py" name="switch">
+        <rosparam command="load" file="$(find pitakuru)/config/bright_env/switch.yaml" />
+    </node>
+
+    <!-- ステートマシン (状態遷移) -->
+    <node pkg="pitakuru" type="states.py" name="states"/>
+
+    <!-- 速度指令変換 -->
+    <rosparam command="load" file="$(find pitakuru)/config/bright_env/movement.yaml" />
+    <node pkg="pitakuru" type="movement.py" name="movement" />
+    <node pkg="pitakuru" type="karugamo.py" name="karugamo" />
+    <node pkg="pitakuru" type="manual.py" name="manual" />
+    
+    <!-- 音声再生 -->
+    <node pkg="pitakuru" type="sound.py" name="sound" />
+
+
+<node pkg="control_xy" type="control_xy_node" name="control_xy" output="screen">
+<param name="break_distance"    type="double"	value="0.4"/>
+<param name="break_danger"    type="double"	value="0.65"/>	
+<param name="low_vel_gain"    type="double"	value="24"/>
+<param name="high_vel_gain"    type="double"	value="20"/>
+<param name="max_speed_follow"    type="double"	value="1800"/>
+<param name="max_speed_manual"    type="double"	value="2000"/>
+</node>
+
+
+
+</launch>
