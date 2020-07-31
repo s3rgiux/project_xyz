@@ -235,7 +235,7 @@ class PitWheels:
    
         self.odo = Odometry()
         self.odo.header.frame_id='odom'
-        self.odo.child_frame_id='base_link2'
+        self.odo.child_frame_id='base_link2' #quick fix
         self.odocount = 0
         self.pub_odo = rospy.Publisher('/odom', Odometry,queue_size=10)
         self.x = np.array([0.0, 0.0, 0.0])

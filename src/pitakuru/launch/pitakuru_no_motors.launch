@@ -87,7 +87,7 @@
 <param name="front_detection"    type="double"	value="3"/>
 <param name="side_detection"    type="double"	value="1"/>
 </node>
-<arg name="record_flag" default="true" />
+<arg name="record_flag" default="false" />
 
 <node pkg="rosbag" type="record" name="rosbag_record"
        args = "record -o /home/xavier/warehouse.bag /alerts /camera_info /cmd_vel /diagnostics /euler /fiducial_vertices /image_raw /j0/joy  /movement/karugamo/joy /movement/manual/joy /obstacle_closest /obstacles /pcl /peopAng /peopDist /raw_obstacles /rear_scan /rosout /rosout_agg /scan /state /tf /tf_static /trigger_action /peopAng2 /people/image"  

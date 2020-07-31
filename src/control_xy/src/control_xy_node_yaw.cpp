@@ -405,7 +405,7 @@ void angPeopCallback2(const geometry_msgs::Vector3& msg){
 		if(mode_follow && danger!=true){ //&& tracking_people){//1
 		   //ROS_INFO("R%f,%f",ang_peop_lidar,distanciaPeople2);
 		   //ROS_INFO("P%f,%f",tracked_angle,tracked_distance);
-		   ROS_INFO("R%f,%f%",cx,cy);
+		   ROS_INFO("R%f,%f%400",cx,cy);
 		   ROS_INFO("P%f,%f",tracked_cx,tracked_cy);
 		   //if(ang_peop_lidar!=-500 && ang_peop_lidar<=(tracked_angle+12) && ang_peop_lidar>=(tracked_angle-12) && distanciaPeople2<=(tracked_distance+38) && distanciaPeople2 >=(tracked_distance-38)){//2
 		   if(tracking_people && cx!=0.01 && cy !=0.01 && cx<=(tracked_cx+radius_follow) && cx>=(tracked_cx-radius_follow) && cy<=(tracked_cy+radius_follow) && cy >=(tracked_cy-radius_follow)){//2
