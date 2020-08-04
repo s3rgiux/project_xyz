@@ -110,6 +110,7 @@ public:
 		danger=false;
 		free_way=true;
 		collision = false;
+		start_route = false;
 	}
 	~test_head(){}
 	
@@ -132,6 +133,10 @@ void stateCallback(const control_xy::TriggerAction& data)
 			danger=false;
 			free_way=false;
 			collision = true;
+			ctrl_front_follow= 0;
+			ctrl_ang= 0;
+			ctrl_front_manual= 0;
+			ctrl_side_manual= 0;
 		//	ROS_INFO("Yuhu");
 		//	ROS_INFO("%s ",data.trigger.c_str());
 		}else if(data.trigger=="break_release_button_on"){
@@ -142,6 +147,10 @@ void stateCallback(const control_xy::TriggerAction& data)
 			mode_follow=false;
 			danger=false;
 			free_way=true;
+			ctrl_front_follow= 0;
+			ctrl_ang= 0;
+			ctrl_front_manual= 0;
+			ctrl_side_manual= 0;
 			alerts_command.data=2;// 5 danger 4 warning 3 karugamo 2 idle 1 manual
      			alerts_publisher.publish(alerts_command);
 			vel_steer.linear.x= 0;
@@ -177,7 +186,8 @@ void setPointsCallback(const geometry_msgs::Twist& twist)
 	{	
 	//contadorvel++;
 	   //if(contadorvel%1==0){
-		if(mode!=3){
+		//if(mode!=3){
+		if(start_route){
 
 			errpx=nspx-px;
 			errpy=nspy-py;
@@ -193,33 +203,33 @@ void setPointsCallback(const geometry_msgs::Twist& twist)
 			}else if (error_yaw > 180.0 ){
 				error_yaw=error_yaw-360;
 			}
-			spVel=20*0.05*(error_yaw);
-			nkp=40*0.3;//=0.0085;
-			nkd=5*0.05;
-			nki=0.002;
+			spVel=0.05*(error_yaw);
+			nkp=190;//=0.0085;
+			nkd=1;
+			nki=0;
 			errVelYaw=spVel-velyaw;
 			intErr=intErr+errVelYaw;
 			if(intErr>7){
 				intErr=7;
 			}
-			if(intErr<-70){
+			if(intErr<-7){
 				intErr=-7;
 			}
 			ctrl_yaw=(nkp*spVel);//-nkd*velyaw+nki*intErr;//+0.5*(error_yaw-last_error));//+0.5*(error_yaw-last_error));//2*(error_yaw);
-				if(ctrl_yaw<2&&ctrl_yaw>-2||abs(error_yaw) <2){
+				if(ctrl_yaw<7&&ctrl_yaw>-7||abs(error_yaw) <2){
 				ctrl_yaw=0;
 				}
-				else if(ctrl_yaw>10){
-						ctrl_yaw=10; 
-				}else if(ctrl_yaw<-10){
-						ctrl_yaw=-10;
+				else if(ctrl_yaw>400){
+						ctrl_yaw=400; 
+				}else if(ctrl_yaw<-400){
+						ctrl_yaw=-400;
 				}
 			//ROS_INFO("%f ,%f ,%f ",yaw,error_yaw,ctrl_yaw);
-			nvkp=30*0.0095;//=0.0085;
-			nvkd=30*0.04;
+			nvkp=1;//=0.0085;
+			nvkd=1;
 			spPos=sqrt((nspx*nspx)+(nspy*nspy));
 			distAct=sqrt((px*px)+(py*py));
-			if(error_yaw<10&&error_yaw>-10){
+			if(error_yaw<8&&error_yaw>-8){
 				conta++;
 				if(conta>7){
 				arrived=true;
@@ -228,9 +238,9 @@ void setPointsCallback(const geometry_msgs::Twist& twist)
 			}
 		
 			if(error_yaw<10&&error_yaw>-10&&abs(spPos-distAct)>0.10&&arrived==true){
-					spPVel=60*0.8*(spPos-distAct);
+					spPVel=1000*(spPos-distAct);
 					errPVel=(spPVel-velx);
-					ctrl_vel=60*5*errPVel;
+					ctrl_vel=3*errPVel;
 			}else{
 					ctrl_vel=0;
 				arrived=false;
@@ -244,21 +254,24 @@ void setPointsCallback(const geometry_msgs::Twist& twist)
 					}
 			}
 
-			if(ctrl_vel>60){
-				ctrl_vel=60;
-			}else if(ctrl_vel<-60){
-				ctrl_vel=-60;
+			if(ctrl_vel>600){
+				ctrl_vel=600;
+			}else if(ctrl_vel<-600){
+				ctrl_vel=-600;
 			}
 			
 			vel_steer.angular.z= ctrl_yaw;
 			vel_steer.linear.x=abs(ctrl_vel);
 			//ROS_INFO("%f,%f,%f,%f,%f",errpx,errpy,error_yaw,ctrl_vel,errPVel); 
-			if (mode!=1){
-				if(obstacle_front==true){
-					vel_steer.linear.x= 0;
-				}
+			if( danger){
+				vel_steer.linear.x= 0;
+                        	vel_steer.angular.z= 0;
+				speed_publisher.publish(vel_steer);
+				alerts_command.data=4;// 5 danger 4 warning 3 karugamo 2 idle 1 manual
+     				alerts_publisher.publish(alerts_command);
+		        }
 			speed_publisher.publish(vel_steer);
-			}
+			//}
 		}//IFMODE3
           //}//contadorvel
 
@@ -402,6 +415,7 @@ void angPeopCallback2(const geometry_msgs::Vector3& msg){
 		distanciaPeople2 = sqrt(cx*cx+cy*cy)*100;
 		//ang_peop_lidar=msg.x;
 		//distanciaPeople2=msg.y;
+		
 		if(mode_follow && danger!=true){ //&& tracking_people){//1
 		   //ROS_INFO("R%f,%f",ang_peop_lidar,distanciaPeople2);
 		   //ROS_INFO("P%f,%f",tracked_angle,tracked_distance);
@@ -462,10 +476,13 @@ void angPeopCallback2(const geometry_msgs::Vector3& msg){
 			   speed_publisher.publish(vel_steer);
                            ros::Duration(1).sleep(); // sleep for half a second
                         }else if(danger && col_avoid_mode){
+			   ctrl_front_follow= 0;
+				ctrl_ang= 0;
+		           ctrl_ang=0;
                            vel_steer.linear.x=0;
                            vel_steer.angular.z= 0;
 			   speed_publisher.publish(vel_steer);
-                           ros::Duration(1).sleep(); // sleep for half a second			
+                           //ros::Duration(1).sleep(); // sleep for half a second			
 			}
 			alerts_command.data=7;// 5 danger 4 warning 3 karugamo 2 idle 1 manual
      			alerts_publisher.publish(alerts_command);
@@ -473,6 +490,7 @@ void angPeopCallback2(const geometry_msgs::Vector3& msg){
 		  }else if( danger){
                         //tracking_people=false;
 			ctrl_front_follow= 0;
+			ctrl_ang=0;
 			vel_steer.linear.x= 0;
                         vel_steer.angular.z= 0;
 			speed_publisher.publish(vel_steer);
@@ -485,6 +503,7 @@ void angPeopCallback2(const geometry_msgs::Vector3& msg){
 				missing_track=0;
 			        tracking_people=false;
 				ctrl_front_follow= 0;
+				ctrl_ang= 0;
 		  		vel_steer.linear.x= 0;
                         	vel_steer.angular.z= 0;
 				tracked_cx=0;
@@ -518,12 +537,21 @@ void angPeopCallback2(const geometry_msgs::Vector3& msg){
      				ROS_INFO("Danger1");
 				alerts_command.data=5;// 5 danger 4 warning 3 karugamo 2 idle 1 manual
      			        alerts_publisher.publish(alerts_command);
-				vel_steer.linear.x= 0;
-                        	vel_steer.angular.z= 0;
-				ctrl_front_follow=0;
-				ctrl_front_karugamo=0;
-				ctrl_front_follow=0;
-				speed_publisher.publish(vel_steer);
+				if (mode_manual && ctrl_front_manual >0){
+				   ctrl_front_manual=0;
+				   ctrl_side_manual=0;
+				    vel_steer.linear.x= 0;
+                        	    vel_steer.angular.z= 0;
+				    speed_publisher.publish(vel_steer);
+				}else if(mode_follow){
+				    ctrl_front_follow=0;
+				    ctrl_front_karugamo=0;
+			            ctrl_ang=0;
+				    vel_steer.linear.x= 0;
+                        	    vel_steer.angular.z= 0;
+				    speed_publisher.publish(vel_steer);
+				}
+				
 				return;
 	  		}else{
 				free_way=true;
@@ -552,12 +580,23 @@ void angPeopCallback2(const geometry_msgs::Vector3& msg){
      				ROS_INFO("Danger2");
 				alerts_command.data=5;// 5 danger 4 warning 3 karugamo 2 idle 1 manual
      			        alerts_publisher.publish(alerts_command);
-				ctrl_front_follow=0;
-				ctrl_front_karugamo=0;
-				vel_steer.linear.x= 0;
-                        	vel_steer.angular.z= 0;
-				ctrl_front_follow=0;
-				speed_publisher.publish(vel_steer);
+				if (mode_manual && ctrl_front_manual >0){
+				   ctrl_front_manual=0;
+				   ctrl_side_manual=0;
+				    vel_steer.linear.x= 0;
+                        	    vel_steer.angular.z= 0;
+				    speed_publisher.publish(vel_steer);
+				}else if(mode_follow){
+				    ctrl_front_follow=0;
+				    ctrl_front_karugamo=0;
+			            ctrl_ang=0;
+				    vel_steer.linear.x= 0;
+                        	    vel_steer.angular.z= 0;
+				    speed_publisher.publish(vel_steer);
+				}
+			
+				
+				
 				return;
 	  		}else{
 				free_way=true;
@@ -638,7 +677,7 @@ void angPeopCallback2(const geometry_msgs::Vector3& msg){
 			printf("Cargando Ruta \n");
 			loadRoute();
 			ros::Duration(0.2).sleep(); // sleep for half a second
-		}else if(joy->buttons[13]&&loaded_route==true){//start
+		}else if(joy->buttons[13]&&loaded_route==true && start_route == false){//start
 			start_route=true;
 			ROS_INFO("Start");
 			indx=0;
@@ -646,7 +685,7 @@ void angPeopCallback2(const geometry_msgs::Vector3& msg){
 			nspy=sp_ry[indx];
 			mode=0;
 			ros::Duration(0.3).sleep(); // sleep for half a second
-		}else if(joy->buttons[13]&&loaded_route==true){//start
+		}else if(joy->buttons[13]&&loaded_route==true && start_route == true){//start with click  pad ps4 controller
 			start_route=false;
 			ROS_INFO("Stop");
 			mode=1;
@@ -676,7 +715,12 @@ void angPeopCallback2(const geometry_msgs::Vector3& msg){
 			danger=false;
 			mode_follow=false;
    			tracking_people=false;
+			start_route = false;
 			ROS_INFO("Mode IDLE");
+			ctrl_front_follow= 0;
+			ctrl_ang= 0;
+			ctrl_front_manual= 0;
+			ctrl_side_manual= 0;
 			alerts_command.data=2;// 5 danger 4 warning 3 karugamo 2 idle 1 manual
      			alerts_publisher.publish(alerts_command);
 			vel_steer.linear.x= 0;
@@ -691,12 +735,16 @@ void angPeopCallback2(const geometry_msgs::Vector3& msg){
 			mode_manual=true;
 			mode_follow=false;
 			tracking_people=false;
+			start_route = false;
 			ROS_INFO("Mode Manual");
 			alerts_command.data=1;// 5 danger 4 warning 3 karugamo 2 idle 1 manual
      			alerts_publisher.publish(alerts_command);
 			vel_steer.linear.x= 0;
                         vel_steer.angular.z= 0;
-			ctrl_front_manual=0;
+			ctrl_front_follow= 0;
+			ctrl_ang= 0;
+			ctrl_front_manual= 0;
+			ctrl_side_manual= 0;
 			speed_publisher.publish(vel_steer);
 			ros::Duration(0.5).sleep(); // sleep for half a second
 		/*}else if(joy->buttons[8]==1){//select
@@ -765,6 +813,11 @@ void angPeopCallback2(const geometry_msgs::Vector3& msg){
 			mode_manual=false;
 			mode_follow=true;
 			tracking_people=false;
+			start_route = false;
+			ctrl_front_follow= 0;
+			ctrl_ang= 0;
+			ctrl_front_manual= 0;
+			ctrl_side_manual= 0;
 			vel_steer.linear.x=0;
 			vel_steer.angular.z=0;
 			speed_publisher.publish(vel_steer);
@@ -820,6 +873,7 @@ void angPeopCallback2(const geometry_msgs::Vector3& msg){
 				speed_publisher.publish(vel_steer);
 				
 			}else{
+			    
 			    vel_steer.linear.x= 0;
 			    vel_steer.angular.z= 0;
 			    speed_publisher.publish(vel_steer);

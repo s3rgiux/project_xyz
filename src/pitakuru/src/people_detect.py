@@ -46,9 +46,9 @@ class PeopImage:
         #image = imutils.resize(img,width=min(360, img.shape[1]))
         image=cv2.resize(img,(320,240))
         (regions, _) = self.hog.detectMultiScale(image,  
-                                    winStride=(16, 16), 
-                                    padding=(4, 4), 
-                                    scale=1.05)
+                                    winStride=(8 , 8),# winStride=(16, 16), 
+                                    padding=(4, 4),#padding=(4, 4), 
+                                    scale=1.05)#scale=1.05
    
         # Drawing the regions in the Image
          
@@ -59,7 +59,7 @@ class PeopImage:
             
             ang = 0-np.arctan2(160-(x + (w/2)),270-( y+(h/2))) * 180 / np.pi
             #if(self.ang_laser+7>ang and self.ang_laser-7<ang):
-            x2, y2 = 160, 270
+            x2, y2 = 160, 280
             x1, y1 = (x + (w/2)),( y+(h/2))
             line_thickness = 3
             cv2.line(image, (x1, y1), (x2, y2), (255, 255, 255), thickness=line_thickness)

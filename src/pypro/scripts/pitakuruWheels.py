@@ -43,7 +43,7 @@ import atexit
 D_RIGHT=0.1045#0.098#0.0597    #m, right wheel radius
 D_LEFT=0.1045#0.098#0.0597     #m, left wheel radius
 ACC = 20
-TREAD=0.447 #0.175  #m, length between wheels
+TREAD=0.4 #0.447  #m, length between wheels
 perimeter= 0.657   #m distance traveled
 LINEAR_RATIO = 0.50 # Tuning parameter of dolly linear speed
 ANGULAR_RATIO = 20.0 #Tuning parameter of dolly angular speed
