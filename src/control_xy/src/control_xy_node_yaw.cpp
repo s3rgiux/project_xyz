@@ -933,7 +933,7 @@ int main(int argc, char **argv)
 
     test_head test_head_obj(nh);
     //ros::Rate rate(0.5); //0.5 Hz, every 2 second
-	ros::Rate rate(30); //100 Hz, every .01 second
+	ros::Rate rate(40); //100 Hz, every .01 second
     //printf("%f",-atan2(5,1)*180/3.1416);
 	while(ros::ok())
 	{
