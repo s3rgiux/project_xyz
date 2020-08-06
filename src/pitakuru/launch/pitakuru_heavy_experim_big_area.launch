@@ -3,15 +3,15 @@
     <arg name="publish_images" default="true"/>
     <arg name="jsdev" default="/dev/input/js0"/>
     <rosparam file="$(find pitakuru)/config/bright_env/pitakuru.yaml" command="load" ns="pitakuru" />
-    
 
     <!-- カメラから画像を読み込んで配信 -->
    <node name="uvc_camera_node" pkg="uvc_camera" type="uvc_camera_node" output="screen"> -->
         <!-- <param name="device" type="string" value="/dev/input/by-id/usb-KYE_Systems_Corp._USB_Camera_200901010001-event-if00"/> -->
         <param name="device" type="string" value="/dev/video0"/>
-        <param name="width" type="int" value="800"/>
-        <param name="height" type="int" value="600"/>
-        <param name="camera_info_url" value="file://$(find pitakuru)/config/bright_env/aruco/camera800.yaml"/>
+        <param name="width" type="int" value="640"/> <!-- 800 -->
+        <param name="height" type="int" value="480"/> <!-- 600 -->
+	<param name="fps" type="int" value="24"/>
+        <param name="camera_info_url" value="file://$(find pitakuru)/config/bright_env/aruco/camera640.yaml"/><!-- camera600.yaml -->
     </node>
 
     <!-- ArUco検知 -->
@@ -62,40 +62,37 @@
 
 <!-- keiganモーター制御/オドメトリ算出ノード -->
 <node pkg="pypro" name="pitakuru_wheels" type="pitakuruWheels.py">
-<param name="max_speed"    type="double"	value="2200"/>
+<param name="max_speed"    type="double"	value="2200"/>  <!-- max speed tah can be sent to motors-->
 </node>
 
 <node pkg="control_xy" type="control_xy_node" name="control_xy" output="screen">
-<param name="break_distance"    type="double"	value="0.4"/>
-<param name="break_danger"    type="double"	value="1.0"/>	
-<param name="low_vel_gain_karugamo"    type="double"	value="15"/>
-<param name="high_vel_gain_karugamo"    type="double"	value="10"/>
-<param name="low_vel_gain_follow"    type="double"	value="10"/>
-<param name="high_vel_gain_follow"    type="double"	value="8"/>
-<param name="frontal_gain_karugamo"    type="double"	value="17"/>
-<param name="frontal_gain_follow"    type="double"	value="10"/>
-<param name="frontal_gain_manual"    type="double"	value="00"/>
-<param name="smooth_accel"    type="double"	value="0.98"/>
-<param name="max_speed_karugamo"    type="double"	value="1500"/>
-<param name="max_speed_follow"    type="double"	value="1500"/>
-<param name="max_speed_manual"    type="double"	value="1500"/>
-<param name="max_speed_side_manual"    type="double"	value="800"/>
-<param name="radius_follow"    type="double"	value=".4"/>
-
+<param name="break_distance"    type="double"	value="0.4"/> <!-- breaking distance to  enter in danger zone  -->
+<param name="break_danger"    type="double"	value="0.9"/><!-- (not used depercated)distance to  enter in warning zone  -->	
+<param name="low_vel_gain_karugamo"    type="double"	value="15"/> <!-- (not used depercated)karugamo gain  angle control   -->
+<param name="high_vel_gain_karugamo"    type="double"	value="10"/> <!-- (not used depercated)karugamo gain  angle control   -->
+<param name="low_vel_gain_follow"    type="double"	value="10"/><!-- people follow gain  angle control   -->
+<param name="high_vel_gain_follow"    type="double"	value="5"/> <!-- people follow gain  angle control   -->
+<param name="frontal_gain_karugamo"    type="double"	value="17"/> <!-- (not used depercated)karugamo gain  angle control   -->
+<param name="frontal_gain_follow"    type="double"	value="15"/> <!-- gain for frontal control   -->
+<param name="frontal_gain_manual"    type="double"	value="00"/> <!-- (not used depercated)gain frontal control   -->
+<param name="smooth_accel"    type="double"	value="0.98"/> <!-- acceletartion smooth max value up to 0.99   -->
+<param name="max_speed_karugamo"    type="double"	value="1500"/> <!-- (not used depercated)max speed value for karugamo   -->
+<param name="max_speed_follow"    type="double"	value="1000"/> <!-- 1000--> <!-- max speed value for frontal people follow-->
+<param name="max_speed_manual"    type="double"	value="1100"/>  <!-- max speed value for frontal joystick-->
+<param name="max_speed_side_manual"    type="double"	value="800"/> <!-- max speed value for side joystick-->
+<param name="radius_follow"    type="double"	value=".5"/> <!-- radius checking zone to track people once that is already picked for tracking-->
 </node>
-
 <node pkg="obs_extract" type="main.py" name="obj_track" >
-<param name="front_detection"    type="double"	value="3"/>
-<param name="side_detection"    type="double"	value="1.2"/>
+<param name="front_detection"    type="double"	value="3"/> <!-- frontal distance from robot center to detect objects to track with lidar-->
+<param name="side_detection"    type="double"	value="1.5"/> <!-- side distance from robot center to detect objects to track with lidar-->
 </node>
-<arg name="record_flag" default="false" />
+
+<arg name="record_flag" default="false" /> <!-- set to true if i want to record-->
 
 <node pkg="rosbag" type="record" name="rosbag_record"
        args = "record -o /home/xavier/warehouse.bag /alerts /camera_info /cmd_vel /diagnostics /euler /fiducial_vertices /image_raw /j0/joy  /movement/karugamo/joy /movement/manual/joy /obstacle_closest /obstacles /pcl /peopAng /peopDist /raw_obstacles /rear_scan /rosout /rosout_agg /scan /state /tf /tf_static /trigger_action /peopAng2 /people/image"  
        if = "$(arg record_flag)" />
-
-<!-- SLAM地図作成ノード -->
+<!-- 
 <include file="$(find hector_slam_launch)/launch/tutorial.launch"/>
-
- 
+-->
 </launch>

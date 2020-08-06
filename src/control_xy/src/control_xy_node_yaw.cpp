@@ -498,7 +498,7 @@ void angPeopCallback2(const geometry_msgs::Vector3& msg){
      			alerts_publisher.publish(alerts_command);
 		  }else{
                         missing_track+=1;
-                        if(missing_track>=7){//thiscounter also can help to see if theres a lot of objects and its not able to follow
+                        if(missing_track>=15){//thiscounter also can help to see if theres a lot of objects and its not able to follow
 				ROS_INFO("LOST");
 				missing_track=0;
 			        tracking_people=false;
@@ -933,7 +933,7 @@ int main(int argc, char **argv)
 
     test_head test_head_obj(nh);
     //ros::Rate rate(0.5); //0.5 Hz, every 2 second
-	ros::Rate rate(20); //100 Hz, every .01 second
+	ros::Rate rate(30); //100 Hz, every .01 second
     //printf("%f",-atan2(5,1)*180/3.1416);
 	while(ros::ok())
 	{

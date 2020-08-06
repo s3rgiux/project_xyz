@@ -31,7 +31,7 @@ import rosparam
 import atexit
 
 
-SLEEP_TIME = 0.1
+SLEEP_TIME = 0.05
 #200mm diameter
 
 
