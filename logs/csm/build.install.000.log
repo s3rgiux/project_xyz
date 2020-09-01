@@ -1,0 +1,116 @@
+[ 27%] Built target csm-static
+[ 28%] Built target ld_resample
+[ 29%] Built target ld_fisher
+[ 30%] Built target sm1
+[ 31%] Built target ld_slip
+[ 32%] Built target carmen2json
+[ 33%] Built target ld_alternate
+[ 34%] Built target ld_smooth
+[ 36%] Built target ld_noise
+[ 37%] Built target sm3
+[ 38%] Built target json_split
+[ 39%] Built target json_pipe
+[ 40%] Built target json_decimate
+[ 66%] Built target csm
+[ 67%] Built target ld_recover
+[ 68%] Built target ld_purify
+[ 69%] Built target ld_select
+[ 70%] Built target ld_cluster_curv
+[ 71%] Built target sm2
+[ 72%] Built target ld_linearize
+[ 73%] Built target json2matlab
+[ 74%] Built target ld_exp_tro1
+[ 75%] Built target test_json
+[ 77%] Built target json2carmen
+[ 78%] Built target test_json_ld
+[ 79%] Built target sm_animate
+[ 80%] Built target log2pdf
+[ 81%] Built target test_math_utils_sanity
+[ 82%] Built target ld_remove_doubles
+[ 83%] Built target json_extract_field
+[ 84%] Built target json_extract
+[ 86%] Built target options
+[ 88%] Built target test_options
+[ 93%] Built target json-c
+[ 94%] Built target test2
+[ 96%] Built target egsl
+[ 97%] Built target egsl_test
+[ 98%] Built target egsl_test_allocation
+[100%] Built target gpc
+[36mInstall the project...[0m
+-- Install configuration: ""
+-- Installing: /home/xavier/catkin_ws/devel/bin/sm1
+-- Installing: /home/xavier/catkin_ws/devel/bin/sm2
+-- Installing: /home/xavier/catkin_ws/devel/bin/sm3
+-- Installing: /home/xavier/catkin_ws/devel/bin/json_extract
+-- Installing: /home/xavier/catkin_ws/devel/bin/json_extract_field
+-- Installing: /home/xavier/catkin_ws/devel/bin/json_decimate
+-- Installing: /home/xavier/catkin_ws/devel/bin/json_split
+-- Installing: /home/xavier/catkin_ws/devel/bin/json_pipe
+-- Installing: /home/xavier/catkin_ws/devel/bin/carmen2json
+-- Installing: /home/xavier/catkin_ws/devel/bin/json2carmen
+-- Installing: /home/xavier/catkin_ws/devel/bin/ld_noise
+-- Installing: /home/xavier/catkin_ws/devel/bin/ld_slip
+-- Installing: /home/xavier/catkin_ws/devel/bin/ld_fisher
+-- Installing: /home/xavier/catkin_ws/devel/bin/ld_smooth
+-- Installing: /home/xavier/catkin_ws/devel/bin/ld_resample
+-- Installing: /home/xavier/catkin_ws/devel/bin/ld_remove_doubles
+-- Installing: /home/xavier/catkin_ws/devel/bin/ld_alternate
+-- Installing: /home/xavier/catkin_ws/devel/bin/ld_recover
+-- Installing: /home/xavier/catkin_ws/devel/bin/ld_purify
+-- Installing: /home/xavier/catkin_ws/devel/bin/ld_select
+-- Installing: /home/xavier/catkin_ws/devel/bin/ld_cluster_curv
+-- Installing: /home/xavier/catkin_ws/devel/bin/ld_linearize
+-- Installing: /home/xavier/catkin_ws/devel/bin/json2matlab
+-- Installing: /home/xavier/catkin_ws/devel/bin/ld_exp_tro1
+-- Installing: /home/xavier/catkin_ws/devel/bin/test_json_ld
+-- Installing: /home/xavier/catkin_ws/devel/bin/test_json
+-- Installing: /home/xavier/catkin_ws/devel/bin/sm_animate
+-- Installing: /home/xavier/catkin_ws/devel/bin/log2pdf
+-- Installing: /home/xavier/catkin_ws/devel/lib/libcsm-static.a
+-- Installing: /home/xavier/catkin_ws/devel/lib/libcsm.so
+-- Installing: /home/xavier/catkin_ws/devel/include/options/options.h
+-- Installing: /home/xavier/catkin_ws/devel/lib/liboptions.a
+-- Installing: /home/xavier/catkin_ws/devel/include/json-c/JSON_checker.h
+-- Installing: /home/xavier/catkin_ws/devel/include/json-c/arraylist.h
+-- Installing: /home/xavier/catkin_ws/devel/include/json-c/bits.h
+-- Installing: /home/xavier/catkin_ws/devel/include/json-c/debug.h
+-- Installing: /home/xavier/catkin_ws/devel/include/json-c/json.h
+-- Installing: /home/xavier/catkin_ws/devel/include/json-c/json_more_utils.h
+-- Installing: /home/xavier/catkin_ws/devel/include/json-c/json_object.h
+-- Installing: /home/xavier/catkin_ws/devel/include/json-c/json_object_private.h
+-- Installing: /home/xavier/catkin_ws/devel/include/json-c/json_tokener.h
+-- Installing: /home/xavier/catkin_ws/devel/include/json-c/json_util.h
+-- Installing: /home/xavier/catkin_ws/devel/include/json-c/linkhash.h
+-- Installing: /home/xavier/catkin_ws/devel/include/json-c/printbuf.h
+-- Installing: /home/xavier/catkin_ws/devel/include/json-c/config.h
+-- Installing: /home/xavier/catkin_ws/devel/include/egsl/egsl.h
+-- Installing: /home/xavier/catkin_ws/devel/include/egsl/egsl_imp.h
+-- Installing: /home/xavier/catkin_ws/devel/include/egsl/egsl_macros.h
+-- Installing: /home/xavier/catkin_ws/devel/lib/libegsl.a
+-- Installing: /home/xavier/catkin_ws/devel/include/csm/./algos.h
+-- Installing: /home/xavier/catkin_ws/devel/include/csm/./csm.h
+-- Installing: /home/xavier/catkin_ws/devel/include/csm/./csm_all.h
+-- Installing: /home/xavier/catkin_ws/devel/include/csm/./json_journal.h
+-- Installing: /home/xavier/catkin_ws/devel/include/csm/./laser_data.h
+-- Installing: /home/xavier/catkin_ws/devel/include/csm/./laser_data_cairo.h
+-- Installing: /home/xavier/catkin_ws/devel/include/csm/./laser_data_drawing.h
+-- Installing: /home/xavier/catkin_ws/devel/include/csm/./laser_data_inline.h
+-- Installing: /home/xavier/catkin_ws/devel/include/csm/./laser_data_json.h
+-- Installing: /home/xavier/catkin_ws/devel/include/csm/./logging.h
+-- Installing: /home/xavier/catkin_ws/devel/include/csm/./math_utils.h
+-- Installing: /home/xavier/catkin_ws/devel/include/csm/./math_utils_gsl.h
+-- Installing: /home/xavier/catkin_ws/devel/include/csm/./restrict.h
+-- Installing: /home/xavier/catkin_ws/devel/include/csm/./utils.h
+-- Installing: /home/xavier/catkin_ws/devel/include/csm/hsm/hsm.h
+-- Installing: /home/xavier/catkin_ws/devel/include/csm/hsm/hsm_interface.h
+-- Installing: /home/xavier/catkin_ws/devel/include/csm/mbicp/MbICP.h
+-- Installing: /home/xavier/catkin_ws/devel/include/csm/mbicp/MbICP2.h
+-- Installing: /home/xavier/catkin_ws/devel/include/csm/mbicp/TData.h
+-- Installing: /home/xavier/catkin_ws/devel/include/csm/mbicp/calcul.h
+-- Installing: /home/xavier/catkin_ws/devel/include/csm/mbicp/percolate.h
+-- Installing: /home/xavier/catkin_ws/devel/include/csm/mbicp/sp_matrix.h
+-- Installing: /home/xavier/catkin_ws/devel/include/csm/icp/fast_math.h
+-- Installing: /home/xavier/catkin_ws/devel/include/csm/icp/icp.h
+-- Installing: /home/xavier/catkin_ws/devel/include/csm/gpm/gpm.h
+-- Installing: /home/xavier/catkin_ws/devel/lib/pkgconfig/csm.pc

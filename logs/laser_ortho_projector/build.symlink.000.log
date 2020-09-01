@@ -1,0 +1,6 @@
+Symlinking /home/xavier/catkin_ws/devel/share/laser_ortho_projector/cmake/laser_ortho_projectorConfig-version.cmake
+Symlinking /home/xavier/catkin_ws/devel/share/laser_ortho_projector/cmake/laser_ortho_projectorConfig.cmake
+Symlinking /home/xavier/catkin_ws/devel/lib/liblaser_ortho_projector_nodelet.so
+Symlinking /home/xavier/catkin_ws/devel/lib/liblaser_ortho_projector.so
+Symlinking /home/xavier/catkin_ws/devel/lib/laser_ortho_projector/laser_ortho_projector_node
+Symlinking /home/xavier/catkin_ws/devel/lib/pkgconfig/laser_ortho_projector.pc

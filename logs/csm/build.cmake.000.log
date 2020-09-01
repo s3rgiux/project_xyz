@@ -1,0 +1,96 @@
+Not searching for unused variables given on the command line.
+[36m--[0m The C compiler identification is GNU 7.5.0
+[36m--[0m The CXX compiler identification is GNU 7.5.0
+[36m--[0m Check for working C compiler: /usr/bin/cc
+[36m--[0m Check for working C compiler: /usr/bin/cc -- works
+[36m--[0m Detecting C compiler ABI info
+[36m--[0m Detecting C compiler ABI info - done
+[36m--[0m Detecting C compile features
+[36m--[0m Detecting C compile features - done
+[36m--[0m Check for working CXX compiler: /usr/bin/c++
+[36m--[0m Check for working CXX compiler: /usr/bin/c++ -- works
+[36m--[0m Detecting CXX compiler ABI info
+[36m--[0m Detecting CXX compiler ABI info - done
+[36m--[0m Detecting CXX compile features
+[36m--[0m Detecting CXX compile features - done
+CMake Deprecation Warning at CMakeLists.txt:2 (cmake_policy):
+  The OLD behavior for policy CMP0004 will be removed from a future version
+  of CMake.
+
+  The cmake-policies(7) manual explains that the OLD behaviors of all
+  policies are deprecated and that a policy should be set to OLD only under
+  specific short-term circumstances.  Projects should be ported to the NEW
+  behavior and not rely on setting a policy to OLD.
+
+
+[36m--[0m Create a file named 'local_config/local-xavier-robot.cmake' if you want to add options.
+gsl home:
+DBG GSL_CONFIG /usr/bin/gsl-config
+[36m--[0m Using GSL from /usr
+[36m--[0m Found GSL:
+[36m--[0m    GSL_LIBRARIES = -L/usr/lib/aarch64-linux-gnu -lgsl -lgslcblas -lm
+[36m--[0m    GSL_INCLUDE_DIR = /usr/include
+[36m--[0m    CMAKE_GSL_CXX_FLAGS =
+[36m--[0m    GSL_LINK_DIRECTORIES = '/usr/lib/aarch64-linux-gnu'
+[36m--[0m WARNING: you are using the obsolete 'PKGCONFIG' macro, use FindPkgConfig
+[36m--[0m Found cairo: /usr/lib/aarch64-linux-gnu/libcairo.so
+[36m--[0m Found Cairo at.
+[36m--[0m    PREFIX_CAIRO=
+[36m--[0m    CAIRO_CFLAGS =
+[36m--[0m    CAIRO_LIBRARY = /usr/lib/aarch64-linux-gnu/libcairo.so
+[36m--[0m    CAIRO_INCLUDE_DIR = /usr/include/cairo
+[36m--[0m csm_c_flags =  -I/usr/include  -I/usr/include/cairo
+[36m--[0m csm_link_flags = -L. -L/usr/lib/aarch64-linux-gnu -L/usr/lib/aarch64-linux-gnu -lgsl -lgslcblas -lm /usr/lib/aarch64-linux-gnu/libcairo.so
+[36m--[0m Looking for fcntl.h
+[36m--[0m Looking for fcntl.h - found
+[36m--[0m Looking for inttypes.h
+[36m--[0m Looking for inttypes.h - found
+[36m--[0m Looking for limits.h
+[36m--[0m Looking for limits.h - found
+[36m--[0m Looking for memory.h
+[36m--[0m Looking for memory.h - found
+[36m--[0m Looking for stdarg.h
+[36m--[0m Looking for stdarg.h - found
+[36m--[0m Looking for stdint.h
+[36m--[0m Looking for stdint.h - found
+[36m--[0m Looking for stdlib.h
+[36m--[0m Looking for stdlib.h - found
+[36m--[0m Looking for strings.h
+[36m--[0m Looking for strings.h - found
+[36m--[0m Looking for string.h
+[36m--[0m Looking for string.h - found
+[36m--[0m Looking for syslog.h
+[36m--[0m Looking for syslog.h - found
+[36m--[0m Looking for sys/param.h
+[36m--[0m Looking for sys/param.h - found
+[36m--[0m Looking for sys/types.h
+[36m--[0m Looking for sys/types.h - found
+[36m--[0m Looking for sys/stat.h
+[36m--[0m Looking for sys/stat.h - found
+[36m--[0m Looking for unistd.h
+[36m--[0m Looking for unistd.h - found
+[36m--[0m Looking for open
+[36m--[0m Looking for open - found
+[36m--[0m Looking for strubded
+[36m--[0m Looking for strubded - not found
+[36m--[0m Looking for malloc
+[36m--[0m Looking for malloc - found
+[36m--[0m Looking for realloc
+[36m--[0m Looking for realloc - found
+[36m--[0m Looking for strerror
+[36m--[0m Looking for strerror - found
+[36m--[0m Looking for strncasecmp
+[36m--[0m Looking for strncasecmp - found
+[36m--[0m Looking for strndup
+[36m--[0m Looking for strndup - found
+[36m--[0m Looking for vasprintf
+[36m--[0m Looking for vasprintf - found
+[36m--[0m Looking for vprintf
+[36m--[0m Looking for vprintf - found
+[36m--[0m Looking for vsnprintf
+[36m--[0m Looking for vsnprintf - found
+[36m--[0m Looking for vsyslog
+[36m--[0m Looking for vsyslog - found
+[36m--[0m Configuring done
+[36m--[0m Generating done
+[36m--[0m Build files have been written to: /home/xavier/catkin_ws/build/csm

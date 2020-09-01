@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-<launch>
-    <!-- ジョイスティック -->
-    <node pkg="joy" type="joy_node" name="joy_node">
-        <param name="dev" value="/dev/input/js1"/>
-    </node>
-
-    <node pkg="pitakuru" type="controller.py" name="controller"/>
-</launch>

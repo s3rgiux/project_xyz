@@ -1,0 +1,449 @@
+[35m[1mScanning dependencies of target csm-static[0m
+[  1%] [32mBuilding C object sm/CMakeFiles/csm-static.dir/csm/clustering.o[0m
+[  1%] [32mBuilding C object sm/CMakeFiles/csm-static.dir/csm/gpm/gpm.o[0m
+[  2%] [32mBuilding C object sm/CMakeFiles/csm-static.dir/csm/icp/icp.o[0m
+[  2%] [32mBuilding C object sm/CMakeFiles/csm-static.dir/csm/icp/icp_corr_dumb.o[0m
+[  3%] [32mBuilding C object sm/CMakeFiles/csm-static.dir/csm/icp/icp_corr_tricks.o[0m
+[  3%] [32mBuilding C object sm/CMakeFiles/csm-static.dir/csm/icp/icp_covariance.o[0m
+[  4%] [32mBuilding C object sm/CMakeFiles/csm-static.dir/csm/icp/icp_loop.o[0m
+[  4%] [32mBuilding C object sm/CMakeFiles/csm-static.dir/csm/icp/icp_outliers.o[0m
+[  5%] [32mBuilding C object sm/CMakeFiles/csm-static.dir/csm/icp/icp_debug.o[0m
+[  5%] [32mBuilding C object sm/CMakeFiles/csm-static.dir/csm/mbicp/mbicp_interface.o[0m
+[  6%] [32mBuilding C object sm/CMakeFiles/csm-static.dir/csm/mbicp/MbICP.o[0m
+[  7%] [32mBuilding C object sm/CMakeFiles/csm-static.dir/csm/mbicp/calcul.o[0m
+[  7%] [32mBuilding C object sm/CMakeFiles/csm-static.dir/csm/mbicp/percolate.o[0m
+[  8%] [32mBuilding C object sm/CMakeFiles/csm-static.dir/csm/mbicp/sp_matrix.o[0m
+[  8%] [32mBuilding C object sm/CMakeFiles/csm-static.dir/csm/hsm/hsm.o[0m
+[01m[K/home/xavier/catkin_ws/src/csm/sm/csm/hsm/hsm.c:[m[K In function ‘[01m[Khsm_match[m[K’:
+[01m[K/home/xavier/catkin_ws/src/csm/sm/csm/hsm/hsm.c:191:10:[m[K [01;35m[Kwarning: [m[Kvariable ‘[01m[Kmult[m[K’ set but not used [[01;35m[K-Wunused-but-set-variable[m[K]
+   double [01;35m[Kmult[m[K[b1->num_angular_cells];
+          [01;35m[K^~~~[m[K
+[  9%] [32mBuilding C object sm/CMakeFiles/csm-static.dir/csm/hsm/hsm_interface.o[0m
+[  9%] [32mBuilding C object sm/CMakeFiles/csm-static.dir/csm/json_journal.o[0m
+[ 10%] [32mBuilding C object sm/CMakeFiles/csm-static.dir/csm/laser_data.o[0m
+[ 10%] [32mBuilding C object sm/CMakeFiles/csm-static.dir/csm/laser_data_carmen.o[0m
+[ 11%] [32mBuilding C object sm/CMakeFiles/csm-static.dir/csm/laser_data_fisher.o[0m
+[ 11%] [32mBuilding C object sm/CMakeFiles/csm-static.dir/csm/laser_data_json.o[0m
+[ 12%] [32mBuilding C object sm/CMakeFiles/csm-static.dir/csm/laser_data_load.o[0m
+[ 13%] [32mBuilding C object sm/CMakeFiles/csm-static.dir/csm/laser_data_drawing.o[0m
+[ 13%] [32mBuilding C object sm/CMakeFiles/csm-static.dir/csm/laser_data_bbox.o[0m
+[ 14%] [32mBuilding C object sm/CMakeFiles/csm-static.dir/csm/logging.o[0m
+[ 14%] [32mBuilding C object sm/CMakeFiles/csm-static.dir/csm/math_utils.o[0m
+[ 15%] [32mBuilding C object sm/CMakeFiles/csm-static.dir/csm/math_utils_gsl.o[0m
+[ 15%] [32mBuilding C object sm/CMakeFiles/csm-static.dir/csm/orientation.o[0m
+[ 16%] [32mBuilding C object sm/CMakeFiles/csm-static.dir/csm/sm_options.o[0m
+[ 16%] [32mBuilding C object sm/CMakeFiles/csm-static.dir/csm/utils.o[0m
+[ 17%] [32mBuilding C object sm/CMakeFiles/csm-static.dir/lib/egsl/egsl.o[0m
+[ 17%] [32mBuilding C object sm/CMakeFiles/csm-static.dir/lib/egsl/egsl_conversions.o[0m
+[ 18%] [32mBuilding C object sm/CMakeFiles/csm-static.dir/lib/egsl/egsl_misc.o[0m
+[ 18%] [32mBuilding C object sm/CMakeFiles/csm-static.dir/lib/egsl/egsl_ops.o[0m
+[ 19%] [32mBuilding C object sm/CMakeFiles/csm-static.dir/lib/gpc/gpc.o[0m
+[ 20%] [32mBuilding C object sm/CMakeFiles/csm-static.dir/lib/gpc/gpc_utils.o[0m
+[ 20%] [32mBuilding C object sm/CMakeFiles/csm-static.dir/lib/json-c/arraylist.o[0m
+[ 21%] [32mBuilding C object sm/CMakeFiles/csm-static.dir/lib/json-c/debug.o[0m
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/debug.c:[m[K In function ‘[01m[Kmc_abort[m[K’:
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/debug.c:50:4:[m[K [01;35m[Kwarning: [m[Kimplicit declaration of function ‘[01m[Kvsyslog[m[K’; did you mean ‘[01m[Ksyslog[m[K’? [[01;35m[K-Wimplicit-function-declaration[m[K]
+    [01;35m[Kvsyslog[m[K(LOG_ERR, msg, ap);
+    [01;35m[K^~~~~~~[m[K
+    [32m[Ksyslog[m[K
+[ 21%] [32mBuilding C object sm/CMakeFiles/csm-static.dir/lib/json-c/JSON_checker.o[0m
+[ 22%] [32mBuilding C object sm/CMakeFiles/csm-static.dir/lib/json-c/json_more_utils.o[0m
+In file included from [01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_more_utils.c:8:0[m[K:
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_more_utils.c:[m[K In function ‘[01m[Kjson_tokener_parse_len[m[K’:
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/bits.h:24:27:[m[K [01;35m[Kwarning: [m[Kcast to pointer from integer of different size [[01;35m[K-Wint-to-pointer-cast[m[K]
+ #define error_ptr(error) ([01;35m[K([m[Kvoid*)error)
+                           [01;35m[K^[m[K
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_more_utils.c:108:11:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[Kerror_ptr[m[K’
+     obj = [01;36m[Kerror_ptr[m[K(-tok->err);
+           [01;36m[K^~~~~~~~~[m[K
+[ 22%] [32mBuilding C object sm/CMakeFiles/csm-static.dir/lib/json-c/json_object.o[0m
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_object.c:[m[K In function ‘[01m[Kjson_object_object_add[m[K’:
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_object.c:274:37:[m[K [01;35m[Kwarning: [m[Kimplicit declaration of function ‘[01m[Kstrdup[m[K’; did you mean ‘[01m[Kstrcmp[m[K’? [[01;35m[K-Wimplicit-function-declaration[m[K]
+   lh_table_insert(this->o.c_object, [01;35m[Kstrdup[m[K(key), val);
+                                     [01;35m[K^~~~~~[m[K
+                                     [32m[Kstrcmp[m[K
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_object.c:274:37:[m[K [01;35m[Kwarning: [m[Kpassing argument 2 of ‘[01m[Klh_table_insert[m[K’ makes pointer from integer without a cast [[01;35m[K-Wint-conversion[m[K]
+In file included from [01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_object.c:28:0[m[K:
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/linkhash.h:217:12:[m[K [01;36m[Knote: [m[Kexpected ‘[01m[Kvoid *[m[K’ but argument is of type ‘[01m[Kint[m[K’
+ extern int [01;36m[Klh_table_insert[m[K(struct lh_table *t, void *k, void *v);
+            [01;36m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_object.c:[m[K In function ‘[01m[Kjson_object_get_string[m[K’:
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_object.c:459:12:[m[K [01;35m[Kwarning: [m[Kreturn discards ‘[01m[Kconst[m[K’ qualifier from pointer target type [[01;35m[K-Wdiscarded-qualifiers[m[K]
+     return [01;35m[Kjson_object_to_json_string(this)[m[K;
+            [01;35m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[ 23%] [32mBuilding C object sm/CMakeFiles/csm-static.dir/lib/json-c/json_tokener.o[0m
+In file included from [01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_tokener.c:20:0[m[K:
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_tokener.c:[m[K In function ‘[01m[Kjson_tokener_parse[m[K’:
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/bits.h:24:27:[m[K [01;35m[Kwarning: [m[Kcast to pointer from integer of different size [[01;35m[K-Wint-to-pointer-cast[m[K]
+ #define error_ptr(error) ([01;35m[K([m[Kvoid*)error)
+                           [01;35m[K^[m[K
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_tokener.c:100:11:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[Kerror_ptr[m[K’
+     obj = [01;36m[Kerror_ptr[m[K(-tok->err);
+           [01;36m[K^~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_tokener.c:[m[K In function ‘[01m[Kjson_tokener_parse_ex[m[K’:
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_tokener.c:451:19:[m[K [01;35m[Kwarning: [m[Kimplicit declaration of function ‘[01m[Kstrdup[m[K’; did you mean ‘[01m[Kstrcmp[m[K’? [[01;35m[K-Wimplicit-function-declaration[m[K]
+  obj_field_name = [01;35m[Kstrdup[m[K(tok->pb->buf);
+                   [01;35m[K^~~~~~[m[K
+                   [32m[Kstrcmp[m[K
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_tokener.c:451:17:[m[K [01;35m[Kwarning: [m[Kassignment makes pointer from integer without a cast [[01;35m[K-Wint-conversion[m[K]
+  obj_field_name [01;35m[K=[m[K strdup(tok->pb->buf);
+                 [01;35m[K^[m[K
+[ 23%] [32mBuilding C object sm/CMakeFiles/csm-static.dir/lib/json-c/json_util.o[0m
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_util.c:[m[K In function ‘[01m[Kjson_object_to_file[m[K’:
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_util.c:102:17:[m[K [01;35m[Kwarning: [m[Kassignment discards ‘[01m[Kconst[m[K’ qualifier from pointer target type [[01;35m[K-Wdiscarded-qualifiers[m[K]
+   if(!(json_str [01;35m[K=[m[K json_object_to_json_string(obj))) { return -1; }
+                 [01;35m[K^[m[K
+[ 24%] [32mBuilding C object sm/CMakeFiles/csm-static.dir/lib/json-c/linkhash.o[0m
+[35m[1mScanning dependencies of target csm[0m
+[ 24%] [32mBuilding C object sm/CMakeFiles/csm-static.dir/lib/json-c/printbuf.o[0m
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/printbuf.c:[m[K In function ‘[01m[Ksprintbuf[m[K’:
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/printbuf.c:122:16:[m[K [01;35m[Kwarning: [m[Kimplicit declaration of function ‘[01m[Kvasprintf[m[K’; did you mean ‘[01m[Kvsprintf[m[K’? [[01;35m[K-Wimplicit-function-declaration[m[K]
+     if((size = [01;35m[Kvasprintf[m[K(&t, msg, ap)) == -1) return -1;
+                [01;35m[K^~~~~~~~~[m[K
+                [32m[Kvsprintf[m[K
+[ 24%] [32mBuilding C object sm/CMakeFiles/csm.dir/csm/clustering.o[0m
+[ 25%] [32mBuilding C object sm/CMakeFiles/csm-static.dir/lib/options/options.o[0m
+[ 26%] [32mBuilding C object sm/CMakeFiles/csm.dir/csm/gpm/gpm.o[0m
+[ 26%] [32mBuilding C object sm/CMakeFiles/csm-static.dir/lib/options/options_interface.o[0m
+[ 26%] [32mBuilding C object sm/CMakeFiles/csm.dir/csm/icp/icp.o[0m
+[ 27%] [32mBuilding C object sm/CMakeFiles/csm-static.dir/csm/laser_data_cairo.o[0m
+[ 28%] [32mBuilding C object sm/CMakeFiles/csm.dir/csm/icp/icp_corr_dumb.o[0m
+[ 29%] [32m[1mLinking C static library libcsm-static.a[0m
+[ 29%] [32mBuilding C object sm/CMakeFiles/csm.dir/csm/icp/icp_corr_tricks.o[0m
+[ 29%] Built target csm-static
+[ 30%] [32mBuilding C object sm/CMakeFiles/csm.dir/csm/icp/icp_covariance.o[0m
+[ 30%] [32mBuilding C object sm/CMakeFiles/csm.dir/csm/icp/icp_loop.o[0m
+[ 31%] [32mBuilding C object sm/CMakeFiles/csm.dir/csm/icp/icp_outliers.o[0m
+[ 31%] [32mBuilding C object sm/CMakeFiles/csm.dir/csm/icp/icp_debug.o[0m
+[ 32%] [32mBuilding C object sm/CMakeFiles/csm.dir/csm/mbicp/mbicp_interface.o[0m
+[ 33%] [32mBuilding C object sm/CMakeFiles/csm.dir/csm/mbicp/MbICP.o[0m
+[ 33%] [32mBuilding C object sm/CMakeFiles/csm.dir/csm/mbicp/calcul.o[0m
+[ 34%] [32mBuilding C object sm/CMakeFiles/csm.dir/csm/mbicp/percolate.o[0m
+[ 34%] [32mBuilding C object sm/CMakeFiles/csm.dir/csm/mbicp/sp_matrix.o[0m
+[ 35%] [32mBuilding C object sm/CMakeFiles/csm.dir/csm/hsm/hsm.o[0m
+[01m[K/home/xavier/catkin_ws/src/csm/sm/csm/hsm/hsm.c:[m[K In function ‘[01m[Khsm_match[m[K’:
+[01m[K/home/xavier/catkin_ws/src/csm/sm/csm/hsm/hsm.c:191:10:[m[K [01;35m[Kwarning: [m[Kvariable ‘[01m[Kmult[m[K’ set but not used [[01;35m[K-Wunused-but-set-variable[m[K]
+   double [01;35m[Kmult[m[K[b1->num_angular_cells];
+          [01;35m[K^~~~[m[K
+[ 35%] [32mBuilding C object sm/CMakeFiles/csm.dir/csm/hsm/hsm_interface.o[0m
+[ 36%] [32mBuilding C object sm/CMakeFiles/csm.dir/csm/json_journal.o[0m
+[ 36%] [32mBuilding C object sm/CMakeFiles/csm.dir/csm/laser_data.o[0m
+[ 37%] [32mBuilding C object sm/CMakeFiles/csm.dir/csm/laser_data_carmen.o[0m
+[ 37%] [32mBuilding C object sm/CMakeFiles/csm.dir/csm/laser_data_fisher.o[0m
+[ 38%] [32mBuilding C object sm/CMakeFiles/csm.dir/csm/laser_data_json.o[0m
+[ 38%] [32mBuilding C object sm/CMakeFiles/csm.dir/csm/laser_data_load.o[0m
+[ 39%] [32mBuilding C object sm/CMakeFiles/csm.dir/csm/laser_data_drawing.o[0m
+[ 40%] [32mBuilding C object sm/CMakeFiles/csm.dir/csm/laser_data_bbox.o[0m
+[ 40%] [32mBuilding C object sm/CMakeFiles/csm.dir/csm/logging.o[0m
+[ 41%] [32mBuilding C object sm/CMakeFiles/csm.dir/csm/math_utils.o[0m
+[ 41%] [32mBuilding C object sm/CMakeFiles/csm.dir/csm/math_utils_gsl.o[0m
+[ 41%] [32mBuilding C object sm/CMakeFiles/csm.dir/csm/sm_options.o[0m
+[ 42%] [32mBuilding C object sm/CMakeFiles/csm.dir/csm/orientation.o[0m
+[ 43%] [32mBuilding C object sm/CMakeFiles/csm.dir/csm/utils.o[0m
+[35m[1mScanning dependencies of target options[0m
+[ 44%] [32mBuilding C object sm/lib/options/CMakeFiles/options.dir/options.o[0m
+[ 44%] [32mBuilding C object sm/CMakeFiles/csm.dir/lib/egsl/egsl.o[0m
+[ 44%] [32mBuilding C object sm/lib/options/CMakeFiles/options.dir/options_interface.o[0m
+[ 45%] [32mBuilding C object sm/CMakeFiles/csm.dir/lib/egsl/egsl_conversions.o[0m
+[ 46%] [32m[1mLinking C static library liboptions.a[0m
+[ 46%] [32mBuilding C object sm/CMakeFiles/csm.dir/lib/egsl/egsl_misc.o[0m
+[ 46%] Built target options
+[35m[1mScanning dependencies of target json-c[0m
+[ 47%] [32mBuilding C object sm/lib/json-c/CMakeFiles/json-c.dir/arraylist.o[0m
+[ 48%] [32mBuilding C object sm/CMakeFiles/csm.dir/lib/egsl/egsl_ops.o[0m
+[ 48%] [32mBuilding C object sm/lib/json-c/CMakeFiles/json-c.dir/debug.o[0m
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/debug.c:[m[K In function ‘[01m[Kmc_abort[m[K’:
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/debug.c:50:4:[m[K [01;35m[Kwarning: [m[Kimplicit declaration of function ‘[01m[Kvsyslog[m[K’; did you mean ‘[01m[Ksyslog[m[K’? [[01;35m[K-Wimplicit-function-declaration[m[K]
+    [01;35m[Kvsyslog[m[K(LOG_ERR, msg, ap);
+    [01;35m[K^~~~~~~[m[K
+    [32m[Ksyslog[m[K
+[ 49%] [32mBuilding C object sm/lib/json-c/CMakeFiles/json-c.dir/json_object.o[0m
+[ 50%] [32mBuilding C object sm/CMakeFiles/csm.dir/lib/gpc/gpc.o[0m
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_object.c:[m[K In function ‘[01m[Kjson_object_object_add[m[K’:
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_object.c:274:37:[m[K [01;35m[Kwarning: [m[Kimplicit declaration of function ‘[01m[Kstrdup[m[K’; did you mean ‘[01m[Kstrcmp[m[K’? [[01;35m[K-Wimplicit-function-declaration[m[K]
+   lh_table_insert(this->o.c_object, [01;35m[Kstrdup[m[K(key), val);
+                                     [01;35m[K^~~~~~[m[K
+                                     [32m[Kstrcmp[m[K
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_object.c:274:37:[m[K [01;35m[Kwarning: [m[Kpassing argument 2 of ‘[01m[Klh_table_insert[m[K’ makes pointer from integer without a cast [[01;35m[K-Wint-conversion[m[K]
+In file included from [01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_object.c:28:0[m[K:
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/linkhash.h:217:12:[m[K [01;36m[Knote: [m[Kexpected ‘[01m[Kvoid *[m[K’ but argument is of type ‘[01m[Kint[m[K’
+ extern int [01;36m[Klh_table_insert[m[K(struct lh_table *t, void *k, void *v);
+            [01;36m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_object.c:[m[K In function ‘[01m[Kjson_object_get_string[m[K’:
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_object.c:459:12:[m[K [01;35m[Kwarning: [m[Kreturn discards ‘[01m[Kconst[m[K’ qualifier from pointer target type [[01;35m[K-Wdiscarded-qualifiers[m[K]
+     return [01;35m[Kjson_object_to_json_string(this)[m[K;
+            [01;35m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[ 50%] [32mBuilding C object sm/lib/json-c/CMakeFiles/json-c.dir/json_tokener.o[0m
+In file included from [01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_tokener.c:20:0[m[K:
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_tokener.c:[m[K In function ‘[01m[Kjson_tokener_parse[m[K’:
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/bits.h:24:27:[m[K [01;35m[Kwarning: [m[Kcast to pointer from integer of different size [[01;35m[K-Wint-to-pointer-cast[m[K]
+ #define error_ptr(error) ([01;35m[K([m[Kvoid*)error)
+                           [01;35m[K^[m[K
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_tokener.c:100:11:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[Kerror_ptr[m[K’
+     obj = [01;36m[Kerror_ptr[m[K(-tok->err);
+           [01;36m[K^~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_tokener.c:[m[K In function ‘[01m[Kjson_tokener_parse_ex[m[K’:
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_tokener.c:451:19:[m[K [01;35m[Kwarning: [m[Kimplicit declaration of function ‘[01m[Kstrdup[m[K’; did you mean ‘[01m[Kstrcmp[m[K’? [[01;35m[K-Wimplicit-function-declaration[m[K]
+  obj_field_name = [01;35m[Kstrdup[m[K(tok->pb->buf);
+                   [01;35m[K^~~~~~[m[K
+                   [32m[Kstrcmp[m[K
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_tokener.c:451:17:[m[K [01;35m[Kwarning: [m[Kassignment makes pointer from integer without a cast [[01;35m[K-Wint-conversion[m[K]
+  obj_field_name [01;35m[K=[m[K strdup(tok->pb->buf);
+                 [01;35m[K^[m[K
+[ 50%] [32mBuilding C object sm/CMakeFiles/csm.dir/lib/gpc/gpc_utils.o[0m
+[ 51%] [32mBuilding C object sm/lib/json-c/CMakeFiles/json-c.dir/json_util.o[0m
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_util.c:[m[K In function ‘[01m[Kjson_object_to_file[m[K’:
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_util.c:102:17:[m[K [01;35m[Kwarning: [m[Kassignment discards ‘[01m[Kconst[m[K’ qualifier from pointer target type [[01;35m[K-Wdiscarded-qualifiers[m[K]
+   if(!(json_str [01;35m[K=[m[K json_object_to_json_string(obj))) { return -1; }
+                 [01;35m[K^[m[K
+[ 52%] [32mBuilding C object sm/CMakeFiles/csm.dir/lib/json-c/arraylist.o[0m
+[ 52%] [32mBuilding C object sm/lib/json-c/CMakeFiles/json-c.dir/linkhash.o[0m
+[ 52%] [32mBuilding C object sm/CMakeFiles/csm.dir/lib/json-c/debug.o[0m
+[ 53%] [32mBuilding C object sm/lib/json-c/CMakeFiles/json-c.dir/printbuf.o[0m
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/debug.c:[m[K In function ‘[01m[Kmc_abort[m[K’:
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/debug.c:50:4:[m[K [01;35m[Kwarning: [m[Kimplicit declaration of function ‘[01m[Kvsyslog[m[K’; did you mean ‘[01m[Ksyslog[m[K’? [[01;35m[K-Wimplicit-function-declaration[m[K]
+    [01;35m[Kvsyslog[m[K(LOG_ERR, msg, ap);
+    [01;35m[K^~~~~~~[m[K
+    [32m[Ksyslog[m[K
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/printbuf.c:[m[K In function ‘[01m[Ksprintbuf[m[K’:
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/printbuf.c:122:16:[m[K [01;35m[Kwarning: [m[Kimplicit declaration of function ‘[01m[Kvasprintf[m[K’; did you mean ‘[01m[Kvsprintf[m[K’? [[01;35m[K-Wimplicit-function-declaration[m[K]
+     if((size = [01;35m[Kvasprintf[m[K(&t, msg, ap)) == -1) return -1;
+                [01;35m[K^~~~~~~~~[m[K
+                [32m[Kvsprintf[m[K
+[ 54%] [32mBuilding C object sm/CMakeFiles/csm.dir/lib/json-c/JSON_checker.o[0m
+[ 54%] [32mBuilding C object sm/lib/json-c/CMakeFiles/json-c.dir/JSON_checker.o[0m
+[ 54%] [32mBuilding C object sm/CMakeFiles/csm.dir/lib/json-c/json_more_utils.o[0m
+[ 55%] [32mBuilding C object sm/lib/json-c/CMakeFiles/json-c.dir/json_more_utils.o[0m
+In file included from [01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_more_utils.c:8:0[m[K:
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_more_utils.c:[m[K In function ‘[01m[Kjson_tokener_parse_len[m[K’:
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/bits.h:24:27:[m[K [01;35m[Kwarning: [m[Kcast to pointer from integer of different size [[01;35m[K-Wint-to-pointer-cast[m[K]
+ #define error_ptr(error) ([01;35m[K([m[Kvoid*)error)
+                           [01;35m[K^[m[K
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_more_utils.c:108:11:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[Kerror_ptr[m[K’
+     obj = [01;36m[Kerror_ptr[m[K(-tok->err);
+           [01;36m[K^~~~~~~~~[m[K
+In file included from [01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_more_utils.c:8:0[m[K:
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_more_utils.c:[m[K In function ‘[01m[Kjson_tokener_parse_len[m[K’:
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/bits.h:24:27:[m[K [01;35m[Kwarning: [m[Kcast to pointer from integer of different size [[01;35m[K-Wint-to-pointer-cast[m[K]
+ #define error_ptr(error) ([01;35m[K([m[Kvoid*)error)
+                           [01;35m[K^[m[K
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_more_utils.c:108:11:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[Kerror_ptr[m[K’
+     obj = [01;36m[Kerror_ptr[m[K(-tok->err);
+           [01;36m[K^~~~~~~~~[m[K
+[ 56%] [32mBuilding C object sm/CMakeFiles/csm.dir/lib/json-c/json_object.o[0m
+[ 56%] [32m[1mLinking C static library libjson-c.a[0m
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_object.c:[m[K In function ‘[01m[Kjson_object_object_add[m[K’:
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_object.c:274:37:[m[K [01;35m[Kwarning: [m[Kimplicit declaration of function ‘[01m[Kstrdup[m[K’; did you mean ‘[01m[Kstrcmp[m[K’? [[01;35m[K-Wimplicit-function-declaration[m[K]
+   lh_table_insert(this->o.c_object, [01;35m[Kstrdup[m[K(key), val);
+                                     [01;35m[K^~~~~~[m[K
+                                     [32m[Kstrcmp[m[K
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_object.c:274:37:[m[K [01;35m[Kwarning: [m[Kpassing argument 2 of ‘[01m[Klh_table_insert[m[K’ makes pointer from integer without a cast [[01;35m[K-Wint-conversion[m[K]
+In file included from [01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_object.c:28:0[m[K:
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/linkhash.h:217:12:[m[K [01;36m[Knote: [m[Kexpected ‘[01m[Kvoid *[m[K’ but argument is of type ‘[01m[Kint[m[K’
+ extern int [01;36m[Klh_table_insert[m[K(struct lh_table *t, void *k, void *v);
+            [01;36m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_object.c:[m[K In function ‘[01m[Kjson_object_get_string[m[K’:
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_object.c:459:12:[m[K [01;35m[Kwarning: [m[Kreturn discards ‘[01m[Kconst[m[K’ qualifier from pointer target type [[01;35m[K-Wdiscarded-qualifiers[m[K]
+     return [01;35m[Kjson_object_to_json_string(this)[m[K;
+            [01;35m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[ 56%] Built target json-c
+[35m[1mScanning dependencies of target egsl[0m
+[ 56%] [32mBuilding C object sm/lib/egsl/CMakeFiles/egsl.dir/egsl.o[0m
+[ 56%] [32mBuilding C object sm/CMakeFiles/csm.dir/lib/json-c/json_tokener.o[0m
+In file included from [01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_tokener.c:20:0[m[K:
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_tokener.c:[m[K In function ‘[01m[Kjson_tokener_parse[m[K’:
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/bits.h:24:27:[m[K [01;35m[Kwarning: [m[Kcast to pointer from integer of different size [[01;35m[K-Wint-to-pointer-cast[m[K]
+ #define error_ptr(error) ([01;35m[K([m[Kvoid*)error)
+                           [01;35m[K^[m[K
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_tokener.c:100:11:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[Kerror_ptr[m[K’
+     obj = [01;36m[Kerror_ptr[m[K(-tok->err);
+           [01;36m[K^~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_tokener.c:[m[K In function ‘[01m[Kjson_tokener_parse_ex[m[K’:
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_tokener.c:451:19:[m[K [01;35m[Kwarning: [m[Kimplicit declaration of function ‘[01m[Kstrdup[m[K’; did you mean ‘[01m[Kstrcmp[m[K’? [[01;35m[K-Wimplicit-function-declaration[m[K]
+  obj_field_name = [01;35m[Kstrdup[m[K(tok->pb->buf);
+                   [01;35m[K^~~~~~[m[K
+                   [32m[Kstrcmp[m[K
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_tokener.c:451:17:[m[K [01;35m[Kwarning: [m[Kassignment makes pointer from integer without a cast [[01;35m[K-Wint-conversion[m[K]
+  obj_field_name [01;35m[K=[m[K strdup(tok->pb->buf);
+                 [01;35m[K^[m[K
+[ 57%] [32mBuilding C object sm/CMakeFiles/csm.dir/lib/json-c/json_util.o[0m
+[ 58%] [32mBuilding C object sm/lib/egsl/CMakeFiles/egsl.dir/egsl_ops.o[0m
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_util.c:[m[K In function ‘[01m[Kjson_object_to_file[m[K’:
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_util.c:102:17:[m[K [01;35m[Kwarning: [m[Kassignment discards ‘[01m[Kconst[m[K’ qualifier from pointer target type [[01;35m[K-Wdiscarded-qualifiers[m[K]
+   if(!(json_str [01;35m[K=[m[K json_object_to_json_string(obj))) { return -1; }
+                 [01;35m[K^[m[K
+[ 58%] [32mBuilding C object sm/CMakeFiles/csm.dir/lib/json-c/linkhash.o[0m
+[ 58%] [32mBuilding C object sm/lib/egsl/CMakeFiles/egsl.dir/egsl_conversions.o[0m
+[ 59%] [32mBuilding C object sm/CMakeFiles/csm.dir/lib/json-c/printbuf.o[0m
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/printbuf.c:[m[K In function ‘[01m[Ksprintbuf[m[K’:
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/printbuf.c:122:16:[m[K [01;35m[Kwarning: [m[Kimplicit declaration of function ‘[01m[Kvasprintf[m[K’; did you mean ‘[01m[Kvsprintf[m[K’? [[01;35m[K-Wimplicit-function-declaration[m[K]
+     if((size = [01;35m[Kvasprintf[m[K(&t, msg, ap)) == -1) return -1;
+                [01;35m[K^~~~~~~~~[m[K
+                [32m[Kvsprintf[m[K
+[ 60%] [32mBuilding C object sm/lib/egsl/CMakeFiles/egsl.dir/egsl_misc.o[0m
+[ 60%] [32mBuilding C object sm/CMakeFiles/csm.dir/lib/options/options.o[0m
+[ 60%] [32m[1mLinking C static library libegsl.a[0m
+[ 61%] [32mBuilding C object sm/CMakeFiles/csm.dir/lib/options/options_interface.o[0m
+[ 61%] Built target egsl
+[35m[1mScanning dependencies of target gpc[0m
+[ 62%] [32mBuilding C object sm/lib/gpc/CMakeFiles/gpc.dir/gpc.o[0m
+[ 63%] [32mBuilding C object sm/CMakeFiles/csm.dir/csm/laser_data_cairo.o[0m
+[ 64%] [32mBuilding C object sm/lib/gpc/CMakeFiles/gpc.dir/gpc_utils.o[0m
+[ 64%] [32m[1mLinking C shared library libcsm.so[0m
+[ 64%] [32m[1mLinking C static library libgpc.a[0m
+[ 64%] Built target csm
+[ 64%] Built target gpc
+[35m[1mScanning dependencies of target ld_resample[0m
+[35m[1mScanning dependencies of target ld_fisher[0m
+[ 64%] [32mBuilding C object sm/CMakeFiles/ld_resample.dir/apps/ld_resample.o[0m
+[ 65%] [32mBuilding C object sm/CMakeFiles/ld_fisher.dir/apps/ld_fisher.o[0m
+[ 65%] [32m[1mLinking C executable ld_fisher[0m
+[ 66%] [32m[1mLinking C executable ld_resample[0m
+[ 66%] Built target ld_resample
+[ 66%] Built target ld_fisher
+[35m[1mScanning dependencies of target sm1[0m
+[35m[1mScanning dependencies of target ld_slip[0m
+[ 66%] [32mBuilding C object sm/CMakeFiles/sm1.dir/apps/sm1.o[0m
+[ 66%] [32mBuilding C object sm/CMakeFiles/ld_slip.dir/apps/ld_slip.o[0m
+[ 67%] [32m[1mLinking C executable sm1[0m
+[ 68%] [32m[1mLinking C executable ld_slip[0m
+[ 68%] Built target sm1
+[35m[1mScanning dependencies of target carmen2json[0m
+[ 68%] Built target ld_slip
+[35m[1mScanning dependencies of target ld_alternate[0m
+[ 68%] [32mBuilding C object sm/CMakeFiles/carmen2json.dir/apps/carmen2json.o[0m
+[ 69%] [32mBuilding C object sm/CMakeFiles/ld_alternate.dir/apps/ld_alternate.o[0m
+[ 70%] [32m[1mLinking C executable carmen2json[0m
+[ 70%] [32m[1mLinking C executable ld_alternate[0m
+[ 70%] Built target ld_alternate
+[ 70%] Built target carmen2json
+[35m[1mScanning dependencies of target ld_smooth[0m
+[35m[1mScanning dependencies of target ld_noise[0m
+[ 71%] [32mBuilding C object sm/CMakeFiles/ld_smooth.dir/apps/ld_smooth.o[0m
+[ 72%] [32mBuilding C object sm/CMakeFiles/ld_noise.dir/apps/ld_noise.o[0m
+[01m[K/home/xavier/catkin_ws/src/csm/sm/apps/ld_smooth.c:[m[K In function ‘[01m[Kconvolve[m[K’:
+[01m[K/home/xavier/catkin_ws/src/csm/sm/apps/ld_smooth.c:64:4:[m[K [01;35m[Kwarning: [m[Kthis ‘[01m[Kif[m[K’ clause does not guard... [[01;35m[K-Wmisleading-indentation[m[K]
+    [01;35m[Kif[m[K(i2<0) i2=0; if(i2>=n) i2=n-1;
+    [01;35m[K^~[m[K
+[01m[K/home/xavier/catkin_ws/src/csm/sm/apps/ld_smooth.c:64:19:[m[K [01;36m[Knote: [m[K...this statement, but the latter is misleadingly indented as if it were guarded by the ‘[01m[Kif[m[K’
+    if(i2<0) i2=0; [01;36m[Kif[m[K(i2>=n) i2=n-1;
+                   [01;36m[K^~[m[K
+[ 73%] [32m[1mLinking C executable ld_noise[0m
+[ 73%] [32m[1mLinking C executable ld_smooth[0m
+[ 73%] Built target ld_smooth
+[35m[1mScanning dependencies of target sm3[0m
+[ 73%] Built target ld_noise
+[ 73%] [32mBuilding C object sm/CMakeFiles/sm3.dir/apps/sm3.o[0m
+[35m[1mScanning dependencies of target json_split[0m
+[ 73%] [32mBuilding C object sm/CMakeFiles/json_split.dir/apps/json_split.o[0m
+[ 74%] [32m[1mLinking C executable sm3[0m
+[ 75%] [32m[1mLinking C executable json_split[0m
+[ 75%] Built target json_split
+[35m[1mScanning dependencies of target json_pipe[0m
+[ 75%] Built target sm3
+[ 75%] [32mBuilding C object sm/CMakeFiles/json_pipe.dir/apps/json_pipe.o[0m
+[35m[1mScanning dependencies of target json_decimate[0m
+[ 75%] [32mBuilding C object sm/CMakeFiles/json_decimate.dir/apps/json_decimate.o[0m
+[ 76%] [32m[1mLinking C executable json_pipe[0m
+[ 77%] [32m[1mLinking C executable json_decimate[0m
+[ 77%] Built target json_pipe
+[ 77%] Built target json_decimate
+[35m[1mScanning dependencies of target ld_recover[0m
+[35m[1mScanning dependencies of target ld_purify[0m
+[ 77%] [32mBuilding C object sm/CMakeFiles/ld_recover.dir/apps/ld_recover.o[0m
+[ 77%] [32mBuilding C object sm/CMakeFiles/ld_purify.dir/apps/ld_purify.o[0m
+[ 78%] [32m[1mLinking C executable ld_recover[0m
+[ 79%] [32m[1mLinking C executable ld_purify[0m
+[ 79%] Built target ld_purify
+[ 79%] Built target ld_recover
+[35m[1mScanning dependencies of target ld_select[0m
+[35m[1mScanning dependencies of target ld_cluster_curv[0m
+[ 79%] [32mBuilding C object sm/CMakeFiles/ld_select.dir/apps/ld_select.o[0m
+[ 80%] [32mBuilding C object sm/CMakeFiles/ld_cluster_curv.dir/apps/ld_cluster_curv.o[0m
+[ 81%] [32m[1mLinking C executable ld_select[0m
+[01m[K/home/xavier/catkin_ws/src/csm/sm/apps/ld_cluster_curv.c:[m[K In function ‘[01m[Kcluster_convolve[m[K’:
+[01m[K/home/xavier/catkin_ws/src/csm/sm/apps/ld_cluster_curv.c:63:4:[m[K [01;35m[Kwarning: [m[Kthis ‘[01m[Kif[m[K’ clause does not guard... [[01;35m[K-Wmisleading-indentation[m[K]
+    [01;35m[Kif[m[K(i2<0) i2=0; if(i2>=n) i2=n-1;
+    [01;35m[K^~[m[K
+[01m[K/home/xavier/catkin_ws/src/csm/sm/apps/ld_cluster_curv.c:63:19:[m[K [01;36m[Knote: [m[K...this statement, but the latter is misleadingly indented as if it were guarded by the ‘[01m[Kif[m[K’
+    if(i2<0) i2=0; [01;36m[Kif[m[K(i2>=n) i2=n-1;
+                   [01;36m[K^~[m[K
+[ 81%] Built target ld_select
+[ 81%] [32m[1mLinking C executable ld_cluster_curv[0m
+[35m[1mScanning dependencies of target sm2[0m
+[ 81%] [32mBuilding C object sm/CMakeFiles/sm2.dir/apps/sm2.o[0m
+[ 81%] Built target ld_cluster_curv
+[35m[1mScanning dependencies of target ld_linearize[0m
+[ 82%] [32mBuilding C object sm/CMakeFiles/ld_linearize.dir/apps/ld_linearize.o[0m
+[ 83%] [32m[1mLinking C executable sm2[0m
+[ 83%] [32m[1mLinking C executable ld_linearize[0m
+[ 83%] Built target sm2
+[35m[1mScanning dependencies of target json2matlab[0m
+[ 83%] [32mBuilding C object sm/CMakeFiles/json2matlab.dir/apps/json2matlab.o[0m
+[ 83%] Built target ld_linearize
+[35m[1mScanning dependencies of target ld_exp_tro1[0m
+[ 84%] [32mBuilding C object sm/CMakeFiles/ld_exp_tro1.dir/apps/ld_exp_tro1.o[0m
+[ 85%] [32m[1mLinking C executable json2matlab[0m
+[01m[K/home/xavier/catkin_ws/src/csm/sm/apps/ld_exp_tro1.c:[m[K In function ‘[01m[Kmain[m[K’:
+[01m[K/home/xavier/catkin_ws/src/csm/sm/apps/ld_exp_tro1.c:76:8:[m[K [01;35m[Kwarning: [m[K‘[01m[Kout2[m[K’ may be used uninitialized in this function [[01;35m[K-Wmaybe-uninitialized[m[K]
+   [01;35m[Kout1 = out2[m[K;
+   [01;35m[K~~~~~^~~~~~[m[K
+[ 85%] Built target json2matlab
+[ 85%] [32m[1mLinking C executable ld_exp_tro1[0m
+[35m[1mScanning dependencies of target test_json[0m
+[ 86%] [32mBuilding C object sm/CMakeFiles/test_json.dir/apps/test_json.o[0m
+[ 86%] Built target ld_exp_tro1
+[35m[1mScanning dependencies of target json2carmen[0m
+[ 86%] [32m[1mLinking C executable test_json[0m
+[ 87%] [32mBuilding C object sm/CMakeFiles/json2carmen.dir/apps/json2carmen.o[0m
+[ 88%] [32m[1mLinking C executable json2carmen[0m
+[ 88%] Built target test_json
+[35m[1mScanning dependencies of target test_json_ld[0m
+[ 89%] [32mBuilding C object sm/CMakeFiles/test_json_ld.dir/apps/test_json_ld.o[0m
+[ 89%] Built target json2carmen
+[35m[1mScanning dependencies of target sm_animate[0m
+[ 90%] [32mBuilding C object sm/CMakeFiles/sm_animate.dir/apps/sm_animate.o[0m
+[ 90%] [32m[1mLinking C executable test_json_ld[0m
+[ 90%] Built target test_json_ld
+[ 90%] [32m[1mLinking C executable sm_animate[0m
+[35m[1mScanning dependencies of target log2pdf[0m
+[ 91%] [32mBuilding C object sm/CMakeFiles/log2pdf.dir/apps/log2pdf.o[0m
+[ 91%] Built target sm_animate
+[35m[1mScanning dependencies of target test_math_utils_sanity[0m
+[ 92%] [32mBuilding C object sm/CMakeFiles/test_math_utils_sanity.dir/csm/test_math_utils_sanity.o[0m
+[ 92%] [32m[1mLinking C executable log2pdf[0m
+[ 92%] [32m[1mLinking C executable test_math_utils_sanity[0m
+[ 92%] Built target log2pdf
+[35m[1mScanning dependencies of target ld_remove_doubles[0m
+[ 92%] [32mBuilding C object sm/CMakeFiles/ld_remove_doubles.dir/apps/ld_remove_doubles.o[0m
+[ 92%] Built target test_math_utils_sanity
+[01m[K/home/xavier/catkin_ws/src/csm/sm/apps/ld_remove_doubles.c:[m[K In function ‘[01m[Kmain[m[K’:
+[01m[K/home/xavier/catkin_ws/src/csm/sm/apps/ld_remove_doubles.c:25:2:[m[K [01;35m[Kwarning: [m[K‘[01m[Kdebug[m[K’ may be used uninitialized in this function [[01;35m[K-Wmaybe-uninitialized[m[K]
+  [01;35m[Ksm_debug_write(debug)[m[K;
+  [01;35m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[35m[1mScanning dependencies of target json_extract_field[0m
+[ 92%] [32mBuilding C object sm/CMakeFiles/json_extract_field.dir/apps/json_extract_field.o[0m
+[ 93%] [32m[1mLinking C executable ld_remove_doubles[0m
+[ 94%] [32m[1mLinking C executable json_extract_field[0m
+[ 94%] Built target ld_remove_doubles
+[35m[1mScanning dependencies of target json_extract[0m
+[ 94%] [32mBuilding C object sm/CMakeFiles/json_extract.dir/apps/json_extract.o[0m
+[ 94%] Built target json_extract_field
+[35m[1mScanning dependencies of target test_options[0m
+[ 95%] [32mBuilding C object sm/lib/options/CMakeFiles/test_options.dir/test_options.o[0m
+[ 96%] [32m[1mLinking C executable json_extract[0m
+[ 97%] [32m[1mLinking C executable test_options[0m
+[ 97%] Built target json_extract
+[ 97%] Built target test_options
+[35m[1mScanning dependencies of target test2[0m
+[35m[1mScanning dependencies of target egsl_test[0m
+[ 98%] [32mBuilding C object sm/lib/egsl/CMakeFiles/egsl_test.dir/egsl_test.o[0m
+[ 99%] [32mBuilding C object sm/lib/json-c/CMakeFiles/test2.dir/test2.o[0m
+[ 99%] [32m[1mLinking C executable test2[0m
+[ 99%] [32m[1mLinking C executable egsl_test[0m
+[ 99%] Built target test2
+[35m[1mScanning dependencies of target egsl_test_allocation[0m
+[ 99%] Built target egsl_test
+[100%] [32mBuilding C object sm/lib/egsl/CMakeFiles/egsl_test_allocation.dir/egsl_test_allocation.o[0m
+[100%] [32m[1mLinking C executable egsl_test_allocation[0m
+[100%] Built target egsl_test_allocation

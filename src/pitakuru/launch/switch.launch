@@ -1,7 +1,0 @@
-<?xml version="1.0"?>
-<launch>
-    <node pkg="pitakuru" type="switch.py" name="switch">
-        <rosparam command="load" file="$(find pitakuru)/config/switch.yaml" />
-    </node>
-    <node pkg="pitakuru" type="states.py" name="states"/>
-</launch>

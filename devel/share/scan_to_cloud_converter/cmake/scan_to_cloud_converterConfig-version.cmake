@@ -1,0 +1,1 @@
+/home/xavier/catkin_ws/devel/.private/scan_to_cloud_converter/share/scan_to_cloud_converter/cmake/scan_to_cloud_converterConfig-version.cmake

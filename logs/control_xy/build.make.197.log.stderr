@@ -1,7 +1,0 @@
-[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_node_yaw.cpp:14:10:[m[K [01;31m[Kfatal error: [m[Kpitakuru/State.h: No such file or directory
- #include [01;31m[K<pitakuru/State.h>[m[K
-          [01;31m[K^~~~~~~~~~~~~~~~~~[m[K
-compilation terminated.
-make[2]: *** [CMakeFiles/control_xy_node.dir/src/control_xy_node_yaw.cpp.o] Error 1
-make[1]: *** [CMakeFiles/control_xy_node.dir/all] Error 2
-make: *** [all] Error 2

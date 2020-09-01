@@ -16,45 +16,63 @@ class SwitchInput(object):
         self.button_states = dict()
         self.current_bumper = 1 
 
-        self.sub = rospy.Subscriber('state', State, self.callback)
+        #self.sub = rospy.Subscriber('state', State, self.callback)
         self.sub_alerts = rospy.Subscriber('/alerts', Int16, self.alerts_cb,queue_size=1)
         self.pub = rospy.Publisher('trigger_action', TriggerAction, queue_size=5)
         rospy.on_shutdown(self.shutdown)
         self.alert = 0
         self.mode = 2
+        self.collision=False
 #//6 collision 5 danger 4 warning 3 karugamo 2 idle 1 manual
 
 
     def alerts_cb(self,data):
         self.mode=data.data
-        if(self.mode==5):#changed 4 danger/warning
+        
+        if(self.mode==6):##handles collision and overrides the others
+            self.ser.write(b'4')
+            self.collision=True
+        if(self.mode==2 and self.collision==True):
+            self.collision=False
+            self.ser.write(b'2')
+
+        if(self.alert==0 and self.mode==2 and self.collision==False):#handles modes without danger
+            self.ser.write(b'2')
+        elif(self.alert==0 and self.mode==1 and self.collision==False):
+            self.ser.write(b'1')
+        elif(self.alert==0 and self.mode==3 and self.collision==False):
+            self.ser.write(b'6')
+            
+        if(self.mode==5 and self.collision==False):#changed 4 danger/warning
             self.ser.write(b'5')
             self.alert = 1
-        elif(self.alert==1 and self.mode==2):
+        elif(self.alert==1 and self.mode==2 and self.collision==False):
             self.alert = 0
             self.ser.write(b'2')
-        elif(self.alert==1 and self.mode==1):
+        elif(self.alert==1 and self.mode==1 and self.collision==False):
             self.alert = 0
             self.ser.write(b'1')
-        elif(self.alert==1 and self.mode==3):
+        elif(self.alert==1 and self.mode==3 and self.collision==False):
             self.alert = 0
             self.ser.write(b'6')
-        elif(self.alert==1 and self.mode==8):
+        elif(self.alert==1 and self.mode==8 and self.collision==False):
             self.alert = 0
             self.ser.write(b'3') 
-        elif(self.alert==0 and self.mode==8):
+        elif(self.alert==0 and self.mode==8 and self.collision==False):
             self.ser.write(b'3')
+        
         
 
     def request_current_state(self):
         self.ser.write(b'7')
 
-    def callback(self, state):
-        self.set_LED_color(state)
+    #def callback(self, state):
+        #self.set_LED_color(state)
 
     def shutdown(self):
         rospy.logwarn("shutting down switch node")
-        self.set_LED_color()
+        #self.set_LED_color()
+        self.ser.write(b'0')
         self.ser.close()
     
     def update(self):
@@ -98,25 +116,25 @@ class SwitchInput(object):
     def getButton(self,name):
         return self.button_states[name]
 
-    def set_LED_color(self, state=State):
-        if state.state == State.STATE_ACTIVE_KARUGAMO and self.alert != 1:
+    #def set_LED_color(self, state=State):
+        #if state.state == State.STATE_ACTIVE_KARUGAMO and self.alert != 1:
             # rgb = 110 (yellow)
-            self.ser.write(b'6')
-        elif state.state == State.STATE_IDLE and self.alert != 1:
+            ##self.ser.write(b'6')
+        #elif state.state == State.STATE_IDLE and self.alert != 1:
             # rgb = 010 (green)
-            self.ser.write(b'2')
-        elif state.state == State.STATE_ACTIVE_MANUAL and self.alert != 1:
+            ##self.ser.write(b'2')
+        #elif state.state == State.STATE_ACTIVE_MANUAL and self.alert != 1:
             # rgb = 001 (blue)
-            self.ser.write(b'1')
-        elif state.state == State.STATE_ERROR_OBSTACLE or self.mode == 5:
+            ##self.ser.write(b'1')
+        #elif state.state == State.STATE_ERROR_OBSTACLE or self.mode == 5:
             # rgb = 101 (violet)
-            self.ser.write(b'5')
-        elif state.state == State.STATE_ERROR_COLLISION:
+            ##self.ser.write(b'5')
+        #elif state.state == State.STATE_ERROR_COLLISION:
             # rgb = 100 (red)
-            self.ser.write(b'4')
-        else:
+            ##self.ser.write(b'4')
+        #else:
             # rgb = 000 (off)
-            self.ser.write(b'0')
+            ##self.ser.write(b'0')
 
 
 if __name__ == "__main__":

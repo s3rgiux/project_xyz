@@ -31,8 +31,8 @@ import rosparam
 import atexit
 
 
-SLEEP_TIME = 0.05
-#200mm diameter
+SLEEP_TIME = 0.019
+#200mm diameter0
 
 
 class PitWheels:
@@ -42,11 +42,12 @@ class PitWheels:
         #self.brinco=False
         self.obst_pub = rospy.Publisher('obstacle_closest', Float32, queue_size=1)
         #self.ang_pub = rospy.Publisher("peopAng2",Float32, queue_size=1)
-        self.ang_pub = rospy.Publisher("peopAng2",Vector3, queue_size=1)
+        self.ang_pub = rospy.Publisher("peopAng2",Vector3, queue_size=4)
         rospy.Subscriber('/ang_peop_detect_img', Float32, self.ang_cam_callback, queue_size=1)
         self.dist_pub = rospy.Publisher("peopDist2",Float32, queue_size=1)
         #rospy.Subscriber('/cmd_vel', Twist, self.teleop_callback, queue_size=1)
         rospy.Subscriber('/obstacles', Obstacles, self.obstacles_callback, queue_size=1)
+        rospy.Subscriber('/tracked', Vector3, self.tracked_callback, queue_size=2)
         #rospy.Subscriber('/euler2', Float64, self.angle_callback, queue_size=1)
         self.obsta  = Float32()
         self.detected=0
@@ -54,6 +55,7 @@ class PitWheels:
         self.angulo= Float32()
         self.distancia= Float32()
         self.ang_dist= Vector3()
+        self.tracked_obj= Vector3()
         self.front_detection = rospy.get_param("/obj_track/front_detection")
         self.side_detection = rospy.get_param("/obj_track/side_detection")
         self.timex=0
@@ -61,6 +63,10 @@ class PitWheels:
         self.first_detection=False
 	self.tracked=False
         self.ang_cam=-500
+        self.tracked_x=-50
+        self.tracked_y=-50
+	self.tracked_ang=0
+        self.radius_follow=0.35
     
     def pubobs(self):
         if(time.time()-self.last_time>0.1):
@@ -75,7 +81,13 @@ class PitWheels:
     def ang_cam_callback(self,data):
         self.ang_cam=data.data
 
+    def tracked_callback(self,data):
+        self.tracked_x=data.x
+        self.tracked_y=data.y
+        self.tracked_ang=data.z
+
     def obstacles_callback(self, data):
+        lst = []
         for x in data.circles:
             if x.center.x<-0.3 and x.center.x>-self.front_detection and x.center.y<self.side_detection and x.center.y>-self.side_detection: 
                 #print("#########")
@@ -88,28 +100,56 @@ class PitWheels:
                 dist =np.sqrt(x.center.x*x.center.x+x.center.y*x.center.y)
                 #print(ang)
                 #print(dist*120)
-                track=1
+                #track=1
                 self.angulo.data=ang
                 self.distancia.data=dist*100
                 #self.ang_dist.x=ang
                 #self.ang_dist.y=dist*100
-                self.ang_dist.x=x.center.x
-                self.ang_dist.y=x.center.y#dist*100
-                
-                self.ang_pub.publish(self.ang_dist)
+                if self.tracked_x != -50 and self.tracked_y != -50 and x.center.x<=(self.tracked_x+self.radius_follow) and x.center.x>=(self.tracked_x-self.radius_follow) and x.center.y <=(self.tracked_y+self.radius_follow) and x.center.y >=(self.tracked_y-self.radius_follow):#then we have tracked object
+                    lst.append(x)
+                    #self.ang_dist.x=x.center.x
+                    #self.ang_dist.y=x.center.y#dist*100
+                    #self.ang_pub.publish(self.ang_dist)
+                else:
+                    self.ang_dist.x=x.center.x
+                    self.ang_dist.y=x.center.y#dist*100
+                    self.ang_pub.publish(self.ang_dist)
 
                 #self.ang_pub.publish(self.angulo)
                 #self.dist_pub.publish(self.distancia)
-                print(x)
+                #print(x)
                 self.last_time=time.time()#self.timex
-                #self.timex=time.time()#rospy.Time.now()
-                #print(self.timex-last_time)
-                #print("#########")
-            #else:
-                #track=0
-                #self.angulo.data=-500
-                #self.distancia.data=0
-                #self.obsta.data = 0
+        closest= Vector3() 
+        aux=[10000,10000]
+        val_aux=10000
+        ang_aux=1500
+        lst2 = []
+        dst_aux=150000
+        if len(lst)!=0:
+            for n in (lst):
+                e_x=np.abs(self.tracked_x-n.center.x)
+                e_y=np.abs(self.tracked_y-n.center.y)
+                dist=np.sqrt(e_x*e_x+e_y*e_y)
+                ang_obj= 90+np.arctan2(x.center.x, x.center.y) * 180 / np.pi
+                err_ang= self.tracked_ang-ang_obj
+                if dist<val_aux and err_ang<ang_aux: #and err_ang<7 and err_ang>-7 :
+                    val_aux=dist
+                    ang_aux=err_ang
+                    #closest.x=n.center.x
+                    #closest.y=n.center.y
+                    lst2.append(n)
+            if len(lst2)!=0:
+                for n in (lst2):
+                    dist=np.sqrt(n.center.x*n.center.x+n.center.y*n.center.y)
+                    if dist<dst_aux: #and err_ang<7 and err_ang>-7 :
+                        dst_aux=dist
+                        closest.x=n.center.x
+                        closest.y=n.center.y
+                self.ang_pub.publish(closest)        
+                #print("HHHHH")
+                #print(closest.x)
+                #print(closest.y)
+            #print(lst)           
     
     
 

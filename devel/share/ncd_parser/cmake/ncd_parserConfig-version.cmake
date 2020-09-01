@@ -1,0 +1,1 @@
+/home/xavier/catkin_ws/devel/.private/ncd_parser/share/ncd_parser/cmake/ncd_parserConfig-version.cmake

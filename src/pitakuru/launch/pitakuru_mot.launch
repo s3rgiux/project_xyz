@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-<launch>
-
-<!-- keiganモーター制御/オドメトリ算出ノード -->
-<node pkg="pypro" name="pitakuru_wheels" type="pitakuruWheels.py">
-<param name="max_speed"    type="double"	value="2200"/>
-</node>
-
-</launch>

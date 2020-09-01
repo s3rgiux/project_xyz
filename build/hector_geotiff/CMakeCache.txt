@@ -398,8 +398,8 @@ QT_QKRCODECS_PLUGIN_DEBUG:FILEPATH=QT_QKRCODECS_PLUGIN_DEBUG-NOTFOUND
 //Path to a library.
 QT_QKRCODECS_PLUGIN_RELEASE:FILEPATH=/usr/lib/aarch64-linux-gnu/qt4/plugins/codecs/libqkrcodecs.so
 
-//Where can the qmake library be found
-QT_QMAKE_EXECUTABLE:FILEPATH=/usr/bin/qmake
+//Where can the qmake-qt4 library be found
+QT_QMAKE_EXECUTABLE:FILEPATH=/usr/bin/qmake-qt4
 
 //Path to a library.
 QT_QMNG_PLUGIN_DEBUG:FILEPATH=QT_QMNG_PLUGIN_DEBUG-NOTFOUND
@@ -1180,7 +1180,7 @@ CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 //Details about finding PythonInterp
 FIND_PACKAGE_MESSAGE_DETAILS_PythonInterp:INTERNAL=[/usr/bin/python2][v2.7.17()]
 //Details about finding Qt4
-FIND_PACKAGE_MESSAGE_DETAILS_Qt4:INTERNAL=[/usr/bin/qmake][/usr/lib/aarch64-linux-gnu/qt4/bin/moc][/usr/lib/aarch64-linux-gnu/qt4/bin/rcc][/usr/include/qt4][/usr/lib/aarch64-linux-gnu][/usr/include/qt4/QtCore][/usr/lib/aarch64-linux-gnu/libQtCore.so][/usr/include/qt4/QtGui][/usr/lib/aarch64-linux-gnu/libQtGui.so][/usr/lib/aarch64-linux-gnu/qt4/bin/uic][v4.8.7(4.6)]
+FIND_PACKAGE_MESSAGE_DETAILS_Qt4:INTERNAL=[/usr/bin/qmake-qt4][/usr/lib/aarch64-linux-gnu/qt4/bin/moc][/usr/lib/aarch64-linux-gnu/qt4/bin/rcc][/usr/include/qt4][/usr/lib/aarch64-linux-gnu][/usr/include/qt4/QtCore][/usr/lib/aarch64-linux-gnu/libQtCore.so][/usr/include/qt4/QtGui][/usr/lib/aarch64-linux-gnu/libQtGui.so][/usr/lib/aarch64-linux-gnu/qt4/bin/uic][v4.8.7(4.6)]
 //Details about finding Threads
 FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
 GMOCK_FROM_SOURCE_FOUND:INTERNAL=TRUE
@@ -1313,7 +1313,7 @@ QT_QJPEG_PLUGIN_RELEASE-ADVANCED:INTERNAL=1
 QT_QKRCODECS_PLUGIN_DEBUG-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: QT_QKRCODECS_PLUGIN_RELEASE
 QT_QKRCODECS_PLUGIN_RELEASE-ADVANCED:INTERNAL=1
-QT_QMAKE_EXECUTABLE_LAST:INTERNAL=/usr/bin/qmake
+QT_QMAKE_EXECUTABLE_LAST:INTERNAL=/usr/bin/qmake-qt4
 //ADVANCED property for variable: QT_QMNG_PLUGIN_DEBUG
 QT_QMNG_PLUGIN_DEBUG-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: QT_QMNG_PLUGIN_RELEASE
