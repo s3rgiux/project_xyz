@@ -147,7 +147,7 @@ void stateCallback(const control_xy::TriggerAction& data)
 			
 		//	ROS_INFO("Yuhu");
 		//	ROS_INFO("%s ",data.trigger.c_str());
-		}else if(data.trigger=="break_release_button_on"){
+		}else if(data.trigger=="break_release_button_on" && collision ==true){
 			collision = false;
 			mode_idle=true;
 			mode_manual=false;
@@ -170,7 +170,54 @@ void stateCallback(const control_xy::TriggerAction& data)
 			tracked_distance=0;
 		//	ROS_INFO("Yuhu");
 		//	ROS_INFO("%s ",data.trigger.c_str());
-		}	
+		} else if(data.trigger=="karugamo_button_on" && mode_follow==false){
+			mode_idle=false;
+			mode_karugamo=false;
+			mode_manual=false;
+			mode_follow=true;
+			tracking_people=false;
+			start_route = false;
+			mode_auto=false;
+			ctrl_front_follow= 0;
+			ctrl_ang= 0;
+			ctrl_front_manual= 0;
+			ctrl_side_manual= 0;
+			vel_steer.linear.x=0;
+			vel_steer.angular.z=0;
+			speed_publisher.publish(vel_steer);
+			alerts_command.data=8;// 8people follow 5 danger 4 warning 3 karugamo 2 idle 1 manual
+     			//alerts_publisher.publish(alerts_command);
+     			alerts_publisher.publish(alerts_command);
+
+			ROS_INFO("Mode People Follow");
+			
+			
+			//alerts_command.data=7;//7 peop follow 5 danger 4 warning 3 karugamo 2 idle 1 manual
+			
+			ros::Duration(0.5).sleep(); // sleep for half a second
+		} else if(data.trigger=="karugamo_button_on" && mode_follow==true){
+			collision = false;
+			mode_idle=true;
+			mode_manual=false;
+			mode_karugamo=false;
+			mode_follow=false;
+			danger=false;
+			free_way=true;
+			ctrl_front_follow= 0;
+			ctrl_ang= 0;
+			ctrl_front_manual= 0;
+			ctrl_side_manual= 0;
+			alerts_command.data=2;// 5 danger 4 warning 3 karugamo 2 idle 1 manual
+     			alerts_publisher.publish(alerts_command);
+			vel_steer.linear.x= 0;
+                        vel_steer.angular.z= 0;
+			speed_publisher.publish(vel_steer);
+                        tracked_angle=0;
+                        ang_peop_lidar=0;
+			distanciaPeople2=0;
+			tracked_distance=0;
+			ros::Duration(0.5).sleep(); // sleep for half a second
+		}
 		
 	}
 void setPointsCallback(const geometry_msgs::Twist& twist)

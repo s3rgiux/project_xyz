@@ -451,9 +451,9 @@ class PitWheels:
     def shutdown(self):
         #rospy.sleep(1)
         self.left_w_dev.disable_handler()
-        self.left_w_dev.close()
-        sleep(0.1)
         self.right_w_dev.disable_handler()
+        self.left_w_dev.close()
+        sleep(0.1)        
         self.right_w_dev.close()
         sleep(0.1)
         #self.right_w_dev.finish_auto_serial_reading()  # 切断前にモーターの通知を停止
