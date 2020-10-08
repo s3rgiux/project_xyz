@@ -37,3 +37,4 @@ control_xy
 /home/xavier/catkin_ws/devel/.private/control_xy/lib/python2.7/dist-packages/control_xy/msg/_TriggerAction.py /home/xavier/catkin_ws/devel/lib/python2.7/dist-packages/control_xy/msg/_TriggerAction.py
 /home/xavier/catkin_ws/devel/.private/control_xy/lib/pkgconfig/control_xy.pc /home/xavier/catkin_ws/devel/lib/pkgconfig/control_xy.pc
 /home/xavier/catkin_ws/devel/.private/control_xy/lib/control_xy/control_xy_node /home/xavier/catkin_ws/devel/lib/control_xy/control_xy_node
+/home/xavier/catkin_ws/devel/.private/control_xy/lib/control_xy/control_xy_node_spline /home/xavier/catkin_ws/devel/lib/control_xy/control_xy_node_spline

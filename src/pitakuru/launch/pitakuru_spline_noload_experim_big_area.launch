@@ -1,0 +1,146 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="publish_images" default="true"/>
+    <arg name="jsdev" default="/dev/input/js0"/>
+    <rosparam file="$(find pitakuru)/config/bright_env/pitakuru.yaml" command="load" ns="pitakuru" />
+
+    <!-- カメラから画像を読み込んで配信 -->
+   <node name="uvc_camera_node" pkg="uvc_camera" type="uvc_camera_node" output="screen"> -->
+    <!-- <param name="device" type="string" value="/dev/input/by-id/usb-KYE_Systems_Corp._USB_Camera_200901010001-event-if00"/> -->
+    <param name="device" type="string" value="/dev/video0"/>
+    <param name="width" type="int" value="640"/> <!-- 800 --> <!-- if you move image size you also need to modify cyaml -->
+    <param name="height" type="int" value="480"/> <!-- 600 -->
+    <param name="fps" type="int" value="7"/><!-- 24 -->
+    <param name="camera_info_url" value="file://$(find pitakuru)/config/bright_env/aruco/camera640.yaml"/><!-- camera600.yaml -->
+    </node>
+
+    <!-- ArUco検知 -->
+ <!--    <node pkg="aruco_detect" type="aruco_detect" name="aruco_detect">
+        <rosparam command="load" file="$(find pitakuru)/config/bright_env/aruco/aruco.yaml"/>
+        <param name="publish_images" value="$(arg publish_images)"/>
+        <remap from="camera" to="/image_raw"/>
+        
+    </node>  -->  <!--<remap from="camera" to="/usb_cam/image_raw"/>-->
+
+
+<node pkg="pitakuru" type="controller.py" name="controller"/>
+
+
+<!-- launch file for ps4 controller -->
+<include file="$(find joy)/launch/joytestps4.launch"/> 
+
+<!-- conversion needed from quaternions to euler needed for control_xy node-->
+<node pkg="conversion" type="quatCo.py" name="quatCo" output="screen">	
+</node>
+
+<!-- conversion needed from quaternions to euler needed for control_xy node-->	
+<node pkg="conversion" type="quatCo2.py" name="quatCo2" output="screen"> 
+</node>
+
+
+    <!-- スイッチの入出力制御 -->
+    <node pkg="pitakuru" type="switch.py" name="switch">
+        <rosparam command="load" file="$(find pitakuru)/config/bright_env/switch.yaml" />
+    </node>
+
+    <!-- ステートマシン (状態遷移) -->
+    <node pkg="pitakuru" type="states.py" name="states"/>
+
+    <!-- 速度指令変換 -->
+    <rosparam command="load" file="$(find pitakuru)/config/bright_env/movement.yaml" />
+    <node pkg="pitakuru" type="movement.py" name="movement" />
+    <node pkg="pitakuru" type="karugamo.py" name="karugamo" />
+    <node pkg="pitakuru" type="manual.py" name="manual" />
+    
+    <!-- 音声再生 -->
+    <node pkg="pitakuru" type="sound.py" name="sound" />
+
+    <!-- package for configure obstacle detector node -->
+    <include file="$(find obstacle_detector)/launch/test_experim.launch"/>  
+
+    <!-- opencv detect people package -->
+    <node pkg="pitakuru" type="people_detect.py" name="people_detect"/>
+
+<!-- keiganモーター制御/オドメトリ算出ノード -->
+<node pkg="pypro" name="pitakuru_wheels" type="pitakuruWheels.py">
+<param name="max_speed"    type="double"	value="3500"/>  <!-- max speed tah can be sent to motors-->
+</node>
+
+
+
+<!-- control xy is the main program build in c++ to make it more fast needs to be compiled if a modification is made-->
+<node pkg="control_xy" type="control_xy_node_spline" name="control_xy" output="screen">
+<param name="break_distance"    type="double"	value="0.55"/> <!-- breaking distance to  enter in danger zone  -->
+<param name="break_danger"    type="double"	value="0.35"/><!-- 0.9--><!-- (not used depercated)distance to  enter in warning zone  -->	
+<param name="low_vel_gain_karugamo"    type="double"	value="15"/> <!-- (not used depercated)karugamo gain  angle control   -->
+<param name="high_vel_gain_karugamo"    type="double"	value="17"/><!-- 10--> <!-- (not used depercated)karugamo gain  angle control   -->
+<param name="low_vel_gain_follow"    type="double"	value="11"/><!-- 17--><!-- people follow gain  angle control   -->
+<param name="high_vel_gain_follow"    type="double"	value="11"/> <!-- 17--><!-- people follow gain  angle control   -->
+<param name="frontal_gain_karugamo"    type="double"	value="17"/> <!-- (not used depercated)karugamo gain  angle control   -->
+<param name="frontal_gain_follow"    type="double"	value="2500"/> <!-- gain for frontal control   -->
+<param name="frontal_gain_manual"    type="double"	value="00"/> <!-- (not used depercated)gain frontal control   -->
+<param name="smooth_accel"    type="double"	value="0.98"/> <!-- acceletartion smooth max value up to 0.99   -->
+<param name="max_speed_karugamo"    type="double"	value="1500"/> <!-- (not used depercated)max speed value for karugamo   -->
+<param name="max_speed_follow"    type="double"	value="1500"/><!--1500--><!-- 3000--> <!-- max speed value for frontal people follow-->
+<param name="max_speed_manual"    type="double"	value="1500"/>  <!--15000--><!-- 3000--> <!-- max speed value for frontal joystick-->
+<param name="max_speed_side_manual"    type="double"	value="800"/> <!-- max speed value for side joystick-->
+<param name="radius_follow"    type="double"	value="0.5"/> <!--1.0--><!-- radius checking zone to track people once that is already picked for tracking-->
+</node>
+
+
+<!-- extract obstacles form region of interest and send to control_xy -->
+
+<node pkg="obs_extract" type="main.py" name="obj_track" >
+<param name="front_detection"    type="double"	value="4.7"/> 
+<param name="side_detection"    type="double"	value="1.7"/>  
+</node>
+
+<!-- rosbag nodes -->
+<arg name="record_flag" default="false" /> <!-- set to true if i want to record-->
+
+<node pkg="rosbag" type="record" name="rosbag_record"
+       args = "record -o /home/xavier/warehouse.bag /alerts /camera_info /cmd_vel /diagnostics /euler /fiducial_vertices /image_raw /j0/joy  /movement/karugamo/joy /movement/manual/joy /obstacle_closest /obstacles /pcl /peopAng /peopDist /raw_obstacles /rear_scan /rosout /rosout_agg /scan /state /tf /tf_static /trigger_action /peopAng2 /people/image"  
+       if = "$(arg record_flag)" />
+  <!-- 
+<include file="$(find hector_slam_launch)/launch/tutorial.launch"/>
+ -->
+ <!-- SLAM地図作成ノード -->
+ <!-- 
+    <param name="use_sim_time" value="false"/>
+    <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" clear_params="true">
+      <rosparam command="load" file="$(find pitakuru)/config/gmapping.yaml" />
+      <remap from="scan" to="/scan" />
+      <param name="map_frame" value="map"/>
+      <param name="base_frame" value="base_link" />
+      <param name="odom_frame" value="odom" />
+    </node>
+ -->
+
+
+  #### start the laser scan_matcher ##############################
+
+  <node pkg="laser_scan_matcher" type="laser_scan_matcher_node" 
+    name="laser_scan_matcher_node" output="screen">
+
+    <param name="use_vel"        value="true"/>
+    <param name="max_iterations" value="10"/>
+
+  </node>
+
+  #### start the alpha-beta filter ###############################
+<!-- 
+  <node pkg="ab_filter" type="ab_filter_pose2d_node" 
+    name="ab_filter_pose2d" output="screen">
+
+    <remap from="mav/pose2D"      to="pose_2D"/>
+    <remap from="mav/pose2D_f"    to="pose2D_f"/>
+    <remap from="mav/pose2D_unf"  to="pose2D_unf"/>
+
+    <param name="alpha" value="1.0"/>
+    <param name="beta"  value="0.5"/>
+    <param name="publish_unfiltered"  value="true"/>
+
+  </node>
+-->
+
+</launch>

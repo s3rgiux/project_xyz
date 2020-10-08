@@ -168,6 +168,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named control_xy_node_spline
+
+# Build rule for target.
+control_xy_node_spline: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 control_xy_node_spline
+.PHONY : control_xy_node_spline
+
+# fast build rule for target.
+control_xy_node_spline/fast:
+	$(MAKE) -f CMakeFiles/control_xy_node_spline.dir/build.make CMakeFiles/control_xy_node_spline.dir/build
+.PHONY : control_xy_node_spline/fast
+
+#=============================================================================
 # Target rules for targets named control_xy_node
 
 # Build rule for target.
@@ -779,6 +792,33 @@ src/control_xy_node_yaw.cpp.s:
 	$(MAKE) -f CMakeFiles/control_xy_node.dir/build.make CMakeFiles/control_xy_node.dir/src/control_xy_node_yaw.cpp.s
 .PHONY : src/control_xy_node_yaw.cpp.s
 
+src/control_xy_odom_wp_nav_spline.o: src/control_xy_odom_wp_nav_spline.cpp.o
+
+.PHONY : src/control_xy_odom_wp_nav_spline.o
+
+# target to build an object file
+src/control_xy_odom_wp_nav_spline.cpp.o:
+	$(MAKE) -f CMakeFiles/control_xy_node_spline.dir/build.make CMakeFiles/control_xy_node_spline.dir/src/control_xy_odom_wp_nav_spline.cpp.o
+.PHONY : src/control_xy_odom_wp_nav_spline.cpp.o
+
+src/control_xy_odom_wp_nav_spline.i: src/control_xy_odom_wp_nav_spline.cpp.i
+
+.PHONY : src/control_xy_odom_wp_nav_spline.i
+
+# target to preprocess a source file
+src/control_xy_odom_wp_nav_spline.cpp.i:
+	$(MAKE) -f CMakeFiles/control_xy_node_spline.dir/build.make CMakeFiles/control_xy_node_spline.dir/src/control_xy_odom_wp_nav_spline.cpp.i
+.PHONY : src/control_xy_odom_wp_nav_spline.cpp.i
+
+src/control_xy_odom_wp_nav_spline.s: src/control_xy_odom_wp_nav_spline.cpp.s
+
+.PHONY : src/control_xy_odom_wp_nav_spline.s
+
+# target to generate assembly for a file
+src/control_xy_odom_wp_nav_spline.cpp.s:
+	$(MAKE) -f CMakeFiles/control_xy_node_spline.dir/build.make CMakeFiles/control_xy_node_spline.dir/src/control_xy_odom_wp_nav_spline.cpp.s
+.PHONY : src/control_xy_odom_wp_nav_spline.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -789,6 +829,7 @@ help:
 	@echo "... install"
 	@echo "... list_install_components"
 	@echo "... test"
+	@echo "... control_xy_node_spline"
 	@echo "... control_xy_node"
 	@echo "... control_xy_generate_messages_py"
 	@echo "... control_xy_gennodejs"
@@ -840,6 +881,9 @@ help:
 	@echo "... src/control_xy_node_yaw.o"
 	@echo "... src/control_xy_node_yaw.i"
 	@echo "... src/control_xy_node_yaw.s"
+	@echo "... src/control_xy_odom_wp_nav_spline.o"
+	@echo "... src/control_xy_odom_wp_nav_spline.i"
+	@echo "... src/control_xy_odom_wp_nav_spline.s"
 .PHONY : help
 
 

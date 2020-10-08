@@ -1,0 +1,116 @@
+[ 27%] Built target csm-static
+[ 28%] Built target ld_resample
+[ 29%] Built target ld_fisher
+[ 30%] Built target sm1
+[ 31%] Built target ld_slip
+[ 32%] Built target carmen2json
+[ 33%] Built target ld_alternate
+[ 34%] Built target ld_smooth
+[ 36%] Built target ld_noise
+[ 37%] Built target sm3
+[ 38%] Built target json_split
+[ 39%] Built target json_pipe
+[ 40%] Built target json_decimate
+[ 66%] Built target csm
+[ 67%] Built target ld_recover
+[ 68%] Built target ld_purify
+[ 69%] Built target ld_select
+[ 70%] Built target ld_cluster_curv
+[ 71%] Built target sm2
+[ 72%] Built target ld_linearize
+[ 73%] Built target json2matlab
+[ 74%] Built target ld_exp_tro1
+[ 75%] Built target test_json
+[ 77%] Built target json2carmen
+[ 78%] Built target test_json_ld
+[ 79%] Built target sm_animate
+[ 80%] Built target log2pdf
+[ 81%] Built target test_math_utils_sanity
+[ 82%] Built target ld_remove_doubles
+[ 83%] Built target json_extract_field
+[ 84%] Built target json_extract
+[ 86%] Built target options
+[ 88%] Built target test_options
+[ 93%] Built target json-c
+[ 94%] Built target test2
+[ 96%] Built target egsl
+[ 97%] Built target egsl_test
+[ 98%] Built target egsl_test_allocation
+[100%] Built target gpc
+[36mInstall the project...[0m
+-- Install configuration: ""
+-- Up-to-date: /home/xavier/catkin_ws/devel/bin/sm1
+-- Up-to-date: /home/xavier/catkin_ws/devel/bin/sm2
+-- Up-to-date: /home/xavier/catkin_ws/devel/bin/sm3
+-- Up-to-date: /home/xavier/catkin_ws/devel/bin/json_extract
+-- Up-to-date: /home/xavier/catkin_ws/devel/bin/json_extract_field
+-- Up-to-date: /home/xavier/catkin_ws/devel/bin/json_decimate
+-- Up-to-date: /home/xavier/catkin_ws/devel/bin/json_split
+-- Up-to-date: /home/xavier/catkin_ws/devel/bin/json_pipe
+-- Up-to-date: /home/xavier/catkin_ws/devel/bin/carmen2json
+-- Up-to-date: /home/xavier/catkin_ws/devel/bin/json2carmen
+-- Up-to-date: /home/xavier/catkin_ws/devel/bin/ld_noise
+-- Up-to-date: /home/xavier/catkin_ws/devel/bin/ld_slip
+-- Up-to-date: /home/xavier/catkin_ws/devel/bin/ld_fisher
+-- Up-to-date: /home/xavier/catkin_ws/devel/bin/ld_smooth
+-- Up-to-date: /home/xavier/catkin_ws/devel/bin/ld_resample
+-- Up-to-date: /home/xavier/catkin_ws/devel/bin/ld_remove_doubles
+-- Up-to-date: /home/xavier/catkin_ws/devel/bin/ld_alternate
+-- Up-to-date: /home/xavier/catkin_ws/devel/bin/ld_recover
+-- Up-to-date: /home/xavier/catkin_ws/devel/bin/ld_purify
+-- Up-to-date: /home/xavier/catkin_ws/devel/bin/ld_select
+-- Up-to-date: /home/xavier/catkin_ws/devel/bin/ld_cluster_curv
+-- Up-to-date: /home/xavier/catkin_ws/devel/bin/ld_linearize
+-- Up-to-date: /home/xavier/catkin_ws/devel/bin/json2matlab
+-- Up-to-date: /home/xavier/catkin_ws/devel/bin/ld_exp_tro1
+-- Up-to-date: /home/xavier/catkin_ws/devel/bin/test_json_ld
+-- Up-to-date: /home/xavier/catkin_ws/devel/bin/test_json
+-- Up-to-date: /home/xavier/catkin_ws/devel/bin/sm_animate
+-- Up-to-date: /home/xavier/catkin_ws/devel/bin/log2pdf
+-- Up-to-date: /home/xavier/catkin_ws/devel/lib/libcsm-static.a
+-- Up-to-date: /home/xavier/catkin_ws/devel/lib/libcsm.so
+-- Up-to-date: /home/xavier/catkin_ws/devel/include/options/options.h
+-- Up-to-date: /home/xavier/catkin_ws/devel/lib/liboptions.a
+-- Up-to-date: /home/xavier/catkin_ws/devel/include/json-c/JSON_checker.h
+-- Up-to-date: /home/xavier/catkin_ws/devel/include/json-c/arraylist.h
+-- Up-to-date: /home/xavier/catkin_ws/devel/include/json-c/bits.h
+-- Up-to-date: /home/xavier/catkin_ws/devel/include/json-c/debug.h
+-- Up-to-date: /home/xavier/catkin_ws/devel/include/json-c/json.h
+-- Up-to-date: /home/xavier/catkin_ws/devel/include/json-c/json_more_utils.h
+-- Up-to-date: /home/xavier/catkin_ws/devel/include/json-c/json_object.h
+-- Up-to-date: /home/xavier/catkin_ws/devel/include/json-c/json_object_private.h
+-- Up-to-date: /home/xavier/catkin_ws/devel/include/json-c/json_tokener.h
+-- Up-to-date: /home/xavier/catkin_ws/devel/include/json-c/json_util.h
+-- Up-to-date: /home/xavier/catkin_ws/devel/include/json-c/linkhash.h
+-- Up-to-date: /home/xavier/catkin_ws/devel/include/json-c/printbuf.h
+-- Up-to-date: /home/xavier/catkin_ws/devel/include/json-c/config.h
+-- Up-to-date: /home/xavier/catkin_ws/devel/include/egsl/egsl.h
+-- Up-to-date: /home/xavier/catkin_ws/devel/include/egsl/egsl_imp.h
+-- Up-to-date: /home/xavier/catkin_ws/devel/include/egsl/egsl_macros.h
+-- Up-to-date: /home/xavier/catkin_ws/devel/lib/libegsl.a
+-- Up-to-date: /home/xavier/catkin_ws/devel/include/csm/./algos.h
+-- Up-to-date: /home/xavier/catkin_ws/devel/include/csm/./csm.h
+-- Up-to-date: /home/xavier/catkin_ws/devel/include/csm/./csm_all.h
+-- Up-to-date: /home/xavier/catkin_ws/devel/include/csm/./json_journal.h
+-- Up-to-date: /home/xavier/catkin_ws/devel/include/csm/./laser_data.h
+-- Up-to-date: /home/xavier/catkin_ws/devel/include/csm/./laser_data_cairo.h
+-- Up-to-date: /home/xavier/catkin_ws/devel/include/csm/./laser_data_drawing.h
+-- Up-to-date: /home/xavier/catkin_ws/devel/include/csm/./laser_data_inline.h
+-- Up-to-date: /home/xavier/catkin_ws/devel/include/csm/./laser_data_json.h
+-- Up-to-date: /home/xavier/catkin_ws/devel/include/csm/./logging.h
+-- Up-to-date: /home/xavier/catkin_ws/devel/include/csm/./math_utils.h
+-- Up-to-date: /home/xavier/catkin_ws/devel/include/csm/./math_utils_gsl.h
+-- Up-to-date: /home/xavier/catkin_ws/devel/include/csm/./restrict.h
+-- Up-to-date: /home/xavier/catkin_ws/devel/include/csm/./utils.h
+-- Up-to-date: /home/xavier/catkin_ws/devel/include/csm/hsm/hsm.h
+-- Up-to-date: /home/xavier/catkin_ws/devel/include/csm/hsm/hsm_interface.h
+-- Up-to-date: /home/xavier/catkin_ws/devel/include/csm/mbicp/MbICP.h
+-- Up-to-date: /home/xavier/catkin_ws/devel/include/csm/mbicp/MbICP2.h
+-- Up-to-date: /home/xavier/catkin_ws/devel/include/csm/mbicp/TData.h
+-- Up-to-date: /home/xavier/catkin_ws/devel/include/csm/mbicp/calcul.h
+-- Up-to-date: /home/xavier/catkin_ws/devel/include/csm/mbicp/percolate.h
+-- Up-to-date: /home/xavier/catkin_ws/devel/include/csm/mbicp/sp_matrix.h
+-- Up-to-date: /home/xavier/catkin_ws/devel/include/csm/icp/fast_math.h
+-- Up-to-date: /home/xavier/catkin_ws/devel/include/csm/icp/icp.h
+-- Up-to-date: /home/xavier/catkin_ws/devel/include/csm/gpm/gpm.h
+-- Up-to-date: /home/xavier/catkin_ws/devel/lib/pkgconfig/csm.pc

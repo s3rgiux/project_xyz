@@ -2,6 +2,7 @@
 /home/xavier/catkin_ws/build/control_xy/CMakeFiles/install.dir
 /home/xavier/catkin_ws/build/control_xy/CMakeFiles/list_install_components.dir
 /home/xavier/catkin_ws/build/control_xy/CMakeFiles/test.dir
+/home/xavier/catkin_ws/build/control_xy/CMakeFiles/control_xy_node_spline.dir
 /home/xavier/catkin_ws/build/control_xy/CMakeFiles/control_xy_node.dir
 /home/xavier/catkin_ws/build/control_xy/CMakeFiles/control_xy_generate_messages_py.dir
 /home/xavier/catkin_ws/build/control_xy/CMakeFiles/control_xy_gennodejs.dir
