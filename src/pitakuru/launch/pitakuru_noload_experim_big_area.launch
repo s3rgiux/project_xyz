@@ -63,15 +63,17 @@
 
 <!-- keiganモーター制御/オドメトリ算出ノード -->
 <node pkg="pypro" name="pitakuru_wheels" type="pitakuruWheels.py">
-<param name="max_speed"    type="double"	value="3500"/>  <!-- max speed tah can be sent to motors-->
-</node>
+<param name="max_speed"    type="double"	value="3500"/>
+</node> 
+<!-- max speed tah can be sent to motors-->
+
 
 
 
 <!-- control xy is the main program build in c++ to make it more fast needs to be compiled if a modification is made-->
 <node pkg="control_xy" type="control_xy_node" name="control_xy" output="screen">
 <param name="break_distance"    type="double"	value="0.55"/> <!-- breaking distance to  enter in danger zone  -->
-<param name="break_danger"    type="double"	value="0.7"/><!-- 0.9--><!-- (not used depercated)distance to  enter in warning zone  -->	
+<param name="break_danger"    type="double"	value="0.9"/><!-- 0.9--><!-- (not used depercated)distance to  enter in warning zone  -->	
 <param name="low_vel_gain_karugamo"    type="double"	value="15"/> <!-- (not used depercated)karugamo gain  angle control   -->
 <param name="high_vel_gain_karugamo"    type="double"	value="17"/><!-- 10--> <!-- (not used depercated)karugamo gain  angle control   -->
 <param name="low_vel_gain_follow"    type="double"	value="11"/><!-- 17--><!-- people follow gain  angle control   -->
@@ -79,10 +81,10 @@
 <param name="frontal_gain_karugamo"    type="double"	value="17"/> <!-- (not used depercated)karugamo gain  angle control   -->
 <param name="frontal_gain_follow"    type="double"	value="2500"/> <!-- gain for frontal control   -->
 <param name="frontal_gain_manual"    type="double"	value="00"/> <!-- (not used depercated)gain frontal control   -->
-<param name="smooth_accel"    type="double"	value="0.98"/> <!-- acceletartion smooth max value up to 0.99   -->
+<param name="smooth_accel"    type="double"	value="0.95"/> <!-- acceletartion smooth max value up to 0.99   -->
 <param name="max_speed_karugamo"    type="double"	value="1500"/> <!-- (not used depercated)max speed value for karugamo   -->
-<param name="max_speed_follow"    type="double"	value="1500"/><!--1500--><!-- 3000--> <!-- max speed value for frontal people follow-->
-<param name="max_speed_manual"    type="double"	value="1500"/>  <!--15000--><!-- 3000--> <!-- max speed value for frontal joystick-->
+<param name="max_speed_follow"    type="double"	value="3000"/><!--1500--><!-- 3000--> <!-- max speed value for frontal people follow-->
+<param name="max_speed_manual"    type="double"	value="2200"/>  <!--15000--><!-- 3000--> <!-- max speed value for frontal joystick-->
 <param name="max_speed_side_manual"    type="double"	value="800"/> <!-- max speed value for side joystick-->
 <param name="radius_follow"    type="double"	value="0.5"/> <!--1.0--><!-- radius checking zone to track people once that is already picked for tracking-->
 </node>
@@ -91,8 +93,8 @@
 <!-- extract obstacles form region of interest and send to control_xy -->
 
 <node pkg="obs_extract" type="main.py" name="obj_track" >
-<param name="front_detection"    type="double"	value="4.7"/> 
-<param name="side_detection"    type="double"	value="1.7"/>  
+<param name="front_detection"    type="double"	value="4.5"/> 
+<param name="side_detection"    type="double"	value="1.5"/>  
 </node>
 
 <!-- rosbag nodes -->
@@ -118,7 +120,7 @@
 
 
   #### start the laser scan_matcher ##############################
-
+<!--
   <node pkg="laser_scan_matcher" type="laser_scan_matcher_node" 
     name="laser_scan_matcher_node" output="screen">
 
@@ -126,6 +128,7 @@
     <param name="max_iterations" value="10"/>
 
   </node>
+-->
 
   #### start the alpha-beta filter ###############################
 <!-- 

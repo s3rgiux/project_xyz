@@ -168,6 +168,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named control_xy_node_spline_follow
+
+# Build rule for target.
+control_xy_node_spline_follow: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 control_xy_node_spline_follow
+.PHONY : control_xy_node_spline_follow
+
+# fast build rule for target.
+control_xy_node_spline_follow/fast:
+	$(MAKE) -f CMakeFiles/control_xy_node_spline_follow.dir/build.make CMakeFiles/control_xy_node_spline_follow.dir/build
+.PHONY : control_xy_node_spline_follow/fast
+
+#=============================================================================
 # Target rules for targets named control_xy_node_spline
 
 # Build rule for target.
@@ -819,6 +832,33 @@ src/control_xy_odom_wp_nav_spline.cpp.s:
 	$(MAKE) -f CMakeFiles/control_xy_node_spline.dir/build.make CMakeFiles/control_xy_node_spline.dir/src/control_xy_odom_wp_nav_spline.cpp.s
 .PHONY : src/control_xy_odom_wp_nav_spline.cpp.s
 
+src/control_xy_odom_wp_nav_spline_follow.o: src/control_xy_odom_wp_nav_spline_follow.cpp.o
+
+.PHONY : src/control_xy_odom_wp_nav_spline_follow.o
+
+# target to build an object file
+src/control_xy_odom_wp_nav_spline_follow.cpp.o:
+	$(MAKE) -f CMakeFiles/control_xy_node_spline_follow.dir/build.make CMakeFiles/control_xy_node_spline_follow.dir/src/control_xy_odom_wp_nav_spline_follow.cpp.o
+.PHONY : src/control_xy_odom_wp_nav_spline_follow.cpp.o
+
+src/control_xy_odom_wp_nav_spline_follow.i: src/control_xy_odom_wp_nav_spline_follow.cpp.i
+
+.PHONY : src/control_xy_odom_wp_nav_spline_follow.i
+
+# target to preprocess a source file
+src/control_xy_odom_wp_nav_spline_follow.cpp.i:
+	$(MAKE) -f CMakeFiles/control_xy_node_spline_follow.dir/build.make CMakeFiles/control_xy_node_spline_follow.dir/src/control_xy_odom_wp_nav_spline_follow.cpp.i
+.PHONY : src/control_xy_odom_wp_nav_spline_follow.cpp.i
+
+src/control_xy_odom_wp_nav_spline_follow.s: src/control_xy_odom_wp_nav_spline_follow.cpp.s
+
+.PHONY : src/control_xy_odom_wp_nav_spline_follow.s
+
+# target to generate assembly for a file
+src/control_xy_odom_wp_nav_spline_follow.cpp.s:
+	$(MAKE) -f CMakeFiles/control_xy_node_spline_follow.dir/build.make CMakeFiles/control_xy_node_spline_follow.dir/src/control_xy_odom_wp_nav_spline_follow.cpp.s
+.PHONY : src/control_xy_odom_wp_nav_spline_follow.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -829,6 +869,7 @@ help:
 	@echo "... install"
 	@echo "... list_install_components"
 	@echo "... test"
+	@echo "... control_xy_node_spline_follow"
 	@echo "... control_xy_node_spline"
 	@echo "... control_xy_node"
 	@echo "... control_xy_generate_messages_py"
@@ -884,6 +925,9 @@ help:
 	@echo "... src/control_xy_odom_wp_nav_spline.o"
 	@echo "... src/control_xy_odom_wp_nav_spline.i"
 	@echo "... src/control_xy_odom_wp_nav_spline.s"
+	@echo "... src/control_xy_odom_wp_nav_spline_follow.o"
+	@echo "... src/control_xy_odom_wp_nav_spline_follow.i"
+	@echo "... src/control_xy_odom_wp_nav_spline_follow.s"
 .PHONY : help
 
 

@@ -57,6 +57,7 @@
 
     <!-- package for configure obstacle detector node -->
     <include file="$(find obstacle_detector)/launch/test_experim.launch"/>  
+	<!--<include file="$(find obstacle_detector)/launch/test.launch"/>-->
 
     <!-- opencv detect people package -->
     <node pkg="pitakuru" type="people_detect.py" name="people_detect"/>
@@ -101,9 +102,23 @@
 <node pkg="rosbag" type="record" name="rosbag_record"
        args = "record -o /home/xavier/warehouse.bag /alerts /camera_info /cmd_vel /diagnostics /euler /fiducial_vertices /image_raw /j0/joy  /movement/karugamo/joy /movement/manual/joy /obstacle_closest /obstacles /pcl /peopAng /peopDist /raw_obstacles /rear_scan /rosout /rosout_agg /scan /state /tf /tf_static /trigger_action /peopAng2 /people/image"  
        if = "$(arg record_flag)" />
-  <!-- 
+
+
+    <!-- SLAM地図作成ノード -->
+    <param name="use_sim_time" value="false"/>
+    <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" clear_params="true">
+      <rosparam command="load" file="$(find pitakuru)/config/gmapping.yaml" />
+      <remap from="scan" to="/scan" />
+      <param name="map_frame" value="map"/>
+      <param name="base_frame" value="base_link" />
+      <param name="odom_frame" value="odom" />
+    </node>
+
+
+
+  
 <include file="$(find hector_slam_launch)/launch/tutorial.launch"/>
- -->
+ 
  <!-- SLAM地図作成ノード -->
  <!-- 
     <param name="use_sim_time" value="false"/>

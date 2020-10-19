@@ -235,7 +235,7 @@ class PitWheels:
    
         self.odo = Odometry()
         self.odo.header.frame_id='odom'
-        self.odo.child_frame_id='base_link2' #quick fix
+        self.odo.child_frame_id='base_link3' #quick fix
         self.odocount = 0
         self.pub_odo = rospy.Publisher('/odom', Odometry,queue_size=10)
         self.x = np.array([0.0, 0.0, 0.0])
@@ -247,7 +247,7 @@ class PitWheels:
         self.odom_trans = TransformStamped()
         self.odom_trans.header.stamp = rospy.Time.now()
         self.odom_trans.header.frame_id = "odom"
-        self.odom_trans.child_frame_id = "base_link2"
+        self.odom_trans.child_frame_id = "base_link3"
 
         self.right_velocity = 0
         self.left_velocity = 0

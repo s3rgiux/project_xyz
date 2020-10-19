@@ -199,7 +199,6 @@ void setPointsCallback(const geometry_msgs::Twist& twist)
 	   //if(contadorvel%1==0){
 		//if(mode!=3){
 		if(start_route and mode_auto){
-		
 			errpx=nspx-px;
 			errpy=nspy-py;
 			//sp_yaw=80;
@@ -489,12 +488,14 @@ Pitakuru coordinate system and angles w.r.t Robot
 
 void angPeopCallback4(const geometry_msgs::Vector3& msg){
 
-int num_wp=6;
+//int num_wp=6;
+int num_wp=11;//num_sp;
 cicles=20;
 
 cx = msg.x;//pos people or object
 cy = msg.y;//pos people or object
 ang_peop_lidar = 90+ atan2(cx, cy) * 180 / 3.1416 ;
+/*
 spx_saved[0]=-0.4;
 spy_saved[0]=0.02;
 spx_saved[1]=-0.9;
@@ -505,27 +506,26 @@ spx_saved[3]=-0.9;
 spy_saved[3]=-0.9;
 spx_saved[4]=-1.2;
 spy_saved[4]=-1.1;
-
 spx_saved[5]=-1.7;
 spy_saved[5]=-1.1;
+*/
 
 if(mode_follow && danger!=true){
 		///////////////New algorithm
-                 //index_wp=-1;
+                //index_wp=-1;
 		//dist_auxwp=0;
-		  if(dist_auxwp<0.5){
+		  if(dist_auxwp<0.55){
 			index_wp++;
 			if(index_wp>=(num_wp-1)){
 				index_wp=num_wp-1;
 			}
-			
 			float c=0.05;//must be 1/cicles
 			float p0x=px;//pos robot x
 			float p0y=py;//pos robot y
-			float p1x=spx_saved[index_wp];//spx_follow_old;//first wp
-			float p1y=spy_saved[index_wp];//spy_follow_old;//first wp
-			float p2x=spx_saved[index_wp+1];//spx_follow_new;//second wp
-			float p2y=spy_saved[index_wp+1];//spy_follow_new;//second wp
+			float p1x=sp_rx[index_wp];//spx_saved[index_wp];//spx_follow_old;//first wp
+			float p1y=sp_ry[index_wp];//spy_saved[index_wp];//spy_follow_old;//first wp
+			float p2x=sp_rx[index_wp+1];//spx_saved[index_wp+1];//spx_follow_new;//second
+			float p2y=sp_ry[index_wp+1];//spy_saved[index_wp+1];//spy_follow_new;//second wp
 			float aux1=px;//first should be pos robot x
 			float aux2=py;//first should be pos robot y
 			float Rx,Ry;
@@ -565,7 +565,7 @@ if(mode_follow && danger!=true){
 			errpy=spy_follow[indice]-py;
 			sp_yaw=angle_follow[indice+1];
 			
-			if(sqrt((errpx*errpx)+(errpy*errpy))<0.2){
+			if(sqrt((errpx*errpx)+(errpy*errpy))<0.25){
 				indice++;
 				if (indice>19){
 					indice=19;
@@ -1047,9 +1047,7 @@ void angPeopCallback4(const geometry_msgs::Vector3& msg){
         			h++;
 			}
 			printf("Ruta cargada %d elementos\n ",h);
-			
 			num_sp=h;
-			
 			loaded_route=true;
 
     }
@@ -1284,6 +1282,9 @@ ROS_INFO("Rcalc %f,%f,%f",Rx,Ry,angle);
 			vel_steer.angular.z=0;
 			cont_sp_follow=0;
 			kf=1;
+			///////////
+			loadRoute();
+			///////////
 			speed_publisher.publish(vel_steer);
 			alerts_command.data=8;// 8people follow 5 danger 4 warning 3 karugamo 2 idle 1 manual
      			//alerts_publisher.publish(alerts_command);

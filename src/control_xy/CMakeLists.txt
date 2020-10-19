@@ -144,11 +144,13 @@ include_directories(
 ## Declare a C++ executable
 add_executable(control_xy_node src/control_xy_node_yaw.cpp)
 add_executable(control_xy_node_spline src/control_xy_odom_wp_nav_spline.cpp)
+add_executable(control_xy_node_spline_follow src/control_xy_odom_wp_nav_spline_follow.cpp)
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
 add_dependencies(control_xy_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 add_dependencies(control_xy_node_spline ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(control_xy_node_spline_follow ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
  target_link_libraries(control_xy_node
@@ -156,6 +158,10 @@ add_dependencies(control_xy_node_spline ${${PROJECT_NAME}_EXPORTED_TARGETS} ${ca
  )
 
  target_link_libraries(control_xy_node_spline
+   ${catkin_LIBRARIES}
+ )
+
+target_link_libraries(control_xy_node_spline_follow
    ${catkin_LIBRARIES}
  )
 
