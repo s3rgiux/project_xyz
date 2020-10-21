@@ -1,0 +1,41 @@
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_follow.cpp:[m[K In constructor ‘[01m[Ktest_head::test_head(ros::NodeHandle)[m[K’:
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_follow.cpp:35:31:[m[K [01;31m[Kerror: [m[K‘[01m[Kvisualization_msg[m[K’ was not declared in this scope
+   marker_pub   = nh.advertise<[01;31m[Kvisualization_msg[m[K::Marker>(nh.resolveName("/visualization_marker"),1);
+                               [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_follow.cpp:35:21:[m[K [01;31m[Kerror: [m[Kparse error in template argument list
+   marker_pub   = nh.[01;31m[Kadvertise<visualization_msg::Marker>[m[K(nh.resolveName("/visualization_marker"),1);
+                     [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_follow.cpp:35:99:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[Kros::NodeHandle::advertise<<expression error> >(std::__cxx11::string, int)[m[K’
+   marker_pub   = nh.advertise<visualization_msg::Marker>(nh.resolveName("/visualization_marker"),1[01;31m[K)[m[K;
+                                                                                                   [01;31m[K^[m[K
+In file included from [01m[K/opt/ros/melodic/include/ros/ros.h:45:0[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_follow.cpp:1[m[K:
+[01m[K/opt/ros/melodic/include/ros/node_handle.h:249:15:[m[K [01;36m[Knote: [m[Kcandidate: template<class M> ros::Publisher ros::NodeHandle::advertise(const string&, uint32_t, bool)
+     Publisher [01;36m[Kadvertise[m[K(const std::string& topic, uint32_t queue_size, bool latch = false)
+               [01;36m[K^~~~~~~~~[m[K
+[01m[K/opt/ros/melodic/include/ros/node_handle.h:249:15:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_follow.cpp:35:99:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+   marker_pub   = nh.advertise<visualization_msg::Marker>(nh.resolveName("/visualization_marker"),1[01;31m[K)[m[K;
+                                                                                                   [01;31m[K^[m[K
+In file included from [01m[K/opt/ros/melodic/include/ros/ros.h:45:0[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_follow.cpp:1[m[K:
+[01m[K/opt/ros/melodic/include/ros/node_handle.h:315:13:[m[K [01;36m[Knote: [m[Kcandidate: template<class M> ros::Publisher ros::NodeHandle::advertise(const string&, uint32_t, const SubscriberStatusCallback&, const SubscriberStatusCallback&, const VoidConstPtr&, bool)
+   Publisher [01;36m[Kadvertise[m[K(const std::string& topic, uint32_t queue_size,
+             [01;36m[K^~~~~~~~~[m[K
+[01m[K/opt/ros/melodic/include/ros/node_handle.h:315:13:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_follow.cpp:35:99:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
+   marker_pub   = nh.advertise<visualization_msg::Marker>(nh.resolveName("/visualization_marker"),1[01;31m[K)[m[K;
+                                                                                                   [01;31m[K^[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_follow.cpp:[m[K In member function ‘[01m[Kvoid test_head::angPeopCallback4(const Vector3&)[m[K’:
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_follow.cpp:330:23:[m[K [01;31m[Kerror: [m[K‘[01m[Kvisualization_msgs::Marker_<std::allocator<void> >::_pose_type {aka struct geometry_msgs::Pose_<std::allocator<void> >}[m[K’ has no member named ‘[01m[Kpose[m[K’; did you mean ‘[01m[KPose_[m[K’?
+     people_point.pose.[01;31m[Kpose[m[K.orientation.w= 1.0;
+                       [01;31m[K^~~~[m[K
+                       [32m[KPose_[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_follow.cpp:[m[K In member function ‘[01m[Kvoid test_head::loadRoute()[m[K’:
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_follow.cpp:642:43:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%s[m[K’ expects argument of type ‘[01m[Kchar*[m[K’, but argument 3 has type ‘[01m[Kchar (*)[80][m[K’ [[01;35m[K-Wformat=[m[K]
+            sscanf(mystring,"%s %s",[32m[K&rx[m[K,&ry[01;35m[K)[m[K;
+                                    [32m[K~~~[m[K    [01;35m[K^[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_follow.cpp:642:43:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%s[m[K’ expects argument of type ‘[01m[Kchar*[m[K’, but argument 4 has type ‘[01m[Kchar (*)[80][m[K’ [[01;35m[K-Wformat=[m[K]
+make[2]: *** [CMakeFiles/control_xy_node_spline_follow.dir/src/control_xy_odom_wp_nav_spline_follow.cpp.o] Error 1
+make[1]: *** [CMakeFiles/control_xy_node_spline_follow.dir/all] Error 2
+make: *** [all] Error 2

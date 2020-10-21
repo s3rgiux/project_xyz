@@ -12,8 +12,8 @@ plt.figure(1)
 plt.plot(df['px'],df['py'],'r*')
 #plt.plot(df['px'],df['py'],'b*')
 
-#plt.figure(2)
-#plt.plot(df['spang'],'r*')
+plt.figure(2)
+plt.plot(df['pobx'],df['poby'],'r*')
 #plt.plot(df['ang'],'b*')
 plt.show()
 

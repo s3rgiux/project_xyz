@@ -71,11 +71,13 @@ CMakeFiles/control_xy_node_spline_follow.dir/src/control_xy_odom_wp_nav_spline_f
 CMakeFiles/control_xy_node_spline_follow.dir/src/control_xy_odom_wp_nav_spline_follow.cpp.o: /opt/ros/melodic/include/rosconsole/macros_generated.h
 CMakeFiles/control_xy_node_spline_follow.dir/src/control_xy_odom_wp_nav_spline_follow.cpp.o: /opt/ros/melodic/include/sensor_msgs/Joy.h
 CMakeFiles/control_xy_node_spline_follow.dir/src/control_xy_odom_wp_nav_spline_follow.cpp.o: /opt/ros/melodic/include/sensor_msgs/LaserScan.h
+CMakeFiles/control_xy_node_spline_follow.dir/src/control_xy_odom_wp_nav_spline_follow.cpp.o: /opt/ros/melodic/include/std_msgs/ColorRGBA.h
 CMakeFiles/control_xy_node_spline_follow.dir/src/control_xy_odom_wp_nav_spline_follow.cpp.o: /opt/ros/melodic/include/std_msgs/Float32.h
 CMakeFiles/control_xy_node_spline_follow.dir/src/control_xy_odom_wp_nav_spline_follow.cpp.o: /opt/ros/melodic/include/std_msgs/Float64.h
 CMakeFiles/control_xy_node_spline_follow.dir/src/control_xy_odom_wp_nav_spline_follow.cpp.o: /opt/ros/melodic/include/std_msgs/Header.h
 CMakeFiles/control_xy_node_spline_follow.dir/src/control_xy_odom_wp_nav_spline_follow.cpp.o: /opt/ros/melodic/include/std_msgs/Int16.h
 CMakeFiles/control_xy_node_spline_follow.dir/src/control_xy_odom_wp_nav_spline_follow.cpp.o: /opt/ros/melodic/include/std_msgs/String.h
+CMakeFiles/control_xy_node_spline_follow.dir/src/control_xy_odom_wp_nav_spline_follow.cpp.o: /opt/ros/melodic/include/visualization_msgs/Marker.h
 CMakeFiles/control_xy_node_spline_follow.dir/src/control_xy_odom_wp_nav_spline_follow.cpp.o: /opt/ros/melodic/include/xmlrpcpp/XmlRpcDecl.h
 CMakeFiles/control_xy_node_spline_follow.dir/src/control_xy_odom_wp_nav_spline_follow.cpp.o: /opt/ros/melodic/include/xmlrpcpp/XmlRpcValue.h
 

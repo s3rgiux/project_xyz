@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 import pandas as pd 
-df= pd.read_csv("people6.csv") 
+df= pd.read_csv("people7.txt") 
 print(df.describe())
 print(df.head())
 print(df.dtypes)

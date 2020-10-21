@@ -81,7 +81,7 @@
 <param name="frontal_gain_manual"    type="double"	value="00"/> <!-- (not used depercated)gain frontal control   -->
 <param name="smooth_accel"    type="double"	value="0.98"/> <!-- acceletartion smooth max value up to 0.99   -->
 <param name="max_speed_karugamo"    type="double"	value="1500"/> <!-- (not used depercated)max speed value for karugamo   -->
-<param name="max_speed_follow"    type="double"	value="400"/><!--1500--><!-- 3000--> <!-- max speed value for frontal people follow-->
+<param name="max_speed_follow"    type="double"	value="1000"/><!--1500--><!-- 3000--> <!-- max speed value for frontal people follow-->
 <param name="max_speed_manual"    type="double"	value="1500"/>  <!--15000--><!-- 3000--> <!-- max speed value for frontal joystick-->
 <param name="max_speed_side_manual"    type="double"	value="800"/> <!-- max speed value for side joystick-->
 <param name="radius_follow"    type="double"	value="0.5"/> <!--1.0--><!-- radius checking zone to track people once that is already picked for tracking-->
@@ -91,9 +91,15 @@
 <!-- extract obstacles form region of interest and send to control_xy -->
 
 <node pkg="obs_extract" type="main.py" name="obj_track" >
-<param name="front_detection"    type="double"	value="4.7"/> 
-<param name="side_detection"    type="double"	value="1.7"/>  
+<param name="front_detection"    type="double"	value="4.9"/> 
+<param name="side_detection"    type="double"	value="2.2"/>  
 </node>
+
+
+<node pkg="tf" type="static_transform_publisher" name="peop_map_broadcaster" args="0 0 0 0 0 0 map people 50" />
+
+<node pkg="pitakuru" type="imu.py" name="imuw"/>
+
 
 <!-- rosbag nodes -->
 <arg name="record_flag" default="false" /> <!-- set to true if i want to record-->
