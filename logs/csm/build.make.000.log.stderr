@@ -54,10 +54,25 @@ In file included from [01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_
      if((size = [01;35m[Kvasprintf[m[K(&t, msg, ap)) == -1) return -1;
                 [01;35m[K^~~~~~~~~[m[K
                 [32m[Kvsprintf[m[K
+[01m[K/home/xavier/catkin_ws/src/csm/sm/apps/ld_cluster_curv.c:[m[K In function ‘[01m[Kcluster_convolve[m[K’:
+[01m[K/home/xavier/catkin_ws/src/csm/sm/apps/ld_cluster_curv.c:63:4:[m[K [01;35m[Kwarning: [m[Kthis ‘[01m[Kif[m[K’ clause does not guard... [[01;35m[K-Wmisleading-indentation[m[K]
+    [01;35m[Kif[m[K(i2<0) i2=0; if(i2>=n) i2=n-1;
+    [01;35m[K^~[m[K
+[01m[K/home/xavier/catkin_ws/src/csm/sm/apps/ld_cluster_curv.c:63:19:[m[K [01;36m[Knote: [m[K...this statement, but the latter is misleadingly indented as if it were guarded by the ‘[01m[Kif[m[K’
+    if(i2<0) i2=0; [01;36m[Kif[m[K(i2>=n) i2=n-1;
+                   [01;36m[K^~[m[K
 [01m[K/home/xavier/catkin_ws/src/csm/sm/csm/hsm/hsm.c:[m[K In function ‘[01m[Khsm_match[m[K’:
 [01m[K/home/xavier/catkin_ws/src/csm/sm/csm/hsm/hsm.c:191:10:[m[K [01;35m[Kwarning: [m[Kvariable ‘[01m[Kmult[m[K’ set but not used [[01;35m[K-Wunused-but-set-variable[m[K]
    double [01;35m[Kmult[m[K[b1->num_angular_cells];
           [01;35m[K^~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/csm/sm/apps/ld_exp_tro1.c:[m[K In function ‘[01m[Kmain[m[K’:
+[01m[K/home/xavier/catkin_ws/src/csm/sm/apps/ld_exp_tro1.c:76:8:[m[K [01;35m[Kwarning: [m[K‘[01m[Kout2[m[K’ may be used uninitialized in this function [[01;35m[K-Wmaybe-uninitialized[m[K]
+   [01;35m[Kout1 = out2[m[K;
+   [01;35m[K~~~~~^~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/csm/sm/apps/ld_remove_doubles.c:[m[K In function ‘[01m[Kmain[m[K’:
+[01m[K/home/xavier/catkin_ws/src/csm/sm/apps/ld_remove_doubles.c:25:2:[m[K [01;35m[Kwarning: [m[K‘[01m[Kdebug[m[K’ may be used uninitialized in this function [[01;35m[K-Wmaybe-uninitialized[m[K]
+  [01;35m[Ksm_debug_write(debug)[m[K;
+  [01;35m[K^~~~~~~~~~~~~~~~~~~~~[m[K
 [01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/debug.c:[m[K In function ‘[01m[Kmc_abort[m[K’:
 [01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/debug.c:50:4:[m[K [01;35m[Kwarning: [m[Kimplicit declaration of function ‘[01m[Kvsyslog[m[K’; did you mean ‘[01m[Ksyslog[m[K’? [[01;35m[K-Wimplicit-function-declaration[m[K]
     [01;35m[Kvsyslog[m[K(LOG_ERR, msg, ap);
@@ -107,22 +122,6 @@ In file included from [01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_
      if((size = [01;35m[Kvasprintf[m[K(&t, msg, ap)) == -1) return -1;
                 [01;35m[K^~~~~~~~~[m[K
                 [32m[Kvsprintf[m[K
-In file included from [01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_more_utils.c:8:0[m[K:
-[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_more_utils.c:[m[K In function ‘[01m[Kjson_tokener_parse_len[m[K’:
-[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/bits.h:24:27:[m[K [01;35m[Kwarning: [m[Kcast to pointer from integer of different size [[01;35m[K-Wint-to-pointer-cast[m[K]
- #define error_ptr(error) ([01;35m[K([m[Kvoid*)error)
-                           [01;35m[K^[m[K
-[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_more_utils.c:108:11:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[Kerror_ptr[m[K’
-     obj = [01;36m[Kerror_ptr[m[K(-tok->err);
-           [01;36m[K^~~~~~~~~[m[K
-In file included from [01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_more_utils.c:8:0[m[K:
-[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_more_utils.c:[m[K In function ‘[01m[Kjson_tokener_parse_len[m[K’:
-[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/bits.h:24:27:[m[K [01;35m[Kwarning: [m[Kcast to pointer from integer of different size [[01;35m[K-Wint-to-pointer-cast[m[K]
- #define error_ptr(error) ([01;35m[K([m[Kvoid*)error)
-                           [01;35m[K^[m[K
-[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_more_utils.c:108:11:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[Kerror_ptr[m[K’
-     obj = [01;36m[Kerror_ptr[m[K(-tok->err);
-           [01;36m[K^~~~~~~~~[m[K
 [01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_object.c:[m[K In function ‘[01m[Kjson_object_object_add[m[K’:
 [01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_object.c:274:37:[m[K [01;35m[Kwarning: [m[Kimplicit declaration of function ‘[01m[Kstrdup[m[K’; did you mean ‘[01m[Kstrcmp[m[K’? [[01;35m[K-Wimplicit-function-declaration[m[K]
    lh_table_insert(this->o.c_object, [01;35m[Kstrdup[m[K(key), val);
@@ -137,6 +136,22 @@ In file included from [01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_
 [01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_object.c:459:12:[m[K [01;35m[Kwarning: [m[Kreturn discards ‘[01m[Kconst[m[K’ qualifier from pointer target type [[01;35m[K-Wdiscarded-qualifiers[m[K]
      return [01;35m[Kjson_object_to_json_string(this)[m[K;
             [01;35m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_more_utils.c:8:0[m[K:
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_more_utils.c:[m[K In function ‘[01m[Kjson_tokener_parse_len[m[K’:
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/bits.h:24:27:[m[K [01;35m[Kwarning: [m[Kcast to pointer from integer of different size [[01;35m[K-Wint-to-pointer-cast[m[K]
+ #define error_ptr(error) ([01;35m[K([m[Kvoid*)error)
+                           [01;35m[K^[m[K
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_more_utils.c:108:11:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[Kerror_ptr[m[K’
+     obj = [01;36m[Kerror_ptr[m[K(-tok->err);
+           [01;36m[K^~~~~~~~~[m[K
+In file included from [01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_more_utils.c:8:0[m[K:
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_more_utils.c:[m[K In function ‘[01m[Kjson_tokener_parse_len[m[K’:
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/bits.h:24:27:[m[K [01;35m[Kwarning: [m[Kcast to pointer from integer of different size [[01;35m[K-Wint-to-pointer-cast[m[K]
+ #define error_ptr(error) ([01;35m[K([m[Kvoid*)error)
+                           [01;35m[K^[m[K
+[01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_more_utils.c:108:11:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[Kerror_ptr[m[K’
+     obj = [01;36m[Kerror_ptr[m[K(-tok->err);
+           [01;36m[K^~~~~~~~~[m[K
 In file included from [01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_tokener.c:20:0[m[K:
 [01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_tokener.c:[m[K In function ‘[01m[Kjson_tokener_parse[m[K’:
 [01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/bits.h:24:27:[m[K [01;35m[Kwarning: [m[Kcast to pointer from integer of different size [[01;35m[K-Wint-to-pointer-cast[m[K]
@@ -169,18 +184,3 @@ In file included from [01m[K/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_
 [01m[K/home/xavier/catkin_ws/src/csm/sm/apps/ld_smooth.c:64:19:[m[K [01;36m[Knote: [m[K...this statement, but the latter is misleadingly indented as if it were guarded by the ‘[01m[Kif[m[K’
     if(i2<0) i2=0; [01;36m[Kif[m[K(i2>=n) i2=n-1;
                    [01;36m[K^~[m[K
-[01m[K/home/xavier/catkin_ws/src/csm/sm/apps/ld_cluster_curv.c:[m[K In function ‘[01m[Kcluster_convolve[m[K’:
-[01m[K/home/xavier/catkin_ws/src/csm/sm/apps/ld_cluster_curv.c:63:4:[m[K [01;35m[Kwarning: [m[Kthis ‘[01m[Kif[m[K’ clause does not guard... [[01;35m[K-Wmisleading-indentation[m[K]
-    [01;35m[Kif[m[K(i2<0) i2=0; if(i2>=n) i2=n-1;
-    [01;35m[K^~[m[K
-[01m[K/home/xavier/catkin_ws/src/csm/sm/apps/ld_cluster_curv.c:63:19:[m[K [01;36m[Knote: [m[K...this statement, but the latter is misleadingly indented as if it were guarded by the ‘[01m[Kif[m[K’
-    if(i2<0) i2=0; [01;36m[Kif[m[K(i2>=n) i2=n-1;
-                   [01;36m[K^~[m[K
-[01m[K/home/xavier/catkin_ws/src/csm/sm/apps/ld_exp_tro1.c:[m[K In function ‘[01m[Kmain[m[K’:
-[01m[K/home/xavier/catkin_ws/src/csm/sm/apps/ld_exp_tro1.c:76:8:[m[K [01;35m[Kwarning: [m[K‘[01m[Kout2[m[K’ may be used uninitialized in this function [[01;35m[K-Wmaybe-uninitialized[m[K]
-   [01;35m[Kout1 = out2[m[K;
-   [01;35m[K~~~~~^~~~~~[m[K
-[01m[K/home/xavier/catkin_ws/src/csm/sm/apps/ld_remove_doubles.c:[m[K In function ‘[01m[Kmain[m[K’:
-[01m[K/home/xavier/catkin_ws/src/csm/sm/apps/ld_remove_doubles.c:25:2:[m[K [01;35m[Kwarning: [m[K‘[01m[Kdebug[m[K’ may be used uninitialized in this function [[01;35m[K-Wmaybe-uninitialized[m[K]
-  [01;35m[Ksm_debug_write(debug)[m[K;
-  [01;35m[K^~~~~~~~~~~~~~~~~~~~~[m[K

@@ -92,7 +92,7 @@ def MotionModel(x,u,dt):
     theta = x[2]#x[2]
     v = u[0]
     omega = u[1] / 2.0
-    loc_x = loc_x + np.sin(theta + np.pi / 2) * v * dt#loc_x - np.cos(theta + np.pi / 2) * v * dt
+    loc_x = loc_x - np.sin(theta + np.pi / 2) * v * dt#loc_x - np.cos(theta + np.pi / 2) * v * dt
     loc_y = loc_y - np.cos(theta + np.pi / 2) * v * dt#loc_y + np.sin(theta + np.pi / 2) * v * dt
     theta = theta + omega * dt#theta + omega * dt
     theta = PItoPI(theta)
@@ -235,7 +235,7 @@ class PitWheels:
    
         self.odo = Odometry()
         self.odo.header.frame_id='odom'
-        self.odo.child_frame_id='base_link3' #quick fix
+        self.odo.child_frame_id='base_link' #quick fix
         self.odocount = 0
         self.pub_odo = rospy.Publisher('/odom', Odometry,queue_size=10)
         self.x = np.array([0.0, 0.0, 0.0])
@@ -247,7 +247,7 @@ class PitWheels:
         self.odom_trans = TransformStamped()
         self.odom_trans.header.stamp = rospy.Time.now()
         self.odom_trans.header.frame_id = "odom"
-        self.odom_trans.child_frame_id = "base_link3"
+        self.odom_trans.child_frame_id = "base_link"
 
         self.right_velocity = 0
         self.left_velocity = 0
@@ -337,16 +337,19 @@ class PitWheels:
 
             q = tf.transformations.quaternion_from_euler(0, 0, self.x[2])
             self.odo.pose.pose.orientation = Quaternion(*q)
-            self.odo.twist.twist.linear.x = u[0]
-            self.odo.twist.twist.angular.z = u[1]
+            self.odo.twist.twist.linear.x = -np.sin(self.x[2] + np.pi / 2) * u[0] 
+            self.odo.twist.twist.linear.y = -np.cos(self.x[2] + np.pi / 2) * u[0] 
+            #self.odo.twist.twist.linear.x = u[0]
+            self.odo.twist.twist.angular.z = u[1]/2.0
 
             self.pub_odo.publish(self.odo)
 
             self.odom_trans.header.stamp = rospy.Time.now()
-            self.odom_trans.transform.translation.x = -self.x[1]
-            self.odom_trans.transform.translation.y = self.x[0]
+            self.odom_trans.transform.translation.x = self.x[0] #-self.x[1]
+            self.odom_trans.transform.translation.y = self.x[1] #self.x[0]
             self.odom_trans.transform.translation.z = 0
             self.odom_trans.transform.rotation = Quaternion(*q)
+            
             self.tf_broadcaster.sendTransform(self.odom_trans)
 
             joint_state = JointState()
@@ -478,6 +481,12 @@ def pit_wheels_main():
     while not rospy.is_shutdown():
         pit_wheels.pubodo()
         sleep(SLEEP_TIME)
+        
+   
 
 if __name__=='__main__':
-    pit_wheels_main()
+    try:
+        pit_wheels_main()
+    except rospy.ROSInterruptException:
+        print("finish")
+        #pit_wheels.shutdown()

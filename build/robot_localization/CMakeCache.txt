@@ -236,9 +236,6 @@ GTEST_MAIN_LIBRARY:FILEPATH=GTEST_MAIN_LIBRARY-NOTFOUND
 //Path to a library.
 GTEST_MAIN_LIBRARY_DEBUG:FILEPATH=GTEST_MAIN_LIBRARY_DEBUG-NOTFOUND
 
-//The directory containing a CMake configuration file for GeographicLib.
-GeographicLib_DIR:PATH=GeographicLib_DIR-NOTFOUND
-
 //Path to a library.
 GeographicLib_LIBRARIES:FILEPATH=/usr/lib/aarch64-linux-gnu/libGeographic.so
 

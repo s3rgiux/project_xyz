@@ -1,23 +1,23 @@
 Determining if the pthread_create exist failed with the following output:
 Change Dir: /home/xavier/catkin_ws/build/opencv_scanner/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_42ccb/fast"
-/usr/bin/make -f CMakeFiles/cmTC_42ccb.dir/build.make CMakeFiles/cmTC_42ccb.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_c8fea/fast"
+/usr/bin/make -f CMakeFiles/cmTC_c8fea.dir/build.make CMakeFiles/cmTC_c8fea.dir/build
 make[1]: Entering directory '/home/xavier/catkin_ws/build/opencv_scanner/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_42ccb.dir/CheckSymbolExists.c.o
-/usr/bin/cc    -o CMakeFiles/cmTC_42ccb.dir/CheckSymbolExists.c.o   -c /home/xavier/catkin_ws/build/opencv_scanner/CMakeFiles/CMakeTmp/CheckSymbolExists.c
-Linking C executable cmTC_42ccb
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_42ccb.dir/link.txt --verbose=1
-/usr/bin/cc      -rdynamic CMakeFiles/cmTC_42ccb.dir/CheckSymbolExists.c.o  -o cmTC_42ccb 
-CMakeFiles/cmTC_42ccb.dir/CheckSymbolExists.c.o: In function `main':
+Building C object CMakeFiles/cmTC_c8fea.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_c8fea.dir/CheckSymbolExists.c.o   -c /home/xavier/catkin_ws/build/opencv_scanner/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_c8fea
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c8fea.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_c8fea.dir/CheckSymbolExists.c.o  -o cmTC_c8fea 
+CMakeFiles/cmTC_c8fea.dir/CheckSymbolExists.c.o: In function `main':
 CheckSymbolExists.c:(.text+0x14): undefined reference to `pthread_create'
 CheckSymbolExists.c:(.text+0x18): undefined reference to `pthread_create'
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_42ccb.dir/build.make:97: recipe for target 'cmTC_42ccb' failed
-make[1]: *** [cmTC_42ccb] Error 1
+CMakeFiles/cmTC_c8fea.dir/build.make:97: recipe for target 'cmTC_c8fea' failed
+make[1]: *** [cmTC_c8fea] Error 1
 make[1]: Leaving directory '/home/xavier/catkin_ws/build/opencv_scanner/CMakeFiles/CMakeTmp'
-Makefile:126: recipe for target 'cmTC_42ccb/fast' failed
-make: *** [cmTC_42ccb/fast] Error 2
+Makefile:126: recipe for target 'cmTC_c8fea/fast' failed
+make: *** [cmTC_c8fea/fast] Error 2
 
 File /home/xavier/catkin_ws/build/opencv_scanner/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
 /* */
@@ -37,20 +37,20 @@ int main(int argc, char** argv)
 Determining if the function pthread_create exists in the pthreads failed with the following output:
 Change Dir: /home/xavier/catkin_ws/build/opencv_scanner/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_00739/fast"
-/usr/bin/make -f CMakeFiles/cmTC_00739.dir/build.make CMakeFiles/cmTC_00739.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_b9332/fast"
+/usr/bin/make -f CMakeFiles/cmTC_b9332.dir/build.make CMakeFiles/cmTC_b9332.dir/build
 make[1]: Entering directory '/home/xavier/catkin_ws/build/opencv_scanner/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_00739.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_00739.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
-Linking C executable cmTC_00739
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_00739.dir/link.txt --verbose=1
-/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_00739.dir/CheckFunctionExists.c.o  -o cmTC_00739 -lpthreads 
+Building C object CMakeFiles/cmTC_b9332.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_b9332.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
+Linking C executable cmTC_b9332
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b9332.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_b9332.dir/CheckFunctionExists.c.o  -o cmTC_b9332 -lpthreads 
 /usr/bin/ld: cannot find -lpthreads
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_00739.dir/build.make:97: recipe for target 'cmTC_00739' failed
-make[1]: *** [cmTC_00739] Error 1
+CMakeFiles/cmTC_b9332.dir/build.make:97: recipe for target 'cmTC_b9332' failed
+make[1]: *** [cmTC_b9332] Error 1
 make[1]: Leaving directory '/home/xavier/catkin_ws/build/opencv_scanner/CMakeFiles/CMakeTmp'
-Makefile:126: recipe for target 'cmTC_00739/fast' failed
-make: *** [cmTC_00739/fast] Error 2
+Makefile:126: recipe for target 'cmTC_b9332/fast' failed
+make: *** [cmTC_b9332/fast] Error 2
 
 

@@ -468,7 +468,7 @@ void setPointsCallback(const geometry_msgs::Twist& twist)
 
 /*
 Pitakuru coordinate system and angles w.r.t Robot
-		-x 0deg
+		x 0deg
 		|
 		|
 		|
@@ -479,7 +479,7 @@ Pitakuru coordinate system and angles w.r.t Robot
 		|
 		|
 		|
-	 179deg x -179 deg       
+	 179deg -x -179 deg       
 */
 
 
@@ -541,7 +541,7 @@ if(mode_follow && danger!=true){
 				spx_follow[i]=Rx;
 				spy_follow[i]=Ry;
 				//angle= atan2(Ry-aux2,Rx-aux1) * 180 / 3.1416;//angle wrt robot
-				angle= -atan2((Ry-aux2),-(Rx-aux1)) * 180 / 3.1416;//angle wrt robot
+				angle= -atan2((Ry-aux2),(Rx-aux1)) * 180 / 3.1416;//angle wrt robot
 				angle_follow[i]=angle;
 				aux1=Rx;
 				aux2=Ry;
@@ -565,7 +565,7 @@ if(mode_follow && danger!=true){
 			errpy=spy_follow[indice]-py;
 			sp_yaw=angle_follow[indice+1];
 			
-			if(sqrt((errpx*errpx)+(errpy*errpy))<0.25){
+			if(sqrt((errpx*errpx)+(errpy*errpy))<0.3){
 				indice++;
 				if (indice>19){
 					indice=19;

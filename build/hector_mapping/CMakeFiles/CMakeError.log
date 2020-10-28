@@ -1,23 +1,23 @@
 Determining if the pthread_create exist failed with the following output:
 Change Dir: /home/xavier/catkin_ws/build/hector_mapping/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_effd8/fast"
-/usr/bin/make -f CMakeFiles/cmTC_effd8.dir/build.make CMakeFiles/cmTC_effd8.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_acd2f/fast"
+/usr/bin/make -f CMakeFiles/cmTC_acd2f.dir/build.make CMakeFiles/cmTC_acd2f.dir/build
 make[1]: Entering directory '/home/xavier/catkin_ws/build/hector_mapping/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_effd8.dir/CheckSymbolExists.c.o
-/usr/bin/cc    -o CMakeFiles/cmTC_effd8.dir/CheckSymbolExists.c.o   -c /home/xavier/catkin_ws/build/hector_mapping/CMakeFiles/CMakeTmp/CheckSymbolExists.c
-Linking C executable cmTC_effd8
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_effd8.dir/link.txt --verbose=1
-/usr/bin/cc      -rdynamic CMakeFiles/cmTC_effd8.dir/CheckSymbolExists.c.o  -o cmTC_effd8 
-CMakeFiles/cmTC_effd8.dir/CheckSymbolExists.c.o: In function `main':
+Building C object CMakeFiles/cmTC_acd2f.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_acd2f.dir/CheckSymbolExists.c.o   -c /home/xavier/catkin_ws/build/hector_mapping/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_acd2f
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_acd2f.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_acd2f.dir/CheckSymbolExists.c.o  -o cmTC_acd2f 
+CMakeFiles/cmTC_acd2f.dir/CheckSymbolExists.c.o: In function `main':
 CheckSymbolExists.c:(.text+0x14): undefined reference to `pthread_create'
 CheckSymbolExists.c:(.text+0x18): undefined reference to `pthread_create'
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_effd8.dir/build.make:97: recipe for target 'cmTC_effd8' failed
-make[1]: *** [cmTC_effd8] Error 1
+CMakeFiles/cmTC_acd2f.dir/build.make:97: recipe for target 'cmTC_acd2f' failed
+make[1]: *** [cmTC_acd2f] Error 1
 make[1]: Leaving directory '/home/xavier/catkin_ws/build/hector_mapping/CMakeFiles/CMakeTmp'
-Makefile:126: recipe for target 'cmTC_effd8/fast' failed
-make: *** [cmTC_effd8/fast] Error 2
+Makefile:126: recipe for target 'cmTC_acd2f/fast' failed
+make: *** [cmTC_acd2f/fast] Error 2
 
 File /home/xavier/catkin_ws/build/hector_mapping/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
 /* */
@@ -37,20 +37,20 @@ int main(int argc, char** argv)
 Determining if the function pthread_create exists in the pthreads failed with the following output:
 Change Dir: /home/xavier/catkin_ws/build/hector_mapping/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_973c5/fast"
-/usr/bin/make -f CMakeFiles/cmTC_973c5.dir/build.make CMakeFiles/cmTC_973c5.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_ef794/fast"
+/usr/bin/make -f CMakeFiles/cmTC_ef794.dir/build.make CMakeFiles/cmTC_ef794.dir/build
 make[1]: Entering directory '/home/xavier/catkin_ws/build/hector_mapping/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_973c5.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_973c5.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
-Linking C executable cmTC_973c5
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_973c5.dir/link.txt --verbose=1
-/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_973c5.dir/CheckFunctionExists.c.o  -o cmTC_973c5 -lpthreads 
+Building C object CMakeFiles/cmTC_ef794.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_ef794.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
+Linking C executable cmTC_ef794
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ef794.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_ef794.dir/CheckFunctionExists.c.o  -o cmTC_ef794 -lpthreads 
 /usr/bin/ld: cannot find -lpthreads
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_973c5.dir/build.make:97: recipe for target 'cmTC_973c5' failed
-make[1]: *** [cmTC_973c5] Error 1
+CMakeFiles/cmTC_ef794.dir/build.make:97: recipe for target 'cmTC_ef794' failed
+make[1]: *** [cmTC_ef794] Error 1
 make[1]: Leaving directory '/home/xavier/catkin_ws/build/hector_mapping/CMakeFiles/CMakeTmp'
-Makefile:126: recipe for target 'cmTC_973c5/fast' failed
-make: *** [cmTC_973c5/fast] Error 2
+Makefile:126: recipe for target 'cmTC_ef794/fast' failed
+make: *** [cmTC_ef794/fast] Error 2
 
 

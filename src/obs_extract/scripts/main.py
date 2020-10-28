@@ -89,7 +89,7 @@ class PitWheels:
     def obstacles_callback(self, data):
         lst = []
         for x in data.circles:
-            if x.center.x<-0.3 and x.center.x>-self.front_detection and x.center.y<self.side_detection and x.center.y>-self.side_detection: 
+            if x.center.x>-0.3 and x.center.x<self.front_detection and x.center.y<self.side_detection and x.center.y>-self.side_detection: 
                 #print("#########")
                 #circles = data.circles
                 #print(circles)

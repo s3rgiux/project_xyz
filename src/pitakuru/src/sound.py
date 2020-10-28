@@ -26,11 +26,11 @@ class SoundNode():
     def alerts_cb(self,data):
 #// 6 collision 5 danger 4 warning 3 karugamo 2 idle 1 manual
         if(data.data==1):
-            subprocess.call(["aplay", "/home/xavier/catkin_ws/src/pitakuru/assets/manual.wav"])
+            subprocess.call(["aplay", "/home/xavier/catkin_ws/src/pitakuru/assets/manual-japanese.mp3"])
         elif(data.data==2):
-            subprocess.call(["aplay", "/home/xavier/catkin_ws/src/pitakuru/assets/idle.wav"])
+            subprocess.call(["aplay", "/home/xavier/catkin_ws/src/pitakuru/assets/idle-japanese.mp3"])
         elif(data.data==3):
-            subprocess.call(["aplay", "/home/xavier/catkin_ws/src/pitakuru/assets/karugamo.wav"])
+            subprocess.call(["aplay", "/home/xavier/catkin_ws/src/pitakuru/assets/karugamo-japanese.mp3"])
         elif(data.data==4):
             subprocess.call(["aplay", "/home/xavier/catkin_ws/src/pitakuru/assets/AGV_warning_3s.wav"])
         elif(data.data==5):
@@ -38,7 +38,7 @@ class SoundNode():
         elif(data.data==6):
             subprocess.call(["aplay", "/home/xavier/catkin_ws/src/pitakuru/assets/collision.wav"])
         elif(data.data==8):
-            subprocess.call(["aplay", "/home/xavier/catkin_ws/src/pitakuru/assets/karugamo.wav"])
+            subprocess.call(["aplay", "/home/xavier/catkin_ws/src/pitakuru/assets/karugamo-japanese.mp3"])
 
 
     #def execute_cb(self, sound):

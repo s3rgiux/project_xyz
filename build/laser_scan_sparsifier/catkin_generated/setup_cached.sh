@@ -8,6 +8,7 @@
 
 # modified environment variables
 export CMAKE_PREFIX_PATH="/home/xavier/catkin_ws/devel/.private/laser_scan_sparsifier:$CMAKE_PREFIX_PATH"
+export PATH="/home/xavier/catkin_ws/devel/bin:$PATH"
 export PWD="/home/xavier/catkin_ws/build/laser_scan_sparsifier"
 export ROSLISP_PACKAGE_DIRECTORIES="/home/xavier/catkin_ws/devel/.private/laser_scan_sparsifier/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
 export ROS_PACKAGE_PATH="/home/xavier/catkin_ws/src/scan_tools/laser_scan_sparsifier:$ROS_PACKAGE_PATH"
