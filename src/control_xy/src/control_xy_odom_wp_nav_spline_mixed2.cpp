@@ -500,7 +500,7 @@ if(is_near==false){
 					spx_follow[i]=Rx;
 					spy_follow[i]=Ry;
 					//angle= atan2(Ry-aux2,Rx-aux1) * 180 / 3.1416;//angle wrt robot
-					angle= -atan2((Ry-aux2),(Rx-aux1)) * 180 / 3.1416;//angle wrt robot
+					angle= atan2((Ry-aux2),(Rx-aux1)) * 180 / 3.1416;//angle wrt robot
 					angle_follow[i]=angle;
 					aux1=Rx;
 					aux2=Ry;
@@ -533,7 +533,7 @@ if(is_near==false){
 						indice=19;
 					}
 				}
-				error_yaw=-(sp_yaw-ang_robot);//-(sp_yaw-ang_robot);
+				error_yaw=(sp_yaw-ang_robot);//-(sp_yaw-ang_robot);
 				if (error_yaw < -180.0 ){
 					error_yaw=error_yaw+360;
 				}else if (error_yaw > 180.0 ){
@@ -607,7 +607,8 @@ void near(){
 		    if( cx!=0.01 && cy !=0.01 && ang_peop_lidar<85 && ang_peop_lidar>-85 && tracking_people && cx<=(tracked_cx+radius_follow) && cx>=(tracked_cx-radius_follow) && cy<=(tracked_cy+radius_follow) && cy >=(tracked_cy-radius_follow)){//2
 
 			//correccion needed
-			ang_peop_lidar = -90+ atan2(cx, cy) * 180 / 3.1416 ;// ;  90- atan2(cx, cy) * 180 / 3.1416 
+			//ang_peop_lidar = -90+ atan2(cx, cy) * 180 / 3.1416 ;// ;  90- atan2(cx, cy) * 180 / 3.1416 
+			ang_peop_lidar = 90- atan2(cx, cy) * 180 / 3.1416 ;// ;  -90+ atan2(cx, cy) * 180 / 3.1416 
 			//ang_peop_lidar = 90- atan2(cx, cy) * 180 / 3.1416 ;//-90+ atan2(cx, cy) * 180 / 3.1416 ;
 
 			distanciaPeople2 = sqrt(cx*cx+cy*cy)*100;
@@ -1109,29 +1110,27 @@ else{
 
 		if(mode_manual){
 			  if(free_way){
-			   ctrl_front_manual=(1-smooth_accel)*(joy->axes[1]*max_speed_manual)+(smooth_accel*ctrl_front_manual);
-			   if(ctrl_front_manual<20 && ctrl_front_manual>-20){
-				ctrl_front_manual=0;
-			   }
-			   vel_steer.linear.x= ctrl_front_manual;
-			   //vel_steer.linear.x=-joy->axes[1]*-max_speed_manual;
-
-			   ctrl_side_manual=(1-smooth_accel)*(joy->axes[0]*max_speed_side_manual)+(smooth_accel*ctrl_side_manual);
+			  //if(true){
+			   	ctrl_front_manual=(1-smooth_accel)*(joy->axes[1]*max_speed_manual)+(smooth_accel*ctrl_front_manual);
+			   	//if(ctrl_front_manual<20 && ctrl_front_manual>-20){
+				//	ctrl_front_manual=0;
+			   	//}
+			   	vel_steer.linear.x= ctrl_front_manual;
+			   	//vel_steer.linear.x=-joy->axes[1]*-max_speed_manual;
+			   	ctrl_side_manual=(1-smooth_accel)*(joy->axes[0]*max_speed_side_manual)+(smooth_accel*ctrl_side_manual);
 			   
-			   if(ctrl_side_manual<7 && ctrl_side_manual>-7){
-				ctrl_side_manual=0;
-			   }
-			   vel_steer.angular.z=ctrl_side_manual;
+			   	if(ctrl_side_manual<7 && ctrl_side_manual>-7){
+					ctrl_side_manual=0;
+			   	}
+			   	vel_steer.angular.z=ctrl_side_manual;
 			   
-			   if(joy->axes[7]!=0){
-			     vel_steer.linear.x=joy->axes[7]*max_speed_manual;
-			   }
-			   if(joy->axes[6]!=0){
-			     vel_steer.angular.z=joy->axes[6]*-800;
-			   }
-			   speed_publisher.publish(vel_steer);
-
-
+			   	if(joy->axes[7]!=0){
+			     		vel_steer.linear.x=joy->axes[7]*max_speed_manual;
+			   	}
+			   	if(joy->axes[6]!=0){
+			     		vel_steer.angular.z=joy->axes[6]*-800;
+			   	}
+			   	speed_publisher.publish(vel_steer);
 		}else{//else free way
 		
 			ctrl_front_manual=(1-smooth_accel)*(joy->axes[1]*max_speed_manual)+(smooth_accel*ctrl_front_manual);
