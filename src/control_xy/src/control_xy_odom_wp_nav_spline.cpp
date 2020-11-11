@@ -203,7 +203,7 @@ void setPointsCallback(const geometry_msgs::Twist& twist)
 			errpy=nspy-py;
 			//sp_yaw=80;
 			//sp_yaw=atan2(errpx,errpy)*180/3.1416;
-			sp_yaw=-atan2(errpy,-errpx)*180/3.1416;
+			sp_yaw=atan2(errpy,errpx)*180/3.1416;
 			////TEsts
 /*
 			ROS_INFO("Test1 front -1.7,0");
@@ -295,10 +295,10 @@ void setPointsCallback(const geometry_msgs::Twist& twist)
 					}
 			}
 
-			if(ctrl_vel>600){
-				ctrl_vel=600;
-			}else if(ctrl_vel<-600){
-				ctrl_vel=-600;
+			if(ctrl_vel>1000){
+				ctrl_vel=1000;
+			}else if(ctrl_vel<-1000){
+				ctrl_vel=-1000;
 			}
 			
 			vel_steer.angular.z= ctrl_yaw;
@@ -473,7 +473,7 @@ Pitakuru coordinate system and angles w.r.t Robot
 		|
 		|
 	
-  90deg	-y--------------- y  -90deg
+  90deg	y--------------- -y  -90deg
 		|
 		|
 		|
@@ -488,13 +488,14 @@ Pitakuru coordinate system and angles w.r.t Robot
 
 void angPeopCallback4(const geometry_msgs::Vector3& msg){
 
-//int num_wp=6;
-int num_wp=11;//num_sp;
+int num_wp=6;
+//int num_wp=30;//num_sp;
 cicles=20;
 
 cx = msg.x;//pos people or object
 cy = msg.y;//pos people or object
-ang_peop_lidar = 90+ atan2(cx, cy) * 180 / 3.1416 ;
+ang_peop_lidar = 90- atan2(cx, cy) * 180 / 3.1416;
+//ang_peop_lidar = 90+ atan2(cx, cy) * 180 / 3.1416 ;
 /*
 spx_saved[0]=-0.4;
 spy_saved[0]=0.02;
@@ -514,7 +515,7 @@ if(mode_follow && danger!=true){
 		///////////////New algorithm
                 //index_wp=-1;
 		//dist_auxwp=0;
-		  if(dist_auxwp<0.55){
+		  if(dist_auxwp<0.57){
 			index_wp++;
 			if(index_wp>=(num_wp-1)){
 				index_wp=num_wp-1;
@@ -540,8 +541,8 @@ if(mode_follow && danger!=true){
 				Ry=Q0y-Q0y*i*c+i*c*Q1y;
 				spx_follow[i]=Rx;
 				spy_follow[i]=Ry;
-				//angle= atan2(Ry-aux2,Rx-aux1) * 180 / 3.1416;//angle wrt robot
-				angle= -atan2((Ry-aux2),(Rx-aux1)) * 180 / 3.1416;//angle wrt robot
+				//angle= -atan2(Ry-aux2,Rx-aux1) * 180 / 3.1416;//angle wrt robot
+				angle= atan2((Ry-aux2),(Rx-aux1)) * 180 / 3.1416;//angle wrt robot
 				angle_follow[i]=angle;
 				aux1=Rx;
 				aux2=Ry;
@@ -565,7 +566,7 @@ if(mode_follow && danger!=true){
 			errpy=spy_follow[indice]-py;
 			sp_yaw=angle_follow[indice+1];
 			
-			if(sqrt((errpx*errpx)+(errpy*errpy))<0.3){
+			if(sqrt((errpx*errpx)+(errpy*errpy))<0.35){
 				indice++;
 				if (indice>19){
 					indice=19;
@@ -584,7 +585,7 @@ if(mode_follow && danger!=true){
 			//nkd=1;
 			//nki=0;
 			ROS_INFO("sp %f %f, R %f %f, YSP %f %f\n",spx_follow[indice],spy_follow[indice],px,py,ang_robot,sp_yaw);
-			fprintf(fp, "%f,%f,%f,%f,%f, %f\n",spx_follow[indice],spy_follow[indice],px,py,ang_robot,sp_yaw);
+			fprintf(fp2,"%f,%f,%f,%f,%f, %f\n",spx_follow[indice],spy_follow[indice],px,py,ang_robot,sp_yaw);
 			ctrl_yaw=(nkp*spVel);//
 				if(ctrl_yaw>400){
 						ctrl_yaw=400; 
@@ -592,7 +593,7 @@ if(mode_follow && danger!=true){
 						ctrl_yaw=-400;
 				}
 				
-			ctrl_front_follow=350;
+			ctrl_front_follow=900;
 			vel_steer.linear.x= ctrl_front_follow;
 			vel_steer.angular.z= ctrl_yaw;
 			speed_publisher.publish(vel_steer);
@@ -608,7 +609,7 @@ if(mode_follow && danger!=true){
 	    int count = scan->scan_time / scan->time_increment;
 	    //float  break_distance=1.5;
             //float  break_danger=0.5;
-		for(int j=329;j<=358;j++){
+		for(int j=268;j<=358;j++){
   			if (scan->ranges[j] <= break_danger && scan->ranges[j] >0.24 && mode_idle==false){
      				danger=true;
 				free_way=false;
@@ -662,7 +663,7 @@ if(mode_follow && danger!=true){
   			}
 		}
 
-		for(int i=0;i<=30;i++){
+		for(int i=0;i<=90;i++){
   			if (scan->ranges[i] <= break_danger && scan->ranges[i] >0.24 && mode_idle==false){
      				danger=true;
 				free_way=false;
@@ -762,6 +763,7 @@ if(mode_follow && danger!=true){
         			
         			//printf("%3d: %s", h, mystring);
         			printf("R %f,%f \n",sp_rx[h],sp_ry[h]);
+				//fprintf(fp, "%f,%f,%f,%f,%f, %f\n",sp_rx[h],sp_ry[h],px,py,ang_robot,sp_yaw);
         			h++;
 			}
 			printf("Ruta cargada %d elementos\n ",h);
@@ -1001,6 +1003,7 @@ ROS_INFO("Rcalc %f,%f,%f",Rx,Ry,angle);
 			cont_sp_follow=0;
 			kf=1;
 			///////////
+			fp2 = fopen ("/home/xavier/catkin_ws/src/control_xy/people.txt" , "w+");
 			loadRoute();
 			///////////
 			speed_publisher.publish(vel_steer);
@@ -1010,7 +1013,7 @@ ROS_INFO("Rcalc %f,%f,%f",Rx,Ry,angle);
 
 			ROS_INFO("Mode People Follow");
 			
-			fp = fopen ("/home/xavier/catkin_ws/src/control_xy/people.txt" , "w+");
+			
 			//alerts_command.data=7;//7 peop follow 5 danger 4 warning 3 karugamo 2 idle 1 manual
 			
 			ros::Duration(0.5).sleep(); // sleep for half a second
@@ -1026,7 +1029,7 @@ ROS_INFO("Rcalc %f,%f,%f",Rx,Ry,angle);
 			   vel_steer.linear.x= ctrl_front_manual;
 			   //vel_steer.linear.x=-joy->axes[1]*-max_speed_manual;
 
-			   ctrl_side_manual=(1-smooth_accel)*(-joy->axes[0]*max_speed_side_manual)+(smooth_accel*ctrl_side_manual);
+			   ctrl_side_manual=(1-smooth_accel)*(joy->axes[0]*max_speed_side_manual)+(smooth_accel*ctrl_side_manual);
 			   
 			   if(ctrl_side_manual<7 && ctrl_side_manual>-7){
 				ctrl_side_manual=0;
@@ -1047,7 +1050,7 @@ ROS_INFO("Rcalc %f,%f,%f",Rx,Ry,angle);
 			ctrl_front_manual=(1-smooth_accel)*(joy->axes[1]*max_speed_manual)+(smooth_accel*ctrl_front_manual);
 			if(ctrl_front_manual<0){
 				vel_steer.linear.x= ctrl_front_manual;
-				ctrl_side_manual=(1-smooth_accel)*(-joy->axes[0]*max_speed_side_manual)+(smooth_accel*ctrl_side_manual);
+				ctrl_side_manual=(1-smooth_accel)*(joy->axes[0]*max_speed_side_manual)+(smooth_accel*ctrl_side_manual);
 			   
 			   	if(ctrl_side_manual<7 && ctrl_side_manual>-7){
 					ctrl_side_manual=0;
@@ -1100,11 +1103,12 @@ private:
 	float angulo_seguimiento,sp_yaw,sp_yaw2,ctrl_yaw,error_yaw,yaw,distanciaPeople,distanciaPeople2,break_distance,break_danger,max_speed_karugamo,max_speed_follow,max_speed_manual,ctrl_ang,ctrl_lin;
 	float px,py,norm,norm2,x_ini,y_ini,x_p,y_p,px2,py2,spx,spy,err_x,err_y,err_xx,err_yy,low_vel_gain,high_vel_gain,low_vel_gain_follow,high_vel_gain_follow,smooth_accel,ctrl_side_manual,max_speed_side_manual;
 	char rx[80],ry[80],rx2[80],ry2[80],pa[80],yag[80];
-	float sp_rx[1000],sp_ry[1000],sp_rx2[1000],sp_ry2[1000],param[1000],sp_yaww[1000];
+	float sp_rx[10000],sp_ry[10000],sp_rx2[10000],sp_ry2[10000],param[10000],sp_yaww[10000];
 	float spx_follow[25],spy_follow[25],angle_follow[25],prev_cx,prev_cy;
 	float spx_saved[10000],spy_saved[10000];
 	int count,count2,ca,direction,count_odo,cont_detect_peop,cont_sp_follow,kf;
 	FILE * fp;
+		FILE * fp2;
 	bool obstaculo,changed,crucero,ruta_learn,loaded_route,start_route,arrived,obstacle_front,obstacle_front1,obstacle_front2,newobstacle,tracking_people;
 	float px_aux,py_aux,n_aux,last_error,alfa,velx,err2,velyaw,intErr,velCtrl,nspx,nspy,errPos,ang_peop_cam,ang_peop_lidar,tracked_angle,tracked_distance,radius_follow,tracked_cx,tracked_cy;
 	int num_sp,k_idx,carril,velocity,contadorvel,mode,indx,h,conta,missing_track;

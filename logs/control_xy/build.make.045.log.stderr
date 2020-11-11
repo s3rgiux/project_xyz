@@ -1,0 +1,1298 @@
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:665:6:[m[K [01;31m[Kerror: [m[Kexpected unqualified-id before ‘[01m[Kelse[m[K’
+     }[01;31m[Kelse[m[K{
+      [01;31m[K^~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:715:10:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K;[m[K’ after class definition
+         }[01;31m[K/[m[K/mode3
+          [01;31m[K^[m[K
+          [32m[K;[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:[m[K In constructor ‘[01m[Ktest_head::test_head(ros::NodeHandle)[m[K’:
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:33:10:[m[K [01;31m[Kerror: [m[K‘[01m[Kspeed_publisher[m[K’ was not declared in this scope
+          [01;31m[Kspeed_publisher[m[K=nh.advertise<geometry_msgs::Twist>(nh.resolveName("/cmd_vel"), 1);
+          [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:34:3:[m[K [01;31m[Kerror: [m[K‘[01m[Ktracked_publisher[m[K’ was not declared in this scope
+   [01;31m[Ktracked_publisher[m[K=nh.advertise<geometry_msgs::Vector3>(nh.resolveName("/tracked"), 2);
+   [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:35:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kalerts_publisher[m[K’ was not declared in this scope
+   [01;31m[Kalerts_publisher[m[K=nh.advertise<std_msgs::Int16>(nh.resolveName("/alerts"), 1);
+   [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:36:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kmarker_pub[m[K’ was not declared in this scope
+   [01;31m[Kmarker_pub[m[K   = nh.advertise<visualization_msgs::Marker>(nh.resolveName("/visualization_marker"),1);
+   [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:37:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kpos_peop_pub[m[K’ was not declared in this scope
+   [01;31m[Kpos_peop_pub[m[K = nh.advertise<nav_msgs::Odometry>(nh.resolveName("/peop_way"),1);
+   [01;31m[K^~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:39:17:[m[K [01;31m[Kerror: [m[K‘[01m[Khead_subscriber[m[K’ was not declared in this scope
+                 [01;31m[Khead_subscriber[m[K = nh.subscribe("/euler", 1, &test_head::headCallback,this);
+                 [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:40:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kodometry_sub[m[K’ was not declared in this scope
+   [01;31m[Kodometry_sub[m[K = nh.subscribe("odom",1,&test_head::ReceiveOdometry,this);
+   [01;31m[K^~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:40:3:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Ktimersub[m[K’
+   [01;36m[Kodometry_sub[m[K = nh.subscribe("odom",1,&test_head::ReceiveOdometry,this);
+   [01;36m[K^~~~~~~~~~~~[m[K
+   [32m[Ktimersub[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:42:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kjoy_subscriber[m[K’ was not declared in this scope
+   [01;31m[Kjoy_subscriber[m[K = nh.subscribe("/j0/joy", 1, &test_head::joyCallback,this);
+   [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:42:59:[m[K [01;31m[Kerror: [m[K‘[01m[KjoyCallback[m[K’ is not a member of ‘[01m[Ktest_head[m[K’
+   joy_subscriber = nh.subscribe("/j0/joy", 1, &test_head::[01;31m[KjoyCallback[m[K,this);
+                                                           [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:43:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kpose_subscriber[m[K’ was not declared in this scope
+   [01;31m[Kpose_subscriber[m[K = nh.subscribe("setPoints", 1, &test_head::setPointsCallback,this);
+   [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:45:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kdist_subscriber[m[K’ was not declared in this scope
+   [01;31m[Kdist_subscriber[m[K = nh.subscribe("peopDist", 1, &test_head::distPeopCallback,this);
+   [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:48:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kang_subscriber2[m[K’ was not declared in this scope
+   [01;31m[Kang_subscriber2[m[K = nh.subscribe("peopAng2", 2, &test_head::angPeopCallback4,this);
+   [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:50:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kang_subscriber_cam[m[K’ was not declared in this scope
+   [01;31m[Kang_subscriber_cam[m[K = nh.subscribe("ang_peop_detect_img", 1, &test_head::angCamCallback2,this);
+   [01;31m[K^~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:51:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kdist_subscriber2[m[K’ was not declared in this scope
+   [01;31m[Kdist_subscriber2[m[K = nh.subscribe("peopDist2", 1, &test_head::distPeopCallback2,this);
+   [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:52:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kobst_subscriber[m[K’ was not declared in this scope
+                 [01;31m[Kobst_subscriber[m[K = nh.subscribe("/obstacle_closest", 1, &test_head::obstCallback,this);
+                 [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:53:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kstate_subscriber[m[K’ was not declared in this scope
+                 [01;31m[Kstate_subscriber[m[K = nh.subscribe("/trigger_action", 1, &test_head::stateCallback,this);
+                 [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:56:45:[m[K [01;31m[Kerror: [m[K‘[01m[Kbreak_distance[m[K’ was not declared in this scope
+   nh.getParam("/control_xy/break_distance", [01;31m[Kbreak_distance[m[K);
+                                             [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:56:45:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kpthread_testcancel[m[K’
+   nh.getParam("/control_xy/break_distance", [01;36m[Kbreak_distance[m[K);
+                                             [01;36m[K^~~~~~~~~~~~~~[m[K
+                                             [32m[Kpthread_testcancel[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:57:43:[m[K [01;31m[Kerror: [m[K‘[01m[Kbreak_danger[m[K’ was not declared in this scope
+   nh.getParam("/control_xy/break_danger", [01;31m[Kbreak_danger[m[K);
+                                           [01;31m[K^~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:57:43:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kpthread_cancel[m[K’
+   nh.getParam("/control_xy/break_danger", [01;36m[Kbreak_danger[m[K);
+                                           [01;36m[K^~~~~~~~~~~~[m[K
+                                           [32m[Kpthread_cancel[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:58:52:[m[K [01;31m[Kerror: [m[K‘[01m[Klow_vel_gain[m[K’ was not declared in this scope
+   nh.getParam("/control_xy/low_vel_gain_karugamo", [01;31m[Klow_vel_gain[m[K);
+                                                    [01;31m[K^~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:59:53:[m[K [01;31m[Kerror: [m[K‘[01m[Khigh_vel_gain[m[K’ was not declared in this scope
+   nh.getParam("/control_xy/high_vel_gain_karugamo", [01;31m[Khigh_vel_gain[m[K);
+                                                     [01;31m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:60:50:[m[K [01;31m[Kerror: [m[K‘[01m[Klow_vel_gain_follow[m[K’ was not declared in this scope
+   nh.getParam("/control_xy/low_vel_gain_follow", [01;31m[Klow_vel_gain_follow[m[K);
+                                                  [01;31m[K^~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:61:51:[m[K [01;31m[Kerror: [m[K‘[01m[Khigh_vel_gain_follow[m[K’ was not declared in this scope
+   nh.getParam("/control_xy/high_vel_gain_follow", [01;31m[Khigh_vel_gain_follow[m[K);
+                                                   [01;31m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:62:52:[m[K [01;31m[Kerror: [m[K‘[01m[Kfrontal_gain_karugamo[m[K’ was not declared in this scope
+   nh.getParam("/control_xy/frontal_gain_karugamo", [01;31m[Kfrontal_gain_karugamo[m[K);
+                                                    [01;31m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:63:50:[m[K [01;31m[Kerror: [m[K‘[01m[Kfrontal_gain_follow[m[K’ was not declared in this scope
+   nh.getParam("/control_xy/frontal_gain_follow", [01;31m[Kfrontal_gain_follow[m[K);
+                                                  [01;31m[K^~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:64:50:[m[K [01;31m[Kerror: [m[K‘[01m[Kfrontal_gain_manual[m[K’ was not declared in this scope
+   nh.getParam("/control_xy/frontal_gain_manual", [01;31m[Kfrontal_gain_manual[m[K);
+                                                  [01;31m[K^~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:65:49:[m[K [01;31m[Kerror: [m[K‘[01m[Kmax_speed_karugamo[m[K’ was not declared in this scope
+   nh.getParam("/control_xy/max_speed_karugamo", [01;31m[Kmax_speed_karugamo[m[K);
+                                                 [01;31m[K^~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:66:47:[m[K [01;31m[Kerror: [m[K‘[01m[Kmax_speed_follow[m[K’ was not declared in this scope
+   nh.getParam("/control_xy/max_speed_follow", [01;31m[Kmax_speed_follow[m[K);
+                                               [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:67:47:[m[K [01;31m[Kerror: [m[K‘[01m[Kmax_speed_manual[m[K’ was not declared in this scope
+   nh.getParam("/control_xy/max_speed_manual", [01;31m[Kmax_speed_manual[m[K);
+                                               [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:68:66:[m[K [01;31m[Kerror: [m[K‘[01m[Kmax_speed_side_manual[m[K’ was not declared in this scope
+                 nh.getParam("/control_xy/max_speed_side_manual", [01;31m[Kmax_speed_side_manual[m[K);
+                                                                  [01;31m[K^~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:69:43:[m[K [01;31m[Kerror: [m[K‘[01m[Ksmooth_accel[m[K’ was not declared in this scope
+   nh.getParam("/control_xy/smooth_accel", [01;31m[Ksmooth_accel[m[K);
+                                           [01;31m[K^~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:70:44:[m[K [01;31m[Kerror: [m[K‘[01m[Kradius_follow[m[K’ was not declared in this scope
+   nh.getParam("/control_xy/radius_follow", [01;31m[Kradius_follow[m[K);
+                                            [01;31m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:72:3:[m[K [01;31m[Kerror: [m[K‘[01m[KsubScan_[m[K’ was not declared in this scope
+   [01;31m[KsubScan_[m[K = nh.subscribe("/scan", 1, &test_head::scanCallback,this);
+   [01;31m[K^~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:72:3:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kswscanf[m[K’
+   [01;36m[KsubScan_[m[K = nh.subscribe("/scan", 1, &test_head::scanCallback,this);
+   [01;36m[K^~~~~~~~[m[K
+   [32m[Kswscanf[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:72:51:[m[K [01;31m[Kerror: [m[K‘[01m[KscanCallback[m[K’ is not a member of ‘[01m[Ktest_head[m[K’
+   subScan_ = nh.subscribe("/scan", 1, &test_head::[01;31m[KscanCallback[m[K,this);
+                                                   [01;31m[K^~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:75:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kstart_tray[m[K’ was not declared in this scope
+   [01;31m[Kstart_tray[m[K=false;
+   [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:75:3:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kstrfry[m[K’
+   [01;36m[Kstart_tray[m[K=false;
+   [01;36m[K^~~~~~~~~~[m[K
+   [32m[Kstrfry[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:76:3:[m[K [01;31m[Kerror: [m[K‘[01m[Ksp_yaw[m[K’ was not declared in this scope
+   [01;31m[Ksp_yaw[m[K=90;
+   [01;31m[K^~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:77:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kca[m[K’ was not declared in this scope
+   [01;31m[Kca[m[K=0;
+   [01;31m[K^~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:78:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kruta_learn[m[K’ was not declared in this scope
+   [01;31m[Kruta_learn[m[K=false;
+   [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:78:3:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kualarm[m[K’
+   [01;36m[Kruta_learn[m[K=false;
+   [01;36m[K^~~~~~~~~~[m[K
+   [32m[Kualarm[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:79:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kloaded_route[m[K’ was not declared in this scope
+   [01;31m[Kloaded_route[m[K=false;
+   [01;31m[K^~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:80:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kn_aux[m[K’ was not declared in this scope
+   [01;31m[Kn_aux[m[K=3000;
+   [01;31m[K^~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:81:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kk_idx[m[K’ was not declared in this scope
+   [01;31m[Kk_idx[m[K=0;
+   [01;31m[K^~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:82:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kpx_aux[m[K’ was not declared in this scope
+   [01;31m[Kpx_aux[m[K=1000000000000;
+   [01;31m[K^~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:83:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kpy_aux[m[K’ was not declared in this scope
+   [01;31m[Kpy_aux[m[K=1000000000000;
+   [01;31m[K^~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:84:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kcarril[m[K’ was not declared in this scope
+   [01;31m[Kcarril[m[K=0;//0 externo 1 interno
+   [01;31m[K^~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:84:3:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kceil[m[K’
+   [01;36m[Kcarril[m[K=0;//0 externo 1 interno
+   [01;36m[K^~~~~~[m[K
+   [32m[Kceil[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:85:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kvelocity[m[K’ was not declared in this scope
+   [01;31m[Kvelocity[m[K=0;
+   [01;31m[K^~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:85:3:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kselect[m[K’
+   [01;36m[Kvelocity[m[K=0;
+   [01;36m[K^~~~~~~~[m[K
+   [32m[Kselect[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:86:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kalfa[m[K’ was not declared in this scope
+   [01;31m[Kalfa[m[K=0.8;
+   [01;31m[K^~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:87:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kobstaculo[m[K’ was not declared in this scope
+   [01;31m[Kobstaculo[m[K=false;
+   [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:87:3:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kobstack[m[K’
+   [01;36m[Kobstaculo[m[K=false;
+   [01;36m[K^~~~~~~~~[m[K
+   [32m[Kobstack[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:88:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kchanged[m[K’ was not declared in this scope
+   [01;31m[Kchanged[m[K=false;
+   [01;31m[K^~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:88:3:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kvhangup[m[K’
+   [01;36m[Kchanged[m[K=false;
+   [01;36m[K^~~~~~~[m[K
+   [32m[Kvhangup[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:89:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kerrpx[m[K’ was not declared in this scope
+   [01;31m[Kerrpx[m[K=0;
+   [01;31m[K^~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:89:3:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kerrno[m[K’
+   [01;36m[Kerrpx[m[K=0;
+   [01;36m[K^~~~~[m[K
+   [32m[Kerrno[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:90:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kerrpy[m[K’ was not declared in this scope
+   [01;31m[Kerrpy[m[K=0;
+   [01;31m[K^~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:90:3:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kerrno[m[K’
+   [01;36m[Kerrpy[m[K=0;
+   [01;36m[K^~~~~[m[K
+   [32m[Kerrno[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:91:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kerror_yaw[m[K’ was not declared in this scope
+   [01;31m[Kerror_yaw[m[K=0;
+   [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:91:3:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kerror_t[m[K’
+   [01;36m[Kerror_yaw[m[K=0;
+   [01;36m[K^~~~~~~~~[m[K
+   [32m[Kerror_t[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:92:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kpx[m[K’ was not declared in this scope
+   [01;31m[Kpx[m[K=0;
+   [01;31m[K^~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:93:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kpy[m[K’ was not declared in this scope
+   [01;31m[Kpy[m[K=0;
+   [01;31m[K^~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:94:3:[m[K [01;31m[Kerror: [m[K‘[01m[Knspx[m[K’ was not declared in this scope
+   [01;31m[Knspx[m[K=0.00;
+   [01;31m[K^~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:95:3:[m[K [01;31m[Kerror: [m[K‘[01m[Knspy[m[K’ was not declared in this scope
+   [01;31m[Knspy[m[K=0.05;
+   [01;31m[K^~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:96:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kyaw[m[K’ was not declared in this scope
+   [01;31m[Kyaw[m[K=0;
+   [01;31m[K^~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:97:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kconta[m[K’ was not declared in this scope
+   [01;31m[Kconta[m[K=0;
+   [01;31m[K^~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:97:3:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kconfstr[m[K’
+   [01;36m[Kconta[m[K=0;
+   [01;36m[K^~~~~[m[K
+   [32m[Kconfstr[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:98:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kmissing_track[m[K’ was not declared in this scope
+   [01;31m[Kmissing_track[m[K=0;
+   [01;31m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:99:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kmode[m[K’ was not declared in this scope
+   [01;31m[Kmode[m[K=1;
+   [01;31m[K^~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:99:3:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kmodf[m[K’
+   [01;36m[Kmode[m[K=1;
+   [01;36m[K^~~~[m[K
+   [32m[Kmodf[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:100:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kang_peop_cam[m[K’ was not declared in this scope
+                 [01;31m[Kang_peop_cam[m[K=-500;
+                 [01;31m[K^~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:101:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kaux_dist[m[K’ was not declared in this scope
+   [01;31m[Kaux_dist[m[K=8000;
+   [01;31m[K^~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:101:3:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kva_list[m[K’
+   [01;36m[Kaux_dist[m[K=8000;
+   [01;36m[K^~~~~~~~[m[K
+   [32m[Kva_list[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:103:3:[m[K [01;31m[Kerror: [m[K‘[01m[Ktracked_angle[m[K’ was not declared in this scope
+   [01;31m[Ktracked_angle[m[K=0;
+   [01;31m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:104:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kang_peop_lidar[m[K’ was not declared in this scope
+                 [01;31m[Kang_peop_lidar[m[K=0;
+                 [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:105:3:[m[K [01;31m[Kerror: [m[K‘[01m[KdistanciaPeople2[m[K’ was not declared in this scope
+   [01;31m[KdistanciaPeople2[m[K=0;
+   [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:106:3:[m[K [01;31m[Kerror: [m[K‘[01m[Ktracked_distance[m[K’ was not declared in this scope
+   [01;31m[Ktracked_distance[m[K=0;
+   [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:107:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kcont_detect_peop[m[K’ was not declared in this scope
+   [01;31m[Kcont_detect_peop[m[K=0;
+   [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:109:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kstart_route[m[K’ was not declared in this scope
+   [01;31m[Kstart_route[m[K=false;
+   [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:109:3:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kstrtoull[m[K’
+   [01;36m[Kstart_route[m[K=false;
+   [01;36m[K^~~~~~~~~~~[m[K
+   [32m[Kstrtoull[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:111:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kobstacle_front[m[K’ was not declared in this scope
+   [01;31m[Kobstacle_front[m[K=false;
+   [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:111:3:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kobstack_printf[m[K’
+   [01;36m[Kobstacle_front[m[K=false;
+   [01;36m[K^~~~~~~~~~~~~~[m[K
+   [32m[Kobstack_printf[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:112:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kobstacle_front1[m[K’ was not declared in this scope
+   [01;31m[Kobstacle_front1[m[K=false;
+   [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:112:3:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kobstack_printf[m[K’
+   [01;36m[Kobstacle_front1[m[K=false;
+   [01;36m[K^~~~~~~~~~~~~~~[m[K
+   [32m[Kobstack_printf[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:113:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kobstacle_front2[m[K’ was not declared in this scope
+   [01;31m[Kobstacle_front2[m[K=false;
+   [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:113:3:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kobstack_printf[m[K’
+   [01;36m[Kobstacle_front2[m[K=false;
+   [01;36m[K^~~~~~~~~~~~~~~[m[K
+   [32m[Kobstack_printf[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:115:3:[m[K [01;31m[Kerror: [m[K‘[01m[Ksave_waypoint[m[K’ was not declared in this scope
+   [01;31m[Ksave_waypoint[m[K=false;
+   [01;31m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:117:17:[m[K [01;31m[Kerror: [m[K‘[01m[Knewobstacle[m[K’ was not declared in this scope
+                 [01;31m[Knewobstacle[m[K=false;
+                 [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:117:17:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kobstack[m[K’
+                 [01;36m[Knewobstacle[m[K=false;
+                 [01;36m[K^~~~~~~~~~~[m[K
+                 [32m[Kobstack[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:118:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kcol_avoid_mode[m[K’ was not declared in this scope
+                 [01;31m[Kcol_avoid_mode[m[K=true;
+                 [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:119:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kmode_idle[m[K’ was not declared in this scope
+   [01;31m[Kmode_idle[m[K=true;
+   [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:119:3:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kmode_t[m[K’
+   [01;36m[Kmode_idle[m[K=true;
+   [01;36m[K^~~~~~~~~[m[K
+   [32m[Kmode_t[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:120:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kmode_manual[m[K’ was not declared in this scope
+   [01;31m[Kmode_manual[m[K=false;
+   [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:121:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kmode_karugamo[m[K’ was not declared in this scope
+   [01;31m[Kmode_karugamo[m[K=false;
+   [01;31m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:122:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kmode_follow[m[K’ was not declared in this scope
+                 [01;31m[Kmode_follow[m[K=false;
+                 [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:123:17:[m[K [01;31m[Kerror: [m[K‘[01m[Ktracking_people[m[K’ was not declared in this scope
+                 [01;31m[Ktracking_people[m[K=false;
+                 [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:124:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kmode_auto[m[K’ was not declared in this scope
+   [01;31m[Kmode_auto[m[K=false;
+   [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:124:3:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kmode_t[m[K’
+   [01;36m[Kmode_auto[m[K=false;
+   [01;36m[K^~~~~~~~~[m[K
+   [32m[Kmode_t[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:126:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kdanger[m[K’ was not declared in this scope
+   [01;31m[Kdanger[m[K=false;
+   [01;31m[K^~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:126:3:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Krand_r[m[K’
+   [01;36m[Kdanger[m[K=false;
+   [01;36m[K^~~~~~[m[K
+   [32m[Krand_r[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:127:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kfree_way[m[K’ was not declared in this scope
+   [01;31m[Kfree_way[m[K=true;
+   [01;31m[K^~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:127:3:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kfread[m[K’
+   [01;36m[Kfree_way[m[K=true;
+   [01;36m[K^~~~~~~~[m[K
+   [32m[Kfread[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:128:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kcollision[m[K’ was not declared in this scope
+   [01;31m[Kcollision[m[K = false;
+   [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:128:3:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kcopysign[m[K’
+   [01;36m[Kcollision[m[K = false;
+   [01;36m[K^~~~~~~~~[m[K
+   [32m[Kcopysign[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:130:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kindex_wp[m[K’ was not declared in this scope
+   [01;31m[Kindex_wp[m[K=-1;
+   [01;31m[K^~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:130:3:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kindex[m[K’
+   [01;36m[Kindex_wp[m[K=-1;
+   [01;36m[K^~~~~~~~[m[K
+   [32m[Kindex[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:131:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kdist_auxwp[m[K’ was not declared in this scope
+   [01;31m[Kdist_auxwp[m[K=0;
+   [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:132:3:[m[K [01;31m[Kerror: [m[K‘[01m[Kis_near[m[K’ was not declared in this scope
+   [01;31m[Kis_near[m[K=false;
+   [01;31m[K^~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:132:3:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Knear[m[K’
+   [01;36m[Kis_near[m[K=false;
+   [01;36m[K^~~~~~~[m[K
+   [32m[Knear[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:[m[K In member function ‘[01m[Kvoid test_head::stateCallback(const TriggerAction&)[m[K’:
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:142:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kcollision[m[K’ was not declared in this scope
+    [01;31m[Kcollision[m[K =true;
+    [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:142:4:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kcopysign[m[K’
+    [01;36m[Kcollision[m[K =true;
+    [01;36m[K^~~~~~~~~[m[K
+    [32m[Kcopysign[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:143:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kvel_steer[m[K’ was not declared in this scope
+    [01;31m[Kvel_steer[m[K.linear.x= 0;
+    [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:143:4:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kregister[m[K’
+    [01;36m[Kvel_steer[m[K.linear.x= 0;
+    [01;36m[K^~~~~~~~~[m[K
+    [32m[Kregister[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:145:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kspeed_publisher[m[K’ was not declared in this scope
+    [01;31m[Kspeed_publisher[m[K.publish(vel_steer);
+    [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:146:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kalerts_command[m[K’ was not declared in this scope
+    [01;31m[Kalerts_command[m[K.data=6;//6 collision 5 danger 4 warning 3 karugamo 2 idle 1 manual
+    [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:147:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kalerts_publisher[m[K’ was not declared in this scope
+         [01;31m[Kalerts_publisher[m[K.publish(alerts_command);
+         [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:148:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kmode_idle[m[K’ was not declared in this scope
+    [01;31m[Kmode_idle[m[K=false;
+    [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:148:4:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kmode_t[m[K’
+    [01;36m[Kmode_idle[m[K=false;
+    [01;36m[K^~~~~~~~~[m[K
+    [32m[Kmode_t[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:149:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kmode_manual[m[K’ was not declared in this scope
+    [01;31m[Kmode_manual[m[K=false;
+    [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:150:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kmode_karugamo[m[K’ was not declared in this scope
+    [01;31m[Kmode_karugamo[m[K=false;
+    [01;31m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:151:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kmode_follow[m[K’ was not declared in this scope
+    [01;31m[Kmode_follow[m[K=false;
+    [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:152:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kdanger[m[K’ was not declared in this scope
+    [01;31m[Kdanger[m[K=false;
+    [01;31m[K^~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:152:4:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Krand_r[m[K’
+    [01;36m[Kdanger[m[K=false;
+    [01;36m[K^~~~~~[m[K
+    [32m[Krand_r[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:153:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kfree_way[m[K’ was not declared in this scope
+    [01;31m[Kfree_way[m[K=false;
+    [01;31m[K^~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:153:4:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kfread[m[K’
+    [01;36m[Kfree_way[m[K=false;
+    [01;36m[K^~~~~~~~[m[K
+    [32m[Kfread[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:155:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kctrl_front_follow[m[K’ was not declared in this scope
+    [01;31m[Kctrl_front_follow[m[K= 0;
+    [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:156:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kctrl_ang[m[K’ was not declared in this scope
+    [01;31m[Kctrl_ang[m[K= 0;
+    [01;31m[K^~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:156:4:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kwctrans[m[K’
+    [01;36m[Kctrl_ang[m[K= 0;
+    [01;36m[K^~~~~~~~[m[K
+    [32m[Kwctrans[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:157:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kctrl_front_manual[m[K’ was not declared in this scope
+    [01;31m[Kctrl_front_manual[m[K= 0;
+    [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:158:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kctrl_side_manual[m[K’ was not declared in this scope
+    [01;31m[Kctrl_side_manual[m[K= 0;
+    [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:162:55:[m[K [01;31m[Kerror: [m[K‘[01m[Kcollision[m[K’ was not declared in this scope
+   }else if(data.trigger=="break_release_button_on" && [01;31m[Kcollision[m[K ==true){
+                                                       [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:162:55:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kcopysign[m[K’
+   }else if(data.trigger=="break_release_button_on" && [01;36m[Kcollision[m[K ==true){
+                                                       [01;36m[K^~~~~~~~~[m[K
+                                                       [32m[Kcopysign[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:164:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kmode_idle[m[K’ was not declared in this scope
+    [01;31m[Kmode_idle[m[K=true;
+    [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:164:4:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kmode_t[m[K’
+    [01;36m[Kmode_idle[m[K=true;
+    [01;36m[K^~~~~~~~~[m[K
+    [32m[Kmode_t[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:165:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kmode_manual[m[K’ was not declared in this scope
+    [01;31m[Kmode_manual[m[K=false;
+    [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:166:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kmode_karugamo[m[K’ was not declared in this scope
+    [01;31m[Kmode_karugamo[m[K=false;
+    [01;31m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:167:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kmode_follow[m[K’ was not declared in this scope
+    [01;31m[Kmode_follow[m[K=false;
+    [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:168:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kdanger[m[K’ was not declared in this scope
+    [01;31m[Kdanger[m[K=false;
+    [01;31m[K^~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:168:4:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Krand_r[m[K’
+    [01;36m[Kdanger[m[K=false;
+    [01;36m[K^~~~~~[m[K
+    [32m[Krand_r[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:169:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kfree_way[m[K’ was not declared in this scope
+    [01;31m[Kfree_way[m[K=true;
+    [01;31m[K^~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:169:4:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kfread[m[K’
+    [01;36m[Kfree_way[m[K=true;
+    [01;36m[K^~~~~~~~[m[K
+    [32m[Kfread[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:170:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kctrl_front_follow[m[K’ was not declared in this scope
+    [01;31m[Kctrl_front_follow[m[K= 0;
+    [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:171:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kctrl_ang[m[K’ was not declared in this scope
+    [01;31m[Kctrl_ang[m[K= 0;
+    [01;31m[K^~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:171:4:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kwctrans[m[K’
+    [01;36m[Kctrl_ang[m[K= 0;
+    [01;36m[K^~~~~~~~[m[K
+    [32m[Kwctrans[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:172:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kctrl_front_manual[m[K’ was not declared in this scope
+    [01;31m[Kctrl_front_manual[m[K= 0;
+    [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:173:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kctrl_side_manual[m[K’ was not declared in this scope
+    [01;31m[Kctrl_side_manual[m[K= 0;
+    [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:174:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kalerts_command[m[K’ was not declared in this scope
+    [01;31m[Kalerts_command[m[K.data=2;// 5 danger 4 warning 3 karugamo 2 idle 1 manual
+    [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:175:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kalerts_publisher[m[K’ was not declared in this scope
+         [01;31m[Kalerts_publisher[m[K.publish(alerts_command);
+         [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:176:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kvel_steer[m[K’ was not declared in this scope
+    [01;31m[Kvel_steer[m[K.linear.x= 0;
+    [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:176:4:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kregister[m[K’
+    [01;36m[Kvel_steer[m[K.linear.x= 0;
+    [01;36m[K^~~~~~~~~[m[K
+    [32m[Kregister[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:178:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kspeed_publisher[m[K’ was not declared in this scope
+    [01;31m[Kspeed_publisher[m[K.publish(vel_steer);
+    [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:179:25:[m[K [01;31m[Kerror: [m[K‘[01m[Ktracked_angle[m[K’ was not declared in this scope
+                         [01;31m[Ktracked_angle[m[K=0;
+                         [01;31m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:180:25:[m[K [01;31m[Kerror: [m[K‘[01m[Kang_peop_lidar[m[K’ was not declared in this scope
+                         [01;31m[Kang_peop_lidar[m[K=0;
+                         [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:181:4:[m[K [01;31m[Kerror: [m[K‘[01m[KdistanciaPeople2[m[K’ was not declared in this scope
+    [01;31m[KdistanciaPeople2[m[K=0;
+    [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:182:4:[m[K [01;31m[Kerror: [m[K‘[01m[Ktracked_distance[m[K’ was not declared in this scope
+    [01;31m[Ktracked_distance[m[K=0;
+    [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:185:51:[m[K [01;31m[Kerror: [m[K‘[01m[Kmode_follow[m[K’ was not declared in this scope
+   } else if(data.trigger=="karugamo_button_on" && [01;31m[Kmode_follow[m[K==false){
+                                                   [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:186:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kmode_idle[m[K’ was not declared in this scope
+    [01;31m[Kmode_idle[m[K=false;
+    [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:186:4:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kmode_t[m[K’
+    [01;36m[Kmode_idle[m[K=false;
+    [01;36m[K^~~~~~~~~[m[K
+    [32m[Kmode_t[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:187:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kmode_karugamo[m[K’ was not declared in this scope
+    [01;31m[Kmode_karugamo[m[K=false;
+    [01;31m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:188:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kmode_manual[m[K’ was not declared in this scope
+    [01;31m[Kmode_manual[m[K=false;
+    [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:190:4:[m[K [01;31m[Kerror: [m[K‘[01m[Ktracking_people[m[K’ was not declared in this scope
+    [01;31m[Ktracking_people[m[K=false;
+    [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:191:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kstart_route[m[K’ was not declared in this scope
+    [01;31m[Kstart_route[m[K = false;
+    [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:191:4:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kstrtoull[m[K’
+    [01;36m[Kstart_route[m[K = false;
+    [01;36m[K^~~~~~~~~~~[m[K
+    [32m[Kstrtoull[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:192:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kmode_auto[m[K’ was not declared in this scope
+    [01;31m[Kmode_auto[m[K=false;
+    [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:192:4:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kmode_t[m[K’
+    [01;36m[Kmode_auto[m[K=false;
+    [01;36m[K^~~~~~~~~[m[K
+    [32m[Kmode_t[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:193:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kctrl_front_follow[m[K’ was not declared in this scope
+    [01;31m[Kctrl_front_follow[m[K= 0;
+    [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:194:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kctrl_ang[m[K’ was not declared in this scope
+    [01;31m[Kctrl_ang[m[K= 0;
+    [01;31m[K^~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:194:4:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kwctrans[m[K’
+    [01;36m[Kctrl_ang[m[K= 0;
+    [01;36m[K^~~~~~~~[m[K
+    [32m[Kwctrans[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:195:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kctrl_front_manual[m[K’ was not declared in this scope
+    [01;31m[Kctrl_front_manual[m[K= 0;
+    [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:196:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kctrl_side_manual[m[K’ was not declared in this scope
+    [01;31m[Kctrl_side_manual[m[K= 0;
+    [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:197:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kvel_steer[m[K’ was not declared in this scope
+    [01;31m[Kvel_steer[m[K.linear.x=0;
+    [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:197:4:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kregister[m[K’
+    [01;36m[Kvel_steer[m[K.linear.x=0;
+    [01;36m[K^~~~~~~~~[m[K
+    [32m[Kregister[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:199:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kspeed_publisher[m[K’ was not declared in this scope
+    [01;31m[Kspeed_publisher[m[K.publish(vel_steer);
+    [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:200:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kalerts_command[m[K’ was not declared in this scope
+    [01;31m[Kalerts_command[m[K.data=8;// 8people follow 5 danger 4 warning 3 karugamo 2 idle 1 manual
+    [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:202:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kalerts_publisher[m[K’ was not declared in this scope
+         [01;31m[Kalerts_publisher[m[K.publish(alerts_command);
+         [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:212:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kmode_idle[m[K’ was not declared in this scope
+    [01;31m[Kmode_idle[m[K=true;
+    [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:212:4:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kmode_t[m[K’
+    [01;36m[Kmode_idle[m[K=true;
+    [01;36m[K^~~~~~~~~[m[K
+    [32m[Kmode_t[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:213:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kmode_manual[m[K’ was not declared in this scope
+    [01;31m[Kmode_manual[m[K=false;
+    [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:214:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kmode_karugamo[m[K’ was not declared in this scope
+    [01;31m[Kmode_karugamo[m[K=false;
+    [01;31m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:216:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kdanger[m[K’ was not declared in this scope
+    [01;31m[Kdanger[m[K=false;
+    [01;31m[K^~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:216:4:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Krand_r[m[K’
+    [01;36m[Kdanger[m[K=false;
+    [01;36m[K^~~~~~[m[K
+    [32m[Krand_r[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:217:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kfree_way[m[K’ was not declared in this scope
+    [01;31m[Kfree_way[m[K=true;
+    [01;31m[K^~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:217:4:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kfread[m[K’
+    [01;36m[Kfree_way[m[K=true;
+    [01;36m[K^~~~~~~~[m[K
+    [32m[Kfread[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:218:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kctrl_front_follow[m[K’ was not declared in this scope
+    [01;31m[Kctrl_front_follow[m[K= 0;
+    [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:219:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kctrl_ang[m[K’ was not declared in this scope
+    [01;31m[Kctrl_ang[m[K= 0;
+    [01;31m[K^~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:219:4:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kwctrans[m[K’
+    [01;36m[Kctrl_ang[m[K= 0;
+    [01;36m[K^~~~~~~~[m[K
+    [32m[Kwctrans[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:220:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kctrl_front_manual[m[K’ was not declared in this scope
+    [01;31m[Kctrl_front_manual[m[K= 0;
+    [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:221:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kctrl_side_manual[m[K’ was not declared in this scope
+    [01;31m[Kctrl_side_manual[m[K= 0;
+    [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:222:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kalerts_command[m[K’ was not declared in this scope
+    [01;31m[Kalerts_command[m[K.data=2;// 5 danger 4 warning 3 karugamo 2 idle 1 manual
+    [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:223:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kalerts_publisher[m[K’ was not declared in this scope
+         [01;31m[Kalerts_publisher[m[K.publish(alerts_command);
+         [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:224:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kvel_steer[m[K’ was not declared in this scope
+    [01;31m[Kvel_steer[m[K.linear.x= 0;
+    [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:224:4:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kregister[m[K’
+    [01;36m[Kvel_steer[m[K.linear.x= 0;
+    [01;36m[K^~~~~~~~~[m[K
+    [32m[Kregister[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:226:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kspeed_publisher[m[K’ was not declared in this scope
+    [01;31m[Kspeed_publisher[m[K.publish(vel_steer);
+    [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:227:25:[m[K [01;31m[Kerror: [m[K‘[01m[Ktracked_angle[m[K’ was not declared in this scope
+                         [01;31m[Ktracked_angle[m[K=0;
+                         [01;31m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:228:25:[m[K [01;31m[Kerror: [m[K‘[01m[Kang_peop_lidar[m[K’ was not declared in this scope
+                         [01;31m[Kang_peop_lidar[m[K=0;
+                         [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:229:4:[m[K [01;31m[Kerror: [m[K‘[01m[KdistanciaPeople2[m[K’ was not declared in this scope
+    [01;31m[KdistanciaPeople2[m[K=0;
+    [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:230:4:[m[K [01;31m[Kerror: [m[K‘[01m[Ktracked_distance[m[K’ was not declared in this scope
+    [01;31m[Ktracked_distance[m[K=0;
+    [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:[m[K In member function ‘[01m[Kvoid test_head::setPointsCallback(const Twist&)[m[K’:
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:236:2:[m[K [01;31m[Kerror: [m[K‘[01m[Knspx[m[K’ was not declared in this scope
+  [01;31m[Knspx[m[K=twist.linear.x;
+  [01;31m[K^~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:237:2:[m[K [01;31m[Kerror: [m[K‘[01m[Knspy[m[K’ was not declared in this scope
+  [01;31m[Knspy[m[K=twist.linear.y;
+  [01;31m[K^~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:238:9:[m[K [01;31m[Kerror: [m[K‘[01m[Ksp_yaw[m[K’ was not declared in this scope
+         [01;31m[Ksp_yaw[m[K=-atan2(nspx,nspy)*180/3.1416;
+         [01;31m[K^~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:[m[K In member function ‘[01m[Kvoid test_head::obstCallback(const Float32&)[m[K’:
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:245:15:[m[K [01;31m[Kerror: [m[K‘[01m[Knewobstacle[m[K’ was not declared in this scope
+               [01;31m[Knewobstacle[m[K = true;
+               [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:245:15:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kobstack[m[K’
+               [01;36m[Knewobstacle[m[K = true;
+               [01;36m[K^~~~~~~~~~~[m[K
+               [32m[Kobstack[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:247:15:[m[K [01;31m[Kerror: [m[K‘[01m[Knewobstacle[m[K’ was not declared in this scope
+               [01;31m[Knewobstacle[m[K = false;
+               [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:247:15:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kobstack[m[K’
+               [01;36m[Knewobstacle[m[K = false;
+               [01;36m[K^~~~~~~~~~~[m[K
+               [32m[Kobstack[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:[m[K In member function ‘[01m[Kvoid test_head::headCallback(const Float64&)[m[K’:
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:253:2:[m[K [01;31m[Kerror: [m[K‘[01m[Kang_robot[m[K’ was not declared in this scope
+  [01;31m[Kang_robot[m[K=head.data;
+  [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:[m[K In member function ‘[01m[Kvoid test_head::ReceiveOdometry(const ConstPtr&)[m[K’:
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:258:6:[m[K [01;31m[Kerror: [m[K‘[01m[Kvelyaw[m[K’ was not declared in this scope
+      [01;31m[Kvelyaw[m[K=msg->twist.twist.angular.z;
+      [01;31m[K^~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:259:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kpx[m[K’ was not declared in this scope
+             [01;31m[Kpx[m[K=msg->pose.pose.position.x;
+             [01;31m[K^~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:260:10:[m[K [01;31m[Kerror: [m[K‘[01m[Kpy[m[K’ was not declared in this scope
+          [01;31m[Kpy[m[K=msg->pose.pose.position.y;
+          [01;31m[K^~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:261:6:[m[K [01;31m[Kerror: [m[K‘[01m[Kvelx[m[K’ was not declared in this scope
+      [01;31m[Kvelx[m[K=msg->twist.twist.linear.x;
+      [01;31m[K^~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:262:7:[m[K [01;31m[Kerror: [m[K‘[01m[Kruta_learn[m[K’ was not declared in this scope
+   if ([01;31m[Kruta_learn[m[K==true){
+       [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:262:7:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kualarm[m[K’
+   if ([01;36m[Kruta_learn[m[K==true){
+       [01;36m[K^~~~~~~~~~[m[K
+       [32m[Kualarm[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:263:12:[m[K [01;31m[Kerror: [m[K‘[01m[Knorm[m[K’ was not declared in this scope
+            [01;31m[Knorm[m[K=sqrt((px-px_aux)*(px-px_aux)+(py-py_aux)*(py-py_aux));
+            [01;31m[K^~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:263:12:[m[K [01;36m[Knote: [m[Ksuggested alternative:
+In file included from [01m[K/usr/include/boost/config/no_tr1/complex.hpp:21:0[m[K,
+                 from [01m[K/usr/include/boost/math/policies/error_handling.hpp:17[m[K,
+                 from [01m[K/usr/include/boost/math/special_functions/round.hpp:14[m[K,
+                 from [01m[K/opt/ros/melodic/include/ros/time.h:58[m[K,
+                 from [01m[K/opt/ros/melodic/include/ros/ros.h:38[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:1[m[K:
+[01m[K/usr/include/c++/7/complex:1851:5:[m[K [01;36m[Knote: [m[K  ‘[01m[Kstd::norm[m[K’
+     [01;36m[Knorm[m[K(_Tp __x)
+     [01;36m[K^~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:263:26:[m[K [01;31m[Kerror: [m[K‘[01m[Kpx_aux[m[K’ was not declared in this scope
+            norm=sqrt((px-[01;31m[Kpx_aux[m[K)*(px-px_aux)+(py-py_aux)*(py-py_aux));
+                          [01;31m[K^~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:263:50:[m[K [01;31m[Kerror: [m[K‘[01m[Kpy_aux[m[K’ was not declared in this scope
+            norm=sqrt((px-px_aux)*(px-px_aux)+(py-[01;31m[Kpy_aux[m[K)*(py-py_aux));
+                                                  [01;31m[K^~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:264:16:[m[K [01;31m[Kerror: [m[K‘[01m[Ksave_waypoint[m[K’ was not declared in this scope
+            if ([01;31m[Ksave_waypoint[m[K==true){
+                [01;31m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:266:21:[m[K [01;31m[Kerror: [m[K‘[01m[Kfp[m[K’ was not declared in this scope
+             fprintf([01;31m[Kfp[m[K, "%f %f\n",px,py );
+                     [01;31m[K^~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:[m[K In member function ‘[01m[Kvoid test_head::distPeopCallback(const Float32&)[m[K’:
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:278:4:[m[K [01;31m[Kerror: [m[K‘[01m[KdistanciaPeople[m[K’ was not declared in this scope
+    [01;31m[KdistanciaPeople[m[K=msg.data;
+    [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:[m[K In member function ‘[01m[Kvoid test_head::angCamCallback2(const Float32&)[m[K’:
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:288:17:[m[K [01;31m[Kerror: [m[K‘[01m[Kang_peop_cam[m[K’ was not declared in this scope
+                 [01;31m[Kang_peop_cam[m[K=msg.data;
+                 [01;31m[K^~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:289:28:[m[K [01;31m[Kerror: [m[K‘[01m[Kmode_follow[m[K’ was not declared in this scope
+   if(ang_peop_cam!=-500 && [01;31m[Kmode_follow[m[K && tracking_people==false ){
+                            [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:289:43:[m[K [01;31m[Kerror: [m[K‘[01m[Ktracking_people[m[K’ was not declared in this scope
+   if(ang_peop_cam!=-500 && mode_follow && [01;31m[Ktracking_people[m[K==false ){
+                                           [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:290:10:[m[K [01;31m[Kerror: [m[K‘[01m[Kcont_detect_peop[m[K’ was not declared in this scope
+          [01;31m[Kcont_detect_peop[m[K+=1;
+          [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:291:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kmissing_track[m[K’ was not declared in this scope
+    [01;31m[Kmissing_track[m[K=0;
+    [01;31m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:292:7:[m[K [01;31m[Kerror: [m[K‘[01m[Kang_peop_lidar[m[K’ was not declared in this scope
+    if([01;31m[Kang_peop_lidar[m[K<ang_peop_cam+10 && ang_peop_lidar> ang_peop_cam-10  && distanciaPeople2<aux_dist ){
+       [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:292:77:[m[K [01;31m[Kerror: [m[K‘[01m[KdistanciaPeople2[m[K’ was not declared in this scope
+    if(ang_peop_lidar<ang_peop_cam+10 && ang_peop_lidar> ang_peop_cam-10  && [01;31m[KdistanciaPeople2[m[K<aux_dist ){
+                                                                             [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:292:94:[m[K [01;31m[Kerror: [m[K‘[01m[Kaux_dist[m[K’ was not declared in this scope
+    if(ang_peop_lidar<ang_peop_cam+10 && ang_peop_lidar> ang_peop_cam-10  && distanciaPeople2<[01;31m[Kaux_dist[m[K ){
+                                                                                              [01;31m[K^~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:292:94:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kva_list[m[K’
+    if(ang_peop_lidar<ang_peop_cam+10 && ang_peop_lidar> ang_peop_cam-10  && distanciaPeople2<[01;36m[Kaux_dist[m[K ){
+                                                                                              [01;36m[K^~~~~~~~[m[K
+                                                                                              [32m[Kva_list[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:296:5:[m[K [01;31m[Kerror: [m[K‘[01m[Ktracked_cx[m[K’ was not declared in this scope
+     [01;31m[Ktracked_cx[m[K=cx;
+     [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:296:16:[m[K [01;31m[Kerror: [m[K‘[01m[Kcx[m[K’ was not declared in this scope
+     tracked_cx=[01;31m[Kcx[m[K;
+                [01;31m[K^~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:297:5:[m[K [01;31m[Kerror: [m[K‘[01m[Ktracked_cy[m[K’ was not declared in this scope
+     [01;31m[Ktracked_cy[m[K=cy;
+     [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:297:16:[m[K [01;31m[Kerror: [m[K‘[01m[Kcy[m[K’ was not declared in this scope
+     tracked_cy=[01;31m[Kcy[m[K;
+                [01;31m[K^~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:298:5:[m[K [01;31m[Kerror: [m[K‘[01m[Ktracked_pos[m[K’ was not declared in this scope
+     [01;31m[Ktracked_pos[m[K.x=cx;
+     [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:301:5:[m[K [01;31m[Kerror: [m[K‘[01m[Ktracked_angle[m[K’ was not declared in this scope
+     [01;31m[Ktracked_angle[m[K=ang_peop_lidar;
+     [01;31m[K^~~~~~~~~~~~~[m[K
+In file included from [01m[K/opt/ros/melodic/include/ros/ros.h:40:0[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:1[m[K:
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:306:34:[m[K [01;31m[Kerror: [m[K‘[01m[Kang_peop_lidar[m[K’ was not declared in this scope
+      ROS_INFO("Tracked angle %f",[01;31m[Ka[m[Kng_peop_lidar);
+                                  [01;31m[K^[m[K
+[01m[K/opt/ros/melodic/include/ros/console.h:348:165:[m[K [01;36m[Knote: [m[Kin definition of macro ‘[01m[KROSCONSOLE_PRINT_AT_LOCATION_WITH_FILTER[m[K’
+     ::ros::console::print(filter, __rosconsole_define_location__loc.logger_, __rosconsole_define_location__loc.level_, __FILE__, __LINE__, __ROSCONSOLE_FUNCTION__, [01;36m[K__VA_ARGS__[m[K)
+                                                                                                                                                                     [01;36m[K^~~~~~~~~~~[m[K
+[01m[K/opt/ros/melodic/include/ros/console.h:387:7:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROSCONSOLE_PRINT_AT_LOCATION[m[K’
+       [01;36m[KROSCONSOLE_PRINT_AT_LOCATION[m[K(__VA_ARGS__); \
+       [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/opt/ros/melodic/include/ros/console.h:572:35:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_LOG_COND[m[K’
+ #define ROS_LOG(level, name, ...) [01;36m[KROS_LOG_COND[m[K(true, level, name, __VA_ARGS__)
+                                   [01;36m[K^~~~~~~~~~~~[m[K
+[01m[K/opt/ros/melodic/include/rosconsole/macros_generated.h:110:23:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_LOG[m[K’
+ #define ROS_INFO(...) [01;36m[KROS_LOG[m[K(::ros::console::levels::Info, ROSCONSOLE_DEFAULT_NAME, __VA_ARGS__)
+                       [01;36m[K^~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:306:6:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_INFO[m[K’
+      [01;36m[KR[m[KOS_INFO("Tracked angle %f",ang_peop_lidar);
+      [01;36m[K^[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:307:34:[m[K [01;31m[Kerror: [m[K‘[01m[Ktracked_distance[m[K’ was not declared in this scope
+                                  [01;31m[Ktracked_distance[m[K=distanciaPeople2;
+                                  [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:307:51:[m[K [01;31m[Kerror: [m[K‘[01m[KdistanciaPeople2[m[K’ was not declared in this scope
+                                  tracked_distance=[01;31m[KdistanciaPeople2[m[K;
+                                                   [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:310:6:[m[K [01;31m[Kerror: [m[K‘[01m[Kaux_dist[m[K’ was not declared in this scope
+      [01;31m[Kaux_dist[m[K=5000;
+      [01;31m[K^~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:310:6:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kva_list[m[K’
+      [01;36m[Kaux_dist[m[K=5000;
+      [01;36m[K^~~~~~~~[m[K
+      [32m[Kva_list[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:312:5:[m[K [01;31m[Kerror: [m[K‘[01m[Ktracked_pos[m[K’ was not declared in this scope
+     [01;31m[Ktracked_pos[m[K.x=tracked_cx;
+     [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:312:19:[m[K [01;31m[Kerror: [m[K‘[01m[Ktracked_cx[m[K’ was not declared in this scope
+     tracked_pos.x=[01;31m[Ktracked_cx[m[K;
+                   [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:313:19:[m[K [01;31m[Kerror: [m[K‘[01m[Ktracked_cy[m[K’ was not declared in this scope
+     tracked_pos.y=[01;31m[Ktracked_cy[m[K;
+                   [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:314:20:[m[K [01;31m[Kerror: [m[K‘[01m[Kang_peop_lidar[m[K’ was not declared in this scope
+     tracked_pos.z= [01;31m[Kang_peop_lidar[m[K;
+                    [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:317:6:[m[K [01;31m[Kerror: [m[K‘[01m[Ktracked_publisher[m[K’ was not declared in this scope
+      [01;31m[Ktracked_publisher[m[K.publish(tracked_pos);
+      [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:318:34:[m[K [01;31m[Kerror: [m[K‘[01m[Kctrl_front_follow[m[K’ was not declared in this scope
+                                  [01;31m[Kctrl_front_follow[m[K= 0;
+                                  [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:319:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kctrl_ang[m[K’ was not declared in this scope
+             [01;31m[Kctrl_ang[m[K=0;
+             [01;31m[K^~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:319:13:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kwctrans[m[K’
+             [01;36m[Kctrl_ang[m[K=0;
+             [01;36m[K^~~~~~~~[m[K
+             [32m[Kwctrans[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:320:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kvel_steer[m[K’ was not declared in this scope
+             [01;31m[Kvel_steer[m[K.linear.x= 0;
+             [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:320:13:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kregister[m[K’
+             [01;36m[Kvel_steer[m[K.linear.x= 0;
+             [01;36m[K^~~~~~~~~[m[K
+             [32m[Kregister[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:322:6:[m[K [01;31m[Kerror: [m[K‘[01m[Kcont_sp_follow[m[K’ was not declared in this scope
+      [01;31m[Kcont_sp_follow[m[K=0;
+      [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:323:6:[m[K [01;31m[Kerror: [m[K‘[01m[Kkf[m[K’ was not declared in this scope
+      [01;31m[Kkf[m[K=0;
+      [01;31m[K^~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:324:6:[m[K [01;31m[Kerror: [m[K‘[01m[Kindex_wp[m[K’ was not declared in this scope
+      [01;31m[Kindex_wp[m[K=-1;//init follow
+      [01;31m[K^~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:324:6:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kindex[m[K’
+      [01;36m[Kindex_wp[m[K=-1;//init follow
+      [01;36m[K^~~~~~~~[m[K
+      [32m[Kindex[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:325:6:[m[K [01;31m[Kerror: [m[K‘[01m[Kdist_auxwp[m[K’ was not declared in this scope
+      [01;31m[Kdist_auxwp[m[K=0;
+      [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:[m[K In member function ‘[01m[Kvoid test_head::angPeopCallback4(const Vector3&)[m[K’:
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:354:1:[m[K [01;31m[Kerror: [m[K‘[01m[Kcicles[m[K’ was not declared in this scope
+ [01;31m[Kcicles[m[K=20;
+ [01;31m[K^~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:354:1:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Knice[m[K’
+ [01;36m[Kcicles[m[K=20;
+ [01;36m[K^~~~~~[m[K
+ [32m[Knice[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:356:1:[m[K [01;31m[Kerror: [m[K‘[01m[Kcx[m[K’ was not declared in this scope
+ [01;31m[Kcx[m[K = msg.x;//pos people or object
+ [01;31m[K^~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:357:1:[m[K [01;31m[Kerror: [m[K‘[01m[Kcy[m[K’ was not declared in this scope
+ [01;31m[Kcy[m[K = msg.y;//pos people or object
+ [01;31m[K^~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:358:1:[m[K [01;31m[Kerror: [m[K‘[01m[Kang_peop_lidar[m[K’ was not declared in this scope
+ [01;31m[Kang_peop_lidar[m[K = 90- atan2(cx, cy) * 180 / 3.1416;
+ [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:360:1:[m[K [01;31m[Kerror: [m[K‘[01m[KdistanciaPeople2[m[K’ was not declared in this scope
+ [01;31m[KdistanciaPeople2[m[K = sqrt(cx*cx+cy*cy)*100;
+ [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:362:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kmode_follow[m[K’ was not declared in this scope
+ if([01;31m[Kmode_follow[m[K && danger!=true){
+    [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:362:19:[m[K [01;31m[Kerror: [m[K‘[01m[Kdanger[m[K’ was not declared in this scope
+ if(mode_follow && [01;31m[Kdanger[m[K!=true){
+                   [01;31m[K^~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:362:19:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Krand_r[m[K’
+ if(mode_follow && [01;36m[Kdanger[m[K!=true){
+                   [01;36m[K^~~~~~[m[K
+                   [32m[Krand_r[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:364:31:[m[K [01;31m[Kerror: [m[K‘[01m[Ktracking_people[m[K’ was not declared in this scope
+   if(cx!=0.01 && cy !=0.01 && [01;31m[Ktracking_people[m[K && cx<=(tracked_cx+radius_follow) && cx>=(tracked_cx-radius_follow) && cy<=(tracked_cy+radius_follow) && cy >=(tracked_cy-radius_follow)){//2
+                               [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:364:55:[m[K [01;31m[Kerror: [m[K‘[01m[Ktracked_cx[m[K’ was not declared in this scope
+   if(cx!=0.01 && cy !=0.01 && tracking_people && cx<=([01;31m[Ktracked_cx[m[K+radius_follow) && cx>=(tracked_cx-radius_follow) && cy<=(tracked_cy+radius_follow) && cy >=(tracked_cy-radius_follow)){//2
+                                                       [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:364:66:[m[K [01;31m[Kerror: [m[K‘[01m[Kradius_follow[m[K’ was not declared in this scope
+   if(cx!=0.01 && cy !=0.01 && tracking_people && cx<=(tracked_cx+[01;31m[Kradius_follow[m[K) && cx>=(tracked_cx-radius_follow) && cy<=(tracked_cy+radius_follow) && cy >=(tracked_cy-radius_follow)){//2
+                                                                  [01;31m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:364:123:[m[K [01;31m[Kerror: [m[K‘[01m[Ktracked_cy[m[K’ was not declared in this scope
+   if(cx!=0.01 && cy !=0.01 && tracking_people && cx<=(tracked_cx+radius_follow) && cx>=(tracked_cx-radius_follow) && cy<=([01;31m[Ktracked_cy[m[K+radius_follow) && cy >=(tracked_cy-radius_follow)){//2
+                                                                                                                           [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:371:25:[m[K [01;31m[Kerror: [m[K‘[01m[Ktracked_angle[m[K’ was not declared in this scope
+                         [01;31m[Ktracked_angle[m[K= ang_peop_lidar;
+                         [01;31m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:372:4:[m[K [01;31m[Kerror: [m[K‘[01m[Ktracked_distance[m[K’ was not declared in this scope
+    [01;31m[Ktracked_distance[m[K = distanciaPeople2;
+    [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:376:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kis_near[m[K’ was not declared in this scope
+     [01;31m[Kis_near[m[K=true;
+     [01;31m[K^~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:376:5:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Knear[m[K’
+     [01;36m[Kis_near[m[K=true;
+     [01;36m[K^~~~~~~[m[K
+     [32m[Knear[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:378:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kis_near[m[K’ was not declared in this scope
+     [01;31m[Kis_near[m[K=false;
+     [01;31m[K^~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:378:5:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Knear[m[K’
+     [01;36m[Kis_near[m[K=false;
+     [01;36m[K^~~~~~~[m[K
+     [32m[Knear[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:381:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kmissing_track[m[K’ was not declared in this scope
+    [01;31m[Kmissing_track[m[K=0;
+    [01;31m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:384:4:[m[K [01;31m[Kerror: [m[K‘[01m[Ktracked_pos[m[K’ was not declared in this scope
+    [01;31m[Ktracked_pos[m[K.x=cx;
+    [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:387:4:[m[K [01;31m[Kerror: [m[K‘[01m[Ktracked_publisher[m[K’ was not declared in this scope
+    [01;31m[Ktracked_publisher[m[K.publish(tracked_pos);
+    [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:398:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kpx[m[K’ was not declared in this scope
+    npcx=[01;31m[Kpx[m[K+dobs*(cos((angobs+ang_robot)*3.1416/180));//#rcx+ocx*(cos((angobs+angr)*3.1416/180))
+         [01;31m[K^~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:398:30:[m[K [01;31m[Kerror: [m[K‘[01m[Kang_robot[m[K’ was not declared in this scope
+    npcx=px+dobs*(cos((angobs+[01;31m[Kang_robot[m[K)*3.1416/180));//#rcx+ocx*(cos((angobs+angr)*3.1416/180))
+                              [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:398:30:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kangobs[m[K’
+    npcx=px+dobs*(cos((angobs+[01;36m[Kang_robot[m[K)*3.1416/180));//#rcx+ocx*(cos((angobs+angr)*3.1416/180))
+                              [01;36m[K^~~~~~~~~[m[K
+                              [32m[Kangobs[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:399:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kpy[m[K’ was not declared in this scope
+    npcy=[01;31m[Kpy[m[K-dobs*(sin((angobs+ang_robot)*3.1416/180));//#rcy+ocy*(sin((angobs+angr)*3.1416/180))
+         [01;31m[K^~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:401:18:[m[K [01;31m[Kerror: [m[K‘[01m[Kprev_cx[m[K’ was not declared in this scope
+    if(sqrt((npcx-[01;31m[Kprev_cx[m[K)*(npcx-prev_cx)+(npcy-prev_cy)*(npcy-prev_cy))>0.75){ // se agrega el nuevo objeto
+                  [01;31m[K^~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:401:48:[m[K [01;31m[Kerror: [m[K‘[01m[Kprev_cy[m[K’ was not declared in this scope
+    if(sqrt((npcx-prev_cx)*(npcx-prev_cx)+(npcy-[01;31m[Kprev_cy[m[K)*(npcy-prev_cy))>0.75){ // se agrega el nuevo objeto
+                                                [01;31m[K^~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:402:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kpeople_point[m[K’ was not declared in this scope
+     [01;31m[Kpeople_point[m[K.header.frame_id="/my_frame";
+     [01;31m[K^~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:414:10:[m[K [01;31m[Kerror: [m[K‘[01m[Kspx_saved[m[K’ was not declared in this scope
+          [01;31m[Kspx_saved[m[K[cont_sp_follow]=npcx;
+          [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:414:20:[m[K [01;31m[Kerror: [m[K‘[01m[Kcont_sp_follow[m[K’ was not declared in this scope
+          spx_saved[[01;31m[Kcont_sp_follow[m[K]=npcx;
+                    [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:415:10:[m[K [01;31m[Kerror: [m[K‘[01m[Kspy_saved[m[K’ was not declared in this scope
+          [01;31m[Kspy_saved[m[K[cont_sp_follow]=npcy;
+          [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:422:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kmarker_pub[m[K’ was not declared in this scope
+     [01;31m[Kmarker_pub[m[K.publish(people_point);
+     [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:431:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kpos_peop_pub[m[K’ was not declared in this scope
+     [01;31m[Kpos_peop_pub[m[K.publish(odom);
+     [01;31m[K^~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:434:18:[m[K [01;31m[Kerror: [m[K‘[01m[Kfp[m[K’ was not declared in this scope
+          fprintf([01;31m[Kfp[m[K,"%f,%f,%f,%f,%f,%f\n",npcx,npcy,px,py,angobs,ang_robot);
+                  [01;31m[K^~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:434:18:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kp[m[K’
+          fprintf([01;36m[Kfp[m[K,"%f,%f,%f,%f,%f,%f\n",npcx,npcy,px,py,angobs,ang_robot);
+                  [01;36m[K^~[m[K
+                  [32m[Kp[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:436:4:[m[K [01;31m[Kerror: [m[K‘[01m[Ktracking[m[K’ was not declared in this scope
+    [01;31m[Ktracking[m[K =true;
+    [01;31m[K^~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:441:10:[m[K [01;31m[Kerror: [m[K‘[01m[Kis_near[m[K’ was not declared in this scope
+       if([01;31m[Kis_near[m[K==false){
+          [01;31m[K^~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:441:10:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Knear[m[K’
+       if([01;36m[Kis_near[m[K==false){
+          [01;36m[K^~~~~~~[m[K
+          [32m[Knear[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:442:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kmissing_track[m[K’ was not declared in this scope
+    [01;31m[Kmissing_track[m[K+=1;
+    [01;31m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:449:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kaux_dist[m[K’ was not declared in this scope
+     [01;31m[Kaux_dist[m[K=5000;
+     [01;31m[K^~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:449:5:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kva_list[m[K’
+     [01;36m[Kaux_dist[m[K=5000;
+     [01;36m[K^~~~~~~~[m[K
+     [32m[Kva_list[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:450:5:[m[K [01;31m[Kerror: [m[K‘[01m[Ktracked_pos[m[K’ was not declared in this scope
+     [01;31m[Ktracked_pos[m[K.x=-50;
+     [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:453:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kcont_detect_peop[m[K’ was not declared in this scope
+     [01;31m[Kcont_detect_peop[m[K=0;
+     [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:454:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kalerts_command[m[K’ was not declared in this scope
+     [01;31m[Kalerts_command[m[K.data=7;// 5 danger 4 warning 3 karugamo 2 idle 1 lal
+     [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:455:10:[m[K [01;31m[Kerror: [m[K‘[01m[Kalerts_publisher[m[K’ was not declared in this scope
+          [01;31m[Kalerts_publisher[m[K.publish(alerts_command);
+          [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:456:5:[m[K [01;31m[Kerror: [m[K‘[01m[Ktracked_publisher[m[K’ was not declared in this scope
+     [01;31m[Ktracked_publisher[m[K.publish(tracked_pos);
+     [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:459:5:[m[K [01;31m[Kerror: [m[K‘[01m[Ktracking[m[K’ was not declared in this scope
+     [01;31m[Ktracking[m[K =false;
+     [01;31m[K^~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:468:6:[m[K [01;31m[Kerror: [m[K‘[01m[Kcont_sp_follow[m[K’ was not declared in this scope
+   if([01;31m[Kcont_sp_follow[m[K>=2){
+      [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:469:8:[m[K [01;31m[Kerror: [m[K‘[01m[Kdist_auxwp[m[K’ was not declared in this scope
+     if([01;31m[Kdist_auxwp[m[K<0.4){
+        [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:470:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kindex_wp[m[K’ was not declared in this scope
+     [01;31m[Kindex_wp[m[K++;
+     [01;31m[K^~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:470:5:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kindex[m[K’
+     [01;36m[Kindex_wp[m[K++;
+     [01;36m[K^~~~~~~~[m[K
+     [32m[Kindex[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:475:15:[m[K [01;31m[Kerror: [m[K‘[01m[Kpx[m[K’ was not declared in this scope
+     float p0x=[01;31m[Kpx[m[K;//pos robot x
+               [01;31m[K^~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:475:15:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kp0x[m[K’
+     float p0x=[01;36m[Kpx[m[K;//pos robot x
+               [01;36m[K^~[m[K
+               [32m[Kp0x[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:476:15:[m[K [01;31m[Kerror: [m[K‘[01m[Kpy[m[K’ was not declared in this scope
+     float p0y=[01;31m[Kpy[m[K;//pos robot y
+               [01;31m[K^~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:476:15:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kp0y[m[K’
+     float p0y=[01;36m[Kpy[m[K;//pos robot y
+               [01;36m[K^~[m[K
+               [32m[Kp0y[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:477:15:[m[K [01;31m[Kerror: [m[K‘[01m[Kspx_saved[m[K’ was not declared in this scope
+     float p1x=[01;31m[Kspx_saved[m[K[index_wp];//spx_saved[index_wp];//spx_follow_old;//first wp
+               [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:478:15:[m[K [01;31m[Kerror: [m[K‘[01m[Kspy_saved[m[K’ was not declared in this scope
+     float p1y=[01;31m[Kspy_saved[m[K[index_wp];//spy_saved[index_wp];//spy_follow_old;//first wp
+               [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:493:6:[m[K [01;31m[Kerror: [m[K‘[01m[Kspx_follow[m[K’ was not declared in this scope
+      [01;31m[Kspx_follow[m[K[i]=Rx;
+      [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:494:6:[m[K [01;31m[Kerror: [m[K‘[01m[Kspy_follow[m[K’ was not declared in this scope
+      [01;31m[Kspy_follow[m[K[i]=Ry;
+      [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:497:6:[m[K [01;31m[Kerror: [m[K‘[01m[Kangle_follow[m[K’ was not declared in this scope
+      [01;31m[Kangle_follow[m[K[i]=angle;
+      [01;31m[K^~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:503:7:[m[K [01;31m[Kerror: [m[K‘[01m[Kdist_auxwp[m[K’ was not declared in this scope
+       [01;31m[Kdist_auxwp[m[K=sqrt((spx_follow[19]-px)*(spx_follow[19]-px)+(spy_follow[19]-py)*(spy_follow[19]-py));//calc dist for next loop
+       [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:503:24:[m[K [01;31m[Kerror: [m[K‘[01m[Kspx_follow[m[K’ was not declared in this scope
+       dist_auxwp=sqrt(([01;31m[Kspx_follow[m[K[19]-px)*(spx_follow[19]-px)+(spy_follow[19]-py)*(spy_follow[19]-py));//calc dist for next loop
+                        [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:503:39:[m[K [01;31m[Kerror: [m[K‘[01m[Kpx[m[K’ was not declared in this scope
+       dist_auxwp=sqrt((spx_follow[19]-[01;31m[Kpx[m[K)*(spx_follow[19]-px)+(spy_follow[19]-py)*(spy_follow[19]-py));//calc dist for next loop
+                                       [01;31m[K^~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:503:64:[m[K [01;31m[Kerror: [m[K‘[01m[Kspy_follow[m[K’ was not declared in this scope
+       dist_auxwp=sqrt((spx_follow[19]-px)*(spx_follow[19]-px)+([01;31m[Kspy_follow[m[K[19]-py)*(spy_follow[19]-py));//calc dist for next loop
+                                                                [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:503:79:[m[K [01;31m[Kerror: [m[K‘[01m[Kpy[m[K’ was not declared in this scope
+       dist_auxwp=sqrt((spx_follow[19]-px)*(spx_follow[19]-px)+(spy_follow[19]-[01;31m[Kpy[m[K)*(spy_follow[19]-py));//calc dist for next loop
+                                                                               [01;31m[K^~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:509:7:[m[K [01;31m[Kerror: [m[K‘[01m[Kindice[m[K’ was not declared in this scope
+       [01;31m[Kindice[m[K=i+1;
+       [01;31m[K^~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:509:7:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Knice[m[K’
+       [01;36m[Kindice[m[K=i+1;
+       [01;36m[K^~~~~~[m[K
+       [32m[Knice[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:515:7:[m[K [01;31m[Kerror: [m[K‘[01m[Kis_near[m[K’ was not declared in this scope
+    if([01;31m[Kis_near[m[K==false){
+       [01;31m[K^~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:515:7:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Knear[m[K’
+    if([01;36m[Kis_near[m[K==false){
+       [01;36m[K^~~~~~~[m[K
+       [32m[Knear[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:518:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kerrpx[m[K’ was not declared in this scope
+     [01;31m[Kerrpx[m[K=spx_follow[indice]-px;
+     [01;31m[K^~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:518:5:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kerrno[m[K’
+     [01;36m[Kerrpx[m[K=spx_follow[indice]-px;
+     [01;36m[K^~~~~[m[K
+     [32m[Kerrno[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:518:22:[m[K [01;31m[Kerror: [m[K‘[01m[Kindice[m[K’ was not declared in this scope
+     errpx=spx_follow[[01;31m[Kindice[m[K]-px;
+                      [01;31m[K^~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:518:22:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Knice[m[K’
+     errpx=spx_follow[[01;36m[Kindice[m[K]-px;
+                      [01;36m[K^~~~~~[m[K
+                      [32m[Knice[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:519:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kerrpy[m[K’ was not declared in this scope
+     [01;31m[Kerrpy[m[K=spy_follow[indice]-py;
+     [01;31m[K^~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:519:5:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kerrno[m[K’
+     [01;36m[Kerrpy[m[K=spy_follow[indice]-py;
+     [01;36m[K^~~~~[m[K
+     [32m[Kerrno[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:520:5:[m[K [01;31m[Kerror: [m[K‘[01m[Ksp_yaw[m[K’ was not declared in this scope
+     [01;31m[Ksp_yaw[m[K=angle_follow[indice+1];
+     [01;31m[K^~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:520:12:[m[K [01;31m[Kerror: [m[K‘[01m[Kangle_follow[m[K’ was not declared in this scope
+     sp_yaw=[01;31m[Kangle_follow[m[K[indice+1];
+            [01;31m[K^~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:528:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kerror_yaw[m[K’ was not declared in this scope
+     [01;31m[Kerror_yaw[m[K=-(sp_yaw-ang_robot);//-(sp_yaw-ang_robot);
+     [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:528:5:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kerror_t[m[K’
+     [01;36m[Kerror_yaw[m[K=-(sp_yaw-ang_robot);//-(sp_yaw-ang_robot);
+     [01;36m[K^~~~~~~~~[m[K
+     [32m[Kerror_t[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:528:24:[m[K [01;31m[Kerror: [m[K‘[01m[Kang_robot[m[K’ was not declared in this scope
+     error_yaw=-(sp_yaw-[01;31m[Kang_robot[m[K);//-(sp_yaw-ang_robot);
+                        [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:534:5:[m[K [01;31m[Kerror: [m[K‘[01m[KspVel[m[K’ was not declared in this scope
+     [01;31m[KspVel[m[K=0.1*(error_yaw);//0.05*(error_yaw);
+     [01;31m[K^~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:535:5:[m[K [01;31m[Kerror: [m[K‘[01m[Knkp[m[K’ was not declared in this scope
+     [01;31m[Knkp[m[K=140;//=0.0085;
+     [01;31m[K^~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:536:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kctrl_yaw[m[K’ was not declared in this scope
+     [01;31m[Kctrl_yaw[m[K=(nkp*spVel);//
+     [01;31m[K^~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:536:5:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kfilter_yaw[m[K’
+     [01;36m[Kctrl_yaw[m[K=(nkp*spVel);//
+     [01;36m[K^~~~~~~~[m[K
+     [32m[Kfilter_yaw[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:557:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kctrl_front_follow[m[K’ was not declared in this scope
+     [01;31m[Kctrl_front_follow[m[K=(1-smooth_accel)*(frontal_gain_follow*norm_dist/*max_speed_follow*/)+(smooth_accel*ctrl_front_follow);
+     [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:557:26:[m[K [01;31m[Kerror: [m[K‘[01m[Ksmooth_accel[m[K’ was not declared in this scope
+     ctrl_front_follow=(1-[01;31m[Ksmooth_accel[m[K)*(frontal_gain_follow*norm_dist/*max_speed_follow*/)+(smooth_accel*ctrl_front_follow);
+                          [01;31m[K^~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:557:41:[m[K [01;31m[Kerror: [m[K‘[01m[Kfrontal_gain_follow[m[K’ was not declared in this scope
+     ctrl_front_follow=(1-smooth_accel)*([01;31m[Kfrontal_gain_follow[m[K*norm_dist/*max_speed_follow*/)+(smooth_accel*ctrl_front_follow);
+                                         [01;31m[K^~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:561:6:[m[K [01;31m[Kerror: [m[K‘[01m[Kvel_steer[m[K’ was not declared in this scope
+      [01;31m[Kvel_steer[m[K.linear.x=0;
+      [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:561:6:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kregister[m[K’
+      [01;36m[Kvel_steer[m[K.linear.x=0;
+      [01;36m[K^~~~~~~~~[m[K
+      [32m[Kregister[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:563:27:[m[K [01;31m[Kerror: [m[K‘[01m[Kmax_speed_follow[m[K’ was not declared in this scope
+     if (ctrl_front_follow>[01;31m[Kmax_speed_follow[m[K){
+                           [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:567:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kctrl_front_follow[m[K’ was not declared in this scope
+    [01;31m[Kctrl_front_follow[m[K=500;
+    [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:570:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kctrl_front_follow[m[K’ was not declared in this scope
+     [01;31m[Kctrl_front_follow[m[K=0;
+     [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:571:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kctrl_yaw[m[K’ was not declared in this scope
+     [01;31m[Kctrl_yaw[m[K=0;
+     [01;31m[K^~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:571:5:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kfilter_yaw[m[K’
+     [01;36m[Kctrl_yaw[m[K=0;
+     [01;36m[K^~~~~~~~[m[K
+     [32m[Kfilter_yaw[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:574:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kvel_steer[m[K’ was not declared in this scope
+    [01;31m[Kvel_steer[m[K.linear.x= ctrl_front_follow;
+    [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:574:4:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kregister[m[K’
+    [01;36m[Kvel_steer[m[K.linear.x= ctrl_front_follow;
+    [01;36m[K^~~~~~~~~[m[K
+    [32m[Kregister[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:574:24:[m[K [01;31m[Kerror: [m[K‘[01m[Kctrl_front_follow[m[K’ was not declared in this scope
+    vel_steer.linear.x= [01;31m[Kctrl_front_follow[m[K;
+                        [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:575:25:[m[K [01;31m[Kerror: [m[K‘[01m[Kctrl_yaw[m[K’ was not declared in this scope
+    vel_steer.angular.z= [01;31m[Kctrl_yaw[m[K;
+                         [01;31m[K^~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:575:25:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kfilter_yaw[m[K’
+    vel_steer.angular.z= [01;36m[Kctrl_yaw[m[K;
+                         [01;36m[K^~~~~~~~[m[K
+                         [32m[Kfilter_yaw[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:576:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kspeed_publisher[m[K’ was not declared in this scope
+    [01;31m[Kspeed_publisher[m[K.publish(vel_steer);
+    [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:[m[K In member function ‘[01m[Kvoid test_head::near()[m[K’:
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:605:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kang_peop_lidar[m[K’ was not declared in this scope
+    [01;31m[Kang_peop_lidar[m[K = 90- atan2(cx, cy) * 180 / 3.1416 ;//-90+ atan2(cx, cy) * 180 / 3.1416 ;
+    [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:605:31:[m[K [01;31m[Kerror: [m[K‘[01m[Kcx[m[K’ was not declared in this scope
+    ang_peop_lidar = 90- atan2([01;31m[Kcx[m[K, cy) * 180 / 3.1416 ;//-90+ atan2(cx, cy) * 180 / 3.1416 ;
+                               [01;31m[K^~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:605:35:[m[K [01;31m[Kerror: [m[K‘[01m[Kcy[m[K’ was not declared in this scope
+    ang_peop_lidar = 90- atan2(cx, [01;31m[Kcy[m[K) * 180 / 3.1416 ;//-90+ atan2(cx, cy) * 180 / 3.1416 ;
+                                   [01;31m[K^~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:607:4:[m[K [01;31m[Kerror: [m[K‘[01m[KdistanciaPeople2[m[K’ was not declared in this scope
+    [01;31m[KdistanciaPeople2[m[K = sqrt(cx*cx+cy*cy)*100;
+    [01;31m[K^~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/opt/ros/melodic/include/ros/ros.h:40:0[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:1[m[K:
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:608:43:[m[K [01;31m[Kerror: [m[K‘[01m[Ktracked_cx[m[K’ was not declared in this scope
+                         ROS_INFO("T%f,%f",[01;31m[Kt[m[Kracked_cx,tracked_cy);
+                                           [01;31m[K^[m[K
+[01m[K/opt/ros/melodic/include/ros/console.h:348:165:[m[K [01;36m[Knote: [m[Kin definition of macro ‘[01m[KROSCONSOLE_PRINT_AT_LOCATION_WITH_FILTER[m[K’
+     ::ros::console::print(filter, __rosconsole_define_location__loc.logger_, __rosconsole_define_location__loc.level_, __FILE__, __LINE__, __ROSCONSOLE_FUNCTION__, [01;36m[K__VA_ARGS__[m[K)
+                                                                                                                                                                     [01;36m[K^~~~~~~~~~~[m[K
+[01m[K/opt/ros/melodic/include/ros/console.h:387:7:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROSCONSOLE_PRINT_AT_LOCATION[m[K’
+       [01;36m[KROSCONSOLE_PRINT_AT_LOCATION[m[K(__VA_ARGS__); \
+       [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/opt/ros/melodic/include/ros/console.h:572:35:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_LOG_COND[m[K’
+ #define ROS_LOG(level, name, ...) [01;36m[KROS_LOG_COND[m[K(true, level, name, __VA_ARGS__)
+                                   [01;36m[K^~~~~~~~~~~~[m[K
+[01m[K/opt/ros/melodic/include/rosconsole/macros_generated.h:110:23:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_LOG[m[K’
+ #define ROS_INFO(...) [01;36m[KROS_LOG[m[K(::ros::console::levels::Info, ROSCONSOLE_DEFAULT_NAME, __VA_ARGS__)
+                       [01;36m[K^~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:608:25:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_INFO[m[K’
+                         [01;36m[KR[m[KOS_INFO("T%f,%f",tracked_cx,tracked_cy);
+                         [01;36m[K^[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:608:54:[m[K [01;31m[Kerror: [m[K‘[01m[Ktracked_cy[m[K’ was not declared in this scope
+                         ROS_INFO("T%f,%f",tracked_cx,[01;31m[Kt[m[Kracked_cy);
+                                                      [01;31m[K^[m[K
+[01m[K/opt/ros/melodic/include/ros/console.h:348:165:[m[K [01;36m[Knote: [m[Kin definition of macro ‘[01m[KROSCONSOLE_PRINT_AT_LOCATION_WITH_FILTER[m[K’
+     ::ros::console::print(filter, __rosconsole_define_location__loc.logger_, __rosconsole_define_location__loc.level_, __FILE__, __LINE__, __ROSCONSOLE_FUNCTION__, [01;36m[K__VA_ARGS__[m[K)
+                                                                                                                                                                     [01;36m[K^~~~~~~~~~~[m[K
+[01m[K/opt/ros/melodic/include/ros/console.h:387:7:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROSCONSOLE_PRINT_AT_LOCATION[m[K’
+       [01;36m[KROSCONSOLE_PRINT_AT_LOCATION[m[K(__VA_ARGS__); \
+       [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/opt/ros/melodic/include/ros/console.h:572:35:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_LOG_COND[m[K’
+ #define ROS_LOG(level, name, ...) [01;36m[KROS_LOG_COND[m[K(true, level, name, __VA_ARGS__)
+                                   [01;36m[K^~~~~~~~~~~~[m[K
+[01m[K/opt/ros/melodic/include/rosconsole/macros_generated.h:110:23:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_LOG[m[K’
+ #define ROS_INFO(...) [01;36m[KROS_LOG[m[K(::ros::console::levels::Info, ROSCONSOLE_DEFAULT_NAME, __VA_ARGS__)
+                       [01;36m[K^~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:608:25:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_INFO[m[K’
+                         [01;36m[KR[m[KOS_INFO("T%f,%f",tracked_cx,tracked_cy);
+                         [01;36m[K^[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:609:25:[m[K [01;31m[Kerror: [m[K‘[01m[Ktracked_angle[m[K’ was not declared in this scope
+                         [01;31m[Ktracked_angle[m[K= ang_peop_lidar;
+                         [01;31m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:610:4:[m[K [01;31m[Kerror: [m[K‘[01m[Ktracked_distance[m[K’ was not declared in this scope
+    [01;31m[Ktracked_distance[m[K = distanciaPeople2;
+    [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:611:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kmissing_track[m[K’ was not declared in this scope
+    [01;31m[Kmissing_track[m[K=0;
+    [01;31m[K^~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:612:4:[m[K [01;31m[Kerror: [m[K‘[01m[Ktracked_cx[m[K’ was not declared in this scope
+    [01;31m[Ktracked_cx[m[K=cx;
+    [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:613:4:[m[K [01;31m[Kerror: [m[K‘[01m[Ktracked_cy[m[K’ was not declared in this scope
+    [01;31m[Ktracked_cy[m[K=cy;
+    [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:614:4:[m[K [01;31m[Kerror: [m[K‘[01m[Ktracked_pos[m[K’ was not declared in this scope
+    [01;31m[Ktracked_pos[m[K.x=cx;
+    [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:617:4:[m[K [01;31m[Kerror: [m[K‘[01m[Ktracked_publisher[m[K’ was not declared in this scope
+    [01;31m[Ktracked_publisher[m[K.publish(tracked_pos);
+    [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:624:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kctrl_ang[m[K’ was not declared in this scope
+     [01;31m[Kctrl_ang[m[K= low_vel_gain_follow*ang_peop_lidar-ctrl_ang/2;
+     [01;31m[K^~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:624:5:[m[K [01;36m[Knote: [m[Ksuggested alternative: ‘[01m[Kwctrans[m[K’
+     [01;36m[Kctrl_ang[m[K= low_vel_gain_follow*ang_peop_lidar-ctrl_ang/2;
+     [01;36m[K^~~~~~~~[m[K
+     [32m[Kwctrans[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:624:15:[m[K [01;31m[Kerror: [m[K‘[01m[Klow_vel_gain_follow[m[K’ was not declared in this scope
+     ctrl_ang= [01;31m[Klow_vel_gain_follow[m[K*ang_peop_lidar-ctrl_ang/2;
+               [01;31m[K^~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:646:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kctrl_front_follow[m[K’ was not declared in this scope
+     [01;31m[Kctrl_front_follow[m[K=(1-smooth_accel)*(frontal_gain_follow*norm_dist/*max_speed_follow*/)+(smooth_accel*ctrl_front_follow);
+     [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:646:26:[m[K [01;31m[Kerror: [m[K‘[01m[Ksmooth_accel[m[K’ was not declared in this scope
+     ctrl_front_follow=(1-[01;31m[Ksmooth_accel[m[K)*(frontal_gain_follow*norm_dist/*max_speed_follow*/)+(smooth_accel*ctrl_front_follow);
+                          [01;31m[K^~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:646:41:[m[K [01;31m[Kerror: [m[K‘[01m[Kfrontal_gain_follow[m[K’ was not declared in this scope
+     ctrl_front_follow=(1-smooth_accel)*([01;31m[Kfrontal_gain_follow[m[K*norm_dist/*max_speed_follow*/)+(smooth_accel*ctrl_front_follow);
+                                         [01;31m[K^~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:652:27:[m[K [01;31m[Kerror: [m[K‘[01m[Kmax_speed_follow[m[K’ was not declared in this scope
+     if (ctrl_front_follow>[01;31m[Kmax_speed_follow[m[K){
+                           [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:658:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kctrl_front_follow[m[K’ was not declared in this scope
+     [01;31m[Kctrl_front_follow[m[K=0;
+     [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:664:4:[m[K [01;31m[Kerror: [m[K‘[01m[Kspeed_publisher[m[K’ was not declared in this scope
+    [01;31m[Kspeed_publisher[m[K.publish(vel_steer);
+    [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:[m[K At global scope:
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:717:5:[m[K [01;31m[Kerror: [m[Kexpected declaration before ‘[01m[K}[m[K’ token
+     [01;31m[K}[m[K
+     [01;31m[K^[m[K
+make[2]: *** [CMakeFiles/control_xy_node_spline_follow_mixed.dir/src/control_xy_odom_wp_nav_spline_mixed2.cpp.o] Error 1
+make[1]: *** [CMakeFiles/control_xy_node_spline_follow_mixed.dir/all] Error 2
+make: *** [all] Error 2

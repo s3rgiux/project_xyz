@@ -15,7 +15,7 @@ def main(ser):
         imu.header.frame_id='immu'
         #imu.child_frame_id='base_link3' #quick fix
         imu.linear_acceleration.x = float(data[1])#float(data[0])
-        imu.linear_acceleration.y = float(data[0])#float(data[1])
+        imu.linear_acceleration.y = -float(data[0])#float(data[1])
         imu.linear_acceleration.z = float(data[2])#float(data[2])
         imu.angular_velocity.x = float(data[4])#float(data[3])
         imu.angular_velocity.y = float(data[3])#float(data[4])

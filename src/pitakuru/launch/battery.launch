@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<launch>
+<!--rostopic pub -1 /turtle1/cmd_vel geometry_msgs/Twist - - '[2.0, 0.0, 0.0]' '[0.0, 0.0, 0]'-->
+<!-- keiganモーター制御/オドメトリ算出ノード -->
+<node pkg="pypro" name="pitakuru_wheels" type="pitakuruWheels.py">
+<param name="max_speed"    type="double"	value="3500"/>  <!-- max speed tah can be sent to motors-->
+</node>
+
+
+<node pkg="pitakuru" type="battery.py" name="imuw"/>
+
+</launch>

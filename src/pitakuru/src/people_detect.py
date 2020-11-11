@@ -57,7 +57,7 @@ class PeopImage:
                       (x + w, y + h),  
                       (0, 0, 255), 2)
             
-            ang = 0-np.arctan2(160-(x + (w/2)),270-( y+(h/2))) * 180 / np.pi
+            ang =np.arctan2(160-(x + (w/2)),270-( y+(h/2))) * 180 / np.pi #0-np.arctan2(160-(x + (w/2)),270-( y+(h/2))) * 180 / np.pi
             #if(self.ang_laser+7>ang and self.ang_laser-7<ang):
             x2, y2 = 160, 280
             x1, y1 = (x + (w/2)),( y+(h/2))

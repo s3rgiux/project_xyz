@@ -93,7 +93,7 @@ def MotionModel(x,u,dt):
     v = u[0]
     omega = u[1] / 2.0
     loc_x = loc_x - np.sin(theta + np.pi / 2) * v * dt#loc_x - np.cos(theta + np.pi / 2) * v * dt
-    loc_y = loc_y - np.cos(theta + np.pi / 2) * v * dt#loc_y + np.sin(theta + np.pi / 2) * v * dt
+    loc_y = loc_y + np.cos(theta + np.pi / 2) * v * dt#loc_y + np.sin(theta + np.pi / 2) * v * dt
     theta = theta + omega * dt#theta + omega * dt
     theta = PItoPI(theta)
     x = np.array([loc_x, loc_y, theta])
@@ -338,7 +338,7 @@ class PitWheels:
             q = tf.transformations.quaternion_from_euler(0, 0, self.x[2])
             self.odo.pose.pose.orientation = Quaternion(*q)
             self.odo.twist.twist.linear.x = -np.sin(self.x[2] + np.pi / 2) * u[0] 
-            self.odo.twist.twist.linear.y = -np.cos(self.x[2] + np.pi / 2) * u[0] 
+            self.odo.twist.twist.linear.y = np.cos(self.x[2] + np.pi / 2) * u[0] 
             #self.odo.twist.twist.linear.x = u[0]
             self.odo.twist.twist.angular.z = u[1]/2.0
 
@@ -370,8 +370,8 @@ class PitWheels:
     def teleop_callback(self, data):
 	linear_speed = data.linear.x
         angular_speed = data.angular.z
-        new_right_velocity = linear_speed + angular_speed#linear_speed + angular_speed 
-        new_left_velocity = linear_speed - angular_speed#linear_speed - angular_speed
+        new_right_velocity = linear_speed - angular_speed#linear_speed + angular_speed 
+        new_left_velocity = linear_speed + angular_speed#linear_speed - angular_speed
         #if self.right_velocity != new_right_velocity or self.left_velocity != new_left_velocity:
         self.right_velocity = new_right_velocity
         self.left_velocity = new_left_velocity

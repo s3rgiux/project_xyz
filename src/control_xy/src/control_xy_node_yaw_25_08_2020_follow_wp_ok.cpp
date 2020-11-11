@@ -610,7 +610,6 @@ void angPeopCallback2(const geometry_msgs::Vector3& msg){
 				tracked_pos.y=cy;
 				tracked_pos.z= ang_peop_lidar;
 				tracked_angle=ang_peop_lidar;
-				
 			}
 			if(cont_detect_peop>4){
 				tracking_people=true;
@@ -626,11 +625,7 @@ void angPeopCallback2(const geometry_msgs::Vector3& msg){
                                 	vel_steer.angular.z= 0;
 					cont_sp_follow=0;
 					kf=0;
-					
 					fp = fopen ("/home/xavier/catkin_ws/src/control_xy/people.txt" , "w+");
-
-					
-
 				}
 		}
        }

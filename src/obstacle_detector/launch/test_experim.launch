@@ -17,8 +17,10 @@
 <!--
   <node name="scanner_base_to_front_scanner" pkg="tf2_ros" type="static_transform_publisher" args="0.23565 -0.0005 0.06795 0 0 0 base_link laser"/>
 -->
-
+<!--
 <node name="scanner_base_to_front_scanner" pkg="tf2_ros" type="static_transform_publisher" args="0 0 0 0 3.141592 0 base_link laser"/>
+-->
+<node name="scanner_base_to_front_scanner" pkg="tf2_ros" type="static_transform_publisher" args="0 0 0 0 3.141592 -3.141592 base_link laser"/>
 
   <node name="scanner_base_to_rear_scanner" pkg="tf2_ros" type="static_transform_publisher" args="-0.23832 0.00542 0.09888 3.141592 0 0 robot rear_scanner"/>
 

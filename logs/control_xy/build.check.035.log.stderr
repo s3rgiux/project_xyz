@@ -1,0 +1,12 @@
+[31m[1mCMake Error[0m at /home/xavier/catkin_ws/src/control_xy/CMakeLists.txt:148 (add_executable):
+  Cannot find source file:
+
+    src/control_xy_odom_wp_nav_spline_follow_mixed.cpp
+
+  Tried extensions .c .C .c++ .cc .cpp .cxx .m .M .mm .h .hh .h++ .hm .hpp
+  .hxx .in .txx
+
+
+CMake Error: CMake can not determine linker language for target: control_xy_node_spline_follow_mixed
+CMake Error: Cannot determine link language for target "control_xy_node_spline_follow_mixed".
+make: *** [cmake_check_build_system] Error 1

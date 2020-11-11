@@ -26,7 +26,7 @@
       <param name="local_costmap/laser_scan_sensor/sensor_frame" value="laser" /><!-- laser_link -->
       <param name="local_costmap/laser_scan_sensor/topic" value="scan" />
       <param name="local_costmap/global_frame" value="odom" />
-      <param name="local_costmap/robot_base_frame" value="base_link3" />
+      <param name="local_costmap/robot_base_frame" value="base_link" />
       <remap from="cmd_vel" to="/cmd_vel" />
       <remap from="odom" to="/odom" />
     </node>

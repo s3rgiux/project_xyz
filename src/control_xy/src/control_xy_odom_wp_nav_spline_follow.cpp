@@ -279,7 +279,7 @@ void stateCallback(const control_xy::TriggerAction& data)
     	} 
 
 	void distPeopCallback2(const std_msgs::Float32& msg){
-			distanciaPeople2=msg.data;
+			//distanciaPeople2=msg.data;
     	} 
 
 
@@ -287,10 +287,11 @@ void stateCallback(const control_xy::TriggerAction& data)
                 ang_peop_cam=msg.data;
 		if(ang_peop_cam!=-500 && mode_follow && tracking_people==false ){
 		       cont_detect_peop+=1;
-			if(ang_peop_lidar<ang_peop_cam+15 && ang_peop_lidar> ang_peop_cam-15  && distanciaPeople2<aux_dist ){
+			missing_track=0;
+			if(ang_peop_lidar<ang_peop_cam+7 && ang_peop_lidar> ang_peop_cam-7  && distanciaPeople2<aux_dist &&distanciaPeople2<250 ){
 				//cont_detect_peop+=1;
 				aux_dist = distanciaPeople2;
-				ROS_INFO("Tracked angle %f",ang_peop_lidar);
+				ROS_INFO("Received angle %f",ang_peop_lidar);
 				tracked_cx=cx;
 				tracked_cy=cy;
 				tracked_pos.x=cx;
@@ -298,14 +299,20 @@ void stateCallback(const control_xy::TriggerAction& data)
 				tracked_pos.z= ang_peop_lidar;
 				tracked_angle=ang_peop_lidar;
 			}
-			if(cont_detect_peop>4){
+			if(cont_detect_peop>6){
 				tracking_people=true;
 				cont_detect_peop=0;
 					ROS_INFO("Tracked angle %f",ang_peop_lidar);
                                 	tracked_distance=distanciaPeople2;
+					
 					tracking_people=true;
 					aux_dist=5000;
 					missing_track=0;
+				tracked_pos.x=tracked_cx;
+				tracked_pos.y=tracked_cy;
+				tracked_pos.z= ang_peop_lidar;
+				
+	
 					tracked_publisher.publish(tracked_pos);
                                 	ctrl_front_follow= 0;
 			        	ctrl_ang=0;
@@ -313,7 +320,10 @@ void stateCallback(const control_xy::TriggerAction& data)
                                 	vel_steer.angular.z= 0;
 					cont_sp_follow=0;
 					kf=0;
-					//fp = fopen ("/home/xavier/catkin_ws/src/control_xy/people.txt" , "w+");
+					index_wp=-1;//init follow
+					dist_auxwp=0;
+                                        
+					fp2 = fopen ("/home/xavier/catkin_ws/src/control_xy/people.txt" , "w+");
 
 				}
 		}
@@ -344,14 +354,17 @@ cicles=20;
 
 cx = msg.x;//pos people or object
 cy = msg.y;//pos people or object
-//ang_peop_lidar = 90+ atan2(cx, cy) * 180 / 3.1416 ;
-ang_peop_lidar = -90+ atan2(cx, cy) * 180 / 3.1416 ;
-//ROS_INFO("%f",ang_peop_lidar);
-if(mode_follow && danger!=true){
+ang_peop_lidar = 90- atan2(cx, cy) * 180 / 3.1416;
+
+//ang_peop_lidar = -90+ atan2(cx, cy) * 180 / 3.1416 ;
+distanciaPeople2 = sqrt(cx*cx+cy*cy)*100;
+ROS_INFO("%f",ang_peop_lidar);
+if(mode_follow && danger!=true ){
 
 		if(cx!=0.01 && cy !=0.01 && tracking_people && cx<=(tracked_cx+radius_follow) && cx>=(tracked_cx-radius_follow) && cy<=(tracked_cy+radius_follow) && cy >=(tracked_cy-radius_follow)){//2
 			//ang_peop_lidar = 90+ atan2(cx, cy) * 180 / 3.1416 ;
-			ang_peop_lidar = -90+ atan2(cx, cy) * 180 / 3.1416 ;
+			//ang_peop_lidar = -90+ atan2(cx, cy) * 180 / 3.1416 ;
+			ang_peop_lidar = 90- atan2(cx, cy) * 180 / 3.1416;
 			distanciaPeople2 = sqrt(cx*cx+cy*cy)*100;
                         tracked_angle= ang_peop_lidar;
 			tracked_distance = distanciaPeople2;
@@ -366,13 +379,12 @@ if(mode_follow && danger!=true){
 			/////////////////////////new implement
 			float dobs,angobs,npcx,npcy;
 			dobs=sqrt(tracked_cx*tracked_cx+tracked_cy*tracked_cy);
-			//angobs=atan2(-tracked_cy,-tracked_cx)*180/3.1416;
-			//angobs=atan2(tracked_cx,tracked_cy)*180/3.1416;
-			angobs = -90+ atan2(cx, cy) * 180 / 3.1416 ;
+			//angobs = -90+ atan2(cx, cy) * 180 / 3.1416 ;
+   			angobs  = 90- atan2(cx, cy) * 180 / 3.1416 ;// ;  -90+ atan2(cx, cy) * 180 / 3.1416 
 			//px,py, ang_robot position robot
 
 			npcx=px+dobs*(cos((angobs+ang_robot)*3.1416/180));//#rcx+ocx*(cos((angobs+angr)*3.1416/180))
-			npcy=py-dobs*(sin((angobs+ang_robot)*3.1416/180));//#rcy+ocy*(sin((angobs+angr)*3.1416/180))
+			npcy=py+dobs*(sin((angobs+ang_robot)*3.1416/180));//#rcy+ocy*(sin((angobs+angr)*3.1416/180))
 			//ROS_INFO("T%f,%f,%f,%f",tracked_cx,tracked_cy,npcx,npcy);
 			if(sqrt((npcx-prev_cx)*(npcx-prev_cx)+(npcy-prev_cy)*(npcy-prev_cy))>0.75){ // se agrega el nuevo objeto
 				people_point.header.frame_id="/my_frame";
@@ -407,7 +419,7 @@ if(mode_follow && danger!=true){
 				pos_peop_pub.publish(odom);
 				
 			      ROS_INFO("added %f,%f,%f,%f,%f,%f",npcx,npcy,px,py,angobs,ang_robot);
-			      fprintf(fp,"%f,%f,%f,%f,%f,%f\n",npcx,npcy,px,py,angobs,ang_robot);
+			      fprintf(fp2,"%f,%f,%f,%f,%f,%f\n",npcx,npcy,px,py,angobs,ang_robot);
 			}
 			tracking =true;
 			ROS_INFO("tracked");
@@ -436,7 +448,7 @@ if(mode_follow && danger!=true){
 
   		///////////////New algorithm
 		if(cont_sp_follow>=2){
-		 	if(dist_auxwp<0.55 ){
+		 	if(dist_auxwp<0.4){
 				index_wp++;
 				if(index_wp>=(cont_sp_follow-1)){
 					cont_sp_follow-1;
@@ -462,8 +474,8 @@ if(mode_follow && danger!=true){
 					Ry=Q0y-Q0y*i*c+i*c*Q1y;
 					spx_follow[i]=Rx;
 					spy_follow[i]=Ry;
-					//angle= atan2(Ry-aux2,Rx-aux1) * 180 / 3.1416;//angle wrt robot
-					angle= -atan2((Ry-aux2),(Rx-aux1)) * 180 / 3.1416;//angle wrt robot
+					angle= atan2(Ry-aux2,Rx-aux1) * 180 / 3.1416;//angle wrt robot
+					//angle= -atan2((Ry-aux2),(Rx-aux1)) * 180 / 3.1416;//angle wrt robot
 					angle_follow[i]=angle;
 					aux1=Rx;
 					aux2=Ry;
@@ -492,7 +504,7 @@ if(mode_follow && danger!=true){
 						indice=19;
 					}
 				}
-				error_yaw=-(sp_yaw-ang_robot);//-(sp_yaw-ang_robot);
+				error_yaw=(sp_yaw-ang_robot);//-(sp_yaw-ang_robot);
 				if (error_yaw < -180.0 ){
 					error_yaw=error_yaw+360;
 				}else if (error_yaw > 180.0 ){
@@ -816,7 +828,6 @@ if(mode_follow && danger!=true){
                         vel_steer.angular.z= 0;
 			//fclose(fp);
 			speed_publisher.publish(vel_steer);
-			
 			ros::Duration(0.5).sleep(); // sleep for half a second
 			
 		//}else if(joy->buttons[1]==1 && danger!=true && collision == false){//equis
@@ -921,45 +932,44 @@ if(mode_follow && danger!=true){
      			alerts_publisher.publish(alerts_command);
 
 			ROS_INFO("Mode People Follow");
-			
-			fp = fopen ("/home/xavier/catkin_ws/src/control_xy/people.txt" , "w+");
+			aux_dist=50000;
+			//fp = fopen ("/home/xavier/catkin_ws/src/control_xy/people.txt" , "w+");
 			//alerts_command.data=7;//7 peop follow 5 danger 4 warning 3 karugamo 2 idle 1 manual
-			
+			index_wp=-1;//init follow
+			dist_auxwp=0;
 			ros::Duration(0.5).sleep(); // sleep for half a second
 			
 		}
 
 		if(mode_manual){
 			  if(free_way){
-			   ctrl_front_manual=(1-smooth_accel)*(joy->axes[1]*max_speed_manual)+(smooth_accel*ctrl_front_manual);
-			   if(ctrl_front_manual<20 && ctrl_front_manual>-20){
-				ctrl_front_manual=0;
-			   }
-			   vel_steer.linear.x= ctrl_front_manual;
-			   //vel_steer.linear.x=-joy->axes[1]*-max_speed_manual;
-
-			   ctrl_side_manual=(1-smooth_accel)*(-joy->axes[0]*max_speed_side_manual)+(smooth_accel*ctrl_side_manual);
+			  //if(true){
+			   	ctrl_front_manual=(1-smooth_accel)*(joy->axes[1]*max_speed_manual)+(smooth_accel*ctrl_front_manual);
+			   	//if(ctrl_front_manual<20 && ctrl_front_manual>-20){
+				//	ctrl_front_manual=0;
+			   	//}
+			   	vel_steer.linear.x= ctrl_front_manual;
+			   	//vel_steer.linear.x=-joy->axes[1]*-max_speed_manual;
+			   	ctrl_side_manual=(1-smooth_accel)*(joy->axes[0]*max_speed_side_manual)+(smooth_accel*ctrl_side_manual);
 			   
-			   if(ctrl_side_manual<7 && ctrl_side_manual>-7){
-				ctrl_side_manual=0;
-			   }
-			   vel_steer.angular.z=ctrl_side_manual;
+			   	if(ctrl_side_manual<7 && ctrl_side_manual>-7){
+					ctrl_side_manual=0;
+			   	}
+			   	vel_steer.angular.z=ctrl_side_manual;
 			   
-			   if(joy->axes[7]!=0){
-			     vel_steer.linear.x=joy->axes[7]*max_speed_manual;
-			   }
-			   if(joy->axes[6]!=0){
-			     vel_steer.angular.z=joy->axes[6]*-800;
-			   }
-			   speed_publisher.publish(vel_steer);
-
-
+			   	if(joy->axes[7]!=0){
+			     		vel_steer.linear.x=joy->axes[7]*max_speed_manual;
+			   	}
+			   	if(joy->axes[6]!=0){
+			     		vel_steer.angular.z=joy->axes[6]*-800;
+			   	}
+			   	speed_publisher.publish(vel_steer);
 		}else{//else free way
 		
 			ctrl_front_manual=(1-smooth_accel)*(joy->axes[1]*max_speed_manual)+(smooth_accel*ctrl_front_manual);
 			if(ctrl_front_manual<0){
 				vel_steer.linear.x= ctrl_front_manual;
-				ctrl_side_manual=(1-smooth_accel)*(-joy->axes[0]*max_speed_side_manual)+(smooth_accel*ctrl_side_manual);
+				ctrl_side_manual=(1-smooth_accel)*(joy->axes[0]*max_speed_side_manual)+(smooth_accel*ctrl_side_manual);
 			   
 			   	if(ctrl_side_manual<7 && ctrl_side_manual>-7){
 					ctrl_side_manual=0;
@@ -1019,6 +1029,7 @@ private:
 	float spx_saved[10000],spy_saved[10000];
 	int count,count2,ca,direction,count_odo,cont_detect_peop,cont_sp_follow,kf;
 	FILE * fp;
+	FILE * fp2;
 	bool obstaculo,changed,crucero,ruta_learn,loaded_route,start_route,arrived,obstacle_front,obstacle_front1,obstacle_front2,newobstacle,tracking_people;
 	float px_aux,py_aux,n_aux,last_error,alfa,velx,err2,velyaw,intErr,velCtrl,nspx,nspy,errPos,ang_peop_cam,ang_peop_lidar,tracked_angle,tracked_distance,radius_follow,tracked_cx,tracked_cy;
 	int num_sp,k_idx,carril,velocity,contadorvel,mode,indx,h,conta,missing_track;
