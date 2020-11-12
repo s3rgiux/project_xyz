@@ -127,6 +127,7 @@ public:
 		free_way=true;
 		collision = false;
 		start_route = false;
+		stop_follow=false;
 		index_wp=-1;
 		dist_auxwp=0;
 	}
@@ -199,7 +200,7 @@ void stateCallback(const control_xy::TriggerAction& data)
 			alerts_command.data=8;// 8people follow 5 danger 4 warning 3 karugamo 2 idle 1 manual
      			//alerts_publisher.publish(alerts_command);
      			alerts_publisher.publish(alerts_command);
-
+                        stop_follow=false;
 			ROS_INFO("Mode People Follow");
 			
 			
@@ -322,7 +323,7 @@ void stateCallback(const control_xy::TriggerAction& data)
 					kf=0;
 					index_wp=-1;//init follow
 					dist_auxwp=0;
-                                        
+                                        stop_follow=false;
 					fp2 = fopen ("/home/xavier/catkin_ws/src/control_xy/people.txt" , "w+");
 
 				}
@@ -452,6 +453,7 @@ if(mode_follow && danger!=true ){
 				index_wp++;
 				if(index_wp>=(cont_sp_follow-1)){
 					cont_sp_follow-1;
+					stop_follow=true;
 				}
 				float c=0.05;//must be 1/cicles
 				float p0x=px;//pos robot x
@@ -549,7 +551,10 @@ if(mode_follow && danger!=true ){
 			 ctrl_front_follow=0;
 			 ctrl_yaw=0;
 		}
-			
+			if(stop_follow==true){//stop if arrived  last wp
+				ctrl_front_follow=0;
+				ctrl_yaw=0;
+			}
 			vel_steer.linear.x= ctrl_front_follow;
 			vel_steer.angular.z= ctrl_yaw;
 			speed_publisher.publish(vel_steer);
@@ -1037,10 +1042,9 @@ private:
         float errpx,errpy,spVel,nkp,nkd,nki,errVelYaw,nvkp,nvkd,spPos,distAct,errPVel,spPVel;
         float ctrl_vel,frontal_gain_follow,frontal_gain_karugamo,frontal_gain_manual,ctrl_front_follow,ctrl_front_karugamo;
 	float ctrl_front_manual,cx,cy,aux_dist,ang_robot;
-
 	float spx_follow_old,spy_follow_old,spx_follow_new,spy_follow_new,dist_auxwp;
 	int indice,index_wp,numwp,cicles;
-       bool tracking;
+        bool tracking,stop_follow;
 	
 };
 

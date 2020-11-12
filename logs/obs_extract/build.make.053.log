@@ -1,0 +1,19 @@
+[  0%] Built target std_msgs_generate_messages_py
+[  0%] Built target _obs_extract_generate_messages_check_deps_Obstacles
+[  0%] Built target _obs_extract_generate_messages_check_deps_CircleObstacle
+[  0%] Built target geometry_msgs_generate_messages_py
+[  0%] Built target _obs_extract_generate_messages_check_deps_SegmentObstacle
+[  0%] Built target std_msgs_generate_messages_nodejs
+[  0%] Built target geometry_msgs_generate_messages_nodejs
+[  0%] Built target std_msgs_generate_messages_lisp
+[  0%] Built target geometry_msgs_generate_messages_lisp
+[  0%] Built target std_msgs_generate_messages_eus
+[  0%] Built target geometry_msgs_generate_messages_eus
+[  0%] Built target geometry_msgs_generate_messages_cpp
+[  0%] Built target std_msgs_generate_messages_cpp
+[ 23%] Built target obs_extract_generate_messages_py
+[ 41%] Built target obs_extract_generate_messages_nodejs
+[ 58%] Built target obs_extract_generate_messages_lisp
+[ 76%] Built target obs_extract_generate_messages_cpp
+[100%] Built target obs_extract_generate_messages_eus
+[100%] Built target obs_extract_generate_messages

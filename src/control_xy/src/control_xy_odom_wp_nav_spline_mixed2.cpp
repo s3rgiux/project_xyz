@@ -130,6 +130,7 @@ public:
 		index_wp=-1;
 		dist_auxwp=0;
 		is_near=false;
+		stop_follow=false;
 	}
 	~test_head(){}
 	
@@ -313,7 +314,7 @@ void stateCallback(const control_xy::TriggerAction& data)
 				tracked_pos.y=tracked_cy;
 				tracked_pos.z= ang_peop_lidar;
 				
-	
+					stop_follow=false;
 					tracked_publisher.publish(tracked_pos);
                                 	ctrl_front_follow= 0;
 			        	ctrl_ang=0;
@@ -477,6 +478,7 @@ if(is_near==false){
 				index_wp++;
 				if(index_wp>=(cont_sp_follow-1)){
 					cont_sp_follow-1;
+					stop_follow=true;//arrived to last wp
 				}
 				float c=0.05;//must be 1/cicles
 				float p0x=px;//pos robot x
@@ -575,7 +577,10 @@ if(is_near==false){
 			 ctrl_front_follow=0;
 			 ctrl_yaw=0;
 		}
-			
+			if(stop_follow==true){//stop if arrived  last wp
+				ctrl_front_follow=0;
+				ctrl_yaw=0;
+			}
 			vel_steer.linear.x= ctrl_front_follow;
 			vel_steer.angular.z= ctrl_yaw;
 			speed_publisher.publish(vel_steer);
@@ -1098,6 +1103,7 @@ else{
      			alerts_publisher.publish(alerts_command);
 
 			ROS_INFO("Mode People Follow");
+			stop_follow=false;
 			aux_dist=50000;
 			is_near=false;
 			fp = fopen ("/home/xavier/catkin_ws/src/control_xy/people.txt" , "w+");
@@ -1206,7 +1212,7 @@ private:
 
 	float spx_follow_old,spy_follow_old,spx_follow_new,spy_follow_new,dist_auxwp;
 	int indice,index_wp,numwp,cicles;
-       bool tracking,is_near;
+       bool tracking,is_near,stop_follow;
 	
 };
 

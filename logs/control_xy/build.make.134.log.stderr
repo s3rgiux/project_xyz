@@ -1,0 +1,5 @@
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_follow.cpp:[m[K In member function ‘[01m[Kvoid test_head::loadRoute()[m[K’:
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_follow.cpp:721:43:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%s[m[K’ expects argument of type ‘[01m[Kchar*[m[K’, but argument 3 has type ‘[01m[Kchar (*)[80][m[K’ [[01;35m[K-Wformat=[m[K]
+            sscanf(mystring,"%s %s",[32m[K&rx[m[K,&ry[01;35m[K)[m[K;
+                                    [32m[K~~~[m[K    [01;35m[K^[m[K
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_follow.cpp:721:43:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%s[m[K’ expects argument of type ‘[01m[Kchar*[m[K’, but argument 4 has type ‘[01m[Kchar (*)[80][m[K’ [[01;35m[K-Wformat=[m[K]
