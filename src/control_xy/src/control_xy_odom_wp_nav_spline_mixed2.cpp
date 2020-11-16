@@ -588,6 +588,10 @@ if(is_near==false){
 			}
 			vel_steer.linear.x= ctrl_front_follow;
 			vel_steer.angular.z= ctrl_yaw;
+
+
+			vel_steer.linear.x=(vel_steer.linear.x/21)*0.1045;
+			vel_steer.angular.z=(vel_steer.angular.z/21)*0.1045;
 			speed_publisher.publish(vel_steer);
 
 	   }//end_isnear=false
@@ -674,8 +678,10 @@ void near(){
 				vel_steer.linear.x=0;
 				ctrl_front_follow=0;
 			   }
+				
 			
-		  
+			vel_steer.linear.x=(vel_steer.linear.x/21)*0.1045;
+			vel_steer.angular.z=(vel_steer.angular.z/21)*0.1045;
 			//alerts_command.data=7;// 5 danger 4 warning 3 karugamo 2 idle 1 manual
      			//alerts_publisher.publish(alerts_command);
 			speed_publisher.publish(vel_steer);
@@ -1141,6 +1147,8 @@ else{
 			   	if(joy->axes[6]!=0){
 			     		vel_steer.angular.z=joy->axes[6]*-800;
 			   	}
+				vel_steer.linear.x=(vel_steer.linear.x/21)*0.1045;
+				vel_steer.angular.z=(vel_steer.angular.z/21)*0.1045;
 			   	speed_publisher.publish(vel_steer);
 		}else{//else free way
 		
@@ -1153,6 +1161,8 @@ else{
 					ctrl_side_manual=0;
 			   	}
 			   	vel_steer.angular.z=ctrl_side_manual;
+				vel_steer.linear.x=(vel_steer.linear.x/21)*0.1045;
+			vel_steer.angular.z=(vel_steer.angular.z/21)*0.1045;
 				speed_publisher.publish(vel_steer);
 				
 			}else{

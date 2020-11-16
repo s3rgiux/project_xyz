@@ -368,8 +368,10 @@ class PitWheels:
             traceback.print_exc()
 
     def teleop_callback(self, data):
-	linear_speed = data.linear.x
-        angular_speed = data.angular.z
+	#linear_speed = data.linear.x
+        #angular_speed = data.angular.z
+        linear_speed = (data.linear.x*21)/0.1045
+        angular_speed = (data.angular.z*21)/0.1045
         new_right_velocity = linear_speed - angular_speed#linear_speed + angular_speed 
         new_left_velocity = linear_speed + angular_speed#linear_speed - angular_speed
         #if self.right_velocity != new_right_velocity or self.left_velocity != new_left_velocity:

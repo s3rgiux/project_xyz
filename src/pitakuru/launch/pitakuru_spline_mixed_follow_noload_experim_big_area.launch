@@ -136,6 +136,7 @@
  
  <!-- SLAM地図作成ノード -->
 <!--
+
     <param name="use_sim_time" value="false"/>
     <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" clear_params="true">
       <rosparam command="load" file="$(find pitakuru)/config/gmapping.yaml" />
@@ -145,6 +146,7 @@
       <param name="odom_frame" value="odom" />
     </node>
  
+
 -->
 
 
@@ -152,11 +154,15 @@
 
 <node pkg="tf" type="static_transform_publisher" name="imu_base_link_broadcaster" args="0.1 0 0.2 0 0 0 base_link immu 100" />
 
-<arg name="map_file" default="$(find pitakuru)/maps/floor10_new.yaml"/>
+
+
+ #### map ##############################
+
+<arg name="map_file" default="$(find pitakuru)/maps/floor6.yaml"/>
 
  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
-
-
+<!--
+-->
 
 
   #### start the laser scan_matcher ##############################
