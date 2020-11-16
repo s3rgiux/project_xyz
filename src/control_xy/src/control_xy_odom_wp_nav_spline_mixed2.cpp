@@ -157,7 +157,10 @@ void stateCallback(const control_xy::TriggerAction& data)
 			ctrl_ang= 0;
 			ctrl_front_manual= 0;
 			ctrl_side_manual= 0; 
-			
+			vel_steer.linear.x= 0;
+                        vel_steer.angular.z= 0;
+			speed_publisher.publish(vel_steer);
+			ros::Duration(1.0).sleep(); // sleep for half a second
 		//	ROS_INFO("Yuhu");
 		//	ROS_INFO("%s ",data.trigger.c_str());
 		}else if(data.trigger=="break_release_button_on" && collision ==true){
@@ -181,6 +184,8 @@ void stateCallback(const control_xy::TriggerAction& data)
                         ang_peop_lidar=0;
 			distanciaPeople2=0;
 			tracked_distance=0;
+
+			ros::Duration(1.0).sleep(); // sleep for half a second
 		//	ROS_INFO("Yuhu");
 		//	ROS_INFO("%s ",data.trigger.c_str());
 		} else if(data.trigger=="karugamo_button_on" && mode_follow==false){
@@ -207,7 +212,7 @@ void stateCallback(const control_xy::TriggerAction& data)
 			
 			//alerts_command.data=7;//7 peop follow 5 danger 4 warning 3 karugamo 2 idle 1 manual
 			
-			ros::Duration(0.5).sleep(); // sleep for half a second
+			ros::Duration(1.0).sleep(); // sleep for half a second
 		} else if(data.trigger=="karugamo_button_on" && mode_follow==true){
 			collision = false;
 			mode_idle=true;
@@ -229,7 +234,7 @@ void stateCallback(const control_xy::TriggerAction& data)
                         ang_peop_lidar=0;
 			distanciaPeople2=0;
 			tracked_distance=0;
-			ros::Duration(0.5).sleep(); // sleep for half a second
+			ros::Duration(1.0).sleep(); // sleep for half a second
 		}
 		
 	}void setPointsCallback(const geometry_msgs::Twist& twist)
