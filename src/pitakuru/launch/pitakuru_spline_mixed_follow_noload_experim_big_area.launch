@@ -78,9 +78,9 @@
 <param name="frontal_gain_follow"    type="double"	value="2500"/> <!-- gain for frontal control   -->
 <param name="frontal_gain_manual"    type="double"	value="00"/> <!-- (not used depercated)gain frontal control   -->
 <param name="smooth_accel"    type="double"	value="0.98"/> <!-- acceletartion smooth max value up to 0.99   -->
-<param name="max_speed_karugamo"    type="double"	value="1500"/> <!-- (not used depercated)max speed value for karugamo   -->
-<param name="max_speed_follow"    type="double"	value="1100"/><!--1500--><!-- 3000--> <!-- max speed value for frontal people follow-->
-<param name="max_speed_manual"    type="double"	value="1100"/>  <!--15000--><!-- 3000--> <!-- max speed value for frontal joystick-->
+<param name="max_speed_karugamo"    type="double"	value="700"/> <!-- (not used depercated)max speed value for karugamo   -->
+<param name="max_speed_follow"    type="double"	value="700"/><!--1500--><!-- 3000--> <!-- max speed value for frontal people follow-->
+<param name="max_speed_manual"    type="double"	value="700"/>  <!--15000--><!-- 3000--> <!-- max speed value for frontal joystick-->
 <param name="max_speed_side_manual"    type="double"	value="700"/> <!-- max speed value for side joystick-->
 <param name="radius_follow"    type="double"	value="0.37"/> <!--1.0--><!-- radius checking zone to track people once that is already picked for tracking-->
 </node>
@@ -120,7 +120,7 @@
 
 
 <!-- rosbag nodes -->
-<arg name="record_flag" default="false" /> <!-- set to true if i want to record-->
+<arg name="record_flag" default="true" /> <!-- set to true if i want to record-->
 
 <node pkg="rosbag" type="record" name="rosbag_record"
        args = "record -o /home/xavier/warehouse.bag /alerts /camera_info /cmd_vel /diagnostics /euler /fiducial_vertices /image_raw /j0/joy  /movement/karugamo/joy /movement/manual/joy /obstacle_closest /obstacles /pcl /peopAng /peopDist /raw_obstacles /rear_scan /rosout /rosout_agg /scan /state /tf /tf_static /trigger_action /peopAng2 /people/image"  
@@ -155,7 +155,7 @@
 
  #### map ##############################
 
-<arg name="map_file" default="$(find pitakuru)/maps/floor10.yaml"/>
+<arg name="map_file" default="$(find pitakuru)/maps/floor6.yaml"/>
 
  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
 <!--

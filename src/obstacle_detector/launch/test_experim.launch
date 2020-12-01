@@ -40,8 +40,8 @@
 
     <param name="min_x_range"       value="-0.1"/> <!-- -5.0 -->
     <param name="max_x_range"       value="6.0"/>
-    <param name="min_y_range"       value="-3.0"/> <!-- -2.0 -->
-    <param name="max_y_range"       value="3.0"/><!-- 2.0 -->
+    <param name="min_y_range"       value="-3.0"/> <!-- -3.0 -->
+    <param name="max_y_range"       value="3.0"/><!-- 3.0 -->
 
     <param name="fixed_frame_id"    value="base_link"/><!-- map -->
     <param name="target_frame_id"   value="base_link"/> <!-- base link -->

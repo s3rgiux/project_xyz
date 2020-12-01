@@ -2,7 +2,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 import pandas as pd 
-df= pd.read_csv("puntos.txt") 
+#df= pd.read_csv("puntos.txt") 
+df= pd.read_csv("peopled.txt") 
 print(df.describe())
 print(df.head())
 print(df.dtypes)

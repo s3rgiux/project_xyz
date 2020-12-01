@@ -31,7 +31,7 @@ import rosparam
 import atexit
 
 
-SLEEP_TIME = 0.019
+SLEEP_TIME = 0.015
 #200mm diameter0
 
 
@@ -69,7 +69,7 @@ class PitWheels:
         self.radius_follow=0.35
     
     def pubobs(self):
-        if(time.time()-self.last_time>0.1):
+        if(time.time()-self.last_time>0.04):
         #if(self.track==0):
             self.angulo.data=-500
             self.ang_dist.x=0.01

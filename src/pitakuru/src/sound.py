@@ -29,8 +29,8 @@ class SoundNode():
             subprocess.call(["aplay", "/home/xavier/catkin_ws/src/pitakuru/assets/manual-japanese.mp3"])
         elif(data.data==2):
             subprocess.call(["aplay", "/home/xavier/catkin_ws/src/pitakuru/assets/idle-japanese.mp3"])
-        elif(data.data==3):
-            subprocess.call(["aplay", "/home/xavier/catkin_ws/src/pitakuru/assets/karugamo-japanese.mp3"])
+        #elif(data.data==3):
+        #    subprocess.call(["aplay", "/home/xavier/catkin_ws/src/pitakuru/assets/karugamo-japanese.mp3"])
         elif(data.data==4):
             subprocess.call(["aplay", "/home/xavier/catkin_ws/src/pitakuru/assets/AGV_warning_3s.wav"])
         elif(data.data==5):
@@ -52,7 +52,7 @@ class SoundNode():
 if __name__ == '__main__':
     sound_node = SoundNode()
     # 制御周期
-    ROS_RATE = 30
+    ROS_RATE = 10
     R = rospy.Rate(ROS_RATE)
     # [ctrl]+[c]でプログラムの終了するまでループ
     while not rospy.is_shutdown():
