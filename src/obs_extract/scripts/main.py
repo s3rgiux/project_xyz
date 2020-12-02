@@ -72,8 +72,8 @@ class PitWheels:
         if(time.time()-self.last_time>0.04):
         #if(self.track==0):
             self.angulo.data=-500
-            self.ang_dist.x=0.01
-            self.ang_dist.y=0.01
+            self.ang_dist.x=-0.01
+            self.ang_dist.y=-0.01
             self.distancia.data=0
             self.ang_pub.publish(self.ang_dist)
             #self.dist_pub.publish(self.distancia)
@@ -89,7 +89,7 @@ class PitWheels:
     def obstacles_callback(self, data):
         lst = []
         for x in data.circles:
-            if x.center.x>-0.3 and x.center.x<self.front_detection and x.center.y<self.side_detection and x.center.y>-self.side_detection: 
+            if x.center.x>-0.5 and x.center.x<self.front_detection and x.center.y<self.side_detection and x.center.y>-self.side_detection: 
                 #print("#########")
                 #circles = data.circles
                 #print(circles)
