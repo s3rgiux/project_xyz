@@ -295,7 +295,7 @@ void stateCallback(const control_xy::TriggerAction& data)
 		if(ang_peop_cam!=-500 && mode_follow && tracking_people==false  ){
 		       cont_detect_peop+=1;
 			missing_track=0;
-			if(ang_peop_lidar<ang_peop_cam+8 && ang_peop_lidar> ang_peop_cam-8  && distanciaPeople2<aux_dist && distanciaPeople2<230 && distanciaPeople2>50 && ang_peop_cam>-30 && ang_peop_cam<30 && ang_peop_lidar>-30 && ang_peop_lidar<30 ){
+			if(ang_peop_lidar<ang_peop_cam+8 && ang_peop_lidar> ang_peop_cam-8  && distanciaPeople2<aux_dist && distanciaPeople2<=240 && distanciaPeople2>50 && ang_peop_cam>-30 && ang_peop_cam<30 && ang_peop_lidar>-30 && ang_peop_lidar<30 ){
 				//cont_detect_peop+=1;
 				aux_dist = distanciaPeople2;
 				ROS_INFO("Received angle %f",ang_peop_lidar);
@@ -374,7 +374,6 @@ if(mode_follow && danger!=true){
 			distanciaPeople2 = sqrt(cx*cx+cy*cy)*100;
                         tracked_angle= ang_peop_lidar;
 			tracked_distance = distanciaPeople2;
-
 			if(distanciaPeople2<240){
 				near();
 				
@@ -466,7 +465,7 @@ if(mode_follow && danger!=true){
 		else{//losted
 		    //if(is_near==false){
 			missing_track+=1;
-                        if(missing_track>=25){//thiscounter also can help to see if theres a lot of objects and its not able to follow
+                        if(missing_track>35){//thiscounter also can help to see if theres a lot of objects and its not able to follow
 				ROS_INFO("LOST");
 				fprintf(fp2,"lost \n");
 				tracking_people=false;
@@ -592,8 +591,9 @@ if(is_near==false){
 				}
 	
 			 	//ctrl_front_follow=(1-smooth_accel)*(frontal_gain_follow*(distanciaPeople2-100))+(smooth_accel*ctrl_front_follow);
-				ctrl_front_follow=(1-smooth_accel)*(frontal_gain_follow*norm_dist/*max_speed_follow*/)+(smooth_accel*ctrl_front_follow);
-				ctrl_front_follow=400;
+				//ctrl_front_follow=(1-smooth_accel)*(frontal_gain_follow*norm_dist/*max_speed_follow*/)+(smooth_accel*ctrl_front_follow);
+				//ctrl_front_follow=400;
+				ctrl_front_follow=(1-smooth_accel)*(500)+(smooth_accel*ctrl_front_follow);
 				//ROS_INFO("%f,%f",ctrl_front_follow,distanciaPeople2);
 				
 			   	if(ctrl_front_follow<0 ){
@@ -604,10 +604,11 @@ if(is_near==false){
                     ctrl_front_follow= max_speed_follow;
 				}
             }else{
-				ctrl_front_follow=400;
+				ctrl_front_follow=(1-smooth_accel)*(500)+(smooth_accel*ctrl_front_follow);
 			}
 		}else{
-			 ctrl_front_follow=0;
+			// ctrl_front_follow=0;
+			ctrl_front_follow=(1-smooth_accel)*(0)+(smooth_accel*ctrl_front_follow);
 			 ctrl_yaw=0;
 			 ROS_INFO("stop cont_sp_follow %i \n",cont_sp_follow);
 		}
