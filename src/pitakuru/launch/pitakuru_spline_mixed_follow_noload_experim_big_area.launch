@@ -79,8 +79,8 @@
 <param name="frontal_gain_manual"    type="double"	value="00"/> <!-- (not used depercated)gain frontal control   -->
 <param name="smooth_accel"    type="double"	value="0.92"/> <!-- acceletartion smooth max value up to 0.99   -->
 <param name="max_speed_karugamo"    type="double"	value="700"/> <!-- (not used depercated)max speed value for karugamo   -->
-<param name="max_speed_follow"    type="double"	value="800"/><!--1500--><!-- 3000--> <!-- max speed value for frontal people follow-->
-<param name="max_speed_manual"    type="double"	value="800"/>  <!--15000--><!-- 3000--> <!-- max speed value for frontal joystick-->
+<param name="max_speed_follow"    type="double"	value="1500"/><!--1500--><!-- 3000--> <!-- max speed value for frontal people follow-->
+<param name="max_speed_manual"    type="double"	value="1500"/>  <!--15000--><!-- 3000--> <!-- max speed value for frontal joystick-->
 <param name="max_speed_side_manual"    type="double"	value="700"/> <!-- max speed value for side joystick-->
 <param name="radius_follow"    type="double"	value="0.37"/> <!--1.0--><!-- radius checking zone to track people once that is already picked for tracking-->
 </node>
@@ -118,6 +118,7 @@
 
 <include file="$(find pitakuru)/launch/navigation.launch"/>
 
+<node name="frame_base" pkg="tf2_ros" type="static_transform_publisher" args="0 0 0 0 0 0 base_link my_frame 100"/>
 
 <!-- rosbag nodes -->
 <arg name="record_flag" default="false" /> <!-- set to true if i want to record-->
