@@ -43,7 +43,7 @@ public:
 		pose_subscriber = nh.subscribe("setPoints", 1, &test_head::setPointsCallback,this);
 		//ang_subscriber = nh.subscribe("peopAng", 1, &test_head::angPeopCallback,this);
 		dist_subscriber = nh.subscribe("peopDist", 1, &test_head::distPeopCallback,this);
-               // ang_subscriber2 = nh.subscribe("peopAng2", 3, &test_head::angPeopCallback2,this);
+        // ang_subscriber2 = nh.subscribe("peopAng2", 3, &test_head::angPeopCallback2,this);
 		//ang_subscriber2 = nh.subscribe("peopAng2", 2, &test_head::angPeopCallback3,this);
 		ang_subscriber2 = nh.subscribe("peopAng2", 2, &test_head::angPeopCallback4,this);
                 //ang_subscriber_cam = nh.subscribe("ang_peop_detect_img", 1, &test_head::angCamCallback,this);
@@ -65,6 +65,8 @@ public:
 		nh.getParam("/control_xy/max_speed_karugamo", max_speed_karugamo);
 		nh.getParam("/control_xy/max_speed_follow", max_speed_follow);
 		nh.getParam("/control_xy/max_speed_manual", max_speed_manual);
+		nh.getParam("/control_xy/speed_wp_lost",speed_wp_lost);
+		nh.getParam("/control_xy/near_far_distance",near_far_distance);
                 nh.getParam("/control_xy/max_speed_side_manual", max_speed_side_manual);
 		nh.getParam("/control_xy/smooth_accel", smooth_accel);
 		nh.getParam("/control_xy/radius_follow", radius_follow);
@@ -270,7 +272,7 @@ void stateCallback(const control_xy::TriggerAction& data)
 		if (ruta_learn==true){
     	    		norm=sqrt((px-px_aux)*(px-px_aux)+(py-py_aux)*(py-py_aux));
     	    		if (save_waypoint==true){
-				save_waypoint=false;
+						save_waypoint=false;
     	    			fprintf(fp, "%f %f\n",px,py );
     	    			px_aux=px;
     	    			py_aux=py;
@@ -328,17 +330,14 @@ void stateCallback(const control_xy::TriggerAction& data)
 			        	ctrl_ang=0;
 			        	vel_steer.linear.x= 0;
                         vel_steer.angular.z= 0;
-					//cont_sp_follow=0;//experiemntal
+					cont_sp_follow=0;//experiemntal
 					kf=0;
 					index_wp=-1;//init follow
 					dist_auxwp=0; 
 					state_stop=0;
-					               
+					is_near==false;            
 					//fp = fopen ("/home/xavier/catkin_ws/src/control_xy/people.txt" , "w+");
 				}
-
-
-			
 		}
        }
 
@@ -375,9 +374,8 @@ if(mode_follow && danger!=true){
 			distanciaPeople2 = sqrt(cx*cx+cy*cy)*100;
             tracked_angle= ang_peop_lidar;
 			tracked_distance = distanciaPeople2;
-			if(distanciaPeople2<240){
+			if(distanciaPeople2<near_far_distance){
 				near();
-				
 				if(is_near==false){
 					fprintf(fp2,"Entre near \n");
 					is_near=true;
@@ -386,9 +384,6 @@ if(mode_follow && danger!=true){
 					dist_auxwp=0;
 					//cont_sp_follow=0;//experimental
 				}
-				
-				
-				
 			}else{
 				if(is_near==true){
 					is_near=false;
@@ -399,8 +394,6 @@ if(mode_follow && danger!=true){
 						index_wp=cont_sp_follow-3;
 					}
 				}
-				
-				
 			}//endif not near
 		
 			missing_track=0;
@@ -466,7 +459,7 @@ if(mode_follow && danger!=true){
 		else{//losted
 		    //if(is_near==false){
 			missing_track+=1;
-                        if(missing_track>35){//thiscounter also can help to see if theres a lot of objects and its not able to follow
+                        if(missing_track>25){//thiscounter also can help to see if theres a lot of objects and its not able to follow
 				ROS_INFO("LOST");
 				fprintf(fp2,"lost \n");
 				tracking_people=false;
@@ -487,14 +480,19 @@ if(mode_follow && danger!=true){
      				alerts_publisher.publish(alerts_command);
 				}
 				tracking =false;
-				if(is_near==true&&cont_sp_follow>2){
-				    is_near=false;
-                                	alerts_command.data=3;// 5 danger 4 warning 3 karugamo 2 idle 1 manual
-     					alerts_publisher.publish(alerts_command);
-					if(cont_sp_follow>2){
-						fprintf(fp2,"Entre far por lost num sp follow %i e index %i  \n",cont_sp_follow,cont_sp_follow-3);
-						index_wp=cont_sp_follow-3;
-					}
+				if(is_near==true){
+					ctrl_front_follow=(1-smooth_accel)*(0)+(smooth_accel*ctrl_front_follow);
+			 		ctrl_yaw=0;			
+					vel_steer.linear.x= ctrl_front_follow;
+					vel_steer.angular.z= ctrl_yaw;
+					speed_publisher.publish(vel_steer);
+				    //is_near=false;
+                    //alerts_command.data=3;// 5 danger 4 warning 3 karugamo 2 idle 1 manual
+     				//alerts_publisher.publish(alerts_command);
+					//if(cont_sp_follow>2){
+					//	fprintf(fp2,"Entre far por lost num sp follow %i e index %i  \n",cont_sp_follow,cont_sp_follow-3);
+					//	index_wp=cont_sp_follow-3;
+					//}
 				}
 			}
 		   // }
@@ -514,6 +512,8 @@ if(is_near==false){
 					index_wp=cont_sp_follow-1;//experimental
 					stop_follow=true;//arrived to last wp
 					fprintf(fp2,"llegue a fin con index %i \n",index_wp);
+					saved_ang=ang_robot;
+					sp_yaw=saved_ang;
 				}
 				float c=0.05;//must be 1/cicles
 				float p0x=px;//pos robot x
@@ -597,9 +597,8 @@ if(is_near==false){
 			 	//ctrl_front_follow=(1-smooth_accel)*(frontal_gain_follow*(distanciaPeople2-100))+(smooth_accel*ctrl_front_follow);
 				//ctrl_front_follow=(1-smooth_accel)*(frontal_gain_follow*norm_dist/*max_speed_follow*/)+(smooth_accel*ctrl_front_follow);
 				//ctrl_front_follow=400;
-				ctrl_front_follow=(1-smooth_accel)*(500)+(smooth_accel*ctrl_front_follow);
+				ctrl_front_follow=(1-smooth_accel)*(speed_wp_lost)+(smooth_accel*ctrl_front_follow);
 				//ROS_INFO("%f,%f",ctrl_front_follow,distanciaPeople2);
-				
 			   	if(ctrl_front_follow<0 ){
 					ctrl_front_follow=0;
 					vel_steer.linear.x=0;
@@ -608,7 +607,7 @@ if(is_near==false){
                     ctrl_front_follow= max_speed_follow;
 				}
             }else{
-				ctrl_front_follow=(1-smooth_accel)*(500)+(smooth_accel*ctrl_front_follow);
+				ctrl_front_follow=(1-smooth_accel)*(speed_wp_lost)+(smooth_accel*ctrl_front_follow);
 			}
 		}else{
 			// ctrl_front_follow=0;
@@ -616,30 +615,31 @@ if(is_near==false){
 			 ctrl_yaw=0;
 			 ROS_INFO("stop cont_sp_follow %i \n",cont_sp_follow);
 		}
-			
 			vel_steer.linear.x= ctrl_front_follow;
 			vel_steer.angular.z= ctrl_yaw;
 	}
 
         if(stop_follow==true){//stop if arrived  last wp  
                 counter_search++;
-                if(counter_search%355==0){
+                if(counter_search%350==0){
                     counter_search=0;
                     state_stop++;
                     switch(state_stop){
+						/*
 						case 1:
 						    
                             sp_yaw=ang_robot;
                             saved_ang=ang_robot;
 							fprintf(fp2,"entre caso 1 ang %f \n",saved_ang);
                         break;
-                        case 2:
+						*/
+                        case 1:
 						    
                             sp_yaw=saved_ang;
-                            ;
 							fprintf(fp2,"entre caso 2 ang %f \n",saved_ang);
                         break;
-                        case 3:
+						
+                        case 2:
 							
                             sp_yaw=saved_ang+45;
                             if (sp_yaw < -180.0 ){
@@ -649,11 +649,12 @@ if(is_near==false){
                             }
 							fprintf(fp2,"entre caso 2 ang %f \n",sp_yaw);
                         break;
-                        case 4:
+                        case 3:
                             sp_yaw=saved_ang;
 							fprintf(fp2,"entre caso 3 ang %f \n",sp_yaw);
                         break;
-                        case 5:
+                        case 4:
+							state_stop=0;
                             sp_yaw=saved_ang-45;
                             if (sp_yaw < -180.0 ){
                                 sp_yaw=sp_yaw+360;
@@ -662,11 +663,11 @@ if(is_near==false){
                             }
 							fprintf(fp2,"entre caso 4 ang %f \n",sp_yaw);
                         break;
-                        case 6:
-                            sp_yaw=saved_ang;
-                            state_stop=1;
-							fprintf(fp2,"entre caso 5 ang %f \n",sp_yaw);
-                        break;  
+                        //case 5:
+                        //    sp_yaw=saved_ang;
+                        //    state_stop=0;
+						//	fprintf(fp2,"entre caso 5 ang %f \n",sp_yaw);
+                       // break;  
                     }
                 }
                 error_yaw=(sp_yaw-ang_robot);//-(sp_yaw-ang_robot);
@@ -797,18 +798,6 @@ void near(){
 
 
 ///////////////////
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan)
@@ -1264,7 +1253,8 @@ private:
        bool tracking,is_near,stop_follow;
 	int sound_counter,danger_counter;
 	int counter_search,state_stop;
-	float saved_ang;
+	float saved_ang,speed_wp_lost;
+	float near_far_distance;
 	
 };
 
