@@ -16,8 +16,9 @@ class SoundNode():
 
     def __init__(self):
         rospy.init_node('SoundNode')
-        #self.sub = rospy.Subscriber('state', State, self.execute_cb)
 	self.sub_alerts = rospy.Subscriber('/alerts', Int16, self.alerts_cb,queue_size=1)
+        self.entered=False
+        self.cancel=False
         #self.action.start()
     
     def get_file(self, sound):
@@ -25,29 +26,50 @@ class SoundNode():
 	
     def alerts_cb(self,data):
 #// 6 collision 5 danger 4 warning 3 karugamo 2 idle 1 manual
+        global gpid
         if(data.data==1):
-            subprocess.call(["aplay", "/home/xavier/catkin_ws/src/pitakuru/assets/manual-japanese.mp3"])
+            self.route="/home/xavier/catkin_ws/src/pitakuru/assets/manual-japanese.mp3"
+            self.entered=True
+            #p=subprocess.Popen(["aplay", "/home/xavier/catkin_ws/src/pitakuru/assets/manual-japanese.mp3"])
         elif(data.data==2):
-            subprocess.call(["aplay", "/home/xavier/catkin_ws/src/pitakuru/assets/idle-japanese.mp3"])
+            self.route="/home/xavier/catkin_ws/src/pitakuru/assets/idle-japanese.mp3"
+            self.entered=True
+            #p=subprocess.Popen(["aplay", "/home/xavier/catkin_ws/src/pitakuru/assets/idle-japanese.mp3"])
         #elif(data.data==3):
         #    subprocess.call(["aplay", "/home/xavier/catkin_ws/src/pitakuru/assets/karugamo-japanese.mp3"])
         elif(data.data==4):
-            subprocess.call(["aplay", "/home/xavier/catkin_ws/src/pitakuru/assets/AGV_warning_3s.wav"])
+            self.route="/home/xavier/catkin_ws/src/pitakuru/assets/AGV_warning_3s.wav"
+            self.entered=True
+            #p=subprocess.Popen(["aplay", "/home/xavier/catkin_ws/src/pitakuru/assets/AGV_warning_3s.wav"])
         elif(data.data==5):
-            subprocess.call(["aplay", "/home/xavier/catkin_ws/src/pitakuru/assets/AGV_warning_3s.wav"])
+            self.route="/home/xavier/catkin_ws/src/pitakuru/assets/AGV_warning_3s.wav"
+            self.entered=True
+            #p=subprocess.Popen(["aplay", "/home/xavier/catkin_ws/src/pitakuru/assets/AGV_warning_3s.wav"])
         elif(data.data==6):
-            subprocess.call(["aplay", "/home/xavier/catkin_ws/src/pitakuru/assets/collision.wav"])
+            self.route="/home/xavier/catkin_ws/src/pitakuru/assets/collision.wav"
+            self.entered=True
+            #p=subprocess.Popen(["aplay", "/home/xavier/catkin_ws/src/pitakuru/assets/collision.wav"])
         elif(data.data==8):
-            subprocess.call(["aplay", "/home/xavier/catkin_ws/src/pitakuru/assets/karugamo-japanese.mp3"])
-
-
-    #def execute_cb(self, sound):
-        #print("DDDDDDDFFFFFFFF")
-        #print(sound)
-        #filename = self.get_file(sound)
-        #subprocess.call(["aplay", filename])
-        #self.action.set_succeeded(SoundResult())
-
+            self.route="/home/xavier/catkin_ws/src/pitakuru/assets/karugamo-japanese.mp3"
+            self.entered=True
+            #p=subprocess.Popen(["aplay", "/home/xavier/catkin_ws/src/pitakuru/assets/karugamo-japanese.mp3"])
+        #elif(data.data==666):
+        #    try:
+        #        print(gpid)
+        #        os.kill(gpid, signal.SIGTERM) #or signal.SIGKILL
+        #    except:
+        #        print('cant get pid') 
+        if(self.entered):
+            try:
+                os.kill(gpid, signal.SIGTERM) #or signal.SIGKILL
+            except:
+                print('cant get pid') 
+            self.entered=False
+            try:
+                p=subprocess.Popen(["aplay", self.route])
+                gpid=p.pid
+            except:
+                print('cant get pid')
 
 if __name__ == '__main__':
     sound_node = SoundNode()
