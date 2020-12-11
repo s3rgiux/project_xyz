@@ -39,7 +39,7 @@ public:
         path_pub = nh.advertise<nav_msgs::Path>(nh.resolveName("/pathpeop"),1);
         head_subscriber = nh.subscribe("/euler", 1, &test_head::headCallback,this);
         odometry_sub = nh.subscribe("odom",1,&test_head::ReceiveOdometry,this);
-                //odometry_sub = nh.subscribe("poseupdate",1,&test_head::ReceiveOdometry,this);
+        //odometry_sub = nh.subscribe("poseupdate",1,&test_head::ReceiveOdometry,this);
         joy_subscriber = nh.subscribe("/j0/joy", 1, &test_head::joyCallback,this);
         pose_subscriber = nh.subscribe("setPoints", 1, &test_head::setPointsCallback,this);
         //ang_subscriber = nh.subscribe("peopAng", 1, &test_head::angPeopCallback,this);
@@ -47,12 +47,11 @@ public:
         // ang_subscriber2 = nh.subscribe("peopAng2", 3, &test_head::angPeopCallback2,this);
         //ang_subscriber2 = nh.subscribe("peopAng2", 2, &test_head::angPeopCallback3,this);
         ang_subscriber2 = nh.subscribe("peopAng2", 2, &test_head::angPeopCallback4,this);
-                //ang_subscriber_cam = nh.subscribe("ang_peop_detect_img", 1, &test_head::angCamCallback,this);
+        //ang_subscriber_cam = nh.subscribe("ang_peop_detect_img", 1, &test_head::angCamCallback,this);
         ang_subscriber_cam = nh.subscribe("ang_peop_detect_img", 1, &test_head::angCamCallback2,this);
         dist_subscriber2 = nh.subscribe("peopDist2", 1, &test_head::distPeopCallback2,this);
-                obst_subscriber = nh.subscribe("/obstacle_closest", 1, &test_head::obstCallback,this);
-                state_subscriber = nh.subscribe("/trigger_action", 1, &test_head::stateCallback,this);
-        
+        obst_subscriber = nh.subscribe("/obstacle_closest", 1, &test_head::obstCallback,this);
+        state_subscriber = nh.subscribe("/trigger_action", 1, &test_head::stateCallback,this);
         //nh.param<float>("break_distance", break_distance, 1.5);
         nh.getParam("/control_xy/break_distance", break_distance);
         nh.getParam("/control_xy/break_danger", break_danger);
@@ -70,6 +69,7 @@ public:
         nh.getParam("/control_xy/near_far_distance",near_far_distance);
         nh.getParam("/control_xy/max_speed_side_manual", max_speed_side_manual);
         nh.getParam("/control_xy/smooth_accel", smooth_accel);
+        nh.getParam("/control_xy/smooth_accel_manual", smooth_accel_manual);
         nh.getParam("/control_xy/radius_follow", radius_follow);
         nh.getParam("/control_xy/max_defelct_angle", max_defelct_angle);
         nh.getParam("/control_xy/dist_robot_people", dist_robot_people);
@@ -1184,9 +1184,8 @@ void near(){
             kf=1;
             speed_publisher.publish(vel_steer);
             alerts_command.data=8;// 8people follow 5 danger 4 warning 3 karugamo 2 idle 1 manual
-                //alerts_publisher.publish(alerts_command);
-                alerts_publisher.publish(alerts_command);
-
+            //alerts_publisher.publish(alerts_command);
+            alerts_publisher.publish(alerts_command);
             ROS_INFO("Mode People Follow");
             stop_follow=false;
             aux_dist=50000;
@@ -1198,19 +1197,18 @@ void near(){
             dist_auxwp=0;
 			stop_functions=false;
             ros::Duration(0.5).sleep(); // sleep for half a second
-            
         }
 
         if(mode_manual){
               if(free_way){
               //if(true){
-                ctrl_front_manual=(1-smooth_accel)*(joy->axes[1]*max_speed_manual)+(smooth_accel*ctrl_front_manual);
+                ctrl_front_manual=(1-smooth_accel_manual)*(joy->axes[1]*max_speed_manual)+(smooth_accel_manual*ctrl_front_manual);
                 //if(ctrl_front_manual<20 && ctrl_front_manual>-20){
                 //  ctrl_front_manual=0;
                 //}
                 vel_steer.linear.x= ctrl_front_manual;
                 //vel_steer.linear.x=-joy->axes[1]*-max_speed_manual;
-                ctrl_side_manual=(1-smooth_accel)*(joy->axes[0]*max_speed_side_manual)+(smooth_accel*ctrl_side_manual);
+                ctrl_side_manual=(1-smooth_accel_manual)*(joy->axes[0]*max_speed_side_manual)+(smooth_accel_manual*ctrl_side_manual);
                
                 if(ctrl_side_manual<7 && ctrl_side_manual>-7){
                     ctrl_side_manual=0;
@@ -1228,10 +1226,10 @@ void near(){
                 speed_publisher.publish(vel_steer);
         }else{//else free way
         
-            ctrl_front_manual=(1-smooth_accel)*(joy->axes[1]*max_speed_manual)+(smooth_accel*ctrl_front_manual);
+            ctrl_front_manual=(1-smooth_accel_manual)*(joy->axes[1]*max_speed_manual)+(smooth_accel_manual*ctrl_front_manual);
             if(ctrl_front_manual<0){
                 vel_steer.linear.x= ctrl_front_manual;
-                ctrl_side_manual=(1-smooth_accel)*(joy->axes[0]*max_speed_side_manual)+(smooth_accel*ctrl_side_manual);
+                ctrl_side_manual=(1-smooth_accel_manual)*(joy->axes[0]*max_speed_side_manual)+(smooth_accel_manual*ctrl_side_manual);
                
                 if(ctrl_side_manual<7 && ctrl_side_manual>-7){
                     ctrl_side_manual=0;
@@ -1316,7 +1314,7 @@ private:
     float near_far_distance;
     float angle_last,max_defelct_angle;
 	int save_counter;
-    float dist_robot_people;
+    float dist_robot_people,smooth_accel_manual;
     
 };
 

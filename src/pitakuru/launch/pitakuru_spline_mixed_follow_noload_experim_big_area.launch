@@ -78,26 +78,23 @@
 <param name="frontal_gain_follow"    type="double"	value="2500"/> <!-- gain for frontal control   -->
 <param name="frontal_gain_manual"    type="double"	value="00"/> <!-- (not used depercated)gain frontal control   -->
 <param name="smooth_accel"    type="double"	value="0.98"/> <!-- acceletartion smooth max value up to 0.99   -->
+<param name="smooth_accel_manual"    type="double"	value="0.9"/> <!-- acceletartion smooth max value up to 0.99   -->
 <param name="max_speed_karugamo"    type="double"	value="700"/> <!-- (not used depercated)max speed value for karugamo   -->
-<param name="max_speed_follow"    type="double"	value="1400"/><!--1500--><!-- 3000--> <!-- max speed value for frontal people follow-->
-<param name="max_speed_manual"    type="double"	value="1400"/>  <!--15000--><!-- 3000--> <!-- max speed value for frontal joystick-->
+<param name="max_speed_follow"    type="double"	value="700"/><!--1500--><!-- 3000--> <!-- max speed value for frontal people follow-->
+<param name="max_speed_manual"    type="double"	value="700"/>  <!--15000--><!-- 3000--> <!-- max speed value for frontal joystick-->
 <param name="max_speed_side_manual"    type="double"	value="400"/> <!-- max speed value for side joystick-->
-<param name="speed_wp_lost"    type="double"	value="900"/> <!-- speed when is lost or wp mode-->
+<param name="speed_wp_lost"    type="double"	value="600"/> <!-- speed when is lost or wp mode-->
 <param name="max_defelct_angle"    type="double"	value="40"/> <!-- max deflect angle-->
 <param name="near_far_distance"    type="double"	value="245.0"/> <!-- distance to detect, enter near, far distance in centimeter-->
-<param name="dist_robot_people"    type="double"	value="120"/> <!-- max deflect angle-->
+<param name="dist_robot_people"    type="double"	value="125"/> <!-- max deflect angle-->
 <param name="radius_follow"    type="double"	value="0.37"/> <!--1.0--><!-- radius checking zone to track people once that is already picked for tracking-->
 </node>
-
-
 <!-- extract obstacles form region of interest and send to control_xy -->
 
 <node pkg="obs_extract" type="main.py" name="obj_track" >
-<param name="front_detection"    type="double"	value="5"/> <!-- 3.5 --><!-- 5 -->
-<param name="side_detection"    type="double"	value="2.2"/>  <!-- 1.2 --><!-- 2.2 -->
+<param name="front_detection"    type="double"	value="3.5"/> <!-- 3.5 --><!-- 5 -->
+<param name="side_detection"    type="double"	value="1.2"/>  <!-- 1.2 --><!-- 2.2 -->
 </node>
-
-
 <!--  
 <node pkg="tf" type="static_transform_publisher" name="base_link_map_broadcaster" args="0 0 0 0 0 0 map base_link 50" />
 -->
@@ -108,7 +105,6 @@
 <node name="map_to_odom_base" pkg="tf2_ros" type="static_transform_publisher" args="0 0 0 0 0 0 map odom"/>
 <!--
 <node pkg="pitakuru" type="imu.py" name="imuw"/>
-
 <node pkg="tf" type="static_transform_publisher" name="imu_base_link_broadcaster" args="0.1 0 0.2 0 0 0 base_link immu 100" />
 -->
 <!-- localization -->
@@ -130,9 +126,6 @@
 <node pkg="rosbag" type="record" name="rosbag_record"
        args = "record -o /home/xavier/sea.bag /alerts /camera_info /cmd_vel /diagnostics /euler /fiducial_vertices /image_raw /j0/joy  /movement/karugamo/joy /movement/manual/joy /obstacle_closest /obstacles /pcl /peopAng /peopDist /raw_obstacles /rear_scan /rosout /rosout_agg /scan /state /tf /tf_static /trigger_action /peopAng2 /people/image /path /pathpeop /peop_way /visualization_marker"  
        if = "$(arg record_flag)" />
-
-
-
   
 <!--<include file="$(find hector_slam_launch)/launch/tutorial.launch"/> -->
  
