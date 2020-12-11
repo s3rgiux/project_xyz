@@ -1,7 +1,9 @@
 <?xml version="1.0"?>
 <launch>
-    <arg name="rvizconfig" default="$(find pitakuru)/rviz/navigation.rviz" />
-    
+	
+  <!-- <arg name="rvizconfig" default="$(find pitakuru)/rviz/navigation.rviz" />
+     自己位置推定 -->  
+<arg name="rvizconfig" default="$(find pitakuru)/rviz/new.rviz" />
 
 
 <arg name="use_map_topic" default="true"/>  

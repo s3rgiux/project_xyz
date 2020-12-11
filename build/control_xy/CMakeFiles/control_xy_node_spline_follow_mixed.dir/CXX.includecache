@@ -69,6 +69,8 @@ geometry_msgs/Twist.h
 -
 geometry_msgs/Vector3.h
 -
+geometry_msgs/PoseStamped.h
+-
 sensor_msgs/LaserScan.h
 /home/xavier/catkin_ws/src/control_xy/src/sensor_msgs/LaserScan.h
 nav_msgs/Odometry.h
@@ -90,6 +92,8 @@ control_xy/TriggerAction.h
 visualization_msgs/Marker.h
 -
 nav_msgs/Odometry.h
+-
+nav_msgs/Path.h
 -
 
 /opt/ros/melodic/include/geometry_msgs/Point.h
@@ -126,6 +130,26 @@ ros/message_operations.h
 geometry_msgs/Point.h
 -
 geometry_msgs/Quaternion.h
+-
+
+/opt/ros/melodic/include/geometry_msgs/PoseStamped.h
+string
+-
+vector
+-
+map
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
+std_msgs/Header.h
+-
+geometry_msgs/Pose.h
 -
 
 /opt/ros/melodic/include/geometry_msgs/PoseWithCovariance.h
@@ -236,6 +260,26 @@ std_msgs/Header.h
 geometry_msgs/PoseWithCovariance.h
 -
 geometry_msgs/TwistWithCovariance.h
+-
+
+/opt/ros/melodic/include/nav_msgs/Path.h
+string
+-
+vector
+-
+map
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
+std_msgs/Header.h
+-
+geometry_msgs/PoseStamped.h
 -
 
 /opt/ros/melodic/include/ros/advertise_options.h
