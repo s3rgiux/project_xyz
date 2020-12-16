@@ -44,5 +44,7 @@
     <!-- RVizパネル設定 -->
     <param name="use_gui" value="true"/>
     <!-- rvizノード起動設定 -->
+ 
     <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="true" />
+
 </launch>

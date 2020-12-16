@@ -24,7 +24,8 @@ class SwitchInput(object):
         self.mode = 2
         self.collision=False
 #//6 collision 5 danger 4 warning 3 karugamo 2 idle 1 manual
-
+#//8 peop follow 6 collision 5 danger 4 warning 3 nothing 2 idle 1 manual with sound
+#//78 peop follow 6 collision 75 danger 74 warning 73 nothing 72 idle 71 manual no sound
 
     def alerts_cb(self,data):
         self.mode=data.data
@@ -36,29 +37,29 @@ class SwitchInput(object):
             self.collision=False
             self.ser.write(b'2')
 
-        if(self.alert==0 and self.mode==2 and self.collision==False):#handles modes without danger
+        if(self.alert==0 and self.mode==2 or self.mode==72 and self.collision==False):#handles modes without danger
             self.ser.write(b'2')
-        elif(self.alert==0 and self.mode==1 and self.collision==False):
+        elif(self.alert==0 and self.mode==1 or self.mode==72 and self.collision==False):
             self.ser.write(b'1')
-        elif(self.alert==0 and self.mode==3 and self.collision==False):
+        elif(self.alert==0 and self.mode==3 or self.mode==73 and self.collision==False):
             self.ser.write(b'6')
             
         if(self.mode==5 and self.collision==False):#changed 4 danger/warning
             self.ser.write(b'5')
             self.alert = 1
-        elif(self.alert==1 and self.mode==2 and self.collision==False):
+        elif(self.alert==1 and self.mode==2 or self.mode==72 and self.collision==False):
             self.alert = 0
             self.ser.write(b'2')
-        elif(self.alert==1 and self.mode==1 and self.collision==False):
+        elif(self.alert==1 and self.mode==1 or self.mode==71 and self.collision==False):
             self.alert = 0
             self.ser.write(b'1')
-        elif(self.alert==1 and self.mode==3 and self.collision==False):
+        elif(self.alert==1 and self.mode==3 or self.mode==73 and self.collision==False):
             self.alert = 0
             self.ser.write(b'6')
-        elif(self.alert==1 and self.mode==8 and self.collision==False):
+        elif(self.alert==1 and self.mode==8 or self.mode==78 and self.collision==False):
             self.alert = 0
             self.ser.write(b'3') 
-        elif(self.alert==0 and self.mode==8 and self.collision==False):
+        elif(self.alert==0 and self.mode==8 or self.mode==78 and self.collision==False):
             self.ser.write(b'3')
         
         

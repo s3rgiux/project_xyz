@@ -26,6 +26,7 @@ class SoundNode():
 	
     def alerts_cb(self,data):
 #// 6 collision 5 danger 4 warning 3 karugamo 2 idle 1 manual
+#//8 peop follow 6 collision 5 danger 4 warning 3 nothing 2 idle 1 manual
         global gpid
         if(data.data==1):
             self.route="/home/xavier/catkin_ws/src/pitakuru/assets/manual-japanese.mp3"
@@ -39,10 +40,12 @@ class SoundNode():
         #    subprocess.call(["aplay", "/home/xavier/catkin_ws/src/pitakuru/assets/karugamo-japanese.mp3"])
         elif(data.data==4):
             self.route="/home/xavier/catkin_ws/src/pitakuru/assets/AGV_warning_3s.wav"
+            #self.route="/home/xavier/catkin_ws/src/pitakuru/assets/karugamo-lost-japanese.mp3"
             self.entered=True
             #p=subprocess.Popen(["aplay", "/home/xavier/catkin_ws/src/pitakuru/assets/AGV_warning_3s.wav"])
         elif(data.data==5):
             self.route="/home/xavier/catkin_ws/src/pitakuru/assets/AGV_warning_3s.wav"
+            #
             self.entered=True
             #p=subprocess.Popen(["aplay", "/home/xavier/catkin_ws/src/pitakuru/assets/AGV_warning_3s.wav"])
         elif(data.data==6):
@@ -52,7 +55,8 @@ class SoundNode():
         elif(data.data==8):
             self.route="/home/xavier/catkin_ws/src/pitakuru/assets/karugamo-japanese.mp3"
             self.entered=True
-            #p=subprocess.Popen(["aplay", "/home/xavier/catkin_ws/src/pitakuru/assets/karugamo-japanese.mp3"])
+        
+        #p=subprocess.Popen(["aplay", "/home/xavier/catkin_ws/src/pitakuru/assets/karugamo-japanese.mp3"])
         #elif(data.data==666):
         #    try:
         #        print(gpid)
@@ -69,7 +73,7 @@ class SoundNode():
                 p=subprocess.Popen(["aplay", self.route])
                 gpid=p.pid
             except:
-                print('cant get pid')
+                print('cant play')
 
 if __name__ == '__main__':
     sound_node = SoundNode()

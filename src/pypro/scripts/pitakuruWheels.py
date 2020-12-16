@@ -209,6 +209,7 @@ class PitWheels:
         self.left_pub = rospy.Publisher('left_wheel', Float32, queue_size=1)
         self.right_pub = rospy.Publisher('right_wheel', Float32, queue_size=1)
         self.dbg_pub = rospy.Publisher('test', Float32, queue_size=1)
+        self.wheels_pub = rospy.Publisher('wheels_wheels', Vector3, queue_size=1)
         '''
         left wheel: front:x,left:-z,top:-y left-handed cordinate
         '''
@@ -308,9 +309,19 @@ class PitWheels:
             #rospy.sleep(0.01)
             right_velocity = (self.right_w_dev.velm/21)*1#self.right_w_dev.velm#rvalues['velocity']
             self.left_w_rpm.data=self.left_w_dev.velm
-            self.right_w_rpm=self.right_w_dev.velm
+            #self.right_w_rpm=self.right_w_dev.velm
+            #rospy.logerr("hello pypro")
             self.left_pub.publish(self.left_w_rpm)
             self.right_pub.publish(self.right_w_rpm)
+            
+
+            vec2 = Vector3()
+            vec2.x = right_velocity
+            vec2.y = left_velocity
+            vec2.z = self.current_time
+            self.wheels_pub.publish(vec2)
+            #rospy.logerr("hello pypro2")
+            
             #float v_=round(msg.linear.x / (5.68))*31;//rad/s and gear ratio: 5.5  and the wheel Radius 31 milimeter
             #print('RV#{0}'.format(right_velocity))
             #right_position = self.right_w_dev.posm#rvalues['position']
@@ -372,6 +383,7 @@ class PitWheels:
         #angular_speed = data.angular.z
         linear_speed = (data.linear.x*21)/0.1045
         angular_speed = (data.angular.z*21)/0.1045
+        #rospy.logerr("a speed: {}".format(angular_speed))
         new_right_velocity = linear_speed - angular_speed#linear_speed + angular_speed 
         new_left_velocity = linear_speed + angular_speed#linear_speed - angular_speed
         #if self.right_velocity != new_right_velocity or self.left_velocity != new_left_velocity:
