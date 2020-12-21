@@ -78,7 +78,7 @@ class SoundNode():
 if __name__ == '__main__':
     sound_node = SoundNode()
     # 制御周期
-    ROS_RATE = 10
+    ROS_RATE = 30
     R = rospy.Rate(ROS_RATE)
     # [ctrl]+[c]でプログラムの終了するまでループ
     while not rospy.is_shutdown():

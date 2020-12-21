@@ -16,14 +16,9 @@
 #include <control_xy/State.h>
 #include <control_xy/Obstacle.h> 
 #include <control_xy/TriggerAction.h> 
-
 #include <visualization_msgs/Marker.h>
 #include <nav_msgs/Odometry.h>
 #include <nav_msgs/Path.h>
-
-
-
-float filter_yaw=0;
 
 
 class test_head
@@ -76,12 +71,14 @@ public:
         nh.getParam("/control_xy/dist_robot_people", dist_robot_people);
 	    nh.getParam("/control_xy/angle_gain_wp", angle_gain_wp);
         nh.getParam("/control_xy/max_dist_toacc", max_dist_toacc);
+        nh.getParam("/control_xy/smooth_accel_stop",smooth_accel_stop);
+        nh.getParam("/control_xy/smooth_accel_side_manual",smooth_accel_side_manual);
     
         
         //nh.param<float>("break_danger", break_danger, 0.45);
         subScan_ = nh.subscribe("/scan", 1, &test_head::scanCallback,this);
         ROS_INFO_STREAM("******break_distance "<< break_distance << " break danger " << break_danger << " low vel gain " << low_vel_gain << " high vel gain " << high_vel_gain
-                << " max_speed_follow " << max_speed_follow << " max_speed_manual " << max_speed_manual);
+        << " max_speed_follow " << max_speed_follow << " max_speed_manual " << max_speed_manual);
         start_tray=false;
         sp_yaw=90;
         ca=0;
@@ -107,15 +104,13 @@ public:
         conta=0;
         missing_track=0;
         mode=1;
-                ang_peop_cam=-500;
+        ang_peop_cam=-500;
         aux_dist=8000;
-
         tracked_angle=0;
-                ang_peop_lidar=0;
+        ang_peop_lidar=0;
         distanciaPeople2=0;
         tracked_distance=0;
         cont_detect_peop=0;
-
         start_route=false;
         loaded_route=false;
         obstacle_front=false;
@@ -123,16 +118,14 @@ public:
         obstacle_front2=false;
         ruta_learn=false;
         save_waypoint=false;
-        
-                newobstacle=false;
-                col_avoid_mode=true;
+        newobstacle=false;
+        col_avoid_mode=true;
         mode_idle=true;
         mode_manual=false;
         mode_karugamo=false;
-                mode_follow=false;
-                tracking_people=false;
-        mode_auto=false;
-        
+        mode_follow=false;
+        tracking_people=false;
+        mode_auto=false; 
         danger=false;
         free_way=true;
         collision = false;
@@ -146,36 +139,15 @@ public:
         counter_search=340;
 		stop_functions=false;
 		save_counter=0;
-    
     }
     ~test_head(){}
     
 
-void stateCallback(const control_xy::TriggerAction& data)
-    {
+void stateCallback(const control_xy::TriggerAction& data){
         //ROS_INFO("Controlxy ");
         //ROS_INFO("%s ",data.trigger.c_str());
         if(data.trigger=="collision"){
-            collision =true;
-            vel_steer.linear.x= 0;
-                        vel_steer.angular.z= 0;
-            speed_publisher.publish(vel_steer);
-            alerts_command.data=6;//6 collision 5 danger 4 warning 3 karugamo 2 idle 1 manual
-                alerts_publisher.publish(alerts_command);
-            mode_idle=false;
-            mode_manual=false;
-            mode_karugamo=false;
-            mode_follow=false;
-            danger=false;
-            free_way=false;
-            collision = true;
-            ctrl_front_follow= 0;
-            ctrl_ang= 0;
-            ctrl_front_manual= 0;
-            ctrl_side_manual= 0; 
-            vel_steer.linear.x= 0;
-                        vel_steer.angular.z= 0;
-            speed_publisher.publish(vel_steer);
+            collisioned();
             ros::Duration(1.0).sleep(); // sleep for half a second
         //  ROS_INFO("Yuhu");
         //  ROS_INFO("%s ",data.trigger.c_str());
@@ -193,56 +165,52 @@ void stateCallback(const control_xy::TriggerAction& data)
             ros::Duration(1.0).sleep(); // sleep for half a second
         }
         
-    }void setPointsCallback(const geometry_msgs::Twist& twist)
-    {
+    }
+void setPointsCallback(const geometry_msgs::Twist& twist){
     nspx=twist.linear.x;
     nspy=twist.linear.y;
-        sp_yaw=-atan2(nspx,nspy)*180/3.1416;
+    sp_yaw=-atan2(nspx,nspy)*180/3.1416;
     ROS_INFO("%f,%f,%f",nspx,nspy,sp_yaw);
-    }
+}
 
-    void obstCallback(const std_msgs::Float32& msg)
-    {
-           if(msg.data==1){
-              newobstacle = true;
-           }else{
-              newobstacle = false;
-           }
+void obstCallback(const std_msgs::Float32& msg){
+    if(msg.data==1){
+        newobstacle = true;
+    }else{
+        newobstacle = false;
     }
+}
 
-    void headCallback(const std_msgs::Float64& head)
-    {   
+void headCallback(const std_msgs::Float64& head){   
     ang_robot=head.data;
+}
 
+void ReceiveOdometry(const nav_msgs::Odometry::ConstPtr& msg){
+    velyaw=msg->twist.twist.angular.z;
+    px=msg->pose.pose.position.x;
+    py=msg->pose.pose.position.y;
+    velx=msg->twist.twist.linear.x;
+    if (ruta_learn==true){
+        norm=sqrt((px-px_aux)*(px-px_aux)+(py-py_aux)*(py-py_aux));
+        if (save_waypoint==true){
+            save_waypoint=false;
+            fprintf(fp, "%f %f\n",px,py );
+            px_aux=px;
+            py_aux=py;
+            ROS_INFO("NP %f,%f",px,py);
+        }
     }
-
-    void ReceiveOdometry(const nav_msgs::Odometry::ConstPtr& msg){
-        velyaw=msg->twist.twist.angular.z;
-            px=msg->pose.pose.position.x;
-            py=msg->pose.pose.position.y;
-        velx=msg->twist.twist.linear.x;
-        if (ruta_learn==true){
-                    norm=sqrt((px-px_aux)*(px-px_aux)+(py-py_aux)*(py-py_aux));
-                    if (save_waypoint==true){
-                        save_waypoint=false;
-                        fprintf(fp, "%f %f\n",px,py );
-                        px_aux=px;
-                        py_aux=py;
-                        ROS_INFO("NP %f,%f",px,py);
-                    }
-            }
-        
-      }
+    
+}
 
 
-    void distPeopCallback(const std_msgs::Float32& msg){
-        
-            distanciaPeople=msg.data;
-        } 
+void distPeopCallback(const std_msgs::Float32& msg){
+    distanciaPeople=msg.data;
+} 
 
-    void distPeopCallback2(const std_msgs::Float32& msg){
-            //distanciaPeople2=msg.data;
-        } 
+void distPeopCallback2(const std_msgs::Float32& msg){
+    //distanciaPeople2=msg.data;
+} 
 
 
   void angCamCallback2(const std_msgs::Float32& msg){
@@ -338,19 +306,21 @@ if(mode_follow && danger!=true){
             tracked_distance = distanciaPeople2;
             if(distanciaPeople2<near_far_distance){
                 near();
+                alert_karugamo_near_no_sound();
                 if(is_near==false){
                     fprintf(fp2,"Entre near \n");
                     is_near=true;
-		    stop_functions=false;
-                    alert_karugamo_near_no_sound();
+		            stop_functions=false;
+                    //alert_karugamo_near_no_sound();
                     dist_auxwp=0;
                     //cont_sp_follow=0;//experimental
                 }
             }else{
+                alert_karugamo_far_no_sound();
                 if(is_near==true){
                     is_near=false;
-                        alert_karugamo_far_no_sound();
-			stop_functions=false;
+                    alert_karugamo_far_no_sound();
+			        stop_functions=false;
                     if(cont_sp_follow>2){
                         fprintf(fp2,"Entre far num sp follow %i e index %i  \n",cont_sp_follow,cont_sp_follow-3);
                         index_wp=cont_sp_follow-3;
@@ -419,10 +389,33 @@ if(mode_follow && danger!=true){
             ROS_INFO("tracked");
                 
                 }//end it s in range
-        else{//losted
+        else if(danger==false){//losted
             //if(is_near==false){
             missing_track+=1;
-                        if(missing_track>30){//thiscounter also can help to see if theres a lot of objects and its not able to follow
+                if(missing_track>28){//thiscounter also can help to see if theres a lot of objects and its not able to follow
+                if(is_near==true && tracking_people && stop_functions==false){
+					fprintf(fp2,"lost and near");
+                    ctrl_front_follow=speed_wp_lost;
+		            //ctrl_front_follow=0;
+                    ctrl_yaw=0;
+                    //ctrl_yaw=(1-smooth_accel_karugamo_far)*(0)+(smooth_accel_karugamo_far*ctrl_yaw);
+                    vel_steer.linear.x= ctrl_front_follow;
+                    vel_steer.angular.z= ctrl_yaw;
+                    vel_steer.linear.x=(vel_steer.linear.x/21)*0.1045;
+                    vel_steer.angular.z=(vel_steer.angular.z/21)*0.1045;
+                    speed_publisher.publish(vel_steer);
+                    //alert_danger_no_sound();
+                    alert_collision_no_sound();
+					stop_functions=true;
+
+                    //is_near=false;
+                    //alerts_command.data=3;// 5 danger 4 warning 3 karugamo 2 idle 1 manual
+                    //alerts_publisher.publish(alerts_command);
+                    //if(cont_sp_follow>2){
+                    //  fprintf(fp2,"Entre far por lost num sp follow %i e index %i  \n",cont_sp_follow,cont_sp_follow-3);
+                    //  index_wp=cont_sp_follow-3;
+                    //}
+                }
                 ROS_INFO("LOST");
                 fprintf(fp2,"lost \n");
                 tracking_people=false;
@@ -435,39 +428,25 @@ if(mode_follow && danger!=true){
                 missing_track=0;
                 cont_detect_peop=0;
                 sound_counter++;
-                if(sound_counter%12==0){
+                
+                if(sound_counter%10==0){
                     alert_warning_sound();
                 }
                 tracking =false;
-                if(is_near==true && stop_functions==false){
-					fprintf(fp2,"lost and near");
-                    ctrl_front_follow=(1-smooth_accel_karugamo_far)*(0)+(smooth_accel_karugamo_far*ctrl_front_follow);
-		            //ctrl_front_follow=0;
-                    ctrl_yaw=0;
-                    //ctrl_yaw=(1-smooth_accel_karugamo_far)*(0)+(smooth_accel_karugamo_far*ctrl_yaw);
-                    vel_steer.linear.x= ctrl_front_follow;
-                    vel_steer.angular.z= ctrl_yaw;
-                    speed_publisher.publish(vel_steer);
-
-					stop_functions=true;
-
-                    //is_near=false;
-                    //alerts_command.data=3;// 5 danger 4 warning 3 karugamo 2 idle 1 manual
-                    //alerts_publisher.publish(alerts_command);
-                    //if(cont_sp_follow>2){
-                    //  fprintf(fp2,"Entre far por lost num sp follow %i e index %i  \n",cont_sp_follow,cont_sp_follow-3);
-                    //  index_wp=cont_sp_follow-3;
-                    //}
-                }
-		if(stop_functions==true){
+                
+		
+            }
+            if(stop_functions==true&& tracking_people==false){
 			//ctrl_front_follow=0;
-			ctrl_front_follow=(1-smooth_accel_karugamo_far)*(0)+(smooth_accel_karugamo_far*ctrl_front_follow);
+                    alert_collision_no_sound();
+			        ctrl_front_follow=(1-smooth_accel_stop)*(0)+(smooth_accel_stop*ctrl_front_follow);
                 	ctrl_yaw=0;
                 	vel_steer.linear.x= ctrl_front_follow;
                 	vel_steer.angular.z= ctrl_yaw;
+                    vel_steer.linear.x=(vel_steer.linear.x/21)*0.1045;
+                    vel_steer.angular.z=(vel_steer.angular.z/21)*0.1045;
                 	speed_publisher.publish(vel_steer);
-		}
-            }
+		    }
            // }
         }//losted
 
@@ -547,7 +526,7 @@ if(is_near==false && stop_functions==false){
                         ctrl_yaw=-400;
                     }
             
-            if(distanciaPeople2>100 && tracking ==true){
+            if(distanciaPeople2>100 && tracking_people ==true){
                 float  norm_dist,dist_conv;
                 dist_conv=distanciaPeople2;
                 if(dist_conv>250){
@@ -574,9 +553,10 @@ if(is_near==false && stop_functions==false){
             }
         }else{
             // ctrl_front_follow=0;
-            ctrl_front_follow=(1-smooth_accel_karugamo_far)*(0)+(smooth_accel_karugamo_far*ctrl_front_follow);
-             ctrl_yaw=0;
-             ROS_INFO("stop cont_sp_follow %i \n",cont_sp_follow);
+            //ctrl_front_follow=(1-smooth_accel_karugamo_far)*(0)+(smooth_accel_karugamo_far*ctrl_front_follow);
+            ctrl_front_follow=(1-smooth_accel_stop)*(0)+(smooth_accel_stop*ctrl_front_follow);//experimental
+            ctrl_yaw=0;
+            ROS_INFO("stop cont_sp_follow %i \n",cont_sp_follow);
         }
             vel_steer.linear.x= ctrl_front_follow;
             vel_steer.angular.z= ctrl_yaw;
@@ -647,11 +627,13 @@ if(is_near==false && stop_functions==false){
                 }else if(ctrl_yaw<-300){
                     ctrl_yaw=-300;
                 }
-                ctrl_front_follow=0;
+                //ctrl_front_follow=0;
+                ctrl_front_follow=(1-smooth_accel_stop)*(0)+(smooth_accel_stop*ctrl_front_follow);//experimental
                 //ctrl_yaw=0;
                 vel_steer.linear.x= ctrl_front_follow;
                 vel_steer.angular.z= ctrl_yaw;
-                //444444444fprintf(fp2,"calc sp %f, ctrl %f \n",sp_yaw,ctrl_yaw);
+                alert_collision_no_sound();
+                //fprintf(fp2,"calc sp %f, ctrl %f \n",sp_yaw,ctrl_yaw);
         }
             vel_steer.linear.x=(vel_steer.linear.x/21)*0.1045;
             vel_steer.angular.z=(vel_steer.angular.z/21)*0.1045;
@@ -715,84 +697,80 @@ void near(){
         //distanciaPeople2 = sqrt(cx*cx+cy*cy)*100;
         // ROS_INFO("R%f,%f,%f,%f",cx,cy,ang_peop_lidar,distanciaPeople2);
        if(mode_follow && danger!=true && stop_functions==false){ //&& tracking_people){//1
-    		//     ROS_INFO("R%f,%f",cx,cy);
-    		//     ROS_INFO("P%f,%f",tracked_cx,tracked_cy);
-			if(save_counter%20==0){
-       			fprintf(fp2,"near %f,%f,%f,%f,%i\n",px,py,0.0,ang_robot,index_wp);
-			}
+            //     ROS_INFO("R%f,%f",cx,cy);
+            //     ROS_INFO("P%f,%f",tracked_cx,tracked_cy);
+            if(save_counter%20==0){
+            fprintf(fp2,"near %f,%f,%f,%f,%i\n",px,py,0.0,ang_robot,index_wp);
+            }
             if( cx!=-0.01 && cy !=-0.01 && ang_peop_lidar<120 && ang_peop_lidar>-120 && tracking_people && cx<=(tracked_cx+radius_follow) && cx>=(tracked_cx-radius_follow) && cy<=(tracked_cy+radius_follow) && cy >=(tracked_cy-radius_follow)){//2
-            //correccion needed
-            //ang_peop_lidar = -90+ atan2(cx, cy) * 180 / 3.1416 ;// ;  90- atan2(cx, cy) * 180 / 3.1416 
-            ang_peop_lidar = 90- atan2(cx, cy) * 180 / 3.1416 ;// ;  -90+ atan2(cx, cy) * 180 / 3.1416 
-            //ang_peop_lidar = 90- atan2(cx, cy) * 180 / 3.1416 ;//-90+ atan2(cx, cy) * 180 / 3.1416 ;
-            distanciaPeople2 = sqrt(cx*cx+cy*cy)*100;
-            ROS_INFO("T%f,%f",tracked_cx,tracked_cy);
-            tracked_angle= ang_peop_lidar;
-            tracked_distance = distanciaPeople2;
-            missing_track=0;
-            tracked_cx=cx;
-            tracked_cy=cy;
-            tracked_pos.x=cx;
-            tracked_pos.y=cy;
-            tracked_pos.z=tracked_angle;
-            tracked_publisher.publish(tracked_pos);
-            geometry_msgs::Twist vel_steer;     
-            //if (ang_peop_lidar>-4 && ang_peop_lidar<4){
-            //  ctrl_ang=0;
-                        //  vel_steer.angular.z=0;
-                        //}else{    
+                //correccion needed
+                //ang_peop_lidar = -90+ atan2(cx, cy) * 180 / 3.1416 ;// ;  90- atan2(cx, cy) * 180 / 3.1416 
+                ang_peop_lidar = 90- atan2(cx,cy) * 180 / 3.1416 ;// ;  -90+ atan2(cx, cy) * 180 / 3.1416 
+                //ang_peop_lidar = 90- atan2(cx, cy) * 180 / 3.1416 ;//-90+ atan2(cx, cy) * 180 / 3.1416 ;
+                distanciaPeople2 = sqrt(cx*cx+cy*cy)*100;
+                ROS_INFO("T%f,%f",tracked_cx,tracked_cy);
+                tracked_angle= ang_peop_lidar;
+                tracked_distance = distanciaPeople2;
+                missing_track=0;
+                tracked_cx=cx;
+                tracked_cy=cy;
+                tracked_pos.x=cx;
+                tracked_pos.y=cy;
+                tracked_pos.z=tracked_angle;
+                tracked_publisher.publish(tracked_pos);
+                geometry_msgs::Twist vel_steer;     
                 
+
                 ctrl_ang= low_vel_gain_follow*ang_peop_lidar-ctrl_ang/2;
-                
+
                 if (ctrl_ang>500){
-                                ctrl_ang= 500;
+                    ctrl_ang= 500;
                 }else if (ctrl_ang<-500){
-                                ctrl_ang= -500;
+                    ctrl_ang= -500;
                 }
                 vel_steer.angular.z=ctrl_ang;//low_vel_gain*msg.data;//*(distanciaPeople/40);
-                    
-                        //}
-             
-             if(distanciaPeople2>dist_robot_people){//dist_robot_people
-                float  norm_dist,dist_conv;
-                dist_conv=distanciaPeople2;
-                if(dist_conv>max_dist_toacc){
-                   dist_conv=max_dist_toacc;
-                   norm_dist=(dist_conv-dist_robot_people)/(max_dist_toacc-dist_robot_people);
+
+                if(distanciaPeople2>dist_robot_people){//dist_robot_people
+                    float  norm_dist,dist_conv;
+                    dist_conv=distanciaPeople2;
+                    if(dist_conv>max_dist_toacc){
+                        dist_conv=max_dist_toacc;
+                        norm_dist=(dist_conv-dist_robot_people)/(max_dist_toacc-dist_robot_people);
+                    }else{
+                     norm_dist=(dist_conv-dist_robot_people)/(max_dist_toacc-dist_robot_people);
+                    }
+
+                    //ctrl_front_follow=(1-smooth_accel)*(frontal_gain_follow*(distanciaPeople2-100))+(smooth_accel*ctrl_front_follow);
+                    ctrl_front_follow=(1-smooth_accel_karugamo_near)*(frontal_gain_follow*norm_dist/*max_speed_follow*/)+(smooth_accel_karugamo_near*ctrl_front_follow);
+                    //ROS_INFO("%f,%f",ctrl_front_follow,distanciaPeople2);
+                    if(ctrl_front_follow<0 ){
+                        ctrl_front_follow=0;
+                        vel_steer.linear.x=0;
+                    }
+                    if (ctrl_front_follow>max_speed_follow){
+                        ctrl_front_follow= max_speed_follow;
+                    }
+                    vel_steer.linear.x= ctrl_front_follow;
                 }else{
-                   norm_dist=(dist_conv-dist_robot_people)/(max_dist_toacc-dist_robot_people);
-                }
-    
-                //ctrl_front_follow=(1-smooth_accel)*(frontal_gain_follow*(distanciaPeople2-100))+(smooth_accel*ctrl_front_follow);
-                ctrl_front_follow=(1-smooth_accel_karugamo_near)*(frontal_gain_follow*norm_dist/*max_speed_follow*/)+(smooth_accel_karugamo_near*ctrl_front_follow);
-                //ROS_INFO("%f,%f",ctrl_front_follow,distanciaPeople2);
-                if(ctrl_front_follow<0 ){
-                    ctrl_front_follow=0;
+                    ctrl_front_follow=(1-smooth_accel_stop)*(0)+(smooth_accel_stop*ctrl_front_follow);
                     vel_steer.linear.x=0;
-                }
-                if (ctrl_front_follow>max_speed_follow){
-                    ctrl_front_follow= max_speed_follow;
-                }
-                vel_steer.linear.x= ctrl_front_follow;
-               }else{
-                    //vel_steer.linear.x=0;
                     //ctrl_front_follow=0;
-               }
+                }
                 //if(stop_follow==true||tracking_people==false){
                 //if(stop_follow==true){
-                if(tracking_people==false){
-                    //vel_steer.linear.x=0;
-                    //vel_steer.angular.z=0;
-                }
-            //stop_follow=false;
-            vel_steer.linear.x=(vel_steer.linear.x/21)*0.1045;
-            vel_steer.angular.z=(vel_steer.angular.z/21)*0.1045;
-            //alerts_command.data=7;// 5 danger 4 warning 3 karugamo 2 idle 1 manual
+                //if(tracking_people==false){
+                //    vel_steer.linear.x=0;
+                //    vel_steer.angular.z=0;
+                //}
+                //stop_follow=false;
+                vel_steer.linear.x=(vel_steer.linear.x/21)*0.1045;
+                vel_steer.angular.z=(vel_steer.angular.z/21)*0.1045;
+                //alerts_command.data=7;// 5 danger 4 warning 3 karugamo 2 idle 1 manual
                 //alerts_publisher.publish(alerts_command);
-            speed_publisher.publish(vel_steer);
-          }
+                speed_publisher.publish(vel_steer);
+            }
 
-           }//mode3
+        }//mode3
        
     }  
 
@@ -806,11 +784,12 @@ void near(){
         int count = scan->scan_time / scan->time_increment;
         //float  break_distance=1.5;
             //float  break_danger=0.5;
-        if(detect_cont>2){
+        if(detect_cont>1){
                 danger=true;
                 free_way=false;
                 ROS_INFO("Danger1");
                 danger_counter++;
+                alert_danger_no_sound();
                 if(danger_counter%60==0){
                     alert_danger_sound();
                 }
@@ -823,18 +802,18 @@ void near(){
                 }else if(mode_follow){
                     ctrl_front_follow=0;
                     ctrl_front_karugamo=0;
-                        ctrl_ang=0;
+                    ctrl_ang=0;
                     vel_steer.linear.x= 0;
-                                vel_steer.angular.z= 0;
+                    vel_steer.angular.z= 0;
                     speed_publisher.publish(vel_steer);
                 }else if(mode_auto){
                     ctrl_front_follow=0;
                     ctrl_front_karugamo=0;
-                        ctrl_ang=0;
+                    ctrl_ang=0;
                     vel_steer.linear.x= 0;
-                                vel_steer.angular.z= 0;
+                    vel_steer.angular.z= 0;
                     speed_publisher.publish(vel_steer);
-                    }
+                }
         }else{
             free_way=true;
         }
@@ -875,7 +854,8 @@ void near(){
                 }
                 if(mode_follow && danger){
                     danger=false;
-                    alert_danger_sound();
+                    alert_karugamo_near_sound();
+                    //alert_danger_sound();
                 }if(mode_auto && danger){
                     danger=false;
                     alert_karugamo_near_sound();
@@ -893,6 +873,14 @@ void near(){
 
 
 //////// alerts
+void alert_collision_sound(){
+    alerts_command.data=6;//6 collision 5 danger 4 warning 3 karugamo 2 idle 1 manual
+    alerts_publisher.publish(alerts_command);
+}
+void alert_collision_no_sound(){
+    alerts_command.data=76;//6 collision 5 danger 4 warning 3 karugamo 2 idle 1 manual
+    alerts_publisher.publish(alerts_command);
+}
 void  alert_manual_sound(){
     alerts_command.data=1;// 5 danger 4 warning 3 karugamo 2 idle 1 manual
     alerts_publisher.publish(alerts_command);
@@ -948,7 +936,27 @@ void  alert_karugamo_far_no_sound(){
 
 //////// alerts
 
-
+void collisioned(){
+    collision =true;
+    vel_steer.linear.x= 0;
+    vel_steer.angular.z= 0;
+    speed_publisher.publish(vel_steer);
+    alert_collision_sound();
+    mode_idle=false;
+    mode_manual=false;
+    mode_karugamo=false;
+    mode_follow=false;
+    danger=false;
+    free_way=false;
+    collision = true;
+    ctrl_front_follow= 0;
+    ctrl_ang= 0;
+    ctrl_front_manual= 0;
+    ctrl_side_manual= 0; 
+    vel_steer.linear.x= 0;
+    vel_steer.angular.z= 0;
+    speed_publisher.publish(vel_steer);
+}
 
 void remove_collision(){
     collision = false;
@@ -972,6 +980,26 @@ void remove_collision(){
     tracked_distance=0;
 }
 
+
+void mode_MANUAL(){
+    mode_idle=false;
+    mode_karugamo=false;
+    mode_manual=true;
+    mode_follow=false;
+    tracking_people=false;
+    start_route = false;
+    mode_auto=false;
+    ROS_INFO("Mode Manual");
+    alerts_command.data=1;// 5 danger 4 warning 3 karugamo 2 idle 1 manual
+    alerts_publisher.publish(alerts_command);
+    ctrl_front_follow= 0;
+    ctrl_ang= 0;
+    ctrl_front_manual= 0;
+    ctrl_side_manual= 0;
+    vel_steer.linear.x= 0;
+    vel_steer.angular.z= 0;
+    speed_publisher.publish(vel_steer);
+}
 void mode_IDLE()
 {
     mode_idle=true;
@@ -1024,35 +1052,28 @@ void mode_people_follow()
 }
 
 
-
-
-
-   void loadRoute(){
-                    char mystring [100];
-            //ROS_INFO("Cargando Ruta");
-            fp = fopen ("/home/xavier/catkin_ws/src/control_xy/ruta.txt" , "r");
-            h=0;
-            if (fp == NULL){ perror ("Error opening file");}
-            h=0;
-            while (1) {
-                 if (fgets(mystring,100, fp) == NULL){ 
-                    break;
-                 }
-                 sscanf(mystring,"%s %s",&rx,&ry);
-                 sp_rx[h]=atof(rx);
-                    sp_ry[h]=atof(ry);
-                    
-                    //printf("%3d: %s", h, mystring);
-                    printf("R %f,%f \n",sp_rx[h],sp_ry[h]);
-                    h++;
+void loadRoute(){
+    char mystring [100];
+    //ROS_INFO("Cargando Ruta");
+    fp = fopen ("/home/xavier/catkin_ws/src/control_xy/ruta.txt" , "r");
+    h=0;
+    if (fp == NULL){ perror ("Error opening file");}
+        h=0;
+        while (1) {
+            if (fgets(mystring,100, fp) == NULL){ 
+                break;
             }
-            printf("Ruta cargada %d elementos\n ",h);
-            
-            num_sp=h;
-            
-            loaded_route=true;
-
-    }
+            sscanf(mystring,"%s %s",&rx,&ry);
+            sp_rx[h]=atof(rx);
+            sp_ry[h]=atof(ry);
+            //printf("%3d: %s", h, mystring);
+            printf("R %f,%f \n",sp_rx[h],sp_ry[h]);
+            h++;
+        }
+    printf("Ruta cargada %d elementos\n ",h);
+    num_sp=h;
+    loaded_route=true;
+}
 
     void joyCallback(const sensor_msgs::Joy::ConstPtr& joy)
     {
@@ -1138,23 +1159,7 @@ void mode_people_follow()
             
         //}else if(joy->buttons[1]==1 && danger!=true && collision == false){//equis
         }else if(joy->buttons[1]==1 && collision == false){//equis
-            mode_idle=false;
-            mode_karugamo=false;
-            mode_manual=true;
-            mode_follow=false;
-            tracking_people=false;
-            start_route = false;
-            mode_auto=false;
-            ROS_INFO("Mode Manual");
-            alerts_command.data=1;// 5 danger 4 warning 3 karugamo 2 idle 1 manual
-            alerts_publisher.publish(alerts_command);
-            ctrl_front_follow= 0;
-            ctrl_ang= 0;
-            ctrl_front_manual= 0;
-            ctrl_side_manual= 0;
-            vel_steer.linear.x= 0;
-            vel_steer.angular.z= 0;
-            speed_publisher.publish(vel_steer);
+            mode_MANUAL();
 
             ros::Duration(0.5).sleep(); // sleep for half a second
         /*}else if(joy->buttons[8]==1){//select
@@ -1234,11 +1239,11 @@ void mode_people_follow()
                 //}
                 vel_steer.linear.x= ctrl_front_manual;
                 //vel_steer.linear.x=-joy->axes[1]*-max_speed_manual;
-                ctrl_side_manual=(1-smooth_accel_manual)*(joy->axes[0]*max_speed_side_manual)+(smooth_accel_manual*ctrl_side_manual);
+                ctrl_side_manual=(1-smooth_accel_side_manual)*(joy->axes[0]*max_speed_side_manual)+(smooth_accel_side_manual*ctrl_side_manual);
                
-                if(ctrl_side_manual<7 && ctrl_side_manual>-7){
-                    ctrl_side_manual=0;
-                }
+                //if(ctrl_side_manual<7 && ctrl_side_manual>-7){
+                //    ctrl_side_manual=0;
+                //}
                 vel_steer.angular.z=ctrl_side_manual;
                
                 if(joy->axes[7]!=0){
@@ -1254,19 +1259,16 @@ void mode_people_follow()
         
             ctrl_front_manual=(1-smooth_accel_manual)*(joy->axes[1]*max_speed_manual)+(smooth_accel_manual*ctrl_front_manual);
             if(ctrl_front_manual<0){
-                vel_steer.linear.x= ctrl_front_manual;
-                ctrl_side_manual=(1-smooth_accel_manual)*(joy->axes[0]*max_speed_side_manual)+(smooth_accel_manual*ctrl_side_manual);
-               
+                ctrl_side_manual=(1-smooth_accel_side_manual)*(joy->axes[0]*max_speed_side_manual)+(smooth_accel_side_manual*ctrl_side_manual);
                 if(ctrl_side_manual<7 && ctrl_side_manual>-7){
                     ctrl_side_manual=0;
                 }
+                vel_steer.linear.x= ctrl_front_manual;
                 vel_steer.angular.z=ctrl_side_manual;
                 vel_steer.linear.x=(vel_steer.linear.x/21)*0.1045;
-            vel_steer.angular.z=(vel_steer.angular.z/21)*0.1045;
+                vel_steer.angular.z=(vel_steer.angular.z/21)*0.1045;
                 speed_publisher.publish(vel_steer);
-                
             }else{
-                
                 vel_steer.linear.x= 0;
                 vel_steer.angular.z= 0;
                 speed_publisher.publish(vel_steer);
@@ -1341,7 +1343,7 @@ private:
     float angle_last,max_defelct_angle;
 	int save_counter;
     float dist_robot_people,smooth_accel_manual,smooth_accel_karugamo_near,smooth_accel_karugamo_far,angle_gain_wp,max_dist_toacc;
-    
+    float smooth_accel_stop,smooth_accel_side_manual;
 };
 
 int main(int argc, char **argv)

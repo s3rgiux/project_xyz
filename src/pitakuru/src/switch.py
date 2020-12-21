@@ -33,18 +33,20 @@ class SwitchInput(object):
         if(self.mode==6):##handles collision and overrides the others
             self.ser.write(b'4')
             self.collision=True
+        if(self.mode==76):##just turn red no collision
+            self.ser.write(b'4')
         if(self.mode==2 and self.collision==True):
             self.collision=False
             self.ser.write(b'2')
 
         if(self.alert==0 and self.mode==2 or self.mode==72 and self.collision==False):#handles modes without danger
             self.ser.write(b'2')
-        elif(self.alert==0 and self.mode==1 or self.mode==72 and self.collision==False):
+        elif(self.alert==0 and self.mode==1 or self.mode==71 and self.collision==False):
             self.ser.write(b'1')
         elif(self.alert==0 and self.mode==3 or self.mode==73 and self.collision==False):
             self.ser.write(b'6')
             
-        if(self.mode==5 and self.collision==False):#changed 4 danger/warning
+        if(self.mode==5 or self.mode==75 and self.collision==False):#changed 4 danger/warning
             self.ser.write(b'5')
             self.alert = 1
         elif(self.alert==1 and self.mode==2 or self.mode==72 and self.collision==False):
