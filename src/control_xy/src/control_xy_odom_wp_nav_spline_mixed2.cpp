@@ -1012,13 +1012,15 @@ void mode_IDLE()
     ROS_INFO("Mode IDLE");
     ctrl_front_follow= 0;
     ctrl_ang= 0;
+    ctrl_yaw = 0;
     ctrl_front_manual= 0;
     ctrl_side_manual= 0;
     alert_idle_sound();
-    vel_steer.linear.x= 0;
-    vel_steer.angular.z= 0;
-    //fclose(fp);
-    speed_publisher.publish(vel_steer);
+    for (int i=0;i<10;i++){
+        vel_steer.linear.x= 0;
+        vel_steer.angular.z= 0;
+        speed_publisher.publish(vel_steer);
+    }
 }
 
 void mode_people_follow()
@@ -1032,6 +1034,7 @@ void mode_people_follow()
     mode_auto=false;
     ctrl_front_follow= 0;
     ctrl_ang= 0;
+    ctrl_yaw = 0;
     ctrl_front_manual= 0;
     ctrl_side_manual= 0;
     cont_sp_follow=0;

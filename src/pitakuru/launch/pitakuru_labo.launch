@@ -50,6 +50,7 @@
     <node pkg="pitakuru" type="manual.py" name="manual" />
     
     <!-- 音声再生 -->
+    
     <node pkg="pitakuru" type="sound.py" name="sound" />
 
     <!-- package for configure obstacle detector node -->

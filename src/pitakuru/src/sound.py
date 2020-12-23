@@ -5,6 +5,10 @@ import subprocess
 import rospy
 from pitakuru.msg import State
 from std_msgs.msg import Int16
+import os
+import signal
+import time
+
 
 
 class SoundNode():
@@ -19,6 +23,7 @@ class SoundNode():
 	self.sub_alerts = rospy.Subscriber('/alerts', Int16, self.alerts_cb,queue_size=1)
         self.entered=False
         self.cancel=False
+        self.gpid=0
         #self.action.start()
     
     def get_file(self, sound):
@@ -27,7 +32,7 @@ class SoundNode():
     def alerts_cb(self,data):
 #// 6 collision 5 danger 4 warning 3 karugamo 2 idle 1 manual
 #//8 peop follow 6 collision 5 danger 4 warning 3 nothing 2 idle 1 manual
-        global gpid
+        #global gpid
         if(data.data==1):
             self.route="/home/xavier/catkin_ws/src/pitakuru/assets/manual-japanese.mp3"
             self.entered=True
@@ -45,7 +50,6 @@ class SoundNode():
             #p=subprocess.Popen(["aplay", "/home/xavier/catkin_ws/src/pitakuru/assets/AGV_warning_3s.wav"])
         elif(data.data==5):
             self.route="/home/xavier/catkin_ws/src/pitakuru/assets/AGV_warning_3s.wav"
-            #
             self.entered=True
             #p=subprocess.Popen(["aplay", "/home/xavier/catkin_ws/src/pitakuru/assets/AGV_warning_3s.wav"])
         elif(data.data==6):
@@ -65,13 +69,18 @@ class SoundNode():
         #        print('cant get pid') 
         if(self.entered):
             try:
-                os.kill(gpid, signal.SIGTERM) #or signal.SIGKILL
+                #print('trying to kill')
+                #print(self.gpid)
+                if(self.gpid is not 0):
+                    os.kill(self.gpid, signal.SIGTERM) #or signal.SIGKILL
+                #print('killed')
             except:
                 print('cant get pid') 
             self.entered=False
             try:
                 p=subprocess.Popen(["aplay", self.route])
-                gpid=p.pid
+                self.gpid=p.pid
+                #print(self.gpid)
             except:
                 print('cant play')
 
