@@ -85,7 +85,11 @@ public:
         nh.getParam("/control_xy/trigger_vel",trigger_vel);
         nh.getParam("/control_xy/trigger_current",trigger_current);
         nh.getParam("/control_xy/max_l_curr",max_r_curr);
-    
+        nh.getParam("/control_xy/vel_detect_scan",vel_detect_scan);
+        nh.getParam("/control_xy/volts_charge",volts_charge);
+        nh.getParam("/control_xy/avg_curr_tresh",avg_curr_tresh);
+        nh.getParam("/control_xy/peak_curr_tresh",peak_curr_tresh);
+        nh.getParam("/control_xy/peak_not_heavy_curr",peak_not_heavy_curr);
         
         //nh.param<float>("break_danger", break_danger, 0.45);
         subScan_ = nh.subscribe("/scan", 1, &test_head::scanCallback,this);
@@ -169,6 +173,7 @@ void stateCallback(const control_xy::TriggerAction& data){
         //ROS_INFO("%s ",data.trigger.c_str());
         if(data.trigger=="collision"){
             collisioned();
+            collision=true;
             ros::Duration(1.0).sleep(); // sleep for half a second
         //  ROS_INFO("Yuhu");
         //  ROS_INFO("%s ",data.trigger.c_str());
@@ -178,10 +183,10 @@ void stateCallback(const control_xy::TriggerAction& data){
             ros::Duration(1.0).sleep(); // sleep for half a second
         //  ROS_INFO("Yuhu");
         //  ROS_INFO("%s ",data.trigger.c_str());
-        } else if(data.trigger=="karugamo_button_on" && mode_follow==false){
+        } else if(data.trigger=="karugamo_button_on" && mode_follow==false  && collision == false){
             mode_people_follow();
             ros::Duration(1.0).sleep(); // sleep for half a second
-        } else if(data.trigger=="karugamo_button_on" && mode_follow==true){
+        } else if(data.trigger=="karugamo_button_on" && mode_follow==true  && collision ==false){
             mode_IDLE();
             ros::Duration(1.0).sleep(); // sleep for half a second
         }
@@ -197,7 +202,11 @@ void setPointsCallback(const geometry_msgs::Twist& twist){
 
 void voltsCallback(const std_msgs::Float32& msg){
     //ROS_INFO("low voltage %f",msg.data);
-    if(msg.data<23){
+    if(msg.data<volts_charge && mode_idle == true){
+        alert_danger_no_sound();
+        ros::Duration(0.3).sleep(); // sleep for half a second
+        alert_idle_no_sound();
+        ros::Duration(0.3).sleep(); // sleep for half a second
         ROS_INFO("low voltage %f",msg.data);
     }
 }    
@@ -243,6 +252,8 @@ void amperageCallback(const control_xy::StateWheels& msg){
     //float alf=0.7;
     float alf=0.75;
     geometry_msgs::Vector3 newmsg;
+    vel_m1 = abs(msg.left_vel);
+    vel_m2 = abs(msg.right_vel);
     if(abs(msg.right_vel)<trig_vel&& abs(msg.left_vel)<trig_vel){
         int_r_curr=0;
         der_r_curr=0;
@@ -253,7 +264,7 @@ void amperageCallback(const control_xy::StateWheels& msg){
         fil_der_r_curr=0;
         heavy_r=0;
         heavy=true;
-        alert_manual_no_sound();
+        //alert_manual_no_sound();
         detected_heavy=false;
     }else{
         int_r_curr=int_r_curr+msg.right_current*dt;
@@ -283,14 +294,14 @@ void amperageCallback(const control_xy::StateWheels& msg){
                 avg_amp_r=avg_amp_r/4;
                 d_flag_r=false;
                 
-                if(avg_amp_r>5.2 && max_r_curr >5.8 ){//&& int_r_curr>1.87){
+                if(avg_amp_r>avg_curr_tresh && max_r_curr >peak_curr_tresh ){//&& int_r_curr>1.87){
                     //alert_karugamo_near_no_sound();
                     heavy_r=1;
                     detected_heavy=true;
                     ROS_INFO("probable heavy load right");
                     ROS_INFO("%f integ r_",int_r_curr);
                     ROS_INFO("%f max %f avg",max_r_curr,avg_amp_r);
-                }else  if (max_l_curr <4.3){
+                }else  if (max_l_curr <peak_not_heavy_curr){
                     heavy_r=2;
                 }
             }
@@ -312,7 +323,7 @@ void amperageCallback(const control_xy::StateWheels& msg){
         fil_der_l_curr=0;
         heavy_l=0;
         heavy=true;
-        alert_manual_no_sound();
+        //alert_manual_no_sound();
         detected_heavy=false;
     }else{
         int_l_curr=int_l_curr+msg.left_current*dt;
@@ -344,14 +355,14 @@ void amperageCallback(const control_xy::StateWheels& msg){
                 avg_amp_l=avg_amp_l/4;
                 d_flag_l=false;
                 
-                if(avg_amp_l>5.2 && max_l_curr >5.8){//&& int_r_curr>1.87){
+                if(avg_amp_l>avg_curr_tresh && max_l_curr >peak_curr_tresh){//&& int_r_curr>1.87){
                     heavy_l=1;
                     detected_heavy=true;
                     //alert_karugamo_near_no_sound();
                     ROS_INFO("probable heavy load right");
                     ROS_INFO("%f integ r_",int_l_curr);
                     ROS_INFO("%f max %f avg",max_l_curr,avg_amp_l);
-                }else if (max_l_curr <4.3){
+                }else if (max_l_curr <peak_not_heavy_curr){
                     heavy_l=2;
                 }  
             }
@@ -360,11 +371,11 @@ void amperageCallback(const control_xy::StateWheels& msg){
     }
 
     if(heavy==true && heavy_l==1 || heavy_r==1 && detected_heavy==false && (ros::Time::now().toSec() - time_last_to_heavy)<6.9){
-        alert_karugamo_near_no_sound();
+        //alert_karugamo_near_no_sound();
         heavy=true;
     }else if(detected_heavy==false && heavy_l==2 && heavy_r==2 && (ros::Time::now().toSec() - time_last_to_heavy)>4.3 && (ros::Time::now().toSec() - time_last_to_heavy)<6.3 && abs(msg.left_vel)>4.1 && abs(msg.right_vel)>4.1 ){
         heavy=false;
-        alert_idle_no_sound();
+        //alert_idle_no_sound();
     }
     //ROS_INFO("%f time",ros::Time::now().toSec());
     newmsg.x=msg.left_current;
@@ -477,7 +488,7 @@ if(mode_follow && danger!=true){
             tracked_distance = distanciaPeople2;
             if(distanciaPeople2<near_far_distance){
                 near();
-                //alert_karugamo_near_no_sound();
+                alert_karugamo_near_no_sound();
                 if(is_near==false){
                     fprintf(fp2,"Entre near \n");
                     is_near=true;
@@ -487,7 +498,7 @@ if(mode_follow && danger!=true){
                     //cont_sp_follow=0;//experimental
                 }
             }else{
-                //alert_karugamo_far_no_sound();
+                alert_karugamo_far_no_sound();
                 if(is_near==true){
                     is_near=false;
                     alert_karugamo_far_no_sound();
@@ -600,7 +611,7 @@ if(mode_follow && danger!=true){
                 cont_detect_peop=0;
                 sound_counter++;
                 
-                if(sound_counter%10==0){
+                if(sound_counter%7==0){
                     alert_warning_sound();
                 }
                 tracking =false;
@@ -990,25 +1001,37 @@ void near(){
 ///////////////////
 
 
-    void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan)
-    {
+void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan){
+    //if(!collision || vel_m1 >= 0.0 || vel_m2 >=  0.0){
+    if(danger){
+        danger_counter++;
+        alert_danger_no_sound();
+        if(danger_counter%65==0){
+            alert_danger_sound();
+        }
+    }
+    if(danger == false && collision == false ){
         int count = scan->scan_time / scan->time_increment;
         //float  break_distance=1.5;
             //float  break_danger=0.5;
-        if(detect_cont>1 && mode_idle == false){
+         
+        if(detect_cont>1 && mode_idle == false && (vel_m1 >= vel_detect_scan || vel_m2 >= vel_detect_scan)){
                 danger=true;
                 free_way=false;
                 ROS_INFO("Danger1");
+                detect_cont=0;
+                /*
                 danger_counter++;
                 alert_danger_no_sound();
-                if(danger_counter%60==0){
+                if(danger_counter%65==0){
                     alert_danger_sound();
                 }
+                */
                 if (mode_manual && ctrl_front_manual >0){
-                   ctrl_front_manual=0;
-                   ctrl_side_manual=0;
+                    ctrl_front_manual=0;
+                    ctrl_side_manual=0;
                     vel_steer.linear.x= 0;
-                        vel_steer.angular.z= 0;
+                    vel_steer.angular.z= 0;
                     speed_publisher.publish(vel_steer);
                 }else if(mode_follow){
                     ctrl_front_follow=0;
@@ -1025,37 +1048,38 @@ void near(){
                     vel_steer.angular.z= 0;
                     speed_publisher.publish(vel_steer);
                 }
+                ros::Duration(0.3).sleep(); // sleep for half a second
         }else{
             free_way=true;
         }
         for(int j=279;j<=358;j++){
-            if (scan->ranges[j] <= break_danger && scan->ranges[j] >0.24 && mode_idle==false){
+            if (scan->ranges[j] <= break_danger && scan->ranges[j] >0.24 ){
                detect_cont++;   
                 return;
              }  
         }
         for(int i=0;i<=80;i++){
-            if (scan->ranges[i] <= break_danger && scan->ranges[i] >0.24 && mode_idle==false){
+            if (scan->ranges[i] <= break_danger && scan->ranges[i] >0.24 ){
                detect_cont++;
                return;
                 }
             
         }
         for(int j=328;j<=358;j++){
-            if (scan->ranges[j] <= break_distance && scan->ranges[j] >0.24 && mode_idle==false){
+            if (scan->ranges[j] <= break_distance && scan->ranges[j] >0.24 ){
                  detect_cont++;
                      return;
-             }
+            }
         }
         for(int i=0;i<=30;i++){
-            if (scan->ranges[i] <= break_distance && scan->ranges[i] >0.24 && mode_idle==false){
+            if (scan->ranges[i] <= break_distance && scan->ranges[i] >0.24 ){
                detect_cont++;
                return;
-              }
-/////
+            }
             else{
                 detect_cont=0;
                 free_way=true;
+                /*
                 if(mode_manual && danger){
                     danger=false;
                     alert_manual_sound();
@@ -1072,15 +1096,17 @@ void near(){
                     alert_karugamo_near_sound();
                     
                 }
+                */
                     //danger=false;
             }
 ////////
-                 }
+        }
         
 
 
 /////////
     }
+}
 
 
 //////// alerts
@@ -1153,13 +1179,12 @@ void collisioned(){
     vel_steer.angular.z= 0;
     speed_publisher.publish(vel_steer);
     alert_collision_sound();
+    danger=true;
     mode_idle=false;
     mode_manual=false;
     mode_karugamo=false;
     mode_follow=false;
-    danger=false;
     free_way=false;
-    collision = true;
     ctrl_front_follow= 0;
     ctrl_ang= 0;
     ctrl_front_manual= 0;
@@ -1205,6 +1230,8 @@ void mode_MANUAL(){
     tracking_people=false;
     start_route = false;
     mode_auto=false;
+    danger=false;
+    free_way=true;
     ROS_INFO("Mode Manual");
     alerts_command.data=1;// 5 danger 4 warning 3 karugamo 2 idle 1 manual
     alerts_publisher.publish(alerts_command);
@@ -1218,25 +1245,28 @@ void mode_MANUAL(){
 }
 void mode_IDLE()
 {
-    mode_idle=true;
-    mode_karugamo=false;
-    mode_manual=false;
-    danger=false;
-    mode_follow=false;
-    tracking_people=false;
-    start_route = false;
-    ROS_INFO("Mode IDLE");
-    ctrl_front_follow= 0;
-    ctrl_ang= 0;
-    ctrl_yaw = 0;
-    ctrl_front_manual= 0;
-    ctrl_side_manual= 0;
-    alert_idle_sound();
-    for (int i=0;i<10;i++){
-        vel_steer.linear.x= 0;
-        vel_steer.angular.z= 0;
-        speed_publisher.publish(vel_steer);
-    }
+        free_way=true;
+        mode_idle=true;
+        mode_karugamo=false;
+        mode_manual=false;
+        danger=false;
+        mode_follow=false;
+        tracking_people=false;
+        start_route = false;
+        danger=false;
+        ROS_INFO("Mode IDLE");
+        ctrl_front_follow= 0;
+        ctrl_ang= 0;
+        ctrl_yaw = 0;
+        ctrl_front_manual= 0;
+        ctrl_side_manual= 0;
+        alert_idle_sound();
+        for (int i=0;i<10;i++){
+            vel_steer.linear.x= 0;
+            vel_steer.angular.z= 0;
+            speed_publisher.publish(vel_steer);
+        }
+   
 }
 
 void mode_people_follow()
@@ -1248,6 +1278,8 @@ void mode_people_follow()
     tracking_people=false;
     start_route = false;
     mode_auto=false;
+    danger=false;
+    free_way=true;
     ctrl_front_follow= 0;
     ctrl_ang= 0;
     ctrl_yaw = 0;
@@ -1367,81 +1399,18 @@ void loadRoute(){
             fclose(fp);  
             ros::Duration(0.4).sleep(); // sleep for half a second
             ruta_learn=false;
-        //}else if (joy->buttons[2]==1 && ruta_learn ==true && save_waypoint==false){
-        //  save_waypoint=true;
-        //  ros::Duration(0.4).sleep(); // sleep for half a second
-        //  
-//
-        }else if(joy->buttons[2]==1 && free_way==true && collision == false){//danger!=true && free_way==true){//circulo
+       
+        }else if(joy->buttons[2]==1 && free_way && collision == false){//danger!=true && free_way==true){//circulo
             mode_IDLE();
             ros::Duration(0.5).sleep(); // sleep for half a second
-            
         //}else if(joy->buttons[1]==1 && danger!=true && collision == false){//equis
         }else if(joy->buttons[1]==1 && collision == false){//equis
             mode_MANUAL();
-
             ros::Duration(0.5).sleep(); // sleep for half a second
-        /*}else if(joy->buttons[8]==1){//select
-            mode++;
-            if(mode==1){
-                ROS_INFO("Manual");
-                vel_steer.linear.x=0;
-                vel_steer.angular.z=0;
-                speed_publisher.publish(vel_steer);
-                ros::Duration(0.3).sleep(); // sleep for half a second
-            }else if (mode>1){
-                mode=1;
-                ROS_INFO("Waiting command");
-                vel_steer.linear.x=0;
-                vel_steer.angular.z=0;
-                speed_publisher.publish(vel_steer);
-                ros::Duration(0.3).sleep(); // sleep for half a second
-            }*/
         }else if(joy->buttons[3] && danger!=true && collision == false ){//triangulo    
-              //if(mode_karugamo){
-            //mode_idle=true;
-            //mode_karugamo=false;
-            //mode_manual=false;
-            //ROS_INFO("Mode IDLDE");
-            //vel_steer.linear.x=0;
-            //vel_steer.angular.z=0;
-            //speed_publisher.publish(vel_steer);
-            //ros::Duration(0.5).sleep(); // sleep for half a second
-              //}else{
-            /*mode_idle=false;
-            mode_karugamo=true;
-            mode_manual=false;
-            mode_follow=false;
-            tracking_people=false;
-            ROS_INFO("Mode Karugamo");
-            vel_steer.linear.x=0;
-            vel_steer.angular.z=0;
-            speed_publisher.publish(vel_steer);
-            alerts_command.data=3;// 5 danger 4 warning 3 karugamo 2 idle 1 manual
-                alerts_publisher.publish(alerts_command);
-            ros::Duration(0.5).sleep(); // sleep for half a second
-            */
-              //}
-            /*if(mod_seguir==false){
-                ROS_INFO("Seguimiento objeto");
-                vel_steer.linear.x=0;
-                vel_steer.angular.z=0;
-                speed_publisher.publish(vel_steer);
-                mode=3;
-                ros::Duration(0.4).sleep(); // sleep for half a second
-                mod_seguir=true;
-            }else{
-                ROS_INFO("Seguimiento objeto Terminado");
-
-                vel_steer.linear.x=0;
-                vel_steer.angular.z=0;
-                speed_publisher.publish(vel_steer);
-                mode=1;
-                mod_seguir=false;
-                ros::Duration(0.4).sleep(); // sleep for half a second  
-            }*/
+              
             
-        }else if(joy->buttons[0] && danger!=true && collision == false){//square
+        }else if(joy->buttons[0] && free_way && collision == false){//square
             mode_people_follow();
             vel_steer.linear.x=0;
             vel_steer.angular.z=0;
@@ -1582,6 +1551,7 @@ private:
     float fil_der_r_curr,max_r_curr,fil_der_l_curr,max_l_curr;
     int  heavy_r,heavy_l;
     double time_last_to_heavy;
+    float vel_m1,vel_m2,vel_detect_scan,volts_charge,peak_curr_tresh,avg_curr_tresh,peak_not_heavy_curr;
 };
 
 int main(int argc, char **argv)
@@ -1592,6 +1562,8 @@ int main(int argc, char **argv)
     //ros::Rate rate(0.5); //0.5 Hz, every 2 second
     ros::Rate rate(60); //100 Hz, every .01 second
     //printf("%f",-atan2(5,1)*180/3.1416);
+    //ros::Duration(5.0).sleep(); // sleep for half a second
+    test_head_obj.mode_IDLE();
     while(ros::ok())
     {
         ros::spinOnce();

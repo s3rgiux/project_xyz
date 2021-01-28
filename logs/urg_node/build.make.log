@@ -7,11 +7,11 @@
 [ 31%] Built target std_msgs_generate_messages_nodejs
 [ 31%] Built target std_msgs_generate_messages_eus
 [ 31%] Built target std_msgs_generate_messages_lisp
-[ 37%] Built target urg_node_generate_messages_nodejs
-[ 43%] Built target urg_node_generate_messages_cpp
-[ 56%] Built target urg_node_generate_messages_py
-[ 62%] Built target urg_node_generate_messages_lisp
-[ 75%] Built target urg_node_generate_messages_eus
+[ 37%] Built target urg_node_generate_messages_cpp
+[ 50%] Built target urg_node_generate_messages_py
+[ 56%] Built target urg_node_generate_messages_nodejs
+[ 68%] Built target urg_node_generate_messages_eus
+[ 75%] Built target urg_node_generate_messages_lisp
 [ 75%] Built target urg_node_gencpp
 [ 75%] Built target urg_node_generate_messages
 [ 87%] Built target urg_node_driver

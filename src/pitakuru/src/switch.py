@@ -120,7 +120,7 @@ class SwitchInput(object):
         if self.button_states["idle"] == 1:
             trigger_action.trigger = TriggerAction.TRIGGER_IDLE_BUTTON_ON
         if not trigger_action.trigger:
-            trigger_action.trigger = TriggerAction.TRIGGER_BREAK_RELEASE_BUTTON_ON
+            trigger_action.trigger = TriggerAction.TRIGGER_IDLE_BUTTON_ON#TRIGGER_BREAK_RELEASE_BUTTON_ON
         self.pub.publish(trigger_action)
 
     def getButton(self,name):
