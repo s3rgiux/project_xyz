@@ -1,0 +1,5 @@
+<launch>
+
+<node pkg="costmap" type="main.py" name="costmap_node" output="screen">	
+</node>
+</launch>
