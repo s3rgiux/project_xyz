@@ -26,7 +26,6 @@ class image_converter:
     self.cost2_pub = rospy.Publisher("cost2",Image, queue_size=1)
     self.bord1_pub = rospy.Publisher("bord1",Image, queue_size=1)
     self.bord2_pub = rospy.Publisher("bord2",Image, queue_size=1)
-    self.crop_pub = rospy.Publisher("crop",Image, queue_size=1)
     self.ang_pub = rospy.Publisher("peopAng2",Float32, queue_size=1)
     self.dist_pub = rospy.Publisher("peopDist2",Float32, queue_size=1)
     self.bridge = CvBridge()
@@ -38,38 +37,6 @@ class image_converter:
     self.fin_ang=90
     self.fin_lon=0.4
     self.people=False
-    self.mask=np.array([[-1, -2, -3, 0, 0, 0, 0, 3 , 2 , 1 ],
-                        [-1, -2, -3, 0, 0, 0, 0, 3 , 2 , 1 ],
-                        [-1, -2, -3, 0, 0, 0, 0, 3 , 2 , 1 ],
-                        [-1, -2, -3, 0, 0, 0, 0, 3 , 2 , 1 ],
-                        [-1, -2, -3, 0, 0, 0, 0, 3 , 2 , 1 ],
-                        [-1, -2, -3, 0, 0, 0, 0, 3 , 2 , 1 ],
-                        [-1, -2, -3, 0, 0, 0, 0, 3 , 2 , 1 ],
-                        [-1, -2, -3, 0, 0, 0, 0, 3 , 2 , 1 ],
-                        [-1, -2, -3, 0, 0, 0, 0, 3 , 2 , 1 ],
-                        [-1, -2, -3, 0, 0, 0, 0, 3 , 2 , 1 ]])
-    self.mask2=np.array([[-1, -1, -1, -2, -2, -2, -3, 0, 0, 0, 0, 0, 0, 3 , 2 , 2, 2, 1, 1, 1 ],
-                        [-1, -1, -1, -2, -2, -2, -3, 0, 0, 0, 0, 0, 0, 3 , 2 , 2, 2, 1, 1, 1 ],
-                        [-1, -1, -1, -2, -2, -2, -3, 0, 0, 0, 0, 0, 0, 3 , 2 , 2, 2, 1, 1, 1 ],
-                        [-1, -1, -1, -2, -2, -2, -3, 0, 0, 0, 0, 0, 0, 3 , 2 , 2, 2, 1, 1, 1 ],
-                        [-1, -1, -1, -2, -2, -2, -3, 0, 0, 0, 0, 0, 0, 3 , 2 , 2, 2, 1, 1, 1 ],
-                        [-1, -1, -1, -2, -2, -2, -3, 0, 0, 0, 0, 0, 0, 3 , 2 , 2, 2, 1, 1, 1 ],
-                        [-1, -1, -1, -2, -2, -2, -3, 0, 0, 0, 0, 0, 0, 3 , 2 , 2, 2, 1, 1, 1 ],
-                        [-1, -1, -1, -2, -2, -2, -3, 0, 0, 0, 0, 0, 0, 3 , 2 , 2, 2, 1, 1, 1 ],
-                        [-1, -1, -1, -2, -2, -2, -3, 0, 0, 0, 0, 0, 0, 3 , 2 , 2, 2, 1, 1, 1 ],
-                        [-1, -1, -1, -2, -2, -2, -3, 0, 0, 0, 0, 0, 0, 3 , 2 , 2, 2, 1, 1, 1 ],
-                        [-1, -1, -1, -2, -2, -2, -3, 0, 0, 0, 0, 0, 0, 3 , 2 , 2, 2, 1, 1, 1 ],
-                        [-1, -1, -1, -2, -2, -2, -3, 0, 0, 0, 0, 0, 0, 3 , 2 , 2, 2, 1, 1, 1 ],
-                        [-1, -1, -1, -2, -2, -2, -3, 0, 0, 0, 0, 0, 0, 3 , 2 , 2, 2, 1, 1, 1 ],
-                        [-1, -1, -1, -2, -2, -2, -3, 0, 0, 0, 0, 0, 0, 3 , 2 , 2, 2, 1, 1, 1 ],
-                        [-1, -1, -1, -2, -2, -2, -3, 0, 0, 0, 0, 0, 0, 3 , 2 , 2, 2, 1, 1, 1 ],
-                        [-1, -1, -1, -2, -2, -2, -3, 0, 0, 0, 0, 0, 0, 3 , 2 , 2, 2, 1, 1, 1 ],
-                        [-1, -1, -1, -2, -2, -2, -3, 0, 0, 0, 0, 0, 0, 3 , 2 , 2, 2, 1, 1, 1 ],
-                        [-1, -1, -1, -2, -2, -2, -3, 0, 0, 0, 0, 0, 0, 3 , 2 , 2, 2, 1, 1, 1 ],
-                        [-1, -1, -1, -2, -2, -2, -3, 0, 0, 0, 0, 0, 0, 3 , 2 , 2, 2, 1, 1, 1 ],
-                        [-1, -1, -1, -2, -2, -2, -3, 0, 0, 0, 0, 0, 0, 3 , 2 , 2, 2, 1, 1, 1 ]])
-    #print(self.mask)
-    #print(self.mask+self.mask)
 
   
 
@@ -79,25 +46,25 @@ class image_converter:
     angle=-3.12413907051
     mul=20
     #img = np.zeros((240, 320), dtype = "uint8")
-    img = np.zeros((158, 211), dtype = "uint8")
+    img = np.zeros((220, 320), dtype = "uint8")
 
     cost1 = np.zeros((240, 320), dtype = "uint8")
     cost2 = np.zeros((240, 320), dtype = "uint8")
-    bord1 = np.ones((158, 211), dtype = "uint8")
-    centery=140
-    centerx=105
+    bord1 = np.ones((220, 320), dtype = "uint8")
+    centery=200
+    centerx=160
     for i, theta in enumerate(np.arange(msg.angle_min,msg.angle_max,msg.angle_increment)):
       #if i<30 or i>260:
       if not np.isinf(msg.ranges[i]) and msg.ranges[i]>0.15 and msg.ranges[i] < 4:
-        y=round(msg.ranges[i]*np.cos(theta)*150/4,0)
-        x=round(msg.ranges[i]*np.sin(theta)*150/4,0)
+        y=round(msg.ranges[i]*np.cos(theta)*180/4,0)
+        x=round(msg.ranges[i]*np.sin(theta)*180/4,0)
         img[centery-int(y),centerx-int(x)]=255
         bord1[centery-int(y),centerx-int(x)]=255
     kernel = np.ones((3,3),np.uint8)
     dil = cv2.dilate(img,kernel,iterations = 1)
     cost1 = cv2.dilate(dil,kernel,iterations = 2)
-    cost2 = cv2.dilate(cost1,kernel,iterations = 5)
-    crop_img = cost2[centery-10:centery+10, centerx-10:centerx+10]
+    cost2 = cv2.dilate(cost1,kernel,iterations = 9)
+
     # find contours in the thresholded image
     cnts = cv2.findContours(cost2, cv2.RETR_EXTERNAL,
 	                          cv2.CHAIN_APPROX_SIMPLE)
@@ -106,9 +73,6 @@ class image_converter:
     #cX = int(M["m10"] / M["m00"])
     #cY = int(M["m01"] / M["m00"])
     # draw the contour and center of the shape on the image
-    res=self.mask2*crop_img
-    print(np.sum(res))
-
     bord1=bord1*255
     for c in cnts:
       cv2.drawContours(bord1, [c], -1, (0, 0, 0), 2)
@@ -124,7 +88,7 @@ class image_converter:
       #cv2.drawContours(bord1, [c], -1, (255, 255, 255), 2)
     # Start coordinate, here (5, 5) 
     # represents the top left corner of rectangle 
-    size_robot=10
+    size_robot=15
     start_point = (centerx-size_robot, centery-size_robot) 
     # Ending coordinate, here (220, 220) 
     # represents the bottom right corner of rectangle 
@@ -132,7 +96,7 @@ class image_converter:
     # Blue color in BGR 
     color = (0, 0, 0) 
     # Line thickness of 2 px 
-    thickness = 1  
+    thickness = 3  
     # Using cv2.rectangle() method 
     # Draw a rectangle with blue line borders of thickness of 2 px 
     cv2.rectangle(bord1, start_point, end_point, color, thickness) 
@@ -142,7 +106,6 @@ class image_converter:
       self.cost1_pub.publish(self.bridge.cv2_to_imgmsg(cost1, "mono8"))
       self.cost2_pub.publish(self.bridge.cv2_to_imgmsg(cost2, "mono8"))
       self.bord1_pub.publish(self.bridge.cv2_to_imgmsg(bord1, "mono8"))
-      self.crop_pub.publish(self.bridge.cv2_to_imgmsg(crop_img, "mono8"))
     except CvBridgeError as e:
       print(e) 
 
