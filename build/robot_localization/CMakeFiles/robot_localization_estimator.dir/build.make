@@ -94,6 +94,7 @@ robot_localization_estimator_EXTERNAL_OBJECTS =
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/librobot_localization_estimator.so: /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libukf.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/librobot_localization_estimator.so: /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libfilter_base.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/librobot_localization_estimator.so: /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libfilter_utilities.so
+/home/xavier/catkin_ws/devel/.private/robot_localization/lib/librobot_localization_estimator.so: /opt/ros/melodic/lib/libdiagnostic_updater.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/librobot_localization_estimator.so: /opt/ros/melodic/lib/libeigen_conversions.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/librobot_localization_estimator.so: /opt/ros/melodic/lib/libnodeletlib.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/librobot_localization_estimator.so: /opt/ros/melodic/lib/libbondcpp.so

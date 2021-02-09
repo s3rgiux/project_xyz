@@ -101,24 +101,6 @@ obstacle_detector/CircleObstacle.h
 -
 
 /home/xavier/catkin_ws/devel/.private/obstacle_detector/include/obstacle_detector/SegmentObstacle.h
-string
--
-vector
--
-map
--
-ros/types.h
--
-ros/serialization.h
--
-ros/builtin_message_traits.h
--
-ros/message_operations.h
--
-geometry_msgs/Point.h
--
-geometry_msgs/Point.h
--
 
 /home/xavier/catkin_ws/src/obstacle_detector/include/obstacle_detector/displays/circle_visual.h
 obstacle_detector/Obstacles.h

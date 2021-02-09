@@ -399,10 +399,10 @@ clean: CMakeFiles/_obs_extract_generate_messages_check_deps_SegmentObstacle.dir/
 # Target rules for target CMakeFiles/obs_extract_generate_messages.dir
 
 # All Build rule for target.
-CMakeFiles/obs_extract_generate_messages.dir/all: CMakeFiles/obs_extract_generate_messages_nodejs.dir/all
 CMakeFiles/obs_extract_generate_messages.dir/all: CMakeFiles/obs_extract_generate_messages_lisp.dir/all
 CMakeFiles/obs_extract_generate_messages.dir/all: CMakeFiles/obs_extract_generate_messages_eus.dir/all
 CMakeFiles/obs_extract_generate_messages.dir/all: CMakeFiles/obs_extract_generate_messages_cpp.dir/all
+CMakeFiles/obs_extract_generate_messages.dir/all: CMakeFiles/obs_extract_generate_messages_nodejs.dir/all
 CMakeFiles/obs_extract_generate_messages.dir/all: CMakeFiles/obs_extract_generate_messages_py.dir/all
 	$(MAKE) -f CMakeFiles/obs_extract_generate_messages.dir/build.make CMakeFiles/obs_extract_generate_messages.dir/depend
 	$(MAKE) -f CMakeFiles/obs_extract_generate_messages.dir/build.make CMakeFiles/obs_extract_generate_messages.dir/build

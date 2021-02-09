@@ -92,6 +92,7 @@ test_robot_localization_estimator_EXTERNAL_OBJECTS =
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/robot_localization/test_robot_localization_estimator: CMakeFiles/test_robot_localization_estimator.dir/build.make
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/robot_localization/test_robot_localization_estimator: gtest/googlemock/gtest/libgtest.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/robot_localization/test_robot_localization_estimator: /home/xavier/catkin_ws/devel/.private/robot_localization/lib/librobot_localization_estimator.so
+/home/xavier/catkin_ws/devel/.private/robot_localization/lib/robot_localization/test_robot_localization_estimator: /opt/ros/melodic/lib/libdiagnostic_updater.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/robot_localization/test_robot_localization_estimator: /opt/ros/melodic/lib/libeigen_conversions.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/robot_localization/test_robot_localization_estimator: /opt/ros/melodic/lib/libnodeletlib.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/robot_localization/test_robot_localization_estimator: /opt/ros/melodic/lib/libbondcpp.so
@@ -138,6 +139,7 @@ test_robot_localization_estimator_EXTERNAL_OBJECTS =
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/robot_localization/test_robot_localization_estimator: /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libukf.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/robot_localization/test_robot_localization_estimator: /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libfilter_base.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/robot_localization/test_robot_localization_estimator: /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libfilter_utilities.so
+/home/xavier/catkin_ws/devel/.private/robot_localization/lib/robot_localization/test_robot_localization_estimator: /opt/ros/melodic/lib/libdiagnostic_updater.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/robot_localization/test_robot_localization_estimator: /opt/ros/melodic/lib/libeigen_conversions.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/robot_localization/test_robot_localization_estimator: /opt/ros/melodic/lib/libnodeletlib.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/robot_localization/test_robot_localization_estimator: /opt/ros/melodic/lib/libbondcpp.so

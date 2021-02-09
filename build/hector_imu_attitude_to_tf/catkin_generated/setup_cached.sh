@@ -8,6 +8,8 @@
 
 # modified environment variables
 export CMAKE_PREFIX_PATH="/home/xavier/catkin_ws/devel/.private/hector_imu_attitude_to_tf:$CMAKE_PREFIX_PATH"
-export PWD="/home/xavier/catkin_ws/build/hector_imu_attitude_to_tf"
+export LD_LIBRARY_PATH="/home/xavier/catkin_ws/devel/.private/hector_imu_attitude_to_tf/lib:$LD_LIBRARY_PATH"
+export PKG_CONFIG_PATH="/home/xavier/catkin_ws/devel/.private/hector_imu_attitude_to_tf/lib/pkgconfig:$PKG_CONFIG_PATH"
+export PWD='/home/xavier/catkin_ws/build/hector_imu_attitude_to_tf'
 export ROSLISP_PACKAGE_DIRECTORIES="/home/xavier/catkin_ws/devel/.private/hector_imu_attitude_to_tf/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
 export ROS_PACKAGE_PATH="/home/xavier/catkin_ws/src/hector_slam/hector_imu_attitude_to_tf:$ROS_PACKAGE_PATH"

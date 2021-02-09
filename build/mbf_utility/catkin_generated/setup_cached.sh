@@ -8,6 +8,8 @@
 
 # modified environment variables
 export CMAKE_PREFIX_PATH="/home/xavier/catkin_ws/devel/.private/mbf_utility:$CMAKE_PREFIX_PATH"
-export PWD="/home/xavier/catkin_ws/build/mbf_utility"
+export LD_LIBRARY_PATH="/home/xavier/catkin_ws/devel/.private/mbf_utility/lib:$LD_LIBRARY_PATH"
+export PKG_CONFIG_PATH="/home/xavier/catkin_ws/devel/.private/mbf_utility/lib/pkgconfig:$PKG_CONFIG_PATH"
+export PWD='/home/xavier/catkin_ws/build/mbf_utility'
 export ROSLISP_PACKAGE_DIRECTORIES="/home/xavier/catkin_ws/devel/.private/mbf_utility/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
 export ROS_PACKAGE_PATH="/home/xavier/catkin_ws/src/move_base_flex/mbf_utility:$ROS_PACKAGE_PATH"

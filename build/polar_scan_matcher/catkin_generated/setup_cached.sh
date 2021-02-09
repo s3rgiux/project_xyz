@@ -8,6 +8,8 @@
 
 # modified environment variables
 export CMAKE_PREFIX_PATH="/home/xavier/catkin_ws/devel/.private/polar_scan_matcher:$CMAKE_PREFIX_PATH"
-export PWD="/home/xavier/catkin_ws/build/polar_scan_matcher"
+export LD_LIBRARY_PATH="/home/xavier/catkin_ws/devel/.private/polar_scan_matcher/lib:$LD_LIBRARY_PATH"
+export PKG_CONFIG_PATH="/home/xavier/catkin_ws/devel/.private/polar_scan_matcher/lib/pkgconfig:$PKG_CONFIG_PATH"
+export PWD='/home/xavier/catkin_ws/build/polar_scan_matcher'
 export ROSLISP_PACKAGE_DIRECTORIES="/home/xavier/catkin_ws/devel/.private/polar_scan_matcher/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
 export ROS_PACKAGE_PATH="/home/xavier/catkin_ws/src/scan_tools/polar_scan_matcher:$ROS_PACKAGE_PATH"

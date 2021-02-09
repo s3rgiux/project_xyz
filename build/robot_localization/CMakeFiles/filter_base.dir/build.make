@@ -91,6 +91,7 @@ filter_base_EXTERNAL_OBJECTS =
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libfilter_base.so: CMakeFiles/filter_base.dir/src/filter_base.cpp.o
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libfilter_base.so: CMakeFiles/filter_base.dir/build.make
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libfilter_base.so: /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libfilter_utilities.so
+/home/xavier/catkin_ws/devel/.private/robot_localization/lib/libfilter_base.so: /opt/ros/melodic/lib/libdiagnostic_updater.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libfilter_base.so: /opt/ros/melodic/lib/libeigen_conversions.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libfilter_base.so: /opt/ros/melodic/lib/libnodeletlib.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libfilter_base.so: /opt/ros/melodic/lib/libbondcpp.so

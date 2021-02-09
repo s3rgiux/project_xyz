@@ -93,6 +93,7 @@ ros_filter_EXTERNAL_OBJECTS =
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libros_filter.so: /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libekf.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libros_filter.so: /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libukf.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libros_filter.so: /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libros_filter_utilities.so
+/home/xavier/catkin_ws/devel/.private/robot_localization/lib/libros_filter.so: /opt/ros/melodic/lib/libdiagnostic_updater.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libros_filter.so: /opt/ros/melodic/lib/libeigen_conversions.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libros_filter.so: /opt/ros/melodic/lib/libnodeletlib.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libros_filter.so: /opt/ros/melodic/lib/libbondcpp.so
@@ -131,6 +132,7 @@ ros_filter_EXTERNAL_OBJECTS =
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libros_filter.so: /usr/lib/aarch64-linux-gnu/libconsole_bridge.so.0.4
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libros_filter.so: /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libfilter_base.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libros_filter.so: /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libfilter_utilities.so
+/home/xavier/catkin_ws/devel/.private/robot_localization/lib/libros_filter.so: /opt/ros/melodic/lib/libdiagnostic_updater.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libros_filter.so: /opt/ros/melodic/lib/libeigen_conversions.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libros_filter.so: /opt/ros/melodic/lib/libnodeletlib.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libros_filter.so: /opt/ros/melodic/lib/libbondcpp.so

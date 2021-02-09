@@ -104,7 +104,7 @@
 <param name="peak_curr_tresh"    type="double"	value="5.9"/> <!--vel to start detect collision-->
 <param name="peak_not_heavy_curr"    type="double"	value="4.3"/> <!--vel to start detect collision-->
 <param name="count_to_miss"    type="double"	value="45"/> <!--counter that if overpass this then we lost people-->
-<param name="gain_to_costmap"    type="double"	value="1.0"/> <!--counter that if overpass this then we lost people-->
+<param name="gain_to_costmap"    type="double"	value="1.5"/> <!--counter that if overpass this then we lost people-->
 </node>
 
 <!-- extract obstacles form region of interest and send to control_xy -->
@@ -142,14 +142,14 @@
 <node name="frame_base" pkg="tf2_ros" type="static_transform_publisher" args="0 0 0 0 0 0 map my_frame"/>
 
 <!-- rosbag nodes -->
-<arg name="record_flag" default="false" /> <!-- set to true if i want to record-->
+<arg name="record_flag" default="true" /> <!-- set to true if i want to record-->
 
 <node pkg="rosbag" type="record" name="rosbag_record"
- args = "record -o /home/xavier/sea.bag /alerts /camera_info /cmd_vel /diagnostics /euler /fiducial_vertices /image_raw /j0/joy  /movement/karugamo/joy /movement/manual/joy /obstacle_closest /obstacles /pcl /peopAng /peopDist /raw_obstacles /rear_scan /rosout /rosout_agg /scan /state /tf /tf_static /trigger_action /peopAng2 /people/image /path /pathpeop /peop_way /visualization_marker"  
+ args = "record -o /home/xavier/wareh.bag /alerts /camera_info /cmd_vel /diagnostics /euler /fiducial_vertices /image_raw /j0/joy  /movement/karugamo/joy /movement/manual/joy /obstacle_closest /obstacles /pcl /peopAng /peopDist /raw_obstacles /rear_scan /rosout /rosout_agg /scan /state /tf /tf_static /trigger_action /peopAng2 /people/image /path /pathpeop /peop_way /visualization_marker"  
    if = "$(arg record_flag)" />
 
 
-<arg name="record_flag2" default="true" /> <!-- set to true if i want to record-->
+<arg name="record_flag2" default="false" /> <!-- set to true if i want to record-->
 
 <node pkg="rosbag" type="record" name="rosbag_record"
  args = "record -o /home/xavier/sea.bag  /scan "  

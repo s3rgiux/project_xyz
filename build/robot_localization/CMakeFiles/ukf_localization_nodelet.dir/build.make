@@ -91,6 +91,7 @@ ukf_localization_nodelet_EXTERNAL_OBJECTS =
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libukf_localization_nodelet.so: CMakeFiles/ukf_localization_nodelet.dir/src/ukf_localization_nodelet.cpp.o
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libukf_localization_nodelet.so: CMakeFiles/ukf_localization_nodelet.dir/build.make
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libukf_localization_nodelet.so: /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libros_filter.so
+/home/xavier/catkin_ws/devel/.private/robot_localization/lib/libukf_localization_nodelet.so: /opt/ros/melodic/lib/libdiagnostic_updater.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libukf_localization_nodelet.so: /opt/ros/melodic/lib/libeigen_conversions.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libukf_localization_nodelet.so: /opt/ros/melodic/lib/libnodeletlib.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libukf_localization_nodelet.so: /opt/ros/melodic/lib/libbondcpp.so
@@ -132,6 +133,7 @@ ukf_localization_nodelet_EXTERNAL_OBJECTS =
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libukf_localization_nodelet.so: /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libfilter_base.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libukf_localization_nodelet.so: /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libfilter_utilities.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libukf_localization_nodelet.so: /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libros_filter_utilities.so
+/home/xavier/catkin_ws/devel/.private/robot_localization/lib/libukf_localization_nodelet.so: /opt/ros/melodic/lib/libdiagnostic_updater.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libukf_localization_nodelet.so: /opt/ros/melodic/lib/libeigen_conversions.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libukf_localization_nodelet.so: /opt/ros/melodic/lib/libnodeletlib.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libukf_localization_nodelet.so: /opt/ros/melodic/lib/libbondcpp.so

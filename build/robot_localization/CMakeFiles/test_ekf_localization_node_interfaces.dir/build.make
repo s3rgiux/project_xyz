@@ -91,6 +91,7 @@ test_ekf_localization_node_interfaces_EXTERNAL_OBJECTS =
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/robot_localization/test_ekf_localization_node_interfaces: CMakeFiles/test_ekf_localization_node_interfaces.dir/test/test_ekf_localization_node_interfaces.cpp.o
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/robot_localization/test_ekf_localization_node_interfaces: CMakeFiles/test_ekf_localization_node_interfaces.dir/build.make
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/robot_localization/test_ekf_localization_node_interfaces: gtest/googlemock/gtest/libgtest.so
+/home/xavier/catkin_ws/devel/.private/robot_localization/lib/robot_localization/test_ekf_localization_node_interfaces: /opt/ros/melodic/lib/libdiagnostic_updater.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/robot_localization/test_ekf_localization_node_interfaces: /opt/ros/melodic/lib/libeigen_conversions.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/robot_localization/test_ekf_localization_node_interfaces: /opt/ros/melodic/lib/libnodeletlib.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/robot_localization/test_ekf_localization_node_interfaces: /opt/ros/melodic/lib/libbondcpp.so

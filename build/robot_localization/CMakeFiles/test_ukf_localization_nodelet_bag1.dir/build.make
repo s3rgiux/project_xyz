@@ -91,6 +91,7 @@ test_ukf_localization_nodelet_bag1_EXTERNAL_OBJECTS =
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/robot_localization/test_ukf_localization_nodelet_bag1: CMakeFiles/test_ukf_localization_nodelet_bag1.dir/test/test_localization_node_bag_pose_tester.cpp.o
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/robot_localization/test_ukf_localization_nodelet_bag1: CMakeFiles/test_ukf_localization_nodelet_bag1.dir/build.make
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/robot_localization/test_ukf_localization_nodelet_bag1: gtest/googlemock/gtest/libgtest.so
+/home/xavier/catkin_ws/devel/.private/robot_localization/lib/robot_localization/test_ukf_localization_nodelet_bag1: /opt/ros/melodic/lib/libdiagnostic_updater.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/robot_localization/test_ukf_localization_nodelet_bag1: /opt/ros/melodic/lib/libeigen_conversions.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/robot_localization/test_ukf_localization_nodelet_bag1: /opt/ros/melodic/lib/libnodeletlib.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/robot_localization/test_ukf_localization_nodelet_bag1: /opt/ros/melodic/lib/libbondcpp.so

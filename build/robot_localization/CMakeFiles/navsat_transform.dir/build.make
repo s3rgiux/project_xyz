@@ -92,6 +92,7 @@ navsat_transform_EXTERNAL_OBJECTS =
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libnavsat_transform.so: CMakeFiles/navsat_transform.dir/build.make
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libnavsat_transform.so: /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libfilter_utilities.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libnavsat_transform.so: /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libros_filter_utilities.so
+/home/xavier/catkin_ws/devel/.private/robot_localization/lib/libnavsat_transform.so: /opt/ros/melodic/lib/libdiagnostic_updater.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libnavsat_transform.so: /opt/ros/melodic/lib/libeigen_conversions.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libnavsat_transform.so: /opt/ros/melodic/lib/libnodeletlib.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libnavsat_transform.so: /opt/ros/melodic/lib/libbondcpp.so

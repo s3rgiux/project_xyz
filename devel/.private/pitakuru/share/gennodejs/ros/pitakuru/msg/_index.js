@@ -3,6 +3,7 @@
 
 let Obstacle = require('./Obstacle.js');
 let TriggerAction = require('./TriggerAction.js');
+let StateWheels = require('./StateWheels.js');
 let State = require('./State.js');
 let DriveWheel = require('./DriveWheel.js');
 let SoundGoal = require('./SoundGoal.js');
@@ -16,6 +17,7 @@ let SoundActionGoal = require('./SoundActionGoal.js');
 module.exports = {
   Obstacle: Obstacle,
   TriggerAction: TriggerAction,
+  StateWheels: StateWheels,
   State: State,
   DriveWheel: DriveWheel,
   SoundGoal: SoundGoal,

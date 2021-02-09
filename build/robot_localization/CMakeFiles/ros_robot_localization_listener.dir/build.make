@@ -92,6 +92,7 @@ ros_robot_localization_listener_EXTERNAL_OBJECTS =
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libros_robot_localization_listener.so: CMakeFiles/ros_robot_localization_listener.dir/build.make
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libros_robot_localization_listener.so: /home/xavier/catkin_ws/devel/.private/robot_localization/lib/librobot_localization_estimator.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libros_robot_localization_listener.so: /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libros_filter_utilities.so
+/home/xavier/catkin_ws/devel/.private/robot_localization/lib/libros_robot_localization_listener.so: /opt/ros/melodic/lib/libdiagnostic_updater.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libros_robot_localization_listener.so: /opt/ros/melodic/lib/libeigen_conversions.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libros_robot_localization_listener.so: /opt/ros/melodic/lib/libnodeletlib.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libros_robot_localization_listener.so: /opt/ros/melodic/lib/libbondcpp.so
@@ -132,6 +133,7 @@ ros_robot_localization_listener_EXTERNAL_OBJECTS =
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libros_robot_localization_listener.so: /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libukf.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libros_robot_localization_listener.so: /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libfilter_base.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libros_robot_localization_listener.so: /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libfilter_utilities.so
+/home/xavier/catkin_ws/devel/.private/robot_localization/lib/libros_robot_localization_listener.so: /opt/ros/melodic/lib/libdiagnostic_updater.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libros_robot_localization_listener.so: /opt/ros/melodic/lib/libeigen_conversions.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libros_robot_localization_listener.so: /opt/ros/melodic/lib/libnodeletlib.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libros_robot_localization_listener.so: /opt/ros/melodic/lib/libbondcpp.so

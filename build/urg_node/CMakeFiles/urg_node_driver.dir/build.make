@@ -91,6 +91,7 @@ urg_node_driver_EXTERNAL_OBJECTS =
 /home/xavier/catkin_ws/devel/.private/urg_node/lib/liburg_node_driver.so: CMakeFiles/urg_node_driver.dir/src/urg_node_driver.cpp.o
 /home/xavier/catkin_ws/devel/.private/urg_node/lib/liburg_node_driver.so: CMakeFiles/urg_node_driver.dir/build.make
 /home/xavier/catkin_ws/devel/.private/urg_node/lib/liburg_node_driver.so: /home/xavier/catkin_ws/devel/.private/urg_node/lib/liburg_c_wrapper.so
+/home/xavier/catkin_ws/devel/.private/urg_node/lib/liburg_node_driver.so: /opt/ros/melodic/lib/libdiagnostic_updater.so
 /home/xavier/catkin_ws/devel/.private/urg_node/lib/liburg_node_driver.so: /opt/ros/melodic/lib/libdynamic_reconfigure_config_init_mutex.so
 /home/xavier/catkin_ws/devel/.private/urg_node/lib/liburg_node_driver.so: /opt/ros/melodic/lib/liblaser_proc_library.so
 /home/xavier/catkin_ws/devel/.private/urg_node/lib/liburg_node_driver.so: /opt/ros/melodic/lib/liblaser_publisher.so

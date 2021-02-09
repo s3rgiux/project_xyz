@@ -90,6 +90,7 @@ urg_c_wrapper_EXTERNAL_OBJECTS =
 
 /home/xavier/catkin_ws/devel/.private/urg_node/lib/liburg_c_wrapper.so: CMakeFiles/urg_c_wrapper.dir/src/urg_c_wrapper.cpp.o
 /home/xavier/catkin_ws/devel/.private/urg_node/lib/liburg_c_wrapper.so: CMakeFiles/urg_c_wrapper.dir/build.make
+/home/xavier/catkin_ws/devel/.private/urg_node/lib/liburg_c_wrapper.so: /opt/ros/melodic/lib/libdiagnostic_updater.so
 /home/xavier/catkin_ws/devel/.private/urg_node/lib/liburg_c_wrapper.so: /opt/ros/melodic/lib/libdynamic_reconfigure_config_init_mutex.so
 /home/xavier/catkin_ws/devel/.private/urg_node/lib/liburg_c_wrapper.so: /opt/ros/melodic/lib/liblaser_proc_library.so
 /home/xavier/catkin_ws/devel/.private/urg_node/lib/liburg_c_wrapper.so: /opt/ros/melodic/lib/liblaser_publisher.so

@@ -8,6 +8,9 @@
 
 # modified environment variables
 export CMAKE_PREFIX_PATH="/home/xavier/catkin_ws/devel/.private/mbf_msgs:$CMAKE_PREFIX_PATH"
-export PWD="/home/xavier/catkin_ws/build/mbf_msgs"
+export LD_LIBRARY_PATH="/home/xavier/catkin_ws/devel/.private/mbf_msgs/lib:$LD_LIBRARY_PATH"
+export PKG_CONFIG_PATH="/home/xavier/catkin_ws/devel/.private/mbf_msgs/lib/pkgconfig:$PKG_CONFIG_PATH"
+export PWD='/home/xavier/catkin_ws/build/mbf_msgs'
+export PYTHONPATH="/home/xavier/catkin_ws/devel/.private/mbf_msgs/lib/python2.7/dist-packages:$PYTHONPATH"
 export ROSLISP_PACKAGE_DIRECTORIES="/home/xavier/catkin_ws/devel/.private/mbf_msgs/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
 export ROS_PACKAGE_PATH="/home/xavier/catkin_ws/src/move_base_flex/mbf_msgs:$ROS_PACKAGE_PATH"

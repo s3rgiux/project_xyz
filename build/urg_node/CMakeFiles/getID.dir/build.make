@@ -91,6 +91,7 @@ getID_EXTERNAL_OBJECTS =
 /home/xavier/catkin_ws/devel/.private/urg_node/lib/urg_node/getID: CMakeFiles/getID.dir/src/getID.cpp.o
 /home/xavier/catkin_ws/devel/.private/urg_node/lib/urg_node/getID: CMakeFiles/getID.dir/build.make
 /home/xavier/catkin_ws/devel/.private/urg_node/lib/urg_node/getID: /home/xavier/catkin_ws/devel/.private/urg_node/lib/liburg_c_wrapper.so
+/home/xavier/catkin_ws/devel/.private/urg_node/lib/urg_node/getID: /opt/ros/melodic/lib/libdiagnostic_updater.so
 /home/xavier/catkin_ws/devel/.private/urg_node/lib/urg_node/getID: /opt/ros/melodic/lib/libdynamic_reconfigure_config_init_mutex.so
 /home/xavier/catkin_ws/devel/.private/urg_node/lib/urg_node/getID: /opt/ros/melodic/lib/liblaser_proc_library.so
 /home/xavier/catkin_ws/devel/.private/urg_node/lib/urg_node/getID: /opt/ros/melodic/lib/liblaser_publisher.so

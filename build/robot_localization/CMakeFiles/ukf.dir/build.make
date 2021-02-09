@@ -91,6 +91,7 @@ ukf_EXTERNAL_OBJECTS =
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libukf.so: CMakeFiles/ukf.dir/src/ukf.cpp.o
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libukf.so: CMakeFiles/ukf.dir/build.make
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libukf.so: /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libfilter_base.so
+/home/xavier/catkin_ws/devel/.private/robot_localization/lib/libukf.so: /opt/ros/melodic/lib/libdiagnostic_updater.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libukf.so: /opt/ros/melodic/lib/libeigen_conversions.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libukf.so: /opt/ros/melodic/lib/libnodeletlib.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libukf.so: /opt/ros/melodic/lib/libbondcpp.so
@@ -128,6 +129,7 @@ ukf_EXTERNAL_OBJECTS =
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libukf.so: /usr/lib/aarch64-linux-gnu/libpthread.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libukf.so: /usr/lib/aarch64-linux-gnu/libconsole_bridge.so.0.4
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libukf.so: /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libfilter_utilities.so
+/home/xavier/catkin_ws/devel/.private/robot_localization/lib/libukf.so: /opt/ros/melodic/lib/libdiagnostic_updater.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libukf.so: /opt/ros/melodic/lib/libeigen_conversions.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libukf.so: /opt/ros/melodic/lib/libnodeletlib.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libukf.so: /opt/ros/melodic/lib/libbondcpp.so

@@ -91,6 +91,7 @@ navsat_transform_nodelet_EXTERNAL_OBJECTS =
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libnavsat_transform_nodelet.so: CMakeFiles/navsat_transform_nodelet.dir/src/navsat_transform_nodelet.cpp.o
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libnavsat_transform_nodelet.so: CMakeFiles/navsat_transform_nodelet.dir/build.make
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libnavsat_transform_nodelet.so: /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libnavsat_transform.so
+/home/xavier/catkin_ws/devel/.private/robot_localization/lib/libnavsat_transform_nodelet.so: /opt/ros/melodic/lib/libdiagnostic_updater.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libnavsat_transform_nodelet.so: /opt/ros/melodic/lib/libeigen_conversions.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libnavsat_transform_nodelet.so: /opt/ros/melodic/lib/libnodeletlib.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libnavsat_transform_nodelet.so: /opt/ros/melodic/lib/libbondcpp.so
@@ -130,6 +131,7 @@ navsat_transform_nodelet_EXTERNAL_OBJECTS =
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libnavsat_transform_nodelet.so: /usr/lib/aarch64-linux-gnu/libGeographic.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libnavsat_transform_nodelet.so: /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libfilter_utilities.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libnavsat_transform_nodelet.so: /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libros_filter_utilities.so
+/home/xavier/catkin_ws/devel/.private/robot_localization/lib/libnavsat_transform_nodelet.so: /opt/ros/melodic/lib/libdiagnostic_updater.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libnavsat_transform_nodelet.so: /opt/ros/melodic/lib/libeigen_conversions.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libnavsat_transform_nodelet.so: /opt/ros/melodic/lib/libnodeletlib.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libnavsat_transform_nodelet.so: /opt/ros/melodic/lib/libbondcpp.so

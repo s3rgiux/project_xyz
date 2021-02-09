@@ -91,6 +91,7 @@ ekf_localization_node_EXTERNAL_OBJECTS =
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/robot_localization/ekf_localization_node: CMakeFiles/ekf_localization_node.dir/src/ekf_localization_node.cpp.o
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/robot_localization/ekf_localization_node: CMakeFiles/ekf_localization_node.dir/build.make
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/robot_localization/ekf_localization_node: /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libros_filter.so
+/home/xavier/catkin_ws/devel/.private/robot_localization/lib/robot_localization/ekf_localization_node: /opt/ros/melodic/lib/libdiagnostic_updater.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/robot_localization/ekf_localization_node: /opt/ros/melodic/lib/libeigen_conversions.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/robot_localization/ekf_localization_node: /opt/ros/melodic/lib/libnodeletlib.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/robot_localization/ekf_localization_node: /opt/ros/melodic/lib/libbondcpp.so
@@ -132,6 +133,7 @@ ekf_localization_node_EXTERNAL_OBJECTS =
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/robot_localization/ekf_localization_node: /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libfilter_base.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/robot_localization/ekf_localization_node: /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libfilter_utilities.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/robot_localization/ekf_localization_node: /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libros_filter_utilities.so
+/home/xavier/catkin_ws/devel/.private/robot_localization/lib/robot_localization/ekf_localization_node: /opt/ros/melodic/lib/libdiagnostic_updater.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/robot_localization/ekf_localization_node: /opt/ros/melodic/lib/libeigen_conversions.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/robot_localization/ekf_localization_node: /opt/ros/melodic/lib/libnodeletlib.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/robot_localization/ekf_localization_node: /opt/ros/melodic/lib/libbondcpp.so

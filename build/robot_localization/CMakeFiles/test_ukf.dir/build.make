@@ -93,6 +93,7 @@ test_ukf_EXTERNAL_OBJECTS =
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/robot_localization/test_ukf: gtest/googlemock/gtest/libgtest.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/robot_localization/test_ukf: /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libros_filter.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/robot_localization/test_ukf: /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libukf.so
+/home/xavier/catkin_ws/devel/.private/robot_localization/lib/robot_localization/test_ukf: /opt/ros/melodic/lib/libdiagnostic_updater.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/robot_localization/test_ukf: /opt/ros/melodic/lib/libeigen_conversions.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/robot_localization/test_ukf: /opt/ros/melodic/lib/libnodeletlib.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/robot_localization/test_ukf: /opt/ros/melodic/lib/libbondcpp.so
@@ -139,6 +140,7 @@ test_ukf_EXTERNAL_OBJECTS =
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/robot_localization/test_ukf: /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libfilter_base.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/robot_localization/test_ukf: /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libfilter_utilities.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/robot_localization/test_ukf: /home/xavier/catkin_ws/devel/.private/robot_localization/lib/libros_filter_utilities.so
+/home/xavier/catkin_ws/devel/.private/robot_localization/lib/robot_localization/test_ukf: /opt/ros/melodic/lib/libdiagnostic_updater.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/robot_localization/test_ukf: /opt/ros/melodic/lib/libeigen_conversions.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/robot_localization/test_ukf: /opt/ros/melodic/lib/libnodeletlib.so
 /home/xavier/catkin_ws/devel/.private/robot_localization/lib/robot_localization/test_ukf: /opt/ros/melodic/lib/libbondcpp.so

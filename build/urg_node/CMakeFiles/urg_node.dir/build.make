@@ -91,6 +91,7 @@ urg_node_EXTERNAL_OBJECTS =
 /home/xavier/catkin_ws/devel/.private/urg_node/lib/urg_node/urg_node: CMakeFiles/urg_node.dir/src/urg_node.cpp.o
 /home/xavier/catkin_ws/devel/.private/urg_node/lib/urg_node/urg_node: CMakeFiles/urg_node.dir/build.make
 /home/xavier/catkin_ws/devel/.private/urg_node/lib/urg_node/urg_node: /home/xavier/catkin_ws/devel/.private/urg_node/lib/liburg_node_driver.so
+/home/xavier/catkin_ws/devel/.private/urg_node/lib/urg_node/urg_node: /opt/ros/melodic/lib/libdiagnostic_updater.so
 /home/xavier/catkin_ws/devel/.private/urg_node/lib/urg_node/urg_node: /opt/ros/melodic/lib/libdynamic_reconfigure_config_init_mutex.so
 /home/xavier/catkin_ws/devel/.private/urg_node/lib/urg_node/urg_node: /opt/ros/melodic/lib/liblaser_proc_library.so
 /home/xavier/catkin_ws/devel/.private/urg_node/lib/urg_node/urg_node: /opt/ros/melodic/lib/liblaser_publisher.so
@@ -133,6 +134,7 @@ urg_node_EXTERNAL_OBJECTS =
 /home/xavier/catkin_ws/devel/.private/urg_node/lib/urg_node/urg_node: /usr/lib/aarch64-linux-gnu/libconsole_bridge.so.0.4
 /home/xavier/catkin_ws/devel/.private/urg_node/lib/urg_node/urg_node: /opt/ros/melodic/lib/libliburg_c.so
 /home/xavier/catkin_ws/devel/.private/urg_node/lib/urg_node/urg_node: /home/xavier/catkin_ws/devel/.private/urg_node/lib/liburg_c_wrapper.so
+/home/xavier/catkin_ws/devel/.private/urg_node/lib/urg_node/urg_node: /opt/ros/melodic/lib/libdiagnostic_updater.so
 /home/xavier/catkin_ws/devel/.private/urg_node/lib/urg_node/urg_node: /opt/ros/melodic/lib/libdynamic_reconfigure_config_init_mutex.so
 /home/xavier/catkin_ws/devel/.private/urg_node/lib/urg_node/urg_node: /opt/ros/melodic/lib/liblaser_proc_library.so
 /home/xavier/catkin_ws/devel/.private/urg_node/lib/urg_node/urg_node: /opt/ros/melodic/lib/liblaser_publisher.so
