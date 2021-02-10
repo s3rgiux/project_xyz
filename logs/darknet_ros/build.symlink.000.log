@@ -1,0 +1,5 @@
+Symlinking /home/xavier/catkin_ws/devel/share/darknet_ros/cmake/darknet_rosConfig-version.cmake
+Symlinking /home/xavier/catkin_ws/devel/share/darknet_ros/cmake/darknet_rosConfig.cmake
+Symlinking /home/xavier/catkin_ws/devel/lib/libdarknet_ros_lib.so
+Symlinking /home/xavier/catkin_ws/devel/lib/darknet_ros/darknet_ros
+Symlinking /home/xavier/catkin_ws/devel/lib/pkgconfig/darknet_ros.pc
