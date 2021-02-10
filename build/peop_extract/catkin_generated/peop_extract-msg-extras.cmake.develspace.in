@@ -1,0 +1,2 @@
+set(peop_extract_MESSAGE_FILES "/home/xavier/catkin_ws/src/peop_extract/msg/BoundingBoxes.msg;/home/xavier/catkin_ws/src/peop_extract/msg/BoundingBox.msg;/home/xavier/catkin_ws/src/peop_extract/msg/ObjectCount.msg")
+set(peop_extract_SERVICE_FILES "")
