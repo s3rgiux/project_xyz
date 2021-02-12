@@ -42,8 +42,8 @@ class PitWheels:
         #self.brinco=False
         self.obst_pub = rospy.Publisher('obstacle_closest', Float32, queue_size=1)
         #self.ang_pub = rospy.Publisher("peopAng2",Float32, queue_size=1)
-        self.ang_pub = rospy.Publisher("peopAng2",Vector3, queue_size=4)
-        rospy.Subscriber('/ang_peop_detect_img', Float32, self.ang_cam_callback, queue_size=1)
+        self.ang_pub = rospy.Publisher("/peop_ang_yolo",Vector3, queue_size=4)
+        #rospy.Subscriber('/ang_peop_detect_img', Float32, self.ang_cam_callback, queue_size=1)
         self.dist_pub = rospy.Publisher("peopDist2",Float32, queue_size=1)
         #rospy.Subscriber('/cmd_vel', Twist, self.teleop_callback, queue_size=1)
         rospy.Subscriber('/darknet_ros/bounding_boxes', BoundingBoxes, self.boundings_callback, queue_size=1)
@@ -68,15 +68,26 @@ class PitWheels:
         self.tracked_y=-50
 	self.tracked_ang=0
         self.radius_follow=0.35
+        self.tracking=False
+        self.first_got=False
+        self.tracked_cx=0
+        self.tracked_cy=0
+        self.prev_cx=0
+        self.prev_cy=0
+        self.pixels_radius=40
+        self.lost_count=0
     
     def pubobs(self):
-        if(time.time()-self.last_time>0.04):
+        if(time.time()-self.last_time>0.5):
         #if(self.track==0):
             self.angulo.data=-500
             self.ang_dist.x=-0.01
             self.ang_dist.y=-0.01
             self.distancia.data=0
             self.ang_pub.publish(self.ang_dist)
+            self.tracking=False
+            self.first_got=False
+            self.lost_count=0
             #self.dist_pub.publish(self.distancia)
     
     def ang_cam_callback(self,data):
@@ -86,8 +97,10 @@ class PitWheels:
         self.tracked_x=data.x
         self.tracked_y=data.y
         self.tracked_ang=data.z
-        if self.tracked_x != -50 and self.tracked_y != -50:
+        if self.tracked_x != -50 and self.tracked_y != -50 and self.tracking==False:
             self.prev_ang = self.tracked_ang
+            self.tracking=True
+            
 
     def boundings_callback(self, data):
         lst = []
@@ -103,32 +116,64 @@ class PitWheels:
                 auxy=480-center_y
                 ang = np.arctan2(auxx, auxy) * 180 / np.pi
                 #print(ang)
-                print(center_x)
-                print(center_y)
-                print(auxx)
-                print(auxy)
-                print(ang)
+                #print(center_x)
+                #print(center_y)
+                #print(auxx)
+                #print(auxy)
+                #print(ang)
                 #print("encontre persona")
                 cnt2=cnt2+1
-                print(cnt2)
+                #print(cnt2)
             
                 #if self.tracked_x != -50 and self.tracked_y != -50 and x.center.x<=(self.tracked_x+self.radius_follow) and x.center.x>=(self.tracked_x-self.radius_follow) and x.center.y <=(self.tracked_y+self.radius_follow) and x.center.y >=(self.tracked_y-self.radius_follow):#then we have tracked object
-                if self.tracked_x != -50 and self.tracked_y != -50 and self.tracked_ang < (self.prev_ang + 5) and self.tracked_ang > (self.prev_ang - 5) :#then we have tracked object
-                    lst.append(x)
+                if self.first_got== False and self.tracking and self.tracked_x != -50 and self.tracked_y != -50 and self.tracked_ang < (self.prev_ang + 7) and self.tracked_ang > (self.prev_ang - 7) :#then we have tracked object
+                    #lst.append(x)
+                    print("track first time")
+                    self.first_got=True
+                    self.prev_cx=center_x
+                    self.prev_cy=center_y
+                    ##self.ang_dist.x=1#x.center.x
+                    #self.ang_dist.y=1#x.center.y#dist*100
+                    #self.ang_dist.z=ang
                     self.prev_ang = self.tracked_ang
+                    
+                    #self.ang_pub.publish(self.ang_dist)
                     #self.ang_dist.x=x.center.x
                     #self.ang_dist.y=x.center.y#dist*100
                     #self.ang_pub.publish(self.ang_dist)
-                else:
-                    self.ang_dist.x=x.center.x
-                    self.ang_dist.y=x.center.y#dist*100
+                #elif self.first_got and self.tracking and self.tracked_ang < (self.prev_ang + 4) and self.tracked_ang > (self.prev_ang - 4) and center_x < self.prev_cx+ self.pixels_radius and center_x > self.prev_cx- self.pixels_radius and center_y<self.prev_cy+self.pixels_radius and center_y>self.prev_cy-self.pixels_radius:#then we have tracked object
+                #elif self.first_got and self.tracking and self.tracked_ang < (self.prev_ang + 9) and self.tracked_ang > (self.prev_ang - 9) and center_x < self.prev_cx+ self.pixels_radius and center_x > self.prev_cx- self.pixels_radius and center_y<self.prev_cy+self.pixels_radius and center_y>self.prev_cy-self.pixels_radius:#then we have tracked object
+                elif self.first_got and self.tracking and center_x < self.prev_cx+ self.pixels_radius and center_x > self.prev_cx- self.pixels_radius and center_y<self.prev_cy+self.pixels_radius and center_y>self.prev_cy-self.pixels_radius:#then we have tracked object
+                    #lst.append(x)
+                    #tracking correcto
+                    print("tracking")
+                    print('{} {} {}'.format(center_x,center_y,self.tracked_ang))
+                    self.first_got=True
+                    self.prev_cx=center_x
+                    self.prev_cy=center_y
+                    self.ang_dist.x=1#x.center.x
+                    self.ang_dist.y=1#x.center.y#dist*100
+                    self.ang_dist.z=ang
+                    self.prev_ang = self.tracked_ang
                     self.ang_pub.publish(self.ang_dist)
+                    self.lost_count=0
+                else:
+                    #print("lost")
+                    #print('{} {} {}'.format(center_x,center_y,self.tracked_ang))
+                    self.ang_dist.x=-1#x.center.x
+                    self.ang_dist.y=-1#x.center.y#dist*100
+                    self.ang_dist.z=ang
+                    self.ang_pub.publish(self.ang_dist)
+                    self.lost_count=self.lost_count=+1
+                    if(self.lost_count>10):
+                        self.lost_count=0
+                        self.first_got=False
 
                 #self.ang_pub.publish(self.angulo)
                 #self.dist_pub.publish(self.distancia)
                 #print(x)
                 self.last_time=time.time()#self.timex
-        closest= Vector3() 
+        closest= Vector3()
         aux=[10000,10000]
         val_aux=10000
         ang_aux=1500
@@ -154,7 +199,7 @@ class PitWheels:
                         dst_aux=dist
                         closest.x=n.center.x
                         closest.y=n.center.y
-                self.ang_pub.publish(closest)        
+                self.ang_pub.publish(closest)
 
 
     def shutdown(self):

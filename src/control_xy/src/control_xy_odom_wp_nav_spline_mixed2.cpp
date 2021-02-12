@@ -54,6 +54,8 @@ public:
         sub_amperage = nh.subscribe("/stateWheels",1,&test_head::amperageCallback,this);
         volts_subscriber = nh.subscribe("/volts", 1, &test_head::voltsCallback,this);
         cost_subscriber = nh.subscribe("/costdetect", 1, &test_head::costCallback,this);
+        yolo_subscriber = nh.subscribe("/peop_ang_yolo", 1, &test_head::yoloCallback,this);
+        
         //nh.param<float>("break_distance", break_distance, 1.5);
         nh.getParam("/control_xy/break_distance", break_distance);
         nh.getParam("/control_xy/break_danger", break_danger);
@@ -170,6 +172,8 @@ public:
         heavy_r=0;
         heavy_l=0;
         detected_heavy=false;
+        tracking_lidar=false;
+        tracking_yolo=false;
 
     }
     ~test_head(){}
@@ -457,6 +461,67 @@ void distPeopCallback2(const std_msgs::Float32& msg){
        }
 
 
+///yolo subs
+void yoloCallback(const geometry_msgs::Vector3& msg){
+    ang_peop_cam=msg.z;
+    if(ang_peop_cam!=-500 && mode_follow && tracking_people==true ){
+        if(ang_peop_cam<tracked_angle+5 && ang_peop_cam>tracked_angle-5){
+            tracking_yolo_lidar=true;
+        }
+    }
+
+    if(ang_peop_cam!=-500 && mode_follow && tracking_people==false  ){
+    cont_detect_peop+=1;
+    missing_track=0;
+    if(ang_peop_lidar<ang_peop_cam+8 && ang_peop_lidar> ang_peop_cam-8  && distanciaPeople2<aux_dist && distanciaPeople2<=near_far_distance && distanciaPeople2>50 && ang_peop_cam>-30 && ang_peop_cam<30 && ang_peop_lidar>-30 && ang_peop_lidar<30 ){
+        //cont_detect_peop+=1;
+        aux_dist = distanciaPeople2;
+        ROS_INFO("Received angle %f",ang_peop_lidar);
+        tracked_cx=cx;
+        tracked_cy=cy;
+        tracked_pos.x=cx;
+        tracked_pos.y=cy;
+        tracked_pos.z= ang_peop_lidar;
+        tracked_angle=ang_peop_lidar;
+        fprintf(fp2,"deteccion %f,%f,%f,%f\n",tracked_cx,tracked_cy,ang_peop_lidar,distanciaPeople2);
+    }
+    if(cont_detect_peop>5 && tracked_cx>0.5 && tracked_cx<near_far_distance && tracked_cy>-0.7 && tracked_cy<0.7){
+            mode_people_follow();
+            tracking_people=true;
+            cont_detect_peop=0;
+            ROS_INFO("Tracked angle %f",ang_peop_lidar);
+            fprintf(fp2,"deteccion camara %f,%f,%f,%f\n",tracked_cx,tracked_cy,ang_peop_lidar,aux_dist);
+            tracked_distance=distanciaPeople2;
+            tracking_people=true;
+            aux_dist=5000;
+            missing_track=0;
+            tracked_pos.x=tracked_cx;
+            tracked_pos.y=tracked_cy;
+            tracked_pos.z= ang_peop_lidar;
+            stop_follow=false;
+            tracked_publisher.publish(tracked_pos);
+            ctrl_front_follow= 0;
+            ctrl_ang=0;
+            vel_steer.linear.x= 0;
+            vel_steer.angular.z= 0;
+            cont_sp_follow=0;//experiemntal
+            kf=0;
+            index_wp=-1;//init follow
+            dist_auxwp=0; 
+            state_stop=0;
+            is_near==true;  
+            stop_functions=false; 
+            ctrl_side_costmap=0;      
+            //fp = fopen ("/home/xavier/catkin_ws/src/control_xy/people.txt" , "w+");
+    }
+    }
+}
+
+
+///end yolo sub
+
+
+
 /*
 Pitakuru coordinate system and angles w.r.t Robot
         x 0deg
@@ -610,6 +675,8 @@ if(mode_follow && danger!=true){
                     //  index_wp=cont_sp_follow-3;
                     //}
                 }
+                tracking_lidar=false;
+                tracking_yolo=false;
                 ROS_INFO("LOST");
                 fprintf(fp2,"lost \n");
                 tracking_people=false;
@@ -1523,6 +1590,7 @@ private:
 
     ros::Subscriber volts_subscriber; 
     ros::Subscriber cost_subscriber;    
+    ros::Subscriber yolo_subscriber; 
     geometry_msgs::Twist vel_steer;
     geometry_msgs::Vector3 tracked_pos;
     std_msgs::Float32 ang_people;
@@ -1569,6 +1637,7 @@ private:
     double time_last_to_heavy;
     float vel_m1,vel_m2,vel_detect_scan,volts_charge,peak_curr_tresh,avg_curr_tresh,peak_not_heavy_curr;
     float cost_obst,ctrl_side_costmap,gain_to_costmap,smooth_accel_costmap;
+    bool tracking_lidar,tracking_yolo,tracking_yolo_lidar;
     
 };
 
