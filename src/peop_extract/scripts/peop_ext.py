@@ -56,6 +56,7 @@ class PitWheels:
         self.distancia= Float32()
         self.ang_dist= Vector3()
         self.tracked_obj= Vector3()
+        self.tracked_peop= Vector3()
         #self.front_detection = rospy.get_param("/obj_track/front_detection")
         #self.side_detection = rospy.get_param("/obj_track/side_detection")
         self.timex=0
@@ -85,33 +86,36 @@ class PitWheels:
         self.tracked_x=data.x
         self.tracked_y=data.y
         self.tracked_ang=data.z
+        if self.tracked_x != -50 and self.tracked_y != -50:
+            self.prev_ang = self.tracked_ang
 
     def boundings_callback(self, data):
         lst = []
-        print("entre")
         cnt=0
+        cnt2=0
+        width=640
+        height=480
         for x in data.bounding_boxes:
-            print(cnt)
-            print(x.Class)
-            cnt=cnt+1
-            if False: 
-                #print("#########")
-                #circles = data.circles
-                #print(circles)
-                #self.obsta.data = 1
-                #self.detected = 1
-                #self.obst_pub.publish(self.obsta)               
-                ang = 90+np.arctan2(x.center.x, x.center.y) * 180 / np.pi
-                dist =np.sqrt(x.center.x*x.center.x+x.center.y*x.center.y)
+            if x.Class=="person":
+                center_x=(x.xmax+x.xmin)/2
+                center_y=(x.ymax+x.ymin)/2
+                auxx=320-center_x
+                auxy=480-center_y
+                ang = np.arctan2(auxx, auxy) * 180 / np.pi
                 #print(ang)
-                #print(dist*120)
-                #track=1
-                self.angulo.data=ang
-                self.distancia.data=dist*100
-                #self.ang_dist.x=ang
-                #self.ang_dist.y=dist*100
-                if self.tracked_x != -50 and self.tracked_y != -50 and x.center.x<=(self.tracked_x+self.radius_follow) and x.center.x>=(self.tracked_x-self.radius_follow) and x.center.y <=(self.tracked_y+self.radius_follow) and x.center.y >=(self.tracked_y-self.radius_follow):#then we have tracked object
+                print(center_x)
+                print(center_y)
+                print(auxx)
+                print(auxy)
+                print(ang)
+                #print("encontre persona")
+                cnt2=cnt2+1
+                print(cnt2)
+            
+                #if self.tracked_x != -50 and self.tracked_y != -50 and x.center.x<=(self.tracked_x+self.radius_follow) and x.center.x>=(self.tracked_x-self.radius_follow) and x.center.y <=(self.tracked_y+self.radius_follow) and x.center.y >=(self.tracked_y-self.radius_follow):#then we have tracked object
+                if self.tracked_x != -50 and self.tracked_y != -50 and self.tracked_ang < (self.prev_ang + 5) and self.tracked_ang > (self.prev_ang - 5) :#then we have tracked object
                     lst.append(x)
+                    self.prev_ang = self.tracked_ang
                     #self.ang_dist.x=x.center.x
                     #self.ang_dist.y=x.center.y#dist*100
                     #self.ang_pub.publish(self.ang_dist)
@@ -151,12 +155,7 @@ class PitWheels:
                         closest.x=n.center.x
                         closest.y=n.center.y
                 self.ang_pub.publish(closest)        
-                #print("HHHHH")
-                #print(closest.x)
-                #print(closest.y)
-            #print(lst)           
-    
-    
+
 
     def shutdown(self):
         rospy.sleep(1)
