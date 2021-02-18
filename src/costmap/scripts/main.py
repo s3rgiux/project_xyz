@@ -29,8 +29,8 @@ class image_converter:
     self.bord2_pub = rospy.Publisher("bord2",Image, queue_size=1)
     self.crop_pub = rospy.Publisher("crop",Image, queue_size=1)
     self.cost_pub = rospy.Publisher("costdetect",Vector3, queue_size=1)
-    self.ang_pub = rospy.Publisher("peopAng2",Float32, queue_size=1)
-    self.dist_pub = rospy.Publisher("peopDist2",Float32, queue_size=1)
+    
+    
     self.bridge = CvBridge()
     self.laser_sub = rospy.Subscriber('/scan', LaserScan, self.callbackLaser,queue_size=1)
     self.dilation = rospy.get_param("/cost_detect/dilation")
@@ -311,7 +311,7 @@ class image_converter:
     # draw the contour and center of the shape on the image
     #res=self.mask2*crop_img
     #crop_img = cost2[centery-10:centery+10, centerx-10:centerx+10]
-    ncentery=110
+    ncentery=117
     ncenterx=105
     crop_img = cost2[ncentery-20:ncentery+20, ncenterx-16:ncenterx+16]
     res=self.mask9*crop_img

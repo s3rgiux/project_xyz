@@ -14,10 +14,7 @@ from std_msgs.msg import Float32
 from std_msgs.msg import *
 from geometry_msgs.msg import Point, Vector3, PoseWithCovarianceStamped
 
-
 from peop_extract.msg import BoundingBox,BoundingBoxes
-
-
 import struct
 import time
 import rosparam
@@ -31,7 +28,7 @@ import rosparam
 import atexit
 
 
-SLEEP_TIME = 0.015
+SLEEP_TIME = 0.018
 #200mm diameter0
 
 
@@ -42,7 +39,7 @@ class PitWheels:
         #self.brinco=False
         self.obst_pub = rospy.Publisher('obstacle_closest', Float32, queue_size=1)
         #self.ang_pub = rospy.Publisher("peopAng2",Float32, queue_size=1)
-        self.ang_pub = rospy.Publisher("/peop_ang_yolo",Vector3, queue_size=4)
+        self.ang_pub = rospy.Publisher("/peop_ang_yolo",Vector3, queue_size=2)
         #rospy.Subscriber('/ang_peop_detect_img', Float32, self.ang_cam_callback, queue_size=1)
         self.dist_pub = rospy.Publisher("peopDist2",Float32, queue_size=1)
         #rospy.Subscriber('/cmd_vel', Twist, self.teleop_callback, queue_size=1)
@@ -76,6 +73,7 @@ class PitWheels:
         self.prev_cy=0
         self.pixels_radius=40
         self.lost_count=0
+        self.dist_estim=0
     
     def pubobs(self):
         if(time.time()-self.last_time>0.5):
@@ -83,11 +81,13 @@ class PitWheels:
             self.angulo.data=-500
             self.ang_dist.x=-0.01
             self.ang_dist.y=-0.01
+            self.ang_dist.z=-500
             self.distancia.data=0
             self.ang_pub.publish(self.ang_dist)
             self.tracking=False
             self.first_got=False
             self.lost_count=0
+            self.dist_estim=0
             #self.dist_pub.publish(self.distancia)
     
     def ang_cam_callback(self,data):
@@ -136,6 +136,7 @@ class PitWheels:
                     #self.ang_dist.y=1#x.center.y#dist*100
                     #self.ang_dist.z=ang
                     self.prev_ang = self.tracked_ang
+                    self.dist_estim=0
                     
                     #self.ang_pub.publish(self.ang_dist)
                     #self.ang_dist.x=x.center.x
@@ -147,12 +148,15 @@ class PitWheels:
                     #lst.append(x)
                     #tracking correcto
                     print("tracking")
-                    print('{} {} {}'.format(center_x,center_y,self.tracked_ang))
+                    alf=0.8
+                    estim=1/(((x.xmax-x.xmin)*(x.ymax-x.ymin))/100000)#1/((x.xmax+x.xmin)+(x.ymax+x.ymin))
+                    self.dist_estim=(alf*self.dist_estim)+((1-alf)*estim)
+                    print('{},{},{},{}'.format(center_x,center_y,self.tracked_ang,self.dist_estim))
                     self.first_got=True
                     self.prev_cx=center_x
                     self.prev_cy=center_y
                     self.ang_dist.x=1#x.center.x
-                    self.ang_dist.y=1#x.center.y#dist*100
+                    self.ang_dist.y=self.dist_estim#x.center.y#dist*100
                     self.ang_dist.z=ang
                     self.prev_ang = self.tracked_ang
                     self.ang_pub.publish(self.ang_dist)
@@ -161,13 +165,14 @@ class PitWheels:
                     #print("lost")
                     #print('{} {} {}'.format(center_x,center_y,self.tracked_ang))
                     self.ang_dist.x=-1#x.center.x
-                    self.ang_dist.y=-1#x.center.y#dist*100
+                    self.ang_dist.y=0#x.center.y#dist*100
                     self.ang_dist.z=ang
                     self.ang_pub.publish(self.ang_dist)
                     self.lost_count=self.lost_count=+1
-                    if(self.lost_count>10):
+                    if(self.lost_count>5):
                         self.lost_count=0
                         self.first_got=False
+                        self.dist_estim=0
 
                 #self.ang_pub.publish(self.angulo)
                 #self.dist_pub.publish(self.distancia)
@@ -184,7 +189,7 @@ class PitWheels:
                 e_x=np.abs(self.tracked_x-n.center.x)
                 e_y=np.abs(self.tracked_y-n.center.y)
                 dist=np.sqrt(e_x*e_x+e_y*e_y)
-                ang_obj= 90+np.arctan2(x.center.x, x.center.y) * 180 / np.pi
+                ang_obj= 90+np.arctan2(n.center.x, n.center.y) * 180 / np.pi
                 err_ang= self.tracked_ang-ang_obj
                 if dist<val_aux and err_ang<ang_aux: #and err_ang<7 and err_ang>-7 :
                     val_aux=dist

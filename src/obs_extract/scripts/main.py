@@ -31,7 +31,7 @@ import rosparam
 import atexit
 
 
-SLEEP_TIME = 0.015
+SLEEP_TIME = 0.019
 #200mm diameter0
 
 
@@ -48,6 +48,7 @@ class PitWheels:
         #rospy.Subscriber('/cmd_vel', Twist, self.teleop_callback, queue_size=1)
         rospy.Subscriber('/obstacles', Obstacles, self.obstacles_callback, queue_size=1)
         rospy.Subscriber('/tracked', Vector3, self.tracked_callback, queue_size=2)
+        rospy.Subscriber('/peop_ang_yolo', Vector3, self.yolo_callback, queue_size=1)
         #rospy.Subscriber('/euler2', Float64, self.angle_callback, queue_size=1)
         self.obsta  = Float32()
         self.detected=0
@@ -67,13 +68,17 @@ class PitWheels:
         self.tracked_y=-50
 	self.tracked_ang=0
         self.radius_follow=0.35
+        self.yolo_status=0
+        self.yolo_dist =0
+        self.yolo_ang=0
     
     def pubobs(self):
-        if(time.time()-self.last_time>0.04):
+        if(time.time()-self.last_time>0.4):
         #if(self.track==0):
             self.angulo.data=-500
             self.ang_dist.x=-0.01
             self.ang_dist.y=-0.01
+            self.ang_dist.z=-0.01
             self.distancia.data=0
             self.ang_pub.publish(self.ang_dist)
             #self.dist_pub.publish(self.distancia)
@@ -86,6 +91,11 @@ class PitWheels:
         self.tracked_y=data.y
         self.tracked_ang=data.z
 
+    def yolo_callback(self,data):
+        self.yolo_status=data.x
+        self.yolo_dist=data.y
+        self.yolo_ang=data.z
+
     def obstacles_callback(self, data):
         lst = []
         for x in data.circles:
@@ -96,7 +106,7 @@ class PitWheels:
                 #self.obsta.data = 1
                 #self.detected = 1
                 #self.obst_pub.publish(self.obsta)               
-                ang = 90+np.arctan2(x.center.x, x.center.y) * 180 / np.pi
+                ang = 90-np.arctan2(x.center.x, x.center.y) * 180 / np.pi
                 dist =np.sqrt(x.center.x*x.center.x+x.center.y*x.center.y)
                 #print(ang)
                 #print(dist*120)
@@ -105,14 +115,17 @@ class PitWheels:
                 self.distancia.data=dist*100
                 #self.ang_dist.x=ang
                 #self.ang_dist.y=dist*100
+                
                 if self.tracked_x != -50 and self.tracked_y != -50 and x.center.x<=(self.tracked_x+self.radius_follow) and x.center.x>=(self.tracked_x-self.radius_follow) and x.center.y <=(self.tracked_y+self.radius_follow) and x.center.y >=(self.tracked_y-self.radius_follow):#then we have tracked object
                     lst.append(x)
                     #self.ang_dist.x=x.center.x
                     #self.ang_dist.y=x.center.y#dist*100
                     #self.ang_pub.publish(self.ang_dist)
                 else:
+                #elif self.tracked_x == -50 and self.tracked_y == -50:
                     self.ang_dist.x=x.center.x
                     self.ang_dist.y=x.center.y#dist*100
+                    self.ang_dist.z=-1#dist*100
                     self.ang_pub.publish(self.ang_dist)
 
                 #self.ang_pub.publish(self.angulo)
@@ -121,8 +134,8 @@ class PitWheels:
                 self.last_time=time.time()#self.timex
         closest= Vector3() 
         aux=[10000,10000]
-        val_aux=10000
-        ang_aux=1500
+        val_aux=0.5
+        ang_aux=30
         lst2 = []
         dst_aux=150000
         if len(lst)!=0:
@@ -130,8 +143,8 @@ class PitWheels:
                 e_x=np.abs(self.tracked_x-n.center.x)
                 e_y=np.abs(self.tracked_y-n.center.y)
                 dist=np.sqrt(e_x*e_x+e_y*e_y)
-                ang_obj= 90+np.arctan2(x.center.x, x.center.y) * 180 / np.pi
-                err_ang= self.tracked_ang-ang_obj
+                ang_obj= 90-np.arctan2(n.center.x, n.center.y) * 180 / np.pi
+                err_ang= np.abs(self.tracked_ang-ang_obj)
                 if dist<val_aux and err_ang<ang_aux: #and err_ang<7 and err_ang>-7 :
                     val_aux=dist
                     ang_aux=err_ang
@@ -141,10 +154,16 @@ class PitWheels:
             if len(lst2)!=0:
                 for n in (lst2):
                     dist=np.sqrt(n.center.x*n.center.x+n.center.y*n.center.y)
+                    ang_obj= 90-np.arctan2(n.center.x, n.center.y) * 180 / np.pi
+                    err_ang= np.abs(self.tracked_ang-ang_obj)
+                    if err_ang<ang_aux: #and err_ang<7 and err_ang>-7 :
+                        val_aux=dist
+                        ng_aux=err_ang
                     if dist<dst_aux: #and err_ang<7 and err_ang>-7 :
                         dst_aux=dist
                         closest.x=n.center.x
                         closest.y=n.center.y
+                        closest.z=1#dist*100
                 self.ang_pub.publish(closest)        
                 #print("HHHHH")
                 #print(closest.x)
