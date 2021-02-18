@@ -71,6 +71,7 @@ class PitWheels:
         self.yolo_status=0
         self.yolo_dist =0
         self.yolo_ang=0
+        self.last_time_tracked=0
     
     def pubobs(self):
         if(time.time()-self.last_time>0.4):
@@ -121,8 +122,8 @@ class PitWheels:
                     #self.ang_dist.x=x.center.x
                     #self.ang_dist.y=x.center.y#dist*100
                     #self.ang_pub.publish(self.ang_dist)
-                else:
-                #elif self.tracked_x == -50 and self.tracked_y == -50:
+                #else:
+                elif self.tracked_x == -50 and self.tracked_y == -50 or (time.time()-self.last_time_tracked)>0.25:
                     self.ang_dist.x=x.center.x
                     self.ang_dist.y=x.center.y#dist*100
                     self.ang_dist.z=-1#dist*100
@@ -131,6 +132,7 @@ class PitWheels:
                 #self.ang_pub.publish(self.angulo)
                 #self.dist_pub.publish(self.distancia)
                 #print(x)
+                
                 self.last_time=time.time()#self.timex
         closest= Vector3() 
         aux=[10000,10000]
@@ -164,6 +166,7 @@ class PitWheels:
                         closest.x=n.center.x
                         closest.y=n.center.y
                         closest.z=1#dist*100
+                        self.last_time_tracked=time.time()
                 self.ang_pub.publish(closest)        
                 #print("HHHHH")
                 #print(closest.x)

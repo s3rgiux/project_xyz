@@ -71,12 +71,12 @@ class PitWheels:
         self.tracked_cy=0
         self.prev_cx=0
         self.prev_cy=0
-        self.pixels_radius=40
+        self.pixels_radius=45
         self.lost_count=0
         self.dist_estim=0
     
     def pubobs(self):
-        if(time.time()-self.last_time>0.5):
+        if(time.time()-self.last_time>0.4):
         #if(self.track==0):
             self.angulo.data=-500
             self.ang_dist.x=-0.01
@@ -152,7 +152,7 @@ class PitWheels:
                     estim=1/(((x.xmax-x.xmin)*(x.ymax-x.ymin))/100000)#1/((x.xmax+x.xmin)+(x.ymax+x.ymin))
                     self.dist_estim=(alf*self.dist_estim)+((1-alf)*estim)
                     print('{},{},{},{}'.format(center_x,center_y,self.tracked_ang,self.dist_estim))
-                    self.first_got=True
+                    
                     self.prev_cx=center_x
                     self.prev_cy=center_y
                     self.ang_dist.x=1#x.center.x

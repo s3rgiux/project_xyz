@@ -150,7 +150,7 @@
 <arg name="record_flag" default="true" /> <!-- set to true if i want to record-->
 
 <node pkg="rosbag" type="record" name="rosbag_record"
- args = "record -o /home/xavier/floor10.bag /alerts /camera_info /cmd_vel /diagnostics /euler /fiducial_vertices /image_raw /j0/joy  /movement/karugamo/joy /movement/manual/joy /obstacle_closest /obstacles /pcl /peopAng /peopDist /raw_obstacles /rear_scan /rosout /rosout_agg /scan /state /tf /tf_static /trigger_action /peopAng2 /people/image /path /pathpeop /peop_way /visualization_marker /peop_ang_yolo "  
+ args = "record -o /home/xavier/floor10.bag /alerts /camera_info /cmd_vel /diagnostics /euler /fiducial_vertices /image_raw /j0/joy  /movement/karugamo/joy /movement/manual/joy /tracked /obstacles /pcl /peopAng /peopDist /raw_obstacles /rear_scan /rosout /rosout_agg /scan /state /tf /tf_static /trigger_action /peopAng2 /people/image /path /pathpeop /peop_way /visualization_marker /peop_ang_yolo "  
    if = "$(arg record_flag)" />
 
 
