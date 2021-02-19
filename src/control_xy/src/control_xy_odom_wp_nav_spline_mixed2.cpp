@@ -417,7 +417,7 @@ void distPeopCallback2(const std_msgs::Float32& msg){
         if(ang_peop_cam!=-500 && mode_follow && tracking_people==false  ){
             cont_detect_peop+=1;
             missing_track=0;
-            if(ang_peop_lidar<ang_peop_cam+8 && ang_peop_lidar> ang_peop_cam-8  && distanciaPeople2<aux_dist && distanciaPeople2<=near_far_distance && distanciaPeople2>50 && ang_peop_cam>-30 && ang_peop_cam<30 && ang_peop_lidar>-30 && ang_peop_lidar<30 ){
+            if(ang_peop_lidar<ang_peop_cam+8 && ang_peop_lidar> ang_peop_cam-8  && distanciaPeople2<aux_dist && distanciaPeople2<=near_far_distance && distanciaPeople2>50 && ang_peop_cam>-44 && ang_peop_cam<44 && ang_peop_lidar>-44 && ang_peop_lidar<44 ){
                 //cont_detect_peop+=1;
                 aux_dist = distanciaPeople2;
                 ROS_INFO("Received angle %f",ang_peop_lidar);
@@ -429,7 +429,7 @@ void distPeopCallback2(const std_msgs::Float32& msg){
                 tracked_angle=ang_peop_lidar;
                 fprintf(fp2,"deteccion %f,%f,%f,%f\n",tracked_cx,tracked_cy,ang_peop_lidar,distanciaPeople2);
             }
-            if(cont_detect_peop>5 && tracked_cx>0.5 && tracked_cx<near_far_distance && tracked_cy>-0.7 && tracked_cy<0.7){
+            if(cont_detect_peop>5 && tracked_cx>0.5 && tracked_cx<near_far_distance && tracked_cy>-0.9 && tracked_cy<0.9){
                     mode_people_follow();
                     tracking_people=true;
                     cont_detect_peop=0;
@@ -468,11 +468,7 @@ void yoloCallback(const geometry_msgs::Vector3& msg){
     dist_peop_cam=msg.y*100;
     ang_peop_cam=msg.z;
     //if(yolo_status==1 && tracking_people==true){//tracked
-    if(yolo_status==1){//tracked
-        tracking_yolo = true;
-    }else if(yolo_status==-0.01 || yolo_status==-1) {//no people detected
-        tracking_yolo = false;
-    }
+    
     
     if(ang_peop_cam!=-500 && mode_follow && tracking_people==false  ){
         cont_detect_peop+=1;
@@ -547,6 +543,7 @@ save_counter++;
 cicles=20;
 cx = msg.x;//pos people or object
 cy = msg.y;//pos people or object
+lidar_people_status=msg.z;
 ang_peop_lidar = 90- atan2(cx, cy) * 180 / 3.1416;
 //ang_peop_lidar = -90+ atan2(cx, cy) * 180 / 3.1416 ;
 distanciaPeople2 = sqrt(cx*cx+cy*cy)*100;
@@ -558,16 +555,23 @@ distanciaPeople2 = sqrt(cx*cx+cy*cy)*100;
 
 if(mode_follow && danger!=true){
     //ROS_INFO("tracked1 %f",ang_peop_lidar);
-        if(cx!=-0.01 && cy !=-0.01 && tracking_people && cx<=(tracked_cx+radius_follow) && cx>=(tracked_cx-radius_follow) && cy<=(tracked_cy+radius_follow) && cy >=(tracked_cy-radius_follow) && stop_functions==false){//2
+        //if(cx!=-0.01 && cy !=-0.01 && tracking_people && cx<=(tracked_cx+radius_follow) && cx>=(tracked_cx-radius_follow) && cy<=(tracked_cy+radius_follow) && cy >=(tracked_cy-radius_follow) && stop_functions==false){//2
+        if(tracking_people && (yolo_status>0 || lidar_people_status>0) && stop_functions==false){
             //ang_peop_lidar = 90+ atan2(cx, cy) * 180 / 3.1416 ;
             //ang_peop_lidar = -90+ atan2(cx, cy) * 180 / 3.1416 ;
-            if(tracking_yolo){
-                tracking_yolo_lidar=true;
-            }else{
-                tracking_yolo_lidar=false;
+            
+            //ang_peop_lidar = 90- atan2(cx, cy) * 180 / 3.1416;
+            //distanciaPeople2 = sqrt(cx*cx+cy*cy)*100;
+
+            //if( (lidar_people_status>1 ||  lidar_people_status<1)&& yolo_status >0){
+            if(dist_peop_cam>250 && distanciaPeople2<150 && yolo_status >0 || lidar_people_status<1){
+                    alert_collision_no_sound();
+                    ang_peop_lidar = ang_peop_cam ;// ;  -90+ atan2(cx, cy) * 180 / 3.1416 
+                    distanciaPeople2 = dist_peop_cam;
+            }else if(lidar_people_status>0 ){
+                    ang_peop_lidar = 90- atan2(cx,cy) * 180 / 3.1416 ;// ;  -90+ atan2(cx, cy) * 180 / 3.1416 
+                    distanciaPeople2 = sqrt(cx*cx+cy*cy)*100;
             }
-            ang_peop_lidar = 90- atan2(cx, cy) * 180 / 3.1416;
-            distanciaPeople2 = sqrt(cx*cx+cy*cy)*100;
             //if(ang_peop_lidar-tracked_angle>30){}
             tracked_angle= ang_peop_lidar;
             ROS_INFO("tracked %f, %f ",tracked_angle,distanciaPeople2);
@@ -660,36 +664,11 @@ if(mode_follow && danger!=true){
             //ROS_INFO("tracked");
                 
         }//end it s in range
-        else if (tracking_yolo && missing_track >8){
-            
-            //follow_yolo();
-            //find_again=true;
-            /*
-            //if(ang_peop_lidar<ang_peop_cam+4 && ang_peop_lidar> ang_peop_cam-4  && dist_peop_cam>0.80 ){
-            if(cx!=-0.01 && cy !=-0.01 && ang_peop_lidar<ang_peop_cam+4 && ang_peop_lidar> ang_peop_cam-4  && dist_peop_cam>0.80&& tracking_people && cx<=(tracked_cx+radius_follow) && cx>=(tracked_cx-radius_follow) && cy<=(tracked_cy+radius_follow) && cy >=(tracked_cy-radius_follow) && stop_functions==false){
-                //cont_detect_peop+=1;
-                aux_dist = distanciaPeople2;
-                ROS_INFO("Received angle %f",ang_peop_lidar);
-                tracked_cx=cx;
-                tracked_cy=cy;
-                tracked_pos.x=cx;
-                tracked_pos.y=cy;
-                tracked_pos.z= ang_peop_lidar;
-                tracked_angle=ang_peop_lidar;
-                //fprintf(fp2,"deteccion %f,%f,%f,%f\n",tracked_cx,tracked_cy,ang_peop_lidar,distanciaPeople2);
-            }
-            tracked_cx=cx;
-            tracked_cy=cy;
-            tracked_pos.x=cx;
-            tracked_pos.y=cy;
-            tracked_pos.z=tracked_angle;
-            tracked_publisher.publish(tracked_pos);
-            */
-        }
-        else if(danger==false){//losted
+        else if(danger==false  && lidar_people_status<1){//losted
             //if(is_near==false){
             missing_track+=1;
-                if(missing_track>count_to_miss){//thiscounter also can help to see if theres a lot of objects and its not able to follow
+            if(missing_track>count_to_miss){//thiscounter also can help to see if theres a lot of objects and its not able to follow
+            //if(lidar_people_status<1){
                 if(is_near==true && tracking_people && stop_functions==false){
 					fprintf(fp2,"lost and near");
                     //ctrl_front_follow=speed_wp_lost;//experiemntal 10
@@ -728,7 +707,7 @@ if(mode_follow && danger!=true){
                 missing_track=0;
                 cont_detect_peop=0;
                 sound_counter++;
-                if(sound_counter%7==0){
+                if(sound_counter%14==0){
                     alert_warning_sound();
                 }
                 
@@ -1009,16 +988,18 @@ void near(){
        if(mode_follow && danger!=true && stop_functions==false){ //&& tracking_people){//1
             //     ROS_INFO("R%f,%f",cx,cy);
             //     ROS_INFO("P%f,%f",tracked_cx,tracked_cy);
-            if(save_counter%20==0){
+            if(save_counter%12==0){
                 fprintf(fp2,"near %f,%f,%f,%f,%i\n",px,py,0.0,ang_robot,index_wp);
             }
-            if( cx!=-0.01 && cy !=-0.01 && ang_peop_lidar<120 && ang_peop_lidar>-120 && tracking_people && cx<=(tracked_cx+radius_follow) && cx>=(tracked_cx-radius_follow) && cy<=(tracked_cy+radius_follow) && cy >=(tracked_cy-radius_follow)){//2
+            //if( cx!=-0.01 && cy !=-0.01 && ang_peop_lidar<120 && ang_peop_lidar>-120 && tracking_people && cx<=(tracked_cx+radius_follow) && cx>=(tracked_cx-radius_follow) && cy<=(tracked_cy+radius_follow) && cy >=(tracked_cy-radius_follow)){//2
+            if (1==1){
                 //correccion needed
                 //ang_peop_lidar = -90+ atan2(cx, cy) * 180 / 3.1416 ;// ;  90- atan2(cx, cy) * 180 / 3.1416 
-                ang_peop_lidar = 90- atan2(cx,cy) * 180 / 3.1416 ;// ;  -90+ atan2(cx, cy) * 180 / 3.1416 
-                distanciaPeople2 = sqrt(cx*cx+cy*cy)*100;
+                //ang_peop_lidar = 90- atan2(cx,cy) * 180 / 3.1416 ;// ;  -90+ atan2(cx, cy) * 180 / 3.1416 
+                //distanciaPeople2 = sqrt(cx*cx+cy*cy)*100;
                 //ROS_INFO("T%f,%f",tracked_cx,tracked_cy);
-                if(abs(ang_peop_cam-ang_peop_lidar)>19 && yolo_status == 1){
+                //f((abs(ang_peop_cam-ang_peop_lidar)>29 || lidar_people_status>1) && yolo_status == 1){
+                if( lidar_people_status>1 && yolo_status >0){
                     alert_collision_no_sound();
                     ang_peop_lidar = ang_peop_cam ;// ;  -90+ atan2(cx, cy) * 180 / 3.1416 
                     distanciaPeople2 = dist_peop_cam;
@@ -1039,12 +1020,12 @@ void near(){
                 geometry_msgs::Twist vel_steer;  
 
                 
-                if(abs(ang_peop_cam-ang_peop_lidar)>19 && yolo_status == 1){
-                    alert_collision_no_sound();
-                    ctrl_ang= low_vel_gain_follow*ang_peop_cam-ctrl_ang/2;
-                }else{
+                //if(abs(ang_peop_cam-ang_peop_lidar)>19 && yolo_status == 1){
+                //    alert_collision_no_sound();
+                 //   ctrl_ang= low_vel_gain_follow*ang_peop_cam-ctrl_ang/2;
+                //}else{
                     ctrl_ang= low_vel_gain_follow*ang_peop_lidar-ctrl_ang/2;
-                }
+                //}
                 //experiementa
                 ctrl_add_side=(1-smooth_accel_side_manual)*(joy_side*max_speed_side_manual)+(smooth_accel_side_manual*ctrl_side_manual);
                 ctrl_side_costmap=(1-smooth_accel_side_manual)*(cost_obst*max_speed_side_manual)+(smooth_accel_side_manual*ctrl_side_costmap);
@@ -1783,6 +1764,7 @@ private:
     float vel_m1,vel_m2,vel_detect_scan,volts_charge,peak_curr_tresh,avg_curr_tresh,peak_not_heavy_curr;
     float cost_obst,ctrl_side_costmap,gain_to_costmap,smooth_accel_costmap,dist_peop_cam,yolo_status;
     bool tracking_lidar,tracking_yolo,tracking_yolo_lidar,find_again;
+    float lidar_people_status;
     
     
 };

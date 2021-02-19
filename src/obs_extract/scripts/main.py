@@ -165,7 +165,7 @@ class PitWheels:
                         dst_aux=dist
                         closest.x=n.center.x
                         closest.y=n.center.y
-                        closest.z=1#dist*100
+                        closest.z=len(lst)#dist*100
                         self.last_time_tracked=time.time()
                 self.ang_pub.publish(closest)        
                 #print("HHHHH")

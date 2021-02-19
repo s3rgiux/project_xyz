@@ -101,6 +101,7 @@ class PitWheels:
             self.prev_ang = self.tracked_ang
             self.tracking=True
             
+            
 
     def boundings_callback(self, data):
         lst = []
@@ -126,7 +127,7 @@ class PitWheels:
                 #print(cnt2)
             
                 #if self.tracked_x != -50 and self.tracked_y != -50 and x.center.x<=(self.tracked_x+self.radius_follow) and x.center.x>=(self.tracked_x-self.radius_follow) and x.center.y <=(self.tracked_y+self.radius_follow) and x.center.y >=(self.tracked_y-self.radius_follow):#then we have tracked object
-                if self.first_got== False and self.tracking and self.tracked_x != -50 and self.tracked_y != -50 and self.tracked_ang < (self.prev_ang + 7) and self.tracked_ang > (self.prev_ang - 7) :#then we have tracked object
+                if self.first_got== False and self.tracking and self.tracked_x != -50 and self.tracked_y != -50 and self.tracked_ang < (self.tracked_ang + 7) and self.tracked_ang > (self.tracked_ang - 7) :#then we have tracked object
                     #lst.append(x)
                     print("track first time")
                     self.first_got=True
@@ -169,7 +170,7 @@ class PitWheels:
                     self.ang_dist.z=ang
                     self.ang_pub.publish(self.ang_dist)
                     self.lost_count=self.lost_count=+1
-                    if(self.lost_count>5):
+                    if(self.lost_count>3):
                         self.lost_count=0
                         self.first_got=False
                         self.dist_estim=0
