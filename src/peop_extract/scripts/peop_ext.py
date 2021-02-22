@@ -149,7 +149,7 @@ class PitWheels:
                     #lst.append(x)
                     #tracking correcto
                     print("tracking")
-                    alf=0.8
+                    alf=0.65
                     estim=1/(((x.xmax-x.xmin)*(x.ymax-x.ymin))/100000)#1/((x.xmax+x.xmin)+(x.ymax+x.ymin))
                     self.dist_estim=(alf*self.dist_estim)+((1-alf)*estim)
                     print('{},{},{},{}'.format(center_x,center_y,self.tracked_ang,self.dist_estim))
@@ -170,7 +170,7 @@ class PitWheels:
                     self.ang_dist.z=ang
                     self.ang_pub.publish(self.ang_dist)
                     self.lost_count=self.lost_count=+1
-                    if(self.lost_count>3):
+                    if(self.lost_count>4):
                         self.lost_count=0
                         self.first_got=False
                         self.dist_estim=0

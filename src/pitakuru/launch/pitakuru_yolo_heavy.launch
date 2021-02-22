@@ -95,8 +95,8 @@
 <param name="speed_wp_lost"    type="double"	value="1200"/> <!-- speed when is lost or wp mode-->
 <param name="max_defelct_angle"    type="double"	value="60"/> <!-- max deflect angle-->
 <param name="angle_gain_wp"    type="double"	value="100"/> <!-- max deflect angle-->
-<param name="near_far_distance"    type="double"  value="320.0"/> <!-- distance to detect, enter near, far distance in centimeter-->
-<param name="dist_robot_people"    type="double"	value="115"/> <!-- max deflect angle-->
+<param name="near_far_distance"    type="double"  value="350.0"/> <!-- distance to detect, enter near, far distance in centimeter-->
+<param name="dist_robot_people"    type="double"	value="120"/> <!-- max deflect angle-->
 <param name="max_dist_toacc"    type="double"	value="250"/> <!-- max dist ot accel or slow down-->
 <param name="radius_follow"    type="double"	value="0.37"/> <!--1.0--><!-- radius checking zone to track people once that is already picked for tracking-->
 <param name="tresh_amp_up"    type="double"	value="5.0"/> <!-- treshhold amp up -->
@@ -108,12 +108,12 @@
 <param name="avg_curr_tresh"    type="double"	value="5.2"/> <!--vel to start detect collision-->
 <param name="peak_curr_tresh"    type="double"	value="5.9"/> <!--vel to start detect collision-->
 <param name="peak_not_heavy_curr"    type="double"	value="4.3"/> <!--vel to start detect collision-->
-<param name="count_to_miss"    type="double"	value="10"/> <!--counter that if overpass this then we lost people-->
+<param name="count_to_miss"    type="double"	value="25"/> <!--counter that if overpass this then we lost people-->
 <param name="gain_to_costmap"    type="double"	value="1.5"/> <!--counter that if overpass this then we lost people-->
 </node>
 
 <!-- extract obstacles form region of interest and send to control_xy -->
-<node pkg="obs_extract" type="main.py" name="obj_track" >
+<node pkg="obs_extract" type="main_sorted.py" name="obj_track" >
 <param name="front_detection"    type="double"	value="7"/> <!-- 3.5 --><!-- 5 -->
 <param name="side_detection"    type="double"	value="2.5"/>  <!-- 1.2 --><!-- 2.2 -->
 </node>
@@ -150,8 +150,11 @@
 <arg name="record_flag" default="true" /> <!-- set to true if i want to record-->
 
 <node pkg="rosbag" type="record" name="rosbag_record"
- args = "record -o /home/xavier/floor10.bag /alerts /camera_info /cmd_vel /diagnostics /euler /fiducial_vertices /image_raw /j0/joy  /movement/karugamo/joy /movement/manual/joy /tracked /obstacles /pcl /peopAng /peopDist /raw_obstacles /rear_scan /rosout /rosout_agg /scan /state /tf /tf_static /trigger_action /peopAng2 /people/image /path /pathpeop /peop_way /visualization_marker /peop_ang_yolo "  
+ args = "record -o /home/xavier/floor6.bag /alerts /camera_info /diagnostics /euler /fiducial_vertices /image_raw /j0/joy  /movement/karugamo/joy /movement/manual/joy /obstacles /pcl /peopAng /peopDist /raw_obstacles /rear_scan /rosout /rosout_agg /scan /state /tf /tf_static /trigger_action /peopAng2 /people/image /path /pathpeop /peop_way /visualization_marker /peop_ang_yolo "  
    if = "$(arg record_flag)" />
+
+
+
 
 
 <arg name="record_flag2" default="false" /> <!-- set to true if i want to record-->
