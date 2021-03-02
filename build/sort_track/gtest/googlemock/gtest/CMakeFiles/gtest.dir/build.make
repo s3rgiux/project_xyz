@@ -43,7 +43,7 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/xavier/catkin_ws/src/sort-deepsort-yolov3-ROS/sort_track
+CMAKE_SOURCE_DIR = /home/xavier/catkin_ws/src/sort-deepsort-yolov3-ROSS/sort_track
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/xavier/catkin_ws/build/sort_track
@@ -108,6 +108,6 @@ gtest/googlemock/gtest/CMakeFiles/gtest.dir/clean:
 .PHONY : gtest/googlemock/gtest/CMakeFiles/gtest.dir/clean
 
 gtest/googlemock/gtest/CMakeFiles/gtest.dir/depend:
-	cd /home/xavier/catkin_ws/build/sort_track && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/xavier/catkin_ws/src/sort-deepsort-yolov3-ROS/sort_track /usr/src/googletest/googletest /home/xavier/catkin_ws/build/sort_track /home/xavier/catkin_ws/build/sort_track/gtest/googlemock/gtest /home/xavier/catkin_ws/build/sort_track/gtest/googlemock/gtest/CMakeFiles/gtest.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/xavier/catkin_ws/build/sort_track && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/xavier/catkin_ws/src/sort-deepsort-yolov3-ROSS/sort_track /usr/src/googletest/googletest /home/xavier/catkin_ws/build/sort_track /home/xavier/catkin_ws/build/sort_track/gtest/googlemock/gtest /home/xavier/catkin_ws/build/sort_track/gtest/googlemock/gtest/CMakeFiles/gtest.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : gtest/googlemock/gtest/CMakeFiles/gtest.dir/depend
 

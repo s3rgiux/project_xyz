@@ -67,7 +67,7 @@ set(sort_track_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("FALSE" STREQUAL "TRUE")
-  set(sort_track_SOURCE_PREFIX /home/xavier/catkin_ws/src/sort-deepsort-yolov3-ROS/sort_track)
+  set(sort_track_SOURCE_PREFIX /home/xavier/catkin_ws/src/sort-deepsort-yolov3-ROSS/sort_track)
   set(sort_track_DEVEL_PREFIX /home/xavier/catkin_ws/devel/.private/sort_track)
   set(sort_track_INSTALL_PREFIX "")
   set(sort_track_PREFIX ${sort_track_DEVEL_PREFIX})

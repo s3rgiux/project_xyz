@@ -45,7 +45,7 @@ class PitWheels:
         #rospy.Subscriber('/cmd_vel', Twist, self.teleop_callback, queue_size=1)
         rospy.Subscriber('/darknet_ros/bounding_boxes', BoundingBoxes, self.boundings_callback, queue_size=1)
         rospy.Subscriber('/tracked', Vector3, self.tracked_callback, queue_size=2)
-        rospy.Subscriber('/sorted_tracked', Vector3, self.tracked_callback, queue_size=2)
+        rospy.Subscriber('/sorted_tracked', IntList, self.sort_callback, queue_size=2)
         #rospy.Subscriber('/euler2', Float64, self.angle_callback, queue_size=1)
         self.obsta  = Float32()
         self.detected=0
@@ -101,7 +101,6 @@ class PitWheels:
         if self.tracked_x != -50 and self.tracked_y != -50 and self.tracking==False:
             self.prev_ang = self.tracked_ang
             self.tracking=True
-            
             
 
     def boundings_callback(self, data):

@@ -43,7 +43,7 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/xavier/catkin_ws/src/sort-deepsort-yolov3-ROS/sort_track
+CMAKE_SOURCE_DIR = /home/xavier/catkin_ws/src/sort-deepsort-yolov3-ROSS/sort_track
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/xavier/catkin_ws/build/sort_track
@@ -67,6 +67,6 @@ CMakeFiles/sensor_msgs_generate_messages_lisp.dir/clean:
 .PHONY : CMakeFiles/sensor_msgs_generate_messages_lisp.dir/clean
 
 CMakeFiles/sensor_msgs_generate_messages_lisp.dir/depend:
-	cd /home/xavier/catkin_ws/build/sort_track && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/xavier/catkin_ws/src/sort-deepsort-yolov3-ROS/sort_track /home/xavier/catkin_ws/src/sort-deepsort-yolov3-ROS/sort_track /home/xavier/catkin_ws/build/sort_track /home/xavier/catkin_ws/build/sort_track /home/xavier/catkin_ws/build/sort_track/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/xavier/catkin_ws/build/sort_track && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/xavier/catkin_ws/src/sort-deepsort-yolov3-ROSS/sort_track /home/xavier/catkin_ws/src/sort-deepsort-yolov3-ROSS/sort_track /home/xavier/catkin_ws/build/sort_track /home/xavier/catkin_ws/build/sort_track /home/xavier/catkin_ws/build/sort_track/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/sensor_msgs_generate_messages_lisp.dir/depend
 

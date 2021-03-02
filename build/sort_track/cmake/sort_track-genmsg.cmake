@@ -2,7 +2,7 @@
 
 message(STATUS "sort_track: 1 messages, 0 services")
 
-set(MSG_I_FLAGS "-Isort_track:/home/xavier/catkin_ws/src/sort-deepsort-yolov3-ROS/sort_track/msg;-Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg;-Isort_track:/home/xavier/catkin_ws/src/sort-deepsort-yolov3-ROS/sort_track/msg")
+set(MSG_I_FLAGS "-Isort_track:/home/xavier/catkin_ws/src/sort-deepsort-yolov3-ROSS/sort_track/msg;-Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg;-Isort_track:/home/xavier/catkin_ws/src/sort-deepsort-yolov3-ROSS/sort_track/msg")
 
 # Find all generators
 find_package(gencpp REQUIRED)
@@ -17,9 +17,9 @@ add_custom_target(sort_track_generate_messages ALL)
 
 
 
-get_filename_component(_filename "/home/xavier/catkin_ws/src/sort-deepsort-yolov3-ROS/sort_track/msg/IntList.msg" NAME_WE)
+get_filename_component(_filename "/home/xavier/catkin_ws/src/sort-deepsort-yolov3-ROSS/sort_track/msg/IntList.msg" NAME_WE)
 add_custom_target(_sort_track_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "sort_track" "/home/xavier/catkin_ws/src/sort-deepsort-yolov3-ROS/sort_track/msg/IntList.msg" ""
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "sort_track" "/home/xavier/catkin_ws/src/sort-deepsort-yolov3-ROSS/sort_track/msg/IntList.msg" ""
 )
 
 #
@@ -29,7 +29,7 @@ add_custom_target(_sort_track_generate_messages_check_deps_${_filename}
 ### Section generating for lang: gencpp
 ### Generating Messages
 _generate_msg_cpp(sort_track
-  "/home/xavier/catkin_ws/src/sort-deepsort-yolov3-ROS/sort_track/msg/IntList.msg"
+  "/home/xavier/catkin_ws/src/sort-deepsort-yolov3-ROSS/sort_track/msg/IntList.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/sort_track
@@ -49,7 +49,7 @@ add_custom_target(sort_track_generate_messages_cpp
 add_dependencies(sort_track_generate_messages sort_track_generate_messages_cpp)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/xavier/catkin_ws/src/sort-deepsort-yolov3-ROS/sort_track/msg/IntList.msg" NAME_WE)
+get_filename_component(_filename "/home/xavier/catkin_ws/src/sort-deepsort-yolov3-ROSS/sort_track/msg/IntList.msg" NAME_WE)
 add_dependencies(sort_track_generate_messages_cpp _sort_track_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -62,7 +62,7 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS sort_track_generate_messages_cpp)
 ### Section generating for lang: geneus
 ### Generating Messages
 _generate_msg_eus(sort_track
-  "/home/xavier/catkin_ws/src/sort-deepsort-yolov3-ROS/sort_track/msg/IntList.msg"
+  "/home/xavier/catkin_ws/src/sort-deepsort-yolov3-ROSS/sort_track/msg/IntList.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/sort_track
@@ -82,7 +82,7 @@ add_custom_target(sort_track_generate_messages_eus
 add_dependencies(sort_track_generate_messages sort_track_generate_messages_eus)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/xavier/catkin_ws/src/sort-deepsort-yolov3-ROS/sort_track/msg/IntList.msg" NAME_WE)
+get_filename_component(_filename "/home/xavier/catkin_ws/src/sort-deepsort-yolov3-ROSS/sort_track/msg/IntList.msg" NAME_WE)
 add_dependencies(sort_track_generate_messages_eus _sort_track_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -95,7 +95,7 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS sort_track_generate_messages_eus)
 ### Section generating for lang: genlisp
 ### Generating Messages
 _generate_msg_lisp(sort_track
-  "/home/xavier/catkin_ws/src/sort-deepsort-yolov3-ROS/sort_track/msg/IntList.msg"
+  "/home/xavier/catkin_ws/src/sort-deepsort-yolov3-ROSS/sort_track/msg/IntList.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/sort_track
@@ -115,7 +115,7 @@ add_custom_target(sort_track_generate_messages_lisp
 add_dependencies(sort_track_generate_messages sort_track_generate_messages_lisp)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/xavier/catkin_ws/src/sort-deepsort-yolov3-ROS/sort_track/msg/IntList.msg" NAME_WE)
+get_filename_component(_filename "/home/xavier/catkin_ws/src/sort-deepsort-yolov3-ROSS/sort_track/msg/IntList.msg" NAME_WE)
 add_dependencies(sort_track_generate_messages_lisp _sort_track_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -128,7 +128,7 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS sort_track_generate_messages_lisp)
 ### Section generating for lang: gennodejs
 ### Generating Messages
 _generate_msg_nodejs(sort_track
-  "/home/xavier/catkin_ws/src/sort-deepsort-yolov3-ROS/sort_track/msg/IntList.msg"
+  "/home/xavier/catkin_ws/src/sort-deepsort-yolov3-ROSS/sort_track/msg/IntList.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/sort_track
@@ -148,7 +148,7 @@ add_custom_target(sort_track_generate_messages_nodejs
 add_dependencies(sort_track_generate_messages sort_track_generate_messages_nodejs)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/xavier/catkin_ws/src/sort-deepsort-yolov3-ROS/sort_track/msg/IntList.msg" NAME_WE)
+get_filename_component(_filename "/home/xavier/catkin_ws/src/sort-deepsort-yolov3-ROSS/sort_track/msg/IntList.msg" NAME_WE)
 add_dependencies(sort_track_generate_messages_nodejs _sort_track_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -161,7 +161,7 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS sort_track_generate_messages_nodejs
 ### Section generating for lang: genpy
 ### Generating Messages
 _generate_msg_py(sort_track
-  "/home/xavier/catkin_ws/src/sort-deepsort-yolov3-ROS/sort_track/msg/IntList.msg"
+  "/home/xavier/catkin_ws/src/sort-deepsort-yolov3-ROSS/sort_track/msg/IntList.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/sort_track
@@ -181,7 +181,7 @@ add_custom_target(sort_track_generate_messages_py
 add_dependencies(sort_track_generate_messages sort_track_generate_messages_py)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/xavier/catkin_ws/src/sort-deepsort-yolov3-ROS/sort_track/msg/IntList.msg" NAME_WE)
+get_filename_component(_filename "/home/xavier/catkin_ws/src/sort-deepsort-yolov3-ROSS/sort_track/msg/IntList.msg" NAME_WE)
 add_dependencies(sort_track_generate_messages_py _sort_track_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility

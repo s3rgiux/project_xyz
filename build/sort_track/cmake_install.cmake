@@ -1,4 +1,4 @@
-# Install script for directory: /home/xavier/catkin_ws/src/sort-deepsort-yolov3-ROS/sort_track
+# Install script for directory: /home/xavier/catkin_ws/src/sort-deepsort-yolov3-ROSS/sort_track
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -129,7 +129,7 @@ file(INSTALL DESTINATION "/home/xavier/catkin_ws/install" TYPE FILE FILES "/home
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/sort_track/msg" TYPE FILE FILES "/home/xavier/catkin_ws/src/sort-deepsort-yolov3-ROS/sort_track/msg/IntList.msg")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/sort_track/msg" TYPE FILE FILES "/home/xavier/catkin_ws/src/sort-deepsort-yolov3-ROSS/sort_track/msg/IntList.msg")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -176,7 +176,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/sort_track" TYPE FILE FILES "/home/xavier/catkin_ws/src/sort-deepsort-yolov3-ROS/sort_track/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/sort_track" TYPE FILE FILES "/home/xavier/catkin_ws/src/sort-deepsort-yolov3-ROSS/sort_track/package.xml")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
