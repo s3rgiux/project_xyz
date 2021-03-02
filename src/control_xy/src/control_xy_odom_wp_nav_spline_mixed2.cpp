@@ -35,6 +35,7 @@ public:
         marker_pub   = nh.advertise<visualization_msgs::Marker>(nh.resolveName("/visualization_marker"),1);
         pos_peop_pub = nh.advertise<nav_msgs::Odometry>(nh.resolveName("/peop_way"),1);
         yolo_peop_pub = nh.advertise<nav_msgs::Odometry>(nh.resolveName("/yolo_peop_way"),1);
+        estim_pub = nh.advertise<nav_msgs::Odometry>(nh.resolveName("/estim_peop_way"),1);
         path_pub = nh.advertise<nav_msgs::Path>(nh.resolveName("/pathpeop"),1);
         head_subscriber = nh.subscribe("/euler", 1, &test_head::headCallback,this);
         odometry_sub = nh.subscribe("odom",1,&test_head::ReceiveOdometry,this);
@@ -56,6 +57,7 @@ public:
         volts_subscriber = nh.subscribe("/volts", 1, &test_head::voltsCallback,this);
         cost_subscriber = nh.subscribe("/costdetect", 1, &test_head::costCallback,this);
         yolo_subscriber = nh.subscribe("/peop_ang_yolo", 1, &test_head::yoloCallback,this);
+        sub_estim = nh.subscribe("/estimated_people", 1, &test_head::estimCallback,this);
         
         //nh.param<float>("break_distance", break_distance, 1.5);
         nh.getParam("/control_xy/break_distance", break_distance);
@@ -463,6 +465,21 @@ void distPeopCallback2(const std_msgs::Float32& msg){
        }
 
 
+void estimCallback(const geometry_msgs::Vector3& msg){
+
+    nav_msgs::Odometry odomp;
+    odomp.header.stamp = ros::Time::now();
+    odomp.header.frame_id="base_link";
+    odomp.pose.pose.position.x=msg.x;
+    odomp.pose.pose.position.y=msg.y;
+    odomp.pose.pose.position.z=0.0;
+    odomp.pose.pose.orientation.w=1.0;
+    estim_pub.publish(odomp);
+    
+    
+}
+
+
 ///yolo subs
 void yoloCallback(const geometry_msgs::Vector3& msg){
     yolo_status=msg.x;
@@ -486,11 +503,12 @@ void yoloCallback(const geometry_msgs::Vector3& msg){
 
 void match_lidar_people(){
     if(ang_peop_cam!=-500 && mode_follow && tracking_people==false  ){
-        
-        ROS_INFO("yolo %f,%f,%f,%f",ang_peop_cam,ang_peop_lidar,distanciaPeople2,aux_dist);
-        if(ang_peop_lidar<ang_peop_cam+6 && ang_peop_lidar> ang_peop_cam-6  && distanciaPeople2<aux_dist && distanciaPeople2<=near_far_distance && distanciaPeople2>50 && ang_peop_cam>-45 && ang_peop_cam<45 && ang_peop_lidar>-45 && ang_peop_lidar<45 ){
-            cont_detect_peop+=1;
-            missing_track=0;
+        cont_detect_peop+=1;
+        missing_track=0;
+        ROS_INFO("yolo %f,%f,%f,%f",ang_peop_cam,ang_peop_lidar,distanciaPeople2,dist_peop_cam);
+        if(ang_peop_lidar<ang_peop_cam+8 && ang_peop_lidar> ang_peop_cam-8  && distanciaPeople2<aux_dist && distanciaPeople2<=near_far_distance && distanciaPeople2>50 && ang_peop_cam>-45 && ang_peop_cam<45 && ang_peop_lidar>-45 && ang_peop_lidar<45 ){
+            
+            //missing_track=0;
             //cont_detect_peop+=1;
             aux_dist = distanciaPeople2;
             ROS_INFO("Received angle %f",ang_peop_lidar);
@@ -530,7 +548,7 @@ void match_lidar_people(){
                 stop_functions=false;
                 ctrl_side_costmap=0;
                 //fp = fopen ("/home/xavier/catkin_ws/src/control_xy/people.txt" , "w+");
-        }else if(cont_detect_peop>5){
+        }else if(cont_detect_peop>7){
             cont_detect_peop=0;
             tracking_people=false;
             ROS_INFO("Fail");
@@ -574,7 +592,7 @@ distanciaPeople2 = sqrt(cx*cx+cy*cy)*100;
 //ROS_INFO("d %s",danger?"TRUE":"FALSE");
 // ROS_INFO("tracked %f",ang_peop_lidar)
 //ROS_INFO("tracked %f,%f",tracked_cx,tracked_cy);
-ROS_INFO("detected %f,%f,%f",cx,cy,ang_peop_lidar);
+//ROS_INFO("detected %f,%f,%f",cx,cy,ang_peop_lidar);
 
 
 if(ang_peop_cam!=-500 && mode_follow && tracking_people==false  ){
@@ -582,7 +600,7 @@ if(ang_peop_cam!=-500 && mode_follow && tracking_people==false  ){
     match_lidar_people();
 }
 
-if(mode_follow && danger!=true && lidar_people_status>0){
+if(mode_follow && danger!=true ){ //&& lidar_people_status>0){
     //ROS_INFO("tracked1 %f",ang_peop_lidar);
         //if(cx!=-0.01 && cy !=-0.01 && tracking_people && cx<=(tracked_cx+radius_follow) && cx>=(tracked_cx-radius_follow) && cy<=(tracked_cy+radius_follow) && cy >=(tracked_cy-radius_follow) && stop_functions==false){//2
         //if(tracking_people && (yolo_status>0 || lidar_people_status>0) && stop_functions==false){
@@ -696,6 +714,7 @@ if(mode_follow && danger!=true && lidar_people_status>0){
         else if(danger==false  && lidar_people_status<1){//losted
             //if(is_near==false){
             missing_track+=1;
+            ROS_INFO("miss %i",missing_track);
             if(missing_track>count_to_miss){//thiscounter also can help to see if theres a lot of objects and its not able to follow
             //if(lidar_people_status<1){
                 if(is_near==true && tracking_people && stop_functions==false){
@@ -1426,10 +1445,13 @@ void collisioned(){
     mode_karugamo=false;
     mode_follow=false;
     free_way=false;
+    tracking_people=false;
+    cont_detect_peop=0;
     ctrl_front_follow= 0;
     ctrl_ang= 0;
     ctrl_front_manual= 0;
     ctrl_side_manual= 0; 
+    aux_dist=5000;
     vel_steer.linear.x= 0;
     vel_steer.angular.z= 0;
     speed_publisher.publish(vel_steer);
@@ -1444,6 +1466,8 @@ void remove_collision(){
     mode_follow=false;
     danger=false;
     free_way=true;
+    tracking_people=false;
+    cont_detect_peop=0;
     ctrl_front_follow= 0;
     ctrl_ang= 0;
     ctrl_front_manual= 0;
@@ -1454,6 +1478,7 @@ void remove_collision(){
     speed_publisher.publish(vel_steer);
     tracked_angle=0;
     ang_peop_lidar=0;
+    aux_dist=5000;
     distanciaPeople2=0;
     tracked_distance=0;
     publish_lost_tracked();
@@ -1471,6 +1496,7 @@ void mode_MANUAL(){
     mode_manual=true;
     mode_follow=false;
     tracking_people=false;
+    cont_detect_peop=0;
     start_route = false;
     mode_auto=false;
     danger=false;
@@ -1482,6 +1508,8 @@ void mode_MANUAL(){
     ctrl_ang= 0;
     ctrl_front_manual= 0;
     ctrl_side_manual= 0;
+    aux_dist=5000;
+    
     vel_steer.linear.x= 0;
     vel_steer.angular.z= 0;
     speed_publisher.publish(vel_steer);
@@ -1496,6 +1524,8 @@ void mode_IDLE()
         danger=false;
         mode_follow=false;
         tracking_people=false;
+        tracking_people=false;
+        cont_detect_peop=0;
         start_route = false;
         danger=false;
         ROS_INFO("Mode IDLE");
@@ -1504,6 +1534,7 @@ void mode_IDLE()
         ctrl_yaw = 0;
         ctrl_front_manual= 0;
         ctrl_side_manual= 0;
+        aux_dist=5000;
         alert_idle_sound();
         for (int i=0;i<10;i++){
             vel_steer.linear.x= 0;
@@ -1521,6 +1552,7 @@ void mode_people_follow()
     mode_manual=false;
     mode_follow=true;
     tracking_people=false;
+    cont_detect_peop=0;
     start_route = false;
     mode_auto=false;
     danger=false;
@@ -1543,6 +1575,7 @@ void mode_people_follow()
     //alerts_command.data=7;//7 peop follow 5 danger 4 warning 3 karugamo 2 idle 1 manual
     index_wp=-1;//init follow
     dist_auxwp=0;
+    aux_dist=5000;
     stop_functions=false;
     publish_lost_tracked();
     
@@ -1748,12 +1781,15 @@ private:
     ros::Subscriber joy_subscriber;
     ros::Subscriber subScan_;
     ros::Subscriber sub_amperage;
+    ros::Subscriber sub_estim;
     ros::Publisher marker_pub;
     ros::Publisher pos_peop_pub;
     ros::Publisher path_pub;
     ros::Publisher m1_pub;
     ros::Publisher m2_pub;
     ros::Publisher yolo_peop_pub;
+
+    ros::Publisher estim_pub;
 
     ros::Subscriber volts_subscriber; 
     ros::Subscriber cost_subscriber;    

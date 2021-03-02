@@ -49,12 +49,12 @@ control xy is the main program build in c++ to make it more fast needs to be com
 <param name="avg_curr_tresh"    type="double"	value="5.2"/> <!--vel to start detect collision-->
 <param name="peak_curr_tresh"    type="double"	value="5.9"/> <!--vel to start detect collision-->
 <param name="peak_not_heavy_curr"    type="double"	value="4.3"/> <!--vel to start detect collision-->
-<param name="count_to_miss"    type="double"	value="20"/> <!--counter that if overpass this then we lost people-->
+<param name="count_to_miss"    type="double"	value="40"/> <!--counter that if overpass this then we lost people-->
 <param name="gain_to_costmap"    type="double"	value="1.5"/> <!--counter that if overpass this then we lost people-->
 </node>
 
 <!-- extract obstacles form region of interest and send to control_xy -->
-<node pkg="obs_extract" type="main_sorted.py" name="obj_track" >
+<node pkg="obs_extract" type="main_sorted_kalman.py" name="obj_track" >
 <param name="front_detection"    type="double"	value="7"/> <!-- 3.5 --><!-- 5 -->
 <param name="side_detection"    type="double"	value="2.5"/>  <!-- 1.2 --><!-- 2.2 -->
 </node>

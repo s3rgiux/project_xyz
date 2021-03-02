@@ -61,9 +61,8 @@
 <!-- <node pkg="pitakuru" type="people_detect.py" name="people_detect"/>  -->
 
     <include file="$(find darknet_ros)/launch/yolo_v3.launch"/> 
-    <node pkg="peop_extract" type="peop_ext.py" name="peop_ext_yolo"/>
+    <node pkg="peop_extract" type="peop_ext_sort.py" name="peop_ext_yolo"/>
      
-
 
 <!-- keiganモーター制御/オドメトリ算出ノード -->
 <node pkg="pypro" name="pitakuru_wheels" type="pitakuruWheels.py">
@@ -108,12 +107,12 @@
 <param name="avg_curr_tresh"    type="double"	value="5.2"/> <!--vel to start detect collision-->
 <param name="peak_curr_tresh"    type="double"	value="5.9"/> <!--vel to start detect collision-->
 <param name="peak_not_heavy_curr"    type="double"	value="4.3"/> <!--vel to start detect collision-->
-<param name="count_to_miss"    type="double"	value="25"/> <!--counter that if overpass this then we lost people-->
+<param name="count_to_miss"    type="double"	value="35"/> <!--counter that if overpass this then we lost people-->
 <param name="gain_to_costmap"    type="double"	value="1.5"/> <!--counter that if overpass this then we lost people-->
 </node>
 
 <!-- extract obstacles form region of interest and send to control_xy -->
-<node pkg="obs_extract" type="main_sorted.py" name="obj_track" >
+<node pkg="obs_extract" type="main_sorted_kalman.py" name="obj_track" >
 <param name="front_detection"    type="double"	value="7"/> <!-- 3.5 --><!-- 5 -->
 <param name="side_detection"    type="double"	value="2.5"/>  <!-- 1.2 --><!-- 2.2 -->
 </node>
@@ -147,16 +146,11 @@
 <node name="frame_base" pkg="tf2_ros" type="static_transform_publisher" args="0 0 0 0 0 0 map my_frame"/>
 
 <!-- rosbag nodes -->
-<arg name="record_flag" default="true" /> <!-- set to true if i want to record-->
+<arg name="record_flag" default="false" /> <!-- set to true if i want to record-->
 
 <node pkg="rosbag" type="record" name="rosbag_record"
  args = "record -o /home/xavier/floor6.bag /alerts /camera_info /diagnostics /euler /fiducial_vertices /image_raw /j0/joy  /movement/karugamo/joy /movement/manual/joy /obstacles /pcl /peopAng /peopDist /raw_obstacles /rear_scan /rosout /rosout_agg /scan /state /tf /tf_static /trigger_action /peopAng2 /people/image /path /pathpeop /peop_way /visualization_marker /peop_ang_yolo "  
    if = "$(arg record_flag)" />
-
-
-
-
-
 <arg name="record_flag2" default="false" /> <!-- set to true if i want to record-->
 
 <node pkg="rosbag" type="record" name="rosbag_record"
