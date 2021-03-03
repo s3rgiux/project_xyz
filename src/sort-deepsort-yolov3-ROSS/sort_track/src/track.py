@@ -30,16 +30,13 @@ class trackclass:
 		self.cost_threhold = rospy.get_param('~cost_threhold')
 		self.min_hits = rospy.get_param('~min_hits')
 		self.max_age = rospy.get_param('~max_age')
-		image_sub = rospy.Subscriber(self.camera_topic,Image,self.callback_image)
+		#image_sub = rospy.Subscriber(self.camera_topic,Image,self.callback_image)
 		#Subscribe to darknet_ros to get BoundingBoxes from YOLOv3
 		sub_detection = rospy.Subscriber(self.detection_topic, BoundingBoxes , self.callback_det)
 		#Publish results of object tracking
 		self.pub_trackers = rospy.Publisher('sorted_tracked',IntList, queue_size=2) #self.tracker_topic, IntList, queue_size=2)
 		self.tracker = sort.Sort(max_age=self.max_age, min_hits=self.min_hits) #create instance of the SORT tracker
-		
 		self.track = []
-		
-		
 		self.msg = IntList()
 		
 

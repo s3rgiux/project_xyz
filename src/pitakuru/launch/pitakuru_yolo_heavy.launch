@@ -61,8 +61,8 @@
 <!-- <node pkg="pitakuru" type="people_detect.py" name="people_detect"/>  -->
 
     <include file="$(find darknet_ros)/launch/yolo_v3.launch"/> 
+    <include file="$(find sort_track)/launch/sort.launch"/> 
     <node pkg="peop_extract" type="peop_ext_sort.py" name="peop_ext_yolo"/>
-     
 
 <!-- keiganモーター制御/オドメトリ算出ノード -->
 <node pkg="pypro" name="pitakuru_wheels" type="pitakuruWheels.py">
@@ -146,10 +146,10 @@
 <node name="frame_base" pkg="tf2_ros" type="static_transform_publisher" args="0 0 0 0 0 0 map my_frame"/>
 
 <!-- rosbag nodes -->
-<arg name="record_flag" default="false" /> <!-- set to true if i want to record-->
+<arg name="record_flag" default="true" /> <!-- set to true if i want to record-->
 
 <node pkg="rosbag" type="record" name="rosbag_record"
- args = "record -o /home/xavier/floor6.bag /alerts /camera_info /diagnostics /euler /fiducial_vertices /image_raw /j0/joy  /movement/karugamo/joy /movement/manual/joy /obstacles /pcl /peopAng /peopDist /raw_obstacles /rear_scan /rosout /rosout_agg /scan /state /tf /tf_static /trigger_action /peopAng2 /people/image /path /pathpeop /peop_way /visualization_marker /peop_ang_yolo "  
+ args = "record -o /home/xavier/floor100.bag /alerts /camera_info /diagnostics /euler /fiducial_vertices /image_raw /j0/joy  /movement/karugamo/joy /movement/manual/joy /obstacles /pcl /peopAng /peopDist /raw_obstacles /rear_scan /rosout /rosout_agg /scan /state /tf /tf_static /trigger_action /peopAng2 /path /pathpeop /peop_way /visualization_marker /peop_ang_yolo /sorted_tracked /stateWheels"  
    if = "$(arg record_flag)" />
 <arg name="record_flag2" default="false" /> <!-- set to true if i want to record-->
 
@@ -169,10 +169,6 @@
  args = "record -o /home/xavier/test_scan.bag /stateWheels /alerts /state /m1_deriv /m2_deriv"  
    if = "$(arg record_m_flag)" />
 
-
-
-
- 
 
   
 <!--<include file="$(find hector_slam_launch)/launch/tutorial.launch"/> -->
