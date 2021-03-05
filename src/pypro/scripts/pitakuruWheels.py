@@ -424,7 +424,7 @@ class PitWheels:
     
     def correct_callback(self, data):
         
-	rospy.logerr("got correct callback")
+	#rospy.logerr("got correct callback")
         self.yPosLas =data.pose.pose.position.y
         self.xPosLas =data.pose.pose.position.x
         self.can_correct=True
@@ -436,7 +436,7 @@ class PitWheels:
 
 
     def angle_callback(self, data): 
-	rospy.logerr("angle {}".format(data.data))  
+	#rospy.logerr("angle {}".format(data.data))  
         if data.data<-173 or data.data>173:
             self.brinco=True
         else:

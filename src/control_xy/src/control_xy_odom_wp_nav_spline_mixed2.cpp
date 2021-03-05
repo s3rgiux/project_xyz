@@ -648,10 +648,12 @@ if(mode_follow && danger!=true ){ //&& lidar_people_status>0){
         //if(tracking_people && (yolo_status>0 || lidar_people_status>0) && stop_functions==false){
         if(tracking_people && lidar_people_status>0 && stop_functions==false){
             //cont_detect_peop=0;
+            /*
             if(yolo_status>0 && abs(ang_peop_lidar-ang_peop_cam)>21){
                 ROS_INFO("trying to match again");
                 match_lidar_people_again();
             }
+            */
             //ang_peop_lidar = 90+ atan2(cx, cy) * 180 / 3.1416 ;
             //ang_peop_lidar = -90+ atan2(cx, cy) * 180 / 3.1416 ;
             //ang_peop_lidar = 90- atan2(cx, cy) * 180 / 3.1416;
@@ -1901,7 +1903,7 @@ int main(int argc, char **argv)
     ros::NodeHandle nh; 
     test_head test_head_obj(nh);
     //ros::Rate rate(0.5); //0.5 Hz, every 2 second
-    ros::Rate rate(60); //100 Hz, every .01 second
+    ros::Rate rate(100); //100 Hz, every .01 second
     //printf("%f",-atan2(5,1)*180/3.1416);
     //ros::Duration(5.0).sleep(); // sleep for half a second
     test_head_obj.mode_IDLE();

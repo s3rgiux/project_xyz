@@ -105,11 +105,11 @@ class PitWheels:
         auxx=320-center_x
         auxy=480-center_y
         ang = np.arctan2(auxx, auxy) * 180 / np.pi
-        print('{},{},{},{},{},{}'.format(xmin,ymin,xmax,ymax,identif,ang))
+        #print('{},{},{},{},{},{}'.format(xmin,ymin,xmax,ymax,identif,ang))
         #cnt2=cnt2+1
         if self.first_got== False and self.tracking and self.tracked_x != -50 and self.tracked_y != -50 and self.tracked_ang < (self.tracked_ang + 7) and self.tracked_ang > (self.tracked_ang - 7) :#then we have tracked object
             #lst.append(x)
-            print("tracking first time")
+            #print("tracking first time")
             self.first_got=True
             self.tracked_id= identif
             self.lost_count=0
@@ -121,7 +121,7 @@ class PitWheels:
         #elif self.first_got and self.tracking and self.tracked_ang < (self.prev_ang + 9) and self.tracked_ang > (self.prev_ang - 9) and center_x < self.prev_cx+ self.pixels_radius and center_x > self.prev_cx- self.pixels_radius and center_y<self.prev_cy+self.pixels_radius and center_y>self.prev_cy-self.pixels_radius:#then we have tracked object
         elif self.first_got and self.tracked_id==identif:#then we have tracked object
             self.lost_count=0
-            print('tracking id {}'.format(identif))
+            #print('tracking id {}'.format(identif))
             alf=0.65
             estim=1/(((xmax-xmin)*(ymax-ymin))/100000)#1/((x.xmax+x.xmin)+(x.ymax+x.ymin))
             self.dist_estim=(alf*self.dist_estim)+((1-alf)*estim)
@@ -190,7 +190,7 @@ class PitWheels:
                 #if self.tracked_x != -50 and self.tracked_y != -50 and x.center.x<=(self.tracked_x+self.radius_follow) and x.center.x>=(self.tracked_x-self.radius_follow) and x.center.y <=(self.tracked_y+self.radius_follow) and x.center.y >=(self.tracked_y-self.radius_follow):#then we have tracked object
                 if self.first_got== False and self.tracking and self.tracked_x != -50 and self.tracked_y != -50 and self.tracked_ang < (self.tracked_ang + 7) and self.tracked_ang > (self.tracked_ang - 7) :#then we have tracked object
                     #lst.append(x)
-                    print("track first time")
+                    #print("track first time")
                     self.first_got=True
                     self.prev_cx=center_x
                     self.prev_cy=center_y
@@ -209,11 +209,11 @@ class PitWheels:
                 elif self.first_got and self.tracking and center_x < self.prev_cx+ self.pixels_radius and center_x > self.prev_cx- self.pixels_radius and center_y<self.prev_cy+self.pixels_radius and center_y>self.prev_cy-self.pixels_radius:#then we have tracked object
                     #lst.append(x)
                     #tracking correcto
-                    print("tracking")
+                    #print("tracking")
                     alf=0.65
                     estim=1/(((x.xmax-x.xmin)*(x.ymax-x.ymin))/100000)#1/((x.xmax+x.xmin)+(x.ymax+x.ymin))
                     self.dist_estim=(alf*self.dist_estim)+((1-alf)*estim)
-                    print('{},{},{},{}'.format(center_x,center_y,self.tracked_ang,self.dist_estim))
+                    #print('{},{},{},{}'.format(center_x,center_y,self.tracked_ang,self.dist_estim))
                     
                     self.prev_cx=center_x
                     self.prev_cy=center_y

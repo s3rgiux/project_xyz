@@ -84,7 +84,7 @@ def main():
 	#rate = rospy.Rate(10)
 	while not rospy.is_shutdown():
 		#track.obj.publish_dat()		
-		sleep(0.09)
+		sleep(0.07)
 		#rospy.spin()
 
 
