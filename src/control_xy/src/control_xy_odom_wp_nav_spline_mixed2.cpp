@@ -546,7 +546,7 @@ void match_lidar_people_again(){
 void match_lidar_people(){
     if(ang_peop_cam!=-500 && mode_follow && tracking_people==false  ){
         cont_detect_peop+=1;
-        missing_track=0;
+        //missing_track=0;
         ROS_INFO("yolo %f,%f,%f,%f",ang_peop_cam,ang_peop_lidar,distanciaPeople2,dist_peop_cam);
         if(ang_peop_lidar<ang_peop_cam+4 && ang_peop_lidar> ang_peop_cam-4  && distanciaPeople2<aux_dist && distanciaPeople2<=near_far_distance && distanciaPeople2>50 && ang_peop_cam>-45 && ang_peop_cam<45 && ang_peop_lidar>-45 && ang_peop_lidar<45 ){
             
@@ -805,7 +805,7 @@ if(mode_follow && danger!=true ){ //&& lidar_people_status>0){
                 missing_track=0;
                 cont_detect_peop=0;
                 sound_counter++;
-                if(sound_counter%14==0){
+                if(sound_counter%6==0){
                     alert_warning_sound();
                 }
                 
@@ -1312,7 +1312,7 @@ void follow_yolo(){
 
 void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan){
     //if(!collision || vel_m1 >= 0.0 || vel_m2 >=  0.0){
-    if(danger){
+    if(danger && collision == false ){
         danger_counter++;
         alert_danger_no_sound();
         if(danger_counter%65==0){

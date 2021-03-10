@@ -110,6 +110,7 @@ class PitWheels:
         self.follow_cx=0
         self.follow_cy=0
         self.first_got=False
+        self.prev_list= []
     
     def pubobs(self):
         if(time.time()-self.last_time>0.5):
@@ -186,21 +187,33 @@ class PitWheels:
         ang_aux=30
         lst2 = []
         lst3 = []
+        listid = []
         dst_aux=150000
         if len(lst)!=0:
             #now1=time.time()
-            objects = self.ct.update(inradious)
+            """ objects = self.ct.update(inradious)
             #end_now1=time.time()
             #print('objects')
             #rospy.logerr("a speed: {}".format(angular_speed))
             #rospy.logerr("objects")
             #now2=time.time()
+            velx=0
+            vely=0
+            prev_cx=0
+            prev_cy=0
             
             for(objectID,centroid) in objects.items():
-                # draw both the ID of the object and the centroid of the
-                # object on the output frame
-                #
-                #rospy.logerr('obj{},{},{}'.format(centroid[0],centroid[1],objectID))
+                #check if already seen
+                for i in range(len(self.prev_list)):
+                    if(objectID==self.prev_list[i][0]):
+                        prev_cx=self.prev_list[i][1]
+                        prev_cy=self.prev_list[i][2]
+                        velx=(centroid[0]-self.prev_list[i][1])
+                        vely=(centroid[1]-self.prev_list[i][2])
+                    else:
+                        velx=0#(centroid[0]-self.prev_list[i][0])
+                        vely=0#(centroid[1]-self.prev_list[i][1])
+
                 center_x= centroid[0]
                 center_y= centroid[1]
                 e_x=np.abs(self.tracked_x-center_x)
@@ -209,13 +222,15 @@ class PitWheels:
                 ang_obj= 90-np.arctan2(center_x, center_y) * 180 / np.pi
                 err_ang= np.abs(self.tracked_ang-ang_obj)
                 #if(dist<sel.radius_follow):
+                listid.append([objectID,centroid[0],centroid[1]])
                 lst2.append(([objectID,centroid],dist))#contains (error distancia and err ang)
-                self.msg_objects_in_radius.data=np.array([objectID,center_x*10,center_y*10,dist*100],dtype="int")
+                self.msg_objects_in_radius.data=np.array([objectID,center_x*10,center_y*10,velx*100,vely*100,dist*100,center_x*100,prev_cx*100,center_y*100,prev_cy*100,len(self.prev_list)],dtype="int")
                 self.peop_id_pub.publish(self.msg_objects_in_radius) 
                 
             #end_now2=time.time()
             #rospy.logerr('time ms{},{}'.format(now1-end_now1,end_now2-now2))
             lst2.sort(key=self.takeSecond)
+            self.prev_list=listid[:]
             obj_close=lst2[0]
             #for f in lst2:
             #    rospy.logerr(f)    
@@ -239,10 +254,10 @@ class PitWheels:
             self.prev_cy=closest.y
 
             self.last_time_tracked=time.time()
-            self.ang_pub.publish(closest)
+            self.ang_pub.publish(closest) """
            
 
-            """ for n in (lst):
+            for n in (lst):
                 e_x=np.abs(self.tracked_x-n.center.x)
                 e_y=np.abs(self.tracked_y-n.center.y)
                 dist=np.sqrt(e_x*e_x+e_y*e_y)
@@ -253,8 +268,8 @@ class PitWheels:
             #sort list
             lst2.sort(key=self.takeSecond)
             obj_close=lst2[0]
-            for f in lst2:
-                rospy.logerr(f)
+            #for f in lst2:
+            #    rospy.logerr(f)
             #self.predictedCoords = self.kfObj.Estimate(obj_close[0].center.x, obj_close[0].center.y) 
             #estim.x=self.predictedCoords[0]
             #estim.y=self.predictedCoords[1]
@@ -274,7 +289,7 @@ class PitWheels:
             self.prev_cx=closest.x
             self.prev_cy=closest.y
             self.last_time_tracked=time.time()
-            self.ang_pub.publish(closest) """
+            self.ang_pub.publish(closest)
              
             
     

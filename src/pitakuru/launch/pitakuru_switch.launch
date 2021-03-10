@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<launch>
+
+ <!-- スイッチの入出力制御 -->
+    <node pkg="pitakuru" type="switch.py" name="switch_">
+        <rosparam command="load" file="$(find pitakuru)/config/bright_env/switch.yaml" />
+    </node>
+
+ 
+   
+
+</launch>
