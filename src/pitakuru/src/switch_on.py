@@ -80,11 +80,12 @@ class SwitchInput(object):
         self.pub_volt.publish(volts_read)
         if(self.button_states["karugamo"] == 1 and self.status_on==False):
             self.count_status=self.count_status+1
-            if(self.count_status>4):
+            if(self.count_status>0):
                 self.status_on=True
                 self.count_status=0
                 rospy.logerr("encendiendo")
-                self.request_current_state()
+                #self.request_current_state()
+                #self.ser.write(b'6')
                 # try:
                 #     p=subprocess.Popen(["roslaunch","pitakuru","pitakuru_on_off.launch"])
                 #     self.gpid=p.pid
@@ -103,7 +104,7 @@ class SwitchInput(object):
         if(self.button_states["karugamo"] == 1 and self.status_on):
         # if(self.button_states["karugamo"] == 1):
             self.count_status=self.count_status+1
-            if(self.count_status>4):
+            if(self.count_status>2):
                 #os.system("shutdown /s /t 1")
                 #request_current_state()
                 self.shutdown()
@@ -150,7 +151,7 @@ class SwitchInput(object):
 
 if __name__ == "__main__":
     switch_input = SwitchInput()
-    #switch_input.request_current_state()
+    switch_input.request_current_state()
     # 制御周期
     ROS_RATE = 30
     R = rospy.Rate(ROS_RATE)

@@ -36,7 +36,8 @@ class SwitchInput(object):
 
     def alerts_cb(self,data):
         self.mode=data.data
-        
+        if(self.mode==100):
+            self.turn_off_led()
         if(self.mode==6):##handles collision and overrides the others
             self.ser.write(b'4')
             self.collision=True
@@ -78,6 +79,9 @@ class SwitchInput(object):
 
     #def callback(self, state):
         #self.set_LED_color(state)
+    
+    def turn_off_led(self):
+        self.ser.write(b'0')
 
     def shutdown(self):
         rospy.logwarn("shutting down switch node")
@@ -123,7 +127,7 @@ class SwitchInput(object):
         # if(self.button_states["karugamo"] == 1 and self.status_on):
         if(self.button_states["karugamo"] == 1):
             self.count_status=self.count_status+1
-            if(self.count_status>4):
+            if(self.count_status>2):
                 self.count_status=0
                 self.request_current_state()
                 self.shutdown()

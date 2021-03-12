@@ -4,51 +4,9 @@ lost
 lost 
 lost 
 lost 
-lost 
-lost 
-lost 
-lost 
-lost 
-lost 
-lost 
-lost 
-lost 
-lost 
-lost 
-lost 
-lost 
-lost 
-lost 
-lost 
-lost 
-lost 
-lost 
-lost 
-lost 
-lost 
-lost 
-lost 
-lost 
-lost 
-lost 
-lost 
-lost 
-lost 
-lost 
-lost 
-lost 
-lost 
-lost 
-lost 
-lost 
-lost 
-lost 
-lost 
-lost 
-lost 
-lost 
-lost 
-lost 
-lost 
-lost 
-lost 
+3682,13.662219,5000.000000
+a2.915023,0.690459,0.000000,0.000000,13.325599,0.000000,1
+near 0.000000,0.000000,0.000000,0.000000,-1
+near 0.000000,0.000000,0.000000,0.000000,-1
+near 0.000000,0.000000,0.000000,0.000000,-1
+near 0.036377,0.000174,0.000000,1.250019,-1

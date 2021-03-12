@@ -38,21 +38,27 @@ class trackclass:
 		self.tracker = sort.Sort(max_age=self.max_age, min_hits=self.min_hits) #create instance of the SORT tracker
 		self.track = []
 		self.msg = IntList()
+		self.last_time=0
 		
 
 	def callback_det(self,data):
 		detec = []
 		ntrackers = []
+		peop=[]
 		for box in data.bounding_boxes:
-			detec.append(np.array([box.xmin, box.ymin, box.xmax, box.ymax, round(box.probability,2)]))
-		self.detections = np.array(detec)
-		#Call the tracker
-		ntrackers = self.tracker.update(self.detections)
-		if len(ntrackers)>0:
-			for n in ntrackers:
-				trackerrss = np.array(n, dtype='int')
-				self.msg.data = trackerrss
-				self.pub_trackers.publish(self.msg)
+			if box.Class =="person":
+				#peop.append(box)
+				detec.append(np.array([box.xmin, box.ymin, box.xmax, box.ymax, round(box.probability,2)]))
+		if(len(detec)>0):
+			self.detections = np.array(detec)
+			#Call the tracker
+			ntrackers = self.tracker.update(self.detections)
+			if len(ntrackers)>0:
+				for n in ntrackers:
+					trackerrss = np.array(n, dtype='int')
+					self.msg.data = trackerrss
+					self.pub_trackers.publish(self.msg)
+			self.last_time=time.time()
 		#self.trackers = np.array(ntrackers, dtype='int')
 		#self.track = self.trackers
 		#self.msg.data = self.track
@@ -63,6 +69,13 @@ class trackclass:
 		#print(self.track)
 		#print(self.trackers.shape)
 		#self.pub_trackers.publish(self.msg)
+	
+	def publish_dat(self):
+		if(time.time()-self.last_time>0.5):
+			#trackerrss = 
+			self.msg.data = np.array([-1,-1,-1,-1,-1], dtype='int')
+			self.pub_trackers.publish(self.msg)
+
 			
 	def callback_image(self,data):
 		#Display Image
@@ -83,7 +96,7 @@ def main():
 	track_obj = trackclass()
 	#rate = rospy.Rate(10)
 	while not rospy.is_shutdown():
-		#track.obj.publish_dat()		
+		track_obj.publish_dat()		
 		sleep(0.07)
 		#rospy.spin()
 
