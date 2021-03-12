@@ -99,56 +99,57 @@ class PitWheels:
         xmax=rcv[2]
         ymax=rcv[3]
         identif =rcv[4]
-        #print(rcv[0])
-        center_x=(xmax+xmin)/2
-        center_y=(ymax+ymin)/2
-        auxx=320-center_x
-        auxy=480-center_y
-        ang = np.arctan2(auxx, auxy) * 180 / np.pi
-        #print('{},{},{},{},{},{}'.format(xmin,ymin,xmax,ymax,identif,ang))
-        #cnt2=cnt2+1
-        if self.first_got== False and self.tracking and self.tracked_x != -50 and self.tracked_y != -50 and self.tracked_ang < (self.tracked_ang + 7) and self.tracked_ang > (self.tracked_ang - 7) :#then we have tracked object
-            #lst.append(x)
-            #print("tracking first time")
-            self.first_got=True
-            self.tracked_id= identif
-            self.lost_count=0
-            #self.prev_cx=center_x
-            #self.prev_cy=center_y
-            #self.prev_ang = self.tracked_ang
-            #self.dist_estim=0
-        #elif self.first_got and self.tracking and self.tracked_ang < (self.prev_ang + 4) and self.tracked_ang > (self.prev_ang - 4) and center_x < self.prev_cx+ self.pixels_radius and center_x > self.prev_cx- self.pixels_radius and center_y<self.prev_cy+self.pixels_radius and center_y>self.prev_cy-self.pixels_radius:#then we have tracked object
-        #elif self.first_got and self.tracking and self.tracked_ang < (self.prev_ang + 9) and self.tracked_ang > (self.prev_ang - 9) and center_x < self.prev_cx+ self.pixels_radius and center_x > self.prev_cx- self.pixels_radius and center_y<self.prev_cy+self.pixels_radius and center_y>self.prev_cy-self.pixels_radius:#then we have tracked object
-        elif self.first_got and self.tracked_id==identif:#then we have tracked object
-            self.lost_count=0
-            #print('tracking id {}'.format(identif))
-            alf=0.65
-            estim=1/(((xmax-xmin)*(ymax-ymin))/100000)#1/((x.xmax+x.xmin)+(x.ymax+x.ymin))
-            self.dist_estim=(alf*self.dist_estim)+((1-alf)*estim)
-            #print('{},{},{},{}'.format(center_x,center_y,self.tracked_ang,self.dist_estim))
-            
-            #self.prev_cx=center_x
-            #self.prev_cy=center_y
-            self.ang_dist.x=1#1identif#1 #x.center.x
-            self.ang_dist.y=self.dist_estim#x.center.y#dist*100
-            self.ang_dist.z=ang
-            self.prev_ang = self.tracked_ang
-            self.ang_pub.publish(self.ang_dist)
-            self.lost_count=0
-            self.last_time=time.time()#self.timex
-        else:
-            self.lost_count=self.lost_count+1
-            if(self.lost_count>9):
+        if(xmin!=-1 and xmin!=-1 and xmax!=-1 and ymax!=-1 and identif!=-1 ):
+            #print(rcv[0])
+            center_x=(xmax+xmin)/2
+            center_y=(ymax+ymin)/2
+            auxx=320-center_x
+            auxy=480-center_y
+            ang = np.arctan2(auxx, auxy) * 180 / np.pi
+            #print('{},{},{},{},{},{}'.format(xmin,ymin,xmax,ymax,identif,ang))
+            #cnt2=cnt2+1
+            if self.first_got== False and self.tracking and self.tracked_x != -50 and self.tracked_y != -50 and self.tracked_ang < (self.tracked_ang + 7) and self.tracked_ang > (self.tracked_ang - 7) :#then we have tracked object
+                #lst.append(x)
+                #print("tracking first time")
+                self.first_got=True
+                self.tracked_id= identif
                 self.lost_count=0
-                self.first_got=False
-                self.dist_estim=0
-            if self.first_got==False:
-                self.ang_dist.x=-1#x.center.x
-                self.ang_dist.y=0#x.center.y#dist*100
+                #self.prev_cx=center_x
+                #self.prev_cy=center_y
+                #self.prev_ang = self.tracked_ang
+                #self.dist_estim=0
+            #elif self.first_got and self.tracking and self.tracked_ang < (self.prev_ang + 4) and self.tracked_ang > (self.prev_ang - 4) and center_x < self.prev_cx+ self.pixels_radius and center_x > self.prev_cx- self.pixels_radius and center_y<self.prev_cy+self.pixels_radius and center_y>self.prev_cy-self.pixels_radius:#then we have tracked object
+            #elif self.first_got and self.tracking and self.tracked_ang < (self.prev_ang + 9) and self.tracked_ang > (self.prev_ang - 9) and center_x < self.prev_cx+ self.pixels_radius and center_x > self.prev_cx- self.pixels_radius and center_y<self.prev_cy+self.pixels_radius and center_y>self.prev_cy-self.pixels_radius:#then we have tracked object
+            elif self.first_got and self.tracked_id==identif:#then we have tracked object
+                self.lost_count=0
+                #print('tracking id {}'.format(identif))
+                alf=0.65
+                estim=1/(((xmax-xmin)*(ymax-ymin))/100000)#1/((x.xmax+x.xmin)+(x.ymax+x.ymin))
+                self.dist_estim=(alf*self.dist_estim)+((1-alf)*estim)
+                #print('{},{},{},{}'.format(center_x,center_y,self.tracked_ang,self.dist_estim))
+                
+                #self.prev_cx=center_x
+                #self.prev_cy=center_y
+                self.ang_dist.x=1#1identif#1 #x.center.x
+                self.ang_dist.y=self.dist_estim#x.center.y#dist*100
                 self.ang_dist.z=ang
+                self.prev_ang = self.tracked_ang
                 self.ang_pub.publish(self.ang_dist)
-                self.lost_count=self.lost_count=+1
-            self.last_time=time.time()#self.timex
+                self.lost_count=0
+                self.last_time=time.time()#self.timex
+            else:
+                self.lost_count=self.lost_count+1
+                if(self.lost_count>9):
+                    self.lost_count=0
+                    self.first_got=False
+                    self.dist_estim=0
+                if self.first_got==False:
+                    self.ang_dist.x=-1#x.center.x
+                    self.ang_dist.y=0#x.center.y#dist*100
+                    self.ang_dist.z=ang
+                    self.ang_pub.publish(self.ang_dist)
+                    self.lost_count=self.lost_count=+1
+                self.last_time=time.time()#self.timex
         
 
     
