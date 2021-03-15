@@ -15,6 +15,7 @@
 #include <ros/builtin_message_traits.h>
 #include <ros/message_operations.h>
 
+#include <geometry_msgs/Twist.h>
 
 namespace control_xy
 {
@@ -28,14 +29,20 @@ struct States_
     , state_karugamo()
     , state_collision()
     , state_danger()
-    , state_costmap()  {
+    , state_costmap()
+    , state_manual()
+    , state_scan()
+    , trackeds()  {
     }
   States_(const ContainerAllocator& _alloc)
     : state(_alloc)
     , state_karugamo(_alloc)
     , state_collision(_alloc)
     , state_danger(_alloc)
-    , state_costmap(_alloc)  {
+    , state_costmap(_alloc)
+    , state_manual(_alloc)
+    , state_scan(_alloc)
+    , trackeds(_alloc)  {
   (void)_alloc;
     }
 
@@ -55,6 +62,15 @@ struct States_
 
    typedef std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other >  _state_costmap_type;
   _state_costmap_type state_costmap;
+
+   typedef std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other >  _state_manual_type;
+  _state_manual_type state_manual;
+
+   typedef std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other >  _state_scan_type;
+  _state_scan_type state_scan;
+
+   typedef  ::geometry_msgs::Twist_<ContainerAllocator>  _trackeds_type;
+  _trackeds_type trackeds;
 
 
 
@@ -89,7 +105,10 @@ bool operator==(const ::control_xy::States_<ContainerAllocator1> & lhs, const ::
     lhs.state_karugamo == rhs.state_karugamo &&
     lhs.state_collision == rhs.state_collision &&
     lhs.state_danger == rhs.state_danger &&
-    lhs.state_costmap == rhs.state_costmap;
+    lhs.state_costmap == rhs.state_costmap &&
+    lhs.state_manual == rhs.state_manual &&
+    lhs.state_scan == rhs.state_scan &&
+    lhs.trackeds == rhs.trackeds;
 }
 
 template<typename ContainerAllocator1, typename ContainerAllocator2>
@@ -146,12 +165,12 @@ struct MD5Sum< ::control_xy::States_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "a970e58c537add5954e8c37ff3305a1c";
+    return "dfd48cf7701c5d144c13acc5c8b54ec0";
   }
 
   static const char* value(const ::control_xy::States_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0xa970e58c537add59ULL;
-  static const uint64_t static_value2 = 0x54e8c37ff3305a1cULL;
+  static const uint64_t static_value1 = 0xdfd48cf7701c5d14ULL;
+  static const uint64_t static_value2 = 0x4c13acc5c8b54ec0ULL;
 };
 
 template<class ContainerAllocator>
@@ -175,7 +194,28 @@ struct Definition< ::control_xy::States_<ContainerAllocator> >
 "string state_collision\n"
 "string state_danger\n"
 "string state_costmap\n"
+"string state_manual\n"
+"string state_scan\n"
+"geometry_msgs/Twist trackeds\n"
 "\n"
+"================================================================================\n"
+"MSG: geometry_msgs/Twist\n"
+"# This expresses velocity in free space broken into its linear and angular parts.\n"
+"Vector3  linear\n"
+"Vector3  angular\n"
+"\n"
+"================================================================================\n"
+"MSG: geometry_msgs/Vector3\n"
+"# This represents a vector in free space. \n"
+"# It is only meant to represent a direction. Therefore, it does not\n"
+"# make sense to apply a translation to it (e.g., when applying a \n"
+"# generic rigid transformation to a Vector3, tf2 will only apply the\n"
+"# rotation). If you want your data to be translatable too, use the\n"
+"# geometry_msgs/Point message instead.\n"
+"\n"
+"float64 x\n"
+"float64 y\n"
+"float64 z\n"
 ;
   }
 
@@ -199,6 +239,9 @@ namespace serialization
       stream.next(m.state_collision);
       stream.next(m.state_danger);
       stream.next(m.state_costmap);
+      stream.next(m.state_manual);
+      stream.next(m.state_scan);
+      stream.next(m.trackeds);
     }
 
     ROS_DECLARE_ALLINONE_SERIALIZER
@@ -227,6 +270,13 @@ struct Printer< ::control_xy::States_<ContainerAllocator> >
     Printer<std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other > >::stream(s, indent + "  ", v.state_danger);
     s << indent << "state_costmap: ";
     Printer<std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other > >::stream(s, indent + "  ", v.state_costmap);
+    s << indent << "state_manual: ";
+    Printer<std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other > >::stream(s, indent + "  ", v.state_manual);
+    s << indent << "state_scan: ";
+    Printer<std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other > >::stream(s, indent + "  ", v.state_scan);
+    s << indent << "trackeds: ";
+    s << std::endl;
+    Printer< ::geometry_msgs::Twist_<ContainerAllocator> >::stream(s, indent + "  ", v.trackeds);
   }
 };
 

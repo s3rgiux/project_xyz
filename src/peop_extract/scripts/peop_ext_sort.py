@@ -60,11 +60,11 @@ class PitWheels:
         self.timex=0
         self.last_time=0
         self.first_detection=False
-	self.tracked=False
+        self.tracked=False
         self.ang_cam=-500
         self.tracked_x=-50
         self.tracked_y=-50
-	self.tracked_ang=0
+        self.tracked_ang=0
         self.radius_follow=0.35
         self.tracking=False
         self.first_got=False
@@ -99,7 +99,8 @@ class PitWheels:
         xmax=rcv[2]
         ymax=rcv[3]
         identif =rcv[4]
-        if(xmin!=-1 and xmin!=-1 and xmax!=-1 and ymax!=-1 and identif!=-1 ):
+        #if(xmin!=-1 and xmin!=-1 and xmax!=-1 and ymax!=-1 and identif!=-1 ):
+        if(identif!=-1 ):
             #print(rcv[0])
             center_x=(xmax+xmin)/2
             center_y=(ymax+ymin)/2
@@ -123,7 +124,7 @@ class PitWheels:
             elif self.first_got and self.tracked_id==identif:#then we have tracked object
                 self.lost_count=0
                 #print('tracking id {}'.format(identif))
-                alf=0.65
+                alf=0.69
                 estim=1/(((xmax-xmin)*(ymax-ymin))/100000)#1/((x.xmax+x.xmin)+(x.ymax+x.ymin))
                 self.dist_estim=(alf*self.dist_estim)+((1-alf)*estim)
                 #print('{},{},{},{}'.format(center_x,center_y,self.tracked_ang,self.dist_estim))
@@ -139,7 +140,7 @@ class PitWheels:
                 self.last_time=time.time()#self.timex
             else:
                 self.lost_count=self.lost_count+1
-                if(self.lost_count>9):
+                if(self.lost_count>7):
                     self.lost_count=0
                     self.first_got=False
                     self.dist_estim=0

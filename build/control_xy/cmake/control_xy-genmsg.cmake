@@ -2,7 +2,7 @@
 
 message(STATUS "control_xy: 6 messages, 0 services")
 
-set(MSG_I_FLAGS "-Icontrol_xy:/home/xavier/catkin_ws/src/control_xy/msg;-Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg;-Iactionlib_msgs:/opt/ros/melodic/share/actionlib_msgs/cmake/../msg")
+set(MSG_I_FLAGS "-Icontrol_xy:/home/xavier/catkin_ws/src/control_xy/msg;-Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg;-Iactionlib_msgs:/opt/ros/melodic/share/actionlib_msgs/cmake/../msg;-Igeometry_msgs:/opt/ros/melodic/share/geometry_msgs/cmake/../msg")
 
 # Find all generators
 find_package(gencpp REQUIRED)
@@ -39,7 +39,7 @@ add_custom_target(_control_xy_generate_messages_check_deps_${_filename}
 
 get_filename_component(_filename "/home/xavier/catkin_ws/src/control_xy/msg/States.msg" NAME_WE)
 add_custom_target(_control_xy_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "control_xy" "/home/xavier/catkin_ws/src/control_xy/msg/States.msg" ""
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "control_xy" "/home/xavier/catkin_ws/src/control_xy/msg/States.msg" "geometry_msgs/Twist:geometry_msgs/Vector3"
 )
 
 get_filename_component(_filename "/home/xavier/catkin_ws/src/control_xy/msg/State.msg" NAME_WE)
@@ -80,7 +80,7 @@ _generate_msg_cpp(control_xy
 _generate_msg_cpp(control_xy
   "/home/xavier/catkin_ws/src/control_xy/msg/States.msg"
   "${MSG_I_FLAGS}"
-  ""
+  "/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Twist.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Vector3.msg"
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/control_xy
 )
 _generate_msg_cpp(control_xy
@@ -153,7 +153,7 @@ _generate_msg_eus(control_xy
 _generate_msg_eus(control_xy
   "/home/xavier/catkin_ws/src/control_xy/msg/States.msg"
   "${MSG_I_FLAGS}"
-  ""
+  "/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Twist.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Vector3.msg"
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/control_xy
 )
 _generate_msg_eus(control_xy
@@ -226,7 +226,7 @@ _generate_msg_lisp(control_xy
 _generate_msg_lisp(control_xy
   "/home/xavier/catkin_ws/src/control_xy/msg/States.msg"
   "${MSG_I_FLAGS}"
-  ""
+  "/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Twist.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Vector3.msg"
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/control_xy
 )
 _generate_msg_lisp(control_xy
@@ -299,7 +299,7 @@ _generate_msg_nodejs(control_xy
 _generate_msg_nodejs(control_xy
   "/home/xavier/catkin_ws/src/control_xy/msg/States.msg"
   "${MSG_I_FLAGS}"
-  ""
+  "/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Twist.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Vector3.msg"
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/control_xy
 )
 _generate_msg_nodejs(control_xy
@@ -372,7 +372,7 @@ _generate_msg_py(control_xy
 _generate_msg_py(control_xy
   "/home/xavier/catkin_ws/src/control_xy/msg/States.msg"
   "${MSG_I_FLAGS}"
-  ""
+  "/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Twist.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Vector3.msg"
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/control_xy
 )
 _generate_msg_py(control_xy
@@ -431,6 +431,9 @@ endif()
 if(TARGET actionlib_msgs_generate_messages_cpp)
   add_dependencies(control_xy_generate_messages_cpp actionlib_msgs_generate_messages_cpp)
 endif()
+if(TARGET geometry_msgs_generate_messages_cpp)
+  add_dependencies(control_xy_generate_messages_cpp geometry_msgs_generate_messages_cpp)
+endif()
 
 if(geneus_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/control_xy)
   # install generated code
@@ -444,6 +447,9 @@ if(TARGET std_msgs_generate_messages_eus)
 endif()
 if(TARGET actionlib_msgs_generate_messages_eus)
   add_dependencies(control_xy_generate_messages_eus actionlib_msgs_generate_messages_eus)
+endif()
+if(TARGET geometry_msgs_generate_messages_eus)
+  add_dependencies(control_xy_generate_messages_eus geometry_msgs_generate_messages_eus)
 endif()
 
 if(genlisp_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/control_xy)
@@ -459,6 +465,9 @@ endif()
 if(TARGET actionlib_msgs_generate_messages_lisp)
   add_dependencies(control_xy_generate_messages_lisp actionlib_msgs_generate_messages_lisp)
 endif()
+if(TARGET geometry_msgs_generate_messages_lisp)
+  add_dependencies(control_xy_generate_messages_lisp geometry_msgs_generate_messages_lisp)
+endif()
 
 if(gennodejs_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/control_xy)
   # install generated code
@@ -472,6 +481,9 @@ if(TARGET std_msgs_generate_messages_nodejs)
 endif()
 if(TARGET actionlib_msgs_generate_messages_nodejs)
   add_dependencies(control_xy_generate_messages_nodejs actionlib_msgs_generate_messages_nodejs)
+endif()
+if(TARGET geometry_msgs_generate_messages_nodejs)
+  add_dependencies(control_xy_generate_messages_nodejs geometry_msgs_generate_messages_nodejs)
 endif()
 
 if(genpy_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/control_xy)
@@ -487,4 +499,7 @@ if(TARGET std_msgs_generate_messages_py)
 endif()
 if(TARGET actionlib_msgs_generate_messages_py)
   add_dependencies(control_xy_generate_messages_py actionlib_msgs_generate_messages_py)
+endif()
+if(TARGET geometry_msgs_generate_messages_py)
+  add_dependencies(control_xy_generate_messages_py geometry_msgs_generate_messages_py)
 endif()

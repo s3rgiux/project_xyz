@@ -51,7 +51,7 @@ public:
         //ang_subscriber2 = nh.subscribe("peopAng2", 2, &test_head::angPeopCallback3,this);
         ang_subscriber2 = nh.subscribe("peopAng2", 2, &test_head::angPeopCallback4,this);
         //ang_subscriber_cam = nh.subscribe("ang_peop_detect_img", 1, &test_head::angCamCallback,this);
-        ang_subscriber_cam = nh.subscribe("ang_peop_detect_img", 1, &test_head::angCamCallback2,this);
+        //ang_subscriber_cam = nh.subscribe("ang_peop_detect_img", 1, &test_head::angCamCallback2,this);
         dist_subscriber2 = nh.subscribe("peopDist2", 1, &test_head::distPeopCallback2,this);
         obst_subscriber = nh.subscribe("/obstacle_closest", 1, &test_head::obstCallback,this);
         state_subscriber = nh.subscribe("/trigger_action", 1, &test_head::stateCallback,this);
@@ -448,8 +448,8 @@ void distPeopCallback2(const std_msgs::Float32& msg){
 } 
 
 
-  void angCamCallback2(const std_msgs::Float32& msg){
-                ang_peop_cam=msg.data;
+ /*  void angCamCallback2(const std_msgs::Float32& msg){
+        ang_peop_cam=msg.data;
         if(ang_peop_cam!=-500 && mode_follow && tracking_people==false  ){
             cont_detect_peop+=1;
             missing_track=0;
@@ -496,7 +496,7 @@ void distPeopCallback2(const std_msgs::Float32& msg){
             }
         }
        }
-
+ */
 
 void estimCallback(const geometry_msgs::Vector3& msg){
 
@@ -529,8 +529,6 @@ void yoloCallback(const geometry_msgs::Vector3& msg){
     odomp.pose.pose.position.z=0.0;
     odomp.pose.pose.orientation.w=1.0;
     yolo_peop_pub.publish(odomp);
-    
-    
 }
 
 void match_lidar_people_again(){
@@ -688,6 +686,52 @@ void blink_blue2(float dur){
     }
 }
 
+
+void check_scan(){
+    ros::Time time_now = ros::Time::now();
+    ros::Duration duration = time_now - last_time_scan;
+    if((duration.toSec())>0.6){
+        pitakuru_state_msg.state_scan="lidar_fail";
+        ros::Duration duration2 = time_now - time_blink_scan;
+        if(duration2.toSec()>0.2){
+            time_blink_scan=time_now;
+            if(status_led_yellow){
+                status_led_yellow=false;
+                alert_collision_no_sound();
+            }else{
+                status_led_yellow=true;
+                alert_turn_off_led();
+            }
+        }
+    }else{
+        pitakuru_state_msg.state_scan="lidar_ok";
+    }
+}
+
+
+void check_obsta(){
+    ros::Time time_now = ros::Time::now();
+    ros::Duration duration = time_now - last_time_obstacle;
+    if((duration.toSec())>0.3){
+        pitakuru_state_msg.state_karugamo="no_people_lidar_detection";
+        setZeroPosLidar();
+       /*  ros::Duration duration2 = time_now - time_blink_scan;
+        if(duration2.toSec()>0.2){
+            time_blink_scan=time_now;
+            if(status_led_yellow){
+                status_led_yellow=false;
+                alert_collision_no_sound();
+            }else{
+                status_led_yellow=true;
+                alert_turn_off_led();
+            }
+        } */
+    }/* else{
+        pitakuru_state_msg.state_scan="lidar_ok";
+    } */
+}
+
+
 void calc_100hz(){
 save_counter++;
 cicles=20;
@@ -705,7 +749,6 @@ distanciaPeople2 = sqrt(cx*cx+cy*cy)*100;
 if(ang_peop_cam!=-500 && mode_follow && tracking_people==false  ){
     ROS_INFO("trying to match");
     match_lidar_people();
-    
 }
 counter_blink++;
 if(mode_follow && danger!=true ){ //&& lidar_people_status>0){
@@ -726,7 +769,13 @@ if(mode_follow && danger!=true ){ //&& lidar_people_status>0){
             //distanciaPeople2 = sqrt(cx*cx+cy*cy)*100;
             //if( (lidar_people_status>1 ||  lidar_people_status<1)&& yolo_status >0){
             pitakuru_state_msg.state="KARUGAMO";
-            pitakuru_state_msg.state_karugamo=tracking;
+            pitakuru_state_msg.state_karugamo="tracking";
+            pitakuru_state_msg.trackeds.linear.x=distanciaPeople2;
+            pitakuru_state_msg.trackeds.linear.y=ang_peop_lidar;
+            pitakuru_state_msg.trackeds.linear.z=lidar_people_status;
+            pitakuru_state_msg.trackeds.angular.x=dist_peop_cam;
+            pitakuru_state_msg.trackeds.angular.y=ang_peop_cam;
+            pitakuru_state_msg.trackeds.angular.z=yolo_status;
             state_pub.publish(pitakuru_state_msg);
              nav_msgs::Odometry odomr;
                 odomr.header.stamp = ros::Time::now();
@@ -836,64 +885,85 @@ if(mode_follow && danger!=true ){ //&& lidar_people_status>0){
             //if(is_near==false){
             missing_track+=1;
             ROS_INFO("miss %i",missing_track);
-            //blink_blue(counter_blink,20);
-            blink_blue2(0.25);
-            pitakuru_state_msg.state="KARUGAMO";
-            pitakuru_state_msg.state_karugamo="losting_with_lidar";
-            state_pub.publish(pitakuru_state_msg);
-            ros::Time time_now = ros::Time::now();
-            ros::Duration duration = time_now - last_time_tracking;
-            if(duration.toSec()>duration_to_lost){
-                last_time_tracking= ros::Time::now();
+            if(yolo_status>0){
+                follow_yolo();
                 pitakuru_state_msg.state="KARUGAMO";
-                pitakuru_state_msg.state_karugamo="lost";
+                pitakuru_state_msg.state_karugamo="following yolo";
+                pitakuru_state_msg.trackeds.linear.x=distanciaPeople2;
+                pitakuru_state_msg.trackeds.linear.y=ang_peop_lidar;
+                pitakuru_state_msg.trackeds.linear.z=lidar_people_status;
+                pitakuru_state_msg.trackeds.angular.x=dist_peop_cam;
+                pitakuru_state_msg.trackeds.angular.y=ang_peop_cam;
+                pitakuru_state_msg.trackeds.angular.z=yolo_status;
                 state_pub.publish(pitakuru_state_msg);
+            }else{
+                //blink_blue(counter_blink,20);
+                blink_blue2(0.25);
+                pitakuru_state_msg.state="KARUGAMO";
+                pitakuru_state_msg.state_karugamo="losting_with_lidar";
+                pitakuru_state_msg.trackeds.linear.x=distanciaPeople2;
+                pitakuru_state_msg.trackeds.linear.y=ang_peop_lidar;
+                pitakuru_state_msg.trackeds.linear.z=lidar_people_status;
+                pitakuru_state_msg.trackeds.angular.x=dist_peop_cam;
+                pitakuru_state_msg.trackeds.angular.y=ang_peop_cam;
+                pitakuru_state_msg.trackeds.angular.z=yolo_status;
+                state_pub.publish(pitakuru_state_msg);
+
+                ros::Time time_now = ros::Time::now();
+                ros::Duration duration = time_now - last_time_tracking;
+                if(duration.toSec()>duration_to_lost){
+                    last_time_tracking= ros::Time::now();
+                    pitakuru_state_msg.state="KARUGAMO";
+                    pitakuru_state_msg.state_karugamo="lost";
+                    state_pub.publish(pitakuru_state_msg);
+
+                    //if(missing_track>count_to_miss){//thiscounter also can help to see if theres a lot of objects and its not able to follow
+                    //if(lidar_people_status<1){
+                    if(is_near==true && tracking_people && stop_functions==false){
+                        fprintf(fp2,"lost and near");
+                        //ctrl_front_follow=speed_wp_lost;//experiemntal 10
+                        //ctrl_front_follow=0;
+                        ctrl_yaw=0;
+                        //ctrl_yaw=(1-smooth_accel_karugamo_far)*(0)+(smooth_accel_karugamo_far*ctrl_yaw);
+                        vel_steer.linear.x= ctrl_front_follow;
+                        vel_steer.angular.z= ctrl_yaw;
+                        vel_steer.linear.x=(vel_steer.linear.x/21)*0.1045;
+                        vel_steer.angular.z=(vel_steer.angular.z/21)*0.1045;
+                        speed_publisher.publish(vel_steer);
+                        //alert_danger_no_sound();
+                        //alert_collision_no_sound();
+                        stop_functions=true;
+                        //is_near=false;
+                        //alerts_command.data=3;// 5 danger 4 warning 3 karugamo 2 idle 1 manual
+                        //alerts_publisher.publish(alerts_command);
+                        //if(cont_sp_follow>2){
+                        //  fprintf(fp2,"Entre far por lost num sp follow %i e index %i  \n",cont_sp_follow,cont_sp_follow-3);
+                        //  index_wp=cont_sp_follow-3;
+                        //}
+                    }
+                    stop_functions=true;
+                    tracking_lidar=false;
+                    tracking_yolo=false;
+                    ROS_INFO("LOST");
+                    fprintf(fp2,"lost \n");
+                    tracking_people=false;
+                    missing_track=0;
+                    tracked_cx=0;
+                    tracked_cy=0;
+                    aux_dist=5000;
+                    ctrl_side_costmap=0; 
+                    ///tracked_pos.x=-50;
+                    //tracked_pos.y=-50;
+                    //tracked_publisher.publish(tracked_pos);
+                    publish_lost_tracked();
+                    missing_track=0;
+                    cont_detect_peop=0;
+                    sound_counter++;
+                    if(sound_counter%6==0){
+                        alert_warning_sound();
+                    }
+                }
             
-            //if(missing_track>count_to_miss){//thiscounter also can help to see if theres a lot of objects and its not able to follow
-            //if(lidar_people_status<1){
-                if(is_near==true && tracking_people && stop_functions==false){
-					fprintf(fp2,"lost and near");
-                    //ctrl_front_follow=speed_wp_lost;//experiemntal 10
-		            //ctrl_front_follow=0;
-                    ctrl_yaw=0;
-                    //ctrl_yaw=(1-smooth_accel_karugamo_far)*(0)+(smooth_accel_karugamo_far*ctrl_yaw);
-                    vel_steer.linear.x= ctrl_front_follow;
-                    vel_steer.angular.z= ctrl_yaw;
-                    vel_steer.linear.x=(vel_steer.linear.x/21)*0.1045;
-                    vel_steer.angular.z=(vel_steer.angular.z/21)*0.1045;
-                    speed_publisher.publish(vel_steer);
-                    //alert_danger_no_sound();
-                    //alert_collision_no_sound();
-					stop_functions=true;
-                    //is_near=false;
-                    //alerts_command.data=3;// 5 danger 4 warning 3 karugamo 2 idle 1 manual
-                    //alerts_publisher.publish(alerts_command);
-                    //if(cont_sp_follow>2){
-                    //  fprintf(fp2,"Entre far por lost num sp follow %i e index %i  \n",cont_sp_follow,cont_sp_follow-3);
-                    //  index_wp=cont_sp_follow-3;
-                    //}
-                }
-                stop_functions=true;
-                tracking_lidar=false;
-                tracking_yolo=false;
-                ROS_INFO("LOST");
-                fprintf(fp2,"lost \n");
-                tracking_people=false;
-                missing_track=0;
-                tracked_cx=0;
-                tracked_cy=0;
-                aux_dist=5000;
-                ctrl_side_costmap=0; 
-                ///tracked_pos.x=-50;
-                //tracked_pos.y=-50;
-                //tracked_publisher.publish(tracked_pos);
-                publish_lost_tracked();
-                missing_track=0;
-                cont_detect_peop=0;
-                sound_counter++;
-                if(sound_counter%6==0){
-                    alert_warning_sound();
-                }
                 
             }
             if(stop_functions==true&& tracking_people==false){
@@ -1125,12 +1195,17 @@ if(is_near==false && stop_functions==false){
 
 
 void angPeopCallback4(const geometry_msgs::Vector3& msg){
-
-cx = msg.x;//pos people or object
-cy = msg.y;//pos people or object
-lidar_people_status=msg.z;
+    cx = msg.x;//pos people or object
+    cy = msg.y;//pos people or object
+    lidar_people_status=msg.z;
+    last_time_obstacle = ros::Time::now();
 }//end function
 
+void setZeroPosLidar(){
+    cx = -50;//pos people or object
+    cy = -50;//pos people or object
+    lidar_people_status=0;
+}
 
 void publish_lost_tracked(){
     tracked_pos.x=-50;
@@ -1182,18 +1257,13 @@ void calc_spline(){
 ///////////////////
 
 void near(){
-        //cx = msg.x;
-        //cy = msg.y;
-        //ang_peop_lidar = 90- atan2(cx, cy) * 180 / 3.1416 ;//-90+ atan2(cx, cy) * 180 / 3.1416 ;
-        //distanciaPeople2 = sqrt(cx*cx+cy*cy)*100;
-        // ROS_INFO("R%f,%f,%f,%f",cx,cy,ang_peop_lidar,distanciaPeople2);
+       
        if(mode_follow && danger!=true && stop_functions==false){ //&& tracking_people){//1
-            //     ROS_INFO("R%f,%f",cx,cy);
-            //     ROS_INFO("P%f,%f",tracked_cx,tracked_cy);
+            
             if(save_counter%12==0){
                 fprintf(fp2,"near %f,%f,%f,%f,%i\n",px,py,0.0,ang_robot,index_wp);
             }
-            //if( cx!=-0.01 && cy !=-0.01 && ang_peop_lidar<120 && ang_peop_lidar>-120 && tracking_people && cx<=(tracked_cx+radius_follow) && cx>=(tracked_cx-radius_follow) && cy<=(tracked_cy+radius_follow) && cy >=(tracked_cy-radius_follow)){//2
+            
             if (1==1){
                 //correccion needed
                 //ang_peop_lidar = -90+ atan2(cx, cy) * 180 / 3.1416 ;// ;  90- atan2(cx, cy) * 180 / 3.1416 
@@ -1316,102 +1386,132 @@ void near(){
 
 
 ///
-void follow_yolo(){
+void follow_yolo(){     
     if(mode_follow && danger!=true && stop_functions==false){ //&& tracking_people){//1
-            //   ROS_INFO("R%f,%f",cx,cy);
-                ang_peop_lidar = ang_peop_cam;//90- atan2(cx,cy) * 180 / 3.1416 ;// ;  -90+ atan2(cx, cy) * 180 / 3.1416 
-                //ang_peop_lidar = 90- atan2(cx, cy) * 180 / 3.1416 ;//-90+ atan2(cx, cy) * 180 / 3.1416 ;
-                distanciaPeople2 = dist_peop_cam;//sqrt(cx*cx+cy*cy)*100;
-                //ROS_INFO("T%f,%f",tracked_cx,tracked_cy);
-                tracked_angle= ang_peop_lidar;
-                //tracked_distance = distanciaPeople2;
-                ROS_INFO("tracked_yolo%f, %f ",tracked_angle,distanciaPeople2);
-                missing_track=0;
-                //tracked_cx=cx;
-                //tracked_cy=cy;
-                tracked_pos.x=cx;
-                tracked_pos.y=cy;
-                tracked_pos.z=tracked_angle;
-                tracked_publisher.publish(tracked_pos);
-                geometry_msgs::Twist vel_steer;     
+        
+        if(save_counter%12==0){
+            fprintf(fp2,"near %f,%f,%f,%f,%i\n",px,py,0.0,ang_robot,index_wp);
+        }
+        
+        if (1==1){
+            //correccion needed
+            //ang_peop_lidar = -90+ atan2(cx, cy) * 180 / 3.1416 ;// ;  90- atan2(cx, cy) * 180 / 3.1416 
+            //ang_peop_lidar = 90- atan2(cx,cy) * 180 / 3.1416 ;// ;  -90+ atan2(cx, cy) * 180 / 3.1416 
+            //distanciaPeople2 = sqrt(cx*cx+cy*cy)*100;
+            //ROS_INFO("T%f,%f",tracked_cx,tracked_cy);
+            //f((abs(ang_peop_cam-ang_peop_lidar)>29 || lidar_people_status>1) && yolo_status == 1){
+            //if( lidar_people_status>1 && yolo_status >0){
+            //    alert_collision_no_sound();
+            //    ang_peop_lidar = ang_peop_cam ;// ;  -90+ atan2(cx, cy) * 180 / 3.1416 
+            //    distanciaPeople2 = dist_peop_cam;
+            //}else{
+                ang_peop_lidar = ang_peop_cam;// ;  -90+ atan2(cx, cy) * 180 / 3.1416 
+                distanciaPeople2 = dist_peop_cam;
+            //}
+
+            tracked_angle= ang_peop_cam;
+            tracked_distance = ang_peop_cam;
+            missing_track=0;
+            //tracked_cx=cx;
+            //tracked_cy=cy;
+            //tracked_pos.x=cx;
+            //tracked_pos.y=cy;
+            //tracked_pos.z=tracked_angle;
+            //tracked_publisher.publish(tracked_pos);
+            //geometry_msgs::Twist vel_steer;  
+
+            
+            //if(abs(ang_peop_cam-ang_peop_lidar)>19 && yolo_status == 1){
+            //    alert_collision_no_sound();
+                //   ctrl_ang= low_vel_gain_follow*ang_peop_cam-ctrl_ang/2;
+            //}else{
                 ctrl_ang= low_vel_gain_follow*ang_peop_lidar-ctrl_ang/2;
-                //experiementa
-                ctrl_add_side=(1-smooth_accel_side_manual)*(joy_side*max_speed_side_manual)+(smooth_accel_side_manual*ctrl_side_manual);
+            //}
+            //experiementa
+            ctrl_add_side=(1-smooth_accel_side_manual)*(joy_side*max_speed_side_manual)+(smooth_accel_side_manual*ctrl_side_manual);
+            
+            if(vel_m1 >= vel_detect_costmap || vel_m2 >= vel_detect_costmap){
                 ctrl_side_costmap=(1-smooth_accel_side_manual)*(cost_obst*max_speed_side_manual)+(smooth_accel_side_manual*ctrl_side_costmap);
-                ctrl_ang=ctrl_ang+ctrl_add_side+ctrl_side_costmap*gain_to_costmap;
-                //
-                float restriction=450;
-                if (ctrl_ang>restriction){
-                    ctrl_ang= restriction;
-                }else if (ctrl_ang<-restriction){
-                    ctrl_ang= -restriction;
-                }
-                vel_steer.angular.z=ctrl_ang;//low_vel_gain*msg.data;//*(distanciaPeople/40);
-
-                if(distanciaPeople2>dist_robot_people){//dist_robot_people
-                    float  norm_dist,dist_conv;
-                    dist_conv=distanciaPeople2;
-                    if(dist_conv>max_dist_toacc){
-                        dist_conv=max_dist_toacc;
-                        norm_dist=(dist_conv-dist_robot_people)/(max_dist_toacc-dist_robot_people);
-                    }else{
-                     norm_dist=(dist_conv-dist_robot_people)/(max_dist_toacc-dist_robot_people);
-                    }
-
-                    //ctrl_front_follow=(1-smooth_accel)*(frontal_gain_follow*(distanciaPeople2-100))+(smooth_accel*ctrl_front_follow);
-                    if (heavy){
-                        ctrl_front_follow=(1-smooth_accel_karugamo_near)*(frontal_gain_follow*norm_dist/*max_speed_follow*/)+(smooth_accel_karugamo_near*ctrl_front_follow);
-                        //experimental
-                        ctrl_add_front=(1-smooth_accel_manual)*(joy_front*max_speed_manual)+(smooth_accel_manual*ctrl_front_manual);
-                        ctrl_front_follow=ctrl_front_follow+ctrl_add_front;
-                        if(ctrl_front_follow<0 ){
-                            ctrl_front_follow=0;
-                            vel_steer.linear.x=0;
-                        }
-                        if (ctrl_front_follow>max_speed_follow){
-                            ctrl_front_follow= max_speed_follow;
-                        }
-                    }else{
-                        ctrl_front_follow=(1-smooth_accel_karugamo_near)*(max_speed_manual *norm_dist/*max_speed_follow*/)+(smooth_accel_karugamo_near*ctrl_front_follow);
-                        //experimental
-                        ctrl_add_front=(1-smooth_accel_manual)*(joy_front*max_speed_manual)+(smooth_accel_manual*ctrl_front_manual);
-                        ctrl_front_follow=ctrl_front_follow+ctrl_add_front;
-                        if(ctrl_front_follow<0 ){
-                            ctrl_front_follow=0;
-                            vel_steer.linear.x=0;
-                        }
-                        if (ctrl_front_follow>max_speed_manual){
-                            ctrl_front_follow= max_speed_manual;
-                        }
-                    }
-
-                    vel_steer.linear.x= ctrl_front_follow;
-                }else{
-                    ctrl_front_follow=(1-smooth_accel_stop)*(0)+(smooth_accel_stop*ctrl_front_follow);
-                    vel_steer.linear.x=0;
-                    ctrl_side_costmap=0; 
-                    //ctrl_front_follow=0;
-                }
-                //if(stop_follow==true||tracking_people==false){
-                //if(stop_follow==true){
-                //if(tracking_people==false){
-                //    vel_steer.linear.x=0;
-                //    vel_steer.angular.z=0;
-                //}
-                //stop_follow=false;
-
-                vel_steer.linear.x=(vel_steer.linear.x/21)*0.1045;
-                vel_steer.angular.z=(vel_steer.angular.z/21)*0.1045;
-                //alerts_command.data=7;// 5 danger 4 warning 3 karugamo 2 idle 1 manual
-                //alerts_publisher.publish(alerts_command);
-                speed_publisher.publish(vel_steer);
+            }else{
+                ctrl_side_costmap=0;
             }
+            //ROS_INFO("cost%f",ctrl_side_costmap);
+            ctrl_ang=ctrl_ang+ctrl_add_side+ctrl_side_costmap*gain_to_costmap;
+            //
+            float restriction=450;
+            if (ctrl_ang>restriction){
+                ctrl_ang= restriction;
+            }else if (ctrl_ang<-restriction){
+                ctrl_ang= -restriction;
+            }
+            vel_steer.angular.z=ctrl_ang;//low_vel_gain*msg.data;//*(distanciaPeople/40);
 
-}
+            if(distanciaPeople2>dist_robot_people){//dist_robot_people
+                float  norm_dist,dist_conv;
+                dist_conv=distanciaPeople2;
+                if(dist_conv>max_dist_toacc){
+                    dist_conv=max_dist_toacc;
+                    norm_dist=(dist_conv-dist_robot_people)/(max_dist_toacc-dist_robot_people);
+                }else{
+                    norm_dist=(dist_conv-dist_robot_people)/(max_dist_toacc-dist_robot_people);
+                }
+
+                //ctrl_front_follow=(1-smooth_accel)*(frontal_gain_follow*(distanciaPeople2-100))+(smooth_accel*ctrl_front_follow);
+                if (heavy){
+                    ctrl_front_follow=(1-smooth_accel_karugamo_near)*(frontal_gain_follow*norm_dist/*max_speed_follow*/)+(smooth_accel_karugamo_near*ctrl_front_follow);
+                    //experimental
+                    ctrl_add_front=(1-smooth_accel_manual)*(joy_front*max_speed_manual)+(smooth_accel_manual*ctrl_front_manual);
+                    ctrl_front_follow=ctrl_front_follow+ctrl_add_front;
+                    if(ctrl_front_follow<0){
+                        ctrl_front_follow=0;
+                        vel_steer.linear.x=0;
+                    }
+                    if (ctrl_front_follow>max_speed_follow){
+                        ctrl_front_follow= max_speed_follow;
+                    }
+                }else{
+                    ctrl_front_follow=(1-smooth_accel_karugamo_near)*(max_speed_manual *norm_dist/*max_speed_follow*/)+(smooth_accel_karugamo_near*ctrl_front_follow);
+                    //experimental
+                    ctrl_add_front=(1-smooth_accel_manual)*(joy_front*max_speed_manual)+(smooth_accel_manual*ctrl_front_manual);
+                    ctrl_front_follow=ctrl_front_follow+ctrl_add_front;
+                    if(ctrl_front_follow<0 ){
+                        ctrl_front_follow=0;
+                        vel_steer.linear.x=0;
+                    }
+                    if (ctrl_front_follow>max_speed_manual){
+                        ctrl_front_follow= max_speed_manual;
+                    }
+                }
+                vel_steer.linear.x= ctrl_front_follow;
+            }else{
+                ctrl_front_follow=(1-smooth_accel_stop)*(0)+(smooth_accel_stop*ctrl_front_follow);
+                vel_steer.linear.x=0;
+                ctrl_side_costmap=0;
+                //ctrl_front_follow=0;
+            }
+            //if(stop_follow==true||tracking_people==false){
+            //if(stop_follow==true){
+            //if(tracking_people==false){
+            //    vel_steer.linear.x=0;
+            //    vel_steer.angular.z=0;
+            //}
+            //stop_follow=false;
+
+            vel_steer.linear.x=(vel_steer.linear.x/21)*0.1045;
+            vel_steer.angular.z=(vel_steer.angular.z/21)*0.1045;
+            //alerts_command.data=7;// 5 danger 4 warning 3 karugamo 2 idle 1 manual
+            //alerts_publisher.publish(alerts_command);
+            speed_publisher.publish(vel_steer);
+        }
+
+    }//mode3
+       
+}  
 ////
 
 void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan){
     //if(!collision || vel_m1 >= 0.0 || vel_m2 >=  0.0){
+    last_time_scan=ros::Time::now();
     counter_blink++;
     if(danger && collision == false ){
         danger_counter++;
@@ -2061,10 +2161,12 @@ private:
     int count_again,counter_blink;
     float new_tracked_cx,new_tracked_cy,aux_dist_again,new_tracked_angle;
     float vel_detect_costmap;
-    bool status_led_blue,status_led_green;
+    bool status_led_blue,status_led_green,status_led_yellow;
     double duration_to_lost;
-    ros::Time time_blink_bl,time_blink_volts;
+    ros::Time time_blink_bl,time_blink_volts,time_blink_scan;
     ros::Time  last_time_tracking;
+    ros::Time  last_time_scan;
+    ros::Time  last_time_obstacle;
     
 };
 
@@ -2088,6 +2190,8 @@ int main(int argc, char **argv)
     {
         ros::spinOnce();
         test_head_obj.calc_100hz();
+        test_head_obj.check_scan();
+        test_head_obj.check_obsta();
         rate.sleep();
     }
     return 0;

@@ -2,7 +2,8 @@
 (cl:in-package :asdf)
 
 (defsystem "control_xy-msg"
-  :depends-on (:roslisp-msg-protocol :roslisp-utils )
+  :depends-on (:roslisp-msg-protocol :roslisp-utils :geometry_msgs-msg
+)
   :components ((:file "_package")
     (:file "DriveWheel" :depends-on ("_package_DriveWheel"))
     (:file "_package_DriveWheel" :depends-on ("_package"))

@@ -1,0 +1,5 @@
+The dependencies of the message/service 'control_xy/States' have changed. Please rerun cmake.
+make[2]: *** [CMakeFiles/_control_xy_generate_messages_check_deps_States] Error 1
+make[1]: *** [CMakeFiles/_control_xy_generate_messages_check_deps_States.dir/all] Error 2
+make[1]: *** Waiting for unfinished jobs....
+make: *** [all] Error 2

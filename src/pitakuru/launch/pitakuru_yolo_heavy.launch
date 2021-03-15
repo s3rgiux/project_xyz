@@ -104,7 +104,7 @@
 <param name="trigger_vel"    type="double"	value="0.4"/> <!-- velocity to active search for load or not load-->
 <param name="trigger_current"    type="double"	value="8"/> <!-- how many amps to activate the heavy load-->
 <param name="vel_detect_scan"    type="double"	value="1.2"/> <!--vel to start detect collision-->
-<param name="volts_charge"    type="double"	value="27.0"/> <!--vel to start detect collision-->
+<param name="volts_charge"    type="double"	value="23.0"/> <!--vel to start detect collision-->
 <param name="avg_curr_tresh"    type="double"	value="5.2"/> <!--vel to start detect collision-->
 <param name="peak_curr_tresh"    type="double"	value="5.9"/> <!--vel to start detect collision-->
 <param name="peak_not_heavy_curr"    type="double"	value="4.3"/> <!--vel to start detect collision-->
@@ -154,7 +154,7 @@
 <arg name="record_flag" default="false" /> <!-- set to true if i want to record-->
 
 <node pkg="rosbag" type="record" name="rosbag_record"
- args = "record -o /home/xavier/floornew.bag /alerts /camera_info /diagnostics /euler /fiducial_vertices /image_raw /j0/joy  /movement/karugamo/joy /movement/manual/joy /obstacles /pcl /peopAng /peopDist /raw_obstacles /rear_scan /rosout /rosout_agg /scan /state /tf /tf_static /trigger_action /peopAng2 /peopAngSpeed /path /pathpeop /peop_way /peop_obst_id /peopAngSpeed /visualization_marker /peop_ang_yolo /peop_obst_id /sorted_tracked /stateWheels "  
+ args = "record -o /home/xavier/floornew.bag /alerts /camera_info /diagnostics /euler /fiducial_vertices /image_raw /j0/joy  /movement/karugamo/joy /movement/manual/joy /obstacles /pcl /peopAng /peopDist /raw_obstacles /rear_scan /rosout /rosout_agg /scan /state /tf /tf_static /trigger_action /peopAng2 /peopAngSpeed /path /pathpeop /peop_way /peop_obst_id /peopAngSpeed /visualization_marker /peop_ang_yolo /peop_obst_id /sorted_tracked /stateWheels /pitakuru_states "  
    if = "$(arg record_flag)" />
 
 <arg name="record_flag2" default="false" /> <!-- set to true if i want to record-->

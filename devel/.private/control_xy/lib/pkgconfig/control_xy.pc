@@ -5,4 +5,4 @@ Description: Description of control_xy
 Version: 0.0.0
 Cflags: -I/home/xavier/catkin_ws/devel/.private/control_xy/include
 Libs: -L${prefix}/lib 
-Requires: 
+Requires: roscpp rospy std_msgs geometry_msgs

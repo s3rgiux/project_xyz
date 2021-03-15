@@ -471,8 +471,6 @@ class PitWheels:
             self.left_w_dev.runvel_handler(int(lim))
         elif  self.left_velocity<-lim:
             self.left_w_dev.runvel_handler(int(-lim))
-
-
         if self.right_velocity<lim and self.right_velocity>-lim:
             self.right_w_dev.runvel_handler(int(self.right_velocity))  
             #rospy.sleep(0.017)

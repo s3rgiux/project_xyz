@@ -9,4 +9,10 @@
           STATE_DANGER
           STATE_COSTMAP-VAL
           STATE_COSTMAP
+          STATE_MANUAL-VAL
+          STATE_MANUAL
+          STATE_SCAN-VAL
+          STATE_SCAN
+          TRACKEDS-VAL
+          TRACKEDS
 ))

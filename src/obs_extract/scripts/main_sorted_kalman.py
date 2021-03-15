@@ -154,7 +154,7 @@ class PitWheels:
                 dist =np.sqrt(x.center.x*x.center.x+x.center.y*x.center.y)
                 self.angulo.data=ang
                 self.distancia.data=dist*100
-                if self.first_got and x.center.x<=(self.follow_cx+self.radius_follow) and x.center.x>=(self.follow_cx-self.radius_follow) and x.center.y <=(self.follow_cy+self.radius_follow) and x.center.y >=(self.follow_cy-self.radius_follow):#then we have tracked object
+                if self.first_got and x.center.x>0.2 and x.center.x<-0.2 and x.center.y>0.2 and x.center.y<-0.2 and  x.center.x<=(self.follow_cx+self.radius_follow) and x.center.x>=(self.follow_cx-self.radius_follow) and x.center.y <=(self.follow_cy+self.radius_follow) and x.center.y >=(self.follow_cy-self.radius_follow):#then we have tracked object
                     lst.append(x)
                     new=np.array([x.center.x,x.center.y])
                     inradious.append(new.astype("float"))

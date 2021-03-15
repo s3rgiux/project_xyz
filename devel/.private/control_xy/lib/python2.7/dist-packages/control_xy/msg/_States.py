@@ -6,9 +6,10 @@ python3 = True if sys.hexversion > 0x03000000 else False
 import genpy
 import struct
 
+import geometry_msgs.msg
 
 class States(genpy.Message):
-  _md5sum = "a970e58c537add5954e8c37ff3305a1c"
+  _md5sum = "dfd48cf7701c5d144c13acc5c8b54ec0"
   _type = "control_xy/States"
   _has_header = False  # flag to mark the presence of a Header object
   _full_text = """string state
@@ -16,10 +17,30 @@ string state_karugamo
 string state_collision
 string state_danger
 string state_costmap
+string state_manual
+string state_scan
+geometry_msgs/Twist trackeds
 
-"""
-  __slots__ = ['state','state_karugamo','state_collision','state_danger','state_costmap']
-  _slot_types = ['string','string','string','string','string']
+================================================================================
+MSG: geometry_msgs/Twist
+# This expresses velocity in free space broken into its linear and angular parts.
+Vector3  linear
+Vector3  angular
+
+================================================================================
+MSG: geometry_msgs/Vector3
+# This represents a vector in free space. 
+# It is only meant to represent a direction. Therefore, it does not
+# make sense to apply a translation to it (e.g., when applying a 
+# generic rigid transformation to a Vector3, tf2 will only apply the
+# rotation). If you want your data to be translatable too, use the
+# geometry_msgs/Point message instead.
+
+float64 x
+float64 y
+float64 z"""
+  __slots__ = ['state','state_karugamo','state_collision','state_danger','state_costmap','state_manual','state_scan','trackeds']
+  _slot_types = ['string','string','string','string','string','string','string','geometry_msgs/Twist']
 
   def __init__(self, *args, **kwds):
     """
@@ -29,7 +50,7 @@ string state_costmap
     changes.  You cannot mix in-order arguments and keyword arguments.
 
     The available fields are:
-       state,state_karugamo,state_collision,state_danger,state_costmap
+       state,state_karugamo,state_collision,state_danger,state_costmap,state_manual,state_scan,trackeds
 
     :param args: complete set of field values, in .msg order
     :param kwds: use keyword arguments corresponding to message field names
@@ -48,12 +69,21 @@ string state_costmap
         self.state_danger = ''
       if self.state_costmap is None:
         self.state_costmap = ''
+      if self.state_manual is None:
+        self.state_manual = ''
+      if self.state_scan is None:
+        self.state_scan = ''
+      if self.trackeds is None:
+        self.trackeds = geometry_msgs.msg.Twist()
     else:
       self.state = ''
       self.state_karugamo = ''
       self.state_collision = ''
       self.state_danger = ''
       self.state_costmap = ''
+      self.state_manual = ''
+      self.state_scan = ''
+      self.trackeds = geometry_msgs.msg.Twist()
 
   def _get_types(self):
     """
@@ -97,6 +127,20 @@ string state_costmap
         _x = _x.encode('utf-8')
         length = len(_x)
       buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+      _x = self.state_manual
+      length = len(_x)
+      if python3 or type(_x) == unicode:
+        _x = _x.encode('utf-8')
+        length = len(_x)
+      buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+      _x = self.state_scan
+      length = len(_x)
+      if python3 or type(_x) == unicode:
+        _x = _x.encode('utf-8')
+        length = len(_x)
+      buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+      _x = self
+      buff.write(_get_struct_6d().pack(_x.trackeds.linear.x, _x.trackeds.linear.y, _x.trackeds.linear.z, _x.trackeds.angular.x, _x.trackeds.angular.y, _x.trackeds.angular.z))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -107,6 +151,8 @@ string state_costmap
     """
     codecs.lookup_error("rosmsg").msg_type = self._type
     try:
+      if self.trackeds is None:
+        self.trackeds = geometry_msgs.msg.Twist()
       end = 0
       start = end
       end += 4
@@ -153,6 +199,28 @@ string state_costmap
         self.state_costmap = str[start:end].decode('utf-8', 'rosmsg')
       else:
         self.state_costmap = str[start:end]
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      start = end
+      end += length
+      if python3:
+        self.state_manual = str[start:end].decode('utf-8', 'rosmsg')
+      else:
+        self.state_manual = str[start:end]
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      start = end
+      end += length
+      if python3:
+        self.state_scan = str[start:end].decode('utf-8', 'rosmsg')
+      else:
+        self.state_scan = str[start:end]
+      _x = self
+      start = end
+      end += 48
+      (_x.trackeds.linear.x, _x.trackeds.linear.y, _x.trackeds.linear.z, _x.trackeds.angular.x, _x.trackeds.angular.y, _x.trackeds.angular.z,) = _get_struct_6d().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill
@@ -195,6 +263,20 @@ string state_costmap
         _x = _x.encode('utf-8')
         length = len(_x)
       buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+      _x = self.state_manual
+      length = len(_x)
+      if python3 or type(_x) == unicode:
+        _x = _x.encode('utf-8')
+        length = len(_x)
+      buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+      _x = self.state_scan
+      length = len(_x)
+      if python3 or type(_x) == unicode:
+        _x = _x.encode('utf-8')
+        length = len(_x)
+      buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+      _x = self
+      buff.write(_get_struct_6d().pack(_x.trackeds.linear.x, _x.trackeds.linear.y, _x.trackeds.linear.z, _x.trackeds.angular.x, _x.trackeds.angular.y, _x.trackeds.angular.z))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -206,6 +288,8 @@ string state_costmap
     """
     codecs.lookup_error("rosmsg").msg_type = self._type
     try:
+      if self.trackeds is None:
+        self.trackeds = geometry_msgs.msg.Twist()
       end = 0
       start = end
       end += 4
@@ -252,6 +336,28 @@ string state_costmap
         self.state_costmap = str[start:end].decode('utf-8', 'rosmsg')
       else:
         self.state_costmap = str[start:end]
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      start = end
+      end += length
+      if python3:
+        self.state_manual = str[start:end].decode('utf-8', 'rosmsg')
+      else:
+        self.state_manual = str[start:end]
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      start = end
+      end += length
+      if python3:
+        self.state_scan = str[start:end].decode('utf-8', 'rosmsg')
+      else:
+        self.state_scan = str[start:end]
+      _x = self
+      start = end
+      end += 48
+      (_x.trackeds.linear.x, _x.trackeds.linear.y, _x.trackeds.linear.z, _x.trackeds.angular.x, _x.trackeds.angular.y, _x.trackeds.angular.z,) = _get_struct_6d().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill
@@ -260,3 +366,9 @@ _struct_I = genpy.struct_I
 def _get_struct_I():
     global _struct_I
     return _struct_I
+_struct_6d = None
+def _get_struct_6d():
+    global _struct_6d
+    if _struct_6d is None:
+        _struct_6d = struct.Struct("<6d")
+    return _struct_6d

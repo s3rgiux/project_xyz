@@ -1,0 +1,13 @@
+[31m[1mCMake Error[0m at /home/xavier/catkin_ws/build/control_xy/cmake/control_xy-genmsg.cmake:3 (message):
+  Could not find messages which
+  '/home/xavier/catkin_ws/src/control_xy/msg/States.msg' depends on.  Did you
+  forget to specify generate_messages(DEPENDENCIES ...)?
+
+  Cannot locate message [Twist] in package [control_xy] with paths
+  [['/home/xavier/catkin_ws/src/control_xy/msg']]
+[36mCall Stack (most recent call first):[0m
+  /opt/ros/melodic/share/genmsg/cmake/genmsg-extras.cmake:307 (include)
+  CMakeLists.txt:81 (generate_messages)
+
+
+make: *** [cmake_check_build_system] Error 1
