@@ -23,6 +23,8 @@
    "STATE"
    "<STATEWHEELS>"
    "STATEWHEELS"
+   "<STATES>"
+   "STATES"
    "<TRIGGERACTION>"
    "TRIGGERACTION"
   ))

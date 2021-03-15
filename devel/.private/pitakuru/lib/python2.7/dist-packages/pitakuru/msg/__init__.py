@@ -8,4 +8,5 @@ from ._SoundFeedback import *
 from ._SoundGoal import *
 from ._SoundResult import *
 from ._State import *
+from ._States import *
 from ._TriggerAction import *

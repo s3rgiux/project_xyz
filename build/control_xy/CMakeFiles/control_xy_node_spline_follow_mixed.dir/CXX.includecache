@@ -54,6 +54,22 @@ ros/builtin_message_traits.h
 ros/message_operations.h
 -
 
+/home/xavier/catkin_ws/devel/.private/control_xy/include/control_xy/States.h
+string
+-
+vector
+-
+map
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
+
 /home/xavier/catkin_ws/devel/.private/control_xy/include/control_xy/TriggerAction.h
 string
 -
@@ -106,6 +122,8 @@ control_xy/Obstacle.h
 control_xy/TriggerAction.h
 -
 control_xy/StateWheels.h
+-
+control_xy/States.h
 -
 visualization_msgs/Marker.h
 -

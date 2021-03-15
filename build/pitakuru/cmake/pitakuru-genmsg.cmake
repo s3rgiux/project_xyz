@@ -1,6 +1,6 @@
 # generated from genmsg/cmake/pkg-genmsg.cmake.em
 
-message(STATUS "pitakuru: 11 messages, 0 services")
+message(STATUS "pitakuru: 12 messages, 0 services")
 
 set(MSG_I_FLAGS "-Ipitakuru:/home/xavier/catkin_ws/src/pitakuru/msg;-Ipitakuru:/home/xavier/catkin_ws/devel/.private/pitakuru/share/pitakuru/msg;-Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg;-Iactionlib_msgs:/opt/ros/melodic/share/actionlib_msgs/cmake/../msg")
 
@@ -35,6 +35,11 @@ add_custom_target(_pitakuru_generate_messages_check_deps_${_filename}
 get_filename_component(_filename "/home/xavier/catkin_ws/devel/.private/pitakuru/share/pitakuru/msg/SoundFeedback.msg" NAME_WE)
 add_custom_target(_pitakuru_generate_messages_check_deps_${_filename}
   COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "pitakuru" "/home/xavier/catkin_ws/devel/.private/pitakuru/share/pitakuru/msg/SoundFeedback.msg" ""
+)
+
+get_filename_component(_filename "/home/xavier/catkin_ws/src/pitakuru/msg/States.msg" NAME_WE)
+add_custom_target(_pitakuru_generate_messages_check_deps_${_filename}
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "pitakuru" "/home/xavier/catkin_ws/src/pitakuru/msg/States.msg" ""
 )
 
 get_filename_component(_filename "/home/xavier/catkin_ws/devel/.private/pitakuru/share/pitakuru/msg/SoundGoal.msg" NAME_WE)
@@ -98,6 +103,12 @@ _generate_msg_cpp(pitakuru
 )
 _generate_msg_cpp(pitakuru
   "/home/xavier/catkin_ws/src/pitakuru/msg/DriveWheel.msg"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/pitakuru
+)
+_generate_msg_cpp(pitakuru
+  "/home/xavier/catkin_ws/src/pitakuru/msg/States.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/pitakuru
@@ -167,6 +178,8 @@ get_filename_component(_filename "/home/xavier/catkin_ws/devel/.private/pitakuru
 add_dependencies(pitakuru_generate_messages_cpp _pitakuru_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/xavier/catkin_ws/devel/.private/pitakuru/share/pitakuru/msg/SoundFeedback.msg" NAME_WE)
 add_dependencies(pitakuru_generate_messages_cpp _pitakuru_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/xavier/catkin_ws/src/pitakuru/msg/States.msg" NAME_WE)
+add_dependencies(pitakuru_generate_messages_cpp _pitakuru_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/xavier/catkin_ws/devel/.private/pitakuru/share/pitakuru/msg/SoundGoal.msg" NAME_WE)
 add_dependencies(pitakuru_generate_messages_cpp _pitakuru_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/xavier/catkin_ws/src/pitakuru/msg/State.msg" NAME_WE)
@@ -211,6 +224,12 @@ _generate_msg_eus(pitakuru
 )
 _generate_msg_eus(pitakuru
   "/home/xavier/catkin_ws/src/pitakuru/msg/DriveWheel.msg"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/pitakuru
+)
+_generate_msg_eus(pitakuru
+  "/home/xavier/catkin_ws/src/pitakuru/msg/States.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/pitakuru
@@ -280,6 +299,8 @@ get_filename_component(_filename "/home/xavier/catkin_ws/devel/.private/pitakuru
 add_dependencies(pitakuru_generate_messages_eus _pitakuru_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/xavier/catkin_ws/devel/.private/pitakuru/share/pitakuru/msg/SoundFeedback.msg" NAME_WE)
 add_dependencies(pitakuru_generate_messages_eus _pitakuru_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/xavier/catkin_ws/src/pitakuru/msg/States.msg" NAME_WE)
+add_dependencies(pitakuru_generate_messages_eus _pitakuru_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/xavier/catkin_ws/devel/.private/pitakuru/share/pitakuru/msg/SoundGoal.msg" NAME_WE)
 add_dependencies(pitakuru_generate_messages_eus _pitakuru_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/xavier/catkin_ws/src/pitakuru/msg/State.msg" NAME_WE)
@@ -324,6 +345,12 @@ _generate_msg_lisp(pitakuru
 )
 _generate_msg_lisp(pitakuru
   "/home/xavier/catkin_ws/src/pitakuru/msg/DriveWheel.msg"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/pitakuru
+)
+_generate_msg_lisp(pitakuru
+  "/home/xavier/catkin_ws/src/pitakuru/msg/States.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/pitakuru
@@ -393,6 +420,8 @@ get_filename_component(_filename "/home/xavier/catkin_ws/devel/.private/pitakuru
 add_dependencies(pitakuru_generate_messages_lisp _pitakuru_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/xavier/catkin_ws/devel/.private/pitakuru/share/pitakuru/msg/SoundFeedback.msg" NAME_WE)
 add_dependencies(pitakuru_generate_messages_lisp _pitakuru_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/xavier/catkin_ws/src/pitakuru/msg/States.msg" NAME_WE)
+add_dependencies(pitakuru_generate_messages_lisp _pitakuru_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/xavier/catkin_ws/devel/.private/pitakuru/share/pitakuru/msg/SoundGoal.msg" NAME_WE)
 add_dependencies(pitakuru_generate_messages_lisp _pitakuru_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/xavier/catkin_ws/src/pitakuru/msg/State.msg" NAME_WE)
@@ -437,6 +466,12 @@ _generate_msg_nodejs(pitakuru
 )
 _generate_msg_nodejs(pitakuru
   "/home/xavier/catkin_ws/src/pitakuru/msg/DriveWheel.msg"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/pitakuru
+)
+_generate_msg_nodejs(pitakuru
+  "/home/xavier/catkin_ws/src/pitakuru/msg/States.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/pitakuru
@@ -506,6 +541,8 @@ get_filename_component(_filename "/home/xavier/catkin_ws/devel/.private/pitakuru
 add_dependencies(pitakuru_generate_messages_nodejs _pitakuru_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/xavier/catkin_ws/devel/.private/pitakuru/share/pitakuru/msg/SoundFeedback.msg" NAME_WE)
 add_dependencies(pitakuru_generate_messages_nodejs _pitakuru_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/xavier/catkin_ws/src/pitakuru/msg/States.msg" NAME_WE)
+add_dependencies(pitakuru_generate_messages_nodejs _pitakuru_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/xavier/catkin_ws/devel/.private/pitakuru/share/pitakuru/msg/SoundGoal.msg" NAME_WE)
 add_dependencies(pitakuru_generate_messages_nodejs _pitakuru_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/xavier/catkin_ws/src/pitakuru/msg/State.msg" NAME_WE)
@@ -550,6 +587,12 @@ _generate_msg_py(pitakuru
 )
 _generate_msg_py(pitakuru
   "/home/xavier/catkin_ws/src/pitakuru/msg/DriveWheel.msg"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/pitakuru
+)
+_generate_msg_py(pitakuru
+  "/home/xavier/catkin_ws/src/pitakuru/msg/States.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/pitakuru
@@ -618,6 +661,8 @@ add_dependencies(pitakuru_generate_messages_py _pitakuru_generate_messages_check
 get_filename_component(_filename "/home/xavier/catkin_ws/devel/.private/pitakuru/share/pitakuru/msg/SoundResult.msg" NAME_WE)
 add_dependencies(pitakuru_generate_messages_py _pitakuru_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/xavier/catkin_ws/devel/.private/pitakuru/share/pitakuru/msg/SoundFeedback.msg" NAME_WE)
+add_dependencies(pitakuru_generate_messages_py _pitakuru_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/xavier/catkin_ws/src/pitakuru/msg/States.msg" NAME_WE)
 add_dependencies(pitakuru_generate_messages_py _pitakuru_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/xavier/catkin_ws/devel/.private/pitakuru/share/pitakuru/msg/SoundGoal.msg" NAME_WE)
 add_dependencies(pitakuru_generate_messages_py _pitakuru_generate_messages_check_deps_${_filename})

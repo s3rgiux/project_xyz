@@ -4,6 +4,7 @@ file(REMOVE_RECURSE
   "/home/xavier/catkin_ws/devel/.private/pitakuru/share/common-lisp/ros/pitakuru/msg/TriggerAction.lisp"
   "/home/xavier/catkin_ws/devel/.private/pitakuru/share/common-lisp/ros/pitakuru/msg/SoundResult.lisp"
   "/home/xavier/catkin_ws/devel/.private/pitakuru/share/common-lisp/ros/pitakuru/msg/DriveWheel.lisp"
+  "/home/xavier/catkin_ws/devel/.private/pitakuru/share/common-lisp/ros/pitakuru/msg/States.lisp"
   "/home/xavier/catkin_ws/devel/.private/pitakuru/share/common-lisp/ros/pitakuru/msg/SoundGoal.lisp"
   "/home/xavier/catkin_ws/devel/.private/pitakuru/share/common-lisp/ros/pitakuru/msg/State.lisp"
   "/home/xavier/catkin_ws/devel/.private/pitakuru/share/common-lisp/ros/pitakuru/msg/SoundAction.lisp"

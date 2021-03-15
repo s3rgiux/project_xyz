@@ -17,6 +17,7 @@
 #include <control_xy/Obstacle.h> 
 #include <control_xy/TriggerAction.h> 
 #include <control_xy/StateWheels.h> 
+#include <control_xy/States.h>
 #include <visualization_msgs/Marker.h>
 #include <nav_msgs/Odometry.h>
 #include <nav_msgs/Path.h>
@@ -37,6 +38,8 @@ public:
         yolo_peop_pub = nh.advertise<nav_msgs::Odometry>(nh.resolveName("/yolo_peop_way"),1);
         estim_pub = nh.advertise<nav_msgs::Odometry>(nh.resolveName("/estim_peop_way"),1);
         path_pub = nh.advertise<nav_msgs::Path>(nh.resolveName("/pathpeop"),1);
+        state_pub = nh.advertise<control_xy::States>(nh.resolveName("/pitakuru_states"),1);
+
         head_subscriber = nh.subscribe("/euler", 1, &test_head::headCallback,this);
         odometry_sub = nh.subscribe("odom",1,&test_head::ReceiveOdometry,this);
         //odometry_sub = nh.subscribe("poseupdate",1,&test_head::ReceiveOdometry,this);
@@ -218,11 +221,43 @@ void setPointsCallback(const geometry_msgs::Twist& twist){
 void voltsCallback(const std_msgs::Float32& msg){
     //ROS_INFO("low voltage %f",msg.data);
     if(msg.data<volts_charge && mode_idle == true){
-        alert_danger_no_sound();
-        ros::Duration(0.3).sleep(); // sleep for half a second
+        /*
+        //alert_danger_no_sound();
         alert_idle_no_sound();
         ros::Duration(0.3).sleep(); // sleep for half a second
-        ROS_INFO("low voltage %f",msg.data);
+        //alert_idle_no_sound();
+        alert_turn_off_led();
+        ros::Duration(0.3).sleep(); // sleep for half a second
+        //ROS_INFO("low voltage %f",msg.data);
+        */
+
+        ros::Time time_now = ros::Time::now();
+        //ros::Duration(1.5).sleep();
+        //ros::Time time_end = ros::Time::now();
+        ros::Duration duration = time_now - time_blink_volts;
+        //ROS_INFO("Slept for %lf secs", duration.toSec());
+        //double tn = ros::Time::now().toSec();
+        //ROS_INFO("time %d",tn-time_blink_bl);//tn-time_blink_bl);
+        /* if((duration.toSec())>0.3){
+            //ROS_INFO("entered");
+            time_blink_volts=time_now;
+            if(status_led_green){
+                status_led_green=false;
+                //alert_karugamo_near_no_sound();
+                alert_idle_no_sound();
+            }else{
+                status_led_green=true;
+                alert_turn_off_led();
+            }
+        } */
+        if(status_led_green){
+                status_led_green=false;
+                //alert_karugamo_near_no_sound();
+                alert_idle_no_sound();
+            }else{
+                status_led_green=true;
+                alert_turn_off_led();
+            }
     }
 }    
 
@@ -690,6 +725,9 @@ if(mode_follow && danger!=true ){ //&& lidar_people_status>0){
             //ang_peop_lidar = 90- atan2(cx, cy) * 180 / 3.1416;
             //distanciaPeople2 = sqrt(cx*cx+cy*cy)*100;
             //if( (lidar_people_status>1 ||  lidar_people_status<1)&& yolo_status >0){
+            pitakuru_state_msg.state="KARUGAMO";
+            pitakuru_state_msg.state_karugamo=tracking;
+            state_pub.publish(pitakuru_state_msg);
              nav_msgs::Odometry odomr;
                 odomr.header.stamp = ros::Time::now();
                 odomr.header.frame_id="base_link";
@@ -800,11 +838,16 @@ if(mode_follow && danger!=true ){ //&& lidar_people_status>0){
             ROS_INFO("miss %i",missing_track);
             //blink_blue(counter_blink,20);
             blink_blue2(0.25);
+            pitakuru_state_msg.state="KARUGAMO";
+            pitakuru_state_msg.state_karugamo="losting_with_lidar";
+            state_pub.publish(pitakuru_state_msg);
             ros::Time time_now = ros::Time::now();
             ros::Duration duration = time_now - last_time_tracking;
             if(duration.toSec()>duration_to_lost){
                 last_time_tracking= ros::Time::now();
-                
+                pitakuru_state_msg.state="KARUGAMO";
+                pitakuru_state_msg.state_karugamo="lost";
+                state_pub.publish(pitakuru_state_msg);
             
             //if(missing_track>count_to_miss){//thiscounter also can help to see if theres a lot of objects and its not able to follow
             //if(lidar_people_status<1){
@@ -1564,9 +1607,12 @@ void collisioned(){
     ctrl_side_manual= 0; 
     aux_dist=5000;
     vel_steer.linear.x= 0;
+    vel_steer.linear.y=-1;//disable motors
     vel_steer.angular.z= 0;
     speed_publisher.publish(vel_steer);
     publish_lost_tracked();
+    pitakuru_state_msg.state="COLLISION";
+    state_pub.publish(pitakuru_state_msg);
 }
 
 void remove_collision(){
@@ -1585,6 +1631,7 @@ void remove_collision(){
     ctrl_side_manual= 0;
     alert_idle_sound();
     vel_steer.linear.x= 0;
+    vel_steer.linear.y=-1;//disable motors
     vel_steer.angular.z= 0;
     speed_publisher.publish(vel_steer);
     tracked_angle=0;
@@ -1593,6 +1640,8 @@ void remove_collision(){
     distanciaPeople2=0;
     tracked_distance=0;
     publish_lost_tracked();
+    pitakuru_state_msg.state="IDLE";
+    state_pub.publish(pitakuru_state_msg);
 }
 
 
@@ -1622,9 +1671,12 @@ void mode_MANUAL(){
     aux_dist=5000;
     
     vel_steer.linear.x= 0;
+    vel_steer.linear.y=1;//enable motors
     vel_steer.angular.z= 0;
     speed_publisher.publish(vel_steer);
     publish_lost_tracked();
+    pitakuru_state_msg.state="MANUAL";
+    state_pub.publish(pitakuru_state_msg);
 }
 void mode_IDLE()
 {
@@ -1649,10 +1701,13 @@ void mode_IDLE()
         alert_idle_sound();
         for (int i=0;i<10;i++){
             vel_steer.linear.x= 0;
+            vel_steer.linear.y=-1;//disable motors
             vel_steer.angular.z= 0;
             speed_publisher.publish(vel_steer);
         }
         publish_lost_tracked();
+        pitakuru_state_msg.state="IDLE";
+        state_pub.publish(pitakuru_state_msg);
    
 }
 
@@ -1689,6 +1744,8 @@ void mode_people_follow()
     aux_dist=5000;
     stop_functions=false;
     publish_lost_tracked();
+    pitakuru_state_msg.state="KARUGAMO";
+    state_pub.publish(pitakuru_state_msg);
     
 }
 
@@ -1749,6 +1806,7 @@ void loadRoute(){
             alerts_command.data=3;//8 follow 5 danger 4 warning 3 karugamo 2 idle 1 manual
             alerts_publisher.publish(alerts_command);
             vel_steer.linear.x= 0;
+            vel_steer.linear.y= 1;
             vel_steer.angular.z= 0;
             ctrl_front_follow= 0;
             ctrl_ang= 0;
@@ -1776,6 +1834,7 @@ void loadRoute(){
             alerts_command.data=3;//8 follow 5 danger 4 warning 3 karugamo 2 idle 1 manual
             alerts_publisher.publish(alerts_command);
             vel_steer.linear.x= 0;
+            vel_steer.linear.y= 1;
             vel_steer.angular.z= 0;
             ctrl_front_follow= 0;
             ctrl_ang= 0;
@@ -1810,6 +1869,7 @@ void loadRoute(){
         }else if(joy->buttons[0] && free_way && collision == false){//square
             mode_people_follow();
             vel_steer.linear.x=0;
+            vel_steer.linear.y= 1;
             vel_steer.angular.z=0;
             speed_publisher.publish(vel_steer);
             ros::Duration(0.5).sleep(); // sleep for half a second
@@ -1941,6 +2001,7 @@ private:
     ros::Publisher m1_pub;
     ros::Publisher m2_pub;
     ros::Publisher yolo_peop_pub;
+    ros::Publisher state_pub;
 
     ros::Publisher estim_pub;
 
@@ -1954,6 +2015,7 @@ private:
     visualization_msgs::Marker people_point;
     nav_msgs::Path path;
     geometry_msgs::PoseStamped posestamped;
+    control_xy::States pitakuru_state_msg;
 
 
     bool save_waypoint,start_tray,col_avoid_mode,danger, mode_idle,mode_karugamo,mode_manual,mode_follow,free_way,collision,mode_auto;
@@ -1999,9 +2061,9 @@ private:
     int count_again,counter_blink;
     float new_tracked_cx,new_tracked_cy,aux_dist_again,new_tracked_angle;
     float vel_detect_costmap;
-    bool status_led_blue;
+    bool status_led_blue,status_led_green;
     double duration_to_lost;
-    ros::Time time_blink_bl;
+    ros::Time time_blink_bl,time_blink_volts;
     ros::Time  last_time_tracking;
     
 };
@@ -2018,7 +2080,6 @@ int main(int argc, char **argv)
     //ros::Duration(22.0).sleep();
     for (int i=1;i<44;i++){
         test_head_obj.blink_green_sleep(0.2);
-
     }
     
     test_head_obj.mode_IDLE();

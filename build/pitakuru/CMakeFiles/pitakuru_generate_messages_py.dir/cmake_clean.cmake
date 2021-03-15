@@ -4,6 +4,7 @@ file(REMOVE_RECURSE
   "/home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg/_TriggerAction.py"
   "/home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg/_SoundResult.py"
   "/home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg/_DriveWheel.py"
+  "/home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg/_States.py"
   "/home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg/_SoundGoal.py"
   "/home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg/_State.py"
   "/home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg/_SoundAction.py"

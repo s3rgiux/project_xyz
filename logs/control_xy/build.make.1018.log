@@ -1,0 +1,44 @@
+[  0%] Built target std_msgs_generate_messages_py
+[  0%] Built target actionlib_msgs_generate_messages_py
+[  0%] Built target _control_xy_generate_messages_check_deps_States
+[  0%] Built target _control_xy_generate_messages_check_deps_StateWheels
+[  0%] Built target _control_xy_generate_messages_check_deps_State
+[  0%] Built target _control_xy_generate_messages_check_deps_TriggerAction
+[  0%] Built target _control_xy_generate_messages_check_deps_Obstacle
+[  0%] Built target rosgraph_msgs_generate_messages_py
+[  0%] Built target std_msgs_generate_messages_lisp
+[  0%] Built target actionlib_msgs_generate_messages_lisp
+[  0%] Built target std_msgs_generate_messages_eus
+[  0%] Built target rosgraph_msgs_generate_messages_lisp
+[  0%] Built target rosgraph_msgs_generate_messages_cpp
+[  0%] Built target rosgraph_msgs_generate_messages_eus
+[  0%] Built target roscpp_generate_messages_py
+[  0%] Built target actionlib_msgs_generate_messages_eus
+[  0%] Built target _control_xy_generate_messages_check_deps_DriveWheel
+[  0%] Built target actionlib_msgs_generate_messages_nodejs
+[  0%] Built target roscpp_generate_messages_lisp
+[  0%] Built target roscpp_generate_messages_eus
+[  0%] Built target std_msgs_generate_messages_nodejs
+[  0%] Built target roscpp_generate_messages_nodejs
+[  0%] Built target roscpp_generate_messages_cpp
+[  0%] Built target std_msgs_generate_messages_cpp
+[  0%] Built target actionlib_msgs_generate_messages_cpp
+[  0%] Built target rosgraph_msgs_generate_messages_nodejs
+[ 17%] Built target control_xy_generate_messages_py
+[ 32%] Built target control_xy_generate_messages_lisp
+[ 50%] Built target control_xy_generate_messages_eus
+[ 65%] Built target control_xy_generate_messages_nodejs
+[ 80%] Built target control_xy_generate_messages_cpp
+[ 80%] Built target control_xy_generate_messages
+[ 82%] [32mBuilding CXX object CMakeFiles/control_xy_node_spline_follow_mixed.dir/src/control_xy_odom_wp_nav_spline_mixed2.cpp.o[0m
+[ 87%] Built target control_xy_node_spline_follow
+[ 92%] Built target control_xy_node
+[ 97%] Built target control_xy_node_spline
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:20:29:[m[K [01;31m[Kfatal error: [m[Kpitakuru/States.h: No such file or directory
+compilation terminated.
+CMakeFiles/control_xy_node_spline_follow_mixed.dir/build.make:62: recipe for target 'CMakeFiles/control_xy_node_spline_follow_mixed.dir/src/control_xy_odom_wp_nav_spline_mixed2.cpp.o' failed
+make[2]: *** [CMakeFiles/control_xy_node_spline_follow_mixed.dir/src/control_xy_odom_wp_nav_spline_mixed2.cpp.o] Error 1
+CMakeFiles/Makefile2:611: recipe for target 'CMakeFiles/control_xy_node_spline_follow_mixed.dir/all' failed
+make[1]: *** [CMakeFiles/control_xy_node_spline_follow_mixed.dir/all] Error 2
+Makefile:140: recipe for target 'all' failed
+make: *** [all] Error 2

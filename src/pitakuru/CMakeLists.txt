@@ -54,6 +54,7 @@ add_message_files(
   DriveWheel.msg
   Obstacle.msg
   State.msg
+  States.msg
   TriggerAction.msg
 )
 

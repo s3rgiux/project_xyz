@@ -4,6 +4,7 @@
 CMakeFiles/control_xy_node_spline_follow_mixed.dir/src/control_xy_odom_wp_nav_spline_mixed2.cpp.o: /home/xavier/catkin_ws/devel/.private/control_xy/include/control_xy/Obstacle.h
 CMakeFiles/control_xy_node_spline_follow_mixed.dir/src/control_xy_odom_wp_nav_spline_mixed2.cpp.o: /home/xavier/catkin_ws/devel/.private/control_xy/include/control_xy/State.h
 CMakeFiles/control_xy_node_spline_follow_mixed.dir/src/control_xy_odom_wp_nav_spline_mixed2.cpp.o: /home/xavier/catkin_ws/devel/.private/control_xy/include/control_xy/StateWheels.h
+CMakeFiles/control_xy_node_spline_follow_mixed.dir/src/control_xy_odom_wp_nav_spline_mixed2.cpp.o: /home/xavier/catkin_ws/devel/.private/control_xy/include/control_xy/States.h
 CMakeFiles/control_xy_node_spline_follow_mixed.dir/src/control_xy_odom_wp_nav_spline_mixed2.cpp.o: /home/xavier/catkin_ws/devel/.private/control_xy/include/control_xy/TriggerAction.h
 CMakeFiles/control_xy_node_spline_follow_mixed.dir/src/control_xy_odom_wp_nav_spline_mixed2.cpp.o: /home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp
 CMakeFiles/control_xy_node_spline_follow_mixed.dir/src/control_xy_odom_wp_nav_spline_mixed2.cpp.o: /opt/ros/melodic/include/geometry_msgs/Point.h

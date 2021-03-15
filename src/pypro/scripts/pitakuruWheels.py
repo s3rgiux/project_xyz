@@ -242,6 +242,7 @@ class PitWheels:
         #self.right_w_dev = usbcontroller.USBController(params['right_w_addr'])
         print("Right Wheel Connected")
         rospy.loginfo("Connected to Right Wheel")
+        rospy.on_shutdown(self.shutdown)
    
         self.odo = Odometry()
         self.odo.header.frame_id='odom'
@@ -261,6 +262,8 @@ class PitWheels:
 
         self.right_velocity = 0
         self.left_velocity = 0
+        self.motors_enabled=False
+        self.disable_motors()
 
         self.xPosLas = 0
         self.yPosLas =0 
@@ -277,7 +280,15 @@ class PitWheels:
         rospy.Subscriber('/poseupdate', PoseWithCovarianceStamped, self.correct_callback, queue_size=1)
         rospy.Subscriber('/euler2', Float64, self.angle_callback, queue_size=1)
 
-
+    def enable_motors(self):
+        self.left_w_dev.enable_handler()
+        sleep(0.2)
+        self.right_w_dev.enable_handler()
+    
+    def disable_motors(self):
+        self.left_w_dev.disable_handler()
+        sleep(0.2)
+        self.right_w_dev.disable_handler()
 
     def pubodo2(self):
         try:
@@ -404,6 +415,12 @@ class PitWheels:
     def teleop_callback(self, data):
 	#linear_speed = data.linear.x
         #angular_speed = data.angular.z
+        if(data.linear.y==-1 and self.motors_enabled==True):
+            self.motors_enabled=False
+            self.disable_motors()
+        elif(data.linear.y==1 and self.motors_enabled==False):
+            self.motors_enabled=True
+            self.enable_motors()
         linear_speed = (data.linear.x*21)/0.1045
         angular_speed = (data.angular.z*21)/0.1045
         #rospy.logerr("a speed: {}".format(angular_speed))

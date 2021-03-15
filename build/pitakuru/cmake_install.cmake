@@ -133,6 +133,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
     "/home/xavier/catkin_ws/src/pitakuru/msg/DriveWheel.msg"
     "/home/xavier/catkin_ws/src/pitakuru/msg/Obstacle.msg"
     "/home/xavier/catkin_ws/src/pitakuru/msg/State.msg"
+    "/home/xavier/catkin_ws/src/pitakuru/msg/States.msg"
     "/home/xavier/catkin_ws/src/pitakuru/msg/TriggerAction.msg"
     )
 endif()

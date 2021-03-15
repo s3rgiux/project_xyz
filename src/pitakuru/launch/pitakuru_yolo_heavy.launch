@@ -104,7 +104,7 @@
 <param name="trigger_vel"    type="double"	value="0.4"/> <!-- velocity to active search for load or not load-->
 <param name="trigger_current"    type="double"	value="8"/> <!-- how many amps to activate the heavy load-->
 <param name="vel_detect_scan"    type="double"	value="1.2"/> <!--vel to start detect collision-->
-<param name="volts_charge"    type="double"	value="23.0"/> <!--vel to start detect collision-->
+<param name="volts_charge"    type="double"	value="27.0"/> <!--vel to start detect collision-->
 <param name="avg_curr_tresh"    type="double"	value="5.2"/> <!--vel to start detect collision-->
 <param name="peak_curr_tresh"    type="double"	value="5.9"/> <!--vel to start detect collision-->
 <param name="peak_not_heavy_curr"    type="double"	value="4.3"/> <!--vel to start detect collision-->

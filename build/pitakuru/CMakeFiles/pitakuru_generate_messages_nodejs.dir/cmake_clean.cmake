@@ -4,6 +4,7 @@ file(REMOVE_RECURSE
   "/home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg/TriggerAction.js"
   "/home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg/SoundResult.js"
   "/home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg/DriveWheel.js"
+  "/home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg/States.js"
   "/home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg/SoundGoal.js"
   "/home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg/State.js"
   "/home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg/SoundAction.js"

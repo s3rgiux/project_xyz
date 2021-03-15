@@ -5,11 +5,13 @@ project(control_xy)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
+  #pitakuru
   roscpp
   rospy
   std_msgs
   actionlib_msgs
   message_generation
+  
 )
 
 ## System dependencies are found with CMake's conventions
@@ -50,6 +52,7 @@ add_message_files(
   DriveWheel.msg
   Obstacle.msg
   State.msg
+  States.msg
   TriggerAction.msg
   StateWheels.msg
 )
@@ -115,9 +118,9 @@ generate_messages(
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-#  INCLUDE_DIRS include
-#  LIBRARIES test_model_car
-#  CATKIN_DEPENDS roscpp rospy std_msgs
+  #INCLUDE_DIRS include
+  #LIBRARIES pitakuru
+  #CATKIN_DEPENDS roscpp rospy std_msgs pitakuru
 #  DEPENDS system_lib
 )
 

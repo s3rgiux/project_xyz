@@ -4,6 +4,7 @@ file(REMOVE_RECURSE
   "/home/xavier/catkin_ws/devel/.private/pitakuru/share/roseus/ros/pitakuru/msg/TriggerAction.l"
   "/home/xavier/catkin_ws/devel/.private/pitakuru/share/roseus/ros/pitakuru/msg/SoundResult.l"
   "/home/xavier/catkin_ws/devel/.private/pitakuru/share/roseus/ros/pitakuru/msg/DriveWheel.l"
+  "/home/xavier/catkin_ws/devel/.private/pitakuru/share/roseus/ros/pitakuru/msg/States.l"
   "/home/xavier/catkin_ws/devel/.private/pitakuru/share/roseus/ros/pitakuru/msg/SoundGoal.l"
   "/home/xavier/catkin_ws/devel/.private/pitakuru/share/roseus/ros/pitakuru/msg/State.l"
   "/home/xavier/catkin_ws/devel/.private/pitakuru/share/roseus/ros/pitakuru/msg/SoundAction.l"

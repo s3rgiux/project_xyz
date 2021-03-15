@@ -1,9 +1,10 @@
 file(REMOVE_RECURSE
   "CMakeFiles/control_xy_generate_messages_cpp"
   "/home/xavier/catkin_ws/devel/.private/control_xy/include/control_xy/DriveWheel.h"
+  "/home/xavier/catkin_ws/devel/.private/control_xy/include/control_xy/Obstacle.h"
   "/home/xavier/catkin_ws/devel/.private/control_xy/include/control_xy/StateWheels.h"
   "/home/xavier/catkin_ws/devel/.private/control_xy/include/control_xy/TriggerAction.h"
-  "/home/xavier/catkin_ws/devel/.private/control_xy/include/control_xy/Obstacle.h"
+  "/home/xavier/catkin_ws/devel/.private/control_xy/include/control_xy/States.h"
   "/home/xavier/catkin_ws/devel/.private/control_xy/include/control_xy/State.h"
 )
 

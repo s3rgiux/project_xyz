@@ -1,0 +1,180 @@
+; Auto-generated. Do not edit!
+
+
+(cl:in-package pitakuru-msg)
+
+
+;//! \htmlinclude States.msg.html
+
+(cl:defclass <States> (roslisp-msg-protocol:ros-message)
+  ((state
+    :reader state
+    :initarg :state
+    :type cl:string
+    :initform "")
+   (state_karugamo
+    :reader state_karugamo
+    :initarg :state_karugamo
+    :type cl:string
+    :initform "")
+   (state_collision
+    :reader state_collision
+    :initarg :state_collision
+    :type cl:string
+    :initform "")
+   (state_danger
+    :reader state_danger
+    :initarg :state_danger
+    :type cl:string
+    :initform "")
+   (state_costmap
+    :reader state_costmap
+    :initarg :state_costmap
+    :type cl:string
+    :initform ""))
+)
+
+(cl:defclass States (<States>)
+  ())
+
+(cl:defmethod cl:initialize-instance :after ((m <States>) cl:&rest args)
+  (cl:declare (cl:ignorable args))
+  (cl:unless (cl:typep m 'States)
+    (roslisp-msg-protocol:msg-deprecation-warning "using old message class name pitakuru-msg:<States> is deprecated: use pitakuru-msg:States instead.")))
+
+(cl:ensure-generic-function 'state-val :lambda-list '(m))
+(cl:defmethod state-val ((m <States>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader pitakuru-msg:state-val is deprecated.  Use pitakuru-msg:state instead.")
+  (state m))
+
+(cl:ensure-generic-function 'state_karugamo-val :lambda-list '(m))
+(cl:defmethod state_karugamo-val ((m <States>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader pitakuru-msg:state_karugamo-val is deprecated.  Use pitakuru-msg:state_karugamo instead.")
+  (state_karugamo m))
+
+(cl:ensure-generic-function 'state_collision-val :lambda-list '(m))
+(cl:defmethod state_collision-val ((m <States>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader pitakuru-msg:state_collision-val is deprecated.  Use pitakuru-msg:state_collision instead.")
+  (state_collision m))
+
+(cl:ensure-generic-function 'state_danger-val :lambda-list '(m))
+(cl:defmethod state_danger-val ((m <States>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader pitakuru-msg:state_danger-val is deprecated.  Use pitakuru-msg:state_danger instead.")
+  (state_danger m))
+
+(cl:ensure-generic-function 'state_costmap-val :lambda-list '(m))
+(cl:defmethod state_costmap-val ((m <States>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader pitakuru-msg:state_costmap-val is deprecated.  Use pitakuru-msg:state_costmap instead.")
+  (state_costmap m))
+(cl:defmethod roslisp-msg-protocol:serialize ((msg <States>) ostream)
+  "Serializes a message object of type '<States>"
+  (cl:let ((__ros_str_len (cl:length (cl:slot-value msg 'state))))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) __ros_str_len) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) __ros_str_len) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) __ros_str_len) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) __ros_str_len) ostream))
+  (cl:map cl:nil #'(cl:lambda (c) (cl:write-byte (cl:char-code c) ostream)) (cl:slot-value msg 'state))
+  (cl:let ((__ros_str_len (cl:length (cl:slot-value msg 'state_karugamo))))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) __ros_str_len) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) __ros_str_len) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) __ros_str_len) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) __ros_str_len) ostream))
+  (cl:map cl:nil #'(cl:lambda (c) (cl:write-byte (cl:char-code c) ostream)) (cl:slot-value msg 'state_karugamo))
+  (cl:let ((__ros_str_len (cl:length (cl:slot-value msg 'state_collision))))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) __ros_str_len) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) __ros_str_len) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) __ros_str_len) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) __ros_str_len) ostream))
+  (cl:map cl:nil #'(cl:lambda (c) (cl:write-byte (cl:char-code c) ostream)) (cl:slot-value msg 'state_collision))
+  (cl:let ((__ros_str_len (cl:length (cl:slot-value msg 'state_danger))))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) __ros_str_len) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) __ros_str_len) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) __ros_str_len) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) __ros_str_len) ostream))
+  (cl:map cl:nil #'(cl:lambda (c) (cl:write-byte (cl:char-code c) ostream)) (cl:slot-value msg 'state_danger))
+  (cl:let ((__ros_str_len (cl:length (cl:slot-value msg 'state_costmap))))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) __ros_str_len) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) __ros_str_len) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) __ros_str_len) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) __ros_str_len) ostream))
+  (cl:map cl:nil #'(cl:lambda (c) (cl:write-byte (cl:char-code c) ostream)) (cl:slot-value msg 'state_costmap))
+)
+(cl:defmethod roslisp-msg-protocol:deserialize ((msg <States>) istream)
+  "Deserializes a message object of type '<States>"
+    (cl:let ((__ros_str_len 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) __ros_str_len) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) __ros_str_len) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) __ros_str_len) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) __ros_str_len) (cl:read-byte istream))
+      (cl:setf (cl:slot-value msg 'state) (cl:make-string __ros_str_len))
+      (cl:dotimes (__ros_str_idx __ros_str_len msg)
+        (cl:setf (cl:char (cl:slot-value msg 'state) __ros_str_idx) (cl:code-char (cl:read-byte istream)))))
+    (cl:let ((__ros_str_len 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) __ros_str_len) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) __ros_str_len) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) __ros_str_len) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) __ros_str_len) (cl:read-byte istream))
+      (cl:setf (cl:slot-value msg 'state_karugamo) (cl:make-string __ros_str_len))
+      (cl:dotimes (__ros_str_idx __ros_str_len msg)
+        (cl:setf (cl:char (cl:slot-value msg 'state_karugamo) __ros_str_idx) (cl:code-char (cl:read-byte istream)))))
+    (cl:let ((__ros_str_len 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) __ros_str_len) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) __ros_str_len) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) __ros_str_len) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) __ros_str_len) (cl:read-byte istream))
+      (cl:setf (cl:slot-value msg 'state_collision) (cl:make-string __ros_str_len))
+      (cl:dotimes (__ros_str_idx __ros_str_len msg)
+        (cl:setf (cl:char (cl:slot-value msg 'state_collision) __ros_str_idx) (cl:code-char (cl:read-byte istream)))))
+    (cl:let ((__ros_str_len 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) __ros_str_len) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) __ros_str_len) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) __ros_str_len) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) __ros_str_len) (cl:read-byte istream))
+      (cl:setf (cl:slot-value msg 'state_danger) (cl:make-string __ros_str_len))
+      (cl:dotimes (__ros_str_idx __ros_str_len msg)
+        (cl:setf (cl:char (cl:slot-value msg 'state_danger) __ros_str_idx) (cl:code-char (cl:read-byte istream)))))
+    (cl:let ((__ros_str_len 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) __ros_str_len) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) __ros_str_len) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) __ros_str_len) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) __ros_str_len) (cl:read-byte istream))
+      (cl:setf (cl:slot-value msg 'state_costmap) (cl:make-string __ros_str_len))
+      (cl:dotimes (__ros_str_idx __ros_str_len msg)
+        (cl:setf (cl:char (cl:slot-value msg 'state_costmap) __ros_str_idx) (cl:code-char (cl:read-byte istream)))))
+  msg
+)
+(cl:defmethod roslisp-msg-protocol:ros-datatype ((msg (cl:eql '<States>)))
+  "Returns string type for a message object of type '<States>"
+  "pitakuru/States")
+(cl:defmethod roslisp-msg-protocol:ros-datatype ((msg (cl:eql 'States)))
+  "Returns string type for a message object of type 'States"
+  "pitakuru/States")
+(cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<States>)))
+  "Returns md5sum for a message object of type '<States>"
+  "a970e58c537add5954e8c37ff3305a1c")
+(cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'States)))
+  "Returns md5sum for a message object of type 'States"
+  "a970e58c537add5954e8c37ff3305a1c")
+(cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<States>)))
+  "Returns full string definition for message of type '<States>"
+  (cl:format cl:nil "string state~%string state_karugamo~%string state_collision~%string state_danger~%string state_costmap~%~%~%~%"))
+(cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'States)))
+  "Returns full string definition for message of type 'States"
+  (cl:format cl:nil "string state~%string state_karugamo~%string state_collision~%string state_danger~%string state_costmap~%~%~%~%"))
+(cl:defmethod roslisp-msg-protocol:serialization-length ((msg <States>))
+  (cl:+ 0
+     4 (cl:length (cl:slot-value msg 'state))
+     4 (cl:length (cl:slot-value msg 'state_karugamo))
+     4 (cl:length (cl:slot-value msg 'state_collision))
+     4 (cl:length (cl:slot-value msg 'state_danger))
+     4 (cl:length (cl:slot-value msg 'state_costmap))
+))
+(cl:defmethod roslisp-msg-protocol:ros-message-to-list ((msg <States>))
+  "Converts a ROS message object to a list"
+  (cl:list 'States
+    (cl:cons ':state (state msg))
+    (cl:cons ':state_karugamo (state_karugamo msg))
+    (cl:cons ':state_collision (state_collision msg))
+    (cl:cons ':state_danger (state_danger msg))
+    (cl:cons ':state_costmap (state_costmap msg))
+))

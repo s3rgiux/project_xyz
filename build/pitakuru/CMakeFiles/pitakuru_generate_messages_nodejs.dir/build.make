@@ -57,6 +57,7 @@ CMakeFiles/pitakuru_generate_messages_nodejs: /home/xavier/catkin_ws/devel/.priv
 CMakeFiles/pitakuru_generate_messages_nodejs: /home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg/TriggerAction.js
 CMakeFiles/pitakuru_generate_messages_nodejs: /home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg/SoundResult.js
 CMakeFiles/pitakuru_generate_messages_nodejs: /home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg/DriveWheel.js
+CMakeFiles/pitakuru_generate_messages_nodejs: /home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg/States.js
 CMakeFiles/pitakuru_generate_messages_nodejs: /home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg/SoundGoal.js
 CMakeFiles/pitakuru_generate_messages_nodejs: /home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg/State.js
 CMakeFiles/pitakuru_generate_messages_nodejs: /home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg/SoundAction.js
@@ -90,14 +91,19 @@ CMakeFiles/pitakuru_generate_messages_nodejs: /home/xavier/catkin_ws/devel/.priv
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xavier/catkin_ws/build/pitakuru/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating Javascript code from pitakuru/DriveWheel.msg"
 	catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/xavier/catkin_ws/src/pitakuru/msg/DriveWheel.msg -Ipitakuru:/home/xavier/catkin_ws/src/pitakuru/msg -Ipitakuru:/home/xavier/catkin_ws/devel/.private/pitakuru/share/pitakuru/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/melodic/share/actionlib_msgs/cmake/../msg -p pitakuru -o /home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg
 
+/home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg/States.js: /opt/ros/melodic/lib/gennodejs/gen_nodejs.py
+/home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg/States.js: /home/xavier/catkin_ws/src/pitakuru/msg/States.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xavier/catkin_ws/build/pitakuru/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating Javascript code from pitakuru/States.msg"
+	catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/xavier/catkin_ws/src/pitakuru/msg/States.msg -Ipitakuru:/home/xavier/catkin_ws/src/pitakuru/msg -Ipitakuru:/home/xavier/catkin_ws/devel/.private/pitakuru/share/pitakuru/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/melodic/share/actionlib_msgs/cmake/../msg -p pitakuru -o /home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg
+
 /home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg/SoundGoal.js: /opt/ros/melodic/lib/gennodejs/gen_nodejs.py
 /home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg/SoundGoal.js: /home/xavier/catkin_ws/devel/.private/pitakuru/share/pitakuru/msg/SoundGoal.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xavier/catkin_ws/build/pitakuru/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating Javascript code from pitakuru/SoundGoal.msg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xavier/catkin_ws/build/pitakuru/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Generating Javascript code from pitakuru/SoundGoal.msg"
 	catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/xavier/catkin_ws/devel/.private/pitakuru/share/pitakuru/msg/SoundGoal.msg -Ipitakuru:/home/xavier/catkin_ws/src/pitakuru/msg -Ipitakuru:/home/xavier/catkin_ws/devel/.private/pitakuru/share/pitakuru/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/melodic/share/actionlib_msgs/cmake/../msg -p pitakuru -o /home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg
 
 /home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg/State.js: /opt/ros/melodic/lib/gennodejs/gen_nodejs.py
 /home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg/State.js: /home/xavier/catkin_ws/src/pitakuru/msg/State.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xavier/catkin_ws/build/pitakuru/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Generating Javascript code from pitakuru/State.msg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xavier/catkin_ws/build/pitakuru/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Generating Javascript code from pitakuru/State.msg"
 	catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/xavier/catkin_ws/src/pitakuru/msg/State.msg -Ipitakuru:/home/xavier/catkin_ws/src/pitakuru/msg -Ipitakuru:/home/xavier/catkin_ws/devel/.private/pitakuru/share/pitakuru/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/melodic/share/actionlib_msgs/cmake/../msg -p pitakuru -o /home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg
 
 /home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg/SoundAction.js: /opt/ros/melodic/lib/gennodejs/gen_nodejs.py
@@ -111,7 +117,7 @@ CMakeFiles/pitakuru_generate_messages_nodejs: /home/xavier/catkin_ws/devel/.priv
 /home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg/SoundAction.js: /home/xavier/catkin_ws/devel/.private/pitakuru/share/pitakuru/msg/SoundActionFeedback.msg
 /home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg/SoundAction.js: /opt/ros/melodic/share/std_msgs/msg/Header.msg
 /home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg/SoundAction.js: /home/xavier/catkin_ws/devel/.private/pitakuru/share/pitakuru/msg/SoundActionResult.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xavier/catkin_ws/build/pitakuru/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Generating Javascript code from pitakuru/SoundAction.msg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xavier/catkin_ws/build/pitakuru/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Generating Javascript code from pitakuru/SoundAction.msg"
 	catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/xavier/catkin_ws/devel/.private/pitakuru/share/pitakuru/msg/SoundAction.msg -Ipitakuru:/home/xavier/catkin_ws/src/pitakuru/msg -Ipitakuru:/home/xavier/catkin_ws/devel/.private/pitakuru/share/pitakuru/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/melodic/share/actionlib_msgs/cmake/../msg -p pitakuru -o /home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg
 
 /home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg/SoundActionGoal.js: /opt/ros/melodic/lib/gennodejs/gen_nodejs.py
@@ -119,7 +125,7 @@ CMakeFiles/pitakuru_generate_messages_nodejs: /home/xavier/catkin_ws/devel/.priv
 /home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg/SoundActionGoal.js: /opt/ros/melodic/share/actionlib_msgs/msg/GoalID.msg
 /home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg/SoundActionGoal.js: /home/xavier/catkin_ws/devel/.private/pitakuru/share/pitakuru/msg/SoundGoal.msg
 /home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg/SoundActionGoal.js: /opt/ros/melodic/share/std_msgs/msg/Header.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xavier/catkin_ws/build/pitakuru/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Generating Javascript code from pitakuru/SoundActionGoal.msg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xavier/catkin_ws/build/pitakuru/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Generating Javascript code from pitakuru/SoundActionGoal.msg"
 	catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/xavier/catkin_ws/devel/.private/pitakuru/share/pitakuru/msg/SoundActionGoal.msg -Ipitakuru:/home/xavier/catkin_ws/src/pitakuru/msg -Ipitakuru:/home/xavier/catkin_ws/devel/.private/pitakuru/share/pitakuru/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/melodic/share/actionlib_msgs/cmake/../msg -p pitakuru -o /home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg
 
 /home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg/SoundActionResult.js: /opt/ros/melodic/lib/gennodejs/gen_nodejs.py
@@ -128,17 +134,17 @@ CMakeFiles/pitakuru_generate_messages_nodejs: /home/xavier/catkin_ws/devel/.priv
 /home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg/SoundActionResult.js: /opt/ros/melodic/share/actionlib_msgs/msg/GoalStatus.msg
 /home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg/SoundActionResult.js: /home/xavier/catkin_ws/devel/.private/pitakuru/share/pitakuru/msg/SoundResult.msg
 /home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg/SoundActionResult.js: /opt/ros/melodic/share/std_msgs/msg/Header.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xavier/catkin_ws/build/pitakuru/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Generating Javascript code from pitakuru/SoundActionResult.msg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xavier/catkin_ws/build/pitakuru/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Generating Javascript code from pitakuru/SoundActionResult.msg"
 	catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/xavier/catkin_ws/devel/.private/pitakuru/share/pitakuru/msg/SoundActionResult.msg -Ipitakuru:/home/xavier/catkin_ws/src/pitakuru/msg -Ipitakuru:/home/xavier/catkin_ws/devel/.private/pitakuru/share/pitakuru/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/melodic/share/actionlib_msgs/cmake/../msg -p pitakuru -o /home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg
 
 /home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg/SoundFeedback.js: /opt/ros/melodic/lib/gennodejs/gen_nodejs.py
 /home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg/SoundFeedback.js: /home/xavier/catkin_ws/devel/.private/pitakuru/share/pitakuru/msg/SoundFeedback.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xavier/catkin_ws/build/pitakuru/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Generating Javascript code from pitakuru/SoundFeedback.msg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xavier/catkin_ws/build/pitakuru/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Generating Javascript code from pitakuru/SoundFeedback.msg"
 	catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/xavier/catkin_ws/devel/.private/pitakuru/share/pitakuru/msg/SoundFeedback.msg -Ipitakuru:/home/xavier/catkin_ws/src/pitakuru/msg -Ipitakuru:/home/xavier/catkin_ws/devel/.private/pitakuru/share/pitakuru/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/melodic/share/actionlib_msgs/cmake/../msg -p pitakuru -o /home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg
 
 /home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg/Obstacle.js: /opt/ros/melodic/lib/gennodejs/gen_nodejs.py
 /home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg/Obstacle.js: /home/xavier/catkin_ws/src/pitakuru/msg/Obstacle.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xavier/catkin_ws/build/pitakuru/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Generating Javascript code from pitakuru/Obstacle.msg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xavier/catkin_ws/build/pitakuru/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Generating Javascript code from pitakuru/Obstacle.msg"
 	catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/xavier/catkin_ws/src/pitakuru/msg/Obstacle.msg -Ipitakuru:/home/xavier/catkin_ws/src/pitakuru/msg -Ipitakuru:/home/xavier/catkin_ws/devel/.private/pitakuru/share/pitakuru/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/melodic/share/actionlib_msgs/cmake/../msg -p pitakuru -o /home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg
 
 pitakuru_generate_messages_nodejs: CMakeFiles/pitakuru_generate_messages_nodejs
@@ -146,6 +152,7 @@ pitakuru_generate_messages_nodejs: /home/xavier/catkin_ws/devel/.private/pitakur
 pitakuru_generate_messages_nodejs: /home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg/TriggerAction.js
 pitakuru_generate_messages_nodejs: /home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg/SoundResult.js
 pitakuru_generate_messages_nodejs: /home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg/DriveWheel.js
+pitakuru_generate_messages_nodejs: /home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg/States.js
 pitakuru_generate_messages_nodejs: /home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg/SoundGoal.js
 pitakuru_generate_messages_nodejs: /home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg/State.js
 pitakuru_generate_messages_nodejs: /home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg/SoundAction.js

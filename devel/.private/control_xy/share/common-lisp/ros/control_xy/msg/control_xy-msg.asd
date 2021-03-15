@@ -12,6 +12,8 @@
     (:file "_package_State" :depends-on ("_package"))
     (:file "StateWheels" :depends-on ("_package_StateWheels"))
     (:file "_package_StateWheels" :depends-on ("_package"))
+    (:file "States" :depends-on ("_package_States"))
+    (:file "_package_States" :depends-on ("_package"))
     (:file "TriggerAction" :depends-on ("_package_TriggerAction"))
     (:file "_package_TriggerAction" :depends-on ("_package"))
   ))

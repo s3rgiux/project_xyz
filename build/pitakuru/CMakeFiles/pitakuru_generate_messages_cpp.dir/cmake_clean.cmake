@@ -4,6 +4,7 @@ file(REMOVE_RECURSE
   "/home/xavier/catkin_ws/devel/.private/pitakuru/include/pitakuru/TriggerAction.h"
   "/home/xavier/catkin_ws/devel/.private/pitakuru/include/pitakuru/SoundResult.h"
   "/home/xavier/catkin_ws/devel/.private/pitakuru/include/pitakuru/DriveWheel.h"
+  "/home/xavier/catkin_ws/devel/.private/pitakuru/include/pitakuru/States.h"
   "/home/xavier/catkin_ws/devel/.private/pitakuru/include/pitakuru/SoundGoal.h"
   "/home/xavier/catkin_ws/devel/.private/pitakuru/include/pitakuru/State.h"
   "/home/xavier/catkin_ws/devel/.private/pitakuru/include/pitakuru/SoundAction.h"
