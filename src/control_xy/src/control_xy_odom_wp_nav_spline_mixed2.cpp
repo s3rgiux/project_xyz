@@ -2263,6 +2263,7 @@ private:
     int count_angle_err;
     bool changed_setting;
     float duration_change;
+    bool test;
     
 };
 
