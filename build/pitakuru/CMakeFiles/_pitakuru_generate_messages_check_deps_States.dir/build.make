@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/xavier/catkin_ws/build/pitakuru
 include CMakeFiles/_pitakuru_generate_messages_check_deps_States.dir/progress.make
 
 CMakeFiles/_pitakuru_generate_messages_check_deps_States:
-	catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py pitakuru /home/xavier/catkin_ws/src/pitakuru/msg/States.msg 
+	catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py pitakuru /home/xavier/catkin_ws/src/pitakuru/msg/States.msg geometry_msgs/Twist:geometry_msgs/Vector3
 
 _pitakuru_generate_messages_check_deps_States: CMakeFiles/_pitakuru_generate_messages_check_deps_States
 _pitakuru_generate_messages_check_deps_States: CMakeFiles/_pitakuru_generate_messages_check_deps_States.dir/build.make

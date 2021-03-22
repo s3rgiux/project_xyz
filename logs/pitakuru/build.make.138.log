@@ -1,0 +1,102 @@
+[  0%] Built target _pitakuru_generate_messages_check_deps_TriggerAction
+[  0%] Built target _pitakuru_generate_messages_check_deps_SoundActionResult
+[  0%] Built target _pitakuru_generate_messages_check_deps_State
+[  0%] Built target _pitakuru_generate_messages_check_deps_SoundActionFeedback
+[  0%] Built target _pitakuru_generate_messages_check_deps_States
+[  0%] Built target _pitakuru_generate_messages_check_deps_Obstacle
+[  0%] Built target _pitakuru_generate_messages_check_deps_SoundGoal
+[  0%] Built target actionlib_msgs_generate_messages_nodejs
+[35m[1mScanning dependencies of target geometry_msgs_generate_messages_nodejs[0m
+[  0%] Built target geometry_msgs_generate_messages_nodejs
+[  0%] Built target _pitakuru_generate_messages_check_deps_SoundResult
+[  0%] Built target _pitakuru_generate_messages_check_deps_SoundActionGoal
+[  0%] Built target _pitakuru_generate_messages_check_deps_DriveWheel
+[  0%] Built target std_msgs_generate_messages_nodejs
+[  0%] Built target _pitakuru_generate_messages_check_deps_SoundFeedback
+[  0%] Built target _pitakuru_generate_messages_check_deps_SoundAction
+[  0%] Built target std_msgs_generate_messages_lisp
+[  0%] Built target actionlib_msgs_generate_messages_lisp
+[35m[1mScanning dependencies of target geometry_msgs_generate_messages_lisp[0m
+[  0%] Built target geometry_msgs_generate_messages_lisp
+[35m[1mScanning dependencies of target geometry_msgs_generate_messages_eus[0m
+[  0%] Built target std_msgs_generate_messages_eus
+[  0%] Built target geometry_msgs_generate_messages_eus
+[  0%] Built target actionlib_msgs_generate_messages_eus
+[  0%] Built target actionlib_msgs_generate_messages_cpp
+[  0%] Built target std_msgs_generate_messages_cpp
+[35m[1mScanning dependencies of target geometry_msgs_generate_messages_cpp[0m
+[  0%] Built target geometry_msgs_generate_messages_cpp
+[  0%] Built target std_msgs_generate_messages_py
+[  0%] Built target actionlib_msgs_generate_messages_py
+[35m[1mScanning dependencies of target geometry_msgs_generate_messages_py[0m
+[  0%] Built target geometry_msgs_generate_messages_py
+[  1%] [34m[1mGenerating Javascript code from pitakuru/SoundActionFeedback.msg[0m
+[  3%] [34m[1mGenerating Javascript code from pitakuru/TriggerAction.msg[0m
+[  4%] [34m[1mGenerating Lisp code from pitakuru/SoundActionFeedback.msg[0m
+[  6%] [34m[1mGenerating EusLisp code from pitakuru/SoundActionFeedback.msg[0m
+[  8%] [34m[1mGenerating Javascript code from pitakuru/SoundResult.msg[0m
+[  9%] [34m[1mGenerating Javascript code from pitakuru/DriveWheel.msg[0m
+[ 11%] [34m[1mGenerating Lisp code from pitakuru/TriggerAction.msg[0m
+[ 12%] [34m[1mGenerating EusLisp code from pitakuru/TriggerAction.msg[0m
+[ 14%] [34m[1mGenerating Javascript code from pitakuru/States.msg[0m
+[ 16%] [34m[1mGenerating Javascript code from pitakuru/SoundGoal.msg[0m
+[ 17%] [34m[1mGenerating Lisp code from pitakuru/SoundResult.msg[0m
+[ 19%] [34m[1mGenerating Javascript code from pitakuru/SoundAction.msg[0m
+[ 20%] [34m[1mGenerating Javascript code from pitakuru/State.msg[0m
+[ 22%] [34m[1mGenerating Lisp code from pitakuru/DriveWheel.msg[0m
+[ 24%] [34m[1mGenerating EusLisp code from pitakuru/SoundResult.msg[0m
+[ 25%] [34m[1mGenerating Javascript code from pitakuru/SoundActionGoal.msg[0m
+[ 27%] [34m[1mGenerating Lisp code from pitakuru/States.msg[0m
+[ 29%] [34m[1mGenerating C++ code from pitakuru/SoundActionFeedback.msg[0m
+[ 30%] [34m[1mGenerating EusLisp code from pitakuru/DriveWheel.msg[0m
+[ 32%] [34m[1mGenerating Javascript code from pitakuru/SoundActionResult.msg[0m
+[ 33%] [34m[1mGenerating Lisp code from pitakuru/SoundGoal.msg[0m
+[ 35%] [34m[1mGenerating Lisp code from pitakuru/State.msg[0m
+[ 37%] [34m[1mGenerating Javascript code from pitakuru/SoundFeedback.msg[0m
+[ 38%] [34m[1mGenerating EusLisp code from pitakuru/States.msg[0m
+[ 40%] [34m[1mGenerating Lisp code from pitakuru/SoundAction.msg[0m
+[ 41%] [34m[1mGenerating Javascript code from pitakuru/Obstacle.msg[0m
+[ 43%] [34m[1mGenerating C++ code from pitakuru/TriggerAction.msg[0m
+[ 45%] [34m[1mGenerating EusLisp code from pitakuru/SoundGoal.msg[0m
+[ 46%] [34m[1mGenerating Lisp code from pitakuru/SoundActionGoal.msg[0m
+[ 46%] Built target pitakuru_generate_messages_nodejs
+[ 48%] [34m[1mGenerating Python from MSG pitakuru/SoundActionFeedback[0m
+[ 50%] [34m[1mGenerating EusLisp code from pitakuru/State.msg[0m
+[ 51%] [34m[1mGenerating Lisp code from pitakuru/SoundActionResult.msg[0m
+[ 53%] [34m[1mGenerating Lisp code from pitakuru/SoundFeedback.msg[0m
+[ 54%] [34m[1mGenerating Python from MSG pitakuru/TriggerAction[0m
+[ 56%] [34m[1mGenerating C++ code from pitakuru/SoundResult.msg[0m
+[ 58%] [34m[1mGenerating EusLisp code from pitakuru/SoundAction.msg[0m
+[ 59%] [34m[1mGenerating Lisp code from pitakuru/Obstacle.msg[0m
+[ 61%] [34m[1mGenerating Python from MSG pitakuru/SoundResult[0m
+[ 61%] Built target pitakuru_generate_messages_lisp
+[ 62%] [34m[1mGenerating EusLisp code from pitakuru/SoundActionGoal.msg[0m
+[ 64%] [34m[1mGenerating Python from MSG pitakuru/DriveWheel[0m
+[ 66%] [34m[1mGenerating C++ code from pitakuru/DriveWheel.msg[0m
+[ 67%] [34m[1mGenerating EusLisp code from pitakuru/SoundActionResult.msg[0m
+[ 69%] [34m[1mGenerating Python from MSG pitakuru/States[0m
+[ 70%] [34m[1mGenerating C++ code from pitakuru/States.msg[0m
+[ 72%] [34m[1mGenerating EusLisp code from pitakuru/SoundFeedback.msg[0m
+[ 74%] [34m[1mGenerating EusLisp code from pitakuru/Obstacle.msg[0m
+[ 75%] [34m[1mGenerating Python from MSG pitakuru/SoundGoal[0m
+[ 77%] [34m[1mGenerating Python from MSG pitakuru/State[0m
+[ 79%] [34m[1mGenerating EusLisp manifest code for pitakuru[0m
+[ 80%] [34m[1mGenerating C++ code from pitakuru/SoundGoal.msg[0m
+[ 82%] [34m[1mGenerating C++ code from pitakuru/State.msg[0m
+[ 83%] [34m[1mGenerating Python from MSG pitakuru/SoundAction[0m
+[ 85%] [34m[1mGenerating Python from MSG pitakuru/SoundActionGoal[0m
+[ 87%] [34m[1mGenerating C++ code from pitakuru/SoundAction.msg[0m
+[ 88%] [34m[1mGenerating C++ code from pitakuru/SoundActionGoal.msg[0m
+WARNING: Package name "lidarPeople" does not follow the naming conventions. It should start with a lower case letter and only contain lower case letters, digits, underscores, and dashes.
+[ 90%] [34m[1mGenerating C++ code from pitakuru/SoundActionResult.msg[0m
+[ 91%] [34m[1mGenerating Python from MSG pitakuru/SoundFeedback[0m
+[ 93%] [34m[1mGenerating Python from MSG pitakuru/SoundActionResult[0m
+[ 95%] [34m[1mGenerating C++ code from pitakuru/SoundFeedback.msg[0m
+[ 96%] [34m[1mGenerating Python from MSG pitakuru/Obstacle[0m
+[ 98%] [34m[1mGenerating C++ code from pitakuru/Obstacle.msg[0m
+[100%] [34m[1mGenerating Python msg __init__.py for pitakuru[0m
+[100%] Built target pitakuru_generate_messages_py
+[100%] Built target pitakuru_generate_messages_cpp
+WARNING: Package name "lidarPeople" does not follow the naming conventions. It should start with a lower case letter and only contain lower case letters, digits, underscores, and dashes.
+[100%] Built target pitakuru_generate_messages_eus
+[100%] Built target pitakuru_generate_messages

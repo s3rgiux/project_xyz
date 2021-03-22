@@ -5,5 +5,5 @@
 [ 43%] Built target hector_mapping_generate_messages_nodejs
 [ 56%] Built target hector_mapping_generate_messages_lisp
 [ 75%] Built target hector_mapping_generate_messages_eus
+[ 75%] Built target hector_mapping_generate_messages
 [100%] Built target hector_mapping
-[100%] Built target hector_mapping_generate_messages

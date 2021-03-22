@@ -116,7 +116,7 @@ if(NOT "/home/xavier/catkin_ws/devel/.private/pitakuru/include " STREQUAL " ")
   endforeach()
 endif()
 
-set(libraries "pitakuru")
+set(libraries "")
 foreach(library ${libraries})
   # keep build configuration keywords, target names and absolute libraries as-is
   if("${library}" MATCHES "^(debug|optimized|general)$")

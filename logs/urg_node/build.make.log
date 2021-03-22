@@ -9,8 +9,8 @@
 [ 31%] Built target std_msgs_generate_messages_lisp
 [ 37%] Built target urg_node_generate_messages_cpp
 [ 50%] Built target urg_node_generate_messages_py
-[ 62%] Built target urg_node_generate_messages_eus
-[ 68%] Built target urg_node_generate_messages_nodejs
+[ 56%] Built target urg_node_generate_messages_nodejs
+[ 68%] Built target urg_node_generate_messages_eus
 [ 75%] Built target urg_node_generate_messages_lisp
 [ 75%] Built target urg_node_gencpp
 [ 75%] Built target urg_node_generate_messages

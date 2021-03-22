@@ -78,7 +78,8 @@ class SwitchInput(object):
         volts_read = Float32()
         volts_read.data=self.volts*0.03205#according to the resistor divider
         self.pub_volt.publish(volts_read)
-        if(self.button_states["karugamo"] == 1 and self.status_on==False):
+        #if(self.button_states["karugamo"] == 1 and self.status_on==False):
+        if(current_states['A1'] < 200 and self.status_on==False):
             self.count_status=self.count_status+1
             if(self.count_status>0):
                 self.status_on=True

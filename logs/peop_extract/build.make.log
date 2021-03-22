@@ -1,9 +1,9 @@
-[  0%] Built target geometry_msgs_generate_messages_eus
 [  0%] Built target _peop_extract_generate_messages_check_deps_ObjectCount
-[  0%] Built target std_msgs_generate_messages_eus
+[  0%] Built target geometry_msgs_generate_messages_eus
 [  0%] Built target _peop_extract_generate_messages_check_deps_BoundingBox
-[  0%] Built target std_msgs_generate_messages_py
+[  0%] Built target std_msgs_generate_messages_eus
 [  0%] Built target _peop_extract_generate_messages_check_deps_BoundingBoxes
+[  0%] Built target std_msgs_generate_messages_py
 [  0%] Built target geometry_msgs_generate_messages_py
 [  0%] Built target geometry_msgs_generate_messages_lisp
 [  0%] Built target std_msgs_generate_messages_lisp

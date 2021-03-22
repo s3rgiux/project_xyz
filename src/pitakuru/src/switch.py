@@ -18,6 +18,7 @@ class SwitchInput(object):
         self.button_states = dict()
         self.current_bumper = 1 
         self.volts=0
+        self.pow_btn=0
 
         #self.sub = rospy.Subscriber('state', State, self.callback)
         self.sub_alerts = rospy.Subscriber('/alerts', Int16, self.alerts_cb,queue_size=1)
@@ -101,7 +102,7 @@ class SwitchInput(object):
 
         current_states = json.loads(current_states_str)
         tmp = current_states['bumper']
-        if self.current_bumper == tmp:
+        """ if self.current_bumper == tmp:
             self.button_states["break"] = 0
             self.button_states["release"] = 0
         elif self.current_bumper < tmp:
@@ -109,11 +110,12 @@ class SwitchInput(object):
             self.button_states["release"] = 1
         elif self.current_bumper > tmp:
             self.button_states["break"] = 1
-            self.button_states["release"] = 0
+            self.button_states["release"] = 0 """
         self.current_bumper = tmp
         self.button_states["karugamo"] = current_states['SW0']
         self.button_states["idle"] = current_states['SW1']
         self.volts=current_states['A0']
+        self.pow_btn=current_states['A1']
         volts_read = Float32()
         volts_read.data=self.volts*0.03205#according to the resistor divider
         self.pub_volt.publish(volts_read)
@@ -125,7 +127,8 @@ class SwitchInput(object):
         #         self.request_current_state()
         #         os.system("roslaunch pitakuru pitakuru_yolo_heavy.launch")
         # if(self.button_states["karugamo"] == 1 and self.status_on):
-        if(self.button_states["karugamo"] == 1):
+        #if(self.button_states["karugamo"] == 1):
+        if(self.pow_btn < 200):
             self.count_status=self.count_status+1
             if(self.count_status>2):
                 self.count_status=0
@@ -145,10 +148,15 @@ class SwitchInput(object):
 
         trigger_action = TriggerAction()
         rospy.logerr(self.button_states)
-        if self.button_states["break"] == 1:
+        if self.current_bumper == 0:
+            trigger_action.trigger = TriggerAction.TRIGGER_COLLISION
+        if self.current_bumper == 1:
+            trigger_action.trigger = TriggerAction.TRIGGER_BREAK_RELEASE_BUTTON_ON
+        
+        """ if self.button_states["break"] == 1:
             trigger_action.trigger = TriggerAction.TRIGGER_COLLISION
         if self.button_states["release"] == 1:
-            trigger_action.trigger = TriggerAction.TRIGGER_BREAK_RELEASE_BUTTON_ON
+            trigger_action.trigger = TriggerAction.TRIGGER_BREAK_RELEASE_BUTTON_ON """
         if self.button_states["karugamo"] == 1:
             trigger_action.trigger = TriggerAction.TRIGGER_KARUGAMO_BUTTON_ON
         if self.button_states["idle"] == 1:

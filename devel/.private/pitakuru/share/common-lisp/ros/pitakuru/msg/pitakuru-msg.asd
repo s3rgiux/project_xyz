@@ -3,6 +3,7 @@
 
 (defsystem "pitakuru-msg"
   :depends-on (:roslisp-msg-protocol :roslisp-utils :actionlib_msgs-msg
+               :geometry_msgs-msg
                :std_msgs-msg
 )
   :components ((:file "_package")

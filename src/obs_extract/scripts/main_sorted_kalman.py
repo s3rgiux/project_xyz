@@ -110,6 +110,7 @@ class PitWheels:
         self.follow_cx=0
         self.follow_cy=0
         self.first_got=False
+        self.find_again=False
         self.prev_list= []
     
     def pubobs(self):
@@ -133,6 +134,8 @@ class PitWheels:
         self.tracked_ang=data.z
         if self.tracked_x==-50:
             self.first_got=False
+        if self.tracked_x==-70:
+            self.find_again=True
 
     def yolo_callback(self,data):
         self.yolo_status=data.x
@@ -148,31 +151,38 @@ class PitWheels:
     def obstacles_callback(self, data):
         lst = []
         inradious = []
+        again_lst=[]
         for x in data.circles:
             if x.center.x>-0.5 and x.center.x<self.front_detection and x.center.y<self.side_detection and x.center.y>-self.side_detection:              
                 ang = 90-np.arctan2(x.center.x, x.center.y) * 180 / np.pi
                 dist =np.sqrt(x.center.x*x.center.x+x.center.y*x.center.y)
                 self.angulo.data=ang
                 self.distancia.data=dist*100
-                if self.first_got and x.center.x>0.2 and x.center.x<-0.2 and x.center.y>0.2 and x.center.y<-0.2 and  x.center.x<=(self.follow_cx+self.radius_follow) and x.center.x>=(self.follow_cx-self.radius_follow) and x.center.y <=(self.follow_cy+self.radius_follow) and x.center.y >=(self.follow_cy-self.radius_follow):#then we have tracked object
-                    lst.append(x)
-                    new=np.array([x.center.x,x.center.y])
-                    inradious.append(new.astype("float"))
-                elif self.first_got==False and self.tracked_x != -50 and self.tracked_y != -50 and x.center.x<=(self.tracked_x+self.radius_follow) and x.center.x>=(self.tracked_x-self.radius_follow) and x.center.y <=(self.tracked_y+self.radius_follow) and x.center.y >=(self.tracked_y-self.radius_follow):#then we have tracked object
-                #if self.tracked_x != -50 and self.tracked_y != -50 and x.center.x<=(self.tracked_x+self.radius_follow) and x.center.x>=(self.tracked_x-self.radius_follow) and x.center.y <=(self.tracked_y+self.radius_follow) and x.center.y >=(self.tracked_y-self.radius_follow):#then we have tracked object
-                    
-                    first_got=True
-                    self.follow_cx=x.center.x
-                    self.follow_cy=x.center.y
-                    lst.append(x)
-                    new=np.array([x.center.x,x.center.y])
-                    inradious.append(new.astype("float"))
+                if self.find_again:
+                    if np.abs(ang-self.yolo_ang)<8:
+                        again_lst.append(x)
 
-                elif self.tracked_x == -50 and self.tracked_y == -50 or (time.time()-self.last_time_tracked)>0.25:
-                    self.ang_dist.x=x.center.x
-                    self.ang_dist.y=x.center.y#dist*100
-                    self.ang_dist.z=-1#dist*100
-                    self.ang_pub.publish(self.ang_dist)
+                    
+                else:    
+                    if self.first_got and x.center.x>0.2 and x.center.x<-0.2 and x.center.y>0.2 and x.center.y<-0.2 and  x.center.x<=(self.follow_cx+self.radius_follow) and x.center.x>=(self.follow_cx-self.radius_follow) and x.center.y <=(self.follow_cy+self.radius_follow) and x.center.y >=(self.follow_cy-self.radius_follow):#then we have tracked object
+                        lst.append(x)
+                        new=np.array([x.center.x,x.center.y])
+                        inradious.append(new.astype("float"))
+                    elif self.first_got==False and self.tracked_x != -50 and self.tracked_y != -50 and x.center.x<=(self.tracked_x+self.radius_follow) and x.center.x>=(self.tracked_x-self.radius_follow) and x.center.y <=(self.tracked_y+self.radius_follow) and x.center.y >=(self.tracked_y-self.radius_follow):#then we have tracked object
+                    #if self.tracked_x != -50 and self.tracked_y != -50 and x.center.x<=(self.tracked_x+self.radius_follow) and x.center.x>=(self.tracked_x-self.radius_follow) and x.center.y <=(self.tracked_y+self.radius_follow) and x.center.y >=(self.tracked_y-self.radius_follow):#then we have tracked object
+                        
+                        first_got=True
+                        self.follow_cx=x.center.x
+                        self.follow_cy=x.center.y
+                        lst.append(x)
+                        new=np.array([x.center.x,x.center.y])
+                        inradious.append(new.astype("float"))
+
+                    elif self.tracked_x == -50 and self.tracked_y == -50 or (time.time()-self.last_time_tracked)>0.25:
+                        self.ang_dist.x=x.center.x
+                        self.ang_dist.y=x.center.y#dist*100
+                        self.ang_dist.z=-1#dist*100
+                        self.ang_pub.publish(self.ang_dist)
                     
 
                 #self.ang_pub.publish(self.angulo)
@@ -188,7 +198,37 @@ class PitWheels:
         lst2 = []
         lst3 = []
         listid = []
+        lst4 = []
         dst_aux=150000
+        if len(again_lst)!=0:
+            for n in (again_lst):
+                #e_x=np.abs(self.tracked_x-n.center.x)
+                #e_y=np.abs(self.tracked_y-n.center.y)
+                dist=np.sqrt(n.center.x*n.center.x+n.center.y*n.center.y)
+                ang_obj= 90-np.arctan2(n.center.x, n.center.y) * 180 / np.pi
+                #err_ang= np.abs(self.tracked_ang-ang_obj)
+                #if(dist<self.radius_follow):
+                lst4.append((n,dist))#contains (error distancia and err ang)
+            #sort list
+            lst4.sort(key=self.takeSecond)
+            obj_close=lst4[0]
+
+            closest.x=obj_close[0].center.x
+            closest.y=obj_close[0].center.y
+            closest.z=len(lst)
+            deltat=time.time()-self.last_time_tracked
+            speed_x=(closest.x-self.prev_cx)/deltat
+            speed_y=(closest.y-self.prev_cy)/deltat
+            speed_p=Vector3()
+            speed_p.x=speed_x
+            speed_p.y=speed_y
+            speed_p.z=obj_close[1]
+            self.speed_pub.publish(speed_p)
+            self.prev_cx=closest.x
+            self.prev_cy=closest.y
+            self.last_time_tracked=time.time()
+            self.ang_pub.publish(closest)
+
         if len(lst)!=0:
             #now1=time.time()
             """ objects = self.ct.update(inradious)

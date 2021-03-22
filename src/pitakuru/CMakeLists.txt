@@ -110,8 +110,8 @@ generate_messages(
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-  LIBRARIES pitakuru
-  CATKIN_DEPENDS message_runtime roscpp rospy geometry_msgs
+#  LIBRARIES pitakuru
+  CATKIN_DEPENDS message_runtime roscpp rospy
   DEPENDS system_lib
 )
 

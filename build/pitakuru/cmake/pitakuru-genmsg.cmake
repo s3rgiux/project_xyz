@@ -2,7 +2,7 @@
 
 message(STATUS "pitakuru: 12 messages, 0 services")
 
-set(MSG_I_FLAGS "-Ipitakuru:/home/xavier/catkin_ws/src/pitakuru/msg;-Ipitakuru:/home/xavier/catkin_ws/devel/.private/pitakuru/share/pitakuru/msg;-Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg;-Iactionlib_msgs:/opt/ros/melodic/share/actionlib_msgs/cmake/../msg")
+set(MSG_I_FLAGS "-Ipitakuru:/home/xavier/catkin_ws/src/pitakuru/msg;-Ipitakuru:/home/xavier/catkin_ws/devel/.private/pitakuru/share/pitakuru/msg;-Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg;-Iactionlib_msgs:/opt/ros/melodic/share/actionlib_msgs/cmake/../msg;-Igeometry_msgs:/opt/ros/melodic/share/geometry_msgs/cmake/../msg")
 
 # Find all generators
 find_package(gencpp REQUIRED)
@@ -39,7 +39,7 @@ add_custom_target(_pitakuru_generate_messages_check_deps_${_filename}
 
 get_filename_component(_filename "/home/xavier/catkin_ws/src/pitakuru/msg/States.msg" NAME_WE)
 add_custom_target(_pitakuru_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "pitakuru" "/home/xavier/catkin_ws/src/pitakuru/msg/States.msg" ""
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "pitakuru" "/home/xavier/catkin_ws/src/pitakuru/msg/States.msg" "geometry_msgs/Twist:geometry_msgs/Vector3"
 )
 
 get_filename_component(_filename "/home/xavier/catkin_ws/devel/.private/pitakuru/share/pitakuru/msg/SoundGoal.msg" NAME_WE)
@@ -110,7 +110,7 @@ _generate_msg_cpp(pitakuru
 _generate_msg_cpp(pitakuru
   "/home/xavier/catkin_ws/src/pitakuru/msg/States.msg"
   "${MSG_I_FLAGS}"
-  ""
+  "/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Twist.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Vector3.msg"
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/pitakuru
 )
 _generate_msg_cpp(pitakuru
@@ -231,7 +231,7 @@ _generate_msg_eus(pitakuru
 _generate_msg_eus(pitakuru
   "/home/xavier/catkin_ws/src/pitakuru/msg/States.msg"
   "${MSG_I_FLAGS}"
-  ""
+  "/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Twist.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Vector3.msg"
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/pitakuru
 )
 _generate_msg_eus(pitakuru
@@ -352,7 +352,7 @@ _generate_msg_lisp(pitakuru
 _generate_msg_lisp(pitakuru
   "/home/xavier/catkin_ws/src/pitakuru/msg/States.msg"
   "${MSG_I_FLAGS}"
-  ""
+  "/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Twist.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Vector3.msg"
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/pitakuru
 )
 _generate_msg_lisp(pitakuru
@@ -473,7 +473,7 @@ _generate_msg_nodejs(pitakuru
 _generate_msg_nodejs(pitakuru
   "/home/xavier/catkin_ws/src/pitakuru/msg/States.msg"
   "${MSG_I_FLAGS}"
-  ""
+  "/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Twist.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Vector3.msg"
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/pitakuru
 )
 _generate_msg_nodejs(pitakuru
@@ -594,7 +594,7 @@ _generate_msg_py(pitakuru
 _generate_msg_py(pitakuru
   "/home/xavier/catkin_ws/src/pitakuru/msg/States.msg"
   "${MSG_I_FLAGS}"
-  ""
+  "/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Twist.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Vector3.msg"
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/pitakuru
 )
 _generate_msg_py(pitakuru
@@ -701,6 +701,9 @@ endif()
 if(TARGET actionlib_msgs_generate_messages_cpp)
   add_dependencies(pitakuru_generate_messages_cpp actionlib_msgs_generate_messages_cpp)
 endif()
+if(TARGET geometry_msgs_generate_messages_cpp)
+  add_dependencies(pitakuru_generate_messages_cpp geometry_msgs_generate_messages_cpp)
+endif()
 
 if(geneus_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/pitakuru)
   # install generated code
@@ -714,6 +717,9 @@ if(TARGET std_msgs_generate_messages_eus)
 endif()
 if(TARGET actionlib_msgs_generate_messages_eus)
   add_dependencies(pitakuru_generate_messages_eus actionlib_msgs_generate_messages_eus)
+endif()
+if(TARGET geometry_msgs_generate_messages_eus)
+  add_dependencies(pitakuru_generate_messages_eus geometry_msgs_generate_messages_eus)
 endif()
 
 if(genlisp_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/pitakuru)
@@ -729,6 +735,9 @@ endif()
 if(TARGET actionlib_msgs_generate_messages_lisp)
   add_dependencies(pitakuru_generate_messages_lisp actionlib_msgs_generate_messages_lisp)
 endif()
+if(TARGET geometry_msgs_generate_messages_lisp)
+  add_dependencies(pitakuru_generate_messages_lisp geometry_msgs_generate_messages_lisp)
+endif()
 
 if(gennodejs_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/pitakuru)
   # install generated code
@@ -742,6 +751,9 @@ if(TARGET std_msgs_generate_messages_nodejs)
 endif()
 if(TARGET actionlib_msgs_generate_messages_nodejs)
   add_dependencies(pitakuru_generate_messages_nodejs actionlib_msgs_generate_messages_nodejs)
+endif()
+if(TARGET geometry_msgs_generate_messages_nodejs)
+  add_dependencies(pitakuru_generate_messages_nodejs geometry_msgs_generate_messages_nodejs)
 endif()
 
 if(genpy_INSTALL_DIR AND EXISTS ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/pitakuru)
@@ -757,4 +769,7 @@ if(TARGET std_msgs_generate_messages_py)
 endif()
 if(TARGET actionlib_msgs_generate_messages_py)
   add_dependencies(pitakuru_generate_messages_py actionlib_msgs_generate_messages_py)
+endif()
+if(TARGET geometry_msgs_generate_messages_py)
+  add_dependencies(pitakuru_generate_messages_py geometry_msgs_generate_messages_py)
 endif()
