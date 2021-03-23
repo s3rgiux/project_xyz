@@ -62,7 +62,7 @@
 <!-- <node pkg="pitakuru" type="people_detect.py" name="people_detect"/>  -->
 
     <include file="$(find darknet_ros)/launch/yolo_v3.launch"/> 
-    <include file="$(find sort_track)/launch/sort.launch"/> 
+    <include file="$(find sort_track)/launch/sort_big.launch"/> 
     <node pkg="peop_extract" type="peop_ext_sort.py" name="peop_ext_yolo"/>
 
 <!-- keiganモーター制御/オドメトリ算出ノード -->

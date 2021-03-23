@@ -259,6 +259,32 @@ peop_extract_gencpp/fast:
 .PHONY : peop_extract_gencpp/fast
 
 #=============================================================================
+# Target rules for targets named _peop_extract_generate_messages_check_deps_people_box
+
+# Build rule for target.
+_peop_extract_generate_messages_check_deps_people_box: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _peop_extract_generate_messages_check_deps_people_box
+.PHONY : _peop_extract_generate_messages_check_deps_people_box
+
+# fast build rule for target.
+_peop_extract_generate_messages_check_deps_people_box/fast:
+	$(MAKE) -f CMakeFiles/_peop_extract_generate_messages_check_deps_people_box.dir/build.make CMakeFiles/_peop_extract_generate_messages_check_deps_people_box.dir/build
+.PHONY : _peop_extract_generate_messages_check_deps_people_box/fast
+
+#=============================================================================
+# Target rules for targets named _peop_extract_generate_messages_check_deps_peoples
+
+# Build rule for target.
+_peop_extract_generate_messages_check_deps_peoples: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _peop_extract_generate_messages_check_deps_peoples
+.PHONY : _peop_extract_generate_messages_check_deps_peoples
+
+# fast build rule for target.
+_peop_extract_generate_messages_check_deps_peoples/fast:
+	$(MAKE) -f CMakeFiles/_peop_extract_generate_messages_check_deps_peoples.dir/build.make CMakeFiles/_peop_extract_generate_messages_check_deps_peoples.dir/build
+.PHONY : _peop_extract_generate_messages_check_deps_peoples/fast
+
+#=============================================================================
 # Target rules for targets named std_srvs_generate_messages_py
 
 # Build rule for target.
@@ -1523,6 +1549,8 @@ help:
 	@echo "... peop_extract_geneus"
 	@echo "... peop_extract_generate_messages_nodejs"
 	@echo "... peop_extract_gencpp"
+	@echo "... _peop_extract_generate_messages_check_deps_people_box"
+	@echo "... _peop_extract_generate_messages_check_deps_peoples"
 	@echo "... std_srvs_generate_messages_py"
 	@echo "... std_srvs_generate_messages_nodejs"
 	@echo "... std_srvs_generate_messages_lisp"

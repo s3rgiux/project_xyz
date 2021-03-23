@@ -1,0 +1,1 @@
+/home/xavier/catkin_ws/devel/.private/pitakuru/share/roseus/ros/pitakuru/msg/people_box.l

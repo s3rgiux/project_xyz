@@ -11,6 +11,8 @@ fff7863f334f38e8e664cd494b351e18 /home/xavier/catkin_ws/devel/.private/pitakuru/
 396a182d99a9f7e883b56b302189227b /home/xavier/catkin_ws/devel/.private/pitakuru/include/pitakuru/State.h
 b0b79e124dc908266906c61453dacb86 /home/xavier/catkin_ws/devel/.private/pitakuru/include/pitakuru/States.h
 d35b9222e1e30296dc358ae83e7f4ec8 /home/xavier/catkin_ws/devel/.private/pitakuru/include/pitakuru/TriggerAction.h
+4b2f92063af264f400ad955e5caa9f48 /home/xavier/catkin_ws/devel/.private/pitakuru/include/pitakuru/people_box.h
+ef65e77569c2d1aaf4b7bda1ba116f7d /home/xavier/catkin_ws/devel/.private/pitakuru/include/pitakuru/peoples.h
 6e56eb18f928e45e2ee28bd372243e43 /home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg/_DriveWheel.py
 b0a28088c9137423a44b87f5ddb3fa81 /home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg/_Obstacle.py
 dfe91e9bc00493e1a11a40da08751b6f /home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg/_SoundAction.py
@@ -24,6 +26,8 @@ c0655627f93aa9e31d11c12790dde5b2 /home/xavier/catkin_ws/devel/.private/pitakuru/
 71ee4be7da688ee67ba0c8f69e0d1816 /home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg/_States.py
 1a8a4ce974a8f61ca477b19268c769dd /home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg/_TriggerAction.py
 3fc3b2d08a1b985f2877184b5d4433cd /home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg/__init__.py
+21ed6c1ea3aeb9ed2ca77320f1617a1d /home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg/_people_box.py
+800f59d196f2b1ab75fc060f4271cb79 /home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg/_peoples.py
 43319097dd3dbe73ecf7d9983d9cf74b /home/xavier/catkin_ws/devel/.private/pitakuru/share/common-lisp/ros/pitakuru/msg/DriveWheel.lisp
 28b9a5f00f2ba142d3a835cbb00d994b /home/xavier/catkin_ws/devel/.private/pitakuru/share/common-lisp/ros/pitakuru/msg/Obstacle.lisp
 78618ae1b360b5752deb7cf5393e10f8 /home/xavier/catkin_ws/devel/.private/pitakuru/share/common-lisp/ros/pitakuru/msg/SoundAction.lisp
@@ -36,6 +40,8 @@ c9f3b5e5daeea2f2925bfbd2830250c8 /home/xavier/catkin_ws/devel/.private/pitakuru/
 476fac88dba9fe3da718747c6c8c5fbf /home/xavier/catkin_ws/devel/.private/pitakuru/share/common-lisp/ros/pitakuru/msg/State.lisp
 c0c57640fdf5505d032d07a463d1a14f /home/xavier/catkin_ws/devel/.private/pitakuru/share/common-lisp/ros/pitakuru/msg/States.lisp
 fcfc38b32189e6c1a6d20d43bcaedb18 /home/xavier/catkin_ws/devel/.private/pitakuru/share/common-lisp/ros/pitakuru/msg/TriggerAction.lisp
+b3ea70a54879ab1e3c51bcccd763f79a /home/xavier/catkin_ws/devel/.private/pitakuru/share/common-lisp/ros/pitakuru/msg/people_box.lisp
+a585221a375e3b7826bfcafc1bbb5b01 /home/xavier/catkin_ws/devel/.private/pitakuru/share/common-lisp/ros/pitakuru/msg/peoples.lisp
 b5542db7b9ee405e31f3564fca851888 /home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg/DriveWheel.js
 01d65d9c731406e136afc1b03cde4288 /home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg/Obstacle.js
 5621f6ba0fa3fdd55c4c08d046673ac1 /home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg/SoundAction.js
@@ -48,6 +54,8 @@ aa0ac09919a33e908b73642f81aa57bf /home/xavier/catkin_ws/devel/.private/pitakuru/
 4bdb042f2da0f73d67bbb14f085f9b16 /home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg/State.js
 99665210566578fd888ad45c7f1044be /home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg/States.js
 e1c8434157d011b2038efff47689f46e /home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg/TriggerAction.js
+aa606f8a6e6af204ee084994c7decac0 /home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg/people_box.js
+91cb07c8efdff85fa769598ba8fe2f73 /home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg/peoples.js
 f5b80aa66caf76852c229f4c531151bc /home/xavier/catkin_ws/devel/.private/pitakuru/share/roseus/ros/pitakuru/manifest.l
 a5396f81f5e5dfe53fb974e22be59397 /home/xavier/catkin_ws/devel/.private/pitakuru/share/roseus/ros/pitakuru/msg/DriveWheel.l
 919962e61ab21592b75ad46023b1b09f /home/xavier/catkin_ws/devel/.private/pitakuru/share/roseus/ros/pitakuru/msg/Obstacle.l
@@ -61,6 +69,8 @@ f549a89df2c598e6a1191fdcd56cf968 /home/xavier/catkin_ws/devel/.private/pitakuru/
 40899cf34f59f453704045140fef7e66 /home/xavier/catkin_ws/devel/.private/pitakuru/share/roseus/ros/pitakuru/msg/State.l
 ae064e54f80c0ab78966d11cc5730ba3 /home/xavier/catkin_ws/devel/.private/pitakuru/share/roseus/ros/pitakuru/msg/States.l
 367abf0b1bb5ff456ac256a49cbd6d9d /home/xavier/catkin_ws/devel/.private/pitakuru/share/roseus/ros/pitakuru/msg/TriggerAction.l
+60180c0833711ef31316b27ade3b85be /home/xavier/catkin_ws/devel/.private/pitakuru/share/roseus/ros/pitakuru/msg/people_box.l
+ef551c91f71a2c6d26096fdae88cfc05 /home/xavier/catkin_ws/devel/.private/pitakuru/share/roseus/ros/pitakuru/msg/peoples.l
 8b791af430b57abeed71b8ce8509697a CMakeFiles/_pitakuru_generate_messages_check_deps_DriveWheel
 0c504377ed4960a208bdd81954f25818 CMakeFiles/_pitakuru_generate_messages_check_deps_Obstacle
 a872030289106f5ee0842d9752bf47a9 CMakeFiles/_pitakuru_generate_messages_check_deps_SoundAction
@@ -73,6 +83,8 @@ c51102946f04a8f9cef4793237b6918f CMakeFiles/_pitakuru_generate_messages_check_de
 ea73d51ad3a9dba3a0580a82b95c6cd1 CMakeFiles/_pitakuru_generate_messages_check_deps_State
 13c8f1eb1d380aad57e4f5bcfa6c1ce9 CMakeFiles/_pitakuru_generate_messages_check_deps_States
 a5a9e16885a83c2d1492000897b71e1d CMakeFiles/_pitakuru_generate_messages_check_deps_TriggerAction
+7a714b001182c311f505770d5675ce5f CMakeFiles/_pitakuru_generate_messages_check_deps_people_box
+9df3b82b2f9af2af88d0926672f5ae3c CMakeFiles/_pitakuru_generate_messages_check_deps_peoples
 4423a534749df9e176461711be4b8848 CMakeFiles/clean_test_results
 b545802da58591753c79bb75caa078dd CMakeFiles/pitakuru_generate_messages_cpp
 b545802da58591753c79bb75caa078dd CMakeFiles/pitakuru_generate_messages_eus

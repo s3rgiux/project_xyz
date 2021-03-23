@@ -64,6 +64,8 @@ CMakeFiles/pitakuru_generate_messages_cpp: /home/xavier/catkin_ws/devel/.private
 CMakeFiles/pitakuru_generate_messages_cpp: /home/xavier/catkin_ws/devel/.private/pitakuru/include/pitakuru/SoundActionGoal.h
 CMakeFiles/pitakuru_generate_messages_cpp: /home/xavier/catkin_ws/devel/.private/pitakuru/include/pitakuru/SoundActionResult.h
 CMakeFiles/pitakuru_generate_messages_cpp: /home/xavier/catkin_ws/devel/.private/pitakuru/include/pitakuru/SoundFeedback.h
+CMakeFiles/pitakuru_generate_messages_cpp: /home/xavier/catkin_ws/devel/.private/pitakuru/include/pitakuru/peoples.h
+CMakeFiles/pitakuru_generate_messages_cpp: /home/xavier/catkin_ws/devel/.private/pitakuru/include/pitakuru/people_box.h
 CMakeFiles/pitakuru_generate_messages_cpp: /home/xavier/catkin_ws/devel/.private/pitakuru/include/pitakuru/Obstacle.h
 
 
@@ -155,10 +157,23 @@ CMakeFiles/pitakuru_generate_messages_cpp: /home/xavier/catkin_ws/devel/.private
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xavier/catkin_ws/build/pitakuru/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Generating C++ code from pitakuru/SoundFeedback.msg"
 	cd /home/xavier/catkin_ws/src/pitakuru && /home/xavier/catkin_ws/build/pitakuru/catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/xavier/catkin_ws/devel/.private/pitakuru/share/pitakuru/msg/SoundFeedback.msg -Ipitakuru:/home/xavier/catkin_ws/src/pitakuru/msg -Ipitakuru:/home/xavier/catkin_ws/devel/.private/pitakuru/share/pitakuru/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/melodic/share/actionlib_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/melodic/share/geometry_msgs/cmake/../msg -p pitakuru -o /home/xavier/catkin_ws/devel/.private/pitakuru/include/pitakuru -e /opt/ros/melodic/share/gencpp/cmake/..
 
+/home/xavier/catkin_ws/devel/.private/pitakuru/include/pitakuru/peoples.h: /opt/ros/melodic/lib/gencpp/gen_cpp.py
+/home/xavier/catkin_ws/devel/.private/pitakuru/include/pitakuru/peoples.h: /home/xavier/catkin_ws/src/pitakuru/msg/peoples.msg
+/home/xavier/catkin_ws/devel/.private/pitakuru/include/pitakuru/peoples.h: /home/xavier/catkin_ws/src/pitakuru/msg/people_box.msg
+/home/xavier/catkin_ws/devel/.private/pitakuru/include/pitakuru/peoples.h: /opt/ros/melodic/share/gencpp/msg.h.template
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xavier/catkin_ws/build/pitakuru/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Generating C++ code from pitakuru/peoples.msg"
+	cd /home/xavier/catkin_ws/src/pitakuru && /home/xavier/catkin_ws/build/pitakuru/catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/xavier/catkin_ws/src/pitakuru/msg/peoples.msg -Ipitakuru:/home/xavier/catkin_ws/src/pitakuru/msg -Ipitakuru:/home/xavier/catkin_ws/devel/.private/pitakuru/share/pitakuru/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/melodic/share/actionlib_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/melodic/share/geometry_msgs/cmake/../msg -p pitakuru -o /home/xavier/catkin_ws/devel/.private/pitakuru/include/pitakuru -e /opt/ros/melodic/share/gencpp/cmake/..
+
+/home/xavier/catkin_ws/devel/.private/pitakuru/include/pitakuru/people_box.h: /opt/ros/melodic/lib/gencpp/gen_cpp.py
+/home/xavier/catkin_ws/devel/.private/pitakuru/include/pitakuru/people_box.h: /home/xavier/catkin_ws/src/pitakuru/msg/people_box.msg
+/home/xavier/catkin_ws/devel/.private/pitakuru/include/pitakuru/people_box.h: /opt/ros/melodic/share/gencpp/msg.h.template
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xavier/catkin_ws/build/pitakuru/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Generating C++ code from pitakuru/people_box.msg"
+	cd /home/xavier/catkin_ws/src/pitakuru && /home/xavier/catkin_ws/build/pitakuru/catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/xavier/catkin_ws/src/pitakuru/msg/people_box.msg -Ipitakuru:/home/xavier/catkin_ws/src/pitakuru/msg -Ipitakuru:/home/xavier/catkin_ws/devel/.private/pitakuru/share/pitakuru/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/melodic/share/actionlib_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/melodic/share/geometry_msgs/cmake/../msg -p pitakuru -o /home/xavier/catkin_ws/devel/.private/pitakuru/include/pitakuru -e /opt/ros/melodic/share/gencpp/cmake/..
+
 /home/xavier/catkin_ws/devel/.private/pitakuru/include/pitakuru/Obstacle.h: /opt/ros/melodic/lib/gencpp/gen_cpp.py
 /home/xavier/catkin_ws/devel/.private/pitakuru/include/pitakuru/Obstacle.h: /home/xavier/catkin_ws/src/pitakuru/msg/Obstacle.msg
 /home/xavier/catkin_ws/devel/.private/pitakuru/include/pitakuru/Obstacle.h: /opt/ros/melodic/share/gencpp/msg.h.template
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xavier/catkin_ws/build/pitakuru/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Generating C++ code from pitakuru/Obstacle.msg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xavier/catkin_ws/build/pitakuru/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Generating C++ code from pitakuru/Obstacle.msg"
 	cd /home/xavier/catkin_ws/src/pitakuru && /home/xavier/catkin_ws/build/pitakuru/catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/xavier/catkin_ws/src/pitakuru/msg/Obstacle.msg -Ipitakuru:/home/xavier/catkin_ws/src/pitakuru/msg -Ipitakuru:/home/xavier/catkin_ws/devel/.private/pitakuru/share/pitakuru/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/melodic/share/actionlib_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/melodic/share/geometry_msgs/cmake/../msg -p pitakuru -o /home/xavier/catkin_ws/devel/.private/pitakuru/include/pitakuru -e /opt/ros/melodic/share/gencpp/cmake/..
 
 pitakuru_generate_messages_cpp: CMakeFiles/pitakuru_generate_messages_cpp
@@ -173,6 +188,8 @@ pitakuru_generate_messages_cpp: /home/xavier/catkin_ws/devel/.private/pitakuru/i
 pitakuru_generate_messages_cpp: /home/xavier/catkin_ws/devel/.private/pitakuru/include/pitakuru/SoundActionGoal.h
 pitakuru_generate_messages_cpp: /home/xavier/catkin_ws/devel/.private/pitakuru/include/pitakuru/SoundActionResult.h
 pitakuru_generate_messages_cpp: /home/xavier/catkin_ws/devel/.private/pitakuru/include/pitakuru/SoundFeedback.h
+pitakuru_generate_messages_cpp: /home/xavier/catkin_ws/devel/.private/pitakuru/include/pitakuru/peoples.h
+pitakuru_generate_messages_cpp: /home/xavier/catkin_ws/devel/.private/pitakuru/include/pitakuru/people_box.h
 pitakuru_generate_messages_cpp: /home/xavier/catkin_ws/devel/.private/pitakuru/include/pitakuru/Obstacle.h
 pitakuru_generate_messages_cpp: CMakeFiles/pitakuru_generate_messages_cpp.dir/build.make
 

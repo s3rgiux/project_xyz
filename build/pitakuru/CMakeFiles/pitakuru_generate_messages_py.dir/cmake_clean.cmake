@@ -11,6 +11,8 @@ file(REMOVE_RECURSE
   "/home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg/_SoundActionGoal.py"
   "/home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg/_SoundActionResult.py"
   "/home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg/_SoundFeedback.py"
+  "/home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg/_peoples.py"
+  "/home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg/_people_box.py"
   "/home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg/_Obstacle.py"
   "/home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg/__init__.py"
 )

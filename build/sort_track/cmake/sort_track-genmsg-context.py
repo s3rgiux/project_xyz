@@ -1,6 +1,6 @@
 # generated from genmsg/cmake/pkg-genmsg.context.in
 
-messages_str = "/home/xavier/catkin_ws/src/sort-deepsort-yolov3-ROSS/sort_track/msg/IntList.msg"
+messages_str = "/home/xavier/catkin_ws/src/sort-deepsort-yolov3-ROSS/sort_track/msg/IntList.msg;/home/xavier/catkin_ws/src/sort-deepsort-yolov3-ROSS/sort_track/msg/people_box.msg;/home/xavier/catkin_ws/src/sort-deepsort-yolov3-ROSS/sort_track/msg/peoples.msg"
 services_str = ""
 pkg_name = "sort_track"
 dependencies_str = "std_msgs;sort_track"

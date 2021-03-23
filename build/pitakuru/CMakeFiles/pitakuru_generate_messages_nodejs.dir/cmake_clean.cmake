@@ -11,6 +11,8 @@ file(REMOVE_RECURSE
   "/home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg/SoundActionGoal.js"
   "/home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg/SoundActionResult.js"
   "/home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg/SoundFeedback.js"
+  "/home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg/peoples.js"
+  "/home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg/people_box.js"
   "/home/xavier/catkin_ws/devel/.private/pitakuru/share/gennodejs/ros/pitakuru/msg/Obstacle.js"
 )
 

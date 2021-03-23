@@ -27,5 +27,9 @@
    "STATES"
    "<TRIGGERACTION>"
    "TRIGGERACTION"
+   "<PEOPLE_BOX>"
+   "PEOPLE_BOX"
+   "<PEOPLES>"
+   "PEOPLES"
   ))
 

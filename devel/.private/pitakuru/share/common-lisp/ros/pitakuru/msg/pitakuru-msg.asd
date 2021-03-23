@@ -33,4 +33,8 @@
     (:file "_package_States" :depends-on ("_package"))
     (:file "TriggerAction" :depends-on ("_package_TriggerAction"))
     (:file "_package_TriggerAction" :depends-on ("_package"))
+    (:file "people_box" :depends-on ("_package_people_box"))
+    (:file "_package_people_box" :depends-on ("_package"))
+    (:file "peoples" :depends-on ("_package_peoples"))
+    (:file "_package_peoples" :depends-on ("_package"))
   ))

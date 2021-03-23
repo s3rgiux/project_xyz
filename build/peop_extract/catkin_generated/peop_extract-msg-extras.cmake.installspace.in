@@ -1,2 +1,2 @@
-set(peop_extract_MESSAGE_FILES "msg/BoundingBoxes.msg;msg/BoundingBox.msg;msg/ObjectCount.msg")
+set(peop_extract_MESSAGE_FILES "msg/BoundingBoxes.msg;msg/BoundingBox.msg;msg/ObjectCount.msg;msg/people_box.msg;msg/peoples.msg")
 set(peop_extract_SERVICE_FILES "")

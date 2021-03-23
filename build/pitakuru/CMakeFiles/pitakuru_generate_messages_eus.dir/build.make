@@ -64,6 +64,8 @@ CMakeFiles/pitakuru_generate_messages_eus: /home/xavier/catkin_ws/devel/.private
 CMakeFiles/pitakuru_generate_messages_eus: /home/xavier/catkin_ws/devel/.private/pitakuru/share/roseus/ros/pitakuru/msg/SoundActionGoal.l
 CMakeFiles/pitakuru_generate_messages_eus: /home/xavier/catkin_ws/devel/.private/pitakuru/share/roseus/ros/pitakuru/msg/SoundActionResult.l
 CMakeFiles/pitakuru_generate_messages_eus: /home/xavier/catkin_ws/devel/.private/pitakuru/share/roseus/ros/pitakuru/msg/SoundFeedback.l
+CMakeFiles/pitakuru_generate_messages_eus: /home/xavier/catkin_ws/devel/.private/pitakuru/share/roseus/ros/pitakuru/msg/peoples.l
+CMakeFiles/pitakuru_generate_messages_eus: /home/xavier/catkin_ws/devel/.private/pitakuru/share/roseus/ros/pitakuru/msg/people_box.l
 CMakeFiles/pitakuru_generate_messages_eus: /home/xavier/catkin_ws/devel/.private/pitakuru/share/roseus/ros/pitakuru/msg/Obstacle.l
 CMakeFiles/pitakuru_generate_messages_eus: /home/xavier/catkin_ws/devel/.private/pitakuru/share/roseus/ros/pitakuru/manifest.l
 
@@ -145,13 +147,24 @@ CMakeFiles/pitakuru_generate_messages_eus: /home/xavier/catkin_ws/devel/.private
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xavier/catkin_ws/build/pitakuru/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Generating EusLisp code from pitakuru/SoundFeedback.msg"
 	catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/xavier/catkin_ws/devel/.private/pitakuru/share/pitakuru/msg/SoundFeedback.msg -Ipitakuru:/home/xavier/catkin_ws/src/pitakuru/msg -Ipitakuru:/home/xavier/catkin_ws/devel/.private/pitakuru/share/pitakuru/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/melodic/share/actionlib_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/melodic/share/geometry_msgs/cmake/../msg -p pitakuru -o /home/xavier/catkin_ws/devel/.private/pitakuru/share/roseus/ros/pitakuru/msg
 
+/home/xavier/catkin_ws/devel/.private/pitakuru/share/roseus/ros/pitakuru/msg/peoples.l: /opt/ros/melodic/lib/geneus/gen_eus.py
+/home/xavier/catkin_ws/devel/.private/pitakuru/share/roseus/ros/pitakuru/msg/peoples.l: /home/xavier/catkin_ws/src/pitakuru/msg/peoples.msg
+/home/xavier/catkin_ws/devel/.private/pitakuru/share/roseus/ros/pitakuru/msg/peoples.l: /home/xavier/catkin_ws/src/pitakuru/msg/people_box.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xavier/catkin_ws/build/pitakuru/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Generating EusLisp code from pitakuru/peoples.msg"
+	catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/xavier/catkin_ws/src/pitakuru/msg/peoples.msg -Ipitakuru:/home/xavier/catkin_ws/src/pitakuru/msg -Ipitakuru:/home/xavier/catkin_ws/devel/.private/pitakuru/share/pitakuru/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/melodic/share/actionlib_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/melodic/share/geometry_msgs/cmake/../msg -p pitakuru -o /home/xavier/catkin_ws/devel/.private/pitakuru/share/roseus/ros/pitakuru/msg
+
+/home/xavier/catkin_ws/devel/.private/pitakuru/share/roseus/ros/pitakuru/msg/people_box.l: /opt/ros/melodic/lib/geneus/gen_eus.py
+/home/xavier/catkin_ws/devel/.private/pitakuru/share/roseus/ros/pitakuru/msg/people_box.l: /home/xavier/catkin_ws/src/pitakuru/msg/people_box.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xavier/catkin_ws/build/pitakuru/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Generating EusLisp code from pitakuru/people_box.msg"
+	catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/xavier/catkin_ws/src/pitakuru/msg/people_box.msg -Ipitakuru:/home/xavier/catkin_ws/src/pitakuru/msg -Ipitakuru:/home/xavier/catkin_ws/devel/.private/pitakuru/share/pitakuru/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/melodic/share/actionlib_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/melodic/share/geometry_msgs/cmake/../msg -p pitakuru -o /home/xavier/catkin_ws/devel/.private/pitakuru/share/roseus/ros/pitakuru/msg
+
 /home/xavier/catkin_ws/devel/.private/pitakuru/share/roseus/ros/pitakuru/msg/Obstacle.l: /opt/ros/melodic/lib/geneus/gen_eus.py
 /home/xavier/catkin_ws/devel/.private/pitakuru/share/roseus/ros/pitakuru/msg/Obstacle.l: /home/xavier/catkin_ws/src/pitakuru/msg/Obstacle.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xavier/catkin_ws/build/pitakuru/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Generating EusLisp code from pitakuru/Obstacle.msg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xavier/catkin_ws/build/pitakuru/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Generating EusLisp code from pitakuru/Obstacle.msg"
 	catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/xavier/catkin_ws/src/pitakuru/msg/Obstacle.msg -Ipitakuru:/home/xavier/catkin_ws/src/pitakuru/msg -Ipitakuru:/home/xavier/catkin_ws/devel/.private/pitakuru/share/pitakuru/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/melodic/share/actionlib_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/melodic/share/geometry_msgs/cmake/../msg -p pitakuru -o /home/xavier/catkin_ws/devel/.private/pitakuru/share/roseus/ros/pitakuru/msg
 
 /home/xavier/catkin_ws/devel/.private/pitakuru/share/roseus/ros/pitakuru/manifest.l: /opt/ros/melodic/lib/geneus/gen_eus.py
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xavier/catkin_ws/build/pitakuru/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Generating EusLisp manifest code for pitakuru"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xavier/catkin_ws/build/pitakuru/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Generating EusLisp manifest code for pitakuru"
 	catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/geneus/cmake/../../../lib/geneus/gen_eus.py -m -o /home/xavier/catkin_ws/devel/.private/pitakuru/share/roseus/ros/pitakuru pitakuru std_msgs actionlib_msgs geometry_msgs
 
 pitakuru_generate_messages_eus: CMakeFiles/pitakuru_generate_messages_eus
@@ -166,6 +179,8 @@ pitakuru_generate_messages_eus: /home/xavier/catkin_ws/devel/.private/pitakuru/s
 pitakuru_generate_messages_eus: /home/xavier/catkin_ws/devel/.private/pitakuru/share/roseus/ros/pitakuru/msg/SoundActionGoal.l
 pitakuru_generate_messages_eus: /home/xavier/catkin_ws/devel/.private/pitakuru/share/roseus/ros/pitakuru/msg/SoundActionResult.l
 pitakuru_generate_messages_eus: /home/xavier/catkin_ws/devel/.private/pitakuru/share/roseus/ros/pitakuru/msg/SoundFeedback.l
+pitakuru_generate_messages_eus: /home/xavier/catkin_ws/devel/.private/pitakuru/share/roseus/ros/pitakuru/msg/peoples.l
+pitakuru_generate_messages_eus: /home/xavier/catkin_ws/devel/.private/pitakuru/share/roseus/ros/pitakuru/msg/people_box.l
 pitakuru_generate_messages_eus: /home/xavier/catkin_ws/devel/.private/pitakuru/share/roseus/ros/pitakuru/msg/Obstacle.l
 pitakuru_generate_messages_eus: /home/xavier/catkin_ws/devel/.private/pitakuru/share/roseus/ros/pitakuru/manifest.l
 pitakuru_generate_messages_eus: CMakeFiles/pitakuru_generate_messages_eus.dir/build.make

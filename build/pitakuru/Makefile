@@ -207,6 +207,19 @@ pitakuru_generate_messages_cpp/fast:
 .PHONY : pitakuru_generate_messages_cpp/fast
 
 #=============================================================================
+# Target rules for targets named _pitakuru_generate_messages_check_deps_people_box
+
+# Build rule for target.
+_pitakuru_generate_messages_check_deps_people_box: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _pitakuru_generate_messages_check_deps_people_box
+.PHONY : _pitakuru_generate_messages_check_deps_people_box
+
+# fast build rule for target.
+_pitakuru_generate_messages_check_deps_people_box/fast:
+	$(MAKE) -f CMakeFiles/_pitakuru_generate_messages_check_deps_people_box.dir/build.make CMakeFiles/_pitakuru_generate_messages_check_deps_people_box.dir/build
+.PHONY : _pitakuru_generate_messages_check_deps_people_box/fast
+
+#=============================================================================
 # Target rules for targets named _pitakuru_generate_messages_check_deps_SoundActionResult
 
 # Build rule for target.
@@ -636,6 +649,19 @@ pitakuru_generate_messages_nodejs/fast:
 .PHONY : pitakuru_generate_messages_nodejs/fast
 
 #=============================================================================
+# Target rules for targets named _pitakuru_generate_messages_check_deps_peoples
+
+# Build rule for target.
+_pitakuru_generate_messages_check_deps_peoples: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _pitakuru_generate_messages_check_deps_peoples
+.PHONY : _pitakuru_generate_messages_check_deps_peoples
+
+# fast build rule for target.
+_pitakuru_generate_messages_check_deps_peoples/fast:
+	$(MAKE) -f CMakeFiles/_pitakuru_generate_messages_check_deps_peoples.dir/build.make CMakeFiles/_pitakuru_generate_messages_check_deps_peoples.dir/build
+.PHONY : _pitakuru_generate_messages_check_deps_peoples/fast
+
+#=============================================================================
 # Target rules for targets named std_msgs_generate_messages_cpp
 
 # Build rule for target.
@@ -921,6 +947,7 @@ help:
 	@echo "... pitakuru_generate_messages_lisp"
 	@echo "... pitakuru_generate_messages_eus"
 	@echo "... pitakuru_generate_messages_cpp"
+	@echo "... _pitakuru_generate_messages_check_deps_people_box"
 	@echo "... _pitakuru_generate_messages_check_deps_SoundActionResult"
 	@echo "... _pitakuru_generate_messages_check_deps_SoundActionFeedback"
 	@echo "... _pitakuru_generate_messages_check_deps_State"
@@ -956,6 +983,7 @@ help:
 	@echo "... actionlib_msgs_generate_messages_nodejs"
 	@echo "... run_tests"
 	@echo "... pitakuru_generate_messages_nodejs"
+	@echo "... _pitakuru_generate_messages_check_deps_peoples"
 	@echo "... std_msgs_generate_messages_cpp"
 	@echo "... geometry_msgs_generate_messages_nodejs"
 	@echo "... clean_test_results"

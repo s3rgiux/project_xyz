@@ -11,6 +11,8 @@ file(REMOVE_RECURSE
   "/home/xavier/catkin_ws/devel/.private/pitakuru/include/pitakuru/SoundActionGoal.h"
   "/home/xavier/catkin_ws/devel/.private/pitakuru/include/pitakuru/SoundActionResult.h"
   "/home/xavier/catkin_ws/devel/.private/pitakuru/include/pitakuru/SoundFeedback.h"
+  "/home/xavier/catkin_ws/devel/.private/pitakuru/include/pitakuru/peoples.h"
+  "/home/xavier/catkin_ws/devel/.private/pitakuru/include/pitakuru/people_box.h"
   "/home/xavier/catkin_ws/devel/.private/pitakuru/include/pitakuru/Obstacle.h"
 )
 

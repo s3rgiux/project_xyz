@@ -7,5 +7,9 @@
    "BOUNDINGBOXES"
    "<OBJECTCOUNT>"
    "OBJECTCOUNT"
+   "<PEOPLE_BOX>"
+   "PEOPLE_BOX"
+   "<PEOPLES>"
+   "PEOPLES"
   ))
 

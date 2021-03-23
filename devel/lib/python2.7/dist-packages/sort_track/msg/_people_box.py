@@ -1,0 +1,1 @@
+/home/xavier/catkin_ws/devel/.private/sort_track/lib/python2.7/dist-packages/sort_track/msg/_people_box.py

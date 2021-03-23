@@ -1,5 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/sort_track_generate_messages_lisp"
+  "/home/xavier/catkin_ws/devel/.private/sort_track/share/common-lisp/ros/sort_track/msg/peoples.lisp"
+  "/home/xavier/catkin_ws/devel/.private/sort_track/share/common-lisp/ros/sort_track/msg/people_box.lisp"
   "/home/xavier/catkin_ws/devel/.private/sort_track/share/common-lisp/ros/sort_track/msg/IntList.lisp"
 )
 

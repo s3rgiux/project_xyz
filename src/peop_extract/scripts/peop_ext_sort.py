@@ -18,6 +18,7 @@ from peop_extract.msg import BoundingBox,BoundingBoxes
 import struct
 import time
 import rosparam
+from peop_extract.msg import people_box,peoples
 #params = rosparam.get_param("/km_dolly_wheels")
 #if params['connect_mode']=='ble':
 #    from pykeigan import blecontroller
@@ -45,7 +46,8 @@ class PitWheels:
         #rospy.Subscriber('/cmd_vel', Twist, self.teleop_callback, queue_size=1)
         #rospy.Subscriber('/darknet_ros/bounding_boxes', BoundingBoxes, self.boundings_callback, queue_size=1)
         rospy.Subscriber('/tracked', Vector3, self.tracked_callback, queue_size=2)
-        rospy.Subscriber('/sorted_tracked', IntList, self.sort_callback, queue_size=2)
+        #rospy.Subscriber('/sorted_tracked', IntList, self.sort_callback, queue_size=2)
+        rospy.Subscriber('/peoples_sorted_tracked', peoples, self.peoples_sort_callback, queue_size=2)
         #rospy.Subscriber('/euler2', Float64, self.angle_callback, queue_size=1)
         self.obsta  = Float32()
         self.detected=0
@@ -76,6 +78,8 @@ class PitWheels:
         self.pixels_radius=45
         self.lost_count=0
         self.dist_estim=0
+        self.last_time=time.time()
+        
     
     def pubobs(self):
         if(time.time()-self.last_time>0.4):
@@ -92,13 +96,96 @@ class PitWheels:
             self.dist_estim=0
             #self.dist_pub.publish(self.distancia)
     
-    def sort_callback(self,data):
+
+    def peoples_sort_callback(self,data):
+        biggest=people_box()
+        biggest.id==-1
+        area_aux=000
+        for n in data.people:
+            
+            #check if we already are tracking one 
+            if self.first_got and self.tracked_id==n.id:#then we have tracked object
+                    self.lost_count=0
+                    #print('tracking id {}'.format(identif))
+                    alf=0.69
+                    estim=1/(((n.xmax-n.xmin)*(n.ymax-n.ymin))/100000)#1/((x.xmax+x.xmin)+(x.ymax+x.ymin))
+                    self.dist_estim=(alf*self.dist_estim)+((1-alf)*estim)
+                    #print('{},{},{},{}'.format(center_x,center_y,self.tracked_ang,self.dist_estim))
+                    
+                    #self.prev_cx=center_x
+                    #self.prev_cy=center_y
+                    self.ang_dist.x=1#1identif#1 #x.center.x
+                    self.ang_dist.y=self.dist_estim#x.center.y#dist*100
+                    self.ang_dist.z=ang
+                    self.prev_ang = self.tracked_ang
+                    self.ang_pub.publish(self.ang_dist)
+                    self.lost_count=0
+                    self.last_time=time.time()#self.time
+                    return
+            elif(n.area>area_aux and int(n.id)!=-1):
+                area_aux=n.area
+                biggest=n
+        if(biggest.id>0):
+            
+            center_x=(biggest.xmax+biggest.xmin)/2
+            center_y=(biggest.ymax+biggest.ymin)/2
+            auxx=320-center_x
+            auxy=480-center_y
+            ang = np.arctan2(auxx, auxy) * 180 / np.pi
+            #print('{},{},{},{},{},{}'.format(xmin,ymin,xmax,ymax,identif,ang))
+            #cnt2=cnt2+1
+            if self.first_got== False and self.tracking and self.tracked_x != -50 and self.tracked_y != -50 and self.tracked_ang < (self.tracked_ang + 7) and self.tracked_ang > (self.tracked_ang - 7) :#then we have tracked object
+                #lst.append(x)
+                #print("tracking first time")
+                self.first_got=True
+                self.tracked_id= biggest.id
+                self.lost_count=0
+                self.last_time=time.time()
+                #self.prev_cx=center_x
+                #self.prev_cy=center_y
+                #self.prev_ang = self.tracked_ang
+                #self.dist_estim=0
+                #elif self.first_got and self.tracking and self.tracked_ang < (self.prev_ang + 4) and self.tracked_ang > (self.prev_ang - 4) and center_x < self.prev_cx+ self.pixels_radius and center_x > self.prev_cx- self.pixels_radius and center_y<self.prev_cy+self.pixels_radius and center_y>self.prev_cy-self.pixels_radius:#then we have tracked object
+                #elif self.first_got and self.tracking and self.tracked_ang < (self.prev_ang + 9) and self.tracked_ang > (self.prev_ang - 9) and center_x < self.prev_cx+ self.pixels_radius and center_x > self.prev_cx- self.pixels_radius and center_y<self.prev_cy+self.pixels_radius and center_y>self.prev_cy-self.pixels_radius:#then we have tracked object
+                """ elif self.first_got and self.tracked_id==identif:#then we have tracked object
+                self.lost_count=0
+                #print('tracking id {}'.format(identif))
+                alf=0.69
+                estim=1/(((xmax-xmin)*(ymax-ymin))/100000)#1/((x.xmax+x.xmin)+(x.ymax+x.ymin))
+                self.dist_estim=(alf*self.dist_estim)+((1-alf)*estim)
+                #print('{},{},{},{}'.format(center_x,center_y,self.tracked_ang,self.dist_estim))
+                
+                #self.prev_cx=center_x
+                #self.prev_cy=center_y
+                self.ang_dist.x=1#1identif#1 #x.center.x
+                self.ang_dist.y=self.dist_estim#x.center.y#dist*100
+                self.ang_dist.z=ang
+                self.prev_ang = self.tracked_ang
+                self.ang_pub.publish(self.ang_dist)
+                self.lost_count=0
+                self.last_time=time.time()#self.timex """
+            else:
+                self.lost_count=self.lost_count+1
+                if(self.lost_count>7):
+                    self.lost_count=0
+                    self.first_got=False
+                    self.dist_estim=0
+                if self.first_got==False:
+                    self.ang_dist.x=-biggest.id#-1#x.center.x
+                    self.ang_dist.y=0#x.center.y#dist*100
+                    self.ang_dist.z=ang
+                    self.ang_pub.publish(self.ang_dist)
+                    self.lost_count=self.lost_count=+1
+                self.last_time=time.time()#self.timex
+
+    """ def sort_callback(self,data):
         rcv=data.data
         xmin=rcv[0]
         ymin=rcv[1]
         xmax=rcv[2]
         ymax=rcv[3]
         identif =rcv[4]
+        area=rcv[5]
         #if(xmin!=-1 and xmin!=-1 and xmax!=-1 and ymax!=-1 and identif!=-1 ):
         if(identif!=-1 ):
             #print(rcv[0])
@@ -150,7 +237,7 @@ class PitWheels:
                     self.ang_dist.z=ang
                     self.ang_pub.publish(self.ang_dist)
                     self.lost_count=self.lost_count=+1
-                self.last_time=time.time()#self.timex
+                self.last_time=time.time()#self.timex """
         
 
     

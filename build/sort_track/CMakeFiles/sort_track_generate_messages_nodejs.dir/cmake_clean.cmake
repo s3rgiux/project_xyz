@@ -1,5 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/sort_track_generate_messages_nodejs"
+  "/home/xavier/catkin_ws/devel/.private/sort_track/share/gennodejs/ros/sort_track/msg/peoples.js"
+  "/home/xavier/catkin_ws/devel/.private/sort_track/share/gennodejs/ros/sort_track/msg/people_box.js"
   "/home/xavier/catkin_ws/devel/.private/sort_track/share/gennodejs/ros/sort_track/msg/IntList.js"
 )
 

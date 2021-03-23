@@ -56,6 +56,8 @@ add_message_files(
   Obstacle.msg
   State.msg
   States.msg
+  people_box.msg
+  peoples.msg
   TriggerAction.msg
 )
 

@@ -1,5 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/sort_track_generate_messages_eus"
+  "/home/xavier/catkin_ws/devel/.private/sort_track/share/roseus/ros/sort_track/msg/peoples.l"
+  "/home/xavier/catkin_ws/devel/.private/sort_track/share/roseus/ros/sort_track/msg/people_box.l"
   "/home/xavier/catkin_ws/devel/.private/sort_track/share/roseus/ros/sort_track/msg/IntList.l"
   "/home/xavier/catkin_ws/devel/.private/sort_track/share/roseus/ros/sort_track/manifest.l"
 )

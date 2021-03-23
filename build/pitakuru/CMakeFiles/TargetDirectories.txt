@@ -5,6 +5,7 @@
 /home/xavier/catkin_ws/build/pitakuru/CMakeFiles/pitakuru_generate_messages_lisp.dir
 /home/xavier/catkin_ws/build/pitakuru/CMakeFiles/pitakuru_generate_messages_eus.dir
 /home/xavier/catkin_ws/build/pitakuru/CMakeFiles/pitakuru_generate_messages_cpp.dir
+/home/xavier/catkin_ws/build/pitakuru/CMakeFiles/_pitakuru_generate_messages_check_deps_people_box.dir
 /home/xavier/catkin_ws/build/pitakuru/CMakeFiles/_pitakuru_generate_messages_check_deps_SoundActionResult.dir
 /home/xavier/catkin_ws/build/pitakuru/CMakeFiles/_pitakuru_generate_messages_check_deps_SoundActionFeedback.dir
 /home/xavier/catkin_ws/build/pitakuru/CMakeFiles/_pitakuru_generate_messages_check_deps_State.dir
@@ -40,6 +41,7 @@
 /home/xavier/catkin_ws/build/pitakuru/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir
 /home/xavier/catkin_ws/build/pitakuru/CMakeFiles/run_tests.dir
 /home/xavier/catkin_ws/build/pitakuru/CMakeFiles/pitakuru_generate_messages_nodejs.dir
+/home/xavier/catkin_ws/build/pitakuru/CMakeFiles/_pitakuru_generate_messages_check_deps_peoples.dir
 /home/xavier/catkin_ws/build/pitakuru/CMakeFiles/std_msgs_generate_messages_cpp.dir
 /home/xavier/catkin_ws/build/pitakuru/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir
 /home/xavier/catkin_ws/build/pitakuru/CMakeFiles/clean_test_results.dir

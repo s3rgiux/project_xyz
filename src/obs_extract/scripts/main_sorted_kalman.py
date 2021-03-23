@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from __future__ import division
-
 import sys,time
 from math import sqrt, cos, sin
 import rospy
@@ -22,9 +21,6 @@ import imutils
 import struct
 import time
 import rosparam
-
-
-
 import cv2 as cv
 import numpy as np
 import sys
@@ -161,8 +157,6 @@ class PitWheels:
                 if self.find_again:
                     if np.abs(ang-self.yolo_ang)<8:
                         again_lst.append(x)
-
-                    
                 else:    
                     if self.first_got and x.center.x>0.2 and x.center.x<-0.2 and x.center.y>0.2 and x.center.y<-0.2 and  x.center.x<=(self.follow_cx+self.radius_follow) and x.center.x>=(self.follow_cx-self.radius_follow) and x.center.y <=(self.follow_cy+self.radius_follow) and x.center.y >=(self.follow_cy-self.radius_follow):#then we have tracked object
                         lst.append(x)
@@ -170,7 +164,6 @@ class PitWheels:
                         inradious.append(new.astype("float"))
                     elif self.first_got==False and self.tracked_x != -50 and self.tracked_y != -50 and x.center.x<=(self.tracked_x+self.radius_follow) and x.center.x>=(self.tracked_x-self.radius_follow) and x.center.y <=(self.tracked_y+self.radius_follow) and x.center.y >=(self.tracked_y-self.radius_follow):#then we have tracked object
                     #if self.tracked_x != -50 and self.tracked_y != -50 and x.center.x<=(self.tracked_x+self.radius_follow) and x.center.x>=(self.tracked_x-self.radius_follow) and x.center.y <=(self.tracked_y+self.radius_follow) and x.center.y >=(self.tracked_y-self.radius_follow):#then we have tracked object
-                        
                         first_got=True
                         self.follow_cx=x.center.x
                         self.follow_cy=x.center.y
@@ -212,7 +205,6 @@ class PitWheels:
             #sort list
             lst4.sort(key=self.takeSecond)
             obj_close=lst4[0]
-
             closest.x=obj_close[0].center.x
             closest.y=obj_close[0].center.y
             closest.z=len(lst)
@@ -330,10 +322,6 @@ class PitWheels:
             self.prev_cy=closest.y
             self.last_time_tracked=time.time()
             self.ang_pub.publish(closest)
-             
-            
-    
-    
 
     def shutdown(self):
         rospy.sleep(1)

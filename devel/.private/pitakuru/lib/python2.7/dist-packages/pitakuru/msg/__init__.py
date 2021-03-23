@@ -10,3 +10,5 @@ from ._SoundResult import *
 from ._State import *
 from ._States import *
 from ._TriggerAction import *
+from ._people_box import *
+from ._peoples import *

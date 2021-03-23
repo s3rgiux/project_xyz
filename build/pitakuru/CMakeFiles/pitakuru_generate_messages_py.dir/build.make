@@ -64,6 +64,8 @@ CMakeFiles/pitakuru_generate_messages_py: /home/xavier/catkin_ws/devel/.private/
 CMakeFiles/pitakuru_generate_messages_py: /home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg/_SoundActionGoal.py
 CMakeFiles/pitakuru_generate_messages_py: /home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg/_SoundActionResult.py
 CMakeFiles/pitakuru_generate_messages_py: /home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg/_SoundFeedback.py
+CMakeFiles/pitakuru_generate_messages_py: /home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg/_peoples.py
+CMakeFiles/pitakuru_generate_messages_py: /home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg/_people_box.py
 CMakeFiles/pitakuru_generate_messages_py: /home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg/_Obstacle.py
 CMakeFiles/pitakuru_generate_messages_py: /home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg/__init__.py
 
@@ -145,9 +147,20 @@ CMakeFiles/pitakuru_generate_messages_py: /home/xavier/catkin_ws/devel/.private/
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xavier/catkin_ws/build/pitakuru/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Generating Python from MSG pitakuru/SoundFeedback"
 	catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/xavier/catkin_ws/devel/.private/pitakuru/share/pitakuru/msg/SoundFeedback.msg -Ipitakuru:/home/xavier/catkin_ws/src/pitakuru/msg -Ipitakuru:/home/xavier/catkin_ws/devel/.private/pitakuru/share/pitakuru/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/melodic/share/actionlib_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/melodic/share/geometry_msgs/cmake/../msg -p pitakuru -o /home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg
 
+/home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg/_peoples.py: /opt/ros/melodic/lib/genpy/genmsg_py.py
+/home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg/_peoples.py: /home/xavier/catkin_ws/src/pitakuru/msg/peoples.msg
+/home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg/_peoples.py: /home/xavier/catkin_ws/src/pitakuru/msg/people_box.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xavier/catkin_ws/build/pitakuru/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Generating Python from MSG pitakuru/peoples"
+	catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/xavier/catkin_ws/src/pitakuru/msg/peoples.msg -Ipitakuru:/home/xavier/catkin_ws/src/pitakuru/msg -Ipitakuru:/home/xavier/catkin_ws/devel/.private/pitakuru/share/pitakuru/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/melodic/share/actionlib_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/melodic/share/geometry_msgs/cmake/../msg -p pitakuru -o /home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg
+
+/home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg/_people_box.py: /opt/ros/melodic/lib/genpy/genmsg_py.py
+/home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg/_people_box.py: /home/xavier/catkin_ws/src/pitakuru/msg/people_box.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xavier/catkin_ws/build/pitakuru/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Generating Python from MSG pitakuru/people_box"
+	catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/xavier/catkin_ws/src/pitakuru/msg/people_box.msg -Ipitakuru:/home/xavier/catkin_ws/src/pitakuru/msg -Ipitakuru:/home/xavier/catkin_ws/devel/.private/pitakuru/share/pitakuru/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/melodic/share/actionlib_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/melodic/share/geometry_msgs/cmake/../msg -p pitakuru -o /home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg
+
 /home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg/_Obstacle.py: /opt/ros/melodic/lib/genpy/genmsg_py.py
 /home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg/_Obstacle.py: /home/xavier/catkin_ws/src/pitakuru/msg/Obstacle.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xavier/catkin_ws/build/pitakuru/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Generating Python from MSG pitakuru/Obstacle"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xavier/catkin_ws/build/pitakuru/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Generating Python from MSG pitakuru/Obstacle"
 	catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/xavier/catkin_ws/src/pitakuru/msg/Obstacle.msg -Ipitakuru:/home/xavier/catkin_ws/src/pitakuru/msg -Ipitakuru:/home/xavier/catkin_ws/devel/.private/pitakuru/share/pitakuru/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -Iactionlib_msgs:/opt/ros/melodic/share/actionlib_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/melodic/share/geometry_msgs/cmake/../msg -p pitakuru -o /home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg
 
 /home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg/__init__.py: /opt/ros/melodic/lib/genpy/genmsg_py.py
@@ -162,8 +175,10 @@ CMakeFiles/pitakuru_generate_messages_py: /home/xavier/catkin_ws/devel/.private/
 /home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg/__init__.py: /home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg/_SoundActionGoal.py
 /home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg/__init__.py: /home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg/_SoundActionResult.py
 /home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg/__init__.py: /home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg/_SoundFeedback.py
+/home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg/__init__.py: /home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg/_peoples.py
+/home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg/__init__.py: /home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg/_people_box.py
 /home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg/__init__.py: /home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg/_Obstacle.py
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xavier/catkin_ws/build/pitakuru/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Generating Python msg __init__.py for pitakuru"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xavier/catkin_ws/build/pitakuru/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Generating Python msg __init__.py for pitakuru"
 	catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py -o /home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg --initpy
 
 pitakuru_generate_messages_py: CMakeFiles/pitakuru_generate_messages_py
@@ -178,6 +193,8 @@ pitakuru_generate_messages_py: /home/xavier/catkin_ws/devel/.private/pitakuru/li
 pitakuru_generate_messages_py: /home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg/_SoundActionGoal.py
 pitakuru_generate_messages_py: /home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg/_SoundActionResult.py
 pitakuru_generate_messages_py: /home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg/_SoundFeedback.py
+pitakuru_generate_messages_py: /home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg/_peoples.py
+pitakuru_generate_messages_py: /home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg/_people_box.py
 pitakuru_generate_messages_py: /home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg/_Obstacle.py
 pitakuru_generate_messages_py: /home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages/pitakuru/msg/__init__.py
 pitakuru_generate_messages_py: CMakeFiles/pitakuru_generate_messages_py.dir/build.make

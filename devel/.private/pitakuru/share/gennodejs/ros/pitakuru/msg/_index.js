@@ -2,6 +2,8 @@
 "use strict";
 
 let Obstacle = require('./Obstacle.js');
+let peoples = require('./peoples.js');
+let people_box = require('./people_box.js');
 let TriggerAction = require('./TriggerAction.js');
 let States = require('./States.js');
 let StateWheels = require('./StateWheels.js');
@@ -17,6 +19,8 @@ let SoundActionGoal = require('./SoundActionGoal.js');
 
 module.exports = {
   Obstacle: Obstacle,
+  peoples: peoples,
+  people_box: people_box,
   TriggerAction: TriggerAction,
   States: States,
   StateWheels: StateWheels,

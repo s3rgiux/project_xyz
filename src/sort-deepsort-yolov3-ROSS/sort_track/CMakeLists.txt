@@ -53,6 +53,8 @@ find_package(catkin REQUIRED COMPONENTS
 add_message_files(
   FILES
   IntList.msg
+  people_box.msg
+  peoples.msg
 )
 
 ## Generate services in the 'srv' folder

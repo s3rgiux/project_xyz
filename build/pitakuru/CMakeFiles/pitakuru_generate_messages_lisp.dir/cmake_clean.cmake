@@ -11,6 +11,8 @@ file(REMOVE_RECURSE
   "/home/xavier/catkin_ws/devel/.private/pitakuru/share/common-lisp/ros/pitakuru/msg/SoundActionGoal.lisp"
   "/home/xavier/catkin_ws/devel/.private/pitakuru/share/common-lisp/ros/pitakuru/msg/SoundActionResult.lisp"
   "/home/xavier/catkin_ws/devel/.private/pitakuru/share/common-lisp/ros/pitakuru/msg/SoundFeedback.lisp"
+  "/home/xavier/catkin_ws/devel/.private/pitakuru/share/common-lisp/ros/pitakuru/msg/peoples.lisp"
+  "/home/xavier/catkin_ws/devel/.private/pitakuru/share/common-lisp/ros/pitakuru/msg/people_box.lisp"
   "/home/xavier/catkin_ws/devel/.private/pitakuru/share/common-lisp/ros/pitakuru/msg/Obstacle.lisp"
 )
 

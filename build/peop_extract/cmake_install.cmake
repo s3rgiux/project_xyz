@@ -133,6 +133,8 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
     "/home/xavier/catkin_ws/src/peop_extract/msg/BoundingBoxes.msg"
     "/home/xavier/catkin_ws/src/peop_extract/msg/BoundingBox.msg"
     "/home/xavier/catkin_ws/src/peop_extract/msg/ObjectCount.msg"
+    "/home/xavier/catkin_ws/src/peop_extract/msg/people_box.msg"
+    "/home/xavier/catkin_ws/src/peop_extract/msg/peoples.msg"
     )
 endif()
 

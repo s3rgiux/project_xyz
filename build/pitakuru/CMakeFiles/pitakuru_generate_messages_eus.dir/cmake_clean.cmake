@@ -11,6 +11,8 @@ file(REMOVE_RECURSE
   "/home/xavier/catkin_ws/devel/.private/pitakuru/share/roseus/ros/pitakuru/msg/SoundActionGoal.l"
   "/home/xavier/catkin_ws/devel/.private/pitakuru/share/roseus/ros/pitakuru/msg/SoundActionResult.l"
   "/home/xavier/catkin_ws/devel/.private/pitakuru/share/roseus/ros/pitakuru/msg/SoundFeedback.l"
+  "/home/xavier/catkin_ws/devel/.private/pitakuru/share/roseus/ros/pitakuru/msg/peoples.l"
+  "/home/xavier/catkin_ws/devel/.private/pitakuru/share/roseus/ros/pitakuru/msg/people_box.l"
   "/home/xavier/catkin_ws/devel/.private/pitakuru/share/roseus/ros/pitakuru/msg/Obstacle.l"
   "/home/xavier/catkin_ws/devel/.private/pitakuru/share/roseus/ros/pitakuru/manifest.l"
 )

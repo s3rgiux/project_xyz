@@ -129,7 +129,11 @@ file(INSTALL DESTINATION "/home/xavier/catkin_ws/install" TYPE FILE FILES "/home
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/sort_track/msg" TYPE FILE FILES "/home/xavier/catkin_ws/src/sort-deepsort-yolov3-ROSS/sort_track/msg/IntList.msg")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/sort_track/msg" TYPE FILE FILES
+    "/home/xavier/catkin_ws/src/sort-deepsort-yolov3-ROSS/sort_track/msg/IntList.msg"
+    "/home/xavier/catkin_ws/src/sort-deepsort-yolov3-ROSS/sort_track/msg/people_box.msg"
+    "/home/xavier/catkin_ws/src/sort-deepsort-yolov3-ROSS/sort_track/msg/peoples.msg"
+    )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
