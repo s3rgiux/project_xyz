@@ -1,10 +1,11 @@
 file(REMOVE_RECURSE
   "CMakeFiles/peop_extract_generate_messages_py"
+  "/home/xavier/catkin_ws/devel/.private/peop_extract/lib/python2.7/dist-packages/peop_extract/msg/_States.py"
+  "/home/xavier/catkin_ws/devel/.private/peop_extract/lib/python2.7/dist-packages/peop_extract/msg/_BoundingBox.py"
   "/home/xavier/catkin_ws/devel/.private/peop_extract/lib/python2.7/dist-packages/peop_extract/msg/_peoples.py"
   "/home/xavier/catkin_ws/devel/.private/peop_extract/lib/python2.7/dist-packages/peop_extract/msg/_BoundingBoxes.py"
-  "/home/xavier/catkin_ws/devel/.private/peop_extract/lib/python2.7/dist-packages/peop_extract/msg/_people_box.py"
-  "/home/xavier/catkin_ws/devel/.private/peop_extract/lib/python2.7/dist-packages/peop_extract/msg/_BoundingBox.py"
   "/home/xavier/catkin_ws/devel/.private/peop_extract/lib/python2.7/dist-packages/peop_extract/msg/_ObjectCount.py"
+  "/home/xavier/catkin_ws/devel/.private/peop_extract/lib/python2.7/dist-packages/peop_extract/msg/_people_box.py"
   "/home/xavier/catkin_ws/devel/.private/peop_extract/lib/python2.7/dist-packages/peop_extract/msg/__init__.py"
 )
 

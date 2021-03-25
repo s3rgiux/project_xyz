@@ -3,6 +3,7 @@ file(REMOVE_RECURSE
   "/home/xavier/catkin_ws/devel/.private/obs_extract/share/gennodejs/ros/obs_extract/msg/CircleObstacle.js"
   "/home/xavier/catkin_ws/devel/.private/obs_extract/share/gennodejs/ros/obs_extract/msg/Obstacles.js"
   "/home/xavier/catkin_ws/devel/.private/obs_extract/share/gennodejs/ros/obs_extract/msg/SegmentObstacle.js"
+  "/home/xavier/catkin_ws/devel/.private/obs_extract/share/gennodejs/ros/obs_extract/msg/States.js"
 )
 
 # Per-language clean rules from dependency scanning.

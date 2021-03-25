@@ -23,7 +23,7 @@ find_package(catkin REQUIRED COMPONENTS
 )
 
 
-add_message_files(FILES BoundingBoxes.msg BoundingBox.msg ObjectCount.msg people_box.msg peoples.msg)
+add_message_files(FILES BoundingBoxes.msg BoundingBox.msg ObjectCount.msg people_box.msg peoples.msg States.msg)
 generate_messages(DEPENDENCIES std_msgs geometry_msgs)
 
 

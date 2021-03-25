@@ -558,7 +558,7 @@ void match_lidar_people(){
             tracked_angle=ang_peop_lidar;
             //fprintf(fp2,"deteccion %f,%f,%f,%f\n",tracked_cx,tracked_cy,ang_peop_lidar,distanciaPeople2);
         }
-        if(cont_detect_peop>5 && tracked_cx>0.3 && tracked_cx<near_far_distance && tracked_cy>-1.0 && tracked_cy<1.0){
+        if(cont_detect_peop>10 && tracked_cx>0.3 && tracked_cx<near_far_distance && tracked_cy>-1.0 && tracked_cy<1.0){
                 //mode_people_follow();
                 tracking_people=true;
                 cont_detect_peop=0;
@@ -587,7 +587,7 @@ void match_lidar_people(){
                 stop_functions=false;
                 ctrl_side_costmap=0;
                 //fp = fopen ("/home/xavier/catkin_ws/src/control_xy/people.txt" , "w+");
-        }else if(cont_detect_peop>7){
+        }else if(cont_detect_peop>12){
             cont_detect_peop=0;
             tracking_people=false;
             ROS_INFO("Fail");
@@ -744,7 +744,7 @@ void check_scan(){
 void check_obsta(){
     ros::Time time_now = ros::Time::now();
     ros::Duration duration = time_now - last_time_obstacle;
-    if((duration.toSec())>0.15){
+    if((duration.toSec())>0.25){
         pitakuru_state_msg.state_karugamo="no_people_lidar_detection";
         setZeroPosLidar();
        /*  ros::Duration duration2 = time_now - time_blink_scan;
@@ -776,19 +776,27 @@ void calc_100hz(){
     // ROS_INFO("tracked %f",ang_peop_lidar)
     //ROS_INFO("tracked %f,%f",tracked_cx,tracked_cy);
     //ROS_INFO("detected %f,%f,%f",cx,cy,ang_peop_lidar);
+    //ROS_INFO("lidar_people_status %f,%f,%f",cx,cy,lidar_people_status);
     //experimental
 
-    if(ang_peop_cam!=-500 && mode_follow && tracking_people==false  ){
+    /* if(ang_peop_cam!=-500 && mode_follow && tracking_people==false  ){
         ROS_INFO("trying to match");
-        match_lidar_people();
-    }
+        //match_lidar_people();
+    } */
+    
     counter_blink++;
+    //ROS_INFO("m %s",mode_follow?"TRUE":"FALSE");
+    //ROS_INFO("d %s",danger?"TRUE":"FALSE");
+    if(lidar_people_status>0){
+        stop_functions=false;
+    }
     if(mode_follow && danger!=true ){ //&& lidar_people_status>0){
         //ROS_INFO("tracked1 %f",ang_peop_lidar);
             //if(cx!=-0.01 && cy !=-0.01 && tracking_people && cx<=(tracked_cx+radius_follow) && cx>=(tracked_cx-radius_follow) && cy<=(tracked_cy+radius_follow) && cy >=(tracked_cy-radius_follow) && stop_functions==false){//2
             //if(tracking_people && (yolo_status>0 || lidar_people_status>0) && stop_functions==false){
             //if(tracking_people && lidar_people_status>0 && stop_functions==false && big_angle_error_lidar_yolo==false){
-            if(tracking_people && lidar_people_status>0 && stop_functions==false){
+            //if(tracking_people && lidar_people_status>0 && stop_functions==false){
+            if(lidar_people_status>0 && stop_functions==false){
                 //cont_detect_peop=0;
     
                     
@@ -867,7 +875,7 @@ void calc_100hz(){
                 tracked_pos.z=tracked_angle;
                 tracked_publisher.publish(tracked_pos);
 
-                if(yolo_status>0 && abs(ang_peop_lidar-ang_peop_cam)>25){
+                /* if(yolo_status>0 && abs(ang_peop_lidar-ang_peop_cam)>25){
                     count_angle_err++;
                     if(count_angle_err>7){
                         count_angle_err=0;
@@ -885,14 +893,11 @@ void calc_100hz(){
                         pitakuru_state_msg.trackeds.angular.y=ang_peop_cam;
                         pitakuru_state_msg.trackeds.angular.z=yolo_status;
                         state_pub.publish(pitakuru_state_msg);
-                        match_lidar_people_again();
+                        //match_lidar_people_again();
                     }
                 }else{
                     count_angle_err=0;
-                }   
-
-
-
+                }    */
 
                 //ROS_INFO("hello2");
                 geometry_msgs::Twist vel_steer;     
@@ -921,9 +926,9 @@ void calc_100hz(){
                     people_point.color.a=1.0;
                     prev_cx=npcx;
                     prev_cy=npcy;
-                        spx_saved[cont_sp_follow]=npcx;
-                        spy_saved[cont_sp_follow]=npcy;
-                        cont_sp_follow++;
+                    spx_saved[cont_sp_follow]=npcx;
+                    spy_saved[cont_sp_follow]=npcy;
+                    cont_sp_follow++;
                     geometry_msgs::Point p;
                     p.x=npcx;
                     p.y=npcy;
@@ -945,9 +950,9 @@ void calc_100hz(){
                 ROS_INFO("miss %i",missing_track);
                 if(yolo_status>0){
                     follow_yolo();
-                    match_lidar_people_again();
+                    //match_lidar_people_again();
                     pitakuru_state_msg.state="KARUGAMO";
-                    pitakuru_state_msg.state_karugamo="following yolo";
+                    pitakuru_state_msg.state_karugamo="following_yolo";
                     pitakuru_state_msg.trackeds.linear.x=distanciaPeople2;
                     pitakuru_state_msg.trackeds.linear.y=ang_peop_lidar;
                     pitakuru_state_msg.trackeds.linear.z=lidar_people_status;
@@ -955,10 +960,11 @@ void calc_100hz(){
                     pitakuru_state_msg.trackeds.angular.y=ang_peop_cam;
                     pitakuru_state_msg.trackeds.angular.z=yolo_status;
                     state_pub.publish(pitakuru_state_msg);
-                    if(missing_track%80==0){//(count_to_miss-1)==0){
+                    if(missing_track%70==0){//(count_to_miss-1)==0){
                         tracked_pos.x=-70;
                         tracked_pos.y=-70;
                         tracked_publisher.publish(tracked_pos);
+                        //state_pub.publish(pitakuru_state_msg);
                     }
                 }else{
                     //blink_blue(counter_blink,20);
@@ -979,7 +985,7 @@ void calc_100hz(){
                         last_time_tracking= ros::Time::now();
                         pitakuru_state_msg.state="KARUGAMO";
                         pitakuru_state_msg.state_karugamo="lost";
-                        state_pub.publish(pitakuru_state_msg);
+                        //state_pub.publish(pitakuru_state_msg);
     
                         //if(missing_track>count_to_miss){//thiscounter also can help to see if theres a lot of objects and its not able to follow
                         //if(lidar_people_status<1){
@@ -1044,7 +1050,7 @@ void calc_100hz(){
                         speed_publisher.publish(vel_steer);
                         tracked_pos.x=-50;
                         tracked_pos.y=-50;
-                        tracked_publisher.publish(tracked_pos);
+                        //tracked_publisher.publish(tracked_pos);
                 }
             // }
             }//losted
@@ -1262,6 +1268,7 @@ void angPeopCallback4(const geometry_msgs::Vector3& msg){
     cy = msg.y;//pos people or object
     lidar_people_status=msg.z;
     last_time_obstacle = ros::Time::now();
+    //calc_100hz();
 }//end function
 
 void setZeroPosLidar(){
@@ -2273,7 +2280,7 @@ int main(int argc, char **argv)
     ros::NodeHandle nh; 
     test_head test_head_obj(nh);
     //ros::Rate rate(0.5); //0.5 Hz, every 2 second
-    ros::Rate rate(100); //100 Hz, every .01 second
+    ros::Rate rate(90); //100 Hz, every .01 second
     //printf("%f",-atan2(5,1)*180/3.1416);
     //ros::Duration(5.0).sleep(); // sleep for half a second
     //ros::Duration(22.0).sleep();

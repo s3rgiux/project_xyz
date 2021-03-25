@@ -3,6 +3,7 @@ file(REMOVE_RECURSE
   "/home/xavier/catkin_ws/devel/.private/obs_extract/include/obs_extract/CircleObstacle.h"
   "/home/xavier/catkin_ws/devel/.private/obs_extract/include/obs_extract/Obstacles.h"
   "/home/xavier/catkin_ws/devel/.private/obs_extract/include/obs_extract/SegmentObstacle.h"
+  "/home/xavier/catkin_ws/devel/.private/obs_extract/include/obs_extract/States.h"
 )
 
 # Per-language clean rules from dependency scanning.

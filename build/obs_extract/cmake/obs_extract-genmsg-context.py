@@ -1,6 +1,6 @@
 # generated from genmsg/cmake/pkg-genmsg.context.in
 
-messages_str = "/home/xavier/catkin_ws/src/obs_extract/msg/CircleObstacle.msg;/home/xavier/catkin_ws/src/obs_extract/msg/SegmentObstacle.msg;/home/xavier/catkin_ws/src/obs_extract/msg/Obstacles.msg"
+messages_str = "/home/xavier/catkin_ws/src/obs_extract/msg/CircleObstacle.msg;/home/xavier/catkin_ws/src/obs_extract/msg/SegmentObstacle.msg;/home/xavier/catkin_ws/src/obs_extract/msg/Obstacles.msg;/home/xavier/catkin_ws/src/obs_extract/msg/States.msg"
 services_str = ""
 pkg_name = "obs_extract"
 dependencies_str = "std_msgs;geometry_msgs"

@@ -1,0 +1,14 @@
+[  0%] Built target std_msgs_generate_messages_cpp
+[  0%] Built target std_msgs_generate_messages_eus
+[  0%] Built target std_msgs_generate_messages_nodejs
+[  0%] Built target _sort_track_generate_messages_check_deps_people_box
+[  0%] Built target _sort_track_generate_messages_check_deps_peoples
+[  0%] Built target std_msgs_generate_messages_lisp
+[  0%] Built target std_msgs_generate_messages_py
+[  0%] Built target _sort_track_generate_messages_check_deps_IntList
+[ 17%] Built target sort_track_generate_messages_cpp
+[ 35%] Built target sort_track_generate_messages_nodejs
+[ 52%] Built target sort_track_generate_messages_lisp
+[ 76%] Built target sort_track_generate_messages_py
+[100%] Built target sort_track_generate_messages_eus
+[100%] Built target sort_track_generate_messages

@@ -1,10 +1,11 @@
 file(REMOVE_RECURSE
   "CMakeFiles/peop_extract_generate_messages_eus"
+  "/home/xavier/catkin_ws/devel/.private/peop_extract/share/roseus/ros/peop_extract/msg/States.l"
+  "/home/xavier/catkin_ws/devel/.private/peop_extract/share/roseus/ros/peop_extract/msg/BoundingBox.l"
   "/home/xavier/catkin_ws/devel/.private/peop_extract/share/roseus/ros/peop_extract/msg/peoples.l"
   "/home/xavier/catkin_ws/devel/.private/peop_extract/share/roseus/ros/peop_extract/msg/BoundingBoxes.l"
-  "/home/xavier/catkin_ws/devel/.private/peop_extract/share/roseus/ros/peop_extract/msg/people_box.l"
-  "/home/xavier/catkin_ws/devel/.private/peop_extract/share/roseus/ros/peop_extract/msg/BoundingBox.l"
   "/home/xavier/catkin_ws/devel/.private/peop_extract/share/roseus/ros/peop_extract/msg/ObjectCount.l"
+  "/home/xavier/catkin_ws/devel/.private/peop_extract/share/roseus/ros/peop_extract/msg/people_box.l"
   "/home/xavier/catkin_ws/devel/.private/peop_extract/share/roseus/ros/peop_extract/manifest.l"
 )
 

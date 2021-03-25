@@ -3,6 +3,7 @@ file(REMOVE_RECURSE
   "/home/xavier/catkin_ws/devel/.private/obs_extract/share/common-lisp/ros/obs_extract/msg/CircleObstacle.lisp"
   "/home/xavier/catkin_ws/devel/.private/obs_extract/share/common-lisp/ros/obs_extract/msg/Obstacles.lisp"
   "/home/xavier/catkin_ws/devel/.private/obs_extract/share/common-lisp/ros/obs_extract/msg/SegmentObstacle.lisp"
+  "/home/xavier/catkin_ws/devel/.private/obs_extract/share/common-lisp/ros/obs_extract/msg/States.lisp"
 )
 
 # Per-language clean rules from dependency scanning.

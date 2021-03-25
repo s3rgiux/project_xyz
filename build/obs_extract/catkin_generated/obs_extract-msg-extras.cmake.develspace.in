@@ -1,2 +1,2 @@
-set(obs_extract_MESSAGE_FILES "/home/xavier/catkin_ws/src/obs_extract/msg/CircleObstacle.msg;/home/xavier/catkin_ws/src/obs_extract/msg/SegmentObstacle.msg;/home/xavier/catkin_ws/src/obs_extract/msg/Obstacles.msg")
+set(obs_extract_MESSAGE_FILES "/home/xavier/catkin_ws/src/obs_extract/msg/CircleObstacle.msg;/home/xavier/catkin_ws/src/obs_extract/msg/SegmentObstacle.msg;/home/xavier/catkin_ws/src/obs_extract/msg/Obstacles.msg;/home/xavier/catkin_ws/src/obs_extract/msg/States.msg")
 set(obs_extract_SERVICE_FILES "")

@@ -1,6 +1,5 @@
 <?xml version="1.0"?>
 <launch>
-    
 
 <!-- extract obstacles form region of interest and send to control_xy -->
 <node pkg="obs_extract" type="main_sorted_kalman.py" name="obj_track" >
@@ -8,7 +7,5 @@
 <param name="side_detection"    type="double"	value="2.5"/>  <!-- 1.2 --><!-- 2.2 -->
 <param name="radius_follow"    type="double"	value="0.4"/>  <!-- 1.2 --><!-- 2.2 -->
 </node>
-
-
 
 </launch>

@@ -18,7 +18,7 @@ from peop_extract.msg import BoundingBox,BoundingBoxes
 import struct
 import time
 import rosparam
-from peop_extract.msg import people_box,peoples
+from peop_extract.msg import people_box,peoples,States
 #params = rosparam.get_param("/km_dolly_wheels")
 #if params['connect_mode']=='ble':
 #    from pykeigan import blecontroller
@@ -48,6 +48,7 @@ class PitWheels:
         rospy.Subscriber('/tracked', Vector3, self.tracked_callback, queue_size=2)
         #rospy.Subscriber('/sorted_tracked', IntList, self.sort_callback, queue_size=2)
         rospy.Subscriber('/peoples_sorted_tracked', peoples, self.peoples_sort_callback, queue_size=2)
+        rospy.Subscriber('/pitakuru_states', States, self.states_callback, queue_size=1)
         #rospy.Subscriber('/euler2', Float64, self.angle_callback, queue_size=1)
         self.obsta  = Float32()
         self.detected=0
@@ -79,6 +80,8 @@ class PitWheels:
         self.lost_count=0
         self.dist_estim=0
         self.last_time=time.time()
+        self.biggest_people=people_box()
+        self.biggest_people.id=-1
         
     
     def pubobs(self):
@@ -94,8 +97,20 @@ class PitWheels:
             self.first_got=False
             self.lost_count=0
             self.dist_estim=0
+            self.last_time=time.time()
+            self.biggest_people.id=-1
             #self.dist_pub.publish(self.distancia)
     
+    def states_callback(self,states):
+        if states.state=="KARUGAMO" and states.state_karugamo=="losting_with_lidar"and self.tracking==False:
+            print("entre a trackear id")
+            if self.biggest_people.id!=-1:
+                print("tracking ")
+                print(self.biggest_people.id)
+                self.prev_ang = self.tracked_ang
+                self.tracking = True
+                self.first_got = True
+                self.tracked_id = self.biggest_people.id
 
     def peoples_sort_callback(self,data):
         biggest=people_box()
@@ -105,6 +120,11 @@ class PitWheels:
             
             #check if we already are tracking one 
             if self.first_got and self.tracked_id==n.id:#then we have tracked object
+                    center_x=(n.xmax+n.xmin)/2
+                    center_y=(n.ymax+n.ymin)/2
+                    auxx=320-center_x
+                    auxy=480-center_y
+                    ang = np.arctan2(auxx, auxy) * 180 / np.pi
                     self.lost_count=0
                     #print('tracking id {}'.format(identif))
                     alf=0.69
@@ -125,6 +145,8 @@ class PitWheels:
             elif(n.area>area_aux and int(n.id)!=-1):
                 area_aux=n.area
                 biggest=n
+                self.biggest_people=biggest
+                self.last_time=time.time()
         if(biggest.id>0):
             
             center_x=(biggest.xmax+biggest.xmin)/2
@@ -277,7 +299,8 @@ class PitWheels:
                 #print(cnt2)
             
                 #if self.tracked_x != -50 and self.tracked_y != -50 and x.center.x<=(self.tracked_x+self.radius_follow) and x.center.x>=(self.tracked_x-self.radius_follow) and x.center.y <=(self.tracked_y+self.radius_follow) and x.center.y >=(self.tracked_y-self.radius_follow):#then we have tracked object
-                if self.first_got== False and self.tracking and self.tracked_x != -50 and self.tracked_y != -50 and self.tracked_ang < (self.tracked_ang + 7) and self.tracked_ang > (self.tracked_ang - 7) :#then we have tracked object
+                #if self.first_got== False and self.tracking and self.tracked_x != -50 and self.tracked_y != -50 and self.tracked_ang < (self.tracked_ang + 7) and self.tracked_ang > (self.tracked_ang - 7) :#then we have tracked object
+                if self.first_got== False and self.tracking and self.tracked_ang < (self.tracked_ang + 7) and self.tracked_ang > (self.tracked_ang - 7) :#then we have tracked object
                     #lst.append(x)
                     #print("track first time")
                     self.first_got=True

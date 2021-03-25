@@ -12,4 +12,6 @@
     (:file "_package_Obstacles" :depends-on ("_package"))
     (:file "SegmentObstacle" :depends-on ("_package_SegmentObstacle"))
     (:file "_package_SegmentObstacle" :depends-on ("_package"))
+    (:file "States" :depends-on ("_package_States"))
+    (:file "_package_States" :depends-on ("_package"))
   ))

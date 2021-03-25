@@ -3,6 +3,7 @@ file(REMOVE_RECURSE
   "/home/xavier/catkin_ws/devel/.private/obs_extract/share/roseus/ros/obs_extract/msg/CircleObstacle.l"
   "/home/xavier/catkin_ws/devel/.private/obs_extract/share/roseus/ros/obs_extract/msg/Obstacles.l"
   "/home/xavier/catkin_ws/devel/.private/obs_extract/share/roseus/ros/obs_extract/msg/SegmentObstacle.l"
+  "/home/xavier/catkin_ws/devel/.private/obs_extract/share/roseus/ros/obs_extract/msg/States.l"
   "/home/xavier/catkin_ws/devel/.private/obs_extract/share/roseus/ros/obs_extract/manifest.l"
 )
 

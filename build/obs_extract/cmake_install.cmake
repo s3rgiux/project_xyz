@@ -133,6 +133,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
     "/home/xavier/catkin_ws/src/obs_extract/msg/CircleObstacle.msg"
     "/home/xavier/catkin_ws/src/obs_extract/msg/SegmentObstacle.msg"
     "/home/xavier/catkin_ws/src/obs_extract/msg/Obstacles.msg"
+    "/home/xavier/catkin_ws/src/obs_extract/msg/States.msg"
     )
 endif()
 

@@ -3,6 +3,7 @@ file(REMOVE_RECURSE
   "/home/xavier/catkin_ws/devel/.private/obs_extract/lib/python2.7/dist-packages/obs_extract/msg/_CircleObstacle.py"
   "/home/xavier/catkin_ws/devel/.private/obs_extract/lib/python2.7/dist-packages/obs_extract/msg/_Obstacles.py"
   "/home/xavier/catkin_ws/devel/.private/obs_extract/lib/python2.7/dist-packages/obs_extract/msg/_SegmentObstacle.py"
+  "/home/xavier/catkin_ws/devel/.private/obs_extract/lib/python2.7/dist-packages/obs_extract/msg/_States.py"
   "/home/xavier/catkin_ws/devel/.private/obs_extract/lib/python2.7/dist-packages/obs_extract/msg/__init__.py"
 )
 

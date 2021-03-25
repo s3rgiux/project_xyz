@@ -1,6 +1,6 @@
 # generated from genmsg/cmake/pkg-genmsg.context.in
 
-messages_str = "/home/xavier/catkin_ws/src/peop_extract/msg/BoundingBoxes.msg;/home/xavier/catkin_ws/src/peop_extract/msg/BoundingBox.msg;/home/xavier/catkin_ws/src/peop_extract/msg/ObjectCount.msg;/home/xavier/catkin_ws/src/peop_extract/msg/people_box.msg;/home/xavier/catkin_ws/src/peop_extract/msg/peoples.msg"
+messages_str = "/home/xavier/catkin_ws/src/peop_extract/msg/BoundingBoxes.msg;/home/xavier/catkin_ws/src/peop_extract/msg/BoundingBox.msg;/home/xavier/catkin_ws/src/peop_extract/msg/ObjectCount.msg;/home/xavier/catkin_ws/src/peop_extract/msg/people_box.msg;/home/xavier/catkin_ws/src/peop_extract/msg/peoples.msg;/home/xavier/catkin_ws/src/peop_extract/msg/States.msg"
 services_str = ""
 pkg_name = "peop_extract"
 dependencies_str = "std_msgs;geometry_msgs"

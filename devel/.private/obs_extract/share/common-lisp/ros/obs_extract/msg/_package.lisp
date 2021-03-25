@@ -7,5 +7,7 @@
    "OBSTACLES"
    "<SEGMENTOBSTACLE>"
    "SEGMENTOBSTACLE"
+   "<STATES>"
+   "STATES"
   ))
 

@@ -56,6 +56,7 @@ include CMakeFiles/obs_extract_generate_messages_nodejs.dir/progress.make
 CMakeFiles/obs_extract_generate_messages_nodejs: /home/xavier/catkin_ws/devel/.private/obs_extract/share/gennodejs/ros/obs_extract/msg/CircleObstacle.js
 CMakeFiles/obs_extract_generate_messages_nodejs: /home/xavier/catkin_ws/devel/.private/obs_extract/share/gennodejs/ros/obs_extract/msg/Obstacles.js
 CMakeFiles/obs_extract_generate_messages_nodejs: /home/xavier/catkin_ws/devel/.private/obs_extract/share/gennodejs/ros/obs_extract/msg/SegmentObstacle.js
+CMakeFiles/obs_extract_generate_messages_nodejs: /home/xavier/catkin_ws/devel/.private/obs_extract/share/gennodejs/ros/obs_extract/msg/States.js
 
 
 /home/xavier/catkin_ws/devel/.private/obs_extract/share/gennodejs/ros/obs_extract/msg/CircleObstacle.js: /opt/ros/melodic/lib/gennodejs/gen_nodejs.py
@@ -81,10 +82,18 @@ CMakeFiles/obs_extract_generate_messages_nodejs: /home/xavier/catkin_ws/devel/.p
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xavier/catkin_ws/build/obs_extract/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating Javascript code from obs_extract/SegmentObstacle.msg"
 	catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/xavier/catkin_ws/src/obs_extract/msg/SegmentObstacle.msg -Iobs_extract:/home/xavier/catkin_ws/src/obs_extract/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/melodic/share/geometry_msgs/cmake/../msg -p obs_extract -o /home/xavier/catkin_ws/devel/.private/obs_extract/share/gennodejs/ros/obs_extract/msg
 
+/home/xavier/catkin_ws/devel/.private/obs_extract/share/gennodejs/ros/obs_extract/msg/States.js: /opt/ros/melodic/lib/gennodejs/gen_nodejs.py
+/home/xavier/catkin_ws/devel/.private/obs_extract/share/gennodejs/ros/obs_extract/msg/States.js: /home/xavier/catkin_ws/src/obs_extract/msg/States.msg
+/home/xavier/catkin_ws/devel/.private/obs_extract/share/gennodejs/ros/obs_extract/msg/States.js: /opt/ros/melodic/share/geometry_msgs/msg/Twist.msg
+/home/xavier/catkin_ws/devel/.private/obs_extract/share/gennodejs/ros/obs_extract/msg/States.js: /opt/ros/melodic/share/geometry_msgs/msg/Vector3.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/xavier/catkin_ws/build/obs_extract/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating Javascript code from obs_extract/States.msg"
+	catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/xavier/catkin_ws/src/obs_extract/msg/States.msg -Iobs_extract:/home/xavier/catkin_ws/src/obs_extract/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/melodic/share/geometry_msgs/cmake/../msg -p obs_extract -o /home/xavier/catkin_ws/devel/.private/obs_extract/share/gennodejs/ros/obs_extract/msg
+
 obs_extract_generate_messages_nodejs: CMakeFiles/obs_extract_generate_messages_nodejs
 obs_extract_generate_messages_nodejs: /home/xavier/catkin_ws/devel/.private/obs_extract/share/gennodejs/ros/obs_extract/msg/CircleObstacle.js
 obs_extract_generate_messages_nodejs: /home/xavier/catkin_ws/devel/.private/obs_extract/share/gennodejs/ros/obs_extract/msg/Obstacles.js
 obs_extract_generate_messages_nodejs: /home/xavier/catkin_ws/devel/.private/obs_extract/share/gennodejs/ros/obs_extract/msg/SegmentObstacle.js
+obs_extract_generate_messages_nodejs: /home/xavier/catkin_ws/devel/.private/obs_extract/share/gennodejs/ros/obs_extract/msg/States.js
 obs_extract_generate_messages_nodejs: CMakeFiles/obs_extract_generate_messages_nodejs.dir/build.make
 
 .PHONY : obs_extract_generate_messages_nodejs

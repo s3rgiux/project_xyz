@@ -1,6 +1,6 @@
 # generated from genmsg/cmake/pkg-genmsg.cmake.em
 
-message(STATUS "obs_extract: 3 messages, 0 services")
+message(STATUS "obs_extract: 4 messages, 0 services")
 
 set(MSG_I_FLAGS "-Iobs_extract:/home/xavier/catkin_ws/src/obs_extract/msg;-Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg;-Igeometry_msgs:/opt/ros/melodic/share/geometry_msgs/cmake/../msg")
 
@@ -32,6 +32,11 @@ add_custom_target(_obs_extract_generate_messages_check_deps_${_filename}
   COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "obs_extract" "/home/xavier/catkin_ws/src/obs_extract/msg/Obstacles.msg" "geometry_msgs/Vector3:obs_extract/CircleObstacle:obs_extract/SegmentObstacle:geometry_msgs/Point:std_msgs/Header"
 )
 
+get_filename_component(_filename "/home/xavier/catkin_ws/src/obs_extract/msg/States.msg" NAME_WE)
+add_custom_target(_obs_extract_generate_messages_check_deps_${_filename}
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "obs_extract" "/home/xavier/catkin_ws/src/obs_extract/msg/States.msg" "geometry_msgs/Twist:geometry_msgs/Vector3"
+)
+
 #
 #  langs = gencpp;geneus;genlisp;gennodejs;genpy
 #
@@ -56,6 +61,12 @@ _generate_msg_cpp(obs_extract
   "/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Point.msg"
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/obs_extract
 )
+_generate_msg_cpp(obs_extract
+  "/home/xavier/catkin_ws/src/obs_extract/msg/States.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Twist.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Vector3.msg"
+  ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/obs_extract
+)
 
 ### Generating Services
 
@@ -76,6 +87,8 @@ add_dependencies(obs_extract_generate_messages_cpp _obs_extract_generate_message
 get_filename_component(_filename "/home/xavier/catkin_ws/src/obs_extract/msg/SegmentObstacle.msg" NAME_WE)
 add_dependencies(obs_extract_generate_messages_cpp _obs_extract_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/xavier/catkin_ws/src/obs_extract/msg/Obstacles.msg" NAME_WE)
+add_dependencies(obs_extract_generate_messages_cpp _obs_extract_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/xavier/catkin_ws/src/obs_extract/msg/States.msg" NAME_WE)
 add_dependencies(obs_extract_generate_messages_cpp _obs_extract_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -105,6 +118,12 @@ _generate_msg_eus(obs_extract
   "/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Point.msg"
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/obs_extract
 )
+_generate_msg_eus(obs_extract
+  "/home/xavier/catkin_ws/src/obs_extract/msg/States.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Twist.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Vector3.msg"
+  ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/obs_extract
+)
 
 ### Generating Services
 
@@ -125,6 +144,8 @@ add_dependencies(obs_extract_generate_messages_eus _obs_extract_generate_message
 get_filename_component(_filename "/home/xavier/catkin_ws/src/obs_extract/msg/SegmentObstacle.msg" NAME_WE)
 add_dependencies(obs_extract_generate_messages_eus _obs_extract_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/xavier/catkin_ws/src/obs_extract/msg/Obstacles.msg" NAME_WE)
+add_dependencies(obs_extract_generate_messages_eus _obs_extract_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/xavier/catkin_ws/src/obs_extract/msg/States.msg" NAME_WE)
 add_dependencies(obs_extract_generate_messages_eus _obs_extract_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -154,6 +175,12 @@ _generate_msg_lisp(obs_extract
   "/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Point.msg"
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/obs_extract
 )
+_generate_msg_lisp(obs_extract
+  "/home/xavier/catkin_ws/src/obs_extract/msg/States.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Twist.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Vector3.msg"
+  ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/obs_extract
+)
 
 ### Generating Services
 
@@ -174,6 +201,8 @@ add_dependencies(obs_extract_generate_messages_lisp _obs_extract_generate_messag
 get_filename_component(_filename "/home/xavier/catkin_ws/src/obs_extract/msg/SegmentObstacle.msg" NAME_WE)
 add_dependencies(obs_extract_generate_messages_lisp _obs_extract_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/xavier/catkin_ws/src/obs_extract/msg/Obstacles.msg" NAME_WE)
+add_dependencies(obs_extract_generate_messages_lisp _obs_extract_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/xavier/catkin_ws/src/obs_extract/msg/States.msg" NAME_WE)
 add_dependencies(obs_extract_generate_messages_lisp _obs_extract_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -203,6 +232,12 @@ _generate_msg_nodejs(obs_extract
   "/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Point.msg"
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/obs_extract
 )
+_generate_msg_nodejs(obs_extract
+  "/home/xavier/catkin_ws/src/obs_extract/msg/States.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Twist.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Vector3.msg"
+  ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/obs_extract
+)
 
 ### Generating Services
 
@@ -223,6 +258,8 @@ add_dependencies(obs_extract_generate_messages_nodejs _obs_extract_generate_mess
 get_filename_component(_filename "/home/xavier/catkin_ws/src/obs_extract/msg/SegmentObstacle.msg" NAME_WE)
 add_dependencies(obs_extract_generate_messages_nodejs _obs_extract_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/xavier/catkin_ws/src/obs_extract/msg/Obstacles.msg" NAME_WE)
+add_dependencies(obs_extract_generate_messages_nodejs _obs_extract_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/xavier/catkin_ws/src/obs_extract/msg/States.msg" NAME_WE)
 add_dependencies(obs_extract_generate_messages_nodejs _obs_extract_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -252,6 +289,12 @@ _generate_msg_py(obs_extract
   "/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Point.msg"
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/obs_extract
 )
+_generate_msg_py(obs_extract
+  "/home/xavier/catkin_ws/src/obs_extract/msg/States.msg"
+  "${MSG_I_FLAGS}"
+  "/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Twist.msg;/opt/ros/melodic/share/geometry_msgs/cmake/../msg/Vector3.msg"
+  ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/obs_extract
+)
 
 ### Generating Services
 
@@ -272,6 +315,8 @@ add_dependencies(obs_extract_generate_messages_py _obs_extract_generate_messages
 get_filename_component(_filename "/home/xavier/catkin_ws/src/obs_extract/msg/SegmentObstacle.msg" NAME_WE)
 add_dependencies(obs_extract_generate_messages_py _obs_extract_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/xavier/catkin_ws/src/obs_extract/msg/Obstacles.msg" NAME_WE)
+add_dependencies(obs_extract_generate_messages_py _obs_extract_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/xavier/catkin_ws/src/obs_extract/msg/States.msg" NAME_WE)
 add_dependencies(obs_extract_generate_messages_py _obs_extract_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility

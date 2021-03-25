@@ -1,10 +1,12 @@
 obs_extract
 /home/xavier/catkin_ws/devel/.private/obs_extract/cmake.lock /home/xavier/catkin_ws/devel/./cmake.lock
+/home/xavier/catkin_ws/devel/.private/obs_extract/include/obs_extract/States.h /home/xavier/catkin_ws/devel/include/obs_extract/States.h
 /home/xavier/catkin_ws/devel/.private/obs_extract/include/obs_extract/CircleObstacle.h /home/xavier/catkin_ws/devel/include/obs_extract/CircleObstacle.h
 /home/xavier/catkin_ws/devel/.private/obs_extract/include/obs_extract/SegmentObstacle.h /home/xavier/catkin_ws/devel/include/obs_extract/SegmentObstacle.h
 /home/xavier/catkin_ws/devel/.private/obs_extract/include/obs_extract/Obstacles.h /home/xavier/catkin_ws/devel/include/obs_extract/Obstacles.h
 /home/xavier/catkin_ws/devel/.private/obs_extract/share/obs_extract/cmake/obs_extract-msg-paths.cmake /home/xavier/catkin_ws/devel/share/obs_extract/cmake/obs_extract-msg-paths.cmake
 /home/xavier/catkin_ws/devel/.private/obs_extract/share/roseus/ros/obs_extract/manifest.l /home/xavier/catkin_ws/devel/share/roseus/ros/obs_extract/manifest.l
+/home/xavier/catkin_ws/devel/.private/obs_extract/share/roseus/ros/obs_extract/msg/States.l /home/xavier/catkin_ws/devel/share/roseus/ros/obs_extract/msg/States.l
 /home/xavier/catkin_ws/devel/.private/obs_extract/share/roseus/ros/obs_extract/msg/Obstacles.l /home/xavier/catkin_ws/devel/share/roseus/ros/obs_extract/msg/Obstacles.l
 /home/xavier/catkin_ws/devel/.private/obs_extract/share/roseus/ros/obs_extract/msg/SegmentObstacle.l /home/xavier/catkin_ws/devel/share/roseus/ros/obs_extract/msg/SegmentObstacle.l
 /home/xavier/catkin_ws/devel/.private/obs_extract/share/roseus/ros/obs_extract/msg/CircleObstacle.l /home/xavier/catkin_ws/devel/share/roseus/ros/obs_extract/msg/CircleObstacle.l
@@ -12,12 +14,15 @@ obs_extract
 /home/xavier/catkin_ws/devel/.private/obs_extract/share/gennodejs/ros/obs_extract/msg/_index.js /home/xavier/catkin_ws/devel/share/gennodejs/ros/obs_extract/msg/_index.js
 /home/xavier/catkin_ws/devel/.private/obs_extract/share/gennodejs/ros/obs_extract/msg/SegmentObstacle.js /home/xavier/catkin_ws/devel/share/gennodejs/ros/obs_extract/msg/SegmentObstacle.js
 /home/xavier/catkin_ws/devel/.private/obs_extract/share/gennodejs/ros/obs_extract/msg/CircleObstacle.js /home/xavier/catkin_ws/devel/share/gennodejs/ros/obs_extract/msg/CircleObstacle.js
+/home/xavier/catkin_ws/devel/.private/obs_extract/share/gennodejs/ros/obs_extract/msg/States.js /home/xavier/catkin_ws/devel/share/gennodejs/ros/obs_extract/msg/States.js
 /home/xavier/catkin_ws/devel/.private/obs_extract/share/gennodejs/ros/obs_extract/msg/Obstacles.js /home/xavier/catkin_ws/devel/share/gennodejs/ros/obs_extract/msg/Obstacles.js
 /home/xavier/catkin_ws/devel/.private/obs_extract/share/common-lisp/ros/obs_extract/msg/CircleObstacle.lisp /home/xavier/catkin_ws/devel/share/common-lisp/ros/obs_extract/msg/CircleObstacle.lisp
 /home/xavier/catkin_ws/devel/.private/obs_extract/share/common-lisp/ros/obs_extract/msg/_package_SegmentObstacle.lisp /home/xavier/catkin_ws/devel/share/common-lisp/ros/obs_extract/msg/_package_SegmentObstacle.lisp
 /home/xavier/catkin_ws/devel/.private/obs_extract/share/common-lisp/ros/obs_extract/msg/SegmentObstacle.lisp /home/xavier/catkin_ws/devel/share/common-lisp/ros/obs_extract/msg/SegmentObstacle.lisp
 /home/xavier/catkin_ws/devel/.private/obs_extract/share/common-lisp/ros/obs_extract/msg/_package.lisp /home/xavier/catkin_ws/devel/share/common-lisp/ros/obs_extract/msg/_package.lisp
 /home/xavier/catkin_ws/devel/.private/obs_extract/share/common-lisp/ros/obs_extract/msg/_package_CircleObstacle.lisp /home/xavier/catkin_ws/devel/share/common-lisp/ros/obs_extract/msg/_package_CircleObstacle.lisp
+/home/xavier/catkin_ws/devel/.private/obs_extract/share/common-lisp/ros/obs_extract/msg/_package_States.lisp /home/xavier/catkin_ws/devel/share/common-lisp/ros/obs_extract/msg/_package_States.lisp
+/home/xavier/catkin_ws/devel/.private/obs_extract/share/common-lisp/ros/obs_extract/msg/States.lisp /home/xavier/catkin_ws/devel/share/common-lisp/ros/obs_extract/msg/States.lisp
 /home/xavier/catkin_ws/devel/.private/obs_extract/share/common-lisp/ros/obs_extract/msg/Obstacles.lisp /home/xavier/catkin_ws/devel/share/common-lisp/ros/obs_extract/msg/Obstacles.lisp
 /home/xavier/catkin_ws/devel/.private/obs_extract/share/common-lisp/ros/obs_extract/msg/_package_Obstacles.lisp /home/xavier/catkin_ws/devel/share/common-lisp/ros/obs_extract/msg/_package_Obstacles.lisp
 /home/xavier/catkin_ws/devel/.private/obs_extract/share/common-lisp/ros/obs_extract/msg/obs_extract-msg.asd /home/xavier/catkin_ws/devel/share/common-lisp/ros/obs_extract/msg/obs_extract-msg.asd
@@ -25,4 +30,5 @@ obs_extract
 /home/xavier/catkin_ws/devel/.private/obs_extract/lib/python2.7/dist-packages/obs_extract/msg/_Obstacles.py /home/xavier/catkin_ws/devel/lib/python2.7/dist-packages/obs_extract/msg/_Obstacles.py
 /home/xavier/catkin_ws/devel/.private/obs_extract/lib/python2.7/dist-packages/obs_extract/msg/_SegmentObstacle.py /home/xavier/catkin_ws/devel/lib/python2.7/dist-packages/obs_extract/msg/_SegmentObstacle.py
 /home/xavier/catkin_ws/devel/.private/obs_extract/lib/python2.7/dist-packages/obs_extract/msg/_CircleObstacle.py /home/xavier/catkin_ws/devel/lib/python2.7/dist-packages/obs_extract/msg/_CircleObstacle.py
+/home/xavier/catkin_ws/devel/.private/obs_extract/lib/python2.7/dist-packages/obs_extract/msg/_States.py /home/xavier/catkin_ws/devel/lib/python2.7/dist-packages/obs_extract/msg/_States.py
 /home/xavier/catkin_ws/devel/.private/obs_extract/lib/python2.7/dist-packages/obs_extract/msg/__init__.py /home/xavier/catkin_ws/devel/lib/python2.7/dist-packages/obs_extract/msg/__init__.py
