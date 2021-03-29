@@ -44,7 +44,7 @@ class image_converter:
     
     def pubobs(self):
         #if(time.time()-self.start_time>10):
-        if(time.time()-last_time>1):
+        if(time.time()-self.last_time>0.7):
             print("trying to reboot")
             #n = self._sock.send(encode('RB', 'ascii') + b'\n'+encode('RB', 'ascii') + b'\n')
             subprocess.call(["python","/home/xavier/catkin_ws/src/urg_node/scripts/set_urg_ip_sergio.py","--ip","172.16.0.10","172.16.0.10","172.16.0.1"])

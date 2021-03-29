@@ -113,6 +113,7 @@ class PitWheels:
         self.count_to_track=0
         self.searching=False
         self.closest_dist_to_track=50000
+        self.count_angle=0
         
     
     def pubobs(self):
@@ -129,6 +130,7 @@ class PitWheels:
             self.temp_cy=0
             self.temp_dist=5000000
             self.try_to_search=False
+            self.got_obj_lidar=False
             #self.dist_pub.publish(self.distancia)
     
     def ang_cam_callback(self,data):
@@ -219,16 +221,22 @@ class PitWheels:
         if states.state=="KARUGAMO" and states.state_karugamo=="losting_with_lidar" and self.first_got==False and self.try_to_search==False and self.yolo_ang!=-500:
             print("searching the nearest")
             self.try_to_search=True
+            self.got_obj_lidar=False
             #self.search_nearest()
             
         elif states.state=="KARUGAMO" and states.state_karugamo=="following_yolo" and self.try_to_search==False and self.yolo_status>0:
             print("searching the nearest again")
             self.try_to_search=True
+            self.got_obj_lidar=False
             #self.search_nearest()
-            
+        elif states.state=="KARUGAMO" and states.state_karugamo=="tracking_lidar" and self.try_to_search==False and self.yolo_status>0:    
+            #if tracking with lidar but the angle is big difference then try to search again
+            self.got_obj_lidar=True
+
         elif states.state!="KARUGAMO":
             print("removed first got")
             self.first_got=False
+            self.got_obj_lidar=False
             self.follow_cx=0
             self.follow_cy=0
 
@@ -344,6 +352,7 @@ class PitWheels:
                 closest.y=obj_close[0].center.y
                 self.follow_cx=closest.x
                 self.follow_cy=closest.y
+                
                 #print("enviado {},{}".format(self.follow_cx,self.follow_cy))
                 #print(self.follow_cx)
                 #print(self.follow_cy)
@@ -361,6 +370,16 @@ class PitWheels:
 
                 self.last_time_tracked=time.time()
                 self.ang_pub.publish(closest)
+
+                ## check errorwith yolo
+                ang_obj= 90-np.arctan2(closest.x, closest.y) * 180 / np.pi
+                if np.abs(ang-self.yolo_ang)>35:
+                    self.count_angle=self.count_angle+1
+                    if self.count_angle>14:
+                        self.count_angle=0
+                        #self.try_to_search=True
+                        self.search_nearest(data)
+
 
     # def obstacles_callback(self, data):
     #     self.received_obstacles=data

@@ -82,6 +82,7 @@ class PitWheels:
         self.last_time=time.time()
         self.biggest_people=people_box()
         self.biggest_people.id=-1
+        self.ang_lidar=0
         
     
     def pubobs(self):
@@ -99,18 +100,36 @@ class PitWheels:
             self.dist_estim=0
             self.last_time=time.time()
             self.biggest_people.id=-1
+            self.tracking_lidar=False
             #self.dist_pub.publish(self.distancia)
     
     def states_callback(self,states):
+        
+        if states.state=="KARUGAMO" and states.state_karugamo=="tracking_lidar":
+            self.tracking_lidar=True
+            self.ang_peop_lidar=states.trackeds.linear.y
+        if states.state=="KARUGAMO" and states.state_karugamo=="following_yolo":
+            self.tracking_lidar=False
+            self.ang_peop_lidar=0
         if states.state=="KARUGAMO" and states.state_karugamo=="losting_with_lidar"and self.tracking==False:
+            self.tracking_lidar=False
+            self.ang_peop_lidar=self.ang_peop_lidar=states.trackeds.linear.y
             print("entre a trackear id")
-            if self.biggest_people.id!=-1:
-                print("tracking ")
+            if self.biggest_people.id!=-1 and self.biggest_people.area>17:
+                print("tracking")
                 print(self.biggest_people.id)
                 self.prev_ang = self.tracked_ang
                 self.tracking = True
                 self.first_got = True
                 self.tracked_id = self.biggest_people.id
+        if states.state!="KARUGAMO":
+            self.tracking_lidar=False
+            self.ang_peop_lidar=0
+            print("lost_track")
+            self.prev_ang = 0
+            self.tracking = False
+            self.first_got = False
+            self.tracked_id = -1
 
     def peoples_sort_callback(self,data):
         biggest=people_box()
@@ -154,9 +173,19 @@ class PitWheels:
             auxx=320-center_x
             auxy=480-center_y
             ang = np.arctan2(auxx, auxy) * 180 / np.pi
+
             #print('{},{},{},{},{},{}'.format(xmin,ymin,xmax,ymax,identif,ang))
             #cnt2=cnt2+1
-            if self.first_got== False and self.tracking and self.tracked_x != -50 and self.tracked_y != -50 and self.tracked_ang < (self.tracked_ang + 7) and self.tracked_ang > (self.tracked_ang - 7) :#then we have tracked object
+            #if self.first_got== False and self.tracking and self.tracked_x != -50 and self.tracked_y != -50 and self.tracked_ang < (self.tracked_ang + 7) and self.tracked_ang > (self.tracked_ang - 7) :#then we have tracked object
+            if(self.tracking_lidar and self.first_got== False):#then we are tracking with lidar but we lost the initial traking yolo
+                if np.abs(ang-self.ang_peop_lidar)<10 and self.biggest_people.area>10:
+                    print("tracking")
+                    print(self.biggest_people.id)
+                    self.prev_ang = self.tracked_ang
+                    self.tracking = True
+                    self.first_got = True
+                    self.tracked_id = self.biggest_people.id
+            if self.first_got== False and self.tracking :#then we have tracked object
                 #lst.append(x)
                 #print("tracking first time")
                 self.first_got=True
