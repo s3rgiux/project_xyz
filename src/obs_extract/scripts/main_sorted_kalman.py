@@ -85,9 +85,9 @@ class PitWheels:
         self.distancia= Float32()
         self.ang_dist= Vector3()
         self.tracked_obj= Vector3()
-        self.front_detection = 7.0#rospy.get_param("/obj_track/front_detection")
-        self.side_detection = 2.0#rospy.get_param("/obj_track/side_detection")
-        self.radius_follow=0.34#rospy.get_param("/obj_track/radius_follow")
+        self.front_detection = rospy.get_param("/obj_track/front_detection")
+        self.side_detection = rospy.get_param("/obj_track/side_detection")
+        self.radius_follow=rospy.get_param("/obj_track/radius_follow")
         self.timex=0
         self.last_time=0
         self.first_detection=False
