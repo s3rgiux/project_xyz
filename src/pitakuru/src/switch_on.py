@@ -96,7 +96,7 @@ class SwitchInput(object):
                 #os.system("roslaunch pitakuru pitakuru_yolo_heavy.launch")
                 #os.system("roslaunch pitakuru pitakuru_switch.launch")
                 #subprocess.call(["shutdown", "-h", "now"])
-                subprocess.call(["roslaunch", "pitakuru", "pitakuru_yolo_heavy.launch"])
+                subprocess.call(["roslaunch", "pitakuru", "pitakuru_full_yolo.launch"])
                 #subprocess.call(["/home/xavier/pow_off.sh"])
                 rospy.logerr("matando desde on")
                 #os.system('sudo systemctl poweroff')

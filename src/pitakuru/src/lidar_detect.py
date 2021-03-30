@@ -37,7 +37,7 @@ class image_converter:
         #self._sock.connect(self.addr)
         #self.sock = socket.socket()
         #self.sock.connect(('176.16.0.10', 10940))
-        sleep(14.0)
+        sleep(10.0)
         print("connected")
         self.start_time=time.time()
         self.last_time=time.time()
@@ -47,8 +47,15 @@ class image_converter:
         if(time.time()-self.last_time>0.7):
             print("trying to reboot")
             #n = self._sock.send(encode('RB', 'ascii') + b'\n'+encode('RB', 'ascii') + b'\n')
+            #sleep(0.2)
+            subprocess.call(["rosnode","kill","/urg_node"])
+            sleep(0.7)
             subprocess.call(["python","/home/xavier/catkin_ws/src/urg_node/scripts/set_urg_ip_sergio.py","--ip","172.16.0.10","172.16.0.10","172.16.0.1"])
-            sleep(6.0)
+            print("kill_node")
+            subprocess.call(["roslaunch","pitakuru","hokuyo_only.launch"])
+            #sleep(0.7)
+            
+            sleep(14.0)
             self.start_time=time.time()
             self.last_time=time.time()
         """ if(time.time()-self.last_time>0.4):

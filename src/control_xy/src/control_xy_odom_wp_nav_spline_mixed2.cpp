@@ -186,6 +186,7 @@ public:
         low_voltage=false;
         counter_changed=0;
         started_track_yolo=false;
+        lidar_failed=false;
         
     }
     ~test_head(){}
@@ -728,6 +729,7 @@ void check_scan(){
         }
     }else{
         pitakuru_state_msg.state_scan="lidar_ok";
+        if(mode)
     }
 }
 
@@ -1587,6 +1589,10 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan){
         alert_danger_no_sound();
         if(danger_counter%65==0){
             alert_danger_sound();
+            pitakuru_state_msg.state="DANGER";
+                pitakuru_state_msg.state_karugamo="losting_with_lidar"; 
+                
+                state_pub.publish(pitakuru_state_msg);
         }
     }
     if(danger == false && collision == false ){
@@ -1595,6 +1601,7 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan){
             //float  break_danger=0.5;
          
         if(detect_cont>1 && mode_idle == false && (vel_m1 >= vel_detect_scan || vel_m2 >= vel_detect_scan)){
+        //if(detect_cont>1 ){
                 danger=true;
                 free_way=false;
                 ROS_INFO("Danger1");
@@ -1631,28 +1638,39 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan){
         }else{
             free_way=true;
         }
+        /* for(int j=-360;j<=720;j++){
+            if( scan->ranges[j]  <= break_danger && scan->ranges[j] >0.14 ){
+                  ROS_INFO("found in %i",j);  
+            }
+        } */
         for(int j=279;j<=358;j++){
             if (scan->ranges[j] <= break_danger && scan->ranges[j] >0.14 ){
-               detect_cont++;   
+               detect_cont++;
+               ROS_INFO("found in %i",j);
+               pitakuru_state_msg.state_danger="detected_break_danger1";  
                 return;
              }  
         }
-        for(int i=0;i<=80;i++){
+        /* for(int i=0;i<=80;i++){
             if (scan->ranges[i] <= break_danger && scan->ranges[i] >0.14 ){
                detect_cont++;
+               ROS_INFO("found in %i",i);
+               pitakuru_state_msg.state_danger="detected_break_danger2";
                return;
                 }
             
-        }
+        } */
         for(int j=328;j<=358;j++){
             if (scan->ranges[j] <= break_distance && scan->ranges[j] >0.14 ){
                  detect_cont++;
+                 pitakuru_state_msg.state_danger="detected_break_distance1";
                      return;
             }
         }
         for(int i=0;i<=30;i++){
             if (scan->ranges[i] <= break_distance && scan->ranges[i] >0.14 ){
                detect_cont++;
+               pitakuru_state_msg.state_danger="detected_break_distance1";
                return;
             }
             else{
@@ -2296,7 +2314,7 @@ private:
     bool changed_setting;
     float duration_change;
     bool test;
-    bool low_voltage,started_track_yolo;
+    bool low_voltage,started_track_yolo,lidar_failed;
     int counter_changed;
 };
 
