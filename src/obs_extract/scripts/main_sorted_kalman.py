@@ -373,11 +373,11 @@ class PitWheels:
 
                 ## check errorwith yolo
                 ang_obj= 90-np.arctan2(closest.x, closest.y) * 180 / np.pi
-                if np.abs(ang-self.yolo_ang)>35:
+                if np.abs(ang-self.yolo_ang)>32 and self.yolo_status>0:
                     self.count_angle=self.count_angle+1
-                    if self.count_angle>14:
+                    if self.count_angle>10:
                         self.count_angle=0
-                        #self.try_to_search=True
+                        self.try_to_search=True
                         self.search_nearest(data)
 
 

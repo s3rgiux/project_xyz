@@ -63,7 +63,7 @@ public:
         sub_estim = nh.subscribe("/estimated_people", 1, &test_head::estimCallback,this);
         
         //nh.param<float>("break_distance", break_distance, 1.5);
-        nh.getParam("/control_xy/break_distance", break_distance);
+        nh.getParam("/control_xy/break_front_distance", break_front_distance);
         nh.getParam("/control_xy/break_danger", break_danger);
         nh.getParam("/control_xy/low_vel_gain_karugamo", low_vel_gain);
         nh.getParam("/control_xy/high_vel_gain_karugamo", high_vel_gain);
@@ -106,7 +106,7 @@ public:
         nh.getParam("/control_xy/duration_to_lost",duration_to_lost); 
         //nh.param<float>("break_danger", break_danger, 0.45);
         subScan_ = nh.subscribe("/scan", 1, &test_head::scanCallback,this);
-        ROS_INFO_STREAM("******break_distance "<< break_distance << " break danger " << break_danger << " low vel gain " << low_vel_gain << " high vel gain " << high_vel_gain
+        ROS_INFO_STREAM("******break_distance "<< break_front_distance << " break danger " << break_danger << " low vel gain " << low_vel_gain << " high vel gain " << high_vel_gain
         << " max_speed_follow " << max_speed_follow << " max_speed_manual " << max_speed_manual);
         start_tray=false;
         sp_yaw=90;
@@ -715,6 +715,7 @@ void check_scan(){
     ros::Time time_now = ros::Time::now();
     ros::Duration duration = time_now - last_time_scan;
     if((duration.toSec())>0.9){
+        lidar_failed=true;
         pitakuru_state_msg.state_scan="lidar_fail";
         ros::Duration duration2 = time_now - time_blink_scan;
         if(duration2.toSec()>0.2){
@@ -728,8 +729,20 @@ void check_scan(){
             }
         }
     }else{
+
         pitakuru_state_msg.state_scan="lidar_ok";
-        if(mode)
+        if(lidar_failed){
+            lidar_failed=false;
+            if(mode_manual){
+                alert_manual_no_sound();
+            }
+            if(mode_follow){
+                alert_karugamo_near_no_sound();
+            }
+            if(mode_idle){
+                alert_manual_no_sound();
+            }
+        }
     }
 }
 
@@ -1601,11 +1614,16 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan){
             //float  break_danger=0.5;
          
         if(detect_cont>1 && mode_idle == false && (vel_m1 >= vel_detect_scan || vel_m2 >= vel_detect_scan)){
-        //if(detect_cont>1 ){
+        //if(detect_cont>0 ){
                 danger=true;
                 free_way=false;
                 ROS_INFO("Danger1");
                 detect_cont=0;
+                ctrl_front_manual=0;
+                    ctrl_side_manual=0;
+                    vel_steer.linear.x= 0;
+                    vel_steer.angular.z= 0;
+                    speed_publisher.publish(vel_steer);
                 /*
                 danger_counter++;
                 alert_danger_no_sound();
@@ -1634,71 +1652,52 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan){
                     vel_steer.angular.z= 0;
                     speed_publisher.publish(vel_steer);
                 }
-                ros::Duration(0.3).sleep(); // sleep for half a second
+                ros::Duration(0.2).sleep(); // sleep for half a second
         }else{
             free_way=true;
         }
-        /* for(int j=-360;j<=720;j++){
+        //int min=200;
+        //ROS_INFO("no500 %f",scan->ranges[500]);
+        //ROS_INFO("no500 %f",scan->ranges[279]);  
+         /* for(int j=0;j<=720;j++){
             if( scan->ranges[j]  <= break_danger && scan->ranges[j] >0.14 ){
-                  ROS_INFO("found in %i",j);  
+                  ROS_INFO("less thnan break in %i",j);  
             }
-        } */
-        for(int j=279;j<=358;j++){
-            if (scan->ranges[j] <= break_danger && scan->ranges[j] >0.14 ){
-               detect_cont++;
-               ROS_INFO("found in %i",j);
-               pitakuru_state_msg.state_danger="detected_break_danger1";  
-                return;
-             }  
-        }
-        /* for(int i=0;i<=80;i++){
-            if (scan->ranges[i] <= break_danger && scan->ranges[i] >0.14 ){
-               detect_cont++;
-               ROS_INFO("found in %i",i);
-               pitakuru_state_msg.state_danger="detected_break_danger2";
-               return;
-                }
-            
-        } */
-        for(int j=328;j<=358;j++){
-            if (scan->ranges[j] <= break_distance && scan->ranges[j] >0.14 ){
-                 detect_cont++;
-                 pitakuru_state_msg.state_danger="detected_break_distance1";
-                     return;
-            }
-        }
-        for(int i=0;i<=30;i++){
-            if (scan->ranges[i] <= break_distance && scan->ranges[i] >0.14 ){
-               detect_cont++;
-               pitakuru_state_msg.state_danger="detected_break_distance1";
-               return;
-            }
-            else{
-                detect_cont=0;
-                free_way=true;
-                /*
-                if(mode_manual && danger){
-                    danger=false;
-                    alert_manual_sound();
-                }if(mode_karugamo && danger){
-                    danger=false;
-                    alert_karugamo_near_sound();
-                }
-                if(mode_follow && danger){
-                    danger=false;
-                    alert_karugamo_near_sound();
-                    //alert_danger_sound();
-                }if(mode_auto && danger){
-                    danger=false;
-                    alert_karugamo_near_sound();
-                    
-                }
-                */
-                    //danger=false;
-            }
-////////
-        }
+        }  */
         
+        for(int j=0;j<=720;j++){
+
+            if(j>280&&j<440){
+                if (scan->ranges[j] <= break_front_distance && scan->ranges[j] >0.14 ){
+
+                    detect_cont++;
+                    ROS_INFO("found in %i",j);
+                    pitakuru_state_msg.state_danger="detected_break_danger1";
+                    
+                    //ROS_INFO("print after");
+                } 
+                if(detect_cont>2){  
+                    return; 
+                }
+            }else{
+                if (scan->ranges[j] <= break_danger && scan->ranges[j] >0.14 ){
+                    detect_cont++;
+                    ROS_INFO("close in %i",j);
+                    pitakuru_state_msg.state_danger="detected_break_danger1";
+                      
+                    //return;
+                    //ROS_INFO("print after");
+                }
+                if(detect_cont>2){  
+                    return; 
+                }
+
+            }
+        }
+       
+        
+        detect_cont=0;
+        free_way=true;
 
 
 /////////
@@ -1873,7 +1872,7 @@ void mode_MANUAL(){
     ctrl_front_manual= 0;
     ctrl_side_manual= 0;
     aux_dist=5000;
-    
+    detect_cont=0;
     vel_steer.linear.x= 0;
     vel_steer.linear.y=1;//1;//enable motors
     vel_steer.angular.z= 0;
@@ -2120,7 +2119,8 @@ void loadRoute(){
                 if(mode_follow==true){
                     max_speed_follow=max_speed_follow+(joy->axes[7]*400);
                     duration_change-=joy->axes[7]*0.1;
-                    frontal_gain_follow=max_speed_follow+200;    
+                    frontal_gain_follow=max_speed_follow+200;
+                      
                 }
                 if(mode_manual){
                     duration_change-=joy->axes[7]*0.1;
@@ -2132,20 +2132,20 @@ void loadRoute(){
                 }else if (duration_change>0.5){
                     duration_change=0.5;
                 }
-                if(max_speed_follow>2400){
-                    max_speed_follow=2400;
+                if(max_speed_follow>2800){
+                    max_speed_follow=2800;
                 }else if(max_speed_follow<800){
-                    max_speed_follow=800;
+                    max_speed_follow=1000;
                 }
-                if(max_speed_manual>2400){
-                    max_speed_manual=2400;
-                }else if(max_speed_manual<800){
-                    max_speed_manual=800;
+                if(max_speed_manual>2800){
+                    max_speed_manual=2800;
+                }else if(max_speed_manual<1000){
+                    max_speed_manual=1000;
                 }
                 if(max_speed_manual_heavy>2400){
                     max_speed_manual_heavy=2400;
-                }else if(max_speed_manual_heavy<800){
-                    max_speed_manual_heavy=800;
+                }else if(max_speed_manual_heavy<2400){
+                    max_speed_manual_heavy=2400;
                 }
                 ros::Duration(0.25).sleep(); // sleep for half a second
         }
@@ -2259,7 +2259,7 @@ private:
 
 
     bool save_waypoint,start_tray,col_avoid_mode,danger, mode_idle,mode_karugamo,mode_manual,mode_follow,free_way,collision,mode_auto;
-    float angulo_seguimiento,sp_yaw,sp_yaw2,ctrl_yaw,error_yaw,yaw,distanciaPeople,distanciaPeople2,break_distance,break_danger,max_speed_karugamo,max_speed_follow,max_speed_manual,max_speed_manual_heavy,ctrl_ang,ctrl_lin;
+    float angulo_seguimiento,sp_yaw,sp_yaw2,ctrl_yaw,error_yaw,yaw,distanciaPeople,distanciaPeople2,break_front_distance,break_danger,max_speed_karugamo,max_speed_follow,max_speed_manual,max_speed_manual_heavy,ctrl_ang,ctrl_lin;
     float px,py,norm,norm2,x_ini,y_ini,x_p,y_p,px2,py2,spx,spy,err_x,err_y,err_xx,err_yy,low_vel_gain,high_vel_gain,low_vel_gain_follow,high_vel_gain_follow,smooth_accel,ctrl_side_manual,max_speed_side_manual;
     char rx[80],ry[80],rx2[80],ry2[80],pa[80],yag[80];
     float sp_rx[1000],sp_ry[1000],sp_rx2[1000],sp_ry2[1000],param[1000],sp_yaww[1000];

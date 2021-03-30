@@ -115,7 +115,7 @@ class PitWheels:
             self.tracking_lidar=False
             self.ang_peop_lidar=self.ang_peop_lidar=states.trackeds.linear.y
             print("entre a trackear id")
-            if self.biggest_people.id!=-1 and self.biggest_people.area>17:
+            if self.biggest_people.id!=-1 and self.biggest_people.area>30:
                 print("tracking")
                 print(self.biggest_people.id)
                 self.prev_ang = self.tracked_ang

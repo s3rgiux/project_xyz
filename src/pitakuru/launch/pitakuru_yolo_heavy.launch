@@ -66,6 +66,8 @@
 
     <node pkg="peop_extract" type="peop_ext_sort.py" name="peop_ext_yolo"/>
 
+    <node pkg="pitakuru" type="lidar_detect.py" name="lidar_detect_f" />
+
 <!-- keiganモーター制御/オドメトリ算出ノード -->
 <node pkg="pypro" name="pitakuru_wheels" type="pitakuruWheels.py">
 <param name="max_speed"    type="double"	value="3500"/>  <!-- max speed tah can be sent to motors-->
@@ -76,13 +78,13 @@
 
 
 <!-- extract obstacles form region of interest and send to control_xy -->
-<!--  
+ 
 <node pkg="obs_extract" type="main_sorted_kalman.py" name="obj_track" >
 <param name="front_detection"    type="double"	value="7"/> 
 <param name="side_detection"    type="double"	value="2.5"/>  
-<param name="radius_follow"    type="double"	value="0.34"/>  
+<param name="radius_follow"    type="double"	value="0.37"/>  
 </node>
--->
+
 
 <node pkg="costmap" type="main.py" name="cost_detect">
 <param name="dilation"    type="int"	value="4"/> <!-- 3.5 --><!-- 5 -->
