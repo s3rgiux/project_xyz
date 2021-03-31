@@ -223,7 +223,10 @@ class PitWheels:
             self.try_to_search=True
             self.got_obj_lidar=False
             #self.search_nearest()
-            
+        elif states.state=="KARUGAMO" and states.state_karugamo=="far" and self.first_got==False and self.try_to_search==False and self.yolo_ang!=-500:
+            print("searching the nearest")
+            self.try_to_search=True
+            self.got_obj_lidar=False
         elif states.state=="KARUGAMO" and states.state_karugamo=="following_yolo" and self.try_to_search==False and self.yolo_status>0:
             print("searching the nearest again")
             self.try_to_search=True

@@ -89,7 +89,7 @@ class PitWheels:
         if(time.time()-self.last_time>0.4):
         #if(self.track==0):
             self.angulo.data=-500
-            self.ang_dist.x=-0.01
+            self.ang_dist.x=-1
             self.ang_dist.y=-0.01
             self.ang_dist.z=-500
             self.distancia.data=0
@@ -111,11 +111,19 @@ class PitWheels:
         if states.state=="KARUGAMO" and states.state_karugamo=="following_yolo":
             self.tracking_lidar=False
             self.ang_peop_lidar=0
+        if states.state=="KARUGAMO" and states.state_karugamo=="far":
+            if self.biggest_people.id!=-1 and self.biggest_people.area>70:
+                print("tracking")
+                print(self.biggest_people.id)
+                self.prev_ang = self.tracked_ang
+                self.tracking = True
+                self.first_got = True
+                self.tracked_id = self.biggest_people.id
         if states.state=="KARUGAMO" and states.state_karugamo=="losting_with_lidar"and self.tracking==False:
             self.tracking_lidar=False
             self.ang_peop_lidar=self.ang_peop_lidar=states.trackeds.linear.y
             print("entre a trackear id")
-            if self.biggest_people.id!=-1 and self.biggest_people.area>30:
+            if self.biggest_people.id!=-1 and self.biggest_people.area>40:
                 print("tracking")
                 print(self.biggest_people.id)
                 self.prev_ang = self.tracked_ang
@@ -178,7 +186,7 @@ class PitWheels:
             #cnt2=cnt2+1
             #if self.first_got== False and self.tracking and self.tracked_x != -50 and self.tracked_y != -50 and self.tracked_ang < (self.tracked_ang + 7) and self.tracked_ang > (self.tracked_ang - 7) :#then we have tracked object
             if(self.tracking_lidar and self.first_got== False):#then we are tracking with lidar but we lost the initial traking yolo
-                if np.abs(ang-self.ang_peop_lidar)<10 and self.biggest_people.area>10:
+                if np.abs(ang-self.ang_peop_lidar)<10 and self.biggest_people.area>40:#10:
                     print("tracking")
                     print(self.biggest_people.id)
                     self.prev_ang = self.tracked_ang
