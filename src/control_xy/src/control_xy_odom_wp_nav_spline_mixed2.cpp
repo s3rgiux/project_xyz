@@ -1536,7 +1536,7 @@ void near(){
                 ctrl_ang=ctrl_ang+ctrl_add_side+ctrl_side_costmap*gain_to_costmap;
                 ROS_INFO("ctrl ang() an%f s %f ,d%f",ctrl_ang,ctrl_add_side,ctrl_side_costmap);
                 //
-                float restriction=450;
+                float restriction=400;
                 if (ctrl_ang>restriction){
                     ctrl_ang= restriction;
                 }else if (ctrl_ang<-restriction){
@@ -1559,7 +1559,14 @@ void near(){
                         ctrl_front_follow=(1-smooth_accel_karugamo_near)*(frontal_gain_follow*norm_dist/*max_speed_follow*/)+(smooth_accel_karugamo_near*ctrl_front_follow);
                         //experimental
                         ctrl_add_front=(1-smooth_accel_manual)*(joy_front*max_speed_manual)+(smooth_accel_manual*ctrl_front_manual);
-                        ctrl_front_follow=ctrl_front_follow+ctrl_add_front;
+                        //ctrl_front_follow=ctrl_front_follow+ctrl_add_front-abs(ctrl_side_costmap*gain_to_costmap*0.1);
+                        if(ctrl_front_follow>1000){
+                            ctrl_front_follow=ctrl_front_follow+ctrl_add_front-abs(ctrl_side_costmap*gain_to_costmap*0.1);
+                        }else{
+                            ctrl_front_follow=ctrl_front_follow+ctrl_add_front;
+                        }
+                        // float nueva=abs(ctrl_side_costmap*gain_to_costmap*4);
+                        // ROS_INFO("cost %f",nueva);
                         if(ctrl_front_follow<0){
                             ctrl_front_follow=0;
                             vel_steer.linear.x=0;
@@ -1571,7 +1578,15 @@ void near(){
                         ctrl_front_follow=(1-smooth_accel_karugamo_near)*(max_speed_manual *norm_dist/*max_speed_follow*/)+(smooth_accel_karugamo_near*ctrl_front_follow);
                         //experimental
                         ctrl_add_front=(1-smooth_accel_manual)*(joy_front*max_speed_manual)+(smooth_accel_manual*ctrl_front_manual);
-                        ctrl_front_follow=ctrl_front_follow+ctrl_add_front;
+                        
+                        //ctrl_front_follow=ctrl_front_follow+ctrl_add_front-abs(ctrl_side_costmap*gain_to_costmap*0.1);
+                        if(ctrl_front_follow>1000){
+                            ctrl_front_follow=ctrl_front_follow+ctrl_add_front-abs(ctrl_side_costmap*gain_to_costmap*0.1);
+                        }else{
+                            ctrl_front_follow=ctrl_front_follow+ctrl_add_front;
+                        }
+                        // float nueva=abs(ctrl_side_costmap*gain_to_costmap*0.8);
+                        // ROS_INFO("cost %f",nueva);
                         if(ctrl_front_follow<0 ){
                             ctrl_front_follow=0;
                             vel_steer.linear.x=0;
@@ -1580,6 +1595,7 @@ void near(){
                             ctrl_front_follow= max_speed_manual;
                         }
                     }
+                    
                     vel_steer.linear.x= ctrl_front_follow;
                 }else{
                     ctrl_front_follow=(1-smooth_accel_stop)*(0)+(smooth_accel_stop*ctrl_front_follow);
