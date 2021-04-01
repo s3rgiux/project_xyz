@@ -161,7 +161,7 @@ class PitWheels:
                 #err_ang= np.abs(self.tracked_ang-ang_obj)
                 #if(dist<self.radius_follow):
                 print("appended for sort")
-                if(dist>0.25 and dist<3.0):
+                if(dist>0.25 and dist<4.0):
                     lst2.append((n,dist))#contains (error distancia and err ang)
                     print(e_x)
                     print(e_y)
@@ -293,7 +293,7 @@ class PitWheels:
                         #
 
                     #elif self.tracked_x == -50 and self.tracked_y == -50 or (time.time()-self.last_time_tracked)>0.25:
-                    elif (time.time()-self.last_time_tracked)>0.25:
+                    elif (time.time()-self.last_time_tracked)>0.55:
                         self.ang_dist.x=x.center.x
                         self.ang_dist.y=x.center.y#dist*100
                         self.ang_dist.z=-1#dist*100
@@ -376,9 +376,9 @@ class PitWheels:
 
                 ## check errorwith yolo
                 ang_obj= 90-np.arctan2(closest.x, closest.y) * 180 / np.pi
-                if np.abs(ang-self.yolo_ang)>32 and self.yolo_status>0:
+                if np.abs(ang-self.yolo_ang)>37 and self.yolo_status>0 and self.first_got:
                     self.count_angle=self.count_angle+1
-                    if self.count_angle>10:
+                    if self.count_angle>15:
                         self.count_angle=0
                         self.try_to_search=True
                         self.search_nearest(data)

@@ -3,7 +3,7 @@
     
 <!-- control xy is the main program build in c++ to make it more fast needs to be compiled if a modification is made-->
 <node pkg="control_xy" type="control_xy_node_spline_follow_mixed" name="control_xy" output="screen">
-<param name="break_front_distance"    type="double"	value="0.9"/> <!-- 0.75--><!-- breaking distance to  enter in danger zone  -->
+<param name="break_front_distance"    type="double"	value="0.8"/> <!-- 0.75--><!-- breaking distance to  enter in danger zone  -->
 <param name="break_danger"    type="double"	value="0.25"/><!-- 0.39--><!-- (not used depercated)distance to  enter in warning zone  -->	
 <param name="low_vel_gain_karugamo"    type="double"	value="15"/> <!-- (not used depercated)karugamo gain  angle control   -->
 <param name="high_vel_gain_karugamo"    type="double"	value="17"/><!-- 10--> <!-- (not used depercated)karugamo gain  angle control   -->
@@ -33,9 +33,9 @@
 <param name="tresh_amp_up"    type="double"	value="5.0"/> <!-- treshhold amp up -->
 <param name="tresh_amp_down"    type="double"	value="3.0"/> <!-- treshhold amp dwn -->
 <param name="trigger_vel"    type="double"	value="0.4"/> <!-- velocity to active search for load or not load-->
-<param name="trigger_current"    type="double"	value="8"/> <!-- how many amps to activate the heavy load-->
+<param name="trigger_current"    type="double"	value="24"/> <!-- how many amps to activate the heavy load-->
 <param name="vel_detect_scan"    type="double"	value="300"/> <!--vel to start detect collision--><!--1.2-->
-<param name="volts_charge"    type="double"	value="23.0"/> <!--vel to start detect collision-->
+<param name="volts_charge"    type="double"	value="23.1"/> <!--vel to start detect collision-->
 <param name="avg_curr_tresh"    type="double"	value="5.2"/> <!--vel to start detect collision-->
 <param name="peak_curr_tresh"    type="double"	value="5.9"/> <!--vel to start detect collision-->
 <param name="peak_not_heavy_curr"    type="double"	value="4.3"/> <!--vel to start detect collision-->
@@ -43,8 +43,8 @@
 <param name="gain_to_costmap"    type="double"	value="1.5"/> <!--counter that if overpass this then we lost people-->
 <param name="vel_detect_costmap"    type="double"	value="0.6"/> <!--vel to start detect costmap--><!--0.6-->
 <param name="duration_to_lost"    type="double"	value="0.8"/> <!--time in second to see if is lost-->
-<param name="min_break_distance"    type="double"	value="0.9"/> <!--time in second to see if is lost-->
-<param name="min_break_distance"    type="double"	value="1.2"/> <!--time in second to see if is lost-->
+<param name="min_break_distance"    type="double"	value="0.75"/> <!--time in second to see if is lost-->
+<param name="max_break_distance"    type="double"	value="1.0"/> <!--time in second to see if is lost-->
 </node>
 
 
