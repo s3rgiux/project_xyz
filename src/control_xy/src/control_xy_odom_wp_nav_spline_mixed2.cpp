@@ -1336,72 +1336,72 @@ void far(){
 
                 if(stop_follow==true){//stop if arrived  last wp  
                         counter_search++;
-                        if(counter_search%350==0){
-                            counter_search=0;
-                            state_stop++;
-                            switch(state_stop){
-                                /*
-                                case 1:
+                        //  if(counter_search%350==0){
+                        //     counter_search=0;
+                        //     state_stop++;
+                        //     switch(state_stop){
+                        //         /*
+                        //         case 1:
                                    
-                                    sp_yaw=ang_robot;
-                                    saved_ang=ang_robot;
-                                    fprintf(fp2,"entre caso 1 ang %f \n",saved_ang);
-                                break;
-                                */
-                                case 1:
+                        //             sp_yaw=ang_robot;
+                        //             saved_ang=ang_robot;
+                        //             fprintf(fp2,"entre caso 1 ang %f \n",saved_ang);
+                        //         break;
+                        //         */
+                        //         case 1:
                                    
-                                    sp_yaw=saved_ang;
-                                    fprintf(fp2,"entre caso 1 ang %f \n",saved_ang);
-                                break;
+                        //             sp_yaw=saved_ang;
+                        //             fprintf(fp2,"entre caso 1 ang %f \n",saved_ang);
+                        //         break;
                                
-                                case 2:
+                        //         case 2:
                                    
-                                    sp_yaw=saved_ang+45;
-                                    if (sp_yaw < -180.0 ){
-                                        sp_yaw=sp_yaw+360;
-                                    }else if (sp_yaw > 180.0 ){
-                                        sp_yaw=sp_yaw-360;
-                                    }
-                                    fprintf(fp2,"entre caso 2 ang %f \n",sp_yaw);
-                                break;
-                                case 3:
-                                    sp_yaw=saved_ang;
-                                    fprintf(fp2,"entre caso 3 ang %f \n",sp_yaw);
-                                break;
-                                case 4:
-                                    state_stop=0;
-                                    sp_yaw=saved_ang-45;
-                                    if (sp_yaw < -180.0 ){
-                                        sp_yaw=sp_yaw+360;
-                                    }else if (sp_yaw > 180.0 ){
-                                        sp_yaw=sp_yaw-360;
-                                    }
-                                    fprintf(fp2,"entre caso 4 ang %f \n",sp_yaw);
-                                break;
-                                //case 5:
-                                //    sp_yaw=saved_ang;
-                                //    state_stop=0;
-                                //  fprintf(fp2,"entre caso 5 ang %f \n",sp_yaw);
-                            // break;  
-                            }
-                        }
-                        error_yaw=(sp_yaw-ang_robot);//-(sp_yaw-ang_robot);
-                        if (error_yaw < -180.0 ){
-                            error_yaw=error_yaw+360;
-                        }else if (error_yaw > 180.0 ){
-                            error_yaw=error_yaw-360;
-                        }
-                        spVel=0.1*(error_yaw);//0.05*(error_yaw);
-                        nkp=angle_gain_wp;//=0.0085;
-                        ctrl_yaw=(nkp*spVel)-ctrl_yaw/2;//
-                        if(ctrl_yaw>300){
-                            ctrl_yaw=300;
-                        }else if(ctrl_yaw<-300){
-                            ctrl_yaw=-300;
-                        }
+                        //             sp_yaw=saved_ang+45;
+                        //             if (sp_yaw < -180.0 ){
+                        //                 sp_yaw=sp_yaw+360;
+                        //             }else if (sp_yaw > 180.0 ){
+                        //                 sp_yaw=sp_yaw-360;
+                        //             }
+                        //             fprintf(fp2,"entre caso 2 ang %f \n",sp_yaw);
+                        //         break;
+                        //         case 3:
+                        //             sp_yaw=saved_ang;
+                        //             fprintf(fp2,"entre caso 3 ang %f \n",sp_yaw);
+                        //         break;
+                        //         case 4:
+                        //             state_stop=0;
+                        //             sp_yaw=saved_ang-45;
+                        //             if (sp_yaw < -180.0 ){
+                        //                 sp_yaw=sp_yaw+360;
+                        //             }else if (sp_yaw > 180.0 ){
+                        //                 sp_yaw=sp_yaw-360;
+                        //             }
+                        //             fprintf(fp2,"entre caso 4 ang %f \n",sp_yaw);
+                        //         break;
+                        //         //case 5:
+                        //         //    sp_yaw=saved_ang;
+                        //         //    state_stop=0;
+                        //         //  fprintf(fp2,"entre caso 5 ang %f \n",sp_yaw);
+                        //     // break;  
+                        //     }
+                        // } 
+                        // error_yaw=(sp_yaw-ang_robot);//-(sp_yaw-ang_robot);
+                        // if (error_yaw < -180.0 ){
+                        //     error_yaw=error_yaw+360;
+                        // }else if (error_yaw > 180.0 ){
+                        //     error_yaw=error_yaw-360;
+                        // }
+                        // spVel=0.1*(error_yaw);//0.05*(error_yaw);
+                        // nkp=angle_gain_wp;//=0.0085;
+                        // ctrl_yaw=(nkp*spVel)-ctrl_yaw/2;//
+                        // if(ctrl_yaw>300){
+                        //     ctrl_yaw=300;
+                        // }else if(ctrl_yaw<-300){
+                        //     ctrl_yaw=-300;
+                        // }
                         //ctrl_front_follow=0;
                         ctrl_front_follow=(1-smooth_accel_stop)*(0)+(smooth_accel_stop*ctrl_front_follow);//experimental
-                        //ctrl_yaw=0;
+                        ctrl_yaw=0;
                         vel_steer.linear.x= ctrl_front_follow;
                         vel_steer.angular.z= ctrl_yaw;
                         if(low_voltage ==false  && changed_setting==false && lidar_failed==false){
