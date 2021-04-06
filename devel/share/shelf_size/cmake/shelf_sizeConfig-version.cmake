@@ -1,0 +1,1 @@
+/home/xavier/catkin_ws/devel/.private/shelf_size/share/shelf_size/cmake/shelf_sizeConfig-version.cmake

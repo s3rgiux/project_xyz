@@ -208,9 +208,6 @@ void stateCallback(const control_xy::TriggerAction& data){
             remove_collision();
             mode_IDLE();
             ros::Duration(0.5).sleep(); // sleep for half a second
-           
-        //  ROS_INFO("Yuhu");
-        //  ROS_INFO("%s ",data.trigger.c_str());
         } else if(data.trigger=="karugamo_button_on" && mode_follow==false  && collision == false){
             mode_people_follow();
             vel_steer.linear.x=0;
@@ -241,51 +238,19 @@ void check_low_volt(){
 void voltsCallback(const std_msgs::Float32& msg){
     //ROS_INFO("voltage %f",msg.data);
     if((msg.data+0.2)<volts_charge ){//&& mode_idle == true){
-        /*
-        //alert_danger_no_sound();
-        alert_idle_no_sound();
-        ros::Duration(0.3).sleep(); // sleep for half a second
-        //alert_idle_no_sound();
-        alert_turn_off_led();
-        ros::Duration(0.3).sleep(); // sleep for half a second
-        //ROS_INFO("low voltage %f",msg.data);
-        */
 
         ros::Time time_now = ros::Time::now();
-        //ros::Duration(1.5).sleep();
-        //ros::Time time_end = ros::Time::now();
+       
         ros::Duration duration = time_now - time_blink_volts;
-        //ROS_INFO("Slept for %lf secs", duration.toSec());
-        //double tn = ros::Time::now().toSec();
-        //ROS_INFO("time %d",tn-time_blink_bl);//tn-time_blink_bl);
-        /* if((duration.toSec())>0.3){
-            //ROS_INFO("entered");
-            time_blink_volts=time_now;
-            if(status_led_green){
-                status_led_green=false;
-                //alert_karugamo_near_no_sound();
-                alert_idle_no_sound();
-            }else{
-                status_led_green=true;
-                alert_turn_off_led();
-            }
-        } */
+        
         counter_low_voltage++;
         if((abs(vel_m1)>0.1 || abs(vel_m2)>0.1) && counter_low_voltage>1){
             low_voltage=true;
             ROS_INFO("detected_low voltage");
         }
        
-        /* if(status_led_green){
-                status_led_green=false;
-                //alert_karugamo_near_no_sound();
-                alert_idle_no_sound();
-            }else{
-                status_led_green=true;
-                alert_turn_off_led();
-            } */
     }else{
-        //low_voltage=false;
+       
         counter_low_voltage=0;
     }
 }    
@@ -511,7 +476,7 @@ void yoloCallback(const geometry_msgs::Vector3& msg){
     yolo_peop_pub.publish(odomp);
 }
 
-void match_lidar_people(){
+/* void match_lidar_people(){
     if(ang_peop_cam!=-500 && mode_follow && tracking_people==false  ){
         cont_detect_peop+=1;
         //missing_track=0;
@@ -619,7 +584,7 @@ void match_lidar_people_again(){
             aux_dist=5000;
         }
     }
-}
+} */
 
 
 ///end yolo sub
@@ -800,6 +765,7 @@ void restart_follow_variables(){
     index_wp=-1;//init follow
     dist_auxwp=0;
     state_stop=0;
+    ctrl_add_side=0;
     is_near==true;
     stop_functions=false;
     ctrl_side_costmap=0;
@@ -834,7 +800,7 @@ void calc_100hz(){
     if(entered_first_time_far==true && lidar_people_status>0 ){
         entered_first_time_far=false;
         //cont_sp_follow=0;
-        ROS_INFO("restar folow variable far");
+        ROS_INFO("restart folow variable far");
     }
     if(lidar_people_status>0){
         stop_functions=false;
@@ -845,6 +811,7 @@ void calc_100hz(){
         ROS_INFO("just_enter al%f,ay%f",ang_peop_lidar,ang_peop_cam);
         //ROS_INFO("d %s",danger?"TRUE":"FALSE");
         ROS_INFO("stp %s",stop_functions?"TRUE":"FALSE");
+        ROS_INFO("joy s%f, f%f",joy_side,joy_front);
         //ROS_INFO("tracked1 %f",ang_peop_lidar);
             //if(cx!=-0.01 && cy !=-0.01 && tracking_people && cx<=(tracked_cx+radius_follow) && cx>=(tracked_cx-radius_follow) && cy<=(tracked_cy+radius_follow) && cy >=(tracked_cy-radius_follow) && stop_functions==false){//2
             //if(tracking_people && (yolo_status>0 || lidar_people_status>0) && stop_functions==false){
@@ -853,11 +820,6 @@ void calc_100hz(){
             if(lidar_people_status>0 && stop_functions==false){//if lidar status>1
                 //cont_detect_peop=0;
    
-                   
-                //ang_peop_lidar = 90+ atan2(cx, cy) * 180 / 3.1416 ;
-                //ang_peop_lidar = -90+ atan2(cx, cy) * 180 / 3.1416 ;
-                //ang_peop_lidar = 90- atan2(cx, cy) * 180 / 3.1416;
-                //distanciaPeople2 = sqrt(cx*cx+cy*cy)*100;
                 //if( (lidar_people_status>1 ||  lidar_people_status<1)&& yolo_status >0){
                 started_track_yolo=false;
                 pitakuru_state_msg.state="KARUGAMO";
@@ -1525,8 +1487,8 @@ void near(){
                 //}
                 //experiementa
                 ctrl_add_side=(1-smooth_accel_side_manual)*(joy_side*max_speed_side_manual)+(smooth_accel_side_manual*ctrl_add_side);
-                ctrl_add_side=0;
-                if(vel_m1 >= vel_detect_costmap || vel_m2 >= vel_detect_costmap){
+                //ctrl_add_side=0;
+                if((vel_m1 >= vel_detect_costmap || vel_m2 >= vel_detect_costmap )&&distanciaPeople2>dist_robot_people){
                     ctrl_side_costmap=(1-smooth_accel_side_manual)*(cost_obst*max_speed_side_manual)+(smooth_accel_side_manual*ctrl_side_costmap);
                 }else{
                     ctrl_side_costmap=0;
@@ -1534,6 +1496,7 @@ void near(){
                 //ctrl_side_costmap=0;
                 //ROS_INFO("cost%f",ctrl_side_costmap);
                 ctrl_ang=ctrl_ang+ctrl_add_side+ctrl_side_costmap*gain_to_costmap;
+                //ctrl_ang=ctrl_ang+ctrl_side_costmap*gain_to_costmap;
                 ROS_INFO("ctrl ang() an%f s %f ,d%f",ctrl_ang,ctrl_add_side,ctrl_side_costmap);
                 //
                 float restriction=400;
@@ -1807,7 +1770,7 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan){
             }
         }  */
        
-        if( ctrl_front_manual> 50 || ctrl_front_follow > 50){
+        if( ctrl_front_manual> 200 || ctrl_front_follow > 200){
             for(int j=0;j<=720;j++){
 
                 if(j>280&&j<440){

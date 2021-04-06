@@ -1,0 +1,8 @@
+prefix=/home/xavier/catkin_ws/devel/.private/shelf_size
+
+Name: shelf_size
+Description: Description of shelf_size
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
