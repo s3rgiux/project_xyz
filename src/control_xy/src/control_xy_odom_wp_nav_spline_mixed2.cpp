@@ -190,6 +190,7 @@ save_counter=0;
         counter_changed=0;
         started_track_yolo=false;
         lidar_failed=false;
+        joy_counter=0;
        
     }
     ~test_head(){}
@@ -1756,7 +1757,7 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan){
                     vel_steer.angular.z= 0;
                     speed_publisher.publish(vel_steer);
                 }
-                ros::Duration(0.2).sleep(); // sleep for half a second
+                ros::Duration(0.05).sleep(); // sleep for half a second
         } else{
             free_way=true;
             //detect_cont=0
@@ -1999,7 +2000,7 @@ void mode_IDLE()
      
 
             vel_steer.linear.x= 0;
-            vel_steer.linear.y=1;//-1;//disable motors
+            vel_steer.linear.y=-1;//-1;//disable motors
             vel_steer.angular.z= 0;
             speed_publisher.publish(vel_steer);
         stop_functions=false;
@@ -2114,6 +2115,7 @@ void loadRoute(){
 
     void joyCallback(const sensor_msgs::Joy::ConstPtr& joy)
     {
+        joy_counter++;
         geometry_msgs::Twist vel_steer;
         if (joy->buttons[4]==1&&joy->buttons[5]==1 ){//R1L1
             printf("Cargando Ruta \n");
@@ -2305,27 +2307,16 @@ void loadRoute(){
                 vel_steer.linear.x= ctrl_front_manual;
                 //vel_steer.linear.x=-joy->axes[1]*-max_speed_manual;
                 ctrl_side_manual=(1-smooth_accel_side_manual)*(joy->axes[0]*max_speed_side_manual)+(smooth_accel_side_manual*ctrl_side_manual);
-               
-                //if(ctrl_side_manual<7 && ctrl_side_manual>-7){
-                //    ctrl_side_manual=0;
-                //}
-                //ctrl_side_costmap=(1-smooth_accel_side_manual)*(cost_obst*max_speed_side_manual)+(smooth_accel_side_manual*ctrl_side_costmap);
-                //ROS_INFO("cost%f",ctrl_side_costmap);
+                
+                
                 vel_steer.angular.z=ctrl_side_manual;//+ctrl_side_costmap;
-               
-               /*  if(joy->axes[7]!=0){
-                        vel_steer.linear.x=joy->axes[7]*max_speed_manual_heavy;
-                }
-                if(joy->axes[6]!=0){
-                        vel_steer.angular.z=joy->axes[6]*-800;
-                } */
-
-                 /* if(joy->axes[7]!=0){
-                        vel_steer.linear.x=joy->axes[7]*max_speed_manual_heavy;
-                } */
+                //vel_steer.angular.z=0;
+                
                 vel_steer.linear.x=(vel_steer.linear.x/21)*0.1045;
                 vel_steer.angular.z=(vel_steer.angular.z/21)*0.1045;
-                speed_publisher.publish(vel_steer);
+                if(joy_counter%8==0){
+                    speed_publisher.publish(vel_steer);
+                }
         }else{//else free way
        
             ctrl_front_manual=(1-smooth_accel_manual)*(joy->axes[1]*max_speed_manual_heavy)+(smooth_accel_manual*ctrl_front_manual);
@@ -2338,11 +2329,16 @@ void loadRoute(){
                 vel_steer.angular.z=ctrl_side_manual;
                 vel_steer.linear.x=(vel_steer.linear.x/21)*0.1045;
                 vel_steer.angular.z=(vel_steer.angular.z/21)*0.1045;
-                speed_publisher.publish(vel_steer);
+                //vel_steer.angular.z=0;
+                if(joy_counter%8==0){
+                    speed_publisher.publish(vel_steer);
+                }
             }else{
                 vel_steer.linear.x= 0;
                 vel_steer.angular.z= 0;
-                speed_publisher.publish(vel_steer);
+                if(joy_counter%8==0){
+                    speed_publisher.publish(vel_steer);
+                }
             }          
         }
                          
@@ -2457,7 +2453,7 @@ int save_counter,amp_count_l,amp_count_r;
     float duration_change;
     bool test;
     bool low_voltage,started_track_yolo,lidar_failed,entered_first_time_far;
-    int counter_changed,counter_low_voltage;
+    int counter_changed,counter_low_voltage,joy_counter;
     float min_break_distance,max_break_distance;
 };
 

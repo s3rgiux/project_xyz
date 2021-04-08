@@ -16,5 +16,3 @@
 [ 40%] Built target obs_extract_generate_messages_nodejs
 [ 59%] Built target obs_extract_generate_messages_lisp
 [ 81%] Built target obs_extract_generate_messages_eus
-[100%] Built target obs_extract_generate_messages_cpp
-[100%] Built target obs_extract_generate_messages

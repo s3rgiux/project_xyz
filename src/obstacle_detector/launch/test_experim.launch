@@ -43,6 +43,9 @@
 
      
 <node name="scanner_base_to_front_scanner" pkg="tf2_ros" type="static_transform_publisher" args="0 0 0 0 3.141592 -3.141592 base_link laser" if = "$(arg rplidar_flag)"/>
+<!--
+<node name="scanner_base_to_front_scanner" pkg="tf2_ros" type="static_transform_publisher" args="0 0 0 0 0 0 base_link laser" if = "$(arg hokuyo_flag)"/>
+-->
 <node name="scanner_base_to_front_scanner" pkg="tf2_ros" type="static_transform_publisher" args="0 0 0 0 0 0 base_link laser" if = "$(arg hokuyo_flag)"/>
   
 

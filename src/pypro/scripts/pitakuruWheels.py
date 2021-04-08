@@ -40,17 +40,18 @@ import rosparam
 #    SLEEP_TIME = 0.1
 import atexit
 
-D_RIGHT=0.1045#0.098#0.0597    #m, right wheel radius
-D_LEFT=0.1045#0.098#0.0597     #m, left wheel radius
+D_RIGHT= 0.104#0.109 #0.1045#0.098#    #m, right wheel radius
+D_LEFT= 0.104 #0.109 #0.1045#0.098#     #m, left wheel radius
 ACC = 20
-TREAD=0.4 #0.447  #m, length between wheels
+#TREAD=0.4 #0.447  #m, length between wheels
+TREAD=0.45  #m, length between wheels
 perimeter= 0.657   #m distance traveled
 LINEAR_RATIO = 0.50 # Tuning parameter of dolly linear speed
 ANGULAR_RATIO = 20.0 #Tuning parameter of dolly angular speed
 GYRO_OFFSET = np.array([-0.02053863,0.0176115,0.03733194])
 baud = 1000000
 
-SLEEP_TIME = 0.05#0.025
+SLEEP_TIME = 0.001 #0.015#0.05
 #200mm diameter
 def calc_input(omega_r,omega_l):
     """
@@ -68,7 +69,7 @@ def calc_input(omega_r,omega_l):
     vr = D_RIGHT*omega_r
     vl = D_LEFT*omega_l
     v = (vr + vl) / 2.0
-    yawrate= (vr - vl) / (TREAD / 2.0)
+    yawrate= (vr - vl) / (TREAD / 2.0)*1.06
     u = np.array([v, yawrate])
     return u
 
@@ -98,6 +99,7 @@ def MotionModel(x,u,dt):
     theta = PItoPI(theta)
     x = np.array([loc_x, loc_y, theta])
     return x
+    
 
 def PItoPI(angle):
     while angle >= np.pi:
@@ -262,6 +264,8 @@ class PitWheels:
 
         self.right_velocity = 0
         self.left_velocity = 0
+        self.calc_right_vel =0
+        self.calc_left_vel =0
         self.motors_enabled=False
         self.disable_motors()
 
@@ -282,12 +286,12 @@ class PitWheels:
 
     def enable_motors(self):
         self.left_w_dev.enable_handler()
-        sleep(0.2)
+        sleep(0.01)
         self.right_w_dev.enable_handler()
     
     def disable_motors(self):
         self.left_w_dev.disable_handler()
-        sleep(0.2)
+        sleep(0.01)
         self.right_w_dev.disable_handler()
 
     def pubodo2(self):
@@ -315,18 +319,19 @@ class PitWheels:
     def pubodo(self):
         try:
             self.odocount += 1
-            self.current_time = time.time()
-            dt = self.current_time-self.last_time
+            
             #lvalues = self.left_w_dev.read_foc_handler#self.left_w_dev.read_motor_measurement()
             self.left_w_dev.read_foc_handler()
             self.right_w_dev.read_foc_handler()
             #rospy.sleep(0.01)
             left_velocity = (self.left_w_dev.velm/21)*1# float v_=round(msg.linear.x / (5.68))*31;//rad/s and gear ratio: 5.5  and the wheel Radius 31 milimeter
+            self.calc_left_vel=0.6*left_velocity+0.4*self.calc_left_vel
             #print('LV#{0}'.format(left_velocity))
             #left_position = self.left_w_dev.posm #lvalues['position']
             #rvalues = self.left_w_dev.read_foc_handler #self.right_w_dev.read_motor_measurement()
             #rospy.sleep(0.01)
             right_velocity = (self.right_w_dev.velm/21)*1#self.right_w_dev.velm#rvalues['velocity']
+            self.calc_right_vel=0.6*right_velocity+0.4*self.calc_right_vel
             self.left_w_rpm.data = self.left_w_dev.velm
             #self.right_w_rpm=self.right_w_dev.velm
             #rospy.logerr("hello pypro")
@@ -342,14 +347,14 @@ class PitWheels:
             ampere.z=self.current_time
             self.current_pub.publish(ampere)
 
-            vec2 = Vector3()
-            vec2.x = right_velocity
-            vec2.y = left_velocity
-            vec2.z = self.current_time
-            self.wheels_pub.publish(vec2)
+            # vec2 = Vector3()
+            # vec2.x = right_velocity
+            # vec2.y = left_velocity
+            # vec2.z = self.current_time
+            # self.wheels_pub.publish(vec2)
             state_wheels = StateWheels()
-            state_wheels.left_vel = left_velocity
-            state_wheels.right_vel = right_velocity
+            state_wheels.left_vel = self.calc_left_vel#left_velocity
+            state_wheels.right_vel = self.calc_right_vel#right_velocity
             state_wheels.left_current = self.l_curr #abs(self.left_w_dev.current_motor)
             state_wheels.right_current = self.r_curr#abs(self.right_w_dev.current_motor)
             state_wheels.time_stamp = rospy.Time.now()
@@ -360,21 +365,25 @@ class PitWheels:
             #print('RV#{0}'.format(right_velocity))
             #right_position = self.right_w_dev.posm#rvalues['position']
             #float v_=round(msg.linear.x / (5.68))*31;//rad/s and gear ratio: 5.5  and the wheel Radius 31 milimeter
-            u = calc_input(-right_velocity, left_velocity)#right wheel rotates backwards
-            if self.can_correct:
-            ######################################################################
-                self.x[0]=self.x[0]*0.6+0.4*self.xPosLas
-                self.x[1]=self.x[1]*0.6+0.4*self.yPosLas
-                self.can_correct=False
-                if not self.brinco:
-                    #self.x[2]=self.x[2]*0.95+0.05*self.angLas
-                    self.x[2]=self.x[2]*0.9+0.1*self.angLas
-                else:
-                    self.x[2]=self.angLas
+            #u = calc_input(-right_velocity, left_velocity)#right wheel rotates backwards
+            u = calc_input(-self.calc_right_vel, self.calc_left_vel)#right wheel rotates backwards
+
+            # if self.can_correct:
+            # ######################################################################
+            #     self.x[0]=self.x[0]*0.6+0.4*self.xPosLas
+            #     self.x[1]=self.x[1]*0.6+0.4*self.yPosLas
+            #     self.can_correct=False
+            #     if not self.brinco:
+            #         #self.x[2]=self.x[2]*0.95+0.05*self.angLas
+            #         self.x[2]=self.x[2]*0.9+0.1*self.angLas
+            #     else:
+            #         self.x[2]=self.angLas
             ######################################################################
             old_theta = self.x[2]
+            self.current_time = time.time()
+            dt = self.current_time-self.last_time
             self.x = MotionModel(self.x,u,dt)
-            
+            self.last_time = time.time()
             self.odo.header.seq = self.odocount
             self.odo.header.stamp = rospy.Time.now()
             self.odo.pose.pose.position.x = self.x[0]
@@ -397,16 +406,16 @@ class PitWheels:
             
             self.tf_broadcaster.sendTransform(self.odom_trans)
 
-            joint_state = JointState()
-            joint_state.header = Header()
-            joint_state.header.stamp = rospy.Time.now()
-            joint_state.name = ['left_wheel_joint', 'right_wheel_joint']
-            #joint_state.position = [-left_position%3.14, -right_position%3.14]
-            joint_state.velocity = []
-            joint_state.effort = []
-            self.joint_pub.publish(joint_state)
+            # joint_state = JointState()
+            # joint_state.header = Header()
+            # joint_state.header.stamp = rospy.Time.now()
+            # joint_state.name = ['left_wheel_joint', 'right_wheel_joint']
+            # #joint_state.position = [-left_position%3.14, -right_position%3.14]
+            # joint_state.velocity = []
+            # joint_state.effort = []
+            # self.joint_pub.publish(joint_state)
 
-            self.last_time = time.time()
+            
             #self.run_ctrl_cmd()
         except:
             import traceback
