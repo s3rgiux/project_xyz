@@ -191,6 +191,7 @@ save_counter=0;
         started_track_yolo=false;
         lidar_failed=false;
         joy_counter=0;
+        karugamo_counter=0;
        
     }
     ~test_head(){}
@@ -773,6 +774,7 @@ void restart_follow_variables(){
 }
 void calc_100hz(){
     save_counter++;
+    karugamo_counter++;
     cicles=20;
     ang_peop_lidar = 90- atan2(cx, cy) * 180 / 3.1416;
     //ang_peop_lidar = -90+ atan2(cx, cy) * 180 / 3.1416 ;
@@ -1378,7 +1380,10 @@ void far(){
                 }
                     vel_steer.linear.x=(vel_steer.linear.x/21)*0.1045;
                     vel_steer.angular.z=(vel_steer.angular.z/21)*0.1045;
-                    speed_publisher.publish(vel_steer);
+                    if(karugamo_counter%4==0){
+                        speed_publisher.publish(vel_steer);
+                    }
+                   
         }//end_isnear=false
 }
 
@@ -1498,7 +1503,7 @@ void near(){
                 //ROS_INFO("cost%f",ctrl_side_costmap);
                 ctrl_ang=ctrl_ang+ctrl_add_side+ctrl_side_costmap*gain_to_costmap;
                 //ctrl_ang=ctrl_ang+ctrl_side_costmap*gain_to_costmap;
-                ROS_INFO("ctrl ang() an%f s %f ,d%f",ctrl_ang,ctrl_add_side,ctrl_side_costmap);
+                //ROS_INFO("ctrl ang() an%f s %f ,d%f",ctrl_ang,ctrl_add_side,ctrl_side_costmap);
                 //
                 float restriction=400;
                 if (ctrl_ang>restriction){
@@ -1580,7 +1585,9 @@ void near(){
                 vel_steer.angular.z=(vel_steer.angular.z/21)*0.1045;
                 //alerts_command.data=7;// 5 danger 4 warning 3 karugamo 2 idle 1 manual
                 //alerts_publisher.publish(alerts_command);
-                speed_publisher.publish(vel_steer);
+                if(karugamo_counter%4==0){
+                    speed_publisher.publish(vel_steer);
+                }
             }
 
         }//mode3
@@ -1684,7 +1691,9 @@ void follow_yolo(){
             vel_steer.angular.z=(vel_steer.angular.z/21)*0.1045;
             //alerts_command.data=7;// 5 danger 4 warning 3 karugamo 2 idle 1 manual
             //alerts_publisher.publish(alerts_command);
-            speed_publisher.publish(vel_steer);
+            if(karugamo_counter%4==0){
+                speed_publisher.publish(vel_steer);
+            }
         }
 
     }//mode3
@@ -2000,7 +2009,7 @@ void mode_IDLE()
      
 
             vel_steer.linear.x= 0;
-            vel_steer.linear.y=-1;//-1;//disable motors
+            vel_steer.linear.y=1;//-1;//disable motors
             vel_steer.angular.z= 0;
             speed_publisher.publish(vel_steer);
         stop_functions=false;
@@ -2453,7 +2462,7 @@ int save_counter,amp_count_l,amp_count_r;
     float duration_change;
     bool test;
     bool low_voltage,started_track_yolo,lidar_failed,entered_first_time_far;
-    int counter_changed,counter_low_voltage,joy_counter;
+    int counter_changed,counter_low_voltage,joy_counter,karugamo_counter;
     float min_break_distance,max_break_distance;
 };
 

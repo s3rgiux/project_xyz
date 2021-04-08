@@ -1,28 +1,28 @@
 [  0%] Built target std_msgs_generate_messages_py
 [  0%] Built target geometry_msgs_generate_messages_py
-[  0%] Built target _control_xy_generate_messages_check_deps_Obstacle
 [  0%] Built target actionlib_msgs_generate_messages_py
 [  0%] Built target _control_xy_generate_messages_check_deps_State
-[  0%] Built target _control_xy_generate_messages_check_deps_States
 [  0%] Built target _control_xy_generate_messages_check_deps_TriggerAction
+[  0%] Built target _control_xy_generate_messages_check_deps_States
+[  0%] Built target _control_xy_generate_messages_check_deps_Obstacle
+[  0%] Built target std_msgs_generate_messages_eus
 [  0%] Built target _control_xy_generate_messages_check_deps_StateWheels
 [  0%] Built target geometry_msgs_generate_messages_eus
-[  0%] Built target std_msgs_generate_messages_eus
+[  0%] Built target actionlib_msgs_generate_messages_cpp
 [  0%] Built target actionlib_msgs_generate_messages_eus
 [  0%] Built target std_msgs_generate_messages_cpp
-[  0%] Built target actionlib_msgs_generate_messages_cpp
 [  0%] Built target geometry_msgs_generate_messages_cpp
-[  0%] Built target std_msgs_generate_messages_lisp
-[  0%] Built target rosgraph_msgs_generate_messages_py
-[  0%] Built target geometry_msgs_generate_messages_lisp
 [  0%] Built target _control_xy_generate_messages_check_deps_DriveWheel
+[  0%] Built target std_msgs_generate_messages_lisp
 [  0%] Built target rosgraph_msgs_generate_messages_nodejs
-[  0%] Built target actionlib_msgs_generate_messages_lisp
-[  0%] Built target rosgraph_msgs_generate_messages_eus
+[  0%] Built target geometry_msgs_generate_messages_lisp
+[  0%] Built target rosgraph_msgs_generate_messages_py
 [  0%] Built target rosgraph_msgs_generate_messages_lisp
+[  0%] Built target actionlib_msgs_generate_messages_lisp
 [  0%] Built target rosgraph_msgs_generate_messages_cpp
-[  0%] Built target actionlib_msgs_generate_messages_nodejs
+[  0%] Built target rosgraph_msgs_generate_messages_eus
 [  0%] Built target roscpp_generate_messages_py
+[  0%] Built target actionlib_msgs_generate_messages_nodejs
 [  0%] Built target geometry_msgs_generate_messages_nodejs
 [  0%] Built target std_msgs_generate_messages_nodejs
 [  0%] Built target roscpp_generate_messages_nodejs
@@ -30,16 +30,16 @@
 [  0%] Built target roscpp_generate_messages_lisp
 [  0%] Built target roscpp_generate_messages_cpp
 [ 17%] Built target control_xy_generate_messages_py
-[ 32%] Built target control_xy_generate_messages_cpp
+[ 32%] Built target control_xy_generate_messages_nodejs
 [ 50%] Built target control_xy_generate_messages_eus
 [ 65%] Built target control_xy_generate_messages_lisp
-[ 80%] Built target control_xy_generate_messages_nodejs
+[ 80%] Built target control_xy_generate_messages_cpp
 [35m[1mScanning dependencies of target control_xy_node_spline_follow_mixed[0m
 [ 80%] Built target control_xy_generate_messages
-[ 85%] Built target control_xy_node
-[ 90%] Built target control_xy_node_spline
-[ 92%] [32mBuilding CXX object CMakeFiles/control_xy_node_spline_follow_mixed.dir/src/control_xy_odom_wp_nav_spline_mixed2.cpp.o[0m
-[ 97%] Built target control_xy_node_spline_follow
+[ 85%] Built target control_xy_node_spline_follow
+[ 87%] [32mBuilding CXX object CMakeFiles/control_xy_node_spline_follow_mixed.dir/src/control_xy_odom_wp_nav_spline_mixed2.cpp.o[0m
+[ 92%] Built target control_xy_node_spline
+[ 97%] Built target control_xy_node
 In file included from [01m[K/opt/ros/melodic/include/ros/node_handle.h:32:0[m[K,
                  from [01m[K/opt/ros/melodic/include/ros/ros.h:45[m[K,
                  from [01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:2[m[K:
