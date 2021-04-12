@@ -63,8 +63,11 @@
 
     <include file="$(find darknet_ros)/launch/yolo_v3.launch"/> 
     <include file="$(find sort_track)/launch/sort_big.launch"/> 
+
+<!-- shelf
     <include file="$(find shelf_size)/launch/shelf_launch.launch"/>
 
+-->
     <node pkg="peop_extract" type="peop_ext_sort.py" name="peop_ext_yolo"/>
 
     <node pkg="pitakuru" type="lidar_detect.py" name="lidar_detect_f" />
@@ -93,12 +96,12 @@
 <param name="smooth_accel_side_manual"    type="double"	value="0.93"/> <!-- acceletartion smooth max value up to 0.99   -->
 <param name="smooth_accel_costmap"    type="double"	value="0.7"/> <!-- acceletartion smooth max value up to 0.99   -->
 <param name="smooth_accel_stop"    type="double"	value="0.99"/> <!-- acceletartion smooth max value up to 0.99   -->
-<param name="max_speed_karugamo"    type="double"	value="1600"/> <!-- (not used depercated)max speed value for karugamo   -->
+<param name="max_speed_karugamo"    type="double"	value="1400"/> <!-- (not used depercated)max speed value for karugamo   -->
 <param name="max_speed_follow"    type="double"	value="1600"/> <!--1500--><!--3000--> <!--max speed value for frontal people follow-->
 <param name="max_speed_manual"    type="double"	value="1600"/>  <!--15000--><!-- 3000--> <!-- max speed value for frontal joystick-->
-<param name="max_speed_manual_heavy"    type="double"	value="1600"/>  <!--15000--><!-- 3000--> <!-- max speed value for frontal joystick-->
+<param name="max_speed_manual_heavy"    type="double"	value="1200"/>  <!--15000--><!-- 3000--> <!-- max speed value for frontal joystick-->
 <param name="max_speed_side_manual"    type="double"	value="400"/> <!-- max speed value for side joystick-->
-<param name="speed_wp_lost"    type="double"	value="1600"/> <!-- speed when is lost or wp mode-->
+<param name="speed_wp_lost"    type="double"	value="1400"/> <!-- speed when is lost or wp mode-->
 <param name="max_defelct_angle"    type="double"	value="60"/> <!-- max deflect angle-->
 <param name="angle_gain_wp"    type="double"	value="100"/> <!-- max deflect angle-->
 <param name="near_far_distance"    type="double"  value="350.0"/> <!-- distance to detect, enter near, far distance in centimeter-->
@@ -110,7 +113,7 @@
 <param name="trigger_vel"    type="double"	value="0.4"/> <!-- velocity to active search for load or not load-->
 <param name="trigger_current"    type="double"	value="14"/> <!-- how many amps to activate the heavy load--><!-- 8-->
 <param name="vel_detect_scan"    type="double"	value="400"/> <!--vel to start detect collision--><!--1.2-->
-<param name="volts_charge"    type="double"	value="25.0"/> <!--vel to start detect collision-->
+<param name="volts_charge"    type="double"	value="23.0"/> <!--vel to start detect collision-->
 <param name="avg_curr_tresh"    type="double"	value="5.2"/> <!--vel to start detect collision-->
 <param name="peak_curr_tresh"    type="double"	value="5.9"/> <!--vel to start detect collision-->
 <param name="peak_not_heavy_curr"    type="double"	value="4.3"/> <!--vel to start detect collision-->
@@ -155,9 +158,9 @@
 -->
 
 <!-- navigation -->
- 
+ <!-- 
 <include file="$(find pitakuru)/launch/navigation.launch"/>
- 
+ -->
 <!--
 <node pkg="amcl" type="amcl" name="amcl"/>
 -->

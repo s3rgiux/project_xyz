@@ -60,19 +60,19 @@ class SoundNode():
             self.route="/home/xavier/catkin_ws/src/pitakuru/assets/karugamo-japanese.mp3"
             self.entered=True
         elif(data.data==101):
-            self.route="/home/xavier/catkin_ws/src/pitakuru/assets/speed-1-min-japanese.mp3"
+            self.route="/home/xavier/catkin_ws/src/pitakuru/assets/speed-1-japanese.mp3"
             self.entered=True
         elif(data.data==102):
-            self.route="/home/xavier/catkin_ws/src/pitakuru/assets/speed-2-low-japanese.mp3"
+            self.route="/home/xavier/catkin_ws/src/pitakuru/assets/speed-2-japanese.mp3"
             self.entered=True
         elif(data.data==103):
-            self.route="/home/xavier/catkin_ws/src/pitakuru/assets/speed-3-middle-japanese.mp3"
+            self.route="/home/xavier/catkin_ws/src/pitakuru/assets/speed-3-japanese.mp3"
             self.entered=True
         elif(data.data==104):
-            self.route="/home/xavier/catkin_ws/src/pitakuru/assets/speed-4-high-japanese.mp3"
+            self.route="/home/xavier/catkin_ws/src/pitakuru/assets/speed-4-japanese.mp3"
             self.entered=True
         elif(data.data==105):
-            self.route="/home/xavier/catkin_ws/src/pitakuru/assets/speed-5-max-japanese.mp3"
+            self.route="/home/xavier/catkin_ws/src/pitakuru/assets/speed-5-japanese.mp3"
             self.entered=True
         elif(data.data==106):
             self.route="/home/xavier/catkin_ws/src/pitakuru/assets/karugamo-waypoint-japanese.mp3"

@@ -86,7 +86,7 @@ public:
         nh.getParam("/control_xy/radius_follow", radius_follow);
         nh.getParam("/control_xy/max_defelct_angle", max_defelct_angle);
         nh.getParam("/control_xy/dist_robot_people", dist_robot_people);
-   nh.getParam("/control_xy/angle_gain_wp", angle_gain_wp);
+        nh.getParam("/control_xy/angle_gain_wp", angle_gain_wp);
         nh.getParam("/control_xy/max_dist_toacc", max_dist_toacc);
         nh.getParam("/control_xy/smooth_accel_stop",smooth_accel_stop);
         nh.getParam("/control_xy/smooth_accel_side_manual",smooth_accel_side_manual);
@@ -232,7 +232,7 @@ void setPointsCallback(const geometry_msgs::Twist& twist){
 }
 
 void check_low_volt(){
-    if(low_voltage && lidar_failed ==false  ){
+    if(low_voltage && lidar_failed ==false && danger==false  ){
         blink_red(0.6);
     }
 }
@@ -243,7 +243,7 @@ void voltsCallback(const std_msgs::Float32& msg){
         //ros::Time time_now = ros::Time::now();
         //ros::Duration duration = time_now - time_blink_volts  
         counter_low_voltage++;
-        if((abs(vel_m1)>0.15 || abs(vel_m2)>0.15) && counter_low_voltage>1 && (mode_manual ||mode_follow)){
+        if((abs(vel_m1)>0.15 || abs(vel_m2)>0.15) && counter_low_voltage>1 && (mode_manual ||mode_follow) && danger==false){
             if(low_voltage==false){
                 alert_low_battery_sound();
                 low_voltage=true;
@@ -745,6 +745,17 @@ void check_obsta(){
     } */
 }
 
+
+void restart_follow_variables_noctrl(){
+    
+    cont_sp_follow=0;//experiemntal
+    index_wp=-1;//init follow
+    dist_auxwp=0;
+    state_stop=0;
+    ctrl_add_side=0;
+    ctrl_side_costmap=0;
+}
+
 void restart_follow_variables(){
     //mode_people_follow();
     tracking_people=true;
@@ -1125,7 +1136,9 @@ void calc_100hz(){
                     cont_detect_peop=0;
                     sound_counter++;
                     if(sound_counter%6==0){
-                        alert_warning_sound();
+                        //alert_warning_sound();
+                        alert_lost_voice_sound();
+
                     }
                 }
                    
@@ -1174,12 +1187,14 @@ void far(){
     if(lidar_failed==false && danger==false && changed_setting==false && low_voltage ==false && stop_follow==false){
         alert_karugamo_far_no_sound();
     }
-    if(save_counter%200==0 ){
-                //fprintf(fp2,"wp %f,%f,%f,%f,%f,%f,%f,%i\n",spx_saved[index_wp],spy_saved[index_wp],px,py,ctrl_front_follow,ctrl_yaw,ang_robot,index_wp);
-                alert_warning_sound();
-            }
+    if(save_counter%290==0 && stop_follow==false ){
+                //alert_lost_voice_sound();
+                alert_karugamo_waypoint_sound();
+    }else if(save_counter%290==0 && stop_follow==true ){
+                //alert_lost_voice_sound();
+                alert_lost_voice_sound();
+    }
     if(is_near==false && stop_functions==false){
-            
             if(save_counter%20==0){
                 fprintf(fp2,"wp %f,%f,%f,%f,%f,%f,%f,%i\n",spx_saved[index_wp],spy_saved[index_wp],px,py,ctrl_front_follow,ctrl_yaw,ang_robot,index_wp);
                 //alert_warning_sound();
@@ -1201,6 +1216,7 @@ void far(){
                             fprintf(fp2,"llegue a fin con index %i ang %f \n",index_wp,ang_robot);
                             saved_ang=ang_robot;
                             sp_yaw=saved_ang;
+                            restart_follow_variables_noctrl();
                             alert_lost_voice_sound();
                             ros::Duration(0.05).sleep(); // sleep for half a second
                             alert_lost_voice_sound();
@@ -1381,10 +1397,13 @@ void far(){
                         ctrl_yaw=0;
                         vel_steer.linear.x= ctrl_front_follow;
                         vel_steer.angular.z= ctrl_yaw;
+                        
                         if(low_voltage ==false  && changed_setting==false && lidar_failed==false){
                             blink_blue2(0.25);
                         }
-                        
+                        if(ctrl_front_follow<400){
+                            restart_follow_variables();
+                        }
                         //alert_collision_no_sound();
                         //blink_blue(counter_blink,15);
                         //blink_bl=true;
@@ -1392,7 +1411,7 @@ void far(){
                 }
                     vel_steer.linear.x=(vel_steer.linear.x/21)*0.1045;
                     vel_steer.angular.z=(vel_steer.angular.z/21)*0.1045;
-                    if(karugamo_counter%4==0){
+                    if(karugamo_counter%2==0){
                         speed_publisher.publish(vel_steer);
                     }
                    
@@ -1506,7 +1525,7 @@ void near(){
                 //experiementa
                 ctrl_add_side=(1-smooth_accel_side_manual)*(joy_side*max_speed_side_manual)+(smooth_accel_side_manual*ctrl_add_side);
                 //ctrl_add_side=0;
-                if((vel_m1 >= vel_detect_costmap || vel_m2 >= vel_detect_costmap )&&distanciaPeople2>dist_robot_people){
+                if((vel_m1 >= vel_detect_costmap || vel_m2 >= vel_detect_costmap )){//&&distanciaPeople2>dist_robot_people){
                     ctrl_side_costmap=(1-smooth_accel_side_manual)*(cost_obst*max_speed_side_manual)+(smooth_accel_side_manual*ctrl_side_costmap);
                 }else{
                     ctrl_side_costmap=0;
@@ -1597,7 +1616,7 @@ void near(){
                 vel_steer.angular.z=(vel_steer.angular.z/21)*0.1045;
                 //alerts_command.data=7;// 5 danger 4 warning 3 karugamo 2 idle 1 manual
                 //alerts_publisher.publish(alerts_command);
-                if(karugamo_counter%4==0){
+                if(karugamo_counter%2==0){
                     speed_publisher.publish(vel_steer);
                 }
             }
@@ -1725,8 +1744,10 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan){
     if(danger && collision == false ){
         danger_counter++;
         alert_danger_no_sound();
-        if(danger_counter%65==0){
-            alert_danger_sound();
+        if(danger_counter%100==0){
+            //alert_danger_sound();
+            alert_danger_voice_sound();
+            ros::Duration(0.02).sleep(); // sleep for 0.05 seconds
             pitakuru_state_msg.state="DANGER";
                 pitakuru_state_msg.state_karugamo="losting_with_lidar";
                
@@ -1739,12 +1760,12 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan){
             //float  break_danger=0.5;
          
         //if(detect_cont>1 && mode_idle == false && (vel_m1 >= vel_detect_scan || vel_m2 >= vel_detect_scan)){
-        if(detect_cont>1 && mode_idle == false && (ctrl_front_manual> vel_detect_scan || ctrl_front_follow > vel_detect_scan)){
+        if(detect_cont>1 && mode_idle == false && (ctrl_front_manual> 600 || ctrl_front_follow > 600)){
         //if(detect_cont>0 ){
                 danger=true;
                 free_way=false;
                 ROS_INFO("Danger1");
-                alert_danger_voice_sound();
+                //alert_danger_voice_sound();
                 detect_cont=0;
                 ctrl_front_manual=0;
                     ctrl_side_manual=0;
@@ -1782,7 +1803,7 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan){
                     vel_steer.angular.z= 0;
                     speed_publisher.publish(vel_steer);
                 }
-                ros::Duration(0.05).sleep(); // sleep for half a second
+                ros::Duration(0.1).sleep(); // sleep for half a second
         } else{
             free_way=true;
             //detect_cont=0
@@ -1796,7 +1817,7 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan){
             }
         }  */
        
-        if( ctrl_front_manual> 500 || ctrl_front_follow > 500){
+        if( ctrl_front_manual> 600 || ctrl_front_follow > 600){
             for(int j=0;j<=720;j++){
 
                 if(j>280&&j<440){
@@ -2353,8 +2374,8 @@ void loadRoute(){
                 }
                 if(max_speed_manual_heavy>2400){
                     max_speed_manual_heavy=2400;
-                }else if(max_speed_manual_heavy<2400){
-                    max_speed_manual_heavy=2400;
+                }else if(max_speed_manual_heavy<800){
+                    max_speed_manual_heavy=800;
                 }
                 if(mode_manual){
                         if(max_speed_manual==2800){
