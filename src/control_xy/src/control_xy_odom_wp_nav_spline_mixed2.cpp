@@ -232,23 +232,27 @@ void setPointsCallback(const geometry_msgs::Twist& twist){
 }
 
 void check_low_volt(){
-    if(low_voltage && lidar_failed ){
+    if(low_voltage && lidar_failed ==false  ){
         blink_red(0.6);
     }
 }
 
 void voltsCallback(const std_msgs::Float32& msg){
     //ROS_INFO("voltage %f",msg.data);
-    if((msg.data+0.2)<volts_charge ){//&& mode_idle == true){
-
-        ros::Time time_now = ros::Time::now();
-       
-        ros::Duration duration = time_now - time_blink_volts;
-        
+    if((msg.data+0.1)<volts_charge ){//&& mode_idle == true){
+        //ros::Time time_now = ros::Time::now();
+        //ros::Duration duration = time_now - time_blink_volts  
         counter_low_voltage++;
-        if((abs(vel_m1)>0.1 || abs(vel_m2)>0.1) && counter_low_voltage>1){
-            low_voltage=true;
-            ROS_INFO("detected_low voltage");
+        if((abs(vel_m1)>0.15 || abs(vel_m2)>0.15) && counter_low_voltage>1 && (mode_manual ||mode_follow)){
+            if(low_voltage==false){
+                alert_low_battery_sound();
+                low_voltage=true;
+                low_voltage=true;
+                ROS_INFO("detected_low voltage");
+                ros::Duration(0.05).sleep(); // sleep for 0.05 seconds
+                alert_low_battery_sound();
+            }
+            
         }
        
     }else{
@@ -882,8 +886,10 @@ void calc_100hz(){
                         is_near=false;
                         if(lidar_failed==false && changed_setting==false && low_voltage ==false && stop_follow==false){
                         alert_karugamo_far_no_sound();
-                        alert_karugamo_far_sound();
-                        alert_warning_sound();
+                        //alert_karugamo_far_sound();
+                        //alert_warning_sound();
+                        alert_karugamo_waypoint_sound();
+                        ros::Duration(0.02).sleep(); // sleep for 0.05 seconds
                         }
                         stop_functions=false;
                         if(cont_sp_follow>2){
@@ -954,7 +960,9 @@ void calc_100hz(){
                         index_wp=cont_sp_follow-3;
                         if(changed_setting==false && low_voltage ==false && stop_follow==false){
                             //alert_karugamo_far_no_sound();
-                            alert_karugamo_far_sound();
+                            alert_karugamo_waypoint_sound();
+                            ros::Duration(0.02).sleep(); // sleep for 0.05 seconds
+                            //alert_karugamo_far_sound();
                         }
                         stop_functions=false;
                         
@@ -1193,6 +1201,10 @@ void far(){
                             fprintf(fp2,"llegue a fin con index %i ang %f \n",index_wp,ang_robot);
                             saved_ang=ang_robot;
                             sp_yaw=saved_ang;
+                            alert_lost_voice_sound();
+                            ros::Duration(0.05).sleep(); // sleep for half a second
+                            alert_lost_voice_sound();
+                            ros::Duration(0.05).sleep(); // sleep for half a second
                             return;
                         }else{
                             calc_spline();//call to calc spline
@@ -1732,12 +1744,16 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan){
                 danger=true;
                 free_way=false;
                 ROS_INFO("Danger1");
+                alert_danger_voice_sound();
                 detect_cont=0;
                 ctrl_front_manual=0;
                     ctrl_side_manual=0;
                     vel_steer.linear.x= 0;
                     vel_steer.angular.z= 0;
                     speed_publisher.publish(vel_steer);
+                ros::Duration(0.05).sleep(); // sleep for 0.05 seconds
+                alert_danger_voice_sound();
+                ros::Duration(0.02).sleep(); // sleep for 0.05 seconds
                 /*
                 danger_counter++;
                 alert_danger_no_sound();
@@ -1780,7 +1796,7 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan){
             }
         }  */
        
-        if( ctrl_front_manual> 200 || ctrl_front_follow > 200){
+        if( ctrl_front_manual> 500 || ctrl_front_follow > 500){
             for(int j=0;j<=720;j++){
 
                 if(j>280&&j<440){
@@ -1886,6 +1902,45 @@ void  alert_karugamo_far_no_sound(){
     alerts_publisher.publish(alerts_command);
 }
 
+void  alert_speed1_sound(){
+    alerts_command.data=101;// 
+    alerts_publisher.publish(alerts_command);
+}
+void  alert_speed2_sound(){
+    alerts_command.data=102;// 
+    alerts_publisher.publish(alerts_command);
+}
+void  alert_speed3_sound(){
+    alerts_command.data=103;// 
+    alerts_publisher.publish(alerts_command);
+}
+void  alert_speed4_sound(){
+    alerts_command.data=104;// 
+    alerts_publisher.publish(alerts_command);
+}
+void  alert_speed5_sound(){
+    alerts_command.data=105;// 
+    alerts_publisher.publish(alerts_command);
+}
+
+
+void  alert_karugamo_waypoint_sound(){
+    alerts_command.data=106;// 
+    alerts_publisher.publish(alerts_command);
+}
+void  alert_low_battery_sound(){
+    alerts_command.data=108;// 
+    alerts_publisher.publish(alerts_command);
+}
+
+void  alert_danger_voice_sound(){
+    alerts_command.data=107;// 
+    alerts_publisher.publish(alerts_command);
+}
+void  alert_lost_voice_sound(){
+    alerts_command.data=109;// 
+    alerts_publisher.publish(alerts_command);
+}
 
 
 //////// alerts
@@ -1998,51 +2053,50 @@ void mode_MANUAL(){
     pitakuru_state_msg.state="MANUAL";
     state_pub.publish(pitakuru_state_msg);
     detect_cont=0;
+    low_voltage=false;
 }
 void mode_IDLE()
 {
      
-            vel_steer.linear.x= 0;
-            vel_steer.linear.y=0;//
-            vel_steer.angular.z= 0;
-            speed_publisher.publish(vel_steer);
-     
-
-            vel_steer.linear.x= 0;
-            vel_steer.linear.y=1;//-1;//disable motors
-            vel_steer.angular.z= 0;
-            speed_publisher.publish(vel_steer);
-        stop_functions=false;
-        low_voltage=false;
-        free_way=true;
-        mode_idle=true;
-        mode_karugamo=false;
-        mode_manual=false;
-        danger=false;
-        mode_follow=false;
-        tracking_people=false;
-        tracking_people=false;
-        cont_detect_peop=0;
-        start_route = false;
-        danger=false;
-        ROS_INFO("Mode IDLE");
-        ctrl_front_follow= 0;
-        ctrl_ang= 0;
-        ctrl_yaw = 0;
-        ctrl_front_manual= 0;
-        ctrl_side_manual= 0;
-        aux_dist=5000;
-        alert_idle_sound();
-        for (int i=0;i<2;i++){
-            vel_steer.linear.x= 0;
-            vel_steer.linear.y=0;//disable motors
-            vel_steer.angular.z= 0;
-            speed_publisher.publish(vel_steer);
-        }
-        publish_lost_tracked();
-        pitakuru_state_msg.state="IDLE";
-        state_pub.publish(pitakuru_state_msg);
-   
+    vel_steer.linear.x= 0;
+    vel_steer.linear.y=0;//
+    vel_steer.angular.z= 0;
+    speed_publisher.publish(vel_steer);
+    vel_steer.linear.x= 0;
+    vel_steer.linear.y=1;//-1;//disable motors
+    vel_steer.angular.z= 0;
+    speed_publisher.publish(vel_steer);
+    stop_functions=false;
+    low_voltage=false;
+    free_way=true;
+    mode_idle=true;
+    mode_karugamo=false;
+    mode_manual=false;
+    danger=false;
+    mode_follow=false;
+    tracking_people=false;
+    tracking_people=false;
+    cont_detect_peop=0;
+    start_route = false;
+    danger=false;
+    ROS_INFO("Mode IDLE");
+    ctrl_front_follow= 0;
+    ctrl_ang= 0;
+    ctrl_yaw = 0;
+    ctrl_front_manual= 0;
+    ctrl_side_manual= 0;
+    aux_dist=5000;
+    alert_idle_sound();
+    for (int i=0;i<2;i++){
+        vel_steer.linear.x= 0;
+        vel_steer.linear.y=0;//disable motors
+        vel_steer.angular.z= 0;
+        speed_publisher.publish(vel_steer);
+    }
+    publish_lost_tracked();
+    pitakuru_state_msg.state="IDLE";
+    state_pub.publish(pitakuru_state_msg);
+    low_voltage=false;
 }
 
 void mode_people_follow()
@@ -2088,6 +2142,7 @@ void mode_people_follow()
     state_pub.publish(pitakuru_state_msg);
     pitakuru_state_msg.state_karugamo="losting_with_lidar";
     state_pub.publish(pitakuru_state_msg);
+    low_voltage=false;
    
 }
 
@@ -2285,22 +2340,60 @@ void loadRoute(){
                 }else if (duration_change>0.5){
                     duration_change=0.5;
                 }
+                
                 if(max_speed_follow>2800){
                     max_speed_follow=2800;
-                }else if(max_speed_follow<800){
-                    max_speed_follow=1000;
+                }else if(max_speed_follow<1200){
+                    max_speed_follow=1200;
                 }
                 if(max_speed_manual>2800){
                     max_speed_manual=2800;
-                }else if(max_speed_manual<1000){
-                    max_speed_manual=1000;
+                }else if(max_speed_manual<1200){
+                    max_speed_manual=1200;
                 }
                 if(max_speed_manual_heavy>2400){
                     max_speed_manual_heavy=2400;
                 }else if(max_speed_manual_heavy<2400){
                     max_speed_manual_heavy=2400;
                 }
-                ros::Duration(0.25).sleep(); // sleep for half a second
+                if(mode_manual){
+                        if(max_speed_manual==2800){
+                        alert_speed5_sound();
+                        }
+                        else  if(max_speed_manual==2400){
+                        alert_speed4_sound();
+                        }
+                        else  if(max_speed_manual==2000){
+                        alert_speed3_sound();
+                        }
+                        else  if(max_speed_manual==1600){
+                        alert_speed2_sound();
+                        }
+                        else  if(max_speed_manual==1200){
+                        alert_speed1_sound();
+                        }
+                }
+
+                if(mode_follow){
+                        if(max_speed_follow==2800){
+                        alert_speed5_sound();
+                        }
+                        else  if(max_speed_follow==2400){
+                        alert_speed4_sound();
+                        }
+                        else  if(max_speed_follow==2000){
+                        alert_speed3_sound();
+                        }
+                        else  if(max_speed_follow==1600){
+                        alert_speed2_sound();
+                        }
+                        else  if(max_speed_follow==1200){
+                        alert_speed1_sound();
+                        }
+                }
+                
+
+                ros::Duration(0.2).sleep(); // sleep for half a second
         }
         if(mode_manual){
               if(free_way){

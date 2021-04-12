@@ -414,8 +414,6 @@ class PitWheels:
             # joint_state.velocity = []
             # joint_state.effort = []
             # self.joint_pub.publish(joint_state)
-
-            
             #self.run_ctrl_cmd()
         except:
             import traceback

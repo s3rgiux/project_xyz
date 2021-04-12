@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/xavier/catkin_ws/devel/.private/waypoints_goals/setup.sh

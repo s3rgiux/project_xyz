@@ -1,0 +1,8 @@
+prefix=/home/xavier/catkin_ws/install
+
+Name: waypoints_goals
+Description: Description of waypoints_goals
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

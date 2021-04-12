@@ -59,7 +59,33 @@ class SoundNode():
         elif(data.data==8):
             self.route="/home/xavier/catkin_ws/src/pitakuru/assets/karugamo-japanese.mp3"
             self.entered=True
-        
+        elif(data.data==101):
+            self.route="/home/xavier/catkin_ws/src/pitakuru/assets/speed-1-min-japanese.mp3"
+            self.entered=True
+        elif(data.data==102):
+            self.route="/home/xavier/catkin_ws/src/pitakuru/assets/speed-2-low-japanese.mp3"
+            self.entered=True
+        elif(data.data==103):
+            self.route="/home/xavier/catkin_ws/src/pitakuru/assets/speed-3-middle-japanese.mp3"
+            self.entered=True
+        elif(data.data==104):
+            self.route="/home/xavier/catkin_ws/src/pitakuru/assets/speed-4-high-japanese.mp3"
+            self.entered=True
+        elif(data.data==105):
+            self.route="/home/xavier/catkin_ws/src/pitakuru/assets/speed-5-max-japanese.mp3"
+            self.entered=True
+        elif(data.data==106):
+            self.route="/home/xavier/catkin_ws/src/pitakuru/assets/karugamo-waypoint-japanese.mp3"
+            self.entered=True
+        elif(data.data==107):
+            self.route="/home/xavier/catkin_ws/src/pitakuru/assets/danger-mode-japanese2.mp3"
+            self.entered=True
+        elif(data.data==108):
+            self.route="/home/xavier/catkin_ws/src/pitakuru/assets/low-battery-japanese.mp3"
+            self.entered=True
+        elif(data.data==109):
+            self.route="/home/xavier/catkin_ws/src/pitakuru/assets/karugamo-lost-japanese2.mp3"
+            self.entered=True
         #p=subprocess.Popen(["aplay", "/home/xavier/catkin_ws/src/pitakuru/assets/karugamo-japanese.mp3"])
         #elif(data.data==666):
         #    try:
@@ -78,7 +104,8 @@ class SoundNode():
                 print('cant get pid') 
             self.entered=False
             try:
-                p=subprocess.Popen(["aplay", self.route])
+                #p=subprocess.Popen(["play", self.route])
+                p=subprocess.Popen(["play", self.route])
                 self.gpid=p.pid
                 #print(self.gpid)
             except:

@@ -1,0 +1,1 @@
+/home/xavier/catkin_ws/devel/.private/waypoints_goals/share/waypoints_goals/cmake/waypoints_goalsConfig-version.cmake
