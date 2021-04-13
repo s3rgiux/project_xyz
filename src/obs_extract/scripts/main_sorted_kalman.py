@@ -375,13 +375,13 @@ class PitWheels:
                 self.ang_pub.publish(closest)
 
                 ## check errorwith yolo
-                ang_obj= 90-np.arctan2(closest.x, closest.y) * 180 / np.pi
-                if np.abs(ang-self.yolo_ang)>37 and self.yolo_status>0 and self.first_got:
-                    self.count_angle=self.count_angle+1
-                    if self.count_angle>15:
-                        self.count_angle=0
-                        self.try_to_search=True
-                        self.search_nearest(data)
+                # ang_obj= 90-np.arctan2(closest.x, closest.y) * 180 / np.pi
+                # if np.abs(ang-self.yolo_ang)>37 and self.yolo_status>0 and self.first_got:
+                #     self.count_angle=self.count_angle+1
+                #     if self.count_angle>35:
+                #         self.count_angle=0
+                #         self.try_to_search=True
+                #         self.search_nearest(data)
 
 
     # def obstacles_callback(self, data):

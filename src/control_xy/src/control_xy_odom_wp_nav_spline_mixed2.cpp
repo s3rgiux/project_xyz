@@ -1060,7 +1060,8 @@ void calc_100hz(){
                         cont_detect_peop=0;
                         sound_counter++;
                         if(sound_counter%6==0){
-                            alert_warning_sound();
+                            alert_lost_voice_sound();
+                            //alert_warning_sound();
                         }
                     }
                 //}
