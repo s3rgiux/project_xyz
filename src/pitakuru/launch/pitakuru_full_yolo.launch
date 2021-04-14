@@ -90,12 +90,12 @@
 <param name="frontal_gain_karugamo"    type="double"	value="17"/> <!-- (not used depercated)karugamo gain  angle control   -->
 <param name="frontal_gain_follow"    type="double"	value="1800"/><!-- 2500--> <!-- gain for frontal control   -->
 <param name="frontal_gain_manual"    type="double"	value="00"/> <!-- (not used depercated)gain frontal control   -->
-<param name="smooth_accel_karugamo_near"    type="double"	value="0.989"/> <!-- acceletartion smooth max value up to 0.99   -->
+<param name="smooth_accel_karugamo_near"    type="double"	value="0.999"/> <!-- acceletartion smooth max value up to 0.99   -->
 <param name="smooth_accel_karugamo_far"    type="double"	value="0.989"/> <!-- acceletartion smooth max value up to 0.99   -->
 <param name="smooth_accel_manual"    type="double"	value="0.985"/> <!-- acceletartion smooth max value up to 0.99   -->
 <param name="smooth_accel_side_manual"    type="double"	value="0.93"/> <!-- acceletartion smooth max value up to 0.99   -->
 <param name="smooth_accel_costmap"    type="double"	value="0.7"/> <!-- acceletartion smooth max value up to 0.99   -->
-<param name="smooth_accel_stop"    type="double"	value="0.99"/> <!-- acceletartion smooth max value up to 0.99   -->
+<param name="smooth_accel_stop"    type="double"	value="0.92"/> <!-- acceletartion smooth max value up to 0.99   -->
 <param name="max_speed_karugamo"    type="double"	value="1400"/> <!-- (not used depercated)max speed value for karugamo   -->
 <param name="max_speed_follow"    type="double"	value="1600"/> <!--1500--><!--3000--> <!--max speed value for frontal people follow-->
 <param name="max_speed_manual"    type="double"	value="1600"/>  <!--15000--><!-- 3000--> <!-- max speed value for frontal joystick-->

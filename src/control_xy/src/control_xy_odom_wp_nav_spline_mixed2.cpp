@@ -726,7 +726,7 @@ void check_scan(){
 void check_obsta(){
     ros::Time time_now = ros::Time::now();
     ros::Duration duration = time_now - last_time_obstacle;
-    if((duration.toSec())>0.95){
+    if((duration.toSec())>0.85){
         pitakuru_state_msg.state_karugamo="no_people_lidar_detection";
         setZeroPosLidar();
         state_pub.publish(pitakuru_state_msg);
@@ -791,6 +791,11 @@ void restart_follow_variables(){
 void calc_100hz(){
     save_counter++;
     karugamo_counter++;
+    if(mode_idle && karugamo_counter%100==0){
+        vel_steer.linear.x=0;
+        vel_steer.angular.z=0;
+        speed_publisher.publish(vel_steer);
+    }
     cicles=20;
     ang_peop_lidar = 90- atan2(cx, cy) * 180 / 3.1416;
     //ang_peop_lidar = -90+ atan2(cx, cy) * 180 / 3.1416 ;
@@ -1015,7 +1020,9 @@ void calc_100hz(){
                         pitakuru_state_msg.state="KARUGAMO";
                         pitakuru_state_msg.state_karugamo="lost";
                         //state_pub.publish(pitakuru_state_msg);
-   
+                        if(stop_functions==false){
+                            alert_lost_voice_sound();
+                        }
                         //if(missing_track>count_to_miss){//thiscounter also can help to see if theres a lot of objects and its not able to follow
                         //if(lidar_people_status<1){
                         if(is_near==true && tracking_people && stop_functions==false){
@@ -1046,6 +1053,7 @@ void calc_100hz(){
                         tracking_lidar=false;
                         tracking_yolo=false;
                         ROS_INFO("LOST");
+                        
                         fprintf(fp2,"lost \n");
                         tracking_people=false;
                         missing_track=0;
@@ -1061,7 +1069,8 @@ void calc_100hz(){
                         cont_detect_peop=0;
                         sound_counter++;
                         if(sound_counter%6==0){
-                            alert_warning_sound();
+                            alert_search_voice_sound();
+                            //alert_warning_sound();
                         }
                     }
                 //}
@@ -1138,7 +1147,8 @@ void calc_100hz(){
                     sound_counter++;
                     if(sound_counter%6==0){
                         //alert_warning_sound();
-                        alert_lost_voice_sound();
+                        //alert_lost_voice_sound();
+                        alert_search_voice_sound();
 
                     }
                 }
@@ -1961,6 +1971,10 @@ void  alert_danger_voice_sound(){
 }
 void  alert_lost_voice_sound(){
     alerts_command.data=109;// 
+    alerts_publisher.publish(alerts_command);
+}
+void  alert_search_voice_sound(){
+    alerts_command.data=110;// 
     alerts_publisher.publish(alerts_command);
 }
 
