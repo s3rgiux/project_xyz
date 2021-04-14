@@ -841,7 +841,7 @@ void calc_100hz(){
             //if(tracking_people && (yolo_status>0 || lidar_people_status>0) && stop_functions==false){
             //if(tracking_people && lidar_people_status>0 && stop_functions==false && big_angle_error_lidar_yolo==false){
             //if(tracking_people && lidar_people_status>0 && stop_functions==false){
-            if(lidar_people_status>0 && stop_functions==false){//if lidar status>1
+            if(lidar_people_status>0 && stop_functions==false && distanciaPeople2<near_far_distance){//if lidar status>1
                 //cont_detect_peop=0;
    
                 //if( (lidar_people_status>1 ||  lidar_people_status<1)&& yolo_status >0){
@@ -894,29 +894,30 @@ void calc_100hz(){
                         dist_auxwp=0;
                         //cont_sp_follow=0;//experimental
                     }
-                }else{//far
-                    if(lidar_failed==false && changed_setting==false && low_voltage ==false && stop_follow==false){
-                    alert_karugamo_far_no_sound();
+                }
+                // else{//far
+                //     if(lidar_failed==false && changed_setting==false && low_voltage ==false && stop_follow==false){
+                //     alert_karugamo_far_no_sound();
                    
-                    }
-                    if(is_near==true){
-                        is_near=false;
-                        if(lidar_failed==false && changed_setting==false && low_voltage ==false && stop_follow==false){
-                        alert_karugamo_far_no_sound();
-                        //alert_karugamo_far_sound();
-                        //alert_warning_sound();
-                        alert_karugamo_waypoint_sound();
-                        ros::Duration(0.02).sleep(); // sleep for 0.05 seconds
-                        }
-                        stop_functions=false;
-                        if(cont_sp_follow>2){
-                            fprintf(fp2,"Entre far num sp follow %i e index %i  \n",cont_sp_follow,cont_sp_follow-3);
-                            index_wp=cont_sp_follow-3;
-                        }
-                    }
-                    far();
-                    ROS_INFO("far() in range");
-                }//endif not near
+                //     }
+                //     if(is_near==true){
+                //         is_near=false;
+                //         if(lidar_failed==false && changed_setting==false && low_voltage ==false && stop_follow==false){
+                //         alert_karugamo_far_no_sound();
+                //         //alert_karugamo_far_sound();
+                //         //alert_warning_sound();
+                //         alert_karugamo_waypoint_sound();
+                //         ros::Duration(0.02).sleep(); // sleep for 0.05 seconds
+                //         }
+                //         stop_functions=false;
+                //         if(cont_sp_follow>2){
+                //             fprintf(fp2,"Entre far num sp follow %i e index %i  \n",cont_sp_follow,cont_sp_follow-3);
+                //             index_wp=cont_sp_follow-3;
+                //         }
+                //     }
+                //     far();
+                //     ROS_INFO("far() in range");
+                // }//endif not near
                 //ROS_INFO("hello1");
                 missing_track=0;
                 tracked_cx=cx;
@@ -969,25 +970,25 @@ void calc_100hz(){
                 //ROS_INFO("tracked");
                    
             }//end it s in range
-            else if(danger==false  && cont_sp_follow>2 ){
-                if(is_near==true || entered_first_time_far==false){
-                        entered_first_time_far=true;
-                        is_near=false;
-                        ROS_INFO("Entre far num sp follow %i e index %i  \n",cont_sp_follow,cont_sp_follow-3);
-                        index_wp=cont_sp_follow-3;
-                        if(changed_setting==false && low_voltage ==false && stop_follow==false){
-                            //alert_karugamo_far_no_sound();
-                            alert_karugamo_waypoint_sound();
-                            ros::Duration(0.02).sleep(); // sleep for 0.05 seconds
-                            //alert_karugamo_far_sound();
-                        }
-                        stop_functions=false;
+            // else if(danger==false  && cont_sp_follow>2 ){
+            //     if(is_near==true || entered_first_time_far==false){
+            //             entered_first_time_far=true;
+            //             is_near=false;
+            //             ROS_INFO("Entre far num sp follow %i e index %i  \n",cont_sp_follow,cont_sp_follow-3);
+            //             index_wp=cont_sp_follow-3;
+            //             if(changed_setting==false && low_voltage ==false && stop_follow==false){
+            //                 //alert_karugamo_far_no_sound();
+            //                 alert_karugamo_waypoint_sound();
+            //                 ros::Duration(0.02).sleep(); // sleep for 0.05 seconds
+            //                 //alert_karugamo_far_sound();
+            //             }
+            //             stop_functions=false;
                         
-                }
+            //     }
                 
-                 far();
-                 ROS_INFO("far() not in range");
-            }
+            //      far();
+            //      ROS_INFO("far() not in range");
+            // }
             else if(danger==false  && lidar_people_status<0 && stop_functions==false){//lostedlidar
                 //if(is_near==false){
                 missing_track+=1;
