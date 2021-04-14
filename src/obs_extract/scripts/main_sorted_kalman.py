@@ -114,6 +114,7 @@ class PitWheels:
         self.searching=False
         self.closest_dist_to_track=50000
         self.count_angle=0
+        self.tracked_dist=0
         
     
     def pubobs(self):
@@ -215,6 +216,8 @@ class PitWheels:
                 self.first_got=True
                 self.searching=False
                 self.try_to_search=False
+                dist3 =np.sqrt(closest.x*closest.x+closest.y*closest.y)
+                self.tracked_dist=dist3
                 
 
     def states_callback(self,states):
@@ -285,7 +288,8 @@ class PitWheels:
                         e_x=self.follow_cx-x.center.x
                         e_y=self.follow_cy-x.center.y
                         dist=np.sqrt((e_x*e_x)+(e_y*e_y))
-                        if(dist<self.radius_follow):
+                        dist2 =np.sqrt(x.center.x*x.center.x+x.center.y*x.center.y)
+                        if(dist<self.radius_follow and np.abs(self.tracked_dist-dist2)<0.5):
                             #print("added {},{},{},{},{}".format(x.center.x,x.center.y,dist,e_x,e_y))
                             lst.append(x)
                             new=np.array([x.center.x,x.center.y])
@@ -373,15 +377,16 @@ class PitWheels:
 
                 self.last_time_tracked=time.time()
                 self.ang_pub.publish(closest)
-
+                dist3 =np.sqrt(closest.x*closest.x+closest.y*closest.y)
+                self.tracked_dist=dist3
                 ## check errorwith yolo
                 ang_obj= 90-np.arctan2(closest.x, closest.y) * 180 / np.pi
-                if np.abs(ang-self.yolo_ang)>37 and self.yolo_status>0 and self.first_got:
-                    self.count_angle=self.count_angle+1
-                    if self.count_angle>15:
-                        self.count_angle=0
-                        self.try_to_search=True
-                        self.search_nearest(data)
+                # if np.abs(ang-self.yolo_ang)>37 and self.yolo_status>0 and self.first_got:
+                #     self.count_angle=self.count_angle+1
+                #     if self.count_angle>25:
+                #         self.count_angle=0
+                #         self.try_to_search=True
+                #         self.search_nearest(data)
 
 
     # def obstacles_callback(self, data):

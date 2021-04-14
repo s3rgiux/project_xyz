@@ -726,9 +726,10 @@ void check_scan(){
 void check_obsta(){
     ros::Time time_now = ros::Time::now();
     ros::Duration duration = time_now - last_time_obstacle;
-    if((duration.toSec())>0.55){
+    if((duration.toSec())>0.95){
         pitakuru_state_msg.state_karugamo="no_people_lidar_detection";
         setZeroPosLidar();
+        state_pub.publish(pitakuru_state_msg);
        /*  ros::Duration duration2 = time_now - time_blink_scan;
         if(duration2.toSec()>0.2){
             time_blink_scan=time_now;
