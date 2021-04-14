@@ -989,7 +989,7 @@ void calc_100hz(){
             //      far();
             //      ROS_INFO("far() not in range");
             // }
-            else if(danger==false  && lidar_people_status<0 && stop_functions==false){//lostedlidar
+            else if(danger==false  && (lidar_people_status<0 || (lidar_people_status<0 && distanciaPeople2>=near_far_distance))&& stop_functions==false){//lostedlidar
                 //if(is_near==false){
                 missing_track+=1;
                 ROS_INFO("miss %i",missing_track);
