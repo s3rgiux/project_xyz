@@ -297,7 +297,7 @@ class PitWheels:
                         #
 
                     #elif self.tracked_x == -50 and self.tracked_y == -50 or (time.time()-self.last_time_tracked)>0.25:
-                    elif (time.time()-self.last_time_tracked)>0.55:
+                    elif (time.time()-self.last_time_tracked)>0.2:#0.55:
                         self.ang_dist.x=x.center.x
                         self.ang_dist.y=x.center.y#dist*100
                         self.ang_dist.z=-1#dist*100

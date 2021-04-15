@@ -85,28 +85,28 @@
 <param name="break_danger"    type="double"	value="0.25"/><!-- 0.39--><!-- (not used depercated)distance to  enter in warning zone  -->	
 <param name="low_vel_gain_karugamo"    type="double"	value="15"/> <!-- (not used depercated)karugamo gain  angle control   -->
 <param name="high_vel_gain_karugamo"    type="double"	value="17"/><!-- 10--> <!-- (not used depercated)karugamo gain  angle control   -->
-<param name="low_vel_gain_follow"    type="double"	value="12"/><!-- 17--><!-- people follow gain  angle control   -->
-<param name="high_vel_gain_follow"    type="double"	value="12"/> <!-- 17--><!-- people follow gain  angle control   -->
+<param name="low_vel_gain_follow"    type="double"	value="8"/><!-- 12--><!-- people follow gain  angle control   -->
+<param name="high_vel_gain_follow"    type="double"	value="8"/> <!-- 12--><!-- people follow gain  angle control   -->
 <param name="frontal_gain_karugamo"    type="double"	value="17"/> <!-- (not used depercated)karugamo gain  angle control   -->
-<param name="frontal_gain_follow"    type="double"	value="1800"/><!-- 2500--> <!-- gain for frontal control   -->
+<param name="frontal_gain_follow"    type="double"	value="1200"/><!-- 1800--> <!-- gain for frontal control   -->
 <param name="frontal_gain_manual"    type="double"	value="00"/> <!-- (not used depercated)gain frontal control   -->
-<param name="smooth_accel_karugamo_near"    type="double"	value="0.999"/> <!-- acceletartion smooth max value up to 0.99   -->
+<param name="smooth_accel_karugamo_near"    type="double"	value="0.982"/> <!-- acceletartion smooth max value up to 0.99   -->
 <param name="smooth_accel_karugamo_far"    type="double"	value="0.989"/> <!-- acceletartion smooth max value up to 0.99   -->
 <param name="smooth_accel_manual"    type="double"	value="0.985"/> <!-- acceletartion smooth max value up to 0.99   -->
 <param name="smooth_accel_side_manual"    type="double"	value="0.93"/> <!-- acceletartion smooth max value up to 0.99   -->
 <param name="smooth_accel_costmap"    type="double"	value="0.7"/> <!-- acceletartion smooth max value up to 0.99   -->
 <param name="smooth_accel_stop"    type="double"	value="0.92"/> <!-- acceletartion smooth max value up to 0.99   -->
 <param name="max_speed_karugamo"    type="double"	value="1400"/> <!-- (not used depercated)max speed value for karugamo   -->
-<param name="max_speed_follow"    type="double"	value="1600"/> <!--1500--><!--3000--> <!--max speed value for frontal people follow-->
-<param name="max_speed_manual"    type="double"	value="1600"/>  <!--15000--><!-- 3000--> <!-- max speed value for frontal joystick-->
+<param name="max_speed_follow"    type="double"	value="2000"/> <!--1500--><!--3000--> <!--max speed value for frontal people follow-->
+<param name="max_speed_manual"    type="double"	value="2000"/>  <!--15000--><!-- 3000--> <!-- max speed value for frontal joystick-->
 <param name="max_speed_manual_heavy"    type="double"	value="1200"/>  <!--15000--><!-- 3000--> <!-- max speed value for frontal joystick-->
-<param name="max_speed_side_manual"    type="double"	value="400"/> <!-- max speed value for side joystick-->
+<param name="max_speed_side_manual"    type="double"	value="300"/> <!-- max speed value for side joystick-->
 <param name="speed_wp_lost"    type="double"	value="1400"/> <!-- speed when is lost or wp mode-->
 <param name="max_defelct_angle"    type="double"	value="60"/> <!-- max deflect angle-->
 <param name="angle_gain_wp"    type="double"	value="100"/> <!-- max deflect angle-->
 <param name="near_far_distance"    type="double"  value="350.0"/> <!-- distance to detect, enter near, far distance in centimeter-->
-<param name="dist_robot_people"    type="double"	value="120"/> <!-- max deflect angle-->
-<param name="max_dist_toacc"    type="double"	value="250"/> <!-- max dist ot accel or slow down-->
+<param name="dist_robot_people"    type="double"	value="80"/> <!-- max deflect angle-->
+<param name="max_dist_toacc"    type="double"	value="350"/> <!-- max dist ot accel or slow down-->
 <param name="radius_follow"    type="double"	value="0.37"/> <!--1.0--><!-- radius checking zone to track people once that is already picked for tracking-->
 <param name="tresh_amp_up"    type="double"	value="5.0"/> <!-- treshhold amp up -->
 <param name="tresh_amp_down"    type="double"	value="3.0"/> <!-- treshhold amp dwn -->
@@ -120,7 +120,7 @@
 <param name="count_to_miss"    type="double"	value="44"/> <!--counter that if overpass this then we lost people-->
 <param name="gain_to_costmap"    type="double"	value="1.5"/> <!--counter that if overpass this then we lost people-->
 <param name="vel_detect_costmap"    type="double"	value="0.7"/> <!--vel to start detect costmap--><!--0.6-->
-<param name="duration_to_lost"    type="double"	value="0.8"/> <!--time in second to see if is lost-->
+<param name="duration_to_lost"    type="double"	value="0.2"/> <!--time in second to see if is lost-->
 <param name="min_break_distance"    type="double"	value="0.7"/> <!--time in second to see if is lost-->
 <param name="max_break_distance"    type="double"	value="0.9"/> <!--time in second to see if is lost-->
 </node>
@@ -129,7 +129,7 @@
 <!-- extract obstacles form region of interest and send to control_xy -->
  
 <node pkg="obs_extract" type="main_sorted_kalman.py" name="obj_track" >
-<param name="front_detection"    type="double"	value="7"/> 
+<param name="front_detection"    type="double"	value="3.5"/> 
 <param name="side_detection"    type="double"	value="2.5"/>  
 <param name="radius_follow"    type="double"	value="0.37"/>  
 </node>

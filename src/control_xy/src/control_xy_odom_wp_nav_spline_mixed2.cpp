@@ -2390,8 +2390,8 @@ void loadRoute(){
                 }
                 if(max_speed_manual_heavy>2400){
                     max_speed_manual_heavy=2400;
-                }else if(max_speed_manual_heavy<800){
-                    max_speed_manual_heavy=800;
+                }else if(max_speed_manual_heavy<1200){
+                    max_speed_manual_heavy=1200;
                 }
                 if(mode_manual){
                         if(max_speed_manual==2800){
