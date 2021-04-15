@@ -726,9 +726,10 @@ void check_scan(){
 void check_obsta(){
     ros::Time time_now = ros::Time::now();
     ros::Duration duration = time_now - last_time_obstacle;
-    if((duration.toSec())>0.55){
+    if((duration.toSec())>0.85){
         pitakuru_state_msg.state_karugamo="no_people_lidar_detection";
         setZeroPosLidar();
+        state_pub.publish(pitakuru_state_msg);
        /*  ros::Duration duration2 = time_now - time_blink_scan;
         if(duration2.toSec()>0.2){
             time_blink_scan=time_now;
@@ -790,6 +791,11 @@ void restart_follow_variables(){
 void calc_100hz(){
     save_counter++;
     karugamo_counter++;
+    if(mode_idle && karugamo_counter%100==0){
+        vel_steer.linear.x=0;
+        vel_steer.angular.z=0;
+        speed_publisher.publish(vel_steer);
+    }
     cicles=20;
     ang_peop_lidar = 90- atan2(cx, cy) * 180 / 3.1416;
     //ang_peop_lidar = -90+ atan2(cx, cy) * 180 / 3.1416 ;
@@ -835,7 +841,7 @@ void calc_100hz(){
             //if(tracking_people && (yolo_status>0 || lidar_people_status>0) && stop_functions==false){
             //if(tracking_people && lidar_people_status>0 && stop_functions==false && big_angle_error_lidar_yolo==false){
             //if(tracking_people && lidar_people_status>0 && stop_functions==false){
-            if(lidar_people_status>0 && stop_functions==false){//if lidar status>1
+            if(lidar_people_status>0 && stop_functions==false && distanciaPeople2<near_far_distance){//if lidar status>1
                 //cont_detect_peop=0;
    
                 //if( (lidar_people_status>1 ||  lidar_people_status<1)&& yolo_status >0){
@@ -888,29 +894,30 @@ void calc_100hz(){
                         dist_auxwp=0;
                         //cont_sp_follow=0;//experimental
                     }
-                }else{//far
-                    if(lidar_failed==false && changed_setting==false && low_voltage ==false && stop_follow==false){
-                    alert_karugamo_far_no_sound();
+                }
+                // else{//far
+                //     if(lidar_failed==false && changed_setting==false && low_voltage ==false && stop_follow==false){
+                //     alert_karugamo_far_no_sound();
                    
-                    }
-                    if(is_near==true){
-                        is_near=false;
-                        if(lidar_failed==false && changed_setting==false && low_voltage ==false && stop_follow==false){
-                        alert_karugamo_far_no_sound();
-                        //alert_karugamo_far_sound();
-                        //alert_warning_sound();
-                        alert_karugamo_waypoint_sound();
-                        ros::Duration(0.02).sleep(); // sleep for 0.05 seconds
-                        }
-                        stop_functions=false;
-                        if(cont_sp_follow>2){
-                            fprintf(fp2,"Entre far num sp follow %i e index %i  \n",cont_sp_follow,cont_sp_follow-3);
-                            index_wp=cont_sp_follow-3;
-                        }
-                    }
-                    far();
-                    ROS_INFO("far() in range");
-                }//endif not near
+                //     }
+                //     if(is_near==true){
+                //         is_near=false;
+                //         if(lidar_failed==false && changed_setting==false && low_voltage ==false && stop_follow==false){
+                //         alert_karugamo_far_no_sound();
+                //         //alert_karugamo_far_sound();
+                //         //alert_warning_sound();
+                //         alert_karugamo_waypoint_sound();
+                //         ros::Duration(0.02).sleep(); // sleep for 0.05 seconds
+                //         }
+                //         stop_functions=false;
+                //         if(cont_sp_follow>2){
+                //             fprintf(fp2,"Entre far num sp follow %i e index %i  \n",cont_sp_follow,cont_sp_follow-3);
+                //             index_wp=cont_sp_follow-3;
+                //         }
+                //     }
+                //     far();
+                //     ROS_INFO("far() in range");
+                // }//endif not near
                 //ROS_INFO("hello1");
                 missing_track=0;
                 tracked_cx=cx;
@@ -963,26 +970,26 @@ void calc_100hz(){
                 //ROS_INFO("tracked");
                    
             }//end it s in range
-            else if(danger==false  && cont_sp_follow>2 ){
-                if(is_near==true || entered_first_time_far==false){
-                        entered_first_time_far=true;
-                        is_near=false;
-                        ROS_INFO("Entre far num sp follow %i e index %i  \n",cont_sp_follow,cont_sp_follow-3);
-                        index_wp=cont_sp_follow-3;
-                        if(changed_setting==false && low_voltage ==false && stop_follow==false){
-                            //alert_karugamo_far_no_sound();
-                            alert_karugamo_waypoint_sound();
-                            ros::Duration(0.02).sleep(); // sleep for 0.05 seconds
-                            //alert_karugamo_far_sound();
-                        }
-                        stop_functions=false;
+            // else if(danger==false  && cont_sp_follow>2 ){
+            //     if(is_near==true || entered_first_time_far==false){
+            //             entered_first_time_far=true;
+            //             is_near=false;
+            //             ROS_INFO("Entre far num sp follow %i e index %i  \n",cont_sp_follow,cont_sp_follow-3);
+            //             index_wp=cont_sp_follow-3;
+            //             if(changed_setting==false && low_voltage ==false && stop_follow==false){
+            //                 //alert_karugamo_far_no_sound();
+            //                 alert_karugamo_waypoint_sound();
+            //                 ros::Duration(0.02).sleep(); // sleep for 0.05 seconds
+            //                 //alert_karugamo_far_sound();
+            //             }
+            //             stop_functions=false;
                         
-                }
+            //     }
                 
-                 far();
-                 ROS_INFO("far() not in range");
-            }
-            else if(danger==false  && lidar_people_status<0 && stop_functions==false){//lostedlidar
+            //      far();
+            //      ROS_INFO("far() not in range");
+            // }
+            else if(danger==false  && (lidar_people_status<0 || (lidar_people_status<0 && distanciaPeople2>=near_far_distance))&& stop_functions==false){//lostedlidar
                 //if(is_near==false){
                 missing_track+=1;
                 ROS_INFO("miss %i",missing_track);
@@ -1014,7 +1021,9 @@ void calc_100hz(){
                         pitakuru_state_msg.state="KARUGAMO";
                         pitakuru_state_msg.state_karugamo="lost";
                         //state_pub.publish(pitakuru_state_msg);
-   
+                        if(stop_functions==false){
+                            alert_lost_voice_sound();
+                        }
                         //if(missing_track>count_to_miss){//thiscounter also can help to see if theres a lot of objects and its not able to follow
                         //if(lidar_people_status<1){
                         if(is_near==true && tracking_people && stop_functions==false){
@@ -1031,7 +1040,7 @@ void calc_100hz(){
                             //alert_danger_no_sound();
                             //alert_collision_no_sound();
                             stop_functions=true;
-                           
+                            sound_counter=0;
                             //is_near=false;
                             //alerts_command.data=3;// 5 danger 4 warning 3 karugamo 2 idle 1 manual
                             //alerts_publisher.publish(alerts_command);
@@ -1045,6 +1054,7 @@ void calc_100hz(){
                         tracking_lidar=false;
                         tracking_yolo=false;
                         ROS_INFO("LOST");
+                        
                         fprintf(fp2,"lost \n");
                         tracking_people=false;
                         missing_track=0;
@@ -1060,7 +1070,11 @@ void calc_100hz(){
                         cont_detect_peop=0;
                         sound_counter++;
                         if(sound_counter%6==0){
+<<<<<<< HEAD
                             alert_lost_voice_sound();
+=======
+                            alert_search_voice_sound();
+>>>>>>> tmp2
                             //alert_warning_sound();
                         }
                     }
@@ -1138,7 +1152,8 @@ void calc_100hz(){
                     sound_counter++;
                     if(sound_counter%6==0){
                         //alert_warning_sound();
-                        alert_lost_voice_sound();
+                        //alert_lost_voice_sound();
+                        alert_search_voice_sound();
 
                     }
                 }
@@ -1761,7 +1776,7 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan){
             //float  break_danger=0.5;
          
         //if(detect_cont>1 && mode_idle == false && (vel_m1 >= vel_detect_scan || vel_m2 >= vel_detect_scan)){
-        if(detect_cont>1 && mode_idle == false && (ctrl_front_manual> 600 || ctrl_front_follow > 600)){
+        if(detect_cont>1 && mode_idle == false && (ctrl_front_manual> 400 || ctrl_front_follow > 400)){
         //if(detect_cont>0 ){
                 danger=true;
                 free_way=false;
@@ -1818,7 +1833,7 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan){
             }
         }  */
        
-        if( ctrl_front_manual> 600 || ctrl_front_follow > 600){
+        if( ctrl_front_manual> 400 || ctrl_front_follow > 400){
             for(int j=0;j<=720;j++){
 
                 if(j>280&&j<440){
@@ -1961,6 +1976,10 @@ void  alert_danger_voice_sound(){
 }
 void  alert_lost_voice_sound(){
     alerts_command.data=109;// 
+    alerts_publisher.publish(alerts_command);
+}
+void  alert_search_voice_sound(){
+    alerts_command.data=110;// 
     alerts_publisher.publish(alerts_command);
 }
 
@@ -2375,8 +2394,8 @@ void loadRoute(){
                 }
                 if(max_speed_manual_heavy>2400){
                     max_speed_manual_heavy=2400;
-                }else if(max_speed_manual_heavy<800){
-                    max_speed_manual_heavy=800;
+                }else if(max_speed_manual_heavy<1200){
+                    max_speed_manual_heavy=1200;
                 }
                 if(mode_manual){
                         if(max_speed_manual==2800){

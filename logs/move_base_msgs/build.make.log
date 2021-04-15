@@ -17,7 +17,7 @@
 [  0%] Built target geometry_msgs_generate_messages_eus
 [ 18%] Built target move_base_msgs_generate_messages_lisp
 [ 40%] Built target move_base_msgs_generate_messages_py
-[ 59%] Built target move_base_msgs_generate_messages_nodejs
-[ 78%] Built target move_base_msgs_generate_messages_cpp
+[ 59%] Built target move_base_msgs_generate_messages_cpp
+[ 78%] Built target move_base_msgs_generate_messages_nodejs
 [100%] Built target move_base_msgs_generate_messages_eus
 [100%] Built target move_base_msgs_generate_messages
