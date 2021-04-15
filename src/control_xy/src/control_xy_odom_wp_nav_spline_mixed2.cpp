@@ -1040,7 +1040,7 @@ void calc_100hz(){
                             //alert_danger_no_sound();
                             //alert_collision_no_sound();
                             stop_functions=true;
-                           
+                            sound_counter=0;
                             //is_near=false;
                             //alerts_command.data=3;// 5 danger 4 warning 3 karugamo 2 idle 1 manual
                             //alerts_publisher.publish(alerts_command);
@@ -1772,7 +1772,7 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan){
             //float  break_danger=0.5;
          
         //if(detect_cont>1 && mode_idle == false && (vel_m1 >= vel_detect_scan || vel_m2 >= vel_detect_scan)){
-        if(detect_cont>1 && mode_idle == false && (ctrl_front_manual> 600 || ctrl_front_follow > 600)){
+        if(detect_cont>1 && mode_idle == false && (ctrl_front_manual> 400 || ctrl_front_follow > 400)){
         //if(detect_cont>0 ){
                 danger=true;
                 free_way=false;
@@ -1829,7 +1829,7 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan){
             }
         }  */
        
-        if( ctrl_front_manual> 600 || ctrl_front_follow > 600){
+        if( ctrl_front_manual> 400 || ctrl_front_follow > 400){
             for(int j=0;j<=720;j++){
 
                 if(j>280&&j<440){

@@ -265,7 +265,7 @@ class PitWheels:
 
     def obstacles_callback(self, data):
         self.received_obstacles=data
-        if(self.try_to_search):
+        if(self.try_to_search and self.yolo_ang>-35 and self.yolo_ang<35):
             print("sent_data")
             self.search_nearest(data)
         lst = []
