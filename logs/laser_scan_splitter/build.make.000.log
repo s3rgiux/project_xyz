@@ -1,0 +1,311 @@
+[35m[1mScanning dependencies of target geometry_msgs_generate_messages_cpp[0m
+[  0%] Built target geometry_msgs_generate_messages_cpp
+[35m[1mScanning dependencies of target geometry_msgs_generate_messages_py[0m
+[  0%] Built target geometry_msgs_generate_messages_py
+[35m[1mScanning dependencies of target rosgraph_msgs_generate_messages_nodejs[0m
+[  0%] Built target rosgraph_msgs_generate_messages_nodejs
+[35m[1mScanning dependencies of target rosgraph_msgs_generate_messages_py[0m
+[  0%] Built target rosgraph_msgs_generate_messages_py
+[35m[1mScanning dependencies of target std_msgs_generate_messages_eus[0m
+[  0%] Built target std_msgs_generate_messages_eus
+[35m[1mScanning dependencies of target rosgraph_msgs_generate_messages_lisp[0m
+[  0%] Built target rosgraph_msgs_generate_messages_lisp
+[35m[1mScanning dependencies of target rosgraph_msgs_generate_messages_eus[0m
+[  0%] Built target rosgraph_msgs_generate_messages_eus
+[35m[1mScanning dependencies of target rosgraph_msgs_generate_messages_cpp[0m
+[  0%] Built target rosgraph_msgs_generate_messages_cpp
+[35m[1mScanning dependencies of target roscpp_generate_messages_py[0m
+[  0%] Built target roscpp_generate_messages_py
+[35m[1mScanning dependencies of target std_msgs_generate_messages_py[0m
+[  0%] Built target std_msgs_generate_messages_py
+[35m[1mScanning dependencies of target bond_generate_messages_cpp[0m
+[  0%] Built target bond_generate_messages_cpp
+[35m[1mScanning dependencies of target geometry_msgs_generate_messages_eus[0m
+[  0%] Built target geometry_msgs_generate_messages_eus
+[35m[1mScanning dependencies of target roscpp_generate_messages_nodejs[0m
+[  0%] Built target roscpp_generate_messages_nodejs
+[35m[1mScanning dependencies of target roscpp_generate_messages_eus[0m
+[  0%] Built target roscpp_generate_messages_eus
+[35m[1mScanning dependencies of target bond_generate_messages_eus[0m
+[  0%] Built target bond_generate_messages_eus
+[35m[1mScanning dependencies of target roscpp_generate_messages_lisp[0m
+[  0%] Built target roscpp_generate_messages_lisp
+[35m[1mScanning dependencies of target geometry_msgs_generate_messages_nodejs[0m
+[  0%] Built target geometry_msgs_generate_messages_nodejs
+[35m[1mScanning dependencies of target nodelet_generate_messages_cpp[0m
+[  0%] Built target nodelet_generate_messages_cpp
+[35m[1mScanning dependencies of target bond_generate_messages_py[0m
+[  0%] Built target bond_generate_messages_py
+[35m[1mScanning dependencies of target sensor_msgs_generate_messages_py[0m
+[  0%] Built target sensor_msgs_generate_messages_py
+[35m[1mScanning dependencies of target std_msgs_generate_messages_lisp[0m
+[  0%] Built target std_msgs_generate_messages_lisp
+[35m[1mScanning dependencies of target nodelet_generate_messages_lisp[0m
+[  0%] Built target nodelet_generate_messages_lisp
+[35m[1mScanning dependencies of target sensor_msgs_generate_messages_cpp[0m
+[  0%] Built target sensor_msgs_generate_messages_cpp
+[35m[1mScanning dependencies of target sensor_msgs_generate_messages_eus[0m
+[  0%] Built target sensor_msgs_generate_messages_eus
+[35m[1mScanning dependencies of target nodelet_generate_messages_eus[0m
+[  0%] Built target nodelet_generate_messages_eus
+[35m[1mScanning dependencies of target nodelet_generate_messages_nodejs[0m
+[35m[1mScanning dependencies of target std_msgs_generate_messages_cpp[0m
+[  0%] Built target nodelet_generate_messages_nodejs
+[  0%] Built target std_msgs_generate_messages_cpp
+[35m[1mScanning dependencies of target nodelet_generate_messages_py[0m
+[35m[1mScanning dependencies of target bond_generate_messages_nodejs[0m
+[  0%] Built target nodelet_generate_messages_py
+[  0%] Built target bond_generate_messages_nodejs
+[35m[1mScanning dependencies of target std_msgs_generate_messages_nodejs[0m
+[35m[1mScanning dependencies of target bond_generate_messages_lisp[0m
+[  0%] Built target std_msgs_generate_messages_nodejs
+[  0%] Built target bond_generate_messages_lisp
+[35m[1mScanning dependencies of target sensor_msgs_generate_messages_lisp[0m
+[35m[1mScanning dependencies of target roscpp_generate_messages_cpp[0m
+[  0%] Built target roscpp_generate_messages_cpp
+[  0%] Built target sensor_msgs_generate_messages_lisp
+[35m[1mScanning dependencies of target geometry_msgs_generate_messages_lisp[0m
+[35m[1mScanning dependencies of target sensor_msgs_generate_messages_nodejs[0m
+[  0%] Built target geometry_msgs_generate_messages_lisp
+[  0%] Built target sensor_msgs_generate_messages_nodejs
+[35m[1mScanning dependencies of target laser_scan_splitter[0m
+[ 16%] [32mBuilding CXX object CMakeFiles/laser_scan_splitter.dir/src/laser_scan_splitter.cpp.o[0m
+In file included from [01m[K/opt/ros/melodic/include/ros/node_handle.h:32:0[m[K,
+                 from [01m[K/opt/ros/melodic/include/ros/ros.h:45[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/include/laser_scan_splitter/laser_scan_splitter.h:33[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/src/laser_scan_splitter.cpp:30[m[K:
+[01m[K/opt/ros/melodic/include/ros/publisher.h:53:52:[m[K [01;35m[Kwarning: [m[Kdefaulted and deleted functions only available with -std=c++11 or -std=gnu++11
+     Publisher& operator=(const Publisher& other) = default;
+[01;32m[K                                                    ^[m[K
+In file included from [01m[K/opt/ros/melodic/include/ros/node_handle.h:33:0[m[K,
+                 from [01m[K/opt/ros/melodic/include/ros/ros.h:45[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/include/laser_scan_splitter/laser_scan_splitter.h:33[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/src/laser_scan_splitter.cpp:30[m[K:
+[01m[K/opt/ros/melodic/include/ros/subscriber.h:52:52:[m[K [01;35m[Kwarning: [m[Kdefaulted and deleted functions only available with -std=c++11 or -std=gnu++11
+   Subscriber& operator=(const Subscriber& other) = default;
+[01;32m[K                                                    ^[m[K
+In file included from [01m[K/opt/ros/melodic/include/ros/node_handle.h:34:0[m[K,
+                 from [01m[K/opt/ros/melodic/include/ros/ros.h:45[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/include/laser_scan_splitter/laser_scan_splitter.h:33[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/src/laser_scan_splitter.cpp:30[m[K:
+[01m[K/opt/ros/melodic/include/ros/service_server.h:51:58:[m[K [01;35m[Kwarning: [m[Kdefaulted and deleted functions only available with -std=c++11 or -std=gnu++11
+   ServiceServer& operator=(const ServiceServer& other) = default;
+[01;32m[K                                                          ^[m[K
+In file included from [01m[K/opt/ros/melodic/include/ros/node_handle.h:35:0[m[K,
+                 from [01m[K/opt/ros/melodic/include/ros/ros.h:45[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/include/laser_scan_splitter/laser_scan_splitter.h:33[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/src/laser_scan_splitter.cpp:30[m[K:
+[01m[K/opt/ros/melodic/include/ros/service_client.h:49:58:[m[K [01;35m[Kwarning: [m[Kdefaulted and deleted functions only available with -std=c++11 or -std=gnu++11
+   ServiceClient& operator=(const ServiceClient& other) = default;
+[01;32m[K                                                          ^[m[K
+In file included from [01m[K/opt/ros/melodic/include/ros/node_handle.h:36:0[m[K,
+                 from [01m[K/opt/ros/melodic/include/ros/ros.h:45[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/include/laser_scan_splitter/laser_scan_splitter.h:33[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/src/laser_scan_splitter.cpp:30[m[K:
+[01m[K/opt/ros/melodic/include/ros/timer.h:52:42:[m[K [01;35m[Kwarning: [m[Kdefaulted and deleted functions only available with -std=c++11 or -std=gnu++11
+   Timer& operator=(const Timer& other) = default;
+[01;32m[K                                          ^[m[K
+In file included from [01m[K/opt/ros/melodic/include/ros/node_handle.h:38:0[m[K,
+                 from [01m[K/opt/ros/melodic/include/ros/ros.h:45[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/include/laser_scan_splitter/laser_scan_splitter.h:33[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/src/laser_scan_splitter.cpp:30[m[K:
+[01m[K/opt/ros/melodic/include/ros/wall_timer.h:52:50:[m[K [01;35m[Kwarning: [m[Kdefaulted and deleted functions only available with -std=c++11 or -std=gnu++11
+   WallTimer& operator=(const WallTimer& other) = default;
+[01;32m[K                                                  ^[m[K
+In file included from [01m[K/opt/ros/melodic/include/ros/node_handle.h:39:0[m[K,
+                 from [01m[K/opt/ros/melodic/include/ros/ros.h:45[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/include/laser_scan_splitter/laser_scan_splitter.h:33[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/src/laser_scan_splitter.cpp:30[m[K:
+[01m[K/opt/ros/melodic/include/ros/steady_timer.h:52:54:[m[K [01;35m[Kwarning: [m[Kdefaulted and deleted functions only available with -std=c++11 or -std=gnu++11
+   SteadyTimer& operator=(const SteadyTimer& other) = default;
+[01;32m[K                                                      ^[m[K
+[ 33%] [32m[1mLinking CXX shared library /home/xavier/catkin_ws/devel/.private/laser_scan_splitter/lib/liblaser_scan_splitter.so[0m
+[ 33%] Built target laser_scan_splitter
+[35m[1mScanning dependencies of target laser_scan_splitter_nodelet[0m
+[35m[1mScanning dependencies of target laser_scan_splitter_node[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/laser_scan_splitter_node.dir/src/laser_scan_splitter_node.cpp.o[0m
+[ 66%] [32mBuilding CXX object CMakeFiles/laser_scan_splitter_nodelet.dir/src/laser_scan_splitter_nodelet.cpp.o[0m
+In file included from [01m[K/opt/ros/melodic/include/ros/node_handle.h:32:0[m[K,
+                 from [01m[K/opt/ros/melodic/include/ros/ros.h:45[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/include/laser_scan_splitter/laser_scan_splitter.h:33[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/src/laser_scan_splitter_node.cpp:30[m[K:
+[01m[K/opt/ros/melodic/include/ros/publisher.h:53:52:[m[K [01;35m[Kwarning: [m[Kdefaulted and deleted functions only available with -std=c++11 or -std=gnu++11
+     Publisher& operator=(const Publisher& other) = default;
+[01;32m[K                                                    ^[m[K
+In file included from [01m[K/opt/ros/melodic/include/ros/node_handle.h:33:0[m[K,
+                 from [01m[K/opt/ros/melodic/include/ros/ros.h:45[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/include/laser_scan_splitter/laser_scan_splitter.h:33[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/src/laser_scan_splitter_node.cpp:30[m[K:
+[01m[K/opt/ros/melodic/include/ros/subscriber.h:52:52:[m[K [01;35m[Kwarning: [m[Kdefaulted and deleted functions only available with -std=c++11 or -std=gnu++11
+   Subscriber& operator=(const Subscriber& other) = default;
+[01;32m[K                                                    ^[m[K
+In file included from [01m[K/opt/ros/melodic/include/ros/node_handle.h:34:0[m[K,
+                 from [01m[K/opt/ros/melodic/include/ros/ros.h:45[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/include/laser_scan_splitter/laser_scan_splitter.h:33[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/src/laser_scan_splitter_node.cpp:30[m[K:
+[01m[K/opt/ros/melodic/include/ros/service_server.h:51:58:[m[K [01;35m[Kwarning: [m[Kdefaulted and deleted functions only available with -std=c++11 or -std=gnu++11
+   ServiceServer& operator=(const ServiceServer& other) = default;
+[01;32m[K                                                          ^[m[K
+In file included from [01m[K/opt/ros/melodic/include/ros/node_handle.h:35:0[m[K,
+                 from [01m[K/opt/ros/melodic/include/ros/ros.h:45[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/include/laser_scan_splitter/laser_scan_splitter.h:33[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/src/laser_scan_splitter_node.cpp:30[m[K:
+[01m[K/opt/ros/melodic/include/ros/service_client.h:49:58:[m[K [01;35m[Kwarning: [m[Kdefaulted and deleted functions only available with -std=c++11 or -std=gnu++11
+   ServiceClient& operator=(const ServiceClient& other) = default;
+[01;32m[K                                                          ^[m[K
+In file included from [01m[K/opt/ros/melodic/include/ros/node_handle.h:36:0[m[K,
+                 from [01m[K/opt/ros/melodic/include/ros/ros.h:45[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/include/laser_scan_splitter/laser_scan_splitter.h:33[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/src/laser_scan_splitter_node.cpp:30[m[K:
+[01m[K/opt/ros/melodic/include/ros/timer.h:52:42:[m[K [01;35m[Kwarning: [m[Kdefaulted and deleted functions only available with -std=c++11 or -std=gnu++11
+   Timer& operator=(const Timer& other) = default;
+[01;32m[K                                          ^[m[K
+In file included from [01m[K/opt/ros/melodic/include/ros/node_handle.h:38:0[m[K,
+                 from [01m[K/opt/ros/melodic/include/ros/ros.h:45[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/include/laser_scan_splitter/laser_scan_splitter.h:33[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/src/laser_scan_splitter_node.cpp:30[m[K:
+[01m[K/opt/ros/melodic/include/ros/wall_timer.h:52:50:[m[K [01;35m[Kwarning: [m[Kdefaulted and deleted functions only available with -std=c++11 or -std=gnu++11
+   WallTimer& operator=(const WallTimer& other) = default;
+[01;32m[K                                                  ^[m[K
+In file included from [01m[K/opt/ros/melodic/include/ros/node_handle.h:39:0[m[K,
+                 from [01m[K/opt/ros/melodic/include/ros/ros.h:45[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/include/laser_scan_splitter/laser_scan_splitter.h:33[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/src/laser_scan_splitter_node.cpp:30[m[K:
+[01m[K/opt/ros/melodic/include/ros/steady_timer.h:52:54:[m[K [01;35m[Kwarning: [m[Kdefaulted and deleted functions only available with -std=c++11 or -std=gnu++11
+   SteadyTimer& operator=(const SteadyTimer& other) = default;
+[01;32m[K                                                      ^[m[K
+In file included from [01m[K/opt/ros/melodic/include/class_loader/class_loader.hpp:46:0[m[K,
+                 from [01m[K/opt/ros/melodic/include/pluginlib/./class_list_macros.hpp:40[m[K,
+                 from [01m[K/opt/ros/melodic/include/pluginlib/class_list_macros.h:35[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/include/laser_scan_splitter/laser_scan_splitter_nodelet.h:34[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/src/laser_scan_splitter_nodelet.cpp:30[m[K:
+[01m[K/opt/ros/melodic/include/class_loader/class_loader_core.hpp:[m[K In function ‘[01m[Kvoid class_loader::impl::registerPlugin(const string&, const string&)[m[K’:
+[01m[K/opt/ros/melodic/include/class_loader/class_loader_core.hpp:183:7:[m[K [01;31m[Kerror: [m[K‘[01m[Knullptr[m[K’ was not declared in this scope
+   if (nullptr == getCurrentlyActiveClassLoader()) {
+[01;32m[K       ^[m[K
+[01m[K/opt/ros/melodic/include/class_loader/class_loader_core.hpp:[m[K In function ‘[01m[KBase* class_loader::impl::createInstance(const string&, class_loader::ClassLoader*)[m[K’:
+[01m[K/opt/ros/melodic/include/class_loader/class_loader_core.hpp:242:40:[m[K [01;31m[Kerror: [m[K‘[01m[Knullptr[m[K’ was not declared in this scope
+   AbstractMetaObject<Base> * factory = nullptr;
+[01;32m[K                                        ^[m[K
+[01m[K/opt/ros/melodic/include/class_loader/class_loader_core.hpp:[m[K In function ‘[01m[Kstd::vector<std::__cxx11::basic_string<char> > class_loader::impl::getAvailableClasses(class_loader::ClassLoader*)[m[K’:
+[01m[K/opt/ros/melodic/include/class_loader/class_loader_core.hpp:300:15:[m[K [01;31m[Kerror: [m[KISO C++ forbids declaration of ‘[01m[Kit[m[K’ with no type [-fpermissive]
+   for (auto & it : factory_map) {
+[01;32m[K               ^[m[K
+[01m[K/opt/ros/melodic/include/class_loader/class_loader_core.hpp:300:20:[m[K [01;35m[Kwarning: [m[Krange-based ‘[01m[Kfor[m[K’ loops only available with -std=c++11 or -std=gnu++11
+   for (auto & it : factory_map) {
+[01;32m[K                    ^[m[K
+[01m[K/opt/ros/melodic/include/class_loader/class_loader_core.hpp:301:43:[m[K [01;31m[Kerror: [m[Krequest for member ‘[01m[Ksecond[m[K’ in ‘[01m[Kit[m[K’, which is of non-class type ‘[01m[Kint[m[K’
+     AbstractMetaObjectBase * factory = it.second;
+[01;32m[K                                           ^[m[K
+[01m[K/opt/ros/melodic/include/class_loader/class_loader_core.hpp:303:28:[m[K [01;31m[Kerror: [m[Krequest for member ‘[01m[Kfirst[m[K’ in ‘[01m[Kit[m[K’, which is of non-class type ‘[01m[Kint[m[K’
+       classes.push_back(it.first);
+[01;32m[K                            ^[m[K
+[01m[K/opt/ros/melodic/include/class_loader/class_loader_core.hpp:304:35:[m[K [01;31m[Kerror: [m[K‘[01m[Knullptr[m[K’ was not declared in this scope
+     } else if (factory->isOwnedBy(nullptr)) {
+[01;32m[K                                   ^[m[K
+[01m[K/opt/ros/melodic/include/class_loader/class_loader_core.hpp:305:42:[m[K [01;31m[Kerror: [m[Krequest for member ‘[01m[Kfirst[m[K’ in ‘[01m[Kit[m[K’, which is of non-class type ‘[01m[Kint[m[K’
+       classes_with_no_owner.push_back(it.first);
+[01;32m[K                                          ^[m[K
+In file included from [01m[K/opt/ros/melodic/include/pluginlib/./class_list_macros.hpp:40:0[m[K,
+                 from [01m[K/opt/ros/melodic/include/pluginlib/class_list_macros.h:35[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/include/laser_scan_splitter/laser_scan_splitter_nodelet.h:34[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/src/laser_scan_splitter_nodelet.cpp:30[m[K:
+[01m[K/opt/ros/melodic/include/class_loader/class_loader.hpp:[m[K At global scope:
+[01m[K/opt/ros/melodic/include/class_loader/class_loader.hpp:82:3:[m[K [01;31m[Kerror: [m[Kexpected unqualified-id before ‘[01m[Kusing[m[K’
+   using DeleterType = std::function<void(Base *)>;
+[01;32m[K   ^[m[K
+[01m[K/opt/ros/melodic/include/class_loader/class_loader.hpp:85:3:[m[K [01;31m[Kerror: [m[Kexpected unqualified-id before ‘[01m[Kusing[m[K’
+   using UniquePtr = std::unique_ptr<Base, DeleterType<Base>>;
+[01;32m[K   ^[m[K
+[01m[K/opt/ros/melodic/include/class_loader/class_loader.hpp:127:8:[m[K [01;31m[Kerror: [m[K‘[01m[Kshared_ptr[m[K’ in namespace ‘[01m[Kstd[m[K’ does not name a template type
+   std::shared_ptr<Base> createSharedInstance(const std::string & derived_class_name)
+[01;32m[K        ^[m[K
+[01m[K/opt/ros/melodic/include/class_loader/class_loader.hpp:160:3:[m[K [01;31m[Kerror: [m[K‘[01m[KUniquePtr[m[K’ does not name a type
+   UniquePtr<Base> createUniqueInstance(const std::string & derived_class_name)
+[01;32m[K   ^[m[K
+In file included from [01m[K/opt/ros/melodic/include/pluginlib/./class_list_macros.hpp:40:0[m[K,
+                 from [01m[K/opt/ros/melodic/include/pluginlib/class_list_macros.h:35[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/include/laser_scan_splitter/laser_scan_splitter_nodelet.h:34[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/src/laser_scan_splitter_nodelet.cpp:30[m[K:
+[01m[K/opt/ros/melodic/include/class_loader/class_loader.hpp:[m[K In member function ‘[01m[Kvoid class_loader::ClassLoader::onPluginDeletion(Base*)[m[K’:
+[01m[K/opt/ros/melodic/include/class_loader/class_loader.hpp:246:9:[m[K [01;31m[Kerror: [m[K‘[01m[Knullptr[m[K’ was not declared in this scope
+     if (nullptr == obj) {
+[01;32m[K         ^[m[K
+In file included from [01m[K/usr/include/boost/assert.hpp:58:0[m[K,
+                 from [01m[K/usr/include/boost/thread/pthread/pthread_mutex_scoped_lock.hpp:10[m[K,
+                 from [01m[K/usr/include/boost/thread/pthread/recursive_mutex.hpp:23[m[K,
+                 from [01m[K/usr/include/boost/thread/recursive_mutex.hpp:16[m[K,
+                 from [01m[K/opt/ros/melodic/include/class_loader/class_loader.hpp:37[m[K,
+                 from [01m[K/opt/ros/melodic/include/pluginlib/./class_list_macros.hpp:40[m[K,
+                 from [01m[K/opt/ros/melodic/include/pluginlib/class_list_macros.h:35[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/include/laser_scan_splitter/laser_scan_splitter_nodelet.h:34[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/src/laser_scan_splitter_nodelet.cpp:30[m[K:
+[01m[K/opt/ros/melodic/include/class_loader/class_loader.hpp:[m[K In member function ‘[01m[KBase* class_loader::ClassLoader::createRawInstance(const string&, bool)[m[K’:
+[01m[K/opt/ros/melodic/include/class_loader/class_loader.hpp:302:19:[m[K [01;31m[Kerror: [m[K‘[01m[Knullptr[m[K’ was not declared in this scope
+     assert(obj != nullptr);  // Unreachable assertion if createInstance() throws on failure
+[01;32m[K                   ^[m[K
+In file included from [01m[K/opt/ros/melodic/include/ros/node_handle.h:32:0[m[K,
+                 from [01m[K/opt/ros/melodic/include/ros/ros.h:45[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/include/laser_scan_splitter/laser_scan_splitter.h:33[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/include/laser_scan_splitter/laser_scan_splitter_nodelet.h:36[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/src/laser_scan_splitter_nodelet.cpp:30[m[K:
+[01m[K/opt/ros/melodic/include/ros/publisher.h:[m[K At global scope:
+[01m[K/opt/ros/melodic/include/ros/publisher.h:53:52:[m[K [01;35m[Kwarning: [m[Kdefaulted and deleted functions only available with -std=c++11 or -std=gnu++11
+     Publisher& operator=(const Publisher& other) = default;
+[01;32m[K                                                    ^[m[K
+In file included from [01m[K/opt/ros/melodic/include/ros/node_handle.h:33:0[m[K,
+                 from [01m[K/opt/ros/melodic/include/ros/ros.h:45[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/include/laser_scan_splitter/laser_scan_splitter.h:33[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/include/laser_scan_splitter/laser_scan_splitter_nodelet.h:36[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/src/laser_scan_splitter_nodelet.cpp:30[m[K:
+[01m[K/opt/ros/melodic/include/ros/subscriber.h:52:52:[m[K [01;35m[Kwarning: [m[Kdefaulted and deleted functions only available with -std=c++11 or -std=gnu++11
+   Subscriber& operator=(const Subscriber& other) = default;
+[01;32m[K                                                    ^[m[K
+In file included from [01m[K/opt/ros/melodic/include/ros/node_handle.h:34:0[m[K,
+                 from [01m[K/opt/ros/melodic/include/ros/ros.h:45[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/include/laser_scan_splitter/laser_scan_splitter.h:33[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/include/laser_scan_splitter/laser_scan_splitter_nodelet.h:36[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/src/laser_scan_splitter_nodelet.cpp:30[m[K:
+[01m[K/opt/ros/melodic/include/ros/service_server.h:51:58:[m[K [01;35m[Kwarning: [m[Kdefaulted and deleted functions only available with -std=c++11 or -std=gnu++11
+   ServiceServer& operator=(const ServiceServer& other) = default;
+[01;32m[K                                                          ^[m[K
+In file included from [01m[K/opt/ros/melodic/include/ros/node_handle.h:35:0[m[K,
+                 from [01m[K/opt/ros/melodic/include/ros/ros.h:45[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/include/laser_scan_splitter/laser_scan_splitter.h:33[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/include/laser_scan_splitter/laser_scan_splitter_nodelet.h:36[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/src/laser_scan_splitter_nodelet.cpp:30[m[K:
+[01m[K/opt/ros/melodic/include/ros/service_client.h:49:58:[m[K [01;35m[Kwarning: [m[Kdefaulted and deleted functions only available with -std=c++11 or -std=gnu++11
+   ServiceClient& operator=(const ServiceClient& other) = default;
+[01;32m[K                                                          ^[m[K
+In file included from [01m[K/opt/ros/melodic/include/ros/node_handle.h:36:0[m[K,
+                 from [01m[K/opt/ros/melodic/include/ros/ros.h:45[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/include/laser_scan_splitter/laser_scan_splitter.h:33[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/include/laser_scan_splitter/laser_scan_splitter_nodelet.h:36[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/src/laser_scan_splitter_nodelet.cpp:30[m[K:
+[01m[K/opt/ros/melodic/include/ros/timer.h:52:42:[m[K [01;35m[Kwarning: [m[Kdefaulted and deleted functions only available with -std=c++11 or -std=gnu++11
+   Timer& operator=(const Timer& other) = default;
+[01;32m[K                                          ^[m[K
+In file included from [01m[K/opt/ros/melodic/include/ros/node_handle.h:38:0[m[K,
+                 from [01m[K/opt/ros/melodic/include/ros/ros.h:45[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/include/laser_scan_splitter/laser_scan_splitter.h:33[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/include/laser_scan_splitter/laser_scan_splitter_nodelet.h:36[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/src/laser_scan_splitter_nodelet.cpp:30[m[K:
+[01m[K/opt/ros/melodic/include/ros/wall_timer.h:52:50:[m[K [01;35m[Kwarning: [m[Kdefaulted and deleted functions only available with -std=c++11 or -std=gnu++11
+   WallTimer& operator=(const WallTimer& other) = default;
+[01;32m[K                                                  ^[m[K
+In file included from [01m[K/opt/ros/melodic/include/ros/node_handle.h:39:0[m[K,
+                 from [01m[K/opt/ros/melodic/include/ros/ros.h:45[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/include/laser_scan_splitter/laser_scan_splitter.h:33[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/include/laser_scan_splitter/laser_scan_splitter_nodelet.h:36[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/src/laser_scan_splitter_nodelet.cpp:30[m[K:
+[01m[K/opt/ros/melodic/include/ros/steady_timer.h:52:54:[m[K [01;35m[Kwarning: [m[Kdefaulted and deleted functions only available with -std=c++11 or -std=gnu++11
+   SteadyTimer& operator=(const SteadyTimer& other) = default;
+[01;32m[K                                                      ^[m[K
+[ 83%] [32m[1mLinking CXX executable /home/xavier/catkin_ws/devel/.private/laser_scan_splitter/lib/laser_scan_splitter/laser_scan_splitter_node[0m
+[ 83%] Built target laser_scan_splitter_node
+CMakeFiles/laser_scan_splitter_nodelet.dir/build.make:62: recipe for target 'CMakeFiles/laser_scan_splitter_nodelet.dir/src/laser_scan_splitter_nodelet.cpp.o' failed
+make[2]: *** [CMakeFiles/laser_scan_splitter_nodelet.dir/src/laser_scan_splitter_nodelet.cpp.o] Error 1
+CMakeFiles/Makefile2:67: recipe for target 'CMakeFiles/laser_scan_splitter_nodelet.dir/all' failed
+make[1]: *** [CMakeFiles/laser_scan_splitter_nodelet.dir/all] Error 2
+Makefile:140: recipe for target 'all' failed
+make: *** [all] Error 2

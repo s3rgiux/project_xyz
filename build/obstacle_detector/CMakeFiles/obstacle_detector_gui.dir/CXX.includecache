@@ -101,6 +101,24 @@ obstacle_detector/CircleObstacle.h
 -
 
 /home/xavier/catkin_ws/devel/.private/obstacle_detector/include/obstacle_detector/SegmentObstacle.h
+string
+-
+vector
+-
+map
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
+geometry_msgs/Point.h
+-
+geometry_msgs/Point.h
+-
 
 /home/xavier/catkin_ws/src/obstacle_detector/include/obstacle_detector/displays/circle_visual.h
 obstacle_detector/Obstacles.h
@@ -715,13 +733,13 @@ ros/time.h
 /opt/ros/melodic/include/ros/callback_queue.h
 ros/callback_queue_interface.h
 /opt/ros/melodic/include/ros/ros/callback_queue_interface.h
+ros/internal/condition_variable.h
+/opt/ros/melodic/include/ros/ros/internal/condition_variable.h
 ros/time.h
 /opt/ros/melodic/include/ros/ros/time.h
 common.h
 /opt/ros/melodic/include/ros/common.h
 boost/shared_ptr.hpp
--
-boost/thread/condition_variable.hpp
 -
 boost/thread/mutex.hpp
 -
@@ -859,6 +877,10 @@ ros/spinner.h
 /opt/ros/melodic/include/ros/ros/spinner.h
 common.h
 /opt/ros/melodic/include/ros/common.h
+
+/opt/ros/melodic/include/ros/internal/condition_variable.h
+boost/thread/condition_variable.hpp
+-
 
 /opt/ros/melodic/include/ros/macros.h
 

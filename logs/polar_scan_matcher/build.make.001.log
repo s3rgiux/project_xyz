@@ -1,0 +1,6 @@
+[ 25%] [32mBuilding CXX object CMakeFiles/polar_scan_matcher.dir/src/polar_match.cpp.o[0m
+[ 50%] [32m[1mLinking CXX shared library /home/xavier/catkin_ws/devel/.private/polar_scan_matcher/lib/libpolar_scan_matcher.so[0m
+[ 50%] Built target polar_scan_matcher
+[ 75%] [32mBuilding CXX object CMakeFiles/psm_node.dir/src/psm_node.cpp.o[0m
+[100%] [32m[1mLinking CXX executable /home/xavier/catkin_ws/devel/.private/polar_scan_matcher/lib/polar_scan_matcher/psm_node[0m
+[100%] Built target psm_node

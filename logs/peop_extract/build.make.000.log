@@ -1,0 +1,78 @@
+[35m[1mScanning dependencies of target _peop_extract_generate_messages_check_deps_ObjectCount[0m
+[  0%] Built target _peop_extract_generate_messages_check_deps_ObjectCount
+[35m[1mScanning dependencies of target _peop_extract_generate_messages_check_deps_BoundingBox[0m
+[  0%] Built target _peop_extract_generate_messages_check_deps_BoundingBox
+[35m[1mScanning dependencies of target _peop_extract_generate_messages_check_deps_BoundingBoxes[0m
+[  0%] Built target _peop_extract_generate_messages_check_deps_BoundingBoxes
+[35m[1mScanning dependencies of target _peop_extract_generate_messages_check_deps_people_box[0m
+[  0%] Built target _peop_extract_generate_messages_check_deps_people_box
+[35m[1mScanning dependencies of target _peop_extract_generate_messages_check_deps_peoples[0m
+[  0%] Built target _peop_extract_generate_messages_check_deps_peoples
+[35m[1mScanning dependencies of target _peop_extract_generate_messages_check_deps_States[0m
+[  0%] Built target _peop_extract_generate_messages_check_deps_States
+[35m[1mScanning dependencies of target geometry_msgs_generate_messages_nodejs[0m
+[  0%] Built target geometry_msgs_generate_messages_nodejs
+[35m[1mScanning dependencies of target std_msgs_generate_messages_nodejs[0m
+[  0%] Built target std_msgs_generate_messages_nodejs
+[35m[1mScanning dependencies of target std_msgs_generate_messages_cpp[0m
+[  0%] Built target std_msgs_generate_messages_cpp
+[35m[1mScanning dependencies of target geometry_msgs_generate_messages_cpp[0m
+[  0%] Built target geometry_msgs_generate_messages_cpp
+[35m[1mScanning dependencies of target geometry_msgs_generate_messages_eus[0m
+[  0%] Built target geometry_msgs_generate_messages_eus
+[35m[1mScanning dependencies of target std_msgs_generate_messages_eus[0m
+[  0%] Built target std_msgs_generate_messages_eus
+[35m[1mScanning dependencies of target std_msgs_generate_messages_py[0m
+[  0%] Built target std_msgs_generate_messages_py
+[35m[1mScanning dependencies of target geometry_msgs_generate_messages_py[0m
+[  0%] Built target geometry_msgs_generate_messages_py
+[35m[1mScanning dependencies of target geometry_msgs_generate_messages_lisp[0m
+[  0%] Built target geometry_msgs_generate_messages_lisp
+[35m[1mScanning dependencies of target std_msgs_generate_messages_lisp[0m
+[  0%] Built target std_msgs_generate_messages_lisp
+[35m[1mScanning dependencies of target peop_extract_generate_messages_nodejs[0m
+[  3%] [34m[1mGenerating Javascript code from peop_extract/States.msg[0m
+[  6%] [34m[1mGenerating Javascript code from peop_extract/BoundingBox.msg[0m
+[  9%] [34m[1mGenerating Javascript code from peop_extract/peoples.msg[0m
+[ 12%] [34m[1mGenerating Javascript code from peop_extract/BoundingBoxes.msg[0m
+[ 15%] [34m[1mGenerating Javascript code from peop_extract/ObjectCount.msg[0m
+[ 18%] [34m[1mGenerating Javascript code from peop_extract/people_box.msg[0m
+[ 18%] Built target peop_extract_generate_messages_nodejs
+[35m[1mScanning dependencies of target peop_extract_generate_messages_cpp[0m
+[ 21%] [34m[1mGenerating C++ code from peop_extract/States.msg[0m
+[ 25%] [34m[1mGenerating C++ code from peop_extract/BoundingBox.msg[0m
+[ 28%] [34m[1mGenerating C++ code from peop_extract/peoples.msg[0m
+[ 31%] [34m[1mGenerating C++ code from peop_extract/BoundingBoxes.msg[0m
+[ 34%] [34m[1mGenerating C++ code from peop_extract/ObjectCount.msg[0m
+[ 37%] [34m[1mGenerating C++ code from peop_extract/people_box.msg[0m
+[35m[1mScanning dependencies of target peop_extract_generate_messages_eus[0m
+[ 37%] Built target peop_extract_generate_messages_cpp
+[ 40%] [34m[1mGenerating EusLisp code from peop_extract/States.msg[0m
+[ 43%] [34m[1mGenerating EusLisp code from peop_extract/BoundingBox.msg[0m
+[ 46%] [34m[1mGenerating EusLisp code from peop_extract/peoples.msg[0m
+[ 50%] [34m[1mGenerating EusLisp code from peop_extract/BoundingBoxes.msg[0m
+[ 53%] [34m[1mGenerating EusLisp code from peop_extract/ObjectCount.msg[0m
+[ 56%] [34m[1mGenerating EusLisp code from peop_extract/people_box.msg[0m
+[ 59%] [34m[1mGenerating EusLisp manifest code for peop_extract[0m
+WARNING: Package name "lidarPeople" does not follow the naming conventions. It should start with a lower case letter and only contain lower case letters, digits, underscores, and dashes.
+WARNING: Package name "lidarPeople" does not follow the naming conventions. It should start with a lower case letter and only contain lower case letters, digits, underscores, and dashes.
+[ 59%] Built target peop_extract_generate_messages_eus
+[35m[1mScanning dependencies of target peop_extract_generate_messages_py[0m
+[ 62%] [34m[1mGenerating Python from MSG peop_extract/States[0m
+[ 65%] [34m[1mGenerating Python from MSG peop_extract/BoundingBox[0m
+[35m[1mScanning dependencies of target peop_extract_generate_messages_lisp[0m
+[ 68%] [34m[1mGenerating Python from MSG peop_extract/peoples[0m
+[ 71%] [34m[1mGenerating Lisp code from peop_extract/States.msg[0m
+[ 75%] [34m[1mGenerating Lisp code from peop_extract/BoundingBox.msg[0m
+[ 78%] [34m[1mGenerating Python from MSG peop_extract/BoundingBoxes[0m
+[ 81%] [34m[1mGenerating Lisp code from peop_extract/peoples.msg[0m
+[ 84%] [34m[1mGenerating Lisp code from peop_extract/BoundingBoxes.msg[0m
+[ 87%] [34m[1mGenerating Python from MSG peop_extract/ObjectCount[0m
+[ 90%] [34m[1mGenerating Lisp code from peop_extract/ObjectCount.msg[0m
+[ 93%] [34m[1mGenerating Lisp code from peop_extract/people_box.msg[0m
+[ 96%] [34m[1mGenerating Python from MSG peop_extract/people_box[0m
+[ 96%] Built target peop_extract_generate_messages_lisp
+[100%] [34m[1mGenerating Python msg __init__.py for peop_extract[0m
+[100%] Built target peop_extract_generate_messages_py
+[35m[1mScanning dependencies of target peop_extract_generate_messages[0m
+[100%] Built target peop_extract_generate_messages

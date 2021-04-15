@@ -1,0 +1,46 @@
+In file included from [01m[K/opt/ros/melodic/include/ros/ros.h:40:0[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_sparsifier/include/laser_scan_sparsifier/laser_scan_sparsifier.h:33[m[K,
+                 from [01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_sparsifier/src/laser_scan_sparsifier.cpp:30[m[K:
+[01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_sparsifier/src/laser_scan_sparsifier.cpp:[m[K In constructor ‘[01m[Kscan_tools::LaserScanSparsifier::LaserScanSparsifier(ros::NodeHandle, ros::NodeHandle)[m[K’:
+[01m[K/opt/ros/melodic/include/ros/console.h:348:176:[m[K [01;35m[Kwarning: [m[Kunknown conversion type character ‘[01m[K,[m[K’ in format [-Wformat=]
+     ::ros::console::print(filter, __rosconsole_define_location__loc.logger_, __rosconsole_define_location__loc.level_, __FILE__, __LINE__, __ROSCONSOLE_FUNCTION__, __VA_ARGS__)
+[01;32m[K                                                                                                                                                                                ^[m[K
+[01m[K/opt/ros/melodic/include/ros/console.h:351:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROSCONSOLE_PRINT_AT_LOCATION_WITH_FILTER[m[K’
+     ROSCONSOLE_PRINT_AT_LOCATION_WITH_FILTER(NULL, __VA_ARGS__)
+[01;32m[K     ^[m[K
+[01m[K/opt/ros/melodic/include/ros/console.h:387:7:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROSCONSOLE_PRINT_AT_LOCATION[m[K’
+       ROSCONSOLE_PRINT_AT_LOCATION(__VA_ARGS__); \
+[01;32m[K       ^[m[K
+[01m[K/opt/ros/melodic/include/ros/console.h:572:35:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_LOG_COND[m[K’
+ #define ROS_LOG(level, name, ...) ROS_LOG_COND(true, level, name, __VA_ARGS__)
+[01;32m[K                                   ^[m[K
+[01m[K/opt/ros/melodic/include/rosconsole/macros_generated.h:266:24:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_LOG[m[K’
+ #define ROS_FATAL(...) ROS_LOG(::ros::console::levels::Fatal, ROSCONSOLE_DEFAULT_NAME, __VA_ARGS__)
+[01;32m[K                        ^[m[K
+[01m[K/opt/ros/melodic/include/ros/assert.h:132:7:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_FATAL[m[K’
+       ROS_FATAL(__VA_ARGS__); \
+[01;32m[K       ^[m[K
+[01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_sparsifier/src/laser_scan_sparsifier.cpp:45:3:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_ASSERT_MSG[m[K’
+   ROS_ASSERT_MSG(step_ > 0,
+[01;32m[K   ^[m[K
+[01m[K/opt/ros/melodic/include/ros/console.h:348:176:[m[K [01;35m[Kwarning: [m[Ktoo many arguments for format [-Wformat-extra-args]
+     ::ros::console::print(filter, __rosconsole_define_location__loc.logger_, __rosconsole_define_location__loc.level_, __FILE__, __LINE__, __ROSCONSOLE_FUNCTION__, __VA_ARGS__)
+[01;32m[K                                                                                                                                                                                ^[m[K
+[01m[K/opt/ros/melodic/include/ros/console.h:351:5:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROSCONSOLE_PRINT_AT_LOCATION_WITH_FILTER[m[K’
+     ROSCONSOLE_PRINT_AT_LOCATION_WITH_FILTER(NULL, __VA_ARGS__)
+[01;32m[K     ^[m[K
+[01m[K/opt/ros/melodic/include/ros/console.h:387:7:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROSCONSOLE_PRINT_AT_LOCATION[m[K’
+       ROSCONSOLE_PRINT_AT_LOCATION(__VA_ARGS__); \
+[01;32m[K       ^[m[K
+[01m[K/opt/ros/melodic/include/ros/console.h:572:35:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_LOG_COND[m[K’
+ #define ROS_LOG(level, name, ...) ROS_LOG_COND(true, level, name, __VA_ARGS__)
+[01;32m[K                                   ^[m[K
+[01m[K/opt/ros/melodic/include/rosconsole/macros_generated.h:266:24:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_LOG[m[K’
+ #define ROS_FATAL(...) ROS_LOG(::ros::console::levels::Fatal, ROSCONSOLE_DEFAULT_NAME, __VA_ARGS__)
+[01;32m[K                        ^[m[K
+[01m[K/opt/ros/melodic/include/ros/assert.h:132:7:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_FATAL[m[K’
+       ROS_FATAL(__VA_ARGS__); \
+[01;32m[K       ^[m[K
+[01m[K/home/xavier/catkin_ws/src/scan_tools/laser_scan_sparsifier/src/laser_scan_sparsifier.cpp:45:3:[m[K [01;36m[Knote: [m[Kin expansion of macro ‘[01m[KROS_ASSERT_MSG[m[K’
+   ROS_ASSERT_MSG(step_ > 0,
+[01;32m[K   ^[m[K

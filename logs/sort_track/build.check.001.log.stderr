@@ -1,3 +1,0 @@
-CMake Error: The source directory "/home/xavier/catkin_ws/src/sort-deepsort-yolov3-ROS/sort_track" does not exist.
-Specify --help for usage, or press the help button on the CMake GUI.
-make: *** [cmake_check_build_system] Error 1

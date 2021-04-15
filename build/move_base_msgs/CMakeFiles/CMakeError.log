@@ -1,23 +1,23 @@
 Determining if the pthread_create exist failed with the following output:
 Change Dir: /home/xavier/catkin_ws/build/move_base_msgs/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_421c7/fast"
-/usr/bin/make -f CMakeFiles/cmTC_421c7.dir/build.make CMakeFiles/cmTC_421c7.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_a3aae/fast"
+/usr/bin/make -f CMakeFiles/cmTC_a3aae.dir/build.make CMakeFiles/cmTC_a3aae.dir/build
 make[1]: Entering directory '/home/xavier/catkin_ws/build/move_base_msgs/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_421c7.dir/CheckSymbolExists.c.o
-/usr/bin/cc    -o CMakeFiles/cmTC_421c7.dir/CheckSymbolExists.c.o   -c /home/xavier/catkin_ws/build/move_base_msgs/CMakeFiles/CMakeTmp/CheckSymbolExists.c
-Linking C executable cmTC_421c7
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_421c7.dir/link.txt --verbose=1
-/usr/bin/cc      -rdynamic CMakeFiles/cmTC_421c7.dir/CheckSymbolExists.c.o  -o cmTC_421c7 
-CMakeFiles/cmTC_421c7.dir/CheckSymbolExists.c.o: In function `main':
+Building C object CMakeFiles/cmTC_a3aae.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_a3aae.dir/CheckSymbolExists.c.o   -c /home/xavier/catkin_ws/build/move_base_msgs/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_a3aae
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a3aae.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_a3aae.dir/CheckSymbolExists.c.o  -o cmTC_a3aae 
+CMakeFiles/cmTC_a3aae.dir/CheckSymbolExists.c.o: In function `main':
 CheckSymbolExists.c:(.text+0x14): undefined reference to `pthread_create'
 CheckSymbolExists.c:(.text+0x18): undefined reference to `pthread_create'
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_421c7.dir/build.make:97: recipe for target 'cmTC_421c7' failed
-make[1]: *** [cmTC_421c7] Error 1
+CMakeFiles/cmTC_a3aae.dir/build.make:97: recipe for target 'cmTC_a3aae' failed
+make[1]: *** [cmTC_a3aae] Error 1
 make[1]: Leaving directory '/home/xavier/catkin_ws/build/move_base_msgs/CMakeFiles/CMakeTmp'
-Makefile:126: recipe for target 'cmTC_421c7/fast' failed
-make: *** [cmTC_421c7/fast] Error 2
+Makefile:126: recipe for target 'cmTC_a3aae/fast' failed
+make: *** [cmTC_a3aae/fast] Error 2
 
 File /home/xavier/catkin_ws/build/move_base_msgs/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
 /* */
@@ -37,20 +37,20 @@ int main(int argc, char** argv)
 Determining if the function pthread_create exists in the pthreads failed with the following output:
 Change Dir: /home/xavier/catkin_ws/build/move_base_msgs/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_54049/fast"
-/usr/bin/make -f CMakeFiles/cmTC_54049.dir/build.make CMakeFiles/cmTC_54049.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_ea94a/fast"
+/usr/bin/make -f CMakeFiles/cmTC_ea94a.dir/build.make CMakeFiles/cmTC_ea94a.dir/build
 make[1]: Entering directory '/home/xavier/catkin_ws/build/move_base_msgs/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_54049.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_54049.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
-Linking C executable cmTC_54049
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_54049.dir/link.txt --verbose=1
-/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_54049.dir/CheckFunctionExists.c.o  -o cmTC_54049 -lpthreads 
+Building C object CMakeFiles/cmTC_ea94a.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_ea94a.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
+Linking C executable cmTC_ea94a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ea94a.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_ea94a.dir/CheckFunctionExists.c.o  -o cmTC_ea94a -lpthreads 
 /usr/bin/ld: cannot find -lpthreads
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_54049.dir/build.make:97: recipe for target 'cmTC_54049' failed
-make[1]: *** [cmTC_54049] Error 1
+CMakeFiles/cmTC_ea94a.dir/build.make:97: recipe for target 'cmTC_ea94a' failed
+make[1]: *** [cmTC_ea94a] Error 1
 make[1]: Leaving directory '/home/xavier/catkin_ws/build/move_base_msgs/CMakeFiles/CMakeTmp'
-Makefile:126: recipe for target 'cmTC_54049/fast' failed
-make: *** [cmTC_54049/fast] Error 2
+Makefile:126: recipe for target 'cmTC_ea94a/fast' failed
+make: *** [cmTC_ea94a/fast] Error 2
 
 

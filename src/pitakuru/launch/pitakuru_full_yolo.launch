@@ -97,19 +97,11 @@
 <param name="smooth_accel_costmap"    type="double"	value="0.7"/> <!-- acceletartion smooth max value up to 0.99   -->
 <param name="smooth_accel_stop"    type="double"	value="0.92"/> <!-- acceletartion smooth max value up to 0.99   -->
 <param name="max_speed_karugamo"    type="double"	value="1400"/> <!-- (not used depercated)max speed value for karugamo   -->
-<<<<<<< HEAD
-<param name="max_speed_follow"    type="double"	value="1600"/> <!--1500--><!--3000--> <!--max speed value for frontal people follow-->
-<param name="max_speed_manual"    type="double"	value="1600"/>  <!--15000--><!-- 3000--> <!-- max speed value for frontal joystick-->
-<param name="max_speed_manual_heavy"    type="double"	value="1400"/>  <!--15000--><!-- 3000--> <!-- max speed value for frontal joystick-->
-<param name="max_speed_side_manual"    type="double"	value="400"/> <!-- max speed value for side joystick-->
-<param name="speed_wp_lost"    type="double"	value="1200"/> <!-- speed when is lost or wp mode-->
-=======
 <param name="max_speed_follow"    type="double"	value="2000"/> <!--1500--><!--3000--> <!--max speed value for frontal people follow-->
 <param name="max_speed_manual"    type="double"	value="2000"/>  <!--15000--><!-- 3000--> <!-- max speed value for frontal joystick-->
 <param name="max_speed_manual_heavy"    type="double"	value="1200"/>  <!--15000--><!-- 3000--> <!-- max speed value for frontal joystick-->
 <param name="max_speed_side_manual"    type="double"	value="300"/> <!-- max speed value for side joystick-->
 <param name="speed_wp_lost"    type="double"	value="1400"/> <!-- speed when is lost or wp mode-->
->>>>>>> tmp2
 <param name="max_defelct_angle"    type="double"	value="60"/> <!-- max deflect angle-->
 <param name="angle_gain_wp"    type="double"	value="100"/> <!-- max deflect angle-->
 <param name="near_far_distance"    type="double"  value="350.0"/> <!-- distance to detect, enter near, far distance in centimeter-->
@@ -166,15 +158,9 @@
 -->
 
 <!-- navigation -->
-<<<<<<< HEAD
-<!--
-<include file="$(find pitakuru)/launch/navigation.launch"/>
--->
-=======
  <!-- 
 <include file="$(find pitakuru)/launch/navigation.launch"/>
  -->
->>>>>>> tmp2
 <!--
 <node pkg="amcl" type="amcl" name="amcl"/>
 -->

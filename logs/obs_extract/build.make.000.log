@@ -1,0 +1,64 @@
+[35m[1mScanning dependencies of target std_msgs_generate_messages_py[0m
+[  0%] Built target std_msgs_generate_messages_py
+[35m[1mScanning dependencies of target geometry_msgs_generate_messages_py[0m
+[  0%] Built target geometry_msgs_generate_messages_py
+[35m[1mScanning dependencies of target _obs_extract_generate_messages_check_deps_States[0m
+[  0%] Built target _obs_extract_generate_messages_check_deps_States
+[35m[1mScanning dependencies of target _obs_extract_generate_messages_check_deps_Obstacles[0m
+[  0%] Built target _obs_extract_generate_messages_check_deps_Obstacles
+[35m[1mScanning dependencies of target _obs_extract_generate_messages_check_deps_CircleObstacle[0m
+[  0%] Built target _obs_extract_generate_messages_check_deps_CircleObstacle
+[35m[1mScanning dependencies of target _obs_extract_generate_messages_check_deps_SegmentObstacle[0m
+[  0%] Built target _obs_extract_generate_messages_check_deps_SegmentObstacle
+[35m[1mScanning dependencies of target geometry_msgs_generate_messages_nodejs[0m
+[  0%] Built target geometry_msgs_generate_messages_nodejs
+[35m[1mScanning dependencies of target std_msgs_generate_messages_nodejs[0m
+[  0%] Built target std_msgs_generate_messages_nodejs
+[35m[1mScanning dependencies of target geometry_msgs_generate_messages_lisp[0m
+[  0%] Built target geometry_msgs_generate_messages_lisp
+[35m[1mScanning dependencies of target geometry_msgs_generate_messages_eus[0m
+[35m[1mScanning dependencies of target std_msgs_generate_messages_lisp[0m
+[35m[1mScanning dependencies of target std_msgs_generate_messages_eus[0m
+[  0%] Built target geometry_msgs_generate_messages_eus
+[  0%] Built target std_msgs_generate_messages_lisp
+[  0%] Built target std_msgs_generate_messages_eus
+[35m[1mScanning dependencies of target std_msgs_generate_messages_cpp[0m
+[35m[1mScanning dependencies of target geometry_msgs_generate_messages_cpp[0m
+[  0%] Built target std_msgs_generate_messages_cpp
+[  0%] Built target geometry_msgs_generate_messages_cpp
+[35m[1mScanning dependencies of target obs_extract_generate_messages_py[0m
+[  4%] [34m[1mGenerating Python from MSG obs_extract/CircleObstacle[0m
+[  9%] [34m[1mGenerating Python from MSG obs_extract/Obstacles[0m
+[35m[1mScanning dependencies of target obs_extract_generate_messages_nodejs[0m
+[ 13%] [34m[1mGenerating Python from MSG obs_extract/SegmentObstacle[0m
+[ 18%] [34m[1mGenerating Javascript code from obs_extract/CircleObstacle.msg[0m
+[ 22%] [34m[1mGenerating Javascript code from obs_extract/Obstacles.msg[0m
+[ 27%] [34m[1mGenerating Javascript code from obs_extract/SegmentObstacle.msg[0m
+[ 31%] [34m[1mGenerating Python from MSG obs_extract/States[0m
+[35m[1mScanning dependencies of target obs_extract_generate_messages_lisp[0m
+[35m[1mScanning dependencies of target obs_extract_generate_messages_eus[0m
+[ 36%] [34m[1mGenerating Lisp code from obs_extract/CircleObstacle.msg[0m
+[ 40%] [34m[1mGenerating Javascript code from obs_extract/States.msg[0m
+[ 45%] [34m[1mGenerating EusLisp code from obs_extract/CircleObstacle.msg[0m
+[ 50%] [34m[1mGenerating Lisp code from obs_extract/Obstacles.msg[0m
+[ 50%] Built target obs_extract_generate_messages_nodejs
+[ 54%] [34m[1mGenerating EusLisp code from obs_extract/Obstacles.msg[0m
+[ 59%] [34m[1mGenerating Python msg __init__.py for obs_extract[0m
+[ 63%] [34m[1mGenerating Lisp code from obs_extract/SegmentObstacle.msg[0m
+[ 68%] [34m[1mGenerating Lisp code from obs_extract/States.msg[0m
+[ 77%] [34m[1mGenerating EusLisp code from obs_extract/SegmentObstacle.msg[0m
+[ 77%] [34m[1mGenerating EusLisp code from obs_extract/States.msg[0m
+[ 77%] Built target obs_extract_generate_messages_lisp
+[35m[1mScanning dependencies of target obs_extract_generate_messages_cpp[0m
+[ 77%] Built target obs_extract_generate_messages_py
+[ 81%] [34m[1mGenerating C++ code from obs_extract/CircleObstacle.msg[0m
+[ 86%] [34m[1mGenerating EusLisp manifest code for obs_extract[0m
+[ 90%] [34m[1mGenerating C++ code from obs_extract/Obstacles.msg[0m
+WARNING: Package name "lidarPeople" does not follow the naming conventions. It should start with a lower case letter and only contain lower case letters, digits, underscores, and dashes.
+[ 95%] [34m[1mGenerating C++ code from obs_extract/SegmentObstacle.msg[0m
+[100%] [34m[1mGenerating C++ code from obs_extract/States.msg[0m
+[100%] Built target obs_extract_generate_messages_cpp
+WARNING: Package name "lidarPeople" does not follow the naming conventions. It should start with a lower case letter and only contain lower case letters, digits, underscores, and dashes.
+[100%] Built target obs_extract_generate_messages_eus
+[35m[1mScanning dependencies of target obs_extract_generate_messages[0m
+[100%] Built target obs_extract_generate_messages

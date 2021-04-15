@@ -994,12 +994,6 @@ void calc_100hz(){
                 missing_track+=1;
                 ROS_INFO("miss %i",missing_track);
                 
-               
-                //if(cont_sp_follow>2){
-                //    far();
-                //}else{
-                    //ROS_INFO("blinking");
-                    //blink_blue(counter_blink,20);
                     if(lidar_failed==false && low_voltage==false){
                         blink_blue2(0.25);
                     }
@@ -1070,13 +1064,17 @@ void calc_100hz(){
                         cont_detect_peop=0;
                         sound_counter++;
                         if(sound_counter%6==0){
-<<<<<<< HEAD
-                            alert_lost_voice_sound();
-=======
                             alert_search_voice_sound();
->>>>>>> tmp2
                             //alert_warning_sound();
                         }
+                    }else{
+                        ctrl_front_follow=(1-smooth_accel_stop)*(0)+(smooth_accel_stop*ctrl_front_follow);
+                        ctrl_yaw=0;
+                        vel_steer.linear.x= ctrl_front_follow;
+                        vel_steer.angular.z= ctrl_yaw;
+                        vel_steer.linear.x=(vel_steer.linear.x/21)*0.1045;
+                        vel_steer.angular.z=(vel_steer.angular.z/21)*0.1045;
+                        speed_publisher.publish(vel_steer);
                     }
                 //}
             }//losted
@@ -1156,6 +1154,14 @@ void calc_100hz(){
                         alert_search_voice_sound();
 
                     }
+                }else{
+                    ctrl_front_follow=(1-smooth_accel_stop)*(0)+(smooth_accel_stop*ctrl_front_follow);
+                    ctrl_yaw=0;
+                    vel_steer.linear.x= ctrl_front_follow;
+                    vel_steer.angular.z= ctrl_yaw;
+                    vel_steer.linear.x=(vel_steer.linear.x/21)*0.1045;
+                    vel_steer.angular.z=(vel_steer.angular.z/21)*0.1045;
+                    speed_publisher.publish(vel_steer);
                 }
                    
                        

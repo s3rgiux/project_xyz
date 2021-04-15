@@ -1,5 +1,0 @@
-[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:20:29:[m[K [01;31m[Kfatal error: [m[Kpitakuru/States.h: No such file or directory
-compilation terminated.
-make[2]: *** [CMakeFiles/control_xy_node_spline_follow_mixed.dir/src/control_xy_odom_wp_nav_spline_mixed2.cpp.o] Error 1
-make[1]: *** [CMakeFiles/control_xy_node_spline_follow_mixed.dir/all] Error 2
-make: *** [all] Error 2

@@ -48,6 +48,7 @@ CMakeFiles/obstacle_detector_nodelets.dir/src/nodelets/obstacle_extractor_nodele
 CMakeFiles/obstacle_detector_nodelets.dir/src/nodelets/obstacle_extractor_nodelet.cpp.o: /opt/ros/melodic/include/ros/exceptions.h
 CMakeFiles/obstacle_detector_nodelets.dir/src/nodelets/obstacle_extractor_nodelet.cpp.o: /opt/ros/melodic/include/ros/forwards.h
 CMakeFiles/obstacle_detector_nodelets.dir/src/nodelets/obstacle_extractor_nodelet.cpp.o: /opt/ros/melodic/include/ros/init.h
+CMakeFiles/obstacle_detector_nodelets.dir/src/nodelets/obstacle_extractor_nodelet.cpp.o: /opt/ros/melodic/include/ros/internal/condition_variable.h
 CMakeFiles/obstacle_detector_nodelets.dir/src/nodelets/obstacle_extractor_nodelet.cpp.o: /opt/ros/melodic/include/ros/macros.h
 CMakeFiles/obstacle_detector_nodelets.dir/src/nodelets/obstacle_extractor_nodelet.cpp.o: /opt/ros/melodic/include/ros/master.h
 CMakeFiles/obstacle_detector_nodelets.dir/src/nodelets/obstacle_extractor_nodelet.cpp.o: /opt/ros/melodic/include/ros/message.h
@@ -260,6 +261,7 @@ CMakeFiles/obstacle_detector_nodelets.dir/src/nodelets/obstacle_tracker_nodelet.
 CMakeFiles/obstacle_detector_nodelets.dir/src/nodelets/obstacle_tracker_nodelet.cpp.o: /opt/ros/melodic/include/ros/exceptions.h
 CMakeFiles/obstacle_detector_nodelets.dir/src/nodelets/obstacle_tracker_nodelet.cpp.o: /opt/ros/melodic/include/ros/forwards.h
 CMakeFiles/obstacle_detector_nodelets.dir/src/nodelets/obstacle_tracker_nodelet.cpp.o: /opt/ros/melodic/include/ros/init.h
+CMakeFiles/obstacle_detector_nodelets.dir/src/nodelets/obstacle_tracker_nodelet.cpp.o: /opt/ros/melodic/include/ros/internal/condition_variable.h
 CMakeFiles/obstacle_detector_nodelets.dir/src/nodelets/obstacle_tracker_nodelet.cpp.o: /opt/ros/melodic/include/ros/macros.h
 CMakeFiles/obstacle_detector_nodelets.dir/src/nodelets/obstacle_tracker_nodelet.cpp.o: /opt/ros/melodic/include/ros/master.h
 CMakeFiles/obstacle_detector_nodelets.dir/src/nodelets/obstacle_tracker_nodelet.cpp.o: /opt/ros/melodic/include/ros/message.h
@@ -386,6 +388,7 @@ CMakeFiles/obstacle_detector_nodelets.dir/src/nodelets/scans_merger_nodelet.cpp.
 CMakeFiles/obstacle_detector_nodelets.dir/src/nodelets/scans_merger_nodelet.cpp.o: /opt/ros/melodic/include/ros/exceptions.h
 CMakeFiles/obstacle_detector_nodelets.dir/src/nodelets/scans_merger_nodelet.cpp.o: /opt/ros/melodic/include/ros/forwards.h
 CMakeFiles/obstacle_detector_nodelets.dir/src/nodelets/scans_merger_nodelet.cpp.o: /opt/ros/melodic/include/ros/init.h
+CMakeFiles/obstacle_detector_nodelets.dir/src/nodelets/scans_merger_nodelet.cpp.o: /opt/ros/melodic/include/ros/internal/condition_variable.h
 CMakeFiles/obstacle_detector_nodelets.dir/src/nodelets/scans_merger_nodelet.cpp.o: /opt/ros/melodic/include/ros/macros.h
 CMakeFiles/obstacle_detector_nodelets.dir/src/nodelets/scans_merger_nodelet.cpp.o: /opt/ros/melodic/include/ros/master.h
 CMakeFiles/obstacle_detector_nodelets.dir/src/nodelets/scans_merger_nodelet.cpp.o: /opt/ros/melodic/include/ros/message.h

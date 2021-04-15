@@ -3036,6 +3036,10 @@ device_types.h
 host_defines.h
 /usr/local/cuda-10.2/include/crt/host_defines.h
 
+/usr/local/cuda-10.2/include/cublas_v2.h
+cublas_api.h
+/usr/local/cuda-10.2/include/cublas_api.h
+
 /usr/local/cuda-10.2/include/cuda_device_runtime_api.h
 driver_types.h
 /usr/local/cuda-10.2/include/driver_types.h

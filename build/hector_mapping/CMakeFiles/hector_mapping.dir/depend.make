@@ -72,6 +72,7 @@ CMakeFiles/hector_mapping.dir/src/HectorMappingRos.cpp.o: /opt/ros/melodic/inclu
 CMakeFiles/hector_mapping.dir/src/HectorMappingRos.cpp.o: /opt/ros/melodic/include/ros/exceptions.h
 CMakeFiles/hector_mapping.dir/src/HectorMappingRos.cpp.o: /opt/ros/melodic/include/ros/forwards.h
 CMakeFiles/hector_mapping.dir/src/HectorMappingRos.cpp.o: /opt/ros/melodic/include/ros/init.h
+CMakeFiles/hector_mapping.dir/src/HectorMappingRos.cpp.o: /opt/ros/melodic/include/ros/internal/condition_variable.h
 CMakeFiles/hector_mapping.dir/src/HectorMappingRos.cpp.o: /opt/ros/melodic/include/ros/macros.h
 CMakeFiles/hector_mapping.dir/src/HectorMappingRos.cpp.o: /opt/ros/melodic/include/ros/master.h
 CMakeFiles/hector_mapping.dir/src/HectorMappingRos.cpp.o: /opt/ros/melodic/include/ros/message.h
@@ -620,6 +621,7 @@ CMakeFiles/hector_mapping.dir/src/main.cpp.o: /opt/ros/melodic/include/ros/excep
 CMakeFiles/hector_mapping.dir/src/main.cpp.o: /opt/ros/melodic/include/ros/exceptions.h
 CMakeFiles/hector_mapping.dir/src/main.cpp.o: /opt/ros/melodic/include/ros/forwards.h
 CMakeFiles/hector_mapping.dir/src/main.cpp.o: /opt/ros/melodic/include/ros/init.h
+CMakeFiles/hector_mapping.dir/src/main.cpp.o: /opt/ros/melodic/include/ros/internal/condition_variable.h
 CMakeFiles/hector_mapping.dir/src/main.cpp.o: /opt/ros/melodic/include/ros/macros.h
 CMakeFiles/hector_mapping.dir/src/main.cpp.o: /opt/ros/melodic/include/ros/master.h
 CMakeFiles/hector_mapping.dir/src/main.cpp.o: /opt/ros/melodic/include/ros/message.h

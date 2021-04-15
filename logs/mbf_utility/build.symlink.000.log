@@ -1,0 +1,4 @@
+Symlinking /home/xavier/catkin_ws/devel/share/mbf_utility/cmake/mbf_utilityConfig.cmake
+Symlinking /home/xavier/catkin_ws/devel/share/mbf_utility/cmake/mbf_utilityConfig-version.cmake
+Symlinking /home/xavier/catkin_ws/devel/lib/libmbf_utility.so
+Symlinking /home/xavier/catkin_ws/devel/lib/pkgconfig/mbf_utility.pc

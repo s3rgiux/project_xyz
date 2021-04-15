@@ -49,6 +49,7 @@ CMakeFiles/navsat_transform_nodelet.dir/src/navsat_transform_nodelet.cpp.o: /opt
 CMakeFiles/navsat_transform_nodelet.dir/src/navsat_transform_nodelet.cpp.o: /opt/ros/melodic/include/ros/exceptions.h
 CMakeFiles/navsat_transform_nodelet.dir/src/navsat_transform_nodelet.cpp.o: /opt/ros/melodic/include/ros/forwards.h
 CMakeFiles/navsat_transform_nodelet.dir/src/navsat_transform_nodelet.cpp.o: /opt/ros/melodic/include/ros/init.h
+CMakeFiles/navsat_transform_nodelet.dir/src/navsat_transform_nodelet.cpp.o: /opt/ros/melodic/include/ros/internal/condition_variable.h
 CMakeFiles/navsat_transform_nodelet.dir/src/navsat_transform_nodelet.cpp.o: /opt/ros/melodic/include/ros/macros.h
 CMakeFiles/navsat_transform_nodelet.dir/src/navsat_transform_nodelet.cpp.o: /opt/ros/melodic/include/ros/master.h
 CMakeFiles/navsat_transform_nodelet.dir/src/navsat_transform_nodelet.cpp.o: /opt/ros/melodic/include/ros/message.h

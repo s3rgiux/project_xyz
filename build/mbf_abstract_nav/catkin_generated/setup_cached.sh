@@ -9,7 +9,6 @@
 # modified environment variables
 export CMAKE_PREFIX_PATH="/home/xavier/catkin_ws/devel/.private/mbf_abstract_nav:$CMAKE_PREFIX_PATH"
 export LD_LIBRARY_PATH="/home/xavier/catkin_ws/devel/.private/mbf_abstract_nav/lib:$LD_LIBRARY_PATH"
-export PKG_CONFIG_PATH="/home/xavier/catkin_ws/devel/.private/mbf_abstract_nav/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PWD='/home/xavier/catkin_ws/build/mbf_abstract_nav'
 export PYTHONPATH="/home/xavier/catkin_ws/devel/.private/mbf_abstract_nav/lib/python2.7/dist-packages:$PYTHONPATH"
 export ROSLISP_PACKAGE_DIRECTORIES="/home/xavier/catkin_ws/devel/.private/mbf_abstract_nav/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"

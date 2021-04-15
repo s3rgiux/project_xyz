@@ -380,17 +380,10 @@ class PitWheels:
                 dist3 =np.sqrt(closest.x*closest.x+closest.y*closest.y)
                 self.tracked_dist=dist3
                 ## check errorwith yolo
-<<<<<<< HEAD
-                # ang_obj= 90-np.arctan2(closest.x, closest.y) * 180 / np.pi
-                # if np.abs(ang-self.yolo_ang)>37 and self.yolo_status>0 and self.first_got:
-                #     self.count_angle=self.count_angle+1
-                #     if self.count_angle>35:
-=======
                 ang_obj= 90-np.arctan2(closest.x, closest.y) * 180 / np.pi
                 # if np.abs(ang-self.yolo_ang)>37 and self.yolo_status>0 and self.first_got:
                 #     self.count_angle=self.count_angle+1
                 #     if self.count_angle>25:
->>>>>>> tmp2
                 #         self.count_angle=0
                 #         self.try_to_search=True
                 #         self.search_nearest(data)

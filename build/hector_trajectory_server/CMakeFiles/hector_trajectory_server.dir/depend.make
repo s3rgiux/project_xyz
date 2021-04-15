@@ -37,6 +37,7 @@ CMakeFiles/hector_trajectory_server.dir/src/hector_trajectory_server.cpp.o: /opt
 CMakeFiles/hector_trajectory_server.dir/src/hector_trajectory_server.cpp.o: /opt/ros/melodic/include/ros/exceptions.h
 CMakeFiles/hector_trajectory_server.dir/src/hector_trajectory_server.cpp.o: /opt/ros/melodic/include/ros/forwards.h
 CMakeFiles/hector_trajectory_server.dir/src/hector_trajectory_server.cpp.o: /opt/ros/melodic/include/ros/init.h
+CMakeFiles/hector_trajectory_server.dir/src/hector_trajectory_server.cpp.o: /opt/ros/melodic/include/ros/internal/condition_variable.h
 CMakeFiles/hector_trajectory_server.dir/src/hector_trajectory_server.cpp.o: /opt/ros/melodic/include/ros/macros.h
 CMakeFiles/hector_trajectory_server.dir/src/hector_trajectory_server.cpp.o: /opt/ros/melodic/include/ros/master.h
 CMakeFiles/hector_trajectory_server.dir/src/hector_trajectory_server.cpp.o: /opt/ros/melodic/include/ros/message.h
