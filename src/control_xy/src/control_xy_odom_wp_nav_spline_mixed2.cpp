@@ -719,6 +719,12 @@ void check_scan(){
             if(mode_idle){
                 alert_idle_no_sound();
             }
+            if(collision){
+                alert_collision_no_sound();
+            }
+            if(danger){
+                alert_danger_no_sound();
+            }
         }
     }
 }
