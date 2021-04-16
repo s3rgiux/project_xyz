@@ -799,7 +799,7 @@ void restart_follow_variables(){
 void calc_100hz(){
     save_counter++;
     karugamo_counter++;
-    if(mode_idle && karugamo_counter%100==0){
+    if(mode_idle && karugamo_counter%20==0){
         vel_steer.linear.x=0;
         vel_steer.angular.z=0;
         speed_publisher.publish(vel_steer);
@@ -1776,6 +1776,11 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan){
     if(danger && collision == false ){
         danger_counter++;
         alert_danger_no_sound();
+        if(danger_counter%10==0){
+            vel_steer.linear.x= 0;
+            vel_steer.angular.z= 0;
+            speed_publisher.publish(vel_steer);
+        }
         if(danger_counter%100==0){
             //alert_danger_sound();
             alert_danger_voice_sound();
