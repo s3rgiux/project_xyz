@@ -225,6 +225,7 @@ class PitWheels:
             print("searching the nearest")
             self.try_to_search=True
             self.got_obj_lidar=False
+            self.first_got=False
             #self.search_nearest()
         elif states.state=="KARUGAMO" and states.state_karugamo=="far" and self.first_got==False and self.try_to_search==False and self.yolo_ang!=-500:
             print("searching the nearest")
@@ -297,7 +298,7 @@ class PitWheels:
                         #
 
                     #elif self.tracked_x == -50 and self.tracked_y == -50 or (time.time()-self.last_time_tracked)>0.25:
-                    elif (time.time()-self.last_time_tracked)>0.2:#0.55:
+                    elif (time.time()-self.last_time_tracked)>0.3:#0.55:
                         self.ang_dist.x=x.center.x
                         self.ang_dist.y=x.center.y#dist*100
                         self.ang_dist.z=-1#dist*100

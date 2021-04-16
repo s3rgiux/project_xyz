@@ -192,6 +192,7 @@ save_counter=0;
         lidar_failed=false;
         joy_counter=0;
         karugamo_counter=0;
+        ctrl_add_side=0;
        
     }
     ~test_head(){}
@@ -726,10 +727,11 @@ void check_scan(){
 void check_obsta(){
     ros::Time time_now = ros::Time::now();
     ros::Duration duration = time_now - last_time_obstacle;
-    if((duration.toSec())>0.85){
+    if((duration.toSec())>0.9){
         pitakuru_state_msg.state_karugamo="no_people_lidar_detection";
         setZeroPosLidar();
         state_pub.publish(pitakuru_state_msg);
+        last_time_obstacle= ros::Time::now();
        /*  ros::Duration duration2 = time_now - time_blink_scan;
         if(duration2.toSec()>0.2){
             time_blink_scan=time_now;
@@ -820,6 +822,7 @@ void calc_100hz(){
     if(lidar_people_status>0 && stop_functions==true && yolo_status>0){
         restart_follow_variables();//first_tracking
         ROS_INFO("restar folow variable");
+        stop_functions=false;
     }
     if(entered_first_time_far==true && lidar_people_status>0 ){
         entered_first_time_far=false;
@@ -880,7 +883,7 @@ void calc_100hz(){
                 last_time_tracking = ros::Time::now();
                 if(distanciaPeople2<near_far_distance){//near
                     near();
-                    //ROS_INFO("near()");
+                    ROS_INFO("near()");
                     if(lidar_failed==false && changed_setting==false && low_voltage ==false){
                         alert_karugamo_near_no_sound();
                     }
@@ -989,7 +992,7 @@ void calc_100hz(){
             //      far();
             //      ROS_INFO("far() not in range");
             // }
-            else if(danger==false  && (lidar_people_status<0 || (lidar_people_status<0 && distanciaPeople2>=near_far_distance))&& stop_functions==false){//lostedlidar
+            else if(danger==false  && (lidar_people_status<0 || (lidar_people_status>0 && distanciaPeople2>=near_far_distance))&& stop_functions==false){//lostedlidar
                 //if(is_near==false){
                 missing_track+=1;
                 ROS_INFO("miss %i",missing_track);
@@ -997,7 +1000,7 @@ void calc_100hz(){
                     if(lidar_failed==false && low_voltage==false){
                         blink_blue2(0.25);
                     }
-                    if(missing_track>2){
+                    if(missing_track>4){
                     pitakuru_state_msg.state="KARUGAMO";
                     pitakuru_state_msg.state_karugamo="losting_with_lidar";
                     pitakuru_state_msg.trackeds.linear.x=distanciaPeople2;
@@ -1063,7 +1066,7 @@ void calc_100hz(){
                         missing_track=0;
                         cont_detect_peop=0;
                         sound_counter++;
-                        if(sound_counter%6==0){
+                        if(sound_counter%20==0){
                             alert_search_voice_sound();
                             //alert_warning_sound();
                         }
@@ -1148,7 +1151,7 @@ void calc_100hz(){
                     missing_track=0;
                     cont_detect_peop=0;
                     sound_counter++;
-                    if(sound_counter%6==0){
+                    if(sound_counter%20==0){
                         //alert_warning_sound();
                         //alert_lost_voice_sound();
                         alert_search_voice_sound();
@@ -1525,7 +1528,7 @@ void near(){
                     ang_peop_lidar = 90- atan2(cx,cy) * 180 / 3.1416 ;// ;  -90+ atan2(cx, cy) * 180 / 3.1416
                     distanciaPeople2 = sqrt(cx*cx+cy*cy)*100;
                 //}
-               // ROS_INFO("near() an%f d%f",ang_peop_lidar,distanciaPeople2);
+                ROS_INFO("near() an%f d%f",ang_peop_lidar,distanciaPeople2);
                 tracked_angle= ang_peop_lidar;
                 tracked_distance = distanciaPeople2;
                 missing_track=0;
@@ -1544,7 +1547,8 @@ void near(){
                 //}else{
                     ctrl_ang= low_vel_gain_follow*ang_peop_lidar-ctrl_ang/2;
                 //}
-                //experiementa
+                //
+                
                 ctrl_add_side=(1-smooth_accel_side_manual)*(joy_side*max_speed_side_manual)+(smooth_accel_side_manual*ctrl_add_side);
                 //ctrl_add_side=0;
                 if((vel_m1 >= vel_detect_costmap || vel_m2 >= vel_detect_costmap )){//&&distanciaPeople2>dist_robot_people){
@@ -1556,7 +1560,7 @@ void near(){
                 //ROS_INFO("cost%f",ctrl_side_costmap);
                 ctrl_ang=ctrl_ang+ctrl_add_side+ctrl_side_costmap*gain_to_costmap;
                 //ctrl_ang=ctrl_ang+ctrl_side_costmap*gain_to_costmap;
-                //ROS_INFO("ctrl ang() an%f s %f ,d%f",ctrl_ang,ctrl_add_side,ctrl_side_costmap);
+                ROS_INFO("ctrl ang() an%f s %f ,d%f",ctrl_ang,ctrl_add_side,ctrl_side_costmap);
                 //
                 float restriction=400;
                 if (ctrl_ang>restriction){
@@ -2163,6 +2167,7 @@ void mode_people_follow()
     ctrl_front_follow= 0;
     ctrl_ang= 0;
     ctrl_yaw = 0;
+    ctrl_add_side=0;
     started_track_yolo=false;
     ctrl_front_manual= 0;
     ctrl_side_manual= 0;
