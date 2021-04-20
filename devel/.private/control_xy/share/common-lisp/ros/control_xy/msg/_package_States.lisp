@@ -13,6 +13,18 @@
           STATE_MANUAL
           STATE_SCAN-VAL
           STATE_SCAN
+          STATE_LOAD-VAL
+          STATE_LOAD
+          STATE_SHELF-VAL
+          STATE_SHELF
+          COSTMAP-VAL
+          COSTMAP
+          SIDE_JOYSTICK-VAL
+          SIDE_JOYSTICK
+          CTRL_FRONT-VAL
+          CTRL_FRONT
+          CTRL_SIDE-VAL
+          CTRL_SIDE
           TRACKEDS-VAL
           TRACKEDS
 ))

@@ -322,7 +322,9 @@ void amperageCallback(const control_xy::StateWheels& msg){
         heavy=true;
         //alert_manual_no_sound();
         detected_heavy=false;
+        pitakuru_state_msg.state_load="almost_stop";
     }else{
+        pitakuru_state_msg.state_load="checking_for_load";
         int_r_curr=int_r_curr+msg.right_current*dt;
         der_r_curr=(msg.right_current-prev_r_curr)/dt;
         fil_der_r_curr= fil_der_r_curr*alf+ der_r_curr*(1-alf);
@@ -354,11 +356,14 @@ void amperageCallback(const control_xy::StateWheels& msg){
                     //alert_karugamo_near_no_sound();
                     heavy_r=1;
                     detected_heavy=true;
-                    ROS_INFO("probable heavy load right");
-                    ROS_INFO("%f integ r_",int_r_curr);
-                    ROS_INFO("%f max %f avg",max_r_curr,avg_amp_r);
+                    //ROS_INFO("probable heavy load right");
+                    //ROS_INFO("%f integ r_",int_r_curr);
+                    //ROS_INFO("%f max %f avg",max_r_curr,avg_amp_r);
+                    pitakuru_state_msg.state_load="heavy_load_right";
+                    
                 }else  if (max_l_curr <peak_not_heavy_curr){
                     heavy_r=2;
+                    //pitakuru_state_msg.state_load="heavy_load_right";
                 }
             }
             //ROS_INFO("entered in change right");
@@ -415,9 +420,10 @@ void amperageCallback(const control_xy::StateWheels& msg){
                     heavy_l=1;
                     detected_heavy=true;
                     //alert_karugamo_near_no_sound();
-                    ROS_INFO("probable heavy load right");
-                    ROS_INFO("%f integ r_",int_l_curr);
-                    ROS_INFO("%f max %f avg",max_l_curr,avg_amp_l);
+                    //ROS_INFO("probable heavy load left");
+                    //ROS_INFO("%f integ r_",int_l_curr);
+                    //ROS_INFO("%f max %f avg",max_l_curr,avg_amp_l);
+                    pitakuru_state_msg.state_load="heavy_load_left";
                 }else if (max_l_curr <peak_not_heavy_curr){
                     heavy_l=2;
                 }  
@@ -429,8 +435,10 @@ void amperageCallback(const control_xy::StateWheels& msg){
     if(heavy==true && heavy_l==1 || heavy_r==1 && detected_heavy==false && (ros::Time::now().toSec() - time_last_to_heavy)<6.9){
         //alert_karugamo_near_no_sound();
         heavy=true;
+        pitakuru_state_msg.state_load="heavy_load_detected";
     }else if(detected_heavy==false && heavy_l==2 && heavy_r==2 && (ros::Time::now().toSec() - time_last_to_heavy)>4.3 && (ros::Time::now().toSec() - time_last_to_heavy)<6.3 && abs(msg.left_vel)>4.1 && abs(msg.right_vel)>4.1 ){
         heavy=false;
+        pitakuru_state_msg.state_load="not_heavy_load_detected";
         //alert_idle_no_sound();
     }
     //ROS_INFO("%f time",ros::Time::now().toSec());
@@ -863,7 +871,7 @@ void calc_100hz(){
                 pitakuru_state_msg.trackeds.angular.x=dist_peop_cam;
                 pitakuru_state_msg.trackeds.angular.y=ang_peop_cam;
                 pitakuru_state_msg.trackeds.angular.z=yolo_status;
-                state_pub.publish(pitakuru_state_msg);
+                //publish this states are after the near function
                 nav_msgs::Odometry odomr;
                     odomr.header.stamp = ros::Time::now();
                     odomr.header.frame_id="base_link";
@@ -904,10 +912,12 @@ void calc_100hz(){
                         //cont_sp_follow=0;//experimental
                     }
                 }
+
+                state_pub.publish(pitakuru_state_msg);
+
                 // else{//far
                 //     if(lidar_failed==false && changed_setting==false && low_voltage ==false && stop_follow==false){
                 //     alert_karugamo_far_no_sound();
-                   
                 //     }
                 //     if(is_near==true){
                 //         is_near=false;
@@ -991,10 +1001,8 @@ void calc_100hz(){
             //                 ros::Duration(0.02).sleep(); // sleep for 0.05 seconds
             //                 //alert_karugamo_far_sound();
             //             }
-            //             stop_functions=false;
-                        
+            //             stop_functions=false;    
             //     }
-                
             //      far();
             //      ROS_INFO("far() not in range");
             // }
@@ -1512,7 +1520,6 @@ void calc_spline(){
 ///////////////////
 
 void near(){
-       
        if(mode_follow && danger!=true && stop_functions==false){ //&& tracking_people){//1
            
             if(save_counter%12==0){
@@ -1556,11 +1563,16 @@ void near(){
                 //
                 
                 ctrl_add_side=(1-smooth_accel_side_manual)*(joy_side*max_speed_side_manual)+(smooth_accel_side_manual*ctrl_add_side);
+                pitakuru_state_msg.side_joystick=ctrl_add_side;
                 //ctrl_add_side=0;
-                if((vel_m1 >= vel_detect_costmap || vel_m2 >= vel_detect_costmap )){//&&distanciaPeople2>dist_robot_people){
+                if((ctrl_front_follow >= vel_detect_costmap || ctrl_front_follow >= vel_detect_costmap )){//&&distanciaPeople2>dist_robot_people){
+                    pitakuru_state_msg.state_costmap="costmap_active";
                     ctrl_side_costmap=(1-smooth_accel_side_manual)*(cost_obst*max_speed_side_manual)+(smooth_accel_side_manual*ctrl_side_costmap);
+                    pitakuru_state_msg.costmap=ctrl_side_costmap;
                 }else{
                     ctrl_side_costmap=0;
+                    pitakuru_state_msg.state_costmap="costmap_inactive";
+                    pitakuru_state_msg.costmap=ctrl_side_costmap;
                 }
                 //ctrl_side_costmap=0;
                 //ROS_INFO("cost%f",ctrl_side_costmap);
@@ -1643,7 +1655,8 @@ void near(){
                 //    vel_steer.angular.z=0;
                 //}
                 //stop_follow=false;
-
+                pitakuru_state_msg.ctrl_front=ctrl_front_follow;
+                pitakuru_state_msg.ctrl_side=ctrl_ang;
                 vel_steer.linear.x=(vel_steer.linear.x/21)*0.1045;
                 vel_steer.angular.z=(vel_steer.angular.z/21)*0.1045;
                 //alerts_command.data=7;// 5 danger 4 warning 3 karugamo 2 idle 1 manual
@@ -2243,6 +2256,7 @@ void loadRoute(){
     void joyCallback(const sensor_msgs::Joy::ConstPtr& joy)
     {
         joy_counter++;
+        
         geometry_msgs::Twist vel_steer;
         if (joy->buttons[4]==1&&joy->buttons[5]==1 ){//R1L1
             printf("Cargando Ruta \n");
@@ -2361,7 +2375,7 @@ void loadRoute(){
                 if(mode_follow==true){
                     max_speed_follow=max_speed_follow+(joy->axes[7]*400);
                     duration_change-=joy->axes[7]*0.1;
-                    frontal_gain_follow=max_speed_follow+200;
+                    frontal_gain_follow=max_speed_follow+100;
 
                     if(joy->axes[7]>0.5){//pressed up
                         break_front_distance+=0.05;
@@ -2481,6 +2495,7 @@ void loadRoute(){
                 vel_steer.angular.z=(vel_steer.angular.z/21)*0.1045;
                 if(joy_counter%8==0){
                     speed_publisher.publish(vel_steer);
+                    state_pub.publish(pitakuru_state_msg);
                 }
         }else{//else free way
        

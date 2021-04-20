@@ -32,6 +32,12 @@ struct States_
     , state_costmap()
     , state_manual()
     , state_scan()
+    , state_load()
+    , state_shelf()
+    , costmap(0.0)
+    , side_joystick(0.0)
+    , ctrl_front(0.0)
+    , ctrl_side(0.0)
     , trackeds()  {
     }
   States_(const ContainerAllocator& _alloc)
@@ -42,6 +48,12 @@ struct States_
     , state_costmap(_alloc)
     , state_manual(_alloc)
     , state_scan(_alloc)
+    , state_load(_alloc)
+    , state_shelf(_alloc)
+    , costmap(0.0)
+    , side_joystick(0.0)
+    , ctrl_front(0.0)
+    , ctrl_side(0.0)
     , trackeds(_alloc)  {
   (void)_alloc;
     }
@@ -68,6 +80,24 @@ struct States_
 
    typedef std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other >  _state_scan_type;
   _state_scan_type state_scan;
+
+   typedef std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other >  _state_load_type;
+  _state_load_type state_load;
+
+   typedef std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other >  _state_shelf_type;
+  _state_shelf_type state_shelf;
+
+   typedef float _costmap_type;
+  _costmap_type costmap;
+
+   typedef float _side_joystick_type;
+  _side_joystick_type side_joystick;
+
+   typedef float _ctrl_front_type;
+  _ctrl_front_type ctrl_front;
+
+   typedef float _ctrl_side_type;
+  _ctrl_side_type ctrl_side;
 
    typedef  ::geometry_msgs::Twist_<ContainerAllocator>  _trackeds_type;
   _trackeds_type trackeds;
@@ -108,6 +138,12 @@ bool operator==(const ::obs_extract::States_<ContainerAllocator1> & lhs, const :
     lhs.state_costmap == rhs.state_costmap &&
     lhs.state_manual == rhs.state_manual &&
     lhs.state_scan == rhs.state_scan &&
+    lhs.state_load == rhs.state_load &&
+    lhs.state_shelf == rhs.state_shelf &&
+    lhs.costmap == rhs.costmap &&
+    lhs.side_joystick == rhs.side_joystick &&
+    lhs.ctrl_front == rhs.ctrl_front &&
+    lhs.ctrl_side == rhs.ctrl_side &&
     lhs.trackeds == rhs.trackeds;
 }
 
@@ -165,12 +201,12 @@ struct MD5Sum< ::obs_extract::States_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "dfd48cf7701c5d144c13acc5c8b54ec0";
+    return "e365334b2994db104733260f8d214b10";
   }
 
   static const char* value(const ::obs_extract::States_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0xdfd48cf7701c5d14ULL;
-  static const uint64_t static_value2 = 0x4c13acc5c8b54ec0ULL;
+  static const uint64_t static_value1 = 0xe365334b2994db10ULL;
+  static const uint64_t static_value2 = 0x4733260f8d214b10ULL;
 };
 
 template<class ContainerAllocator>
@@ -196,6 +232,12 @@ struct Definition< ::obs_extract::States_<ContainerAllocator> >
 "string state_costmap\n"
 "string state_manual\n"
 "string state_scan\n"
+"string state_load\n"
+"string state_shelf\n"
+"float32 costmap\n"
+"float32 side_joystick\n"
+"float32 ctrl_front\n"
+"float32 ctrl_side\n"
 "geometry_msgs/Twist trackeds\n"
 "\n"
 "================================================================================\n"
@@ -241,6 +283,12 @@ namespace serialization
       stream.next(m.state_costmap);
       stream.next(m.state_manual);
       stream.next(m.state_scan);
+      stream.next(m.state_load);
+      stream.next(m.state_shelf);
+      stream.next(m.costmap);
+      stream.next(m.side_joystick);
+      stream.next(m.ctrl_front);
+      stream.next(m.ctrl_side);
       stream.next(m.trackeds);
     }
 
@@ -274,6 +322,18 @@ struct Printer< ::obs_extract::States_<ContainerAllocator> >
     Printer<std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other > >::stream(s, indent + "  ", v.state_manual);
     s << indent << "state_scan: ";
     Printer<std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other > >::stream(s, indent + "  ", v.state_scan);
+    s << indent << "state_load: ";
+    Printer<std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other > >::stream(s, indent + "  ", v.state_load);
+    s << indent << "state_shelf: ";
+    Printer<std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other > >::stream(s, indent + "  ", v.state_shelf);
+    s << indent << "costmap: ";
+    Printer<float>::stream(s, indent + "  ", v.costmap);
+    s << indent << "side_joystick: ";
+    Printer<float>::stream(s, indent + "  ", v.side_joystick);
+    s << indent << "ctrl_front: ";
+    Printer<float>::stream(s, indent + "  ", v.ctrl_front);
+    s << indent << "ctrl_side: ";
+    Printer<float>::stream(s, indent + "  ", v.ctrl_side);
     s << indent << "trackeds: ";
     s << std::endl;
     Printer< ::geometry_msgs::Twist_<ContainerAllocator> >::stream(s, indent + "  ", v.trackeds);

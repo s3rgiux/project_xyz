@@ -1,0 +1,28 @@
+[  0%] Built target _peop_extract_generate_messages_check_deps_ObjectCount
+[  0%] Built target _peop_extract_generate_messages_check_deps_BoundingBox
+[  0%] Built target _peop_extract_generate_messages_check_deps_BoundingBoxes
+[  0%] Built target geometry_msgs_generate_messages_nodejs
+[  0%] Built target std_msgs_generate_messages_nodejs
+[  0%] Built target _peop_extract_generate_messages_check_deps_people_box
+[  0%] Built target _peop_extract_generate_messages_check_deps_peoples
+[  0%] Built target _peop_extract_generate_messages_check_deps_States
+[  0%] Built target std_msgs_generate_messages_cpp
+[  0%] Built target geometry_msgs_generate_messages_eus
+[  0%] Built target geometry_msgs_generate_messages_cpp
+[  0%] Built target geometry_msgs_generate_messages_py
+[  0%] Built target std_msgs_generate_messages_py
+[  0%] Built target std_msgs_generate_messages_eus
+[  0%] Built target std_msgs_generate_messages_lisp
+[  0%] Built target geometry_msgs_generate_messages_lisp
+[  3%] [34m[1mGenerating C++ code from peop_extract/States.msg[0m
+[  6%] [34m[1mGenerating Javascript code from peop_extract/States.msg[0m
+[  9%] [34m[1mGenerating Python from MSG peop_extract/States[0m
+[ 12%] [34m[1mGenerating EusLisp code from peop_extract/States.msg[0m
+[ 15%] [34m[1mGenerating Lisp code from peop_extract/States.msg[0m
+[ 31%] Built target peop_extract_generate_messages_nodejs
+[ 50%] Built target peop_extract_generate_messages_eus
+[ 65%] Built target peop_extract_generate_messages_lisp
+[ 68%] [34m[1mGenerating Python msg __init__.py for peop_extract[0m
+[ 84%] Built target peop_extract_generate_messages_cpp
+[100%] Built target peop_extract_generate_messages_py
+[100%] Built target peop_extract_generate_messages

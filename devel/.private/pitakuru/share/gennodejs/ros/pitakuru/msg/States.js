@@ -26,6 +26,12 @@ class States {
       this.state_costmap = null;
       this.state_manual = null;
       this.state_scan = null;
+      this.state_load = null;
+      this.state_shelf = null;
+      this.costmap = null;
+      this.side_joystick = null;
+      this.ctrl_front = null;
+      this.ctrl_side = null;
       this.trackeds = null;
     }
     else {
@@ -71,6 +77,42 @@ class States {
       else {
         this.state_scan = '';
       }
+      if (initObj.hasOwnProperty('state_load')) {
+        this.state_load = initObj.state_load
+      }
+      else {
+        this.state_load = '';
+      }
+      if (initObj.hasOwnProperty('state_shelf')) {
+        this.state_shelf = initObj.state_shelf
+      }
+      else {
+        this.state_shelf = '';
+      }
+      if (initObj.hasOwnProperty('costmap')) {
+        this.costmap = initObj.costmap
+      }
+      else {
+        this.costmap = 0.0;
+      }
+      if (initObj.hasOwnProperty('side_joystick')) {
+        this.side_joystick = initObj.side_joystick
+      }
+      else {
+        this.side_joystick = 0.0;
+      }
+      if (initObj.hasOwnProperty('ctrl_front')) {
+        this.ctrl_front = initObj.ctrl_front
+      }
+      else {
+        this.ctrl_front = 0.0;
+      }
+      if (initObj.hasOwnProperty('ctrl_side')) {
+        this.ctrl_side = initObj.ctrl_side
+      }
+      else {
+        this.ctrl_side = 0.0;
+      }
       if (initObj.hasOwnProperty('trackeds')) {
         this.trackeds = initObj.trackeds
       }
@@ -96,6 +138,18 @@ class States {
     bufferOffset = _serializer.string(obj.state_manual, buffer, bufferOffset);
     // Serialize message field [state_scan]
     bufferOffset = _serializer.string(obj.state_scan, buffer, bufferOffset);
+    // Serialize message field [state_load]
+    bufferOffset = _serializer.string(obj.state_load, buffer, bufferOffset);
+    // Serialize message field [state_shelf]
+    bufferOffset = _serializer.string(obj.state_shelf, buffer, bufferOffset);
+    // Serialize message field [costmap]
+    bufferOffset = _serializer.float32(obj.costmap, buffer, bufferOffset);
+    // Serialize message field [side_joystick]
+    bufferOffset = _serializer.float32(obj.side_joystick, buffer, bufferOffset);
+    // Serialize message field [ctrl_front]
+    bufferOffset = _serializer.float32(obj.ctrl_front, buffer, bufferOffset);
+    // Serialize message field [ctrl_side]
+    bufferOffset = _serializer.float32(obj.ctrl_side, buffer, bufferOffset);
     // Serialize message field [trackeds]
     bufferOffset = geometry_msgs.msg.Twist.serialize(obj.trackeds, buffer, bufferOffset);
     return bufferOffset;
@@ -119,6 +173,18 @@ class States {
     data.state_manual = _deserializer.string(buffer, bufferOffset);
     // Deserialize message field [state_scan]
     data.state_scan = _deserializer.string(buffer, bufferOffset);
+    // Deserialize message field [state_load]
+    data.state_load = _deserializer.string(buffer, bufferOffset);
+    // Deserialize message field [state_shelf]
+    data.state_shelf = _deserializer.string(buffer, bufferOffset);
+    // Deserialize message field [costmap]
+    data.costmap = _deserializer.float32(buffer, bufferOffset);
+    // Deserialize message field [side_joystick]
+    data.side_joystick = _deserializer.float32(buffer, bufferOffset);
+    // Deserialize message field [ctrl_front]
+    data.ctrl_front = _deserializer.float32(buffer, bufferOffset);
+    // Deserialize message field [ctrl_side]
+    data.ctrl_side = _deserializer.float32(buffer, bufferOffset);
     // Deserialize message field [trackeds]
     data.trackeds = geometry_msgs.msg.Twist.deserialize(buffer, bufferOffset);
     return data;
@@ -133,7 +199,9 @@ class States {
     length += object.state_costmap.length;
     length += object.state_manual.length;
     length += object.state_scan.length;
-    return length + 76;
+    length += object.state_load.length;
+    length += object.state_shelf.length;
+    return length + 100;
   }
 
   static datatype() {
@@ -143,7 +211,7 @@ class States {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return 'dfd48cf7701c5d144c13acc5c8b54ec0';
+    return 'e365334b2994db104733260f8d214b10';
   }
 
   static messageDefinition() {
@@ -156,6 +224,12 @@ class States {
     string state_costmap
     string state_manual
     string state_scan
+    string state_load
+    string state_shelf
+    float32 costmap
+    float32 side_joystick
+    float32 ctrl_front
+    float32 ctrl_side
     geometry_msgs/Twist trackeds
     
     ================================================================================
@@ -232,6 +306,48 @@ class States {
     }
     else {
       resolved.state_scan = ''
+    }
+
+    if (msg.state_load !== undefined) {
+      resolved.state_load = msg.state_load;
+    }
+    else {
+      resolved.state_load = ''
+    }
+
+    if (msg.state_shelf !== undefined) {
+      resolved.state_shelf = msg.state_shelf;
+    }
+    else {
+      resolved.state_shelf = ''
+    }
+
+    if (msg.costmap !== undefined) {
+      resolved.costmap = msg.costmap;
+    }
+    else {
+      resolved.costmap = 0.0
+    }
+
+    if (msg.side_joystick !== undefined) {
+      resolved.side_joystick = msg.side_joystick;
+    }
+    else {
+      resolved.side_joystick = 0.0
+    }
+
+    if (msg.ctrl_front !== undefined) {
+      resolved.ctrl_front = msg.ctrl_front;
+    }
+    else {
+      resolved.ctrl_front = 0.0
+    }
+
+    if (msg.ctrl_side !== undefined) {
+      resolved.ctrl_side = msg.ctrl_side;
+    }
+    else {
+      resolved.ctrl_side = 0.0
     }
 
     if (msg.trackeds !== undefined) {

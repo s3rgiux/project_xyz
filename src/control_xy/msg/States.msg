@@ -5,4 +5,10 @@ string state_danger
 string state_costmap
 string state_manual
 string state_scan
+string state_load
+string state_shelf
+float32 costmap
+float32 side_joystick
+float32 ctrl_front
+float32 ctrl_side
 geometry_msgs/Twist trackeds
