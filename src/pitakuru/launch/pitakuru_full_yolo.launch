@@ -94,13 +94,17 @@
 <param name="smooth_accel_karugamo_far"    type="double"	value="0.989"/> <!-- acceletartion smooth max value up to 0.99   -->
 <param name="smooth_accel_manual"    type="double"	value="0.985"/> <!-- acceletartion smooth max value up to 0.99   -->
 <param name="smooth_accel_side_manual"    type="double"	value="0.93"/> <!-- acceletartion smooth max value up to 0.99   -->
+<param name="smooth_accel_side_follow"    type="double"	value="0.93"/> <!-- acceletartion smooth max value up to 0.99   -->
 <param name="smooth_accel_costmap"    type="double"	value="0.7"/> <!-- acceletartion smooth max value up to 0.99   -->
 <param name="smooth_accel_stop"    type="double"	value="0.92"/> <!-- acceletartion smooth max value up to 0.99   -->
 <param name="max_speed_karugamo"    type="double"	value="1400"/> <!-- (not used depercated)max speed value for karugamo   -->
+<param name="max_speed_follow_heavy"    type="double"	value="2000"/> <!--1500--><!--3000--> <!--max speed value for frontal people follow-->
 <param name="max_speed_follow"    type="double"	value="2000"/> <!--1500--><!--3000--> <!--max speed value for frontal people follow-->
+<param name="max_speed_side_follow"    type="double"	value="400"/> <!-- max speed value for side joystick-->
 <param name="max_speed_manual"    type="double"	value="2000"/>  <!--15000--><!-- 3000--> <!-- max speed value for frontal joystick-->
 <param name="max_speed_manual_heavy"    type="double"	value="1200"/>  <!--15000--><!-- 3000--> <!-- max speed value for frontal joystick-->
 <param name="max_speed_side_manual"    type="double"	value="300"/> <!-- max speed value for side joystick-->
+
 <param name="speed_wp_lost"    type="double"	value="1400"/> <!-- speed when is lost or wp mode-->
 <param name="max_defelct_angle"    type="double"	value="60"/> <!-- max deflect angle-->
 <param name="angle_gain_wp"    type="double"	value="100"/> <!-- max deflect angle-->
@@ -119,7 +123,7 @@
 <param name="peak_not_heavy_curr"    type="double"	value="4.3"/> <!--vel to start detect collision-->
 <param name="count_to_miss"    type="double"	value="44"/> <!--counter that if overpass this then we lost people-->
 <param name="gain_to_costmap"    type="double"	value="1.5"/> <!--counter that if overpass this then we lost people-->
-<param name="vel_detect_costmap"    type="double"	value="0.7"/> <!--vel to start detect costmap--><!--0.6-->
+<param name="vel_detect_costmap"    type="double"	value="700"/> <!--vel to start detect costmap--><!--0.6-->
 <param name="duration_to_lost"    type="double"	value="0.2"/> <!--time in second to see if is lost-->
 <param name="min_break_distance"    type="double"	value="0.7"/> <!--time in second to see if is lost-->
 <param name="max_break_distance"    type="double"	value="0.9"/> <!--time in second to see if is lost-->
