@@ -98,7 +98,8 @@ public:
         nh.getParam("/control_xy/vel_detect_scan",vel_detect_scan);
         nh.getParam("/control_xy/volts_charge",volts_charge);
         nh.getParam("/control_xy/avg_curr_tresh",avg_curr_tresh);
-        nh.getParam("/control_xy/peak_curr_tresh",peak_curr_tresh);
+        nh.getParam("/control_xy/heavy_curr_tresh",heavy_curr_tresh);
+        nh.getParam("/control_xy/mid_curr_tresh",mid_curr_tresh);
         nh.getParam("/control_xy/peak_not_heavy_curr",peak_not_heavy_curr);
         nh.getParam("/control_xy/count_to_miss",count_to_miss);
         nh.getParam("/control_xy/gain_to_costmap",gain_to_costmap);
@@ -194,7 +195,6 @@ save_counter=0;
         karugamo_counter=0;
         ctrl_add_side=0;
         ctrl_add_front=0;
-       
     }
     ~test_head(){}
    
@@ -311,7 +311,7 @@ void amperageCallback(const control_xy::StateWheels& msg){
     geometry_msgs::Vector3 newmsg;
     vel_m1 = abs(msg.left_vel);
     vel_m2 = abs(msg.right_vel);
-    if(abs(msg.right_vel)<trig_vel&& abs(msg.left_vel)<trig_vel){
+    if(abs(msg.right_vel)<trig_vel&& abs(msg.left_vel)<trig_vel){//stop and reestart variables
         int_r_curr=0;
         der_r_curr=0;
         n_flag_r=false;
@@ -324,7 +324,7 @@ void amperageCallback(const control_xy::StateWheels& msg){
         //alert_manual_no_sound();
         detected_heavy=false;
         pitakuru_state_msg.state_load="almost_stop";
-    }else{
+    }else{//moving and detecting
         pitakuru_state_msg.state_load="checking_for_load";
         int_r_curr=int_r_curr+msg.right_current*dt;
         der_r_curr=(msg.right_current-prev_r_curr)/dt;
@@ -344,7 +344,7 @@ void amperageCallback(const control_xy::StateWheels& msg){
             //alert_manual_no_sound();
         }
         //if(der_r_curr<0.01 && d_flag==true && n_flag==true){
-        if(fil_der_r_curr<0.01 && n_flag_l==true && detected_heavy==false){
+        if(fil_der_r_curr<0.01 && n_flag_r==true && detected_heavy==false){
            
             amp_count_r++;
             avg_amp_r=avg_amp_r+msg.right_current;
@@ -353,7 +353,7 @@ void amperageCallback(const control_xy::StateWheels& msg){
                 avg_amp_r=avg_amp_r/4;
                 d_flag_r=false;
                
-                if(avg_amp_r>avg_curr_tresh && max_r_curr >peak_curr_tresh ){//&& int_r_curr>1.87){
+                if(avg_amp_r>avg_curr_tresh && max_r_curr >heavy_curr_tresh ){//&& int_r_curr>1.87){
                     //alert_karugamo_near_no_sound();
                     heavy_r=1;
                     detected_heavy=true;
@@ -361,6 +361,15 @@ void amperageCallback(const control_xy::StateWheels& msg){
                     //ROS_INFO("%f integ r_",int_r_curr);
                     //ROS_INFO("%f max %f avg",max_r_curr,avg_amp_r);
                     pitakuru_state_msg.state_load="heavy_load_right";
+                    
+                }else if(avg_amp_r>avg_curr_tresh && max_r_curr>mid_curr_tresh ){//&& int_r_curr>1.87){
+                    //alert_karugamo_near_no_sound();
+                    heavy_r=3;
+                    detected_heavy=true;
+                    //ROS_INFO("probable heavy load right");
+                    //ROS_INFO("%f integ r_",int_r_curr);
+                    //ROS_INFO("%f max %f avg",max_r_curr,avg_amp_r);
+                    pitakuru_state_msg.state_load="mid_load_right";
                     
                 }else  if (max_l_curr <peak_not_heavy_curr){
                     heavy_r=2;
@@ -375,7 +384,7 @@ void amperageCallback(const control_xy::StateWheels& msg){
     newmsg.z=int_r_curr;
     m1_pub.publish(newmsg);
    
-    if(abs(msg.left_vel)<trig_vel && abs(msg.right_vel)<trig_vel){
+    if(abs(msg.left_vel)<trig_vel && abs(msg.right_vel)<trig_vel){//stop and reestart variables
         int_l_curr=0;
         der_l_curr=0;
         n_flag_l=false;
@@ -417,7 +426,7 @@ void amperageCallback(const control_xy::StateWheels& msg){
                 avg_amp_l=avg_amp_l/4;
                 d_flag_l=false;
                
-                if(avg_amp_l>avg_curr_tresh && max_l_curr >peak_curr_tresh){//&& int_r_curr>1.87){
+                if(avg_amp_l>avg_curr_tresh && max_l_curr >heavy_curr_tresh){//&& int_r_curr>1.87){
                     heavy_l=1;
                     detected_heavy=true;
                     //alert_karugamo_near_no_sound();
@@ -425,6 +434,12 @@ void amperageCallback(const control_xy::StateWheels& msg){
                     //ROS_INFO("%f integ r_",int_l_curr);
                     //ROS_INFO("%f max %f avg",max_l_curr,avg_amp_l);
                     pitakuru_state_msg.state_load="heavy_load_left";
+                }else if(avg_amp_l>avg_curr_tresh && max_r_curr>mid_curr_tresh ){//&& int_r_curr>1.87){
+                    //alert_karugamo_near_no_sound();
+                    heavy_r=3;
+                    detected_heavy=true;
+                    pitakuru_state_msg.state_load="mid_load_left";
+                    
                 }else if (max_l_curr <peak_not_heavy_curr){
                     heavy_l=2;
                 }  
@@ -433,10 +448,14 @@ void amperageCallback(const control_xy::StateWheels& msg){
         }
     }
 
-    if(heavy==true && heavy_l==1 || heavy_r==1 && detected_heavy==false && (ros::Time::now().toSec() - time_last_to_heavy)<6.9){
+    if(heavy==true && (heavy_l==1 || heavy_r==1) && detected_heavy==false && (ros::Time::now().toSec() - time_last_to_heavy)<6.9){
         //alert_karugamo_near_no_sound();
         heavy=true;
         pitakuru_state_msg.state_load="heavy_load_detected";
+    }else if(heavy==true && (heavy_l==3 || heavy_r==3) && detected_heavy==false && (ros::Time::now().toSec() - time_last_to_heavy)<6.9){
+        //alert_karugamo_near_no_sound();
+        heavy=true;
+        pitakuru_state_msg.state_load="middle_load_detected";
     }else if(detected_heavy==false && heavy_l==2 && heavy_r==2 && (ros::Time::now().toSec() - time_last_to_heavy)>4.3 && (ros::Time::now().toSec() - time_last_to_heavy)<6.3 && abs(msg.left_vel)>4.1 && abs(msg.right_vel)>4.1 ){
         heavy=false;
         pitakuru_state_msg.state_load="not_heavy_load_detected";
@@ -2487,7 +2506,7 @@ int save_counter,amp_count_l,amp_count_r;
     float fil_der_r_curr,max_r_curr,fil_der_l_curr,max_l_curr;
     int  heavy_r,heavy_l,count_to_miss;
     double time_last_to_heavy;
-    float vel_m1,vel_m2,vel_detect_scan,volts_charge,peak_curr_tresh,avg_curr_tresh,peak_not_heavy_curr;
+    float vel_m1,vel_m2,vel_detect_scan,volts_charge,mid_curr_tresh,heavy_curr_tresh,avg_curr_tresh,peak_not_heavy_curr;
     float cost_obst,ctrl_side_costmap,gain_to_costmap,smooth_accel_costmap,dist_peop_cam,yolo_status;
     bool tracking_lidar,tracking_yolo,tracking_yolo_lidar,find_again;
     float lidar_people_status,max_speed_side_follow;

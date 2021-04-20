@@ -117,9 +117,10 @@
 <param name="trigger_vel"    type="double"	value="0.4"/> <!-- velocity to active search for load or not load-->
 <param name="trigger_current"    type="double"	value="14"/> <!-- how many amps to activate the heavy load--><!-- 8-->
 <param name="vel_detect_scan"    type="double"	value="400"/> <!--vel to start detect collision--><!--1.2-->
-<param name="volts_charge"    type="double"	value="23.0"/> <!--vel to start detect collision-->
-<param name="avg_curr_tresh"    type="double"	value="5.2"/> <!--vel to start detect collision-->
-<param name="peak_curr_tresh"    type="double"	value="5.9"/> <!--vel to start detect collision-->
+<param name="volts_charge"    type="double"	value="23.0"/> <!--volts to show alert to charge-->
+<param name="avg_curr_tresh"    type="double"	value="5.2"/> <!--above this we know if we are moving or was just a small movement-->
+<param name="heavy_curr_tresh"    type="double"	value="5.9"/> <!--vel to start detect collision-->
+<param name="mid_curr_tresh"    type="double"	value="5.9"/> <!--vel to start detect collision-->
 <param name="peak_not_heavy_curr"    type="double"	value="4.3"/> <!--vel to start detect collision-->
 <param name="count_to_miss"    type="double"	value="44"/> <!--counter that if overpass this then we lost people-->
 <param name="gain_to_costmap"    type="double"	value="1.5"/> <!--counter that if overpass this then we lost people-->
