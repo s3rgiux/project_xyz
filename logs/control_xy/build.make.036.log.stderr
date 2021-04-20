@@ -1,45 +1,3 @@
-[  0%] Built target std_msgs_generate_messages_py
-[  0%] Built target geometry_msgs_generate_messages_py
-[  0%] Built target _control_xy_generate_messages_check_deps_Obstacle
-[  0%] Built target _control_xy_generate_messages_check_deps_TriggerAction
-[  0%] Built target _control_xy_generate_messages_check_deps_States
-[  0%] Built target _control_xy_generate_messages_check_deps_State
-[  0%] Built target actionlib_msgs_generate_messages_py
-[  0%] Built target std_msgs_generate_messages_eus
-[  0%] Built target actionlib_msgs_generate_messages_eus
-[  0%] Built target geometry_msgs_generate_messages_eus
-[  0%] Built target std_msgs_generate_messages_cpp
-[  0%] Built target _control_xy_generate_messages_check_deps_StateWheels
-[  0%] Built target actionlib_msgs_generate_messages_cpp
-[  0%] Built target geometry_msgs_generate_messages_cpp
-[  0%] Built target _control_xy_generate_messages_check_deps_DriveWheel
-[  0%] Built target std_msgs_generate_messages_lisp
-[  0%] Built target rosgraph_msgs_generate_messages_nodejs
-[  0%] Built target rosgraph_msgs_generate_messages_py
-[  0%] Built target geometry_msgs_generate_messages_lisp
-[  0%] Built target actionlib_msgs_generate_messages_lisp
-[  0%] Built target rosgraph_msgs_generate_messages_lisp
-[  0%] Built target rosgraph_msgs_generate_messages_eus
-[  0%] Built target rosgraph_msgs_generate_messages_cpp
-[  0%] Built target roscpp_generate_messages_py
-[  0%] Built target actionlib_msgs_generate_messages_nodejs
-[  0%] Built target std_msgs_generate_messages_nodejs
-[  0%] Built target roscpp_generate_messages_nodejs
-[  0%] Built target geometry_msgs_generate_messages_nodejs
-[  0%] Built target roscpp_generate_messages_eus
-[  0%] Built target roscpp_generate_messages_lisp
-[  0%] Built target roscpp_generate_messages_cpp
-[ 17%] Built target control_xy_generate_messages_eus
-[ 35%] Built target control_xy_generate_messages_py
-[ 50%] Built target control_xy_generate_messages_lisp
-[ 65%] Built target control_xy_generate_messages_cpp
-[ 80%] Built target control_xy_generate_messages_nodejs
-[35m[1mScanning dependencies of target control_xy_node_spline_follow_mixed[0m
-[ 80%] Built target control_xy_generate_messages
-[ 85%] Built target control_xy_node_spline_follow
-[ 90%] Built target control_xy_node_spline
-[ 92%] [32mBuilding CXX object CMakeFiles/control_xy_node_spline_follow_mixed.dir/src/control_xy_odom_wp_nav_spline_mixed2.cpp.o[0m
-[ 97%] Built target control_xy_node
 In file included from [01m[K/opt/ros/melodic/include/ros/node_handle.h:32:0[m[K,
                  from [01m[K/opt/ros/melodic/include/ros/ros.h:45[m[K,
                  from [01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:2[m[K:
@@ -83,9 +41,7 @@ In file included from [01m[K/opt/ros/melodic/include/ros/node_handle.h:39:0[m
    SteadyTimer& operator=(const SteadyTimer& other) = default;
 [01;32m[K                                                      ^[m[K
 [01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:[m[K In member function ‘[01m[Kvoid test_head::loadRoute()[m[K’:
-[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:2119:44:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%s[m[K’ expects argument of type ‘[01m[Kchar*[m[K’, but argument 3 has type ‘[01m[Kchar (*)[80][m[K’ [-Wformat=]
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:2138:44:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%s[m[K’ expects argument of type ‘[01m[Kchar*[m[K’, but argument 3 has type ‘[01m[Kchar (*)[80][m[K’ [-Wformat=]
              sscanf(mystring,"%s %s",&rx,&ry);
 [01;32m[K                                            ^[m[K
-[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:2119:44:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%s[m[K’ expects argument of type ‘[01m[Kchar*[m[K’, but argument 4 has type ‘[01m[Kchar (*)[80][m[K’ [-Wformat=]
-[100%] [32m[1mLinking CXX executable /home/xavier/catkin_ws/devel/.private/control_xy/lib/control_xy/control_xy_node_spline_follow_mixed[0m
-[100%] Built target control_xy_node_spline_follow_mixed
+[01m[K/home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp:2138:44:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%s[m[K’ expects argument of type ‘[01m[Kchar*[m[K’, but argument 4 has type ‘[01m[Kchar (*)[80][m[K’ [-Wformat=]

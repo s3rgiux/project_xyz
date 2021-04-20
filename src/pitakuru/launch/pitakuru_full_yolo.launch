@@ -88,7 +88,7 @@
 <param name="low_vel_gain_follow"    type="double"	value="8"/><!-- 12--><!-- people follow gain  angle control   -->
 <param name="high_vel_gain_follow"    type="double"	value="8"/> <!-- 12--><!-- people follow gain  angle control   -->
 <param name="frontal_gain_karugamo"    type="double"	value="17"/> <!-- (not used depercated)karugamo gain  angle control   -->
-<param name="frontal_gain_follow"    type="double"	value="1200"/><!-- 1800--> <!-- gain for frontal control   -->
+<param name="frontal_gain_follow"    type="double"	value="2200"/><!-- 1800--> <!-- gain for frontal control   -->
 <param name="frontal_gain_manual"    type="double"	value="00"/> <!-- (not used depercated)gain frontal control   -->
 <param name="smooth_accel_karugamo_near"    type="double"	value="0.982"/> <!-- acceletartion smooth max value up to 0.99   -->
 <param name="smooth_accel_karugamo_far"    type="double"	value="0.989"/> <!-- acceletartion smooth max value up to 0.99   -->
@@ -128,6 +128,7 @@
 <param name="duration_to_lost"    type="double"	value="0.2"/> <!--time in second to see if is lost-->
 <param name="min_break_distance"    type="double"	value="0.7"/> <!--time in second to see if is lost-->
 <param name="max_break_distance"    type="double"	value="0.9"/> <!--time in second to see if is lost-->
+<param name="gain_follow_people"    type="double"	value="1.0"/> <!--time in second to see if is lost-->
 </node>
 
 

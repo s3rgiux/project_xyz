@@ -108,6 +108,7 @@ public:
         nh.getParam("/control_xy/duration_to_lost",duration_to_lost);
         nh.getParam("/control_xy/min_break_distance",min_break_distance);
         nh.getParam("/control_xy/max_break_distance",max_break_distance);
+        nh.getParam("/control_xy/gain_follow_people",gain_follow_people);
         //nh.param<float>("break_danger", break_danger, 0.45);
         subScan_ = nh.subscribe("/scan", 1, &test_head::scanCallback,this);
         ROS_INFO_STREAM("******break_distance "<< break_front_distance << " break danger " << break_danger << " low vel gain " << low_vel_gain << " high vel gain " << high_vel_gain
@@ -1494,9 +1495,9 @@ void near(){
 
                     //ctrl_front_follow=(1-smooth_accel)*(frontal_gain_follow*(distanciaPeople2-100))+(smooth_accel*ctrl_front_follow);
                     if (heavy){
-                        ctrl_front_follow=(1-smooth_accel_karugamo_near)*(frontal_gain_follow*norm_dist/*max_speed_follow*/)+(smooth_accel_karugamo_near*ctrl_front_follow);
+                        ctrl_front_follow=(1-smooth_accel_karugamo_near)*( gain_follow_people*frontal_gain_follow*norm_dist/*max_speed_follow*/)+(smooth_accel_karugamo_near*ctrl_front_follow);
                         //experimental
-                        ctrl_add_front=(1-smooth_accel_karugamo_near)*(joy_front*max_speed_follow)+(smooth_accel_karugamo_near*ctrl_front_manual);
+                        ctrl_add_front=(1-smooth_accel_karugamo_near)*(joy_front*max_speed_follow_heavy)+(smooth_accel_karugamo_near*ctrl_front_manual);
                         //ctrl_front_follow=ctrl_front_follow+ctrl_add_front-abs(ctrl_side_costmap*gain_to_costmap*0.1);
                         if(ctrl_front_follow>vel_detect_costmap){
                             ctrl_front_follow=ctrl_front_follow+ctrl_add_front-abs(ctrl_side_costmap*gain_to_costmap*0.1);
@@ -1509,13 +1510,13 @@ void near(){
                             ctrl_front_follow=0;
                             vel_steer.linear.x=0;
                         }
-                        if (ctrl_front_follow>max_speed_follow){
-                            ctrl_front_follow= max_speed_follow;
+                        if (ctrl_front_follow>max_speed_follow_heavy){
+                            ctrl_front_follow= max_speed_follow_heavy;
                         }
                     }else{
-                        ctrl_front_follow=(1-smooth_accel_karugamo_near)*(max_speed_manual *norm_dist/*max_speed_follow*/)+(smooth_accel_karugamo_near*ctrl_front_follow);
+                        ctrl_front_follow=(1-smooth_accel_karugamo_near)*(gain_follow_people*max_speed_follow *norm_dist/*max_speed_follow*/)+(smooth_accel_karugamo_near*ctrl_front_follow);
                         //experimental
-                        ctrl_add_front=(1-smooth_accel_karugamo_near)*(joy_front*max_speed_manual)+(smooth_accel_karugamo_near*ctrl_front_manual);
+                        ctrl_add_front=(1-smooth_accel_karugamo_near)*(joy_front*max_speed_follow)+(smooth_accel_karugamo_near*ctrl_front_manual);
                         
                         //ctrl_front_follow=ctrl_front_follow+ctrl_add_front-abs(ctrl_side_costmap*gain_to_costmap*0.1);
                         if(ctrl_front_follow>vel_detect_costmap){
@@ -1529,8 +1530,8 @@ void near(){
                             ctrl_front_follow=0;
                             vel_steer.linear.x=0;
                         }
-                        if (ctrl_front_follow>max_speed_manual){
-                            ctrl_front_follow= max_speed_manual;
+                        if (ctrl_front_follow>max_speed_follow){
+                            ctrl_front_follow= max_speed_follow;
                         }
                     }
                     
@@ -2268,8 +2269,9 @@ void loadRoute(){
                 ROS_INFO("Changed speed , follow  %f , manual %f",max_speed_follow,max_speed_manual);
                 if(mode_follow==true){
                     max_speed_follow=max_speed_follow+(joy->axes[7]*400);
+                    max_speed_follow_heavy=max_speed_follow_heavy+(joy->axes[7]*400);
                     duration_change-=joy->axes[7]*0.1;
-                    frontal_gain_follow=max_speed_follow+100;
+                    frontal_gain_follow=max_speed_follow+200;
 
                     if(joy->axes[7]>0.5){//pressed up
                         break_front_distance+=0.05;
@@ -2316,6 +2318,11 @@ void loadRoute(){
                     max_speed_follow=2800;
                 }else if(max_speed_follow<1200){
                     max_speed_follow=1200;
+                }
+                if(max_speed_follow_heavy>2800){
+                    max_speed_follow_heavy=2800;
+                }else if(max_speed_follow_heavy<1200){
+                    max_speed_follow_heavy=1200;
                 }
                 if(max_speed_manual>2800){
                     max_speed_manual=2800;
@@ -2529,6 +2536,7 @@ int save_counter,amp_count_l,amp_count_r;
     bool low_voltage,started_track_yolo,lidar_failed,entered_first_time_far;
     int counter_changed,counter_low_voltage,joy_counter,karugamo_counter;
     float min_break_distance,max_break_distance,smooth_accel_side_follow;
+    float gain_follow_people;
 };
 
 int main(int argc, char **argv)
