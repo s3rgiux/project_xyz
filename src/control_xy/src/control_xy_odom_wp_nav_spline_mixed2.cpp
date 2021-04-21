@@ -109,6 +109,7 @@ public:
         nh.getParam("/control_xy/min_break_distance",min_break_distance);
         nh.getParam("/control_xy/max_break_distance",max_break_distance);
         nh.getParam("/control_xy/gain_follow_people",gain_follow_people);
+        nh.getParam("/control_xy/use_ps4_controller",use_ps4_controller);
         //nh.param<float>("break_danger", break_danger, 0.45);
         subScan_ = nh.subscribe("/scan", 1, &test_head::scanCallback,this);
         ROS_INFO_STREAM("******break_distance "<< break_front_distance << " break danger " << break_danger << " low vel gain " << low_vel_gain << " high vel gain " << high_vel_gain
@@ -2151,41 +2152,57 @@ void loadRoute(){
     void joyCallback(const sensor_msgs::Joy::ConstPtr& joy)
     {
         joy_counter++;
-        
-        geometry_msgs::Twist vel_steer;
+        float speed_button;
+        float btn_x,btn_square,btn_circle,btn_triangle;
+
+        if(use_ps4_controller==1){
+            speed_button=joy->axes[7];
+            btn_x=joy->buttons[1];
+            btn_triangle=joy->buttons[3];
+            btn_square=joy->buttons[0];
+            btn_circle=joy->buttons[2];
+        }else{
+            speed_button=joy->axes[5];
+            btn_x=joy->buttons[2];
+            btn_triangle=joy->buttons[1];
+            btn_square=joy->buttons[0];
+            btn_circle=joy->buttons[3];
+        }
+
+        geometry_msgs::Twist vel_steer; 
         if (joy->buttons[4]==1&&joy->buttons[5]==1 ){//R1L1
             printf("Cargando Ruta \n");
             loadRoute();
             ros::Duration(0.2).sleep(); // sleep for half a second
         }else if(joy->buttons[13]&&loaded_route==true && start_route == false){//start
            
-            ROS_INFO("Start");
-            indx=0;
-            nspx=sp_rx[indx];
-            nspy=sp_ry[indx];
-            mode=0;
-            //ros::Duration(0.3).sleep(); // sleep for half a second
-            mode_idle=false;
-            mode_karugamo=false;
-            mode_manual=false;
-            mode_follow=false;
-            tracking_people=false;
-            mode_auto=true;
-            start_route=true;
-            ROS_INFO("Mode Auto");
-            alerts_command.data=3;//8 follow 5 danger 4 warning 3 karugamo 2 idle 1 manual
-            alerts_publisher.publish(alerts_command);
-            vel_steer.linear.x= 0;
-            vel_steer.linear.y= 1;
-            vel_steer.angular.z= 0;
-            ctrl_front_follow= 0;
-            ctrl_ang= 0;
-            ctrl_front_manual= 0;
-            ctrl_side_manual= 0;
-            speed_publisher.publish(vel_steer);
-            ros::Duration(0.5).sleep(); // sleep for half a second
+            // ROS_INFO("Start");
+            // indx=0;
+            // nspx=sp_rx[indx];
+            // nspy=sp_ry[indx];
+            // mode=0;
+            // //ros::Duration(0.3).sleep(); // sleep for half a second
+            // mode_idle=false;
+            // mode_karugamo=false;
+            // mode_manual=false;
+            // mode_follow=false;
+            // tracking_people=false;
+            // mode_auto=true;
+            // start_route=true;
+            // ROS_INFO("Mode Auto");
+            // alerts_command.data=3;//8 follow 5 danger 4 warning 3 karugamo 2 idle 1 manual
+            // alerts_publisher.publish(alerts_command);
+            // vel_steer.linear.x= 0;
+            // vel_steer.linear.y= 1;
+            // vel_steer.angular.z= 0;
+            // ctrl_front_follow= 0;
+            // ctrl_ang= 0;
+            // ctrl_front_manual= 0;
+            // ctrl_side_manual= 0;
+            // speed_publisher.publish(vel_steer);
+            // ros::Duration(0.5).sleep(); // sleep for half a second
         }else if(joy->buttons[13]&&loaded_route==true && start_route == true){//stopt with click  pad ps4 controller
-            start_route=true;
+            /* start_route=true;
             ROS_INFO("Stop");
             indx=0;
             nspx=sp_rx[indx];
@@ -2211,32 +2228,32 @@ void loadRoute(){
             ctrl_front_manual= 0;
             ctrl_side_manual= 0;
             speed_publisher.publish(vel_steer);
-            ros::Duration(0.5).sleep(); // sleep for half a second
+            ros::Duration(0.5).sleep(); // sleep for half a second */
         }else if(joy->buttons[6]==1&&joy->buttons[7]==1 && ruta_learn==false ){//L2R2
-            fp = fopen ("/home/xavier/catkin_ws/src/control_xy/ruta.txt" , "w+");
+            /* fp = fopen ("/home/xavier/catkin_ws/src/control_xy/ruta.txt" , "w+");
             ruta_learn=true;
             ROS_INFO("Listo para comenzar a aprender la ruta");
             ros::Duration(0.4).sleep(); // sleep for half a second
             px_aux=1000000000000;
-            py_aux=1000000000000;
+            py_aux=1000000000000; */
         }else if(joy->buttons[6]==1&&joy->buttons[7]==1 && ruta_learn==true){
            
-            ROS_INFO("Terminado de aprender la ruta");
+            /* ROS_INFO("Terminado de aprender la ruta");
             fclose(fp);  
             ros::Duration(0.4).sleep(); // sleep for half a second
-            ruta_learn=false;
+            ruta_learn=false; */
        
-        }else if(joy->buttons[2]==1 && free_way && collision == false){//danger!=true && free_way==true){//circulo
+        }else if(btn_circle==1 && free_way && collision == false){//danger!=true && free_way==true){//circulo
             mode_IDLE();
             ros::Duration(0.5).sleep(); // sleep for half a second
         //}else if(joy->buttons[1]==1 && danger!=true && collision == false){//equis
-        }else if(joy->buttons[1]==1 && collision == false){//equis
+        }else if(btn_x==1 && collision == false){//equis
             mode_MANUAL();
             ros::Duration(0.5).sleep(); // sleep for half a second
-        }else if(joy->buttons[3] && danger!=true && collision == false ){//triangulo    
+        }else if(btn_triangle && danger!=true && collision == false ){//triangulo    
              
            
-        }else if(joy->buttons[0] && free_way && collision == false){//square
+        }else if(btn_square&& free_way && collision == false){//square
             mode_people_follow();
             vel_steer.linear.x=0;
             vel_steer.linear.y= 1;
@@ -2261,26 +2278,28 @@ void loadRoute(){
                 alert_karugamo_near_no_sound();
             }
         }
-       
-        if(joy->axes[7]!=0 && (mode_manual || mode_follow) && lidar_failed==false ){//side pads
+        
+        
+        
+        if(speed_button!=0 && (mode_manual || mode_follow) && lidar_failed==false ){//side pads
                 //blink_change(0.25);
                 changed_setting=true;
                 last_time_changed=ros::Time::now();
                 ROS_INFO("Changed speed , follow  %f , manual %f",max_speed_follow,max_speed_manual);
                 if(mode_follow==true){
-                    max_speed_follow=max_speed_follow+(joy->axes[7]*400);
-                    max_speed_follow_heavy=max_speed_follow_heavy+(joy->axes[7]*400);
-                    duration_change-=joy->axes[7]*0.1;
+                    max_speed_follow=max_speed_follow+(speed_button*400);
+                    max_speed_follow_heavy=max_speed_follow_heavy+(speed_button*400);
+                    duration_change-=speed_button*0.1;
                     frontal_gain_follow=max_speed_follow+200;
 
-                    if(joy->axes[7]>0.5){//pressed up
+                    if(speed_button>0.5){//pressed up
                         break_front_distance+=0.05;
                         ROS_INFO("Changed break_distance_front %f ",break_front_distance);
                         if(break_front_distance>max_break_distance){
                             break_front_distance=max_break_distance;
                            
                         }
-                    }else if(joy->axes[7]<-0.5){
+                    }else if(speed_button<-0.5){
                         break_front_distance-=0.05;
                         ROS_INFO("Changed break_distance_front %f ",break_front_distance);
                         if(break_front_distance<min_break_distance){
@@ -2290,17 +2309,17 @@ void loadRoute(){
                      
                 }
                 if(mode_manual){
-                    duration_change-=joy->axes[7]*0.1;
-                    max_speed_manual=max_speed_manual+(joy->axes[7]*400);
-                    max_speed_manual_heavy=max_speed_manual_heavy+(joy->axes[7]*400);
-                    if(joy->axes[7]>0.5){//pressed up
+                    duration_change-=speed_button*0.1;
+                    max_speed_manual=max_speed_manual+(speed_button*400);
+                    max_speed_manual_heavy=max_speed_manual_heavy+(speed_button*400);
+                    if(speed_button>0.5){//pressed up
                         break_front_distance+=0.05;
                         ROS_INFO("Changed break_distance_front %f ",break_front_distance);
                         if(break_front_distance>max_break_distance){
                             break_front_distance=max_break_distance;
                            
                         }
-                    }else if(joy->axes[7]<-0.5){
+                    }else if(speed_button<-0.5){
                         break_front_distance-=0.05;
                         ROS_INFO("Changed break_distance_front %f ",break_front_distance);
                         if(break_front_distance<min_break_distance){
@@ -2537,6 +2556,7 @@ int save_counter,amp_count_l,amp_count_r;
     int counter_changed,counter_low_voltage,joy_counter,karugamo_counter;
     float min_break_distance,max_break_distance,smooth_accel_side_follow;
     float gain_follow_people;
+    float use_ps4_controller;
 };
 
 int main(int argc, char **argv)
