@@ -1,6 +1,0 @@
-Symlinking /home/xavier/catkin_ws/devel/share/laser_scan_splitter/cmake/laser_scan_splitterConfig.cmake
-Symlinking /home/xavier/catkin_ws/devel/share/laser_scan_splitter/cmake/laser_scan_splitterConfig-version.cmake
-Symlinking /home/xavier/catkin_ws/devel/lib/liblaser_scan_splitter.so
-Symlinking /home/xavier/catkin_ws/devel/lib/liblaser_scan_splitter_nodelet.so
-Symlinking /home/xavier/catkin_ws/devel/lib/laser_scan_splitter/laser_scan_splitter_node
-Symlinking /home/xavier/catkin_ws/devel/lib/pkgconfig/laser_scan_splitter.pc
