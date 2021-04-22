@@ -1990,6 +1990,45 @@ void remove_collision(){
 }
 
 
+void do_nothing(){
+    n_flag_l=false;
+    d_flag_l=true;
+    n_flag_r=false;
+    d_flag_r=true;
+    low_voltage=false;
+    mode_idle=false;
+    mode_karugamo=false;
+    mode_manual=false;
+    mode_follow=false;
+    tracking_people=false;
+    cont_detect_peop=0;
+    start_route = false;
+    mode_auto=false;
+    danger=false;
+    free_way=true;
+    stop_functions=false;
+    ROS_INFO("do_nothing");
+    alert_turn_off_led();
+    //alerts_command.data=1;// 5 danger 4 warning 3 karugamo 2 idle 1 manual
+    //alerts_publisher.publish(alerts_command);
+    ctrl_front_follow= 0;
+    ctrl_ang= 0;
+    ctrl_front_manual= 0;
+    ctrl_side_manual= 0;
+    aux_dist=5000;
+    detect_cont=0;
+    vel_steer.linear.x= 0;
+    vel_steer.linear.y=1;//1;//enable motors
+    vel_steer.angular.z= 0;
+    speed_publisher.publish(vel_steer);
+    publish_lost_tracked();
+    pitakuru_state_msg.state="nothing";
+    state_pub.publish(pitakuru_state_msg);
+    detect_cont=0;
+    low_voltage=false;
+}
+
+
 void mode_MANUAL(){
     n_flag_l=false;
     d_flag_l=true;
@@ -2251,7 +2290,8 @@ void loadRoute(){
             mode_MANUAL();
             ros::Duration(0.5).sleep(); // sleep for half a second
         }else if(btn_triangle && danger!=true && collision == false ){//triangulo    
-             
+            do_nothing();
+            ros::Duration(0.2).sleep(); // sleep for half a second
            
         }else if(btn_square&& free_way && collision == false){//square
             mode_people_follow();

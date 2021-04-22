@@ -165,9 +165,9 @@
 -->
 
 <!-- navigation -->
- <!-- 
+  
 <include file="$(find pitakuru)/launch/navigation.launch"/>
- -->
+ 
 <!--
 <node pkg="amcl" type="amcl" name="amcl"/>
 -->
