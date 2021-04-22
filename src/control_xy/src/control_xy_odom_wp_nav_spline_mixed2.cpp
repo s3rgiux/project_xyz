@@ -1720,6 +1720,7 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan){
                     speed_publisher.publish(vel_steer);
                 ros::Duration(0.05).sleep(); // sleep for 0.05 seconds
                 alert_danger_voice_sound();
+                danger_counter=0;
                 ros::Duration(0.02).sleep(); // sleep for 0.05 seconds
                 /*
                 danger_counter++;
