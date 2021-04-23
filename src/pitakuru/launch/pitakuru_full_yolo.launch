@@ -130,6 +130,7 @@
 <param name="max_break_distance"    type="double"	value="0.9"/> <!--time in second to see if is lost-->
 <param name="gain_follow_people"    type="double"	value="1.0"/> <!--time in second to see if is lost-->
 <param name="use_ps4_controller"    type="double"	value="0.0"/> <!--time in second to see if is lost-->
+<param name="use_hokuyo"    type="double"	value="0.0"/> <!--select 1 to use hokuyo-->
 </node>
 
 

@@ -110,6 +110,7 @@ public:
         nh.getParam("/control_xy/max_break_distance",max_break_distance);
         nh.getParam("/control_xy/gain_follow_people",gain_follow_people);
         nh.getParam("/control_xy/use_ps4_controller",use_ps4_controller);
+        nh.getParam("/control_xy/use_hokuyo",use_hokuyo);
         //nh.param<float>("break_danger", break_danger, 0.45);
         subScan_ = nh.subscribe("/scan", 1, &test_head::scanCallback,this);
         ROS_INFO_STREAM("******break_distance "<< break_front_distance << " break danger " << break_danger << " low vel gain " << low_vel_gain << " high vel gain " << high_vel_gain
@@ -1764,7 +1765,7 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan){
             }
         }  */
        
-        if( ctrl_front_manual> 400 || ctrl_front_follow > 400){
+        if( (ctrl_front_manual> 400 || ctrl_front_follow > 400) && use_hokuyo == 1){
             for(int j=0;j<=720;j++){
 
                 if(j>280&&j<440){
@@ -1774,6 +1775,38 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan){
                         ROS_INFO("found in %i",j);
                         pitakuru_state_msg.state_danger="detected_break_danger1";
                        
+                        //ROS_INFO("print after");
+                    }
+                    if(detect_cont>1){  
+                        return;
+                    }
+                }else{
+                    if (scan->ranges[j] <= break_danger && scan->ranges[j] >0.14 ){
+                        detect_cont++;
+                        ROS_INFO("close in %i",j);
+                        pitakuru_state_msg.state_danger="detected_break_danger1";
+                       
+                        //return;
+                        //ROS_INFO("print after");
+                    }
+                    if(detect_cont>1){  
+                        return;
+                    }
+
+                }
+            }
+            detect_cont=0;//si llego hast aca no encontro nada
+            //free_way=true;
+        }
+        if( (ctrl_front_manual> 400 || ctrl_front_follow > 400) && use_hokuyo!=1){
+            for(int j=0;j<360;j++){
+
+                if((j>0&&j<34)||(j>326&&j<360)){
+                    if (scan->ranges[j] <= break_front_distance && scan->ranges[j] >0.14 ){
+
+                        detect_cont++;
+                        ROS_INFO("found in %i",j);
+                        pitakuru_state_msg.state_danger="detected_break_danger1";
                         //ROS_INFO("print after");
                     }
                     if(detect_cont>1){  
@@ -2597,7 +2630,7 @@ int save_counter,amp_count_l,amp_count_r;
     int counter_changed,counter_low_voltage,joy_counter,karugamo_counter;
     float min_break_distance,max_break_distance,smooth_accel_side_follow;
     float gain_follow_people;
-    float use_ps4_controller;
+    float use_ps4_controller,use_hokuyo;
 };
 
 int main(int argc, char **argv)
