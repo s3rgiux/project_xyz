@@ -29,9 +29,12 @@
       <rosparam file="$(find pitakuru)/config/move_base_flex/local_costmap_params.yaml" command="load" />
       <rosparam file="$(find pitakuru)/config/move_base_flex/global_costmap_params.yaml" command="load" />
     <rosparam file="$(find pitakuru)/config/move_base_flex/move_base_params.yaml" command="load" />
-    <rosparam file="$(find pitakuru)/config/move_base_flex/base_local_planner_params.yaml" command="load" />
-	<rosparam file="$(find turtlebot3_mbf)/param/move_base.yaml" command="load"/>
+    <rosparam file="$(find pitakuru)/config/move_base_flex/dwa_local_planner_params.yaml" command="load" />
+	<rosparam file="$(find pitakuru)/config/move_base_flex/move_base.yaml" command="load"/>
   </node>
+
+
+	<node name="move_base_legacy_relay" pkg="mbf_costmap_nav" type="move_base_legacy_relay.py"/>
 <!--
     <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
       <rosparam file="$(find pitakuru)/config/move_base/move_base_params.yaml" command="load" />
@@ -56,7 +59,7 @@
     <!-- RVizパネル設定 -->
     <param name="use_gui" value="false"/>
     <!-- rvizノード起動設定 -->
- 
+ <!--
     <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="true" />
-  
+  -->
 </launch>
