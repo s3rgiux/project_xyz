@@ -1047,8 +1047,8 @@ void calc_100hz(){
                         //ctrl_yaw=(1-smooth_accel_karugamo_far)*(0)+(smooth_accel_karugamo_far*ctrl_yaw);
                         vel_steer.linear.x= ctrl_front_follow;
                         vel_steer.angular.z= ctrl_yaw;
-                        vel_steer.linear.x=(vel_steer.linear.x/21)*0.1045;
-                        vel_steer.angular.z=(vel_steer.angular.z/21)*0.1045;
+                        vel_steer.linear.x=((vel_steer.linear.x/21)*0.1045)/10;
+                        vel_steer.angular.z=((vel_steer.angular.z/21)*0.1045)/2;
                         speed_publisher.publish(vel_steer);
                         //alert_danger_no_sound();
                         //alert_collision_no_sound();
@@ -1091,8 +1091,8 @@ void calc_100hz(){
                     ctrl_yaw=0;
                     vel_steer.linear.x= ctrl_front_follow;
                     vel_steer.angular.z= ctrl_yaw;
-                    vel_steer.linear.x=(vel_steer.linear.x/21)*0.1045;
-                    vel_steer.angular.z=(vel_steer.angular.z/21)*0.1045;
+                    vel_steer.linear.x=((vel_steer.linear.x/21)*0.1045)/10;
+                    vel_steer.angular.z=((vel_steer.angular.z/21)*0.1045)/2;
                     speed_publisher.publish(vel_steer);
                 }
                    
@@ -1104,16 +1104,16 @@ void calc_100hz(){
                     ctrl_yaw=0;
                     vel_steer.linear.x= ctrl_front_follow;
                     vel_steer.angular.z= ctrl_yaw;
-                    vel_steer.linear.x=(vel_steer.linear.x/21)*0.1045;
-                    vel_steer.angular.z=(vel_steer.angular.z/21)*0.1045;
+                    vel_steer.linear.x=((vel_steer.linear.x/21)*0.1045)/10;
+                    vel_steer.angular.z=((vel_steer.angular.z/21)*0.1045)/2;
                     speed_publisher.publish(vel_steer);
                 }else{
                     ctrl_front_follow=(1-smooth_accel_stop)*(0)+(smooth_accel_stop*ctrl_front_follow);
                     ctrl_yaw=0;
                     vel_steer.linear.x= ctrl_front_follow;
                     vel_steer.angular.z= ctrl_yaw;
-                    vel_steer.linear.x=(vel_steer.linear.x/21)*0.1045;
-                    vel_steer.angular.z=(vel_steer.angular.z/21)*0.1045;
+                    vel_steer.linear.x=((vel_steer.linear.x/21)*0.1045)/10;
+                    vel_steer.angular.z=((vel_steer.angular.z/21)*0.1045)/2;
                     speed_publisher.publish(vel_steer);
                     tracked_pos.x=-50;
                     tracked_pos.y=-50;
@@ -1363,8 +1363,8 @@ void far(){
                         //blink_bl=true;
                         //fprintf(fp2,"calc sp %f, ctrl %f \n",sp_yaw,ctrl_yaw);
                 }
-                    vel_steer.linear.x=(vel_steer.linear.x/21)*0.1045;
-                    vel_steer.angular.z=(vel_steer.angular.z/21)*0.1045;
+                    vel_steer.linear.x=((vel_steer.linear.x/21)*0.1045)/10;
+                vel_steer.angular.z=((vel_steer.angular.z/21)*0.1045)/2;
                     if(karugamo_counter%2==0){
                         speed_publisher.publish(vel_steer);
                     }
@@ -1554,8 +1554,8 @@ void near(){
                 //stop_follow=false;
                 pitakuru_state_msg.ctrl_front=ctrl_front_follow;
                 pitakuru_state_msg.ctrl_side=ctrl_ang;
-                vel_steer.linear.x=(vel_steer.linear.x/21)*0.1045;
-                vel_steer.angular.z=(vel_steer.angular.z/21)*0.1045;
+                vel_steer.linear.x=((vel_steer.linear.x/21)*0.1045)/10;
+                vel_steer.angular.z=((vel_steer.angular.z/21)*0.1045)/2;
                 //alerts_command.data=7;// 5 danger 4 warning 3 karugamo 2 idle 1 manual
                 //alerts_publisher.publish(alerts_command);
                 if(karugamo_counter%2==0){

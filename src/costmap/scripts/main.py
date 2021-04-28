@@ -45,7 +45,7 @@ class image_converter:
     self.fin_lon=0.4
     self.people=False
     self.low_speed=False
-    self.use_hokuyo=False
+    self.use_hokuyo=True#False
     self.mask=np.array([[-1, -2, -3, 0, 0, 0, 0, 3 , 2 , 1 ],
                         [-1, -2, -3, 0, 0, 0, 0, 3 , 2 , 1 ],
                         [-1, -2, -3, 0, 0, 0, 0, 3 , 2 , 1 ],
