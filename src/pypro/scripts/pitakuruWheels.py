@@ -392,10 +392,10 @@ class PitWheels:
 
             q = tf.transformations.quaternion_from_euler(0, 0, self.x[2])
             self.odo.pose.pose.orientation = Quaternion(*q)
-            self.odo.twist.twist.linear.x = -np.sin(self.x[2] + np.pi / 2) * u[0] 
-            self.odo.twist.twist.linear.y = np.cos(self.x[2] + np.pi / 2) * u[0] 
+            self.odo.twist.twist.linear.x = -u[0]#-np.sin(self.x[2] + np.pi / 2) * u[0] #-u[0]/dt #-np.sin(self.x[2] + np.pi / 2) * u[0] 
+            self.odo.twist.twist.linear.y = 0 #np.cos(self.x[2] + np.pi / 2) * u[0] #0 #np.cos(self.x[2] + np.pi / 2) * u[0] 
             #self.odo.twist.twist.linear.x = u[0]
-            self.odo.twist.twist.angular.z = u[1]/2.0
+            self.odo.twist.twist.angular.z = u[1]/2.0 #u[1]/2.0
 
             self.pub_odo.publish(self.odo)
 
@@ -429,8 +429,8 @@ class PitWheels:
         elif(data.linear.y==1 and self.motors_enabled==False):
             self.motors_enabled=True
             self.enable_motors()
-        linear_speed = (data.linear.x*21)/0.1045
-        angular_speed = (data.angular.z*21)/0.1045
+        linear_speed = ((data.linear.x*21)/0.1045)*10
+        angular_speed = ((data.angular.z*21)/0.1045)*2
         #rospy.logerr("a speed: {}".format(angular_speed))
         new_right_velocity = linear_speed - angular_speed#linear_speed + angular_speed 
         new_left_velocity = linear_speed + angular_speed#linear_speed - angular_speed

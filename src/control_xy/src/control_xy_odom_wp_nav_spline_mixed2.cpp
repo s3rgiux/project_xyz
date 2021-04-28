@@ -2485,8 +2485,8 @@ void loadRoute(){
                 vel_steer.angular.z=ctrl_side_manual;//+ctrl_side_costmap;
                 //vel_steer.angular.z=0;
                 
-                vel_steer.linear.x=(vel_steer.linear.x/21)*0.1045;
-                vel_steer.angular.z=(vel_steer.angular.z/21)*0.1045;
+                vel_steer.linear.x=((vel_steer.linear.x/21)*0.1045)/10;
+                vel_steer.angular.z=((vel_steer.angular.z/21)*0.1045)/2;
                 if(joy_counter%8==0){
                     speed_publisher.publish(vel_steer);
                     state_pub.publish(pitakuru_state_msg);
@@ -2501,8 +2501,8 @@ void loadRoute(){
                 //}
                 vel_steer.linear.x= ctrl_front_manual;
                 vel_steer.angular.z=ctrl_side_manual;
-                vel_steer.linear.x=(vel_steer.linear.x/21)*0.1045;
-                vel_steer.angular.z=(vel_steer.angular.z/21)*0.1045;
+                vel_steer.linear.x=((vel_steer.linear.x/21)*0.1045)/10;
+                vel_steer.angular.z=((vel_steer.angular.z/21)*0.1045)/2;
                 //vel_steer.angular.z=0;
                 if(joy_counter%8==0){
                     speed_publisher.publish(vel_steer);
