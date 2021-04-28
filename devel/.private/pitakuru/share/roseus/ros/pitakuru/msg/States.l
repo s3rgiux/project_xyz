@@ -16,7 +16,7 @@
 
 (defclass pitakuru::States
   :super ros::object
-  :slots (_state _state_karugamo _state_collision _state_danger _state_costmap _state_manual _state_scan _state_load _state_shelf _costmap _side_joystick _ctrl_front _ctrl_side _trackeds ))
+  :slots (_state _state_karugamo _state_collision _state_danger _state_costmap _state_manual _state_scan _state_load _state_shelf _state_navigation _costmap _side_joystick _ctrl_front _ctrl_side _trackeds ))
 
 (defmethod pitakuru::States
   (:init
@@ -30,6 +30,7 @@
     ((:state_scan __state_scan) "")
     ((:state_load __state_load) "")
     ((:state_shelf __state_shelf) "")
+    ((:state_navigation __state_navigation) "")
     ((:costmap __costmap) 0.0)
     ((:side_joystick __side_joystick) 0.0)
     ((:ctrl_front __ctrl_front) 0.0)
@@ -46,6 +47,7 @@
    (setq _state_scan (string __state_scan))
    (setq _state_load (string __state_load))
    (setq _state_shelf (string __state_shelf))
+   (setq _state_navigation (string __state_navigation))
    (setq _costmap (float __costmap))
    (setq _side_joystick (float __side_joystick))
    (setq _ctrl_front (float __ctrl_front))
@@ -79,6 +81,9 @@
   (:state_shelf
    (&optional __state_shelf)
    (if __state_shelf (setq _state_shelf __state_shelf)) _state_shelf)
+  (:state_navigation
+   (&optional __state_navigation)
+   (if __state_navigation (setq _state_navigation __state_navigation)) _state_navigation)
   (:costmap
    (&optional __costmap)
    (if __costmap (setq _costmap __costmap)) _costmap)
@@ -119,6 +124,8 @@
     4 (length _state_load)
     ;; string _state_shelf
     4 (length _state_shelf)
+    ;; string _state_navigation
+    4 (length _state_navigation)
     ;; float32 _costmap
     4
     ;; float32 _side_joystick
@@ -152,6 +159,8 @@
        (write-long (length _state_load) s) (princ _state_load s)
      ;; string _state_shelf
        (write-long (length _state_shelf) s) (princ _state_shelf s)
+     ;; string _state_navigation
+       (write-long (length _state_navigation) s) (princ _state_navigation s)
      ;; float32 _costmap
        (sys::poke _costmap (send s :buffer) (send s :count) :float) (incf (stream-count s) 4)
      ;; float32 _side_joystick
@@ -184,6 +193,8 @@
      (let (n) (setq n (sys::peek buf ptr- :integer)) (incf ptr- 4) (setq _state_load (subseq buf ptr- (+ ptr- n))) (incf ptr- n))
    ;; string _state_shelf
      (let (n) (setq n (sys::peek buf ptr- :integer)) (incf ptr- 4) (setq _state_shelf (subseq buf ptr- (+ ptr- n))) (incf ptr- n))
+   ;; string _state_navigation
+     (let (n) (setq n (sys::peek buf ptr- :integer)) (incf ptr- 4) (setq _state_navigation (subseq buf ptr- (+ ptr- n))) (incf ptr- n))
    ;; float32 _costmap
      (setq _costmap (sys::peek buf ptr- :float)) (incf ptr- 4)
    ;; float32 _side_joystick
@@ -198,7 +209,7 @@
    self)
   )
 
-(setf (get pitakuru::States :md5sum-) "e365334b2994db104733260f8d214b10")
+(setf (get pitakuru::States :md5sum-) "020c7260fce8cdbd7570da53eb117321")
 (setf (get pitakuru::States :datatype-) "pitakuru/States")
 (setf (get pitakuru::States :definition-)
       "string state
@@ -210,6 +221,7 @@ string state_manual
 string state_scan
 string state_load
 string state_shelf
+string state_navigation
 float32 costmap
 float32 side_joystick
 float32 ctrl_front
@@ -238,6 +250,6 @@ float64 z
 
 
 
-(provide :pitakuru/States "e365334b2994db104733260f8d214b10")
+(provide :pitakuru/States "020c7260fce8cdbd7570da53eb117321")
 
 

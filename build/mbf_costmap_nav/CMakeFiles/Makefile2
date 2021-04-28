@@ -63,6 +63,28 @@ CMAKE_BINARY_DIR = /home/xavier/catkin_ws/build/mbf_costmap_nav
 # Target rules for target CMakeFiles/mbf_costmap_server.dir
 
 # All Build rule for target.
+CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/mbf_nav_core_wrapper.dir/all
+CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/std_srvs_generate_messages_py.dir/all
+CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/std_srvs_generate_messages_nodejs.dir/all
+CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/mbf_msgs_generate_messages_py.dir/all
+CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/mbf_msgs_generate_messages_nodejs.dir/all
+CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/mbf_msgs_generate_messages_lisp.dir/all
+CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/mbf_msgs_generate_messages_eus.dir/all
+CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/mbf_msgs_generate_messages_cpp.dir/all
+CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/mbf_abstract_nav_gencfg.dir/all
+CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/std_srvs_generate_messages_eus.dir/all
+CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/roscpp_generate_messages_lisp.dir/all
+CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/tf_generate_messages_lisp.dir/all
+CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/geometry_msgs_generate_messages_lisp.dir/all
+CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/geometry_msgs_generate_messages_eus.dir/all
+CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/std_msgs_generate_messages_py.dir/all
+CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/roscpp_generate_messages_nodejs.dir/all
+CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/std_msgs_generate_messages_lisp.dir/all
+CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/sensor_msgs_generate_messages_py.dir/all
+CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/tf_generate_messages_py.dir/all
+CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/all
+CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/all
+CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/std_msgs_generate_messages_cpp.dir/all
 CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/map_msgs_generate_messages_lisp.dir/all
 CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/std_msgs_generate_messages_eus.dir/all
 CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/visualization_msgs_generate_messages_lisp.dir/all
@@ -95,36 +117,6 @@ CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/rosgraph_msgs_generate_message
 CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/all
 CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/all
 CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/sensor_msgs_generate_messages_cpp.dir/all
-CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/mbf_nav_core_wrapper.dir/all
-CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/std_srvs_generate_messages_py.dir/all
-CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/std_srvs_generate_messages_eus.dir/all
-CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/roscpp_generate_messages_lisp.dir/all
-CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/tf_generate_messages_lisp.dir/all
-CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/geometry_msgs_generate_messages_lisp.dir/all
-CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/geometry_msgs_generate_messages_eus.dir/all
-CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/std_msgs_generate_messages_py.dir/all
-CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/roscpp_generate_messages_nodejs.dir/all
-CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/std_msgs_generate_messages_lisp.dir/all
-CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/sensor_msgs_generate_messages_py.dir/all
-CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/tf_generate_messages_py.dir/all
-CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/all
-CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/all
-CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/std_msgs_generate_messages_cpp.dir/all
-CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/dynamic_reconfigure_gencfg.dir/all
-CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/tf2_msgs_generate_messages_lisp.dir/all
-CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/nav_msgs_generate_messages_py.dir/all
-CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/tf2_msgs_generate_messages_eus.dir/all
-CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/nav_msgs_generate_messages_eus.dir/all
-CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/visualization_msgs_generate_messages_cpp.dir/all
-CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/mbf_costmap_nav_gencfg.dir/all
-CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/visualization_msgs_generate_messages_eus.dir/all
-CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/std_srvs_generate_messages_nodejs.dir/all
-CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/mbf_msgs_generate_messages_py.dir/all
-CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/mbf_msgs_generate_messages_nodejs.dir/all
-CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/mbf_msgs_generate_messages_lisp.dir/all
-CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/mbf_msgs_generate_messages_eus.dir/all
-CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/mbf_msgs_generate_messages_cpp.dir/all
-CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/mbf_abstract_nav_gencfg.dir/all
 CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/sensor_msgs_generate_messages_eus.dir/all
 CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/std_srvs_generate_messages_lisp.dir/all
 CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/_catkin_empty_exported_target.dir/all
@@ -149,6 +141,14 @@ CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/tf2_msgs_generate_messages_nod
 CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/sensor_msgs_generate_messages_lisp.dir/all
 CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/nav_msgs_generate_messages_cpp.dir/all
 CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/nav_msgs_generate_messages_lisp.dir/all
+CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/dynamic_reconfigure_gencfg.dir/all
+CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/tf2_msgs_generate_messages_lisp.dir/all
+CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/nav_msgs_generate_messages_py.dir/all
+CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/tf2_msgs_generate_messages_eus.dir/all
+CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/nav_msgs_generate_messages_eus.dir/all
+CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/visualization_msgs_generate_messages_cpp.dir/all
+CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/mbf_costmap_nav_gencfg.dir/all
+CMakeFiles/mbf_costmap_server.dir/all: CMakeFiles/visualization_msgs_generate_messages_eus.dir/all
 	$(MAKE) -f CMakeFiles/mbf_costmap_server.dir/build.make CMakeFiles/mbf_costmap_server.dir/depend
 	$(MAKE) -f CMakeFiles/mbf_costmap_server.dir/build.make CMakeFiles/mbf_costmap_server.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xavier/catkin_ws/build/mbf_costmap_nav/CMakeFiles --progress-num=15,16,17,18,19,20,21 "Built target mbf_costmap_server"
@@ -185,6 +185,27 @@ clean: CMakeFiles/mbf_costmap_server.dir/clean
 # Target rules for target CMakeFiles/mbf_nav_core_wrapper.dir
 
 # All Build rule for target.
+CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/std_srvs_generate_messages_py.dir/all
+CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/std_srvs_generate_messages_nodejs.dir/all
+CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/mbf_msgs_generate_messages_py.dir/all
+CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/mbf_msgs_generate_messages_nodejs.dir/all
+CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/mbf_msgs_generate_messages_lisp.dir/all
+CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/mbf_msgs_generate_messages_eus.dir/all
+CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/mbf_msgs_generate_messages_cpp.dir/all
+CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/mbf_abstract_nav_gencfg.dir/all
+CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/std_srvs_generate_messages_eus.dir/all
+CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/roscpp_generate_messages_lisp.dir/all
+CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/tf_generate_messages_lisp.dir/all
+CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/geometry_msgs_generate_messages_lisp.dir/all
+CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/geometry_msgs_generate_messages_eus.dir/all
+CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/std_msgs_generate_messages_py.dir/all
+CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/roscpp_generate_messages_nodejs.dir/all
+CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/std_msgs_generate_messages_lisp.dir/all
+CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/sensor_msgs_generate_messages_py.dir/all
+CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/tf_generate_messages_py.dir/all
+CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/all
+CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/all
+CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/std_msgs_generate_messages_cpp.dir/all
 CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/map_msgs_generate_messages_lisp.dir/all
 CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/std_msgs_generate_messages_eus.dir/all
 CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/visualization_msgs_generate_messages_lisp.dir/all
@@ -217,34 +238,6 @@ CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/rosgraph_msgs_generate_messa
 CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/all
 CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/all
 CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/sensor_msgs_generate_messages_cpp.dir/all
-CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/std_srvs_generate_messages_py.dir/all
-CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/std_srvs_generate_messages_eus.dir/all
-CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/roscpp_generate_messages_lisp.dir/all
-CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/tf_generate_messages_lisp.dir/all
-CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/geometry_msgs_generate_messages_lisp.dir/all
-CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/geometry_msgs_generate_messages_eus.dir/all
-CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/std_msgs_generate_messages_py.dir/all
-CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/roscpp_generate_messages_nodejs.dir/all
-CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/std_msgs_generate_messages_lisp.dir/all
-CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/sensor_msgs_generate_messages_py.dir/all
-CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/tf_generate_messages_py.dir/all
-CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/all
-CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/all
-CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/std_msgs_generate_messages_cpp.dir/all
-CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/dynamic_reconfigure_gencfg.dir/all
-CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/tf2_msgs_generate_messages_lisp.dir/all
-CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/nav_msgs_generate_messages_py.dir/all
-CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/tf2_msgs_generate_messages_eus.dir/all
-CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/nav_msgs_generate_messages_eus.dir/all
-CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/visualization_msgs_generate_messages_cpp.dir/all
-CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/visualization_msgs_generate_messages_eus.dir/all
-CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/std_srvs_generate_messages_nodejs.dir/all
-CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/mbf_msgs_generate_messages_py.dir/all
-CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/mbf_msgs_generate_messages_nodejs.dir/all
-CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/mbf_msgs_generate_messages_lisp.dir/all
-CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/mbf_msgs_generate_messages_eus.dir/all
-CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/mbf_msgs_generate_messages_cpp.dir/all
-CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/mbf_abstract_nav_gencfg.dir/all
 CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/sensor_msgs_generate_messages_eus.dir/all
 CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/std_srvs_generate_messages_lisp.dir/all
 CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/_catkin_empty_exported_target.dir/all
@@ -269,6 +262,13 @@ CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/tf2_msgs_generate_messages_n
 CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/sensor_msgs_generate_messages_lisp.dir/all
 CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/nav_msgs_generate_messages_cpp.dir/all
 CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/nav_msgs_generate_messages_lisp.dir/all
+CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/dynamic_reconfigure_gencfg.dir/all
+CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/tf2_msgs_generate_messages_lisp.dir/all
+CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/nav_msgs_generate_messages_py.dir/all
+CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/tf2_msgs_generate_messages_eus.dir/all
+CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/nav_msgs_generate_messages_eus.dir/all
+CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/visualization_msgs_generate_messages_cpp.dir/all
+CMakeFiles/mbf_nav_core_wrapper.dir/all: CMakeFiles/visualization_msgs_generate_messages_eus.dir/all
 	$(MAKE) -f CMakeFiles/mbf_nav_core_wrapper.dir/build.make CMakeFiles/mbf_nav_core_wrapper.dir/depend
 	$(MAKE) -f CMakeFiles/mbf_nav_core_wrapper.dir/build.make CMakeFiles/mbf_nav_core_wrapper.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xavier/catkin_ws/build/mbf_costmap_nav/CMakeFiles --progress-num=22,23,24,25 "Built target mbf_nav_core_wrapper"

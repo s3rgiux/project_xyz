@@ -105,6 +105,10 @@ geometry_msgs/Vector3.h
 -
 geometry_msgs/PoseStamped.h
 -
+geometry_msgs/PoseWithCovariance.h
+-
+geometry_msgs/PoseWithCovarianceStamped.h
+-
 sensor_msgs/LaserScan.h
 /home/xavier/catkin_ws/src/control_xy/src/sensor_msgs/LaserScan.h
 nav_msgs/Odometry.h
@@ -206,6 +210,26 @@ ros/builtin_message_traits.h
 ros/message_operations.h
 -
 geometry_msgs/Pose.h
+-
+
+/opt/ros/melodic/include/geometry_msgs/PoseWithCovarianceStamped.h
+string
+-
+vector
+-
+map
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
+std_msgs/Header.h
+-
+geometry_msgs/PoseWithCovariance.h
 -
 
 /opt/ros/melodic/include/geometry_msgs/Quaternion.h

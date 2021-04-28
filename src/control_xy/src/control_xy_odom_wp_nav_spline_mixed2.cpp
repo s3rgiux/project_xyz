@@ -7,6 +7,9 @@
 #include <geometry_msgs/Twist.h>
 #include <geometry_msgs/Vector3.h>
 #include <geometry_msgs/PoseStamped.h>
+#include <geometry_msgs/PoseWithCovariance.h>
+#include <geometry_msgs/PoseWithCovarianceStamped.h>
+
 #include "sensor_msgs/LaserScan.h"
 //#include <tf/transform_broadcaster.h>
 #include <nav_msgs/Odometry.h>
@@ -57,7 +60,8 @@ public:
         cost_subscriber = nh.subscribe("/costdetect", 1, &test_head::costCallback,this);
         yolo_subscriber = nh.subscribe("/peop_ang_yolo", 1, &test_head::yoloCallback,this);
         sub_estim = nh.subscribe("/estimated_people", 1, &test_head::estimCallback,this);
-       
+        
+        amcl_pose_sub = nh.subscribe("/amcl_pose", 1, &test_head::amclPoseCallback,this);
         //nh.param<float>("break_distance", break_distance, 1.5);
         nh.getParam("/control_xy/break_front_distance", break_front_distance);
         nh.getParam("/control_xy/break_danger", break_danger);
@@ -173,8 +177,8 @@ public:
         detect_cont=0;
         state_stop=0;
         counter_search=340;
-stop_functions=false;
-save_counter=0;
+        stop_functions=false;
+        save_counter=0;
         heavy=true;
         n_flag_r=false;
         d_flag_r=true;
@@ -300,6 +304,9 @@ void ReceiveOdometry(const nav_msgs::Odometry::ConstPtr& msg){
     }
    
 }
+
+
+void amclPoseCallback(const geometry_msgs::PoseWithCovarianceStamped& pose){}
 
 
 void amperageCallback(const control_xy::StateWheels& msg){
@@ -1129,14 +1136,14 @@ void calc_100hz(){
 
 
 void far(){
-     pitakuru_state_msg.state="KARUGAMO";
-                        pitakuru_state_msg.state_karugamo="far";
-                        pitakuru_state_msg.trackeds.linear.x=distanciaPeople2;
-                        pitakuru_state_msg.trackeds.linear.y=ang_peop_lidar;
-                        pitakuru_state_msg.trackeds.linear.z=lidar_people_status;
-                        pitakuru_state_msg.trackeds.angular.x=dist_peop_cam;
-                        pitakuru_state_msg.trackeds.angular.y=ang_peop_cam;
-                        pitakuru_state_msg.trackeds.angular.z=yolo_status;
+    pitakuru_state_msg.state="KARUGAMO";
+    pitakuru_state_msg.state_karugamo="far";
+    pitakuru_state_msg.trackeds.linear.x=distanciaPeople2;
+    pitakuru_state_msg.trackeds.linear.y=ang_peop_lidar;
+    pitakuru_state_msg.trackeds.linear.z=lidar_people_status;
+    pitakuru_state_msg.trackeds.angular.x=dist_peop_cam;
+    pitakuru_state_msg.trackeds.angular.y=ang_peop_cam;
+    pitakuru_state_msg.trackeds.angular.z=yolo_status;
                         state_pub.publish(pitakuru_state_msg);
     if(lidar_failed==false && danger==false && changed_setting==false && low_voltage ==false && stop_follow==false){
         alert_karugamo_far_no_sound();
@@ -1765,7 +1772,7 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan){
             }
         }  */
        
-        if( (ctrl_front_manual> 400 || ctrl_front_follow > 400) && use_hokuyo == 1){
+        if( (ctrl_front_manual> 400 || ctrl_front_follow > 400 ) && use_hokuyo == 1){
             for(int j=0;j<=720;j++){
 
                 if(j>280&&j<440){
@@ -2037,7 +2044,7 @@ void do_nothing(){
     tracking_people=false;
     cont_detect_peop=0;
     start_route = false;
-    mode_auto=false;
+    mode_auto=true;
     danger=false;
     free_way=true;
     stop_functions=false;
@@ -2056,7 +2063,45 @@ void do_nothing(){
     vel_steer.angular.z= 0;
     speed_publisher.publish(vel_steer);
     publish_lost_tracked();
-    pitakuru_state_msg.state="nothing";
+    
+    detect_cont=0;
+    low_voltage=false;
+}
+
+
+void mode_AUTONOMOUS(){
+    n_flag_l=false;
+    d_flag_l=true;
+    n_flag_r=false;
+    d_flag_r=true;
+    low_voltage=false;
+    mode_idle=false;
+    mode_karugamo=false;
+    mode_manual=false;
+    mode_follow=false;
+    mode_auto=true;
+    tracking_people=false;
+    cont_detect_peop=0;
+    start_route = false;
+    
+    danger=false;
+    free_way=true;
+    stop_functions=false;
+    
+    alerts_command.data=4;// 5 danger 4 warning 3 karugamo 2 idle 1 manual
+    alerts_publisher.publish(alerts_command);
+    ctrl_front_follow= 0;
+    ctrl_ang= 0;
+    ctrl_front_manual= 0;
+    ctrl_side_manual= 0;
+    aux_dist=5000;
+    detect_cont=0;
+    vel_steer.linear.x= 0;
+    vel_steer.linear.y=1;//1;//enable motors
+    vel_steer.angular.z= 0;
+    speed_publisher.publish(vel_steer);
+    publish_lost_tracked();
+    pitakuru_state_msg.state="AUTONOMOUS_NAVIGATION";
     state_pub.publish(pitakuru_state_msg);
     detect_cont=0;
     low_voltage=false;
@@ -2227,19 +2272,24 @@ void loadRoute(){
         joy_counter++;
         float speed_button;
         float btn_x,btn_square,btn_circle,btn_triangle;
-
+        float btn_save_wp1,btn_save_wp2,btn_goto_wp1,btn_goto_wp2;
         if(use_ps4_controller==1){
             speed_button=joy->axes[7];
             btn_x=joy->buttons[1];
             btn_triangle=joy->buttons[3];
             btn_square=joy->buttons[0];
             btn_circle=joy->buttons[2];
+
         }else{
             speed_button=joy->axes[5];
             btn_x=joy->buttons[2];
             btn_triangle=joy->buttons[1];
             btn_square=joy->buttons[0];
             btn_circle=joy->buttons[3];
+            btn_save_wp1=joy->buttons[10];
+            btn_save_wp2=joy->buttons[11];
+            btn_goto_wp1=joy->buttons[4];
+            btn_goto_wp2=joy->buttons[5];
         }
 
         geometry_msgs::Twist vel_steer; 
@@ -2323,7 +2373,9 @@ void loadRoute(){
         }else if(btn_x==1 && collision == false){//equis
             mode_MANUAL();
             ros::Duration(0.5).sleep(); // sleep for half a second
-        }else if(btn_triangle && danger!=true && collision == false ){//triangulo    
+        }else if(btn_triangle && danger!=true && collision == false ){//triangulo 
+            mode_AUTONOMOUS();   
+            
             do_nothing();
             ros::Duration(0.2).sleep(); // sleep for half a second
            
@@ -2334,6 +2386,38 @@ void loadRoute(){
             vel_steer.angular.z=0;
             speed_publisher.publish(vel_steer);
             ros::Duration(0.5).sleep(); // sleep for half a second
+        }else if(btn_save_wp1==1){
+            //pitakuru_state_msg.state="AUTONOMOUS_NAVIGATION";
+            pitakuru_state_msg.state_navigation="save_wp_1";
+            state_pub.publish(pitakuru_state_msg);
+            ros::Duration(0.1).sleep(); // sleep for half a second
+            //pitakuru_state_msg.state="AUTONOMOUS_NAVIGATION";
+            pitakuru_state_msg.state_navigation="saved_wp_1";
+            state_pub.publish(pitakuru_state_msg);
+        }else if(btn_save_wp2==1){
+            //pitakuru_state_msg.state="AUTONOMOUS_NAVIGATION";
+            pitakuru_state_msg.state_navigation="save_wp_2";
+            state_pub.publish(pitakuru_state_msg);
+            //pitakuru_state_msg.state="AUTONOMOUS_NAVIGATION";
+            ros::Duration(0.1).sleep(); // sleep for half a second
+            pitakuru_state_msg.state_navigation="saved_wp_2";
+            state_pub.publish(pitakuru_state_msg);
+        }else if(btn_goto_wp1==1&&mode_auto){
+            //pitakuru_state_msg.state="AUTONOMOUS_NAVIGATION";
+            pitakuru_state_msg.state_navigation="goto_wp_1";
+            state_pub.publish(pitakuru_state_msg);
+            //pitakuru_state_msg.state="AUTONOMOUS_NAVIGATION";
+            ros::Duration(0.1).sleep(); // sleep for half a second
+            pitakuru_state_msg.state_navigation="going_to_wp_1";
+            state_pub.publish(pitakuru_state_msg);
+        }else if(btn_goto_wp2==1&&mode_auto){
+            //pitakuru_state_msg.state="AUTONOMOUS_NAVIGATION";
+            pitakuru_state_msg.state_navigation="goto_wp_2";
+            state_pub.publish(pitakuru_state_msg);
+            //pitakuru_state_msg.state="AUTONOMOUS_NAVIGATION";
+            ros::Duration(0.1).sleep(); // sleep for half a second
+            pitakuru_state_msg.state_navigation="going_to_wp_2";
+            state_pub.publish(pitakuru_state_msg);
         }
         joy_front=joy->axes[1];
         joy_side=joy->axes[0];
@@ -2560,6 +2644,7 @@ private:
     ros::Subscriber volts_subscriber;
     ros::Subscriber cost_subscriber;    
     ros::Subscriber yolo_subscriber;
+    ros::Subscriber amcl_pose_sub;
    
     geometry_msgs::Twist vel_steer;
     geometry_msgs::Vector3 tracked_pos;
@@ -2625,12 +2710,13 @@ int save_counter,amp_count_l,amp_count_r;
     int count_angle_err;
     bool changed_setting;
     float duration_change;
-    bool test;
+    bool test,state_autonomous;
     bool low_voltage,started_track_yolo,lidar_failed,entered_first_time_far;
     int counter_changed,counter_low_voltage,joy_counter,karugamo_counter;
     float min_break_distance,max_break_distance,smooth_accel_side_follow;
     float gain_follow_people;
     float use_ps4_controller,use_hokuyo;
+    
 };
 
 int main(int argc, char **argv)

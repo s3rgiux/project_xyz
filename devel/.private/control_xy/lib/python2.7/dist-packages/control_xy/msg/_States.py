@@ -9,7 +9,7 @@ import struct
 import geometry_msgs.msg
 
 class States(genpy.Message):
-  _md5sum = "e365334b2994db104733260f8d214b10"
+  _md5sum = "020c7260fce8cdbd7570da53eb117321"
   _type = "control_xy/States"
   _has_header = False  # flag to mark the presence of a Header object
   _full_text = """string state
@@ -21,6 +21,7 @@ string state_manual
 string state_scan
 string state_load
 string state_shelf
+string state_navigation
 float32 costmap
 float32 side_joystick
 float32 ctrl_front
@@ -45,8 +46,8 @@ MSG: geometry_msgs/Vector3
 float64 x
 float64 y
 float64 z"""
-  __slots__ = ['state','state_karugamo','state_collision','state_danger','state_costmap','state_manual','state_scan','state_load','state_shelf','costmap','side_joystick','ctrl_front','ctrl_side','trackeds']
-  _slot_types = ['string','string','string','string','string','string','string','string','string','float32','float32','float32','float32','geometry_msgs/Twist']
+  __slots__ = ['state','state_karugamo','state_collision','state_danger','state_costmap','state_manual','state_scan','state_load','state_shelf','state_navigation','costmap','side_joystick','ctrl_front','ctrl_side','trackeds']
+  _slot_types = ['string','string','string','string','string','string','string','string','string','string','float32','float32','float32','float32','geometry_msgs/Twist']
 
   def __init__(self, *args, **kwds):
     """
@@ -56,7 +57,7 @@ float64 z"""
     changes.  You cannot mix in-order arguments and keyword arguments.
 
     The available fields are:
-       state,state_karugamo,state_collision,state_danger,state_costmap,state_manual,state_scan,state_load,state_shelf,costmap,side_joystick,ctrl_front,ctrl_side,trackeds
+       state,state_karugamo,state_collision,state_danger,state_costmap,state_manual,state_scan,state_load,state_shelf,state_navigation,costmap,side_joystick,ctrl_front,ctrl_side,trackeds
 
     :param args: complete set of field values, in .msg order
     :param kwds: use keyword arguments corresponding to message field names
@@ -83,6 +84,8 @@ float64 z"""
         self.state_load = ''
       if self.state_shelf is None:
         self.state_shelf = ''
+      if self.state_navigation is None:
+        self.state_navigation = ''
       if self.costmap is None:
         self.costmap = 0.
       if self.side_joystick is None:
@@ -103,6 +106,7 @@ float64 z"""
       self.state_scan = ''
       self.state_load = ''
       self.state_shelf = ''
+      self.state_navigation = ''
       self.costmap = 0.
       self.side_joystick = 0.
       self.ctrl_front = 0.
@@ -170,6 +174,12 @@ float64 z"""
         length = len(_x)
       buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
       _x = self.state_shelf
+      length = len(_x)
+      if python3 or type(_x) == unicode:
+        _x = _x.encode('utf-8')
+        length = len(_x)
+      buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+      _x = self.state_navigation
       length = len(_x)
       if python3 or type(_x) == unicode:
         _x = _x.encode('utf-8')
@@ -271,6 +281,15 @@ float64 z"""
         self.state_shelf = str[start:end].decode('utf-8', 'rosmsg')
       else:
         self.state_shelf = str[start:end]
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      start = end
+      end += length
+      if python3:
+        self.state_navigation = str[start:end].decode('utf-8', 'rosmsg')
+      else:
+        self.state_navigation = str[start:end]
       _x = self
       start = end
       end += 64
@@ -336,6 +355,12 @@ float64 z"""
         length = len(_x)
       buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
       _x = self.state_shelf
+      length = len(_x)
+      if python3 or type(_x) == unicode:
+        _x = _x.encode('utf-8')
+        length = len(_x)
+      buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+      _x = self.state_navigation
       length = len(_x)
       if python3 or type(_x) == unicode:
         _x = _x.encode('utf-8')
@@ -438,6 +463,15 @@ float64 z"""
         self.state_shelf = str[start:end].decode('utf-8', 'rosmsg')
       else:
         self.state_shelf = str[start:end]
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      start = end
+      end += length
+      if python3:
+        self.state_navigation = str[start:end].decode('utf-8', 'rosmsg')
+      else:
+        self.state_navigation = str[start:end]
       _x = self
       start = end
       end += 64

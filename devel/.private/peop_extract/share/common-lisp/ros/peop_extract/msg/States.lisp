@@ -52,6 +52,11 @@
     :initarg :state_shelf
     :type cl:string
     :initform "")
+   (state_navigation
+    :reader state_navigation
+    :initarg :state_navigation
+    :type cl:string
+    :initform "")
    (costmap
     :reader costmap
     :initarg :costmap
@@ -131,6 +136,11 @@
 (cl:defmethod state_shelf-val ((m <States>))
   (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader peop_extract-msg:state_shelf-val is deprecated.  Use peop_extract-msg:state_shelf instead.")
   (state_shelf m))
+
+(cl:ensure-generic-function 'state_navigation-val :lambda-list '(m))
+(cl:defmethod state_navigation-val ((m <States>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader peop_extract-msg:state_navigation-val is deprecated.  Use peop_extract-msg:state_navigation instead.")
+  (state_navigation m))
 
 (cl:ensure-generic-function 'costmap-val :lambda-list '(m))
 (cl:defmethod costmap-val ((m <States>))
@@ -212,6 +222,12 @@
     (cl:write-byte (cl:ldb (cl:byte 8 16) __ros_str_len) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 24) __ros_str_len) ostream))
   (cl:map cl:nil #'(cl:lambda (c) (cl:write-byte (cl:char-code c) ostream)) (cl:slot-value msg 'state_shelf))
+  (cl:let ((__ros_str_len (cl:length (cl:slot-value msg 'state_navigation))))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) __ros_str_len) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) __ros_str_len) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) __ros_str_len) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) __ros_str_len) ostream))
+  (cl:map cl:nil #'(cl:lambda (c) (cl:write-byte (cl:char-code c) ostream)) (cl:slot-value msg 'state_navigation))
   (cl:let ((bits (roslisp-utils:encode-single-float-bits (cl:slot-value msg 'costmap))))
     (cl:write-byte (cl:ldb (cl:byte 8 0) bits) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
@@ -308,6 +324,14 @@
       (cl:setf (cl:slot-value msg 'state_shelf) (cl:make-string __ros_str_len))
       (cl:dotimes (__ros_str_idx __ros_str_len msg)
         (cl:setf (cl:char (cl:slot-value msg 'state_shelf) __ros_str_idx) (cl:code-char (cl:read-byte istream)))))
+    (cl:let ((__ros_str_len 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) __ros_str_len) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) __ros_str_len) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) __ros_str_len) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) __ros_str_len) (cl:read-byte istream))
+      (cl:setf (cl:slot-value msg 'state_navigation) (cl:make-string __ros_str_len))
+      (cl:dotimes (__ros_str_idx __ros_str_len msg)
+        (cl:setf (cl:char (cl:slot-value msg 'state_navigation) __ros_str_idx) (cl:code-char (cl:read-byte istream)))))
     (cl:let ((bits 0))
       (cl:setf (cl:ldb (cl:byte 8 0) bits) (cl:read-byte istream))
       (cl:setf (cl:ldb (cl:byte 8 8) bits) (cl:read-byte istream))
@@ -343,16 +367,16 @@
   "peop_extract/States")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<States>)))
   "Returns md5sum for a message object of type '<States>"
-  "e365334b2994db104733260f8d214b10")
+  "020c7260fce8cdbd7570da53eb117321")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'States)))
   "Returns md5sum for a message object of type 'States"
-  "e365334b2994db104733260f8d214b10")
+  "020c7260fce8cdbd7570da53eb117321")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<States>)))
   "Returns full string definition for message of type '<States>"
-  (cl:format cl:nil "string state~%string state_karugamo~%string state_collision~%string state_danger~%string state_costmap~%string state_manual~%string state_scan~%string state_load~%string state_shelf~%float32 costmap~%float32 side_joystick~%float32 ctrl_front~%float32 ctrl_side~%geometry_msgs/Twist trackeds~%~%================================================================================~%MSG: geometry_msgs/Twist~%# This expresses velocity in free space broken into its linear and angular parts.~%Vector3  linear~%Vector3  angular~%~%================================================================================~%MSG: geometry_msgs/Vector3~%# This represents a vector in free space. ~%# It is only meant to represent a direction. Therefore, it does not~%# make sense to apply a translation to it (e.g., when applying a ~%# generic rigid transformation to a Vector3, tf2 will only apply the~%# rotation). If you want your data to be translatable too, use the~%# geometry_msgs/Point message instead.~%~%float64 x~%float64 y~%float64 z~%~%"))
+  (cl:format cl:nil "string state~%string state_karugamo~%string state_collision~%string state_danger~%string state_costmap~%string state_manual~%string state_scan~%string state_load~%string state_shelf~%string state_navigation~%float32 costmap~%float32 side_joystick~%float32 ctrl_front~%float32 ctrl_side~%geometry_msgs/Twist trackeds~%~%================================================================================~%MSG: geometry_msgs/Twist~%# This expresses velocity in free space broken into its linear and angular parts.~%Vector3  linear~%Vector3  angular~%~%================================================================================~%MSG: geometry_msgs/Vector3~%# This represents a vector in free space. ~%# It is only meant to represent a direction. Therefore, it does not~%# make sense to apply a translation to it (e.g., when applying a ~%# generic rigid transformation to a Vector3, tf2 will only apply the~%# rotation). If you want your data to be translatable too, use the~%# geometry_msgs/Point message instead.~%~%float64 x~%float64 y~%float64 z~%~%"))
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'States)))
   "Returns full string definition for message of type 'States"
-  (cl:format cl:nil "string state~%string state_karugamo~%string state_collision~%string state_danger~%string state_costmap~%string state_manual~%string state_scan~%string state_load~%string state_shelf~%float32 costmap~%float32 side_joystick~%float32 ctrl_front~%float32 ctrl_side~%geometry_msgs/Twist trackeds~%~%================================================================================~%MSG: geometry_msgs/Twist~%# This expresses velocity in free space broken into its linear and angular parts.~%Vector3  linear~%Vector3  angular~%~%================================================================================~%MSG: geometry_msgs/Vector3~%# This represents a vector in free space. ~%# It is only meant to represent a direction. Therefore, it does not~%# make sense to apply a translation to it (e.g., when applying a ~%# generic rigid transformation to a Vector3, tf2 will only apply the~%# rotation). If you want your data to be translatable too, use the~%# geometry_msgs/Point message instead.~%~%float64 x~%float64 y~%float64 z~%~%"))
+  (cl:format cl:nil "string state~%string state_karugamo~%string state_collision~%string state_danger~%string state_costmap~%string state_manual~%string state_scan~%string state_load~%string state_shelf~%string state_navigation~%float32 costmap~%float32 side_joystick~%float32 ctrl_front~%float32 ctrl_side~%geometry_msgs/Twist trackeds~%~%================================================================================~%MSG: geometry_msgs/Twist~%# This expresses velocity in free space broken into its linear and angular parts.~%Vector3  linear~%Vector3  angular~%~%================================================================================~%MSG: geometry_msgs/Vector3~%# This represents a vector in free space. ~%# It is only meant to represent a direction. Therefore, it does not~%# make sense to apply a translation to it (e.g., when applying a ~%# generic rigid transformation to a Vector3, tf2 will only apply the~%# rotation). If you want your data to be translatable too, use the~%# geometry_msgs/Point message instead.~%~%float64 x~%float64 y~%float64 z~%~%"))
 (cl:defmethod roslisp-msg-protocol:serialization-length ((msg <States>))
   (cl:+ 0
      4 (cl:length (cl:slot-value msg 'state))
@@ -364,6 +388,7 @@
      4 (cl:length (cl:slot-value msg 'state_scan))
      4 (cl:length (cl:slot-value msg 'state_load))
      4 (cl:length (cl:slot-value msg 'state_shelf))
+     4 (cl:length (cl:slot-value msg 'state_navigation))
      4
      4
      4
@@ -382,6 +407,7 @@
     (cl:cons ':state_scan (state_scan msg))
     (cl:cons ':state_load (state_load msg))
     (cl:cons ':state_shelf (state_shelf msg))
+    (cl:cons ':state_navigation (state_navigation msg))
     (cl:cons ':costmap (costmap msg))
     (cl:cons ':side_joystick (side_joystick msg))
     (cl:cons ':ctrl_front (ctrl_front msg))

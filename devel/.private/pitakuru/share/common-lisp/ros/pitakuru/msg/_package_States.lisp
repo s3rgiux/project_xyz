@@ -17,6 +17,8 @@
           STATE_LOAD
           STATE_SHELF-VAL
           STATE_SHELF
+          STATE_NAVIGATION-VAL
+          STATE_NAVIGATION
           COSTMAP-VAL
           COSTMAP
           SIDE_JOYSTICK-VAL

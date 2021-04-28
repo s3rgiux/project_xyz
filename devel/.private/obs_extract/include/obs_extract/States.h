@@ -34,6 +34,7 @@ struct States_
     , state_scan()
     , state_load()
     , state_shelf()
+    , state_navigation()
     , costmap(0.0)
     , side_joystick(0.0)
     , ctrl_front(0.0)
@@ -50,6 +51,7 @@ struct States_
     , state_scan(_alloc)
     , state_load(_alloc)
     , state_shelf(_alloc)
+    , state_navigation(_alloc)
     , costmap(0.0)
     , side_joystick(0.0)
     , ctrl_front(0.0)
@@ -86,6 +88,9 @@ struct States_
 
    typedef std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other >  _state_shelf_type;
   _state_shelf_type state_shelf;
+
+   typedef std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other >  _state_navigation_type;
+  _state_navigation_type state_navigation;
 
    typedef float _costmap_type;
   _costmap_type costmap;
@@ -140,6 +145,7 @@ bool operator==(const ::obs_extract::States_<ContainerAllocator1> & lhs, const :
     lhs.state_scan == rhs.state_scan &&
     lhs.state_load == rhs.state_load &&
     lhs.state_shelf == rhs.state_shelf &&
+    lhs.state_navigation == rhs.state_navigation &&
     lhs.costmap == rhs.costmap &&
     lhs.side_joystick == rhs.side_joystick &&
     lhs.ctrl_front == rhs.ctrl_front &&
@@ -201,12 +207,12 @@ struct MD5Sum< ::obs_extract::States_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "e365334b2994db104733260f8d214b10";
+    return "020c7260fce8cdbd7570da53eb117321";
   }
 
   static const char* value(const ::obs_extract::States_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0xe365334b2994db10ULL;
-  static const uint64_t static_value2 = 0x4733260f8d214b10ULL;
+  static const uint64_t static_value1 = 0x020c7260fce8cdbdULL;
+  static const uint64_t static_value2 = 0x7570da53eb117321ULL;
 };
 
 template<class ContainerAllocator>
@@ -234,6 +240,7 @@ struct Definition< ::obs_extract::States_<ContainerAllocator> >
 "string state_scan\n"
 "string state_load\n"
 "string state_shelf\n"
+"string state_navigation\n"
 "float32 costmap\n"
 "float32 side_joystick\n"
 "float32 ctrl_front\n"
@@ -285,6 +292,7 @@ namespace serialization
       stream.next(m.state_scan);
       stream.next(m.state_load);
       stream.next(m.state_shelf);
+      stream.next(m.state_navigation);
       stream.next(m.costmap);
       stream.next(m.side_joystick);
       stream.next(m.ctrl_front);
@@ -326,6 +334,8 @@ struct Printer< ::obs_extract::States_<ContainerAllocator> >
     Printer<std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other > >::stream(s, indent + "  ", v.state_load);
     s << indent << "state_shelf: ";
     Printer<std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other > >::stream(s, indent + "  ", v.state_shelf);
+    s << indent << "state_navigation: ";
+    Printer<std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other > >::stream(s, indent + "  ", v.state_navigation);
     s << indent << "costmap: ";
     Printer<float>::stream(s, indent + "  ", v.costmap);
     s << indent << "side_joystick: ";

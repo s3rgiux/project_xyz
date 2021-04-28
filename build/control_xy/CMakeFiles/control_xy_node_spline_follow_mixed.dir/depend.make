@@ -11,6 +11,7 @@ CMakeFiles/control_xy_node_spline_follow_mixed.dir/src/control_xy_odom_wp_nav_sp
 CMakeFiles/control_xy_node_spline_follow_mixed.dir/src/control_xy_odom_wp_nav_spline_mixed2.cpp.o: /opt/ros/melodic/include/geometry_msgs/Pose.h
 CMakeFiles/control_xy_node_spline_follow_mixed.dir/src/control_xy_odom_wp_nav_spline_mixed2.cpp.o: /opt/ros/melodic/include/geometry_msgs/PoseStamped.h
 CMakeFiles/control_xy_node_spline_follow_mixed.dir/src/control_xy_odom_wp_nav_spline_mixed2.cpp.o: /opt/ros/melodic/include/geometry_msgs/PoseWithCovariance.h
+CMakeFiles/control_xy_node_spline_follow_mixed.dir/src/control_xy_odom_wp_nav_spline_mixed2.cpp.o: /opt/ros/melodic/include/geometry_msgs/PoseWithCovarianceStamped.h
 CMakeFiles/control_xy_node_spline_follow_mixed.dir/src/control_xy_odom_wp_nav_spline_mixed2.cpp.o: /opt/ros/melodic/include/geometry_msgs/Quaternion.h
 CMakeFiles/control_xy_node_spline_follow_mixed.dir/src/control_xy_odom_wp_nav_spline_mixed2.cpp.o: /opt/ros/melodic/include/geometry_msgs/Twist.h
 CMakeFiles/control_xy_node_spline_follow_mixed.dir/src/control_xy_odom_wp_nav_spline_mixed2.cpp.o: /opt/ros/melodic/include/geometry_msgs/TwistWithCovariance.h

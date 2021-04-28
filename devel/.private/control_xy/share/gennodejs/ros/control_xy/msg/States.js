@@ -28,6 +28,7 @@ class States {
       this.state_scan = null;
       this.state_load = null;
       this.state_shelf = null;
+      this.state_navigation = null;
       this.costmap = null;
       this.side_joystick = null;
       this.ctrl_front = null;
@@ -89,6 +90,12 @@ class States {
       else {
         this.state_shelf = '';
       }
+      if (initObj.hasOwnProperty('state_navigation')) {
+        this.state_navigation = initObj.state_navigation
+      }
+      else {
+        this.state_navigation = '';
+      }
       if (initObj.hasOwnProperty('costmap')) {
         this.costmap = initObj.costmap
       }
@@ -142,6 +149,8 @@ class States {
     bufferOffset = _serializer.string(obj.state_load, buffer, bufferOffset);
     // Serialize message field [state_shelf]
     bufferOffset = _serializer.string(obj.state_shelf, buffer, bufferOffset);
+    // Serialize message field [state_navigation]
+    bufferOffset = _serializer.string(obj.state_navigation, buffer, bufferOffset);
     // Serialize message field [costmap]
     bufferOffset = _serializer.float32(obj.costmap, buffer, bufferOffset);
     // Serialize message field [side_joystick]
@@ -177,6 +186,8 @@ class States {
     data.state_load = _deserializer.string(buffer, bufferOffset);
     // Deserialize message field [state_shelf]
     data.state_shelf = _deserializer.string(buffer, bufferOffset);
+    // Deserialize message field [state_navigation]
+    data.state_navigation = _deserializer.string(buffer, bufferOffset);
     // Deserialize message field [costmap]
     data.costmap = _deserializer.float32(buffer, bufferOffset);
     // Deserialize message field [side_joystick]
@@ -201,7 +212,8 @@ class States {
     length += object.state_scan.length;
     length += object.state_load.length;
     length += object.state_shelf.length;
-    return length + 100;
+    length += object.state_navigation.length;
+    return length + 104;
   }
 
   static datatype() {
@@ -211,7 +223,7 @@ class States {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return 'e365334b2994db104733260f8d214b10';
+    return '020c7260fce8cdbd7570da53eb117321';
   }
 
   static messageDefinition() {
@@ -226,6 +238,7 @@ class States {
     string state_scan
     string state_load
     string state_shelf
+    string state_navigation
     float32 costmap
     float32 side_joystick
     float32 ctrl_front
@@ -320,6 +333,13 @@ class States {
     }
     else {
       resolved.state_shelf = ''
+    }
+
+    if (msg.state_navigation !== undefined) {
+      resolved.state_navigation = msg.state_navigation;
+    }
+    else {
+      resolved.state_navigation = ''
     }
 
     if (msg.costmap !== undefined) {
