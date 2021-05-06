@@ -1,1 +1,6 @@
 logs/
+build/
+devel/
+*.bag
+*.pgm
+*.yaml
