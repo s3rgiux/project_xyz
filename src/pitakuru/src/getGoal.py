@@ -159,14 +159,11 @@ class Goals:
             # dt = self.current_time-self.last_time
             # self.x = MotionModel(self.x,u,dt)
             # self.last_time = time.time()
-            
             # self.odo.header.stamp = rospy.Time.now()
             # self.odo.pose.pose.position.x = self.x[0]
             # self.odo.pose.pose.position.y = self.x[1]
-
             # q = tf.transformations.quaternion_from_euler(0, 0, self.x[2])
             # self.odo.pose.pose.orientation = Quaternion(*q)
-            
             # self.pub_odo.publish(self.odo)
 
            

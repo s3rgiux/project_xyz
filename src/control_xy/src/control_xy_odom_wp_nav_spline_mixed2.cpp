@@ -2049,7 +2049,7 @@ void do_nothing(){
     free_way=true;
     stop_functions=false;
     ROS_INFO("do_nothing");
-    alert_turn_off_led();
+    //alert_turn_off_led();
     //alerts_command.data=1;// 5 danger 4 warning 3 karugamo 2 idle 1 manual
     //alerts_publisher.publish(alerts_command);
     ctrl_front_follow= 0;
@@ -2071,7 +2071,7 @@ void do_nothing(){
 
 void mode_AUTONOMOUS(){
     n_flag_l=false;
-    d_flag_l=true;
+    d_flag_l=true; 
     n_flag_r=false;
     d_flag_r=true;
     low_voltage=false;
@@ -2088,8 +2088,9 @@ void mode_AUTONOMOUS(){
     free_way=true;
     stop_functions=false;
     
-    alerts_command.data=4;// 5 danger 4 warning 3 karugamo 2 idle 1 manual
-    alerts_publisher.publish(alerts_command);
+    //alerts_command.data=4;// 5 danger 4 warning 3 karugamo 2 idle 1 manual
+    //alerts_publisher.publish(alerts_command);
+    alert_karugamo_far_no_sound();
     ctrl_front_follow= 0;
     ctrl_ang= 0;
     ctrl_front_manual= 0;
@@ -2100,7 +2101,7 @@ void mode_AUTONOMOUS(){
     vel_steer.linear.y=1;//1;//enable motors
     vel_steer.angular.z= 0;
     speed_publisher.publish(vel_steer);
-    publish_lost_tracked();
+    publish_lost_tracked(); 
     pitakuru_state_msg.state="AUTONOMOUS_NAVIGATION";
     state_pub.publish(pitakuru_state_msg);
     detect_cont=0;
