@@ -26,9 +26,10 @@
     <node name="move_base_flex" pkg="mbf_costmap_nav" type="mbf_costmap_nav" required="true" output="screen">
     
       <rosparam file="$(find pitakuru)/config/move_base_flex/costmap_common_params.yaml" command="load" ns="local_costmap" />
+      <rosparam file="$(find pitakuru)/config/move_base_flex/costmap_common_params.yaml" command="load" ns="global_costmap" />
       <rosparam file="$(find pitakuru)/config/move_base_flex/local_costmap_params.yaml" command="load" />
       <rosparam file="$(find pitakuru)/config/move_base_flex/global_costmap_params.yaml" command="load" />
-    <rosparam file="$(find pitakuru)/config/move_base_flex/move_base_params.yaml" command="load" />
+   <!-- <rosparam file="$(find pitakuru)/config/move_base_flex/move_base_params.yaml" command="load" />   -->
     <rosparam file="$(find pitakuru)/config/move_base_flex/dwa_local_planner_params.yaml" command="load" />
 	<rosparam file="$(find pitakuru)/config/move_base_flex/move_base.yaml" command="load"/>
   </node>

@@ -1,10 +1,19 @@
 global_costmap:
+  track_unknown_space: false
   global_frame: map
   robot_base_frame: base_link
 
   update_frequency: 10.0
   publish_frequency: 10.0
   transform_tolerance: 0.5
+  always_send_full_costmap: true
+  #static_map: true
+  rolling_window: false
 
-  static_map: true
- 
+  plugins: 
+  - {name: external,            type: "costmap_2d::StaticLayer"}
+  #- {name: explore_boundary,    type: "frontier_exploration::BoundedExploreLayer"}
+  #Can disable sensor layer if gmapping is fast enough to update scans
+  - {name: obstacles_laser,     type: "costmap_2d::ObstacleLayer"}
+  - {name: inflation,           type: "costmap_2d::InflationLayer"}
+
