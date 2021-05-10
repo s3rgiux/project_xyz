@@ -2310,6 +2310,7 @@ void mode_IDLE()
     mode_idle=true;
     mode_karugamo=false;
     mode_manual=false;
+    mode_auto=false;
     danger=false;
     mode_follow=false;
     tracking_people=false;
