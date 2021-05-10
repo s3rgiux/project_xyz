@@ -25,6 +25,7 @@
 #include <visualization_msgs/Marker.h>
 #include <nav_msgs/Odometry.h>
 #include <nav_msgs/Path.h> 
+#include <actionlib_msgs/GoalStatusArray.h>
 
 
 class test_head
@@ -44,6 +45,7 @@ public:
         path_pub = nh.advertise<nav_msgs::Path>(nh.resolveName("/pathpeop"),1);
         state_pub = nh.advertise<control_xy::States>(nh.resolveName("/pitakuru_states"),1);
 
+        goal_status_subscriber = nh.subscribe("/move_base_flex/move_base/status", 1, &test_head::goalStatusCallback,this);
         head_subscriber = nh.subscribe("/euler", 1, &test_head::headCallback,this);
         odometry_sub = nh.subscribe("odom",1,&test_head::ReceiveOdometry,this);
         //odometry_sub = nh.subscribe("poseupdate",1,&test_head::ReceiveOdometry,this);
@@ -205,6 +207,112 @@ public:
     }
     ~test_head(){}
    
+
+
+void goalStatusCallback(const actionlib_msgs::GoalStatusArray::ConstPtr& status){
+
+
+    int status_id = 0;
+    //uint8 PENDING         = 0  
+    //uint8 ACTIVE          = 1 
+    //uint8 PREEMPTED       = 2
+    //uint8 SUCCEEDED       = 3
+    //uint8 ABORTED         = 4
+    //uint8 REJECTED        = 5
+    //uint8 PREEMPTING      = 6
+    //uint8 RECALLING       = 7
+    //uint8 RECALLED        = 8
+    //uint8 LOST            = 9
+
+  
+    if (!status->status_list.empty() && mode_auto){
+        int size_arr=sizeof(status->status_list)/sizeof(status->status_list[0]);
+        ROS_INFO("tam_arr %i",size_arr);
+    }
+    if (!status->status_list.empty() && mode_auto){
+        
+        int size_arr=sizeof(status->status_list)/sizeof(status->status_list[0]);
+        actionlib_msgs::GoalStatus goalStatus = status->status_list[0];
+        status_id = goalStatus.status;
+        if(status_id==1|| vel_m1>0.05 || vel_m2>0.05){//navigating
+            /* if(is_navigating==false){
+                
+                //play sound for once
+                
+            } */
+            is_navigating=true;
+            pitakuru_state_msg.state="AUTONOMOUS_NAVIGATION";
+            pitakuru_state_msg.state_navigation="going_to_wp";
+            state_pub.publish(pitakuru_state_msg);
+            is_arrived_goal=false;
+            count_arrived=0;
+        }else if(status_id==3 && (vel_m1<0.05 && vel_m2<0.05)){//arrived
+            count_arrived++;
+            if(is_navigating && count_arrived>10 && go_wp1){
+                //play sound
+                is_navigating=false;
+                //alert_karugamo_far_no_sound();
+                pitakuru_state_msg.state="AUTONOMOUS_NAVIGATION";
+                pitakuru_state_msg.state_navigation="arrived_wp1";
+                state_pub.publish(pitakuru_state_msg);
+                is_arrived_goal=true;
+                
+                alert_arrived_wp1_voice_sound();
+                ros::Duration(0.1).sleep(); // sleep for half a second
+            }else if(is_navigating && count_arrived>10 && go_wp2){
+                //play sound
+                is_navigating=false;
+                //alert_karugamo_far_no_sound();
+                pitakuru_state_msg.state="AUTONOMOUS_NAVIGATION";
+                pitakuru_state_msg.state_navigation="arrived_wp2";
+                state_pub.publish(pitakuru_state_msg);
+                is_arrived_goal=true;
+                alert_arrived_wp1_voice_sound();
+                ros::Duration(0.1).sleep(); // sleep for half a second
+                
+            }
+        }
+    /*         if(size_arr>1){
+            actionlib_msgs::GoalStatus goalStatus = status->status_list[size_arr-1];
+            status_id = goalStatus.status;
+            if(status_id==1){//navigating
+                is_navigating=true;
+                pitakuru_state_msg.state="AUTONOMOUS_NAVIGATION";
+                pitakuru_state_msg.state_navigation="going_to_wp";
+                state_pub.publish(pitakuru_state_msg);
+            }else if(status_id==3){//arrived
+                is_navigating=false;
+                alert_karugamo_far_no_sound();
+                pitakuru_state_msg.state="AUTONOMOUS_NAVIGATION";
+                pitakuru_state_msg.state_navigation="arrived_wp";
+                state_pub.publish(pitakuru_state_msg);
+            }
+        }else{
+            actionlib_msgs::GoalStatus goalStatus = status->status_list[0];
+            status_id = goalStatus.status;
+            if(status_id==1){//navigating
+                is_navigating=true;
+                pitakuru_state_msg.state="AUTONOMOUS_NAVIGATION";
+                pitakuru_state_msg.state_navigation="going_to_wp";
+                state_pub.publish(pitakuru_state_msg);
+            }else if(status_id==3){//arrived
+                is_navigating=false;
+                alert_karugamo_far_no_sound();
+                pitakuru_state_msg.state="AUTONOMOUS_NAVIGATION";
+                pitakuru_state_msg.state_navigation="arrived_wp";
+                state_pub.publish(pitakuru_state_msg);
+            }
+        } */
+        
+        
+        //actionlib_msgs::GoalStatus goalStatus = status->status_list[0];
+        //testing_pub.publish(goalStatus);
+    }else{
+        is_navigating=false;
+        is_arrived_goal=false;
+    }
+}
+
 
 void stateCallback(const control_xy::TriggerAction& data){
         //ROS_INFO("Controlxy ");
@@ -576,6 +684,22 @@ void blink_blue2(float dur){
 }
 
 
+void blink_yellow(float dur){
+    ros::Time time_now = ros::Time::now();
+    ros::Duration duration = time_now - time_blink_yellow;
+    if((duration.toSec())>dur){
+        //ROS_INFO("entered");
+        time_blink_yellow=time_now;
+        if(status_led_yellow){
+            status_led_yellow=false;
+            alert_karugamo_far_no_sound();
+        }else{
+            status_led_yellow=true;
+            alert_turn_off_led();
+        }
+    }
+}
+
 void blink_red(float dur){
     ros::Time time_now = ros::Time::now();
     //ros::Duration(1.5).sleep();
@@ -729,7 +853,18 @@ void restart_follow_variables(){
 void calc_100hz(){
     save_counter++;
     karugamo_counter++;
-    if(mode_idle && karugamo_counter%20==0){
+
+    if(mode_auto && (vel_m1>0.15 || vel_m2>0.15)){//&& is_navigating){
+        blink_yellow(0.4);
+        if(karugamo_counter%390==0){
+            alert_navigating_voice_sound();
+        }
+    }else if(mode_auto && (vel_m1<0.15 || vel_m2<0.15) && is_arrived_goal==true){
+        alert_karugamo_far_no_sound();
+    }else if(mode_auto && vel_m1<0.15 && vel_m2<0.15){
+        alert_karugamo_far_no_sound();
+    }
+    if(mode_idle && karugamo_counter%20==0 ){
         vel_steer.linear.x=0;
         vel_steer.angular.z=0;
         speed_publisher.publish(vel_steer);
@@ -1954,6 +2089,19 @@ void  alert_search_voice_sound(){
     alerts_publisher.publish(alerts_command);
 }
 
+void  alert_navigating_voice_sound(){
+    alerts_command.data=111;// 
+    alerts_publisher.publish(alerts_command);
+}
+
+void  alert_arrived_wp1_voice_sound(){
+    alerts_command.data=112;// 
+    alerts_publisher.publish(alerts_command);
+}
+void  alert_arrived_wp2_voice_sound(){
+    alerts_command.data=113;// 
+    alerts_publisher.publish(alerts_command);
+}
 
 //////// alerts
 
@@ -2395,6 +2543,7 @@ void loadRoute(){
             //pitakuru_state_msg.state="AUTONOMOUS_NAVIGATION";
             pitakuru_state_msg.state_navigation="saved_wp_1";
             state_pub.publish(pitakuru_state_msg);
+            
         }else if(btn_save_wp2==1){
             //pitakuru_state_msg.state="AUTONOMOUS_NAVIGATION";
             pitakuru_state_msg.state_navigation="save_wp_2";
@@ -2411,6 +2560,10 @@ void loadRoute(){
             ros::Duration(0.1).sleep(); // sleep for half a second
             pitakuru_state_msg.state_navigation="going_to_wp_1";
             state_pub.publish(pitakuru_state_msg);
+            go_wp1=true;
+            go_wp2=false;
+            //alert_navigating_voice_sound();
+            
         }else if(btn_goto_wp2==1&&mode_auto){
             //pitakuru_state_msg.state="AUTONOMOUS_NAVIGATION";
             pitakuru_state_msg.state_navigation="goto_wp_2";
@@ -2419,6 +2572,10 @@ void loadRoute(){
             ros::Duration(0.1).sleep(); // sleep for half a second
             pitakuru_state_msg.state_navigation="going_to_wp_2";
             state_pub.publish(pitakuru_state_msg);
+            go_wp2=true;
+            go_wp1=false;
+            //alert_navigating_voice_sound();
+            //
         }
         joy_front=joy->axes[1];
         joy_side=joy->axes[0];
@@ -2646,6 +2803,7 @@ private:
     ros::Subscriber cost_subscriber;    
     ros::Subscriber yolo_subscriber;
     ros::Subscriber amcl_pose_sub;
+    ros::Subscriber goal_status_subscriber;
    
     geometry_msgs::Twist vel_steer;
     geometry_msgs::Vector3 tracked_pos;
@@ -2701,7 +2859,7 @@ int save_counter,amp_count_l,amp_count_r;
     float vel_detect_costmap;
     bool status_led_blue,status_led_green,status_led_yellow,status_led_red;
     double duration_to_lost;
-    ros::Time time_blink_bl,time_blink_volts,time_blink_scan,time_blink_red;
+    ros::Time time_blink_bl,time_blink_volts,time_blink_scan,time_blink_red,time_blink_yellow;
     ros::Time  last_time_tracking;
     ros::Time  last_time_scan;
     ros::Time  last_time_obstacle;
@@ -2717,6 +2875,10 @@ int save_counter,amp_count_l,amp_count_r;
     float min_break_distance,max_break_distance,smooth_accel_side_follow;
     float gain_follow_people;
     float use_ps4_controller,use_hokuyo;
+    bool is_navigating,is_arrived_goal,go_wp1,go_wp2;
+    int count_arrived;
+
+
     
 };
 

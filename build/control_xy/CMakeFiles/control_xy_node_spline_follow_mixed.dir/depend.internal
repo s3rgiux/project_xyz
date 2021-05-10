@@ -8,6 +8,9 @@ CMakeFiles/control_xy_node_spline_follow_mixed.dir/src/control_xy_odom_wp_nav_sp
  /home/xavier/catkin_ws/devel/.private/control_xy/include/control_xy/States.h
  /home/xavier/catkin_ws/devel/.private/control_xy/include/control_xy/TriggerAction.h
  /home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_mixed2.cpp
+ /opt/ros/melodic/include/actionlib_msgs/GoalID.h
+ /opt/ros/melodic/include/actionlib_msgs/GoalStatus.h
+ /opt/ros/melodic/include/actionlib_msgs/GoalStatusArray.h
  /opt/ros/melodic/include/geometry_msgs/Point.h
  /opt/ros/melodic/include/geometry_msgs/Pose.h
  /opt/ros/melodic/include/geometry_msgs/PoseStamped.h

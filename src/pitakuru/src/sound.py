@@ -89,6 +89,15 @@ class SoundNode():
         elif(data.data==110):
             self.route="/home/xavier/catkin_ws/src/pitakuru/assets/karugamo-searching.mp3"
             self.entered=True
+        elif(data.data==111):
+            self.route="/home/xavier/catkin_ws/src/pitakuru/assets/autopilot-japanese.mp3"
+            self.entered=True
+        elif(data.data==112):
+            self.route="/home/xavier/catkin_ws/src/pitakuru/assets/arrived-1st-japanese.mp3"
+            self.entered=True
+        elif(data.data==113):
+            self.route="/home/xavier/catkin_ws/src/pitakuru/assets/arrived-2nd-japanese.mp3"
+            self.entered=True
 
         #p=subprocess.Popen(["aplay", "/home/xavier/catkin_ws/src/pitakuru/assets/karugamo-japanese.mp3"])
         #elif(data.data==666):
