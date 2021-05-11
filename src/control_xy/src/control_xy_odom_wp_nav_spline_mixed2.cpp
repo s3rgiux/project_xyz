@@ -202,7 +202,7 @@ public:
         lidar_failed=false;
         joy_counter=0;
         karugamo_counter=0;
-        ctrl_add_side=0;
+        ctrl_add_side=0; 
         ctrl_add_front=0;
     }
     ~test_head(){}
@@ -340,7 +340,8 @@ void stateCallback(const control_xy::TriggerAction& data){
             ros::Duration(0.4).sleep(); // sleep for half a second
         }
        
-    }
+}
+
 void setPointsCallback(const geometry_msgs::Twist& twist){
     nspx=twist.linear.x;
     nspy=twist.linear.y;
@@ -414,7 +415,9 @@ void ReceiveOdometry(const nav_msgs::Odometry::ConstPtr& msg){
 }
 
 
-void amclPoseCallback(const geometry_msgs::PoseWithCovarianceStamped& pose){}
+void amclPoseCallback(const geometry_msgs::PoseWithCovarianceStamped& pose){
+
+}
 
 
 void amperageCallback(const control_xy::StateWheels& msg){
@@ -1707,7 +1710,7 @@ void near(){
 
         }//mode3
        
-    }  
+}  
 
 
 
@@ -2054,7 +2057,7 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan){
        
 
 
-/////////
+  /////////
     }
 }
 
@@ -2496,8 +2499,7 @@ void loadRoute(){
     loaded_route=true;
 }
 
-    void joyCallback(const sensor_msgs::Joy::ConstPtr& joy)
-    {
+void joyCallback(const sensor_msgs::Joy::ConstPtr& joy){
         joy_counter++;
         float speed_button;
         float btn_x,btn_square,btn_circle,btn_triangle;
@@ -2841,7 +2843,7 @@ void loadRoute(){
         }
        
        
-    }//end joy
+}//end joy
    
 private:
 
@@ -2919,7 +2921,7 @@ private:
     float saved_ang,speed_wp_lost;
     float near_far_distance;
     float angle_last,max_defelct_angle;
-int save_counter,amp_count_l,amp_count_r;
+    int save_counter,amp_count_l,amp_count_r;
     float dist_robot_people,smooth_accel_manual,smooth_accel_karugamo_near,smooth_accel_karugamo_far,angle_gain_wp,max_dist_toacc;
     float smooth_accel_stop,smooth_accel_side_manual;
     float ctrl_add_front,ctrl_add_side;
