@@ -8,4 +8,4 @@ oscillation_timeout: 10.0
 oscillation_distance: 0.2
 
 
-clearing_rotation_allowed: true
+clearing_rotation_allowed: false

@@ -2026,7 +2026,7 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan){
             for(int j=0;j<360;j++){
 
                 if((j>0&&j<34)||(j>326&&j<360)){
-                    if (scan->ranges[j] <= break_front_distance && scan->ranges[j] >0.14 ){
+                    if (scan->ranges[j] <= 0.6 && scan->ranges[j] >0.14 ){//break diatance
 
                         detect_cont++;
                         ROS_INFO("found in %i",j);
@@ -2510,7 +2510,10 @@ void joyCallback(const sensor_msgs::Joy::ConstPtr& joy){
             btn_triangle=joy->buttons[3];
             btn_square=joy->buttons[0];
             btn_circle=joy->buttons[2];
-
+            btn_save_wp1=joy->buttons[8];
+            btn_save_wp2=joy->buttons[9];
+            btn_goto_wp1=joy->buttons[6];
+            btn_goto_wp2=joy->buttons[7];
         }else{
             speed_button=joy->axes[5];
             btn_x=joy->buttons[2];
