@@ -854,14 +854,14 @@ void calc_100hz(){
     save_counter++;
     karugamo_counter++;
 
-    if(mode_auto && (vel_m1>0.15 || vel_m2>0.15)){//&& is_navigating){
+    if(danger == false && collision == false && mode_auto && (vel_m1>0.15 || vel_m2>0.15)){//&& is_navigating){
         blink_yellow(0.4);
         if(karugamo_counter%390==0){
             alert_navigating_voice_sound();
         }
-    }else if(mode_auto && (vel_m1<0.15 || vel_m2<0.15) && is_arrived_goal==true){
+    }else if(danger == false && collision == false && mode_auto && (vel_m1<0.15 || vel_m2<0.15) && is_arrived_goal==true){
         alert_karugamo_far_no_sound();
-    }else if(mode_auto && vel_m1<0.15 && vel_m2<0.15){
+    }else if(danger == false && collision == false && mode_auto && vel_m1<0.15 && vel_m2<0.15){
         alert_karugamo_far_no_sound();
     }
     if(mode_idle && karugamo_counter%20==0 ){
@@ -1894,7 +1894,53 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan){
                     speed_publisher.publish(vel_steer);
                 }
                 ros::Duration(0.1).sleep(); // sleep for half a second
-        } else{
+        }else if(detect_cont>1 && mode_auto && (vel_m1>0.15||vel_m2>0.15)){
+                danger=true;
+                free_way=false;
+                ROS_INFO("Danger1");
+                //alert_danger_voice_sound();
+                pitakuru_state_msg.state="DANGER";               
+                state_pub.publish(pitakuru_state_msg);
+                detect_cont=0;
+                ctrl_front_manual=0;
+                    ctrl_side_manual=0;
+                    vel_steer.linear.x= 0;
+                    vel_steer.angular.z= 0;
+                    speed_publisher.publish(vel_steer);
+                ros::Duration(0.05).sleep(); // sleep for 0.05 seconds
+                alert_danger_voice_sound();
+                danger_counter=0;
+                ros::Duration(0.02).sleep(); // sleep for 0.05 seconds
+                /*
+                danger_counter++;
+                alert_danger_no_sound();
+                if(danger_counter%65==0){
+                    alert_danger_sound();
+                }
+                */
+                if (mode_manual && ctrl_front_manual >0){
+                    ctrl_front_manual=0;
+                    ctrl_side_manual=0;
+                    vel_steer.linear.x= 0;
+                    vel_steer.angular.z= 0;
+                    speed_publisher.publish(vel_steer);
+                }else if(mode_follow){
+                    ctrl_front_follow=0;
+                    ctrl_front_karugamo=0;
+                    ctrl_ang=0;
+                    vel_steer.linear.x= 0;
+                    vel_steer.angular.z= 0;
+                    speed_publisher.publish(vel_steer);
+                }else if(mode_auto){
+                    ctrl_front_follow=0;
+                    ctrl_front_karugamo=0;
+                    ctrl_ang=0;
+                    vel_steer.linear.x= 0;
+                    vel_steer.angular.z= 0;
+                    speed_publisher.publish(vel_steer);
+                }
+                ros::Duration(0.1).sleep(); // sleep for half a second
+        }else{
             free_way=true;
             //detect_cont=0
         }
@@ -1941,6 +1987,39 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan){
             //free_way=true;
         }
         if( (ctrl_front_manual> 400 || ctrl_front_follow > 400) && use_hokuyo!=1){
+            for(int j=0;j<360;j++){
+
+                if((j>0&&j<34)||(j>326&&j<360)){
+                    if (scan->ranges[j] <= break_front_distance && scan->ranges[j] >0.14 ){
+
+                        detect_cont++;
+                        ROS_INFO("found in %i",j);
+                        pitakuru_state_msg.state_danger="detected_break_danger1";
+                        //ROS_INFO("print after");
+                    }
+                    if(detect_cont>1){  
+                        return;
+                    }
+                }else{
+                    if (scan->ranges[j] <= break_danger && scan->ranges[j] >0.14 ){
+                        detect_cont++;
+                        ROS_INFO("close in %i",j);
+                        pitakuru_state_msg.state_danger="detected_break_danger1";
+                       
+                        //return;
+                        //ROS_INFO("print after");
+                    }
+                    if(detect_cont>1){  
+                        return;
+                    }
+
+                }
+            }
+            detect_cont=0;//si llego hast aca no encontro nada
+            //free_way=true;
+        }
+
+        if( mode_auto && (vel_m2> 0.15 || vel_m2 > 0.15) && use_hokuyo == 1){
             for(int j=0;j<360;j++){
 
                 if((j>0&&j<34)||(j>326&&j<360)){
