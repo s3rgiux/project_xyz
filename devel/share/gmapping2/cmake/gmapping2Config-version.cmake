@@ -1,0 +1,1 @@
+/home/xavier/catkin_ws/devel/.private/gmapping2/share/gmapping2/cmake/gmapping2Config-version.cmake

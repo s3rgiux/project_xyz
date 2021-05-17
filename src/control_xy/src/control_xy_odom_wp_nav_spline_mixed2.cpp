@@ -1846,6 +1846,101 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan){
                 state_pub.publish(pitakuru_state_msg);
         }
     }
+    if(mode_auto){
+        if(detect_cont>1 && mode_auto && (vel_m1>0.15||vel_m2>0.15)){
+                danger=true;
+                free_way=false;
+                ROS_INFO("Danger1");
+                //alert_danger_voice_sound();
+                pitakuru_state_msg.state="DANGER";               
+                state_pub.publish(pitakuru_state_msg);
+                detect_cont=0;
+                ctrl_front_manual=0;
+                    ctrl_side_manual=0;
+                    vel_steer.linear.x= 0;
+                    vel_steer.angular.z= 0;
+                    speed_publisher.publish(vel_steer);
+                ros::Duration(0.05).sleep(); // sleep for 0.05 seconds
+                alert_danger_voice_sound();
+                danger_counter=0;
+                ros::Duration(0.02).sleep(); // sleep for 0.05 seconds
+                /*
+                danger_counter++;
+                alert_danger_no_sound();
+                if(danger_counter%65==0){
+                    alert_danger_sound();
+                }
+                */
+                if (mode_manual && ctrl_front_manual >0){
+                    ctrl_front_manual=0;
+                    ctrl_side_manual=0;
+                    vel_steer.linear.x= 0;
+                    vel_steer.angular.z= 0;
+                    speed_publisher.publish(vel_steer);
+                }else if(mode_follow){
+                    ctrl_front_follow=0;
+                    ctrl_front_karugamo=0;
+                    ctrl_ang=0;
+                    vel_steer.linear.x= 0;
+                    vel_steer.angular.z= 0;
+                    speed_publisher.publish(vel_steer);
+                }else if(mode_auto){
+                    ctrl_front_follow=0;
+                    ctrl_front_karugamo=0;
+                    ctrl_ang=0;
+                    vel_steer.linear.x= 0;
+                    vel_steer.angular.z= 0;
+                    speed_publisher.publish(vel_steer);
+                }
+                ros::Duration(0.1).sleep(); // sleep for half a second
+        }
+        if( (vel_m2> 0.15 || vel_m2 > 0.15) && use_hokuyo == 1 ){
+            for(int j=0;j<360;j++){
+                if((j>0&&j<34)||(j>326&&j<360)){
+                    if (scan->ranges[j] <= 0.6 && scan->ranges[j] >0.14 ){//break diatance
+                        detect_cont++;
+                        ROS_INFO("found in %i",j);
+                        pitakuru_state_msg.state_danger="detected_break_danger1";
+                        //ROS_INFO("print after");
+                    }
+                    if(detect_cont>1){  
+                        return;
+                    }
+                }else{
+                    if (scan->ranges[j] <= break_danger && scan->ranges[j] >0.14 ){
+                        detect_cont++;
+                        ROS_INFO("close in %i",j);
+                        pitakuru_state_msg.state_danger="detected_break_danger1";
+                       
+                        //return;
+                        //ROS_INFO("print after");
+                    }
+                    if(detect_cont>1){  
+                        return;
+                    }
+
+                }
+            }
+            if(danger==true){
+                danger=false;
+                if(go_wp1){
+                    pitakuru_state_msg.state_navigation="going_to_wp_1";
+                    pitakuru_state_msg.state="AUTONOMOUS_NAVIGATION";
+                    state_pub.publish(pitakuru_state_msg);
+                }else if(go_wp2){
+                    pitakuru_state_msg.state_navigation="going_to_wp_2";
+                    pitakuru_state_msg.state="AUTONOMOUS_NAVIGATION";
+                    state_pub.publish(pitakuru_state_msg);
+                }
+                
+            }
+            
+            detect_cont=0;//si llego hast aca no encontro nada
+            free_way=true;
+        }
+    }
+    
+
     if(danger == false && collision == false ){
         //int count = scan->scan_time / scan->time_increment;
         //float  break_distance=1.5;
@@ -1853,7 +1948,7 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan){
          
         //if(detect_cont>1 && mode_idle == false && (vel_m1 >= vel_detect_scan || vel_m2 >= vel_detect_scan)){
         if(detect_cont>1 && mode_idle == false && (ctrl_front_manual> 400 || ctrl_front_follow > 400)){
-        //if(detect_cont>0 ){
+         //if(detect_cont>0 ){
                 danger=true;
                 free_way=false;
                 ROS_INFO("Danger1");
@@ -2022,43 +2117,13 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan){
             //free_way=true;
         }
 
-        if( mode_auto && (vel_m2> 0.15 || vel_m2 > 0.15) && use_hokuyo == 1){
-            for(int j=0;j<360;j++){
-
-                if((j>0&&j<34)||(j>326&&j<360)){
-                    if (scan->ranges[j] <= 0.6 && scan->ranges[j] >0.14 ){//break diatance
-
-                        detect_cont++;
-                        ROS_INFO("found in %i",j);
-                        pitakuru_state_msg.state_danger="detected_break_danger1";
-                        //ROS_INFO("print after");
-                    }
-                    if(detect_cont>1){  
-                        return;
-                    }
-                }else{
-                    if (scan->ranges[j] <= break_danger && scan->ranges[j] >0.14 ){
-                        detect_cont++;
-                        ROS_INFO("close in %i",j);
-                        pitakuru_state_msg.state_danger="detected_break_danger1";
-                       
-                        //return;
-                        //ROS_INFO("print after");
-                    }
-                    if(detect_cont>1){  
-                        return;
-                    }
-
-                }
-            }
-            detect_cont=0;//si llego hast aca no encontro nada
-            //free_way=true;
-        }
+        
        
 
 
   /////////
     }
+
 }
 
 
