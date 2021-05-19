@@ -36,10 +36,10 @@ class SwitchInput(object):
         self.gmap_running=True
 
     def read_button(self, joy):
-        (circle, triangle, square, cross,l1,r1) = (False, False, False, False,False,False)
+        (circle, triangle, square, cross,l1,r1,pad) = (False, False, False, False,False,False,False)
         button = joy.buttons
         if len(button) < 4:
-            return (circle, triangle, square, cross,l1,r1)
+            return (circle, triangle, square, cross,l1,r1,pad)
         if button[1]:
             cross = True
         if button[2]:
@@ -52,15 +52,24 @@ class SwitchInput(object):
             l1 = True
         if button[5]:
             r1 = True
+        if button[13]:
+            pad = True
             
-        return (circle, triangle, square, cross,l1,r1)
+        return (circle, triangle, square, cross,l1,r1,pad)
 
     def callback(self, joy):
         # (r, u, l, d) = self.read_axes(joy)
         #trigger_action = TriggerAction()
         #(circle, triangle, square, cross) = self.read_button(joy)
-        (circle, triangle, square, cross, l1, r1) = self.read_button(joy)
-        if l1:
+        (circle, triangle, square, cross, l1, r1,pad) = self.read_button(joy)
+        if pad:
+            if self.gmap_running == False:
+                self.gmap_running=True
+                #subprocess.call(["roslaunch", "pitakuru", "gmapping.launch"])
+                subprocess.Popen(["roslaunch", "pitakuru", "gmapping.launch"])
+                self.gmap_running=False
+                sleep(0.2)
+        elif l1:
             print("l1")
             #subprocess.call(["roslaunch", "pitakuru", "pitakuru_full_yolo_mbf.launch"])
             #subprocess.call(["rostopic","pub","1","/syscommand","std_msgs/String",""data: 'reset'""])

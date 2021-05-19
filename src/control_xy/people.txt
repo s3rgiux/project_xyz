@@ -1,2 +1,12 @@
 pobx,poby,px,py,ang,angr,num 
 lost2 
+lost2 
+lost2 
+lost2 
+lost2 
+lost2 
+lost2 
+lost2 
+lost2 
+lost2 
+lost2 
