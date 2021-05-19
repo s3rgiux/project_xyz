@@ -11,6 +11,8 @@ from sensor_msgs.msg import Joy
 from pitakuru.msg import TriggerAction
 from time import sleep
 
+import signal
+
 class SwitchInput(object):
     def __init__(self):
         rospy.init_node('gmap_amcl')
@@ -31,6 +33,7 @@ class SwitchInput(object):
         self.status_on = False
         self.count_status = 0
         self.gpid=0
+        self.gmap_running=True
 
     def read_button(self, joy):
         (circle, triangle, square, cross,l1,r1) = (False, False, False, False,False,False)
@@ -62,17 +65,27 @@ class SwitchInput(object):
             #subprocess.call(["roslaunch", "pitakuru", "pitakuru_full_yolo_mbf.launch"])
             #subprocess.call(["rostopic","pub","1","/syscommand","std_msgs/String",""data: 'reset'""])
             #os.system('rostopic pub -1 /syscommand std_msgs/String "data: reset"')
-            msg=String()
-            msg.data="reset"
-            self.pub_sys.publish(msg)
-            print("succeded")
-            sleep(0.5)
+            if(self.gmap_running):
+                msg=String()
+                msg.data="reset"
+                self.pub_sys.publish(msg)
+                print("succeded")
+                sleep(0.2)
+            # else:
+            #     self.gmap_running=True
+            #     #subprocess.call(["roslaunch", "pitakuru", "gmapping.launch"])
+            #     subprocess.Popen(["roslaunch", "pitakuru", "gmapping.launch"])
+            #     self.gmap_running=False
+            #     sleep(0.2)
             #subprocess.call(["/home/xavier/pow_off.sh"])
             #rospy.logerr("matando desde on")
         elif r1:
             print("r1")
-            os.system('rosrun map_server map_saver -f "/home/xavier/catkin_ws/map"')
-            sleep(0.5)
+            if(self.gmap_running):
+                self.gmap_running=False
+                os.system('rosrun map_server map_saver -f "/home/xavier/catkin_ws/src/pitakuru/maps/map"')
+                sleep(0.5)
+                subprocess.call(["rosnode","kill","/slam_gmapping"])
         else:
             return
         #self.pub.publish(trigger_action)

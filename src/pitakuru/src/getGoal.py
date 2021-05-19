@@ -7,6 +7,7 @@ print(sys.path)
 print(sys.version)
 from math import sqrt, cos, sin
 import rospy
+import os
 #import tf2_ros
 import tf,tf2_ros
 import numpy as np
@@ -20,6 +21,7 @@ from std_msgs.msg import *
 from geometry_msgs.msg import Point, Vector3, PoseWithCovarianceStamped
 from actionlib_msgs.msg import GoalID
 import commands as cmd
+import std_srvs
 #import msvcrt
 #import keyboard
 
@@ -69,6 +71,18 @@ class Goals:
         goal.target_pose.pose.orientation.w = goals.pose.pose.orientation.w
         goal.target_pose.pose.orientation.z = goals.pose.pose.orientation.z
         self.client.send_goal(goal)
+
+    def check_dist(self,pos_rob,goal):
+        e_x=np.abs(goal.pose.pose.position.x-pos_rob.pose.pose.position.x)
+        e_y=np.abs(goal.pose.pose.position.y-pos_rob.pose.pose.position.y)
+        dist=np.sqrt((e_x*e_x)+(e_y*e_y))
+        print("dist calculada")
+        print(dist)
+        if(dist>2):
+            return True
+        else:
+            return False
+
 
     def send_goal_to_server(self,goals):    
         
@@ -144,12 +158,29 @@ class Goals:
             sleep(0.2)
         if states.state=="AUTONOMOUS_NAVIGATION" and states.state_navigation=="goto_wp_1":
             print("going_to_point1")
-            self.is_navigating=True
-            self.send_goal_to_server(self.point1)
+            #rospy.ServiceProxy("/move_base_flex/clear_costmaps",std_srvs.Empty)
+            os.system('rosservice call /move_base_flex/clear_costmaps {}')
+            a=self.check_dist(self.pose_amcl,self.point1)
+            if(a):
+                print("accepted_dist")
+                self.is_navigating=True
+                self.send_goal_to_server(self.point1)
         if states.state=="AUTONOMOUS_NAVIGATION" and states.state_navigation=="goto_wp_2":
             print("going_to_point2")
-            self.is_navigating=True
-            self.send_goal_to_server(self.point2)
+            
+            #rospy.ServiceProxy("/move_base_flex/clear_costmaps",std_srvs.Empty)
+            os.system('rosservice call /move_base_flex/clear_costmaps {}')
+            a=self.check_dist(self.pose_amcl,self.point2)
+            if(a):
+                print("accepted_dist")
+                self.is_navigating=True
+                self.send_goal_to_server(self.point2)
+            
+        if states.state=="AUTONOMOUS_NAVIGATION" and states.state_navigation=="going_to_wp_1":
+            os.system('rosservice call /move_base_flex/clear_costmaps {}')
+        if states.state=="AUTONOMOUS_NAVIGATION" and states.state_navigation=="going_to_wp_2":
+            os.system('rosservice call /move_base_flex/clear_costmaps {}')
+            
         
     
     def pubodo(self):

@@ -204,6 +204,9 @@ public:
         karugamo_counter=0;
         ctrl_add_side=0; 
         ctrl_add_front=0;
+        last_mode_auto=false;
+        has_wp1=false;
+        has_wp2=false;
     }
     ~test_head(){}
    
@@ -246,7 +249,7 @@ void goalStatusCallback(const actionlib_msgs::GoalStatusArray::ConstPtr& status)
             state_pub.publish(pitakuru_state_msg);
             is_arrived_goal=false;
             count_arrived=0;
-        }else if(status_id==3 && (vel_m1<0.05 && vel_m2<0.05)){//arrived
+        }else if(status_id==3 && (vel_m1<0.05 && vel_m2<0.05) && danger==false){//arrived
             count_arrived++;
             if(is_navigating && count_arrived>10 && go_wp1){
                 //play sound
@@ -861,6 +864,14 @@ void calc_100hz(){
         blink_yellow(0.4);
         if(karugamo_counter%390==0){
             alert_navigating_voice_sound();
+            if(go_wp1){
+                pitakuru_state_msg.state_navigation="going_to_wp_1";
+                state_pub.publish(pitakuru_state_msg);
+            }else if(go_wp2){
+                pitakuru_state_msg.state_navigation="going_to_wp_2";
+                state_pub.publish(pitakuru_state_msg);
+            }
+            
         }
     }else if(danger == false && collision == false && mode_auto && (vel_m1<0.15 || vel_m2<0.15) && is_arrived_goal==true){
         alert_karugamo_far_no_sound();
@@ -1846,14 +1857,17 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan){
                 state_pub.publish(pitakuru_state_msg);
         }
     }
-    if(mode_auto){
-        if(detect_cont>1 && mode_auto && (vel_m1>0.15||vel_m2>0.15)){
+    
+    //if(danger&&last_mode_auto){
+    if(last_mode_auto){
+        
+        if(detect_cont>1 ){
                 danger=true;
                 free_way=false;
-                ROS_INFO("Danger1");
+                //ROS_INFO("Danger1");
                 //alert_danger_voice_sound();
-                pitakuru_state_msg.state="DANGER";               
-                state_pub.publish(pitakuru_state_msg);
+                //pitakuru_state_msg.state="DANGER";               
+                //state_pub.publish(pitakuru_state_msg);
                 detect_cont=0;
                 ctrl_front_manual=0;
                     ctrl_side_manual=0;
@@ -1861,46 +1875,20 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan){
                     vel_steer.angular.z= 0;
                     speed_publisher.publish(vel_steer);
                 ros::Duration(0.05).sleep(); // sleep for 0.05 seconds
-                alert_danger_voice_sound();
-                danger_counter=0;
-                ros::Duration(0.02).sleep(); // sleep for 0.05 seconds
-                /*
-                danger_counter++;
-                alert_danger_no_sound();
-                if(danger_counter%65==0){
-                    alert_danger_sound();
-                }
-                */
-                if (mode_manual && ctrl_front_manual >0){
-                    ctrl_front_manual=0;
-                    ctrl_side_manual=0;
-                    vel_steer.linear.x= 0;
-                    vel_steer.angular.z= 0;
-                    speed_publisher.publish(vel_steer);
-                }else if(mode_follow){
-                    ctrl_front_follow=0;
-                    ctrl_front_karugamo=0;
-                    ctrl_ang=0;
-                    vel_steer.linear.x= 0;
-                    vel_steer.angular.z= 0;
-                    speed_publisher.publish(vel_steer);
-                }else if(mode_auto){
-                    ctrl_front_follow=0;
-                    ctrl_front_karugamo=0;
-                    ctrl_ang=0;
-                    vel_steer.linear.x= 0;
-                    vel_steer.angular.z= 0;
-                    speed_publisher.publish(vel_steer);
-                }
-                ros::Duration(0.1).sleep(); // sleep for half a second
+                //alert_danger_voice_sound();
+                //danger_counter=0;
+                //ros::Duration(0.02).sleep(); // sleep for 0.05 seconds
+ 
+               
         }
-        if( (vel_m2> 0.15 || vel_m2 > 0.15) && use_hokuyo == 1 ){
-            for(int j=0;j<360;j++){
+
+        for(int j=0;j<360;j++){
                 if((j>0&&j<34)||(j>326&&j<360)){
                     if (scan->ranges[j] <= 0.6 && scan->ranges[j] >0.14 ){//break diatance
                         detect_cont++;
                         ROS_INFO("found in %i",j);
-                        pitakuru_state_msg.state_danger="detected_break_danger1";
+                        pitakuru_state_msg.state_danger="detected_break_danger1_auto";
+                        //state_pub.publish(pitakuru_state_msg);
                         //ROS_INFO("print after");
                     }
                     if(detect_cont>1){  
@@ -1910,7 +1898,7 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan){
                     if (scan->ranges[j] <= break_danger && scan->ranges[j] >0.14 ){
                         detect_cont++;
                         ROS_INFO("close in %i",j);
-                        pitakuru_state_msg.state_danger="detected_break_danger1";
+                        //pitakuru_state_msg.state_danger="detected_break_danger1_auto";
                        
                         //return;
                         //ROS_INFO("print after");
@@ -1923,22 +1911,133 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan){
             }
             if(danger==true){
                 danger=false;
+                mode_AUTONOMOUS();
+                mode_AUTONOMOUS();
+                
                 if(go_wp1){
+                    
+                    for (int h=0; h<4;h++){
+                        pitakuru_state_msg.state_navigation="goto_wp_1";
+                        state_pub.publish(pitakuru_state_msg);
+                    }
+                    //pitakuru_state_msg.state="AUTONOMOUS_NAVIGATION";
+                    ros::Duration(0.15).sleep(); // sleep for half a second
                     pitakuru_state_msg.state_navigation="going_to_wp_1";
-                    pitakuru_state_msg.state="AUTONOMOUS_NAVIGATION";
                     state_pub.publish(pitakuru_state_msg);
+                    
+
                 }else if(go_wp2){
+                    for (int h=0; h<4;h++){
+                        pitakuru_state_msg.state_navigation="goto_wp_2";
+                        state_pub.publish(pitakuru_state_msg);
+                    }
+                    
+                    //pitakuru_state_msg.state="AUTONOMOUS_NAVIGATION";
+                    ros::Duration(0.15).sleep(); // sleep for half a second
                     pitakuru_state_msg.state_navigation="going_to_wp_2";
-                    pitakuru_state_msg.state="AUTONOMOUS_NAVIGATION";
                     state_pub.publish(pitakuru_state_msg);
+                    
                 }
                 
             }
             
             detect_cont=0;//si llego hast aca no encontro nada
             free_way=true;
-        }
     }
+    // if(mode_auto){
+        
+    //     if(detect_cont>1 && mode_auto && (vel_m1>0.15||vel_m2>0.15)){
+    //             danger=true;
+    //             free_way=false;
+    //             ROS_INFO("Danger1");
+    //             //alert_danger_voice_sound();
+    //             pitakuru_state_msg.state="DANGER";               
+    //             state_pub.publish(pitakuru_state_msg);
+    //             detect_cont=0;
+    //             ctrl_front_manual=0;
+    //                 ctrl_side_manual=0;
+    //                 vel_steer.linear.x= 0;
+    //                 vel_steer.angular.z= 0;
+    //                 speed_publisher.publish(vel_steer);
+    //             ros::Duration(0.05).sleep(); // sleep for 0.05 seconds
+    //             alert_danger_voice_sound();
+    //             danger_counter=0;
+    //             ros::Duration(0.02).sleep(); // sleep for 0.05 seconds
+    //             /*
+    //             danger_counter++;
+    //             alert_danger_no_sound();
+    //             if(danger_counter%65==0){
+    //                 alert_danger_sound();
+    //             }
+    //             */
+    //             if (mode_manual && ctrl_front_manual >0){
+    //                 ctrl_front_manual=0;
+    //                 ctrl_side_manual=0;
+    //                 vel_steer.linear.x= 0;
+    //                 vel_steer.angular.z= 0;
+    //                 speed_publisher.publish(vel_steer);
+    //             }else if(mode_follow){
+    //                 ctrl_front_follow=0;
+    //                 ctrl_front_karugamo=0;
+    //                 ctrl_ang=0;
+    //                 vel_steer.linear.x= 0;
+    //                 vel_steer.angular.z= 0;
+    //                 speed_publisher.publish(vel_steer);
+    //             }else if(mode_auto){
+    //                 ctrl_front_follow=0;
+    //                 ctrl_front_karugamo=0;
+    //                 ctrl_ang=0;
+    //                 vel_steer.linear.x= 0;
+    //                 vel_steer.angular.z= 0;
+    //                 speed_publisher.publish(vel_steer);
+    //             }
+    //             ros::Duration(0.1).sleep(); // sleep for half a second
+    //     }
+    //     if( (vel_m2> 0.15 || vel_m2 > 0.15) && use_hokuyo == 1 ){
+    //         for(int j=0;j<360;j++){
+    //             if((j>0&&j<34)||(j>326&&j<360)){
+    //                 if (scan->ranges[j] <= 0.6 && scan->ranges[j] >0.14 ){//break diatance
+    //                     detect_cont++;
+    //                     ROS_INFO("found in %i",j);
+    //                     pitakuru_state_msg.state_danger="detected_break_danger1";
+    //                     //ROS_INFO("print after");
+    //                 }
+    //                 if(detect_cont>1){  
+    //                     return;
+    //                 }
+    //             }else{
+    //                 if (scan->ranges[j] <= break_danger && scan->ranges[j] >0.14 ){
+    //                     detect_cont++;
+    //                     ROS_INFO("close in %i",j);
+    //                     pitakuru_state_msg.state_danger="detected_break_danger1";
+                       
+    //                     //return;
+    //                     //ROS_INFO("print after");
+    //                 }
+    //                 if(detect_cont>1){  
+    //                     return;
+    //                 }
+
+    //             }
+    //         }
+    //         if(danger==true){
+    //             danger=false;
+    //             if(go_wp1){
+    //                 pitakuru_state_msg.state_navigation="going_to_wp_1";
+    //                 pitakuru_state_msg.state="AUTONOMOUS_NAVIGATION";
+    //                 state_pub.publish(pitakuru_state_msg);
+    //             }else if(go_wp2){
+    //                 pitakuru_state_msg.state_navigation="going_to_wp_2";
+    //                 pitakuru_state_msg.state="AUTONOMOUS_NAVIGATION";
+    //                 state_pub.publish(pitakuru_state_msg);
+    //             }
+                
+    //         }
+            
+    //         detect_cont=0;//si llego hast aca no encontro nada
+    //         free_way=true;
+    //     }
+    // }
     
 
     if(danger == false && collision == false ){
@@ -2250,6 +2349,26 @@ void  alert_arrived_wp2_voice_sound(){
     alerts_publisher.publish(alerts_command);
 }
 
+void  alert_saved_wp1_voice_sound(){
+    alerts_command.data=114;// 
+    alerts_publisher.publish(alerts_command);
+}
+
+void  alert_saved_wp2_voice_sound(){
+    alerts_command.data=115;// 
+    alerts_publisher.publish(alerts_command);
+}
+
+void  alert_goto_wp1_voice_sound(){
+    alerts_command.data=116;// 
+    alerts_publisher.publish(alerts_command);
+}
+
+void  alert_goto_wp2_voice_sound(){
+    alerts_command.data=116;// 
+    alerts_publisher.publish(alerts_command);
+}
+
 //////// alerts
 
 void collisioned(){
@@ -2289,6 +2408,7 @@ void collisioned(){
     publish_lost_tracked();
     pitakuru_state_msg.state="COLLISION";
     state_pub.publish(pitakuru_state_msg);
+    last_mode_auto=false;
 }
 
 void remove_collision(){
@@ -2323,6 +2443,7 @@ void remove_collision(){
     publish_lost_tracked();
     pitakuru_state_msg.state="IDLE";
     state_pub.publish(pitakuru_state_msg);
+    last_mode_auto=false;
 }
 
 
@@ -2401,6 +2522,7 @@ void mode_AUTONOMOUS(){
     state_pub.publish(pitakuru_state_msg);
     detect_cont=0;
     low_voltage=false;
+    last_mode_auto=true;
 }
 
 
@@ -2439,6 +2561,7 @@ void mode_MANUAL(){
     state_pub.publish(pitakuru_state_msg);
     detect_cont=0;
     low_voltage=false;
+    last_mode_auto=false;
 }
 void mode_IDLE()
 {
@@ -2483,6 +2606,7 @@ void mode_IDLE()
     pitakuru_state_msg.state="IDLE";
     state_pub.publish(pitakuru_state_msg);
     low_voltage=false;
+    last_mode_auto=false;
 }
 
 void mode_people_follow()
@@ -2530,6 +2654,7 @@ void mode_people_follow()
     pitakuru_state_msg.state_karugamo="losting_with_lidar";
     state_pub.publish(pitakuru_state_msg);
     low_voltage=false;
+    last_mode_auto=false;
    
 }
 
@@ -2689,23 +2814,28 @@ void joyCallback(const sensor_msgs::Joy::ConstPtr& joy){
             //pitakuru_state_msg.state="AUTONOMOUS_NAVIGATION";
             pitakuru_state_msg.state_navigation="save_wp_1";
             state_pub.publish(pitakuru_state_msg);
+            alert_saved_wp1_voice_sound();
             ros::Duration(0.1).sleep(); // sleep for half a second
             //pitakuru_state_msg.state="AUTONOMOUS_NAVIGATION";
             pitakuru_state_msg.state_navigation="saved_wp_1";
             state_pub.publish(pitakuru_state_msg);
+            has_wp1=true;
             
         }else if(btn_save_wp2==1){
             //pitakuru_state_msg.state="AUTONOMOUS_NAVIGATION";
             pitakuru_state_msg.state_navigation="save_wp_2";
             state_pub.publish(pitakuru_state_msg);
             //pitakuru_state_msg.state="AUTONOMOUS_NAVIGATION";
+            alert_saved_wp2_voice_sound();
             ros::Duration(0.1).sleep(); // sleep for half a second
             pitakuru_state_msg.state_navigation="saved_wp_2";
             state_pub.publish(pitakuru_state_msg);
-        }else if(btn_goto_wp1==1&&mode_auto){
+            has_wp2=true;
+        }else if(btn_goto_wp1==1&&mode_auto && has_wp1){
             //pitakuru_state_msg.state="AUTONOMOUS_NAVIGATION";
             pitakuru_state_msg.state_navigation="goto_wp_1";
             state_pub.publish(pitakuru_state_msg);
+            alert_goto_wp1_voice_sound();
             //pitakuru_state_msg.state="AUTONOMOUS_NAVIGATION";
             ros::Duration(0.1).sleep(); // sleep for half a second
             pitakuru_state_msg.state_navigation="going_to_wp_1";
@@ -2714,11 +2844,12 @@ void joyCallback(const sensor_msgs::Joy::ConstPtr& joy){
             go_wp2=false;
             //alert_navigating_voice_sound();
             
-        }else if(btn_goto_wp2==1&&mode_auto){
+        }else if(btn_goto_wp2==1&&mode_auto&&has_wp2){
             //pitakuru_state_msg.state="AUTONOMOUS_NAVIGATION";
             pitakuru_state_msg.state_navigation="goto_wp_2";
             state_pub.publish(pitakuru_state_msg);
             //pitakuru_state_msg.state="AUTONOMOUS_NAVIGATION";
+            alert_goto_wp2_voice_sound();
             ros::Duration(0.1).sleep(); // sleep for half a second
             pitakuru_state_msg.state_navigation="going_to_wp_2";
             state_pub.publish(pitakuru_state_msg);
@@ -3027,6 +3158,8 @@ private:
     float use_ps4_controller,use_hokuyo;
     bool is_navigating,is_arrived_goal,go_wp1,go_wp2;
     int count_arrived;
+    bool last_mode_auto;
+    bool has_wp1,has_wp2;
 
 
     
