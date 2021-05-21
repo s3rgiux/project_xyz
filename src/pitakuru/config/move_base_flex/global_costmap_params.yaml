@@ -1,8 +1,8 @@
 global_costmap:
-  track_unknown_space: true #false
+  track_unknown_space: false
   global_frame: map
   robot_base_frame: base_link
-  allow_unknown: false
+
   update_frequency: 10.0
   publish_frequency: 10.0
   transform_tolerance: 0.5

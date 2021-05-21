@@ -1,17 +1,10 @@
 planners:
   - name: NavfnROS
     type: navfn/NavfnROS
-    
 
 controllers:
   - name: DWAPlannerROS
     type: dwa_local_planner/DWAPlannerROS
-
-
-NavfnROS:
-  allow_unknown: false
-  track_unknown_space: true #false
-  default_tolerance: 0.1 # A tolerance on the goal point for the planner.
 
 controller_frequency: 7.0 #5
 controller_patience: 3.0
@@ -23,6 +16,4 @@ oscillation_timeout: 10.0
 oscillation_distance: 0.2
 
 clearing_rotation_allowed: false
-
-
 

@@ -77,9 +77,7 @@ public:
         nh.getParam("/control_xy/max_speed_karugamo", max_speed_karugamo);
         nh.getParam("/control_xy/max_speed_follow", max_speed_follow);
         nh.getParam("/control_xy/max_speed_follow_heavy", max_speed_follow_heavy);
-
         nh.getParam("/control_xy/max_speed_side_follow", max_speed_side_follow);
-        
         nh.getParam("/control_xy/max_speed_manual", max_speed_manual);
         nh.getParam("/control_xy/max_speed_manual_heavy", max_speed_manual_heavy);
         nh.getParam("/control_xy/speed_wp_lost",speed_wp_lost);
