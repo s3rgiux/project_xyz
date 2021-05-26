@@ -31,7 +31,7 @@ class ProaCmd:  # Use 'with' statement
     def send_receive(self, command):
         # Prepare command packet (bytes)
         raw_req = command.as_bytes()
-        print('>', raw_req.encode('hex'))
+        #print('>', raw_req.encode('hex'))
 
         # Flush
         self._ser.reset_input_buffer()
@@ -54,10 +54,10 @@ class ProaCmd:  # Use 'with' statement
         # Parse
         try:
             command.parse(raw_resp)
-            print('<',command.resp.header.src_id.encode('hex'),
-                command.resp.header.err.encode('hex'),
-                command.resp.header.resp_type.encode('hex'),
-                command.resp.body)
+            #print('<',command.resp.header.src_id.encode('hex'),
+            #    command.resp.header.err.encode('hex'),
+            #    command.resp.header.resp_type.encode('hex'),
+            #    command.resp.body)
             #print('<', 
             #    command.resp.header.src_id.encode('hex'), 
             #    command.resp.header.err.encode('hex'), 

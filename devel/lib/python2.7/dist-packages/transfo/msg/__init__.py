@@ -1,0 +1,1 @@
+/home/xavier/catkin_ws/devel/.private/transfo/lib/python2.7/dist-packages/transfo/msg/__init__.py

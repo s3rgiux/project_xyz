@@ -1,0 +1,1 @@
+/home/xavier/catkin_ws/devel/.private/transfo/share/gennodejs/ros/transfo/msg/_index.js

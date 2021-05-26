@@ -168,16 +168,14 @@
 <!-- navigation -->
 <!-- -->
  <include file="$(find pitakuru)/launch/navigation_mbf.launch"/>
-
+ <include file="$(find pitakuru)/launch/amcl.launch"/>
 <include file="$(find turtlebot3_mbf)/launch/rviz.launch"/>
-
+ 
 <node pkg="pitakuru" type="gmap_amcl.py" name="gmap_amcl" />
 
 <node pkg="pitakuru" type="getGoal.py" name="getGoal" />
 
-<!--
-<node pkg="amcl" type="amcl" name="amcl"/>
--->
+
 <node name="frame_base" pkg="tf2_ros" type="static_transform_publisher" args="0 0 0 0 0 0 map my_frame"/>
 
 <!-- rosbag nodes -->
@@ -209,7 +207,7 @@ if = "$(arg record_m_flag)" />
 <!--<include file="$(find hector_slam_launch)/launch/tutorial.launch"/> -->
  
 <!-- SLAM地図作成ノード -->
-
+<!--
     <param name="use_sim_time" value="false"/>
     <node pkg="gmapping2" type="slam_gmapping" name="slam_gmapping" clear_params="true">
       <rosparam command="load" file="$(find pitakuru)/config/gmapping.yaml" />
@@ -219,7 +217,7 @@ if = "$(arg record_m_flag)" />
       <param name="odom_frame" value="odom" />
     </node>
 
-
+-->
 <!--
 <node pkg="pitakuru" type="imu.py" name="imuw"/>
 <node pkg="tf" type="static_transform_publisher" name="imu_base_link_broadcaster" args="0.1 0 0.2 0 0 0 base_link immu 100" />
@@ -227,10 +225,10 @@ if = "$(arg record_m_flag)" />
 
  #### map ##############################
 
-<!-- 
+ <!--
 <arg name="map_file" default="$(find pitakuru)/maps/map.yaml"/>
 <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
--->
+ -->
 
 
   #### start the laser scan_matcher ##############################

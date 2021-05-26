@@ -1,0 +1,1 @@
+/home/xavier/catkin_ws/devel/.private/transfo/share/common-lisp/ros/transfo/msg/Frame.lisp

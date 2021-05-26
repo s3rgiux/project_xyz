@@ -29,6 +29,8 @@ import time
 
 from pypro.msg import StateWheels
 
+from sensor_msgs.msg import Joy
+
 
 import rosparam
 #params = rosparam.get_param("/km_dolly_wheels")
@@ -221,6 +223,7 @@ class PitWheels:
         self.wheels_pub = rospy.Publisher('wheels_wheels', Vector3, queue_size=1)
         self.current_pub = rospy.Publisher('amperage', Vector3, queue_size=1)
         self.state_wheels_pub = rospy.Publisher('stateWheels',StateWheels, queue_size=1)
+        self.sub = rospy.Subscriber('/j0/joy', Joy, self.callback,queue_size=1)
         '''
         left wheel: front:x,left:-z,top:-y left-handed cordinate
         '''
@@ -232,7 +235,11 @@ class PitWheels:
         self.left_w_dev = KeyCtrlr(pc)
         self.right_w_dev = KeyCtrll(pc2)
         self.left_w_dev.enable_handler()
-        sleep(1)
+        sleep(0.5)
+        self.right_w_dev.enable_handler()
+        sleep(0.5)
+        self.left_w_dev.enable_handler()
+        sleep(0.5)
         self.right_w_dev.enable_handler()
         #self.left_w_dev.read_foc_handler()
         #self.right_w_dev.read_foc_handler()
@@ -279,12 +286,109 @@ class PitWheels:
         self.can_correct=False
         self.l_curr=0
         self.r_curr=0
-        
+        self.xini=0
+        self.yini=0
+        self.zrini=0
+        self.wrini=0
 
         rospy.Subscriber('/cmd_vel', Twist, self.teleop_callback, queue_size=1)
         rospy.Subscriber('/poseupdate', PoseWithCovarianceStamped, self.correct_callback, queue_size=1)
         rospy.Subscriber('/euler2', Float64, self.angle_callback, queue_size=1)
 
+        self.read_vars()
+
+        
+    #def write_odom_file(self):
+        
+
+    def read_vars(self):
+        ffile=open('/home/xavier/catkin_ws/src/pitakuru/config/initodom.txt','r').read()
+        variable="x"
+        ini=ffile.find(variable)+(len(variable)+1)
+        rest=ffile[ini:]
+        search_enter=rest.find('\n')
+        self.xini=float(rest[:search_enter])
+
+        variable="y"
+        ini=ffile.find(variable)+(len(variable)+1)
+        rest=ffile[ini:]
+        search_enter=rest.find('\n')
+        self.yini=float(rest[:search_enter])
+
+        variable="rz"
+        ini=ffile.find(variable)+(len(variable)+1)
+        rest=ffile[ini:]
+        search_enter=rest.find('\n')
+        self.zrini=float(rest[:search_enter])
+
+        variable="rww"
+        ini=ffile.find(variable)+(len(variable)+1)
+        rest=ffile[ini:]
+        search_enter=rest.find('\n')
+        self.wrini=float(rest[:search_enter])
+        #print(" value")
+        
+        self.odo.pose.pose.position.x=self.xini
+        self.odo.pose.pose.position.y=self.yini
+        self.odo.pose.pose.orientation.z=self.zrini
+        self.odo.pose.pose.orientation.w=self.wrini
+        angs= tf.transformations.euler_from_quaternion([0,0,self.zrini,self.wrini])
+        self.x[0]=self.xini
+        self.x[1]=self.yini
+        self.x[2]=angs[2]
+        print "xini:",self.xini
+        print "yini:",self.yini
+        print "zini:",self.zrini
+        print "wini:",self.wrini
+        print(angs)
+
+    def read_button(self, joy):
+        (circle, triangle, square, cross,l1,r1,pad) = (False, False, False, False,False,False,False)
+        button = joy.buttons
+        if len(button) < 4:
+            return (circle, triangle, square, cross,l1,r1,pad)
+        if button[1]:
+            cross = True
+        if button[2]:
+            circle = True
+        if button[3]:
+            triangle = True
+        if button[0]:
+            square = True
+        if button[4]:
+            l1 = True
+        if button[5]:
+            r1 = True
+        if button[13]:
+            pad = True
+
+        return (circle, triangle, square, cross,l1,r1,pad)
+    def callback(self, joy):
+        (circle, triangle, square, cross, l1, r1,pad) = self.read_button(joy)
+        if l1:
+            print("l1")
+            #self.reset_odom()
+            sleep(0.5)
+
+    
+
+    def reset_odom(self):
+        self.x[0]=0
+        self.x[1]=0
+        self.x[2]=0
+        self.odo.pose.pose.position.x = self.x[0]
+        self.odo.pose.pose.position.y = self.x[1]
+        q = tf.transformations.quaternion_from_euler(0, 0, self.x[2])
+        self.odo.pose.pose.orientation = Quaternion(*q)
+        self.odo.twist.twist.linear.x = 0
+        self.odo.twist.twist.linear.y = 0
+        self.odo.twist.twist.angular.z = 0
+        self.odom_trans.header.stamp = rospy.Time.now()
+        self.odom_trans.transform.translation.x = self.x[0]
+        self.odom_trans.transform.translation.y = self.x[1]
+        self.odom_trans.transform.translation.z = 0
+        self.odom_trans.transform.rotation = Quaternion(*q)
+        print("reseting_odom")
     def enable_motors(self):
         self.left_w_dev.enable_handler()
         sleep(0.01)

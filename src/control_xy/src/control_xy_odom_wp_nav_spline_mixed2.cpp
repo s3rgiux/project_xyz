@@ -205,6 +205,8 @@ public:
         last_mode_auto=false;
         has_wp1=false;
         has_wp2=false;
+        reseting_map=false;
+        saving_map=false;
     }
     ~test_head(){}
    
@@ -857,7 +859,22 @@ void restart_follow_variables(){
 void calc_100hz(){
     save_counter++;
     karugamo_counter++;
-
+    if(danger==false && collision==false && mode_manual){
+        ros::Time time_now = ros::Time::now();
+        ros::Duration duration = time_now - last_time_btn_save_reset_pressed;
+            if((duration.toSec())<10 && reseting_map){
+                blink_yellow(0.25);
+            }else if(reseting_map){
+                reseting_map=false;
+                alert_manual_no_sound();
+            }
+            if((duration.toSec())<24 && saving_map){
+                blink_yellow(0.4);
+            }else if(saving_map){
+                saving_map=false;
+                alert_manual_no_sound();
+            }      
+    }
     if(danger == false && collision == false && mode_auto && (vel_m1>0.15 || vel_m2>0.15)){//&& is_navigating){
         blink_yellow(0.4);
         if(karugamo_counter%390==0){
@@ -1851,7 +1868,6 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan){
             ros::Duration(0.02).sleep(); // sleep for 0.05 seconds
             pitakuru_state_msg.state="DANGER";
                 pitakuru_state_msg.state_karugamo="losting_with_lidar";
-               
                 state_pub.publish(pitakuru_state_msg);
         }
     }
@@ -2367,6 +2383,8 @@ void  alert_goto_wp2_voice_sound(){
     alerts_publisher.publish(alerts_command);
 }
 
+
+
 //////// alerts
 
 void collisioned(){
@@ -2691,7 +2709,8 @@ void joyCallback(const sensor_msgs::Joy::ConstPtr& joy){
         joy_counter++;
         float speed_button;
         float btn_x,btn_square,btn_circle,btn_triangle;
-        float btn_save_wp1,btn_save_wp2,btn_goto_wp1,btn_goto_wp2;
+        float btn_save_wp1,btn_save_wp2,btn_goto_wp1,btn_goto_wp2,btn_l3,btn_r3;
+        float btn_reset_map,btn_saving_map;
         if(use_ps4_controller==1){
             speed_button=joy->axes[7];
             btn_x=joy->buttons[1];
@@ -2702,6 +2721,10 @@ void joyCallback(const sensor_msgs::Joy::ConstPtr& joy){
             btn_save_wp2=joy->buttons[9];
             btn_goto_wp1=joy->buttons[6];
             btn_goto_wp2=joy->buttons[7];
+            btn_l3=joy->buttons[11];
+            btn_r3=joy->buttons[12];
+            btn_reset_map=joy->buttons[4];
+            btn_saving_map=joy->buttons[5];
         }else{
             speed_button=joy->axes[5];
             btn_x=joy->buttons[2];
@@ -2789,27 +2812,44 @@ void joyCallback(const sensor_msgs::Joy::ConstPtr& joy){
             ruta_learn=false; */
        
         }else if(btn_circle==1 && free_way && collision == false){//danger!=true && free_way==true){//circulo
-            mode_IDLE();
+            //mode_IDLE();
+            mode_MANUAL();
             ros::Duration(0.5).sleep(); // sleep for half a second
         //}else if(joy->buttons[1]==1 && danger!=true && collision == false){//equis
         }else if(btn_x==1 && collision == false){//equis
-            mode_MANUAL();
-            ros::Duration(0.5).sleep(); // sleep for half a second
-        }else if(btn_triangle && danger!=true && collision == false ){//triangulo 
-            mode_AUTONOMOUS();   
-            
-            do_nothing();
-            ros::Duration(0.2).sleep(); // sleep for half a second
-           
-        }else if(btn_square&& free_way && collision == false){//square
+            //mode_MANUAL();
             mode_people_follow();
             vel_steer.linear.x=0;
             vel_steer.linear.y= 1;
             vel_steer.angular.z=0;
             speed_publisher.publish(vel_steer);
             ros::Duration(0.5).sleep(); // sleep for half a second
+        }else if(btn_triangle && danger!=true && collision == false ){//triangulo 
+            //mode_AUTONOMOUS();   
+            //do_nothing();
+            mode_IDLE();
+            ros::Duration(0.2).sleep(); // sleep for half a second
+        }else if(reseting_map==false&& btn_reset_map&& mode_manual && collision == false && danger==false){//square
+            reseting_map=true;
+            last_time_btn_save_reset_pressed=ros::Time::now();
+            ros::Duration(0.3).sleep(); // sleep for half a second
+        }else if(btn_saving_map&& mode_manual && collision == false && danger==false){//square
+            saving_map=true;
+            last_time_btn_save_reset_pressed=ros::Time::now();
+            ros::Duration(0.3).sleep(); // sleep for half a second
+        }else if(btn_square&& free_way && collision == false){//square
+            mode_AUTONOMOUS();   
+            do_nothing();
+            ros::Duration(0.2).sleep(); // sleep for half a second
+            // mode_people_follow();
+            // vel_steer.linear.x=0;
+            // vel_steer.linear.y= 1;
+            // vel_steer.angular.z=0;
+            // speed_publisher.publish(vel_steer);
+            //ros::Duration(0.5).sleep(); // sleep for half a second
         }else if(btn_save_wp1==1){
             //pitakuru_state_msg.state="AUTONOMOUS_NAVIGATION";
+            
             pitakuru_state_msg.state_navigation="save_wp_1";
             state_pub.publish(pitakuru_state_msg);
             alert_saved_wp1_voice_sound();
@@ -2855,7 +2895,26 @@ void joyCallback(const sensor_msgs::Joy::ConstPtr& joy){
             go_wp1=false;
             //alert_navigating_voice_sound();
             //
+        }else if(btn_l3==1){
+            //pitakuru_state_msg.state="AUTONOMOUS_NAVIGATION";
+            pitakuru_state_msg.state_navigation="save_wp";
+            state_pub.publish(pitakuru_state_msg);
+            //pitakuru_state_msg.state="AUTONOMOUS_NAVIGATION";
+            alert_saved_wp2_voice_sound();
+            ros::Duration(0.1).sleep(); // sleep for half a second
+            has_wp2=true;
+            has_wp1=true;
+        }else if(btn_r3==1){
+            //pitakuru_state_msg.state="AUTONOMOUS_NAVIGATION";
+            pitakuru_state_msg.state_navigation="clear";
+            state_pub.publish(pitakuru_state_msg);
+            //pitakuru_state_msg.state="AUTONOMOUS_NAVIGATION";
+            alert_saved_wp2_voice_sound();
+            ros::Duration(0.1).sleep(); // sleep for half a second
+            has_wp2=true;
+            has_wp1=true;
         }
+
         joy_front=joy->axes[1];
         joy_side=joy->axes[0];
         ros::Duration duration = ros::Time::now() - last_time_changed;
@@ -3075,7 +3134,6 @@ private:
     ros::Publisher m2_pub;
     ros::Publisher yolo_peop_pub;
     ros::Publisher state_pub;
-
     ros::Publisher estim_pub;
 
     ros::Subscriber volts_subscriber;
@@ -3143,6 +3201,7 @@ private:
     ros::Time  last_time_scan;
     ros::Time  last_time_obstacle;
     ros::Time  last_time_changed;
+    ros::Time  last_time_btn_save_reset_pressed;
     ros::Time  start_time_track_yolo;
     bool big_angle_error_lidar_yolo;
     int count_angle_err;
@@ -3159,7 +3218,7 @@ private:
     bool last_mode_auto;
     bool has_wp1,has_wp2;
 
-
+    bool reseting_map,saving_map;
     
 };
 
@@ -3173,7 +3232,7 @@ int main(int argc, char **argv)
     //printf("%f",-atan2(5,1)*180/3.1416);
     //ros::Duration(5.0).sleep(); // sleep for half a second
     //ros::Duration(22.0).sleep();
-    for (int i=1;i<44;i++){
+    for (int i=1;i<64;i++){
         test_head_obj.blink_green_sleep(0.2);
     }
    

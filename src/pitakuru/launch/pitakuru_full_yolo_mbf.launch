@@ -170,12 +170,12 @@
 
 <include file="$(find turtlebot3_mbf)/launch/rviz.launch"/>
 
-
-<node pkg="pitakuru" type="getGoal.py" name="getGoal" />
-
 <!--
+<node pkg="pitakuru" type="getGoal.py" name="getGoal" />
+ -->
+<!-- -->
 <node pkg="amcl" type="amcl" name="amcl"/>
--->
+<!-- -->
 <node name="frame_base" pkg="tf2_ros" type="static_transform_publisher" args="0 0 0 0 0 0 map my_frame"/>
 
 <!-- rosbag nodes -->
