@@ -1,2 +1,0 @@
-pobx,poby,px,py,ang,angr,num 
-lost2 

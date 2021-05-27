@@ -168,7 +168,7 @@
 <!-- navigation -->
  <include file="$(find pitakuru)/launch/navigation_mbf.launch"/>
 
-<include file="$(find turtlebot3_mbf)/launch/rviz.launch"/>
+<!--<include file="$(find turtlebot3_mbf)/launch/rviz.launch"/>-->
 
 <!--
 <node pkg="pitakuru" type="getGoal.py" name="getGoal" />

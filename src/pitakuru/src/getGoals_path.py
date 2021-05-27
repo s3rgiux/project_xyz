@@ -24,14 +24,9 @@ import commands as cmd
 import std_srvs
 #import msvcrt
 #import keyboard
-
 import struct
 import time
-
-
 from pitakuru.msg import States, TriggerAction
-
-
 import rosparam
 
 import atexit
@@ -67,7 +62,6 @@ class Goals:
         self.pose_amcl=data
 
     def cancel_goal(self,goals):    
-        
         self.client.wait_for_server()
         goal = MoveBaseGoal()
         goal.target_pose.header.frame_id = "map"
@@ -123,6 +117,7 @@ class Goals:
                     print("accepted_dist")
                     self.is_navigating=True
                     self.send_goal_to_server(self.next_wp)
+
     def goto_end(self):
         if len(self.list_wp)>0:
             if len(self.list_wp)==2:
@@ -159,7 +154,6 @@ class Goals:
                     
                 self.is_navigating=False
                 # cancel_msg = GoalID()
-                
                 # self.cancel_pub.publish(cancel_msg)
                 # sleep(0.02)
                 # self.cancel_pub.publish(cancel_msg)
@@ -177,9 +171,13 @@ class Goals:
         if  states.state_navigation=="save_wp":#states.state=="AUTONOMUS_NAVIGATION" and states.state_navigation=="save_wp_1":
             #self.point1=self.pose_amcl
             self.list_wp.append(self.pose_amcl)
-            print("saved")
-            print(self.point1)
-            sleep(0.2)
+            # print("saved")
+            # print(self.pose_amcl)
+            # print("list of saved")
+            # print(self.list_wp)
+            # print("elem zero")
+            # print(self.list_wp[0])
+            sleep(0.5)
         if  states.state_navigation=="clear_wp":#states.state=="AUTONOMUS_NAVIGATION" and states.state_navigation=="save_wp_1":
             #self.point1=self.pose_amcl
             self.list_wp.clear()
@@ -226,14 +224,14 @@ class Goals:
             os.system('rosservice call /move_base_flex/clear_costmaps {}')
         if states.state=="AUTONOMOUS_NAVIGATION" and states.state_navigation=="going_to_wp_2":
             os.system('rosservice call /move_base_flex/clear_costmaps {}')
-            
+
         
-    self.check_dist_goal(self):
+    def check_dist_goal(self):
         e_x=np.abs(self.pose_amcl.pose.pose.position.x-self.next_wp.pose.pose.position.x)
         e_y=np.abs(self.pose_amcl.pose.pose.position.y-self.next_wp.pose.pose.position.y)
         dist=np.sqrt((e_x*e_x)+(e_y*e_y))
-        print("dist calculada")
-        print(dist)
+        #print("dist calculada")
+        #print(dist)
         if(self.goto_end):
             if(dist<0.5 and self.actual_index<len(self.list_wp)):
                 self.actual_index=self.actual_index+1

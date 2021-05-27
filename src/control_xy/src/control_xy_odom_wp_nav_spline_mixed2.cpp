@@ -862,13 +862,13 @@ void calc_100hz(){
     if(danger==false && collision==false && mode_manual){
         ros::Time time_now = ros::Time::now();
         ros::Duration duration = time_now - last_time_btn_save_reset_pressed;
-            if((duration.toSec())<10 && reseting_map){
+            if((duration.toSec())<17 && reseting_map){
                 blink_yellow(0.25);
             }else if(reseting_map){
                 reseting_map=false;
                 alert_manual_no_sound();
             }
-            if((duration.toSec())<24 && saving_map){
+            if((duration.toSec())<30 && saving_map){
                 blink_yellow(0.4);
             }else if(saving_map){
                 saving_map=false;
@@ -1938,8 +1938,6 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan){
                     ros::Duration(0.15).sleep(); // sleep for half a second
                     pitakuru_state_msg.state_navigation="going_to_wp_1";
                     state_pub.publish(pitakuru_state_msg);
-                    
-
                 }else if(go_wp2){
                     for (int h=0; h<4;h++){
                         pitakuru_state_msg.state_navigation="goto_wp_2";
@@ -2184,7 +2182,6 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan){
                         detect_cont++;
                         ROS_INFO("close in %i",j);
                         pitakuru_state_msg.state_danger="detected_break_danger1";
-                       
                         //return;
                         //ROS_INFO("print after");
                     }
@@ -2901,7 +2898,9 @@ void joyCallback(const sensor_msgs::Joy::ConstPtr& joy){
             state_pub.publish(pitakuru_state_msg);
             //pitakuru_state_msg.state="AUTONOMOUS_NAVIGATION";
             alert_saved_wp2_voice_sound();
-            ros::Duration(0.1).sleep(); // sleep for half a second
+            ros::Duration(0.3).sleep(); // sleep for half a second
+            pitakuru_state_msg.state_navigation="saved_wp";
+            state_pub.publish(pitakuru_state_msg);
             has_wp2=true;
             has_wp1=true;
         }else if(btn_r3==1){
@@ -2911,6 +2910,8 @@ void joyCallback(const sensor_msgs::Joy::ConstPtr& joy){
             //pitakuru_state_msg.state="AUTONOMOUS_NAVIGATION";
             alert_saved_wp2_voice_sound();
             ros::Duration(0.1).sleep(); // sleep for half a second
+            pitakuru_state_msg.state_navigation="cleared";
+            state_pub.publish(pitakuru_state_msg);
             has_wp2=true;
             has_wp1=true;
         }
