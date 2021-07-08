@@ -14,13 +14,21 @@ from peop_extract.msg import people_box, peoples, States
 
 
 SLEEP_TIME = 0.018
+BBOX_SIZE_THRESH = 40 # if bbox is larger than this, then it may be people.
+ERROR_LIDAR_DISTGANCE = -50 # if lidar could not detect the target, then return this position value
+CAMERA_POSITION_X = 640 / 2 # center of camera frame in x-axis
+CAMERA_POSITION_Y = 480 # camera frame height
+POSITION_UPDATE_RATE = 0.69
+BASE_BBOX_AREA_DISTANCE = 100000
+YOLO_LIDAR_MATCH_ANGLE = 10
 
 
-class PitWheels:
+class PeopleExtractSort:
     def __init__(self):
-        self.ang_pub = rospy.Publisher("/peop_ang_yolo", Vector3, queue_size=2)
+        # tracking target Vector3(x:[1-tracking, -1-not_tracking], y:distance[m], z:angle[degree]) with YOLO
+        self.people_position_publisher = rospy.Publisher("/peop_ang_yolo", Vector3, queue_size=2)
         
-        # tracking target Vector3(x:orig_x, y:orig_y, z:flag_tracking_or_not, if it is positive then tracking) detected with LiDAR
+        # tracking target Vector3(x:orig_x, y:orig_y, z:angular, in other nodes, usually this is used as flag_tracking_or_not, if it is positive then tracking) detected with LiDAR
         rospy.Subscriber('/tracked', Vector3, self.tracked_callback, queue_size=2)
         # detected peoples with YOLO and SORT
         rospy.Subscriber('/peoples_sorted_tracked', peoples, self.peoples_sort_callback, queue_size=2)
@@ -28,36 +36,45 @@ class PitWheels:
         rospy.Subscriber('/pitakuru_states', States, self.states_callback, queue_size=1)
 
         self.ang_dist = Vector3()
-        self.tracked_x = -50
-        self.tracked_y = -50
-        self.tracked_ang = 0
-        self.first_got = False
-        self.prev_cx = 0
-        self.prev_cy = 0
-        self.pixels_radius = 45
-        self.lost_count = 0
-        self.dist_estim = 0
-        self.last_time = time.time()
-        self.biggest_people = people_box()
-        self.biggest_people.id = -1
+        self.latest_tracking_lidar_x = ERROR_LIDAR_DISTGANCE
+        self.latest_tracking_lidar_y = ERROR_LIDAR_DISTGANCE
+        self.latest_tracking_lidar_angle = 0
+        self.has_detected_people = False
+        self.lost_count_before_reset = 0
+        self.last_estimated_distance = 0
+        self.last_time_detected_yolo = time.time()
+        self.current_biggest_people = people_box()
+        self.current_biggest_people.id = -1
 
         self.reset_karugamo_state()
 
 
     def pubobs(self):
-        if(time.time()-self.last_time>0.4):
-            self.ang_dist.x=-1
-            self.ang_dist.y=-0.01
-            self.ang_dist.z=-500
-            self.ang_pub.publish(self.ang_dist)
-            self.is_tracking_yolo=False
-            self.first_got=False
-            self.lost_count=0
-            self.dist_estim=0
-            self.last_time=time.time()
-            self.biggest_people.id=-1
-            self.is_tracking_lidar=False
-            
+        if time.time() - self.last_time_detected_yolo > 0.4:
+            # lost
+            self.ang_dist.x = -1
+            self.ang_dist.y = -0.01
+            self.ang_dist.z = -500
+            self.people_position_publisher.publish(self.ang_dist)
+
+            self.is_tracking_yolo = False
+            self.has_detected_people = False
+            self.lost_count_before_reset = 0
+            self.last_estimated_distance = 0
+            self.last_time_detected_yolo = time.time()
+            self.current_biggest_people.id = -1
+            self.is_tracking_lidar = False
+
+    def reset_karugamo_state(self):
+        # LiDAR variable
+        self.is_tracking_lidar = False
+        self.tracking_lidar_angle = 0
+        self.last_tracking_lidar_angle = 0
+        # YOLO variable
+        self.is_tracking_yolo = False
+        self.tracking_yolo_id = -1
+        self.has_detected_people = False
+
     
     def states_callback(self, states):
         if states.state == 'KARUGAMO':
@@ -65,212 +82,141 @@ class PitWheels:
             if states.state_karugamo == "tracking_lidar":
                 self.is_tracking_lidar = True
                 self.tracking_lidar_angle = states.trackeds.linear.y
-            # lost with YOLO and LiDAR
+            # lost with LiDAR and not ready to track with YOLO
             if states.state_karugamo == "losting_with_lidar" and not self.is_tracking_yolo:
                 self.is_tracking_lidar = False
-                if self.biggest_people.id != -1 and self.biggest_people.area > 40:
-                    self.previous_tracking_lidar_angle = self.tracked_ang
+                # but if YOLO "detects" people
+                if self.is_people(self.current_biggest_people):
+                    # save latest lidar angle on losting target with LiDAR
+                    self.last_tracking_lidar_angle = self.latest_tracking_lidar_angle
+                    # lidar lost but start to track only YOLO
                     self.is_tracking_yolo = True
-                    self.first_got = True
-                    self.tracking_yolo_id = self.biggest_people.id
+                    self.has_detected_people = True
+                    self.tracking_yolo_id = self.current_biggest_people.id
         else:
             # reset all variable if the state changes to not karugamo
             self.reset_karugamo_state()
     
+    def is_people(self, people):
+        return people.id != -1 and people.area > BBOX_SIZE_THRESH
 
-    def reset_karugamo_state(self):
-        # LiDAR variable
-        self.is_tracking_lidar = False
-        self.tracking_lidar_angle = 0
-        self.previous_tracking_lidar_angle = 0
-        # YOLO variable
-        self.is_tracking_yolo = False
-        self.tracking_yolo_id = -1
-        # 
-        self.first_got = False
+    def is_tracking_bbox(self, detected_bbox):
+        self.tracking_yolo_id == detected_bbox.id
+    
+    def center(self,bbox):
+        return (bbox.xmax + bbox.xmin) / 2, (bbox.ymax + bbox.ymin) / 2
+    
+    # return angle from camera in degree
+    def bbox_angle_from_camera(self,bbox):
+        center_x, center_y = self.center(bbox)
+        diff_x = CAMERA_POSITION_X - center_x
+        diff_y = CAMERA_POSITION_Y - center_y
+        angle_degree = np.arctan2(diff_x, diff_y) * 180 / np.pi
+        return angle_degree
 
-    def peoples_sort_callback(self,data):
-        biggest=people_box()
-        biggest.id==-1
-        area_aux=000
-        for n in data.people:
-            if self.first_got and self.tracking_yolo_id==n.id:
-                    center_x=(n.xmax+n.xmin)/2
-                    center_y=(n.ymax+n.ymin)/2
-                    auxx=320-center_x
-                    auxy=480-center_y
-                    ang = np.arctan2(auxx, auxy) * 180 / np.pi
-                    self.lost_count=0
-                    
-                    alf=0.69
-                    estim=1/(((n.xmax-n.xmin)*(n.ymax-n.ymin))/100000)
-                    self.dist_estim=(alf*self.dist_estim)+((1-alf)*estim)
-                    self.ang_dist.x=1
-                    self.ang_dist.y=self.dist_estim
-                    self.ang_dist.z=ang
-                    self.previous_tracking_lidar_angle = self.tracked_ang
-                    self.ang_pub.publish(self.ang_dist)
-                    self.lost_count=0
-                    self.last_time=time.time()
-                    return
-            elif(n.area>area_aux and int(n.id)!=-1):
-                area_aux=n.area
-                biggest=n
-                self.biggest_people=biggest
-                self.last_time=time.time()
-        if(biggest.id>0):
-            center_x=(biggest.xmax+biggest.xmin)/2
-            center_y=(biggest.ymax+biggest.ymin)/2
-            auxx=320-center_x
-            auxy=480-center_y
-            ang = np.arctan2(auxx, auxy) * 180 / np.pi
+    def is_same_lidar_yolo_target(self,yolo_target_angle, lidar_target_angle):
+        return np.abs(yolo_target_angle - lidar_target_angle) < YOLO_LIDAR_MATCH_ANGLE
 
-            if(self.is_tracking_lidar and self.first_got== False):
-                if np.abs(ang-self.tracking_lidar_angle)<10 and self.biggest_people.area>40:
-                    self.previous_tracking_lidar_angle = self.tracked_ang
-                    self.is_tracking_yolo = True
-                    self.first_got = True
-                    self.tracking_yolo_id = self.biggest_people.id
-            if self.first_got== False and self.is_tracking_yolo :
-                self.first_got=True
-                self.tracking_yolo_id= biggest.id
-                self.lost_count=0
-                self.last_time=time.time()
-
-    def sort_callback(self,data):
-        rcv=data.data
-        xmin=rcv[0]
-        ymin=rcv[1]
-        xmax=rcv[2]
-        ymax=rcv[3]
-        identif =rcv[4]
-        area=rcv[5]
+    def peoples_sort_callback(self, data):
+        biggest_bbox = None
+        curent_biggest_area = 0
         
-        if(identif!=-1 ):
-            center_x=(xmax+xmin)/2
-            center_y=(ymax+ymin)/2
-            auxx=320-center_x
-            auxy=480-center_y
-            ang = np.arctan2(auxx, auxy) * 180 / np.pi
-            if not self.first_got and self.is_tracking_yolo and self.tracked_x != -50 and self.tracked_y != -50 and self.tracked_ang < (self.tracked_ang + 7) and self.tracked_ang > (self.tracked_ang - 7) :
-                self.first_got=True
-                self.tracking_yolo_id= identif
-                self.lost_count=0
-            elif self.first_got and self.tracking_yolo_id==identif:
-                self.lost_count=0
-                alf=0.69
-                estim=1/(((xmax-xmin)*(ymax-ymin))/100000)
-                self.dist_estim=(alf*self.dist_estim)+((1-alf)*estim)
-                self.ang_dist.x=1
-                self.ang_dist.y=self.dist_estim
-                self.ang_dist.z=ang
-                self.previous_tracking_lidar_angle = self.tracked_ang
-                self.ang_pub.publish(self.ang_dist)
-                self.lost_count=0
-                self.last_time=time.time()
+        people = [detected_bbox for detected_bbox in data.people if int(detected_bbox.id) != -1]
+        for detected_bbox in people:
+            # found target with yolo
+            
+            if self.has_detected_people and self.is_tracking_bbox(detected_bbox):
+                angle_degree = self.bbox_angle_from_camera(detected_bbox)
+                
+                # estimate target distance from bounding box area
+                bbox_width = detected_bbox.xmax - detected_bbox.xmin
+                bbox_height = detected_bbox.ymax - detected_bbox.ymin
+                estimated_distance = BASE_BBOX_AREA_DISTANCE / (bbox_width * bbox_height)
+                self.last_estimated_distance = (POSITION_UPDATE_RATE * self.last_estimated_distance) + ((1 - POSITION_UPDATE_RATE) * estimated_distance)
+
+                # publish target position with YOLO
+                self.ang_dist.x = 1 # flag, success to tracking
+                self.ang_dist.y = self.last_estimated_distance
+                self.ang_dist.z = angle_degree
+                self.people_position_publisher.publish(self.ang_dist)
+
+                # [TODO] remove this line if it works without this line
+                self.last_tracking_lidar_angle = self.latest_tracking_lidar_angle
+
+                # reset lost count
+                self.lost_count_before_reset = 0
+                self.last_time_detected_yolo = time.time()
+                return
+
+            elif detected_bbox.area > curent_biggest_area:
+                curent_biggest_area = detected_bbox.area
+                biggest_bbox = detected_bbox
+
+        # could not find target bounding box id, but found biggest bounding box with another id
+        if biggest_bbox:
+            self.current_biggest_people = biggest_bbox
+            self.last_time_detected_yolo = time.time()
+
+            angle_degree = self.bbox_angle_from_camera(biggest_bbox)
+            print(self.has_detected_people)
+            # if it tracks with lidar and have not detecterd with yolo
+            # and the biggest bbox is like target
+            if self.is_tracking_lidar and \
+                not self.has_detected_people and \
+                self.is_same_lidar_yolo_target(angle_degree, self.tracking_lidar_angle) and \
+                self.current_biggest_people.area > BBOX_SIZE_THRESH:
+                    self.last_tracking_lidar_angle = self.latest_tracking_lidar_angle
+                    self.is_tracking_yolo = True
+                    self.has_detected_people = True
+                    self.tracking_yolo_id = self.current_biggest_people.id
+                    self.last_time_detected_yolo = time.time()
+
+            # if lidar detects then the state transit
+            if not self.has_detected_people and not self.is_tracking_yolo:
+                #self.has_detected_people = True
+                self.tracking_yolo_id = biggest_bbox.id
+                self.lost_count_before_reset = 0
+                self.last_time_detected_yolo = time.time()
+            
             else:
-                self.lost_count=self.lost_count+1
-                if(self.lost_count>7):
-                    self.lost_count=0
-                    self.first_got=False
-                    self.dist_estim=0
-                if self.first_got==False:
-                    self.ang_dist.x=-1
-                    self.ang_dist.y=0
-                    self.ang_dist.z=ang
-                    self.ang_pub.publish(self.ang_dist)
-                    self.lost_count=self.lost_count=+1
-                self.last_time=time.time()
+                self.lost_count_before_reset+=1
+                if self.lost_count_before_reset>7:
+                    self.lost_count_before_reset=0
+                    self.has_detected_people=False
+                    self.last_estimated_distance=0
+                if not self.has_detected_people:
+                    # publish biggest people not tracked YOLO
+                    self.ang_dist.x = -biggest_bbox.id # flag with id negative not tracking 
+                    self.ang_dist.y = 0 
+                    self.ang_dist.z = angle_degree
+                    self.people_position_publisher.publish(self.ang_dist)
+                self.last_time_detected_yolo=time.time()
+
+
+    def did_success_detection(self, position):
+        return position.x != ERROR_LIDAR_DISTGANCE and position.y != ERROR_LIDAR_DISTGANCE
 
     def tracked_callback(self,data):
-        self.tracked_x=data.x
-        self.tracked_y=data.y
-        self.tracked_ang=data.z
-        if self.tracked_x != -50 and self.tracked_y != -50 and self.is_tracking_yolo==False:
-            self.previous_tracking_lidar_angle = self.tracked_ang
-            self.is_tracking_yolo=True
-            
+        # store latest tracking position with lidar
+        self.latest_tracking_lidar_x = data.x
+        self.latest_tracking_lidar_y = data.y
+        self.latest_tracking_lidar_angle = data.z
 
-    def boundings_callback(self, data):
-        lst = []
-        cnt=0
-        cnt2=0
-        width=640
-        height=480
-        for x in data.bounding_boxes:
-            if x.Class=="person":
-                center_x=(x.xmax+x.xmin)/2
-                center_y=(x.ymax+x.ymin)/2
-                auxx=320-center_x
-                auxy=480-center_y
-                ang = np.arctan2(auxx, auxy) * 180 / np.pi
-                cnt2=cnt2+1
-                
-                if self.first_got== False and self.is_tracking_yolo and self.tracked_ang < (self.tracked_ang + 7) and self.tracked_ang > (self.tracked_ang - 7) :
-                    self.first_got=True
-                    self.prev_cx=center_x
-                    self.prev_cy=center_y
-                    self.previous_tracking_lidar_angle = self.tracked_ang
-                    self.dist_estim=0
-                elif self.first_got and self.is_tracking_yolo and center_x < self.prev_cx+ self.pixels_radius and center_x > self.prev_cx- self.pixels_radius and center_y<self.prev_cy+self.pixels_radius and center_y>self.prev_cy-self.pixels_radius:
-                    alf=0.65
-                    estim=1/(((x.xmax-x.xmin)*(x.ymax-x.ymin))/100000)
-                    self.dist_estim=(alf*self.dist_estim)+((1-alf)*estim)
-                    self.prev_cx=center_x
-                    self.prev_cy=center_y
-                    self.ang_dist.x=1
-                    self.ang_dist.y=self.dist_estim
-                    self.ang_dist.z=ang
-                    self.previous_tracking_lidar_angle = self.tracked_ang
-                    self.ang_pub.publish(self.ang_dist)
-                    self.lost_count=0
-                else:
-                    self.ang_dist.x=-1
-                    self.ang_dist.y=0
-                    self.ang_dist.z=ang
-                    self.ang_pub.publish(self.ang_dist)
-                    self.lost_count=self.lost_count=+1
-                    if(self.lost_count>4):
-                        self.lost_count=0
-                        self.first_got=False
-                        self.dist_estim=0
-                self.last_time=time.time()
-        closest= Vector3()
-        aux=[10000,10000]
-        val_aux=10000
-        ang_aux=1500
-        lst2 = []
-        dst_aux=150000
-        if len(lst)!=0:
-            for n in (lst):
-                e_x=np.abs(self.tracked_x-n.center.x)
-                e_y=np.abs(self.tracked_y-n.center.y)
-                dist=np.sqrt(e_x*e_x+e_y*e_y)
-                ang_obj= 90+np.arctan2(n.center.x, n.center.y) * 180 / np.pi
-                err_ang= self.tracked_ang-ang_obj
-                if dist<val_aux and err_ang<ang_aux: 
-                    val_aux=dist
-                    ang_aux=err_ang
-                    lst2.append(n)
-            if len(lst2)!=0:
-                for n in (lst2):
-                    dist=np.sqrt(n.center.x*n.center.x+n.center.y*n.center.y)
-                    if dist<dst_aux: 
-                        dst_aux=dist
-                        closest.x=n.center.x
-                        closest.y=n.center.y
-                self.ang_pub.publish(closest)
+        if self.did_success_detection(data) and not self.is_tracking_yolo:
+            # start to track with yolo
+            self.last_tracking_lidar_angle = self.latest_tracking_lidar_angle
+            self.is_tracking_yolo = True
 
     def shutdown(self):
         rospy.sleep(1)
 
 
 def pit_wheels_main():
-    rospy.init_node('pit_wheels', anonymous = True)
-    pit_wheels = PitWheels()
+    rospy.init_node('pit_wheels', anonymous=True)
+    people_extract_sort = PeopleExtractSort()
 
     while not rospy.is_shutdown():
-        pit_wheels.pubobs()
+        people_extract_sort.pubobs()
         sleep(SLEEP_TIME)
 
 if __name__=='__main__':
