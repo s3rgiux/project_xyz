@@ -2741,78 +2741,19 @@ void joyCallback(const sensor_msgs::Joy::ConstPtr& joy){
             ros::Duration(0.2).sleep(); // sleep for half a second
         }else if(joy->buttons[13]&&loaded_route==true && start_route == false){//start
            
-            // ROS_INFO("Start");
-            // indx=0;
-            // nspx=sp_rx[indx];
-            // nspy=sp_ry[indx];
-            // mode=0;
-            // //ros::Duration(0.3).sleep(); // sleep for half a second
-            // mode_idle=false;
-            // mode_karugamo=false;
-            // mode_manual=false;
-            // mode_follow=false;
-            // tracking_people=false;
-            // mode_auto=true;
-            // start_route=true;
-            // ROS_INFO("Mode Auto");
-            // alerts_command.data=3;//8 follow 5 danger 4 warning 3 karugamo 2 idle 1 manual
-            // alerts_publisher.publish(alerts_command);
-            // vel_steer.linear.x= 0;
-            // vel_steer.linear.y= 1;
-            // vel_steer.angular.z= 0;
-            // ctrl_front_follow= 0;
-            // ctrl_ang= 0;
-            // ctrl_front_manual= 0;
-            // ctrl_side_manual= 0;
-            // speed_publisher.publish(vel_steer);
-            // ros::Duration(0.5).sleep(); // sleep for half a second
+          
         }else if(joy->buttons[13]&&loaded_route==true && start_route == true){//stopt with click  pad ps4 controller
-            /* start_route=true;
-            ROS_INFO("Stop");
-            indx=0;
-            nspx=sp_rx[indx];
-            nspy=sp_ry[indx];
-            mode=1;
-            //ros::Duration(0.3).sleep(); // sleep for half a second
-            mode_idle=false;
-            mode_karugamo=false;
-            mode_manual=false;
-            mode_follow=false;
-            tracking_people=false;
-            mode_auto=false;
-            start_route=false;
            
-            ROS_INFO("Mode Auto");
-            alerts_command.data=3;//8 follow 5 danger 4 warning 3 karugamo 2 idle 1 manual
-            alerts_publisher.publish(alerts_command);
-            vel_steer.linear.x= 0;
-            vel_steer.linear.y= 1;
-            vel_steer.angular.z= 0;
-            ctrl_front_follow= 0;
-            ctrl_ang= 0;
-            ctrl_front_manual= 0;
-            ctrl_side_manual= 0;
-            speed_publisher.publish(vel_steer);
-            ros::Duration(0.5).sleep(); // sleep for half a second */
         }else if(joy->buttons[6]==1&&joy->buttons[7]==1 && ruta_learn==false ){//L2R2
-            /* fp = fopen ("/home/xavier/catkin_ws/src/control_xy/ruta.txt" , "w+");
-            ruta_learn=true;
-            ROS_INFO("Listo para comenzar a aprender la ruta");
-            ros::Duration(0.4).sleep(); // sleep for half a second
-            px_aux=1000000000000;
-            py_aux=1000000000000; */
+            
         }else if(joy->buttons[6]==1&&joy->buttons[7]==1 && ruta_learn==true){
            
-            /* ROS_INFO("Terminado de aprender la ruta");
-            fclose(fp);  
-            ros::Duration(0.4).sleep(); // sleep for half a second
-            ruta_learn=false; */
        
         }else if(btn_circle==1 && free_way && collision == false){//danger!=true && free_way==true){//circulo
             //mode_IDLE();
             mode_MANUAL();
             ros::Duration(0.5).sleep(); // sleep for half a second
-        //}else if(joy->buttons[1]==1 && danger!=true && collision == false){//equis
+        
         }else if(btn_x==1 && collision == false){//equis
             //mode_MANUAL();
             mode_people_follow();

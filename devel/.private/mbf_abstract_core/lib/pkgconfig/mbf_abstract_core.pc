@@ -1,8 +1,0 @@
-prefix=/home/xavier/catkin_ws/devel/.private/mbf_abstract_core
-
-Name: mbf_abstract_core
-Description: Description of mbf_abstract_core
-Version: 0.3.4
-Cflags: -I/home/xavier/catkin_ws/src/move_base_flex/mbf_abstract_core/include
-Libs: -L${prefix}/lib 
-Requires: std_msgs geometry_msgs

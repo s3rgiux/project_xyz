@@ -1,1 +1,0 @@
-/home/xavier/catkin_ws/devel/.private/mbf_costmap_nav/lib/python2.7/dist-packages/mbf_costmap_nav/__init__.py

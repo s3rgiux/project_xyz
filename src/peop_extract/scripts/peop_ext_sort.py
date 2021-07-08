@@ -2,172 +2,116 @@
 # -*- coding: utf-8 -*-
 from __future__ import division
 
-import sys,time
-from math import sqrt, cos, sin
+import time
+from math import sqrt
 import rospy
-#import tf,tf2_ros
 import numpy as np
 from time import sleep
-from std_msgs.msg import String
-from std_msgs.msg import Float64
 from std_msgs.msg import Float32
 from std_msgs.msg import *
-from geometry_msgs.msg import Point, Vector3, PoseWithCovarianceStamped
-from sort_track.msg import IntList
-from peop_extract.msg import BoundingBox,BoundingBoxes
-import struct
-import time
-import rosparam
-from peop_extract.msg import people_box,peoples,States
-#params = rosparam.get_param("/km_dolly_wheels")
-#if params['connect_mode']=='ble':
-#    from pykeigan import blecontroller
-#    SLEEP_TIME = 0.01
-#else:
-#    from pykeigan import usbcontroller
-#    SLEEP_TIME = 0.1
-import atexit
+from geometry_msgs.msg import Vector3
+from peop_extract.msg import people_box, peoples, States
 
 
 SLEEP_TIME = 0.018
-#200mm diameter0
 
 
 class PitWheels:
     def __init__(self):
-        print("people_extarctor")
-        #rospy.loginfo("Connected to Right Wheel")
-        #self.brinco=False
-        self.obst_pub = rospy.Publisher('obstacle_closest', Float32, queue_size=1)
-        #self.ang_pub = rospy.Publisher("peopAng2",Float32, queue_size=1)
-        self.ang_pub = rospy.Publisher("/peop_ang_yolo",Vector3, queue_size=2)
-        #rospy.Subscriber('/ang_peop_detect_img', Float32, self.ang_cam_callback, queue_size=1)
-        self.dist_pub = rospy.Publisher("peopDist2",Float32, queue_size=1)
-        #rospy.Subscriber('/cmd_vel', Twist, self.teleop_callback, queue_size=1)
-        #rospy.Subscriber('/darknet_ros/bounding_boxes', BoundingBoxes, self.boundings_callback, queue_size=1)
-        rospy.Subscriber('/tracked', Vector3, self.tracked_callback, queue_size=2)
-        #rospy.Subscriber('/sorted_tracked', IntList, self.sort_callback, queue_size=2)
-        rospy.Subscriber('/peoples_sorted_tracked', peoples, self.peoples_sort_callback, queue_size=2)
-        rospy.Subscriber('/pitakuru_states', States, self.states_callback, queue_size=1)
-        #rospy.Subscriber('/euler2', Float64, self.angle_callback, queue_size=1)
-        self.obsta  = Float32()
-        self.detected=0
-        self.track=0
-        self.angulo= Float32()
-        self.distancia= Float32()
-        self.ang_dist= Vector3()
-        self.tracked_obj= Vector3()
-        self.tracked_peop= Vector3()
-        #self.front_detection = rospy.get_param("/obj_track/front_detection")
-        #self.side_detection = rospy.get_param("/obj_track/side_detection")
-        self.timex=0
-        self.last_time=0
-        self.first_detection=False
-        self.tracked=False
-        self.ang_cam=-500
-        self.tracked_x=-50
-        self.tracked_y=-50
-        self.tracked_ang=0
-        self.radius_follow=0.35
-        self.tracking=False
-        self.first_got=False
-        self.tracked_cx=0
-        self.tracked_cy=0
-        self.prev_cx=0
-        self.prev_cy=0
-        self.tracked_id=0
-        self.pixels_radius=45
-        self.lost_count=0
-        self.dist_estim=0
-        self.last_time=time.time()
-        self.biggest_people=people_box()
-        self.biggest_people.id=-1
-        self.ang_lidar=0
+        self.ang_pub = rospy.Publisher("/peop_ang_yolo", Vector3, queue_size=2)
         
-    
+        # tracking target Vector3(x:orig_x, y:orig_y, z:flag_tracking_or_not, if it is positive then tracking) detected with LiDAR
+        rospy.Subscriber('/tracked', Vector3, self.tracked_callback, queue_size=2)
+        # detected peoples with YOLO and SORT
+        rospy.Subscriber('/peoples_sorted_tracked', peoples, self.peoples_sort_callback, queue_size=2)
+        # this state is used to know that current state is karugamo or not.
+        rospy.Subscriber('/pitakuru_states', States, self.states_callback, queue_size=1)
+
+        self.ang_dist = Vector3()
+        self.tracked_x = -50
+        self.tracked_y = -50
+        self.tracked_ang = 0
+        self.first_got = False
+        self.prev_cx = 0
+        self.prev_cy = 0
+        self.pixels_radius = 45
+        self.lost_count = 0
+        self.dist_estim = 0
+        self.last_time = time.time()
+        self.biggest_people = people_box()
+        self.biggest_people.id = -1
+
+        self.reset_karugamo_state()
+
+
     def pubobs(self):
         if(time.time()-self.last_time>0.4):
-        #if(self.track==0):
-            self.angulo.data=-500
             self.ang_dist.x=-1
             self.ang_dist.y=-0.01
             self.ang_dist.z=-500
-            self.distancia.data=0
             self.ang_pub.publish(self.ang_dist)
-            self.tracking=False
+            self.is_tracking_yolo=False
             self.first_got=False
             self.lost_count=0
             self.dist_estim=0
             self.last_time=time.time()
             self.biggest_people.id=-1
-            self.tracking_lidar=False
-            #self.dist_pub.publish(self.distancia)
+            self.is_tracking_lidar=False
+            
     
-    def states_callback(self,states):
-        
-        if states.state=="KARUGAMO" and states.state_karugamo=="tracking_lidar":
-            self.tracking_lidar=True
-            self.ang_peop_lidar=states.trackeds.linear.y
-        if states.state=="KARUGAMO" and states.state_karugamo=="following_yolo":
-            self.tracking_lidar=False
-            self.ang_peop_lidar=0
-        if states.state=="KARUGAMO" and states.state_karugamo=="far":
-            if self.biggest_people.id!=-1 and self.biggest_people.area>70:
-                print("tracking")
-                print(self.biggest_people.id)
-                self.prev_ang = self.tracked_ang
-                self.tracking = True
-                self.first_got = True
-                self.tracked_id = self.biggest_people.id
-        if states.state=="KARUGAMO" and states.state_karugamo=="losting_with_lidar"and self.tracking==False:
-            self.tracking_lidar=False
-            self.ang_peop_lidar=self.ang_peop_lidar=states.trackeds.linear.y
-            print("entre a trackear id")
-            if self.biggest_people.id!=-1 and self.biggest_people.area>40:
-                print("tracking")
-                print(self.biggest_people.id)
-                self.prev_ang = self.tracked_ang
-                self.tracking = True
-                self.first_got = True
-                self.tracked_id = self.biggest_people.id
-        if states.state!="KARUGAMO":
-            self.tracking_lidar=False
-            self.ang_peop_lidar=0
-            print("lost_track")
-            self.prev_ang = 0
-            self.tracking = False
-            self.first_got = False
-            self.tracked_id = -1
+    def states_callback(self, states):
+        if states.state == 'KARUGAMO':
+            # tracking with only LiDAR
+            if states.state_karugamo == "tracking_lidar":
+                self.is_tracking_lidar = True
+                self.tracking_lidar_angle = states.trackeds.linear.y
+            # lost with YOLO and LiDAR
+            if states.state_karugamo == "losting_with_lidar" and not self.is_tracking_yolo:
+                self.is_tracking_lidar = False
+                if self.biggest_people.id != -1 and self.biggest_people.area > 40:
+                    self.previous_tracking_lidar_angle = self.tracked_ang
+                    self.is_tracking_yolo = True
+                    self.first_got = True
+                    self.tracking_yolo_id = self.biggest_people.id
+        else:
+            # reset all variable if the state changes to not karugamo
+            self.reset_karugamo_state()
+    
+
+    def reset_karugamo_state(self):
+        # LiDAR variable
+        self.is_tracking_lidar = False
+        self.tracking_lidar_angle = 0
+        self.previous_tracking_lidar_angle = 0
+        # YOLO variable
+        self.is_tracking_yolo = False
+        self.tracking_yolo_id = -1
+        # 
+        self.first_got = False
 
     def peoples_sort_callback(self,data):
         biggest=people_box()
         biggest.id==-1
         area_aux=000
         for n in data.people:
-            
-            #check if we already are tracking one 
-            if self.first_got and self.tracked_id==n.id:#then we have tracked object
+            if self.first_got and self.tracking_yolo_id==n.id:
                     center_x=(n.xmax+n.xmin)/2
                     center_y=(n.ymax+n.ymin)/2
                     auxx=320-center_x
                     auxy=480-center_y
                     ang = np.arctan2(auxx, auxy) * 180 / np.pi
                     self.lost_count=0
-                    #print('tracking id {}'.format(identif))
-                    alf=0.69
-                    estim=1/(((n.xmax-n.xmin)*(n.ymax-n.ymin))/100000)#1/((x.xmax+x.xmin)+(x.ymax+x.ymin))
-                    self.dist_estim=(alf*self.dist_estim)+((1-alf)*estim)
-                    #print('{},{},{},{}'.format(center_x,center_y,self.tracked_ang,self.dist_estim))
                     
-                    #self.prev_cx=center_x
-                    #self.prev_cy=center_y
-                    self.ang_dist.x=1#1identif#1 #x.center.x
-                    self.ang_dist.y=self.dist_estim#x.center.y#dist*100
+                    alf=0.69
+                    estim=1/(((n.xmax-n.xmin)*(n.ymax-n.ymin))/100000)
+                    self.dist_estim=(alf*self.dist_estim)+((1-alf)*estim)
+                    self.ang_dist.x=1
+                    self.ang_dist.y=self.dist_estim
                     self.ang_dist.z=ang
-                    self.prev_ang = self.tracked_ang
+                    self.previous_tracking_lidar_angle = self.tracked_ang
                     self.ang_pub.publish(self.ang_dist)
                     self.lost_count=0
-                    self.last_time=time.time()#self.time
+                    self.last_time=time.time()
                     return
             elif(n.area>area_aux and int(n.id)!=-1):
                 area_aux=n.area
@@ -175,69 +119,25 @@ class PitWheels:
                 self.biggest_people=biggest
                 self.last_time=time.time()
         if(biggest.id>0):
-            
             center_x=(biggest.xmax+biggest.xmin)/2
             center_y=(biggest.ymax+biggest.ymin)/2
             auxx=320-center_x
             auxy=480-center_y
             ang = np.arctan2(auxx, auxy) * 180 / np.pi
 
-            #print('{},{},{},{},{},{}'.format(xmin,ymin,xmax,ymax,identif,ang))
-            #cnt2=cnt2+1
-            #if self.first_got== False and self.tracking and self.tracked_x != -50 and self.tracked_y != -50 and self.tracked_ang < (self.tracked_ang + 7) and self.tracked_ang > (self.tracked_ang - 7) :#then we have tracked object
-            if(self.tracking_lidar and self.first_got== False):#then we are tracking with lidar but we lost the initial traking yolo
-                if np.abs(ang-self.ang_peop_lidar)<10 and self.biggest_people.area>40:#10:
-                    print("tracking")
-                    print(self.biggest_people.id)
-                    self.prev_ang = self.tracked_ang
-                    self.tracking = True
+            if(self.is_tracking_lidar and self.first_got== False):
+                if np.abs(ang-self.tracking_lidar_angle)<10 and self.biggest_people.area>40:
+                    self.previous_tracking_lidar_angle = self.tracked_ang
+                    self.is_tracking_yolo = True
                     self.first_got = True
-                    self.tracked_id = self.biggest_people.id
-            if self.first_got== False and self.tracking :#then we have tracked object
-                #lst.append(x)
-                #print("tracking first time")
+                    self.tracking_yolo_id = self.biggest_people.id
+            if self.first_got== False and self.is_tracking_yolo :
                 self.first_got=True
-                self.tracked_id= biggest.id
+                self.tracking_yolo_id= biggest.id
                 self.lost_count=0
                 self.last_time=time.time()
-                #self.prev_cx=center_x
-                #self.prev_cy=center_y
-                #self.prev_ang = self.tracked_ang
-                #self.dist_estim=0
-                #elif self.first_got and self.tracking and self.tracked_ang < (self.prev_ang + 4) and self.tracked_ang > (self.prev_ang - 4) and center_x < self.prev_cx+ self.pixels_radius and center_x > self.prev_cx- self.pixels_radius and center_y<self.prev_cy+self.pixels_radius and center_y>self.prev_cy-self.pixels_radius:#then we have tracked object
-                #elif self.first_got and self.tracking and self.tracked_ang < (self.prev_ang + 9) and self.tracked_ang > (self.prev_ang - 9) and center_x < self.prev_cx+ self.pixels_radius and center_x > self.prev_cx- self.pixels_radius and center_y<self.prev_cy+self.pixels_radius and center_y>self.prev_cy-self.pixels_radius:#then we have tracked object
-                """ elif self.first_got and self.tracked_id==identif:#then we have tracked object
-                self.lost_count=0
-                #print('tracking id {}'.format(identif))
-                alf=0.69
-                estim=1/(((xmax-xmin)*(ymax-ymin))/100000)#1/((x.xmax+x.xmin)+(x.ymax+x.ymin))
-                self.dist_estim=(alf*self.dist_estim)+((1-alf)*estim)
-                #print('{},{},{},{}'.format(center_x,center_y,self.tracked_ang,self.dist_estim))
-                
-                #self.prev_cx=center_x
-                #self.prev_cy=center_y
-                self.ang_dist.x=1#1identif#1 #x.center.x
-                self.ang_dist.y=self.dist_estim#x.center.y#dist*100
-                self.ang_dist.z=ang
-                self.prev_ang = self.tracked_ang
-                self.ang_pub.publish(self.ang_dist)
-                self.lost_count=0
-                self.last_time=time.time()#self.timex """
-            else:
-                self.lost_count=self.lost_count+1
-                if(self.lost_count>7):
-                    self.lost_count=0
-                    self.first_got=False
-                    self.dist_estim=0
-                if self.first_got==False:
-                    self.ang_dist.x=-biggest.id#-1#x.center.x
-                    self.ang_dist.y=0#x.center.y#dist*100
-                    self.ang_dist.z=ang
-                    self.ang_pub.publish(self.ang_dist)
-                    self.lost_count=self.lost_count=+1
-                self.last_time=time.time()#self.timex
 
-    """ def sort_callback(self,data):
+    def sort_callback(self,data):
         rcv=data.data
         xmin=rcv[0]
         ymin=rcv[1]
@@ -245,45 +145,29 @@ class PitWheels:
         ymax=rcv[3]
         identif =rcv[4]
         area=rcv[5]
-        #if(xmin!=-1 and xmin!=-1 and xmax!=-1 and ymax!=-1 and identif!=-1 ):
+        
         if(identif!=-1 ):
-            #print(rcv[0])
             center_x=(xmax+xmin)/2
             center_y=(ymax+ymin)/2
             auxx=320-center_x
             auxy=480-center_y
             ang = np.arctan2(auxx, auxy) * 180 / np.pi
-            #print('{},{},{},{},{},{}'.format(xmin,ymin,xmax,ymax,identif,ang))
-            #cnt2=cnt2+1
-            if self.first_got== False and self.tracking and self.tracked_x != -50 and self.tracked_y != -50 and self.tracked_ang < (self.tracked_ang + 7) and self.tracked_ang > (self.tracked_ang - 7) :#then we have tracked object
-                #lst.append(x)
-                #print("tracking first time")
+            if not self.first_got and self.is_tracking_yolo and self.tracked_x != -50 and self.tracked_y != -50 and self.tracked_ang < (self.tracked_ang + 7) and self.tracked_ang > (self.tracked_ang - 7) :
                 self.first_got=True
-                self.tracked_id= identif
+                self.tracking_yolo_id= identif
                 self.lost_count=0
-                #self.prev_cx=center_x
-                #self.prev_cy=center_y
-                #self.prev_ang = self.tracked_ang
-                #self.dist_estim=0
-            #elif self.first_got and self.tracking and self.tracked_ang < (self.prev_ang + 4) and self.tracked_ang > (self.prev_ang - 4) and center_x < self.prev_cx+ self.pixels_radius and center_x > self.prev_cx- self.pixels_radius and center_y<self.prev_cy+self.pixels_radius and center_y>self.prev_cy-self.pixels_radius:#then we have tracked object
-            #elif self.first_got and self.tracking and self.tracked_ang < (self.prev_ang + 9) and self.tracked_ang > (self.prev_ang - 9) and center_x < self.prev_cx+ self.pixels_radius and center_x > self.prev_cx- self.pixels_radius and center_y<self.prev_cy+self.pixels_radius and center_y>self.prev_cy-self.pixels_radius:#then we have tracked object
-            elif self.first_got and self.tracked_id==identif:#then we have tracked object
+            elif self.first_got and self.tracking_yolo_id==identif:
                 self.lost_count=0
-                #print('tracking id {}'.format(identif))
                 alf=0.69
-                estim=1/(((xmax-xmin)*(ymax-ymin))/100000)#1/((x.xmax+x.xmin)+(x.ymax+x.ymin))
+                estim=1/(((xmax-xmin)*(ymax-ymin))/100000)
                 self.dist_estim=(alf*self.dist_estim)+((1-alf)*estim)
-                #print('{},{},{},{}'.format(center_x,center_y,self.tracked_ang,self.dist_estim))
-                
-                #self.prev_cx=center_x
-                #self.prev_cy=center_y
-                self.ang_dist.x=1#1identif#1 #x.center.x
-                self.ang_dist.y=self.dist_estim#x.center.y#dist*100
+                self.ang_dist.x=1
+                self.ang_dist.y=self.dist_estim
                 self.ang_dist.z=ang
-                self.prev_ang = self.tracked_ang
+                self.previous_tracking_lidar_angle = self.tracked_ang
                 self.ang_pub.publish(self.ang_dist)
                 self.lost_count=0
-                self.last_time=time.time()#self.timex
+                self.last_time=time.time()
             else:
                 self.lost_count=self.lost_count+1
                 if(self.lost_count>7):
@@ -291,25 +175,20 @@ class PitWheels:
                     self.first_got=False
                     self.dist_estim=0
                 if self.first_got==False:
-                    self.ang_dist.x=-1#x.center.x
-                    self.ang_dist.y=0#x.center.y#dist*100
+                    self.ang_dist.x=-1
+                    self.ang_dist.y=0
                     self.ang_dist.z=ang
                     self.ang_pub.publish(self.ang_dist)
                     self.lost_count=self.lost_count=+1
-                self.last_time=time.time()#self.timex """
-        
-
-    
-    def ang_cam_callback(self,data):
-        self.ang_cam=data.data
+                self.last_time=time.time()
 
     def tracked_callback(self,data):
         self.tracked_x=data.x
         self.tracked_y=data.y
         self.tracked_ang=data.z
-        if self.tracked_x != -50 and self.tracked_y != -50 and self.tracking==False:
-            self.prev_ang = self.tracked_ang
-            self.tracking=True
+        if self.tracked_x != -50 and self.tracked_y != -50 and self.is_tracking_yolo==False:
+            self.previous_tracking_lidar_angle = self.tracked_ang
+            self.is_tracking_yolo=True
             
 
     def boundings_callback(self, data):
@@ -325,58 +204,29 @@ class PitWheels:
                 auxx=320-center_x
                 auxy=480-center_y
                 ang = np.arctan2(auxx, auxy) * 180 / np.pi
-                #print(ang)
-                #print(center_x)
-                #print(center_y)
-                #print(auxx)
-                #print(auxy)
-                #print(ang)
-                #print("encontre persona")
                 cnt2=cnt2+1
-                #print(cnt2)
-            
-                #if self.tracked_x != -50 and self.tracked_y != -50 and x.center.x<=(self.tracked_x+self.radius_follow) and x.center.x>=(self.tracked_x-self.radius_follow) and x.center.y <=(self.tracked_y+self.radius_follow) and x.center.y >=(self.tracked_y-self.radius_follow):#then we have tracked object
-                #if self.first_got== False and self.tracking and self.tracked_x != -50 and self.tracked_y != -50 and self.tracked_ang < (self.tracked_ang + 7) and self.tracked_ang > (self.tracked_ang - 7) :#then we have tracked object
-                if self.first_got== False and self.tracking and self.tracked_ang < (self.tracked_ang + 7) and self.tracked_ang > (self.tracked_ang - 7) :#then we have tracked object
-                    #lst.append(x)
-                    #print("track first time")
+                
+                if self.first_got== False and self.is_tracking_yolo and self.tracked_ang < (self.tracked_ang + 7) and self.tracked_ang > (self.tracked_ang - 7) :
                     self.first_got=True
                     self.prev_cx=center_x
                     self.prev_cy=center_y
-                    ##self.ang_dist.x=1#x.center.x
-                    #self.ang_dist.y=1#x.center.y#dist*100
-                    #self.ang_dist.z=ang
-                    self.prev_ang = self.tracked_ang
+                    self.previous_tracking_lidar_angle = self.tracked_ang
                     self.dist_estim=0
-                    
-                    #self.ang_pub.publish(self.ang_dist)
-                    #self.ang_dist.x=x.center.x
-                    #self.ang_dist.y=x.center.y#dist*100
-                    #self.ang_pub.publish(self.ang_dist)
-                #elif self.first_got and self.tracking and self.tracked_ang < (self.prev_ang + 4) and self.tracked_ang > (self.prev_ang - 4) and center_x < self.prev_cx+ self.pixels_radius and center_x > self.prev_cx- self.pixels_radius and center_y<self.prev_cy+self.pixels_radius and center_y>self.prev_cy-self.pixels_radius:#then we have tracked object
-                #elif self.first_got and self.tracking and self.tracked_ang < (self.prev_ang + 9) and self.tracked_ang > (self.prev_ang - 9) and center_x < self.prev_cx+ self.pixels_radius and center_x > self.prev_cx- self.pixels_radius and center_y<self.prev_cy+self.pixels_radius and center_y>self.prev_cy-self.pixels_radius:#then we have tracked object
-                elif self.first_got and self.tracking and center_x < self.prev_cx+ self.pixels_radius and center_x > self.prev_cx- self.pixels_radius and center_y<self.prev_cy+self.pixels_radius and center_y>self.prev_cy-self.pixels_radius:#then we have tracked object
-                    #lst.append(x)
-                    #tracking correcto
-                    #print("tracking")
+                elif self.first_got and self.is_tracking_yolo and center_x < self.prev_cx+ self.pixels_radius and center_x > self.prev_cx- self.pixels_radius and center_y<self.prev_cy+self.pixels_radius and center_y>self.prev_cy-self.pixels_radius:
                     alf=0.65
-                    estim=1/(((x.xmax-x.xmin)*(x.ymax-x.ymin))/100000)#1/((x.xmax+x.xmin)+(x.ymax+x.ymin))
+                    estim=1/(((x.xmax-x.xmin)*(x.ymax-x.ymin))/100000)
                     self.dist_estim=(alf*self.dist_estim)+((1-alf)*estim)
-                    #print('{},{},{},{}'.format(center_x,center_y,self.tracked_ang,self.dist_estim))
-                    
                     self.prev_cx=center_x
                     self.prev_cy=center_y
-                    self.ang_dist.x=1#x.center.x
-                    self.ang_dist.y=self.dist_estim#x.center.y#dist*100
+                    self.ang_dist.x=1
+                    self.ang_dist.y=self.dist_estim
                     self.ang_dist.z=ang
-                    self.prev_ang = self.tracked_ang
+                    self.previous_tracking_lidar_angle = self.tracked_ang
                     self.ang_pub.publish(self.ang_dist)
                     self.lost_count=0
                 else:
-                    #print("lost")
-                    #print('{} {} {}'.format(center_x,center_y,self.tracked_ang))
-                    self.ang_dist.x=-1#x.center.x
-                    self.ang_dist.y=0#x.center.y#dist*100
+                    self.ang_dist.x=-1
+                    self.ang_dist.y=0
                     self.ang_dist.z=ang
                     self.ang_pub.publish(self.ang_dist)
                     self.lost_count=self.lost_count=+1
@@ -384,11 +234,7 @@ class PitWheels:
                         self.lost_count=0
                         self.first_got=False
                         self.dist_estim=0
-
-                #self.ang_pub.publish(self.angulo)
-                #self.dist_pub.publish(self.distancia)
-                #print(x)
-                self.last_time=time.time()#self.timex
+                self.last_time=time.time()
         closest= Vector3()
         aux=[10000,10000]
         val_aux=10000
@@ -402,25 +248,22 @@ class PitWheels:
                 dist=np.sqrt(e_x*e_x+e_y*e_y)
                 ang_obj= 90+np.arctan2(n.center.x, n.center.y) * 180 / np.pi
                 err_ang= self.tracked_ang-ang_obj
-                if dist<val_aux and err_ang<ang_aux: #and err_ang<7 and err_ang>-7 :
+                if dist<val_aux and err_ang<ang_aux: 
                     val_aux=dist
                     ang_aux=err_ang
-                    #closest.x=n.center.x
-                    #closest.y=n.center.y
                     lst2.append(n)
             if len(lst2)!=0:
                 for n in (lst2):
                     dist=np.sqrt(n.center.x*n.center.x+n.center.y*n.center.y)
-                    if dist<dst_aux: #and err_ang<7 and err_ang>-7 :
+                    if dist<dst_aux: 
                         dst_aux=dist
                         closest.x=n.center.x
                         closest.y=n.center.y
                 self.ang_pub.publish(closest)
 
-
     def shutdown(self):
         rospy.sleep(1)
-        
+
 
 def pit_wheels_main():
     rospy.init_node('pit_wheels', anonymous = True)

@@ -1,1 +1,0 @@
-rosbag filter floor10_2021-02-19-16-12-21.bag new_bag.bag "topic == '/alerts' or topic == '/camera_info' or topic == '/image_raw' or topic ==  '/j0/joy' or topic ==  '/movement/karugamo/joy' or topic == '/obstacles' or topic == '/scan' or topic == '/tf' or topic == '/tf_static' or topic == '/peop_ang_yolo'"

@@ -8,6 +8,7 @@
 
 # modified environment variables
 export CMAKE_PREFIX_PATH="/home/xavier/catkin_ws/devel/.private/hector_nav_msgs:$CMAKE_PREFIX_PATH"
+export PATH="/home/xavier/catkin_ws/devel/bin:$PATH"
 export PWD='/home/xavier/catkin_ws/build/hector_nav_msgs'
 export ROSLISP_PACKAGE_DIRECTORIES="/home/xavier/catkin_ws/devel/.private/hector_nav_msgs/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
 export ROS_PACKAGE_PATH="/home/xavier/catkin_ws/src/hector_slam/hector_nav_msgs:$ROS_PACKAGE_PATH"

@@ -1,1 +1,0 @@
-/home/xavier/catkin_ws/devel/.private/mbf_costmap_core/lib/pkgconfig/mbf_costmap_core.pc
