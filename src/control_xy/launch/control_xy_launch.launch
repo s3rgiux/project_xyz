@@ -1,4 +1,0 @@
-<launch>
-<node pkg="control_xy" type="control_xy_node" name="control_xy_node" output="screen">	
-</node>
-</launch>

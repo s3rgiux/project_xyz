@@ -1,5 +1,0 @@
-<launch>
-
-<node pkg="lidarPeople" type="main.py" name="lidarPeople_node" output="screen">	
-</node>
-</launch>

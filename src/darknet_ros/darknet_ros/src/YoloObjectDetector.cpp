@@ -55,7 +55,7 @@ YoloObjectDetector::~YoloObjectDetector()
 bool YoloObjectDetector::readParameters()
 {
   // Load common parameters.
-  nodeHandle_.param("image_view/enable_opencv", viewImage_, true);
+  nodeHandle_.param("image_view/enable_opencv", viewImage_, false);//true);
   nodeHandle_.param("image_view/wait_key_delay", waitKeyDelay_, 3);
   nodeHandle_.param("image_view/enable_console_output", enableConsoleOutput_, false);
 
@@ -443,7 +443,7 @@ void *YoloObjectDetector::displayInThread(void *ptr)
 void *YoloObjectDetector::displayLoop(void *ptr)
 {
   while (1) {
-    displayInThread(0);
+    //displayInThread(0);
   }
 }
 
@@ -540,7 +540,7 @@ void YoloObjectDetector::yolo()
       fps_ = 1./(what_time_is_it_now() - demoTime_);
       demoTime_ = what_time_is_it_now();
       if (viewImage_) {
-        displayInThread(0);
+        //displayInThread(0);
       } else {
         generate_image(buff_[(buffIndex_ + 1)%3], ipl_);
       }

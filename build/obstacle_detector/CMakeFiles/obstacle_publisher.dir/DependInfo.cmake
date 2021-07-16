@@ -20,7 +20,6 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/home/xavier/catkin_ws/devel/.private/obstacle_detector/include"
   "/home/xavier/catkin_ws/src/obstacle_detector/include"
-  "/home/xavier/catkin_ws/devel/.private/map_msgs/include"
   "/opt/ros/melodic/include"
   "/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
   "/usr/include/eigen3"

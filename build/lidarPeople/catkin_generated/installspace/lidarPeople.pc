@@ -1,8 +1,0 @@
-prefix=/home/xavier/catkin_ws/install
-
-Name: lidarPeople
-Description: Description of lidarPeople
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

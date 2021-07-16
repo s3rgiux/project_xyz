@@ -15,7 +15,7 @@ from peop_extract.msg import people_box, peoples, States
 
 SLEEP_TIME = 0.018
 BBOX_SIZE_THRESH = 40 # if bbox is larger than this, then it may be people.
-ERROR_LIDAR_DISTGANCE = -50 # if lidar could not detect the target, then return this position value
+ERROR_LIDAR_DISTGANCE = -0.050 # if lidar could not detect the target, then return this position value
 CAMERA_POSITION_X = 640 / 2 # center of camera frame in x-axis
 CAMERA_POSITION_Y = 480 # camera frame height
 POSITION_UPDATE_RATE = 0.69
@@ -92,7 +92,7 @@ class PeopleExtractSort:
                     # lidar lost but start to track only YOLO
                     self.is_tracking_yolo = True
                     self.has_detected_people = True
-                    self.tracking_yolo_id = self.current_biggest_people.id
+                    self.tracking_yolo_id = int(self.current_biggest_people.id)
         else:
             # reset all variable if the state changes to not karugamo
             self.reset_karugamo_state()
@@ -101,7 +101,7 @@ class PeopleExtractSort:
         return people.id != -1 and people.area > BBOX_SIZE_THRESH
 
     def is_tracking_bbox(self, detected_bbox):
-        self.tracking_yolo_id == detected_bbox.id
+        return self.tracking_yolo_id == int(detected_bbox.id)
     
     def center(self,bbox):
         return (bbox.xmax + bbox.xmin) / 2, (bbox.ymax + bbox.ymin) / 2
@@ -124,10 +124,9 @@ class PeopleExtractSort:
         people = [detected_bbox for detected_bbox in data.people if int(detected_bbox.id) != -1]
         for detected_bbox in people:
             # found target with yolo
-            
             if self.has_detected_people and self.is_tracking_bbox(detected_bbox):
                 angle_degree = self.bbox_angle_from_camera(detected_bbox)
-                
+
                 # estimate target distance from bounding box area
                 bbox_width = detected_bbox.xmax - detected_bbox.xmin
                 bbox_height = detected_bbox.ymax - detected_bbox.ymin
@@ -158,7 +157,7 @@ class PeopleExtractSort:
             self.last_time_detected_yolo = time.time()
 
             angle_degree = self.bbox_angle_from_camera(biggest_bbox)
-            print(self.has_detected_people)
+
             # if it tracks with lidar and have not detecterd with yolo
             # and the biggest bbox is like target
             if self.is_tracking_lidar and \
@@ -179,11 +178,11 @@ class PeopleExtractSort:
                 self.last_time_detected_yolo = time.time()
             
             else:
-                self.lost_count_before_reset+=1
-                if self.lost_count_before_reset>7:
-                    self.lost_count_before_reset=0
-                    self.has_detected_people=False
-                    self.last_estimated_distance=0
+                self.lost_count_before_reset += 1
+                if self.lost_count_before_reset > 7:
+                    self.lost_count_before_reset = 0
+                    self.has_detected_people = False
+                    self.last_estimated_distance = 0
                 if not self.has_detected_people:
                     # publish biggest people not tracked YOLO
                     self.ang_dist.x = -biggest_bbox.id # flag with id negative not tracking 

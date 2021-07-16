@@ -1,8 +1,0 @@
-prefix=/home/xavier/catkin_ws/devel/.private/conversion
-
-Name: conversion
-Description: Description of conversion
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib -lconversion
-Requires: std_msgs sensor_msgs geometry_msgs

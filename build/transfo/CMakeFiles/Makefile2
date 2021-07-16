@@ -197,9 +197,9 @@ clean: CMakeFiles/_transfo_generate_messages_check_deps_Frame.dir/clean
 # Target rules for target CMakeFiles/transfo_generate_messages.dir
 
 # All Build rule for target.
-CMakeFiles/transfo_generate_messages.dir/all: CMakeFiles/transfo_generate_messages_eus.dir/all
 CMakeFiles/transfo_generate_messages.dir/all: CMakeFiles/transfo_generate_messages_py.dir/all
 CMakeFiles/transfo_generate_messages.dir/all: CMakeFiles/transfo_generate_messages_nodejs.dir/all
+CMakeFiles/transfo_generate_messages.dir/all: CMakeFiles/transfo_generate_messages_eus.dir/all
 CMakeFiles/transfo_generate_messages.dir/all: CMakeFiles/transfo_generate_messages_lisp.dir/all
 CMakeFiles/transfo_generate_messages.dir/all: CMakeFiles/transfo_generate_messages_cpp.dir/all
 	$(MAKE) -f CMakeFiles/transfo_generate_messages.dir/build.make CMakeFiles/transfo_generate_messages.dir/depend
@@ -1903,8 +1903,8 @@ clean: CMakeFiles/sensor_msgs_generate_messages_cpp.dir/clean
 
 # All Build rule for target.
 CMakeFiles/transfo_generate_messages_lisp.dir/all: CMakeFiles/_transfo_generate_messages_check_deps_Frame.dir/all
-CMakeFiles/transfo_generate_messages_lisp.dir/all: CMakeFiles/geometry_msgs_generate_messages_lisp.dir/all
 CMakeFiles/transfo_generate_messages_lisp.dir/all: CMakeFiles/std_msgs_generate_messages_lisp.dir/all
+CMakeFiles/transfo_generate_messages_lisp.dir/all: CMakeFiles/geometry_msgs_generate_messages_lisp.dir/all
 	$(MAKE) -f CMakeFiles/transfo_generate_messages_lisp.dir/build.make CMakeFiles/transfo_generate_messages_lisp.dir/depend
 	$(MAKE) -f CMakeFiles/transfo_generate_messages_lisp.dir/build.make CMakeFiles/transfo_generate_messages_lisp.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xavier/catkin_ws/build/transfo/CMakeFiles --progress-num=15 "Built target transfo_generate_messages_lisp"

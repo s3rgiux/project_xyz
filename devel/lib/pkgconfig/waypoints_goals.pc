@@ -1,1 +1,0 @@
-/home/xavier/catkin_ws/devel/.private/waypoints_goals/lib/pkgconfig/waypoints_goals.pc

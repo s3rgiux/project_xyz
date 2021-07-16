@@ -1,8 +1,0 @@
-prefix=/home/xavier/catkin_ws/devel/.private/hector_map_server
-
-Name: hector_map_server
-Description: Description of hector_map_server
-Version: 0.4.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

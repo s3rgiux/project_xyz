@@ -45,7 +45,6 @@ class image_converter:
     self.fin_lon=0.4
     self.people=False
     self.low_speed=False
-    self.use_hokuyo=True#False
     self.mask=np.array([[-1, -2, -3, 0, 0, 0, 0, 3 , 2 , 1 ],
                         [-1, -2, -3, 0, 0, 0, 0, 3 , 2 , 1 ],
                         [-1, -2, -3, 0, 0, 0, 0, 3 , 2 , 1 ],
@@ -349,22 +348,12 @@ class image_converter:
     bord1 = np.ones((158, 211), dtype = "uint8")
     centery=138
     centerx=105
-    if self.use_hokuyo==True:
-      for i, theta in enumerate(np.arange(msg.angle_min,msg.angle_max,msg.angle_increment)):
-        if not np.isinf(msg.ranges[i]) and msg.ranges[i]>0.15 and msg.ranges[i] < 3.7 :
-          y=round(msg.ranges[i]*np.cos(theta)*125/3.7,0)
-          x=round(msg.ranges[i]*np.sin(theta)*104/3.7,0)
-          img[centery-int(y),centerx-int(x)]=255
-          bord1[centery-int(y),centerx-int(x)]=255
-        
-    else:
-      for i, theta in enumerate(np.arange(msg.angle_min,msg.angle_max,msg.angle_increment)):
-        if not np.isinf(msg.ranges[i]) and msg.ranges[i]>0.15 and msg.ranges[i] < 3.7 and ((i>0 and i<90) or (i>270 and i<360) ):
-          y=round(-msg.ranges[i]*np.cos(theta)*125/3.7,0)
-          x=round(-msg.ranges[i]*np.sin(theta)*104/3.7,0)
-          img[centery-int(y),centerx-int(x)]=255
-          bord1[centery-int(y),centerx-int(x)]=255
-        
+    for i, theta in enumerate(np.arange(msg.angle_min,msg.angle_max,msg.angle_increment)):
+      if not np.isinf(msg.ranges[i]) and msg.ranges[i]>0.15 and msg.ranges[i] < 3.7:
+        y=round(msg.ranges[i]*np.cos(theta)*125/3.7,0)
+        x=round(msg.ranges[i]*np.sin(theta)*104/3.7,0)
+        img[centery-int(y),centerx-int(x)]=255
+        bord1[centery-int(y),centerx-int(x)]=255
     kernel = np.ones((3,3),np.uint8)
     dil = cv2.dilate(img,kernel,iterations = 1)
     cost1 = cv2.dilate(dil,kernel,iterations = 2)

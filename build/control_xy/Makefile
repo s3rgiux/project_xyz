@@ -168,19 +168,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named control_xy_node_spline_follow
-
-# Build rule for target.
-control_xy_node_spline_follow: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 control_xy_node_spline_follow
-.PHONY : control_xy_node_spline_follow
-
-# fast build rule for target.
-control_xy_node_spline_follow/fast:
-	$(MAKE) -f CMakeFiles/control_xy_node_spline_follow.dir/build.make CMakeFiles/control_xy_node_spline_follow.dir/build
-.PHONY : control_xy_node_spline_follow/fast
-
-#=============================================================================
 # Target rules for targets named control_xy_gennodejs
 
 # Build rule for target.
@@ -662,19 +649,6 @@ std_msgs_generate_messages_nodejs/fast:
 .PHONY : std_msgs_generate_messages_nodejs/fast
 
 #=============================================================================
-# Target rules for targets named control_xy_node_spline
-
-# Build rule for target.
-control_xy_node_spline: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 control_xy_node_spline
-.PHONY : control_xy_node_spline
-
-# fast build rule for target.
-control_xy_node_spline/fast:
-	$(MAKE) -f CMakeFiles/control_xy_node_spline.dir/build.make CMakeFiles/control_xy_node_spline.dir/build
-.PHONY : control_xy_node_spline/fast
-
-#=============================================================================
 # Target rules for targets named geometry_msgs_generate_messages_cpp
 
 # Build rule for target.
@@ -792,19 +766,6 @@ _control_xy_generate_messages_check_deps_DriveWheel/fast:
 .PHONY : _control_xy_generate_messages_check_deps_DriveWheel/fast
 
 #=============================================================================
-# Target rules for targets named control_xy_node
-
-# Build rule for target.
-control_xy_node: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 control_xy_node
-.PHONY : control_xy_node
-
-# fast build rule for target.
-control_xy_node/fast:
-	$(MAKE) -f CMakeFiles/control_xy_node.dir/build.make CMakeFiles/control_xy_node.dir/build
-.PHONY : control_xy_node/fast
-
-#=============================================================================
 # Target rules for targets named control_xy_generate_messages_py
 
 # Build rule for target.
@@ -882,87 +843,6 @@ gtest/fast:
 	$(MAKE) -f gtest/googlemock/gtest/CMakeFiles/gtest.dir/build.make gtest/googlemock/gtest/CMakeFiles/gtest.dir/build
 .PHONY : gtest/fast
 
-src/control_xy_node_yaw.o: src/control_xy_node_yaw.cpp.o
-
-.PHONY : src/control_xy_node_yaw.o
-
-# target to build an object file
-src/control_xy_node_yaw.cpp.o:
-	$(MAKE) -f CMakeFiles/control_xy_node.dir/build.make CMakeFiles/control_xy_node.dir/src/control_xy_node_yaw.cpp.o
-.PHONY : src/control_xy_node_yaw.cpp.o
-
-src/control_xy_node_yaw.i: src/control_xy_node_yaw.cpp.i
-
-.PHONY : src/control_xy_node_yaw.i
-
-# target to preprocess a source file
-src/control_xy_node_yaw.cpp.i:
-	$(MAKE) -f CMakeFiles/control_xy_node.dir/build.make CMakeFiles/control_xy_node.dir/src/control_xy_node_yaw.cpp.i
-.PHONY : src/control_xy_node_yaw.cpp.i
-
-src/control_xy_node_yaw.s: src/control_xy_node_yaw.cpp.s
-
-.PHONY : src/control_xy_node_yaw.s
-
-# target to generate assembly for a file
-src/control_xy_node_yaw.cpp.s:
-	$(MAKE) -f CMakeFiles/control_xy_node.dir/build.make CMakeFiles/control_xy_node.dir/src/control_xy_node_yaw.cpp.s
-.PHONY : src/control_xy_node_yaw.cpp.s
-
-src/control_xy_odom_wp_nav_spline.o: src/control_xy_odom_wp_nav_spline.cpp.o
-
-.PHONY : src/control_xy_odom_wp_nav_spline.o
-
-# target to build an object file
-src/control_xy_odom_wp_nav_spline.cpp.o:
-	$(MAKE) -f CMakeFiles/control_xy_node_spline.dir/build.make CMakeFiles/control_xy_node_spline.dir/src/control_xy_odom_wp_nav_spline.cpp.o
-.PHONY : src/control_xy_odom_wp_nav_spline.cpp.o
-
-src/control_xy_odom_wp_nav_spline.i: src/control_xy_odom_wp_nav_spline.cpp.i
-
-.PHONY : src/control_xy_odom_wp_nav_spline.i
-
-# target to preprocess a source file
-src/control_xy_odom_wp_nav_spline.cpp.i:
-	$(MAKE) -f CMakeFiles/control_xy_node_spline.dir/build.make CMakeFiles/control_xy_node_spline.dir/src/control_xy_odom_wp_nav_spline.cpp.i
-.PHONY : src/control_xy_odom_wp_nav_spline.cpp.i
-
-src/control_xy_odom_wp_nav_spline.s: src/control_xy_odom_wp_nav_spline.cpp.s
-
-.PHONY : src/control_xy_odom_wp_nav_spline.s
-
-# target to generate assembly for a file
-src/control_xy_odom_wp_nav_spline.cpp.s:
-	$(MAKE) -f CMakeFiles/control_xy_node_spline.dir/build.make CMakeFiles/control_xy_node_spline.dir/src/control_xy_odom_wp_nav_spline.cpp.s
-.PHONY : src/control_xy_odom_wp_nav_spline.cpp.s
-
-src/control_xy_odom_wp_nav_spline_follow.o: src/control_xy_odom_wp_nav_spline_follow.cpp.o
-
-.PHONY : src/control_xy_odom_wp_nav_spline_follow.o
-
-# target to build an object file
-src/control_xy_odom_wp_nav_spline_follow.cpp.o:
-	$(MAKE) -f CMakeFiles/control_xy_node_spline_follow.dir/build.make CMakeFiles/control_xy_node_spline_follow.dir/src/control_xy_odom_wp_nav_spline_follow.cpp.o
-.PHONY : src/control_xy_odom_wp_nav_spline_follow.cpp.o
-
-src/control_xy_odom_wp_nav_spline_follow.i: src/control_xy_odom_wp_nav_spline_follow.cpp.i
-
-.PHONY : src/control_xy_odom_wp_nav_spline_follow.i
-
-# target to preprocess a source file
-src/control_xy_odom_wp_nav_spline_follow.cpp.i:
-	$(MAKE) -f CMakeFiles/control_xy_node_spline_follow.dir/build.make CMakeFiles/control_xy_node_spline_follow.dir/src/control_xy_odom_wp_nav_spline_follow.cpp.i
-.PHONY : src/control_xy_odom_wp_nav_spline_follow.cpp.i
-
-src/control_xy_odom_wp_nav_spline_follow.s: src/control_xy_odom_wp_nav_spline_follow.cpp.s
-
-.PHONY : src/control_xy_odom_wp_nav_spline_follow.s
-
-# target to generate assembly for a file
-src/control_xy_odom_wp_nav_spline_follow.cpp.s:
-	$(MAKE) -f CMakeFiles/control_xy_node_spline_follow.dir/build.make CMakeFiles/control_xy_node_spline_follow.dir/src/control_xy_odom_wp_nav_spline_follow.cpp.s
-.PHONY : src/control_xy_odom_wp_nav_spline_follow.cpp.s
-
 src/control_xy_odom_wp_nav_spline_mixed2.o: src/control_xy_odom_wp_nav_spline_mixed2.cpp.o
 
 .PHONY : src/control_xy_odom_wp_nav_spline_mixed2.o
@@ -1000,7 +880,6 @@ help:
 	@echo "... install"
 	@echo "... list_install_components"
 	@echo "... test"
-	@echo "... control_xy_node_spline_follow"
 	@echo "... control_xy_gennodejs"
 	@echo "... control_xy_genlisp"
 	@echo "... edit_cache"
@@ -1041,7 +920,6 @@ help:
 	@echo "... doxygen"
 	@echo "... std_msgs_generate_messages_lisp"
 	@echo "... std_msgs_generate_messages_nodejs"
-	@echo "... control_xy_node_spline"
 	@echo "... geometry_msgs_generate_messages_cpp"
 	@echo "... geometry_msgs_generate_messages_lisp"
 	@echo "... geometry_msgs_generate_messages_py"
@@ -1051,22 +929,12 @@ help:
 	@echo "... actionlib_msgs_generate_messages_py"
 	@echo "... control_xy_generate_messages"
 	@echo "... _control_xy_generate_messages_check_deps_DriveWheel"
-	@echo "... control_xy_node"
 	@echo "... control_xy_generate_messages_py"
 	@echo "... _control_xy_generate_messages_check_deps_States"
 	@echo "... gmock_main"
 	@echo "... gmock"
 	@echo "... gtest_main"
 	@echo "... gtest"
-	@echo "... src/control_xy_node_yaw.o"
-	@echo "... src/control_xy_node_yaw.i"
-	@echo "... src/control_xy_node_yaw.s"
-	@echo "... src/control_xy_odom_wp_nav_spline.o"
-	@echo "... src/control_xy_odom_wp_nav_spline.i"
-	@echo "... src/control_xy_odom_wp_nav_spline.s"
-	@echo "... src/control_xy_odom_wp_nav_spline_follow.o"
-	@echo "... src/control_xy_odom_wp_nav_spline_follow.i"
-	@echo "... src/control_xy_odom_wp_nav_spline_follow.s"
 	@echo "... src/control_xy_odom_wp_nav_spline_mixed2.o"
 	@echo "... src/control_xy_odom_wp_nav_spline_mixed2.i"
 	@echo "... src/control_xy_odom_wp_nav_spline_mixed2.s"

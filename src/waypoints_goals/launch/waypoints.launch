@@ -1,9 +1,0 @@
-<launch>
-
-<node pkg="waypoints_goals" type="waypoints.py" name="waypoints_node" output="screen">	
-	<!-- Load Sequence of Points (Cartesian Coordinates wrt "map" RF, in meters) -->
-        <rosparam param="p_seq">[2.0,2.3,0,4.0,-1.4,0,2.2,-4.2,0,1.5,0,0]</rosparam>
-        <!-- Load Sequence of Desired Yaw Angles (no rotations around x and y axes) in degrees-->
-        <rosparam param="yea_seq">[10,-45,-110,90]</rosparam>
-</node>
-</launch>

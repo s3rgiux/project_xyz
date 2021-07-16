@@ -1,23 +1,23 @@
 Determining if the pthread_create exist failed with the following output:
 Change Dir: /home/xavier/catkin_ws/build/laser_scan_matcher/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_64fe4/fast"
-/usr/bin/make -f CMakeFiles/cmTC_64fe4.dir/build.make CMakeFiles/cmTC_64fe4.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_2afbd/fast"
+/usr/bin/make -f CMakeFiles/cmTC_2afbd.dir/build.make CMakeFiles/cmTC_2afbd.dir/build
 make[1]: Entering directory '/home/xavier/catkin_ws/build/laser_scan_matcher/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_64fe4.dir/CheckSymbolExists.c.o
-/usr/bin/cc    -o CMakeFiles/cmTC_64fe4.dir/CheckSymbolExists.c.o   -c /home/xavier/catkin_ws/build/laser_scan_matcher/CMakeFiles/CMakeTmp/CheckSymbolExists.c
-Linking C executable cmTC_64fe4
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_64fe4.dir/link.txt --verbose=1
-/usr/bin/cc      -rdynamic CMakeFiles/cmTC_64fe4.dir/CheckSymbolExists.c.o  -o cmTC_64fe4 
-CMakeFiles/cmTC_64fe4.dir/CheckSymbolExists.c.o: In function `main':
+Building C object CMakeFiles/cmTC_2afbd.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_2afbd.dir/CheckSymbolExists.c.o   -c /home/xavier/catkin_ws/build/laser_scan_matcher/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_2afbd
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2afbd.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_2afbd.dir/CheckSymbolExists.c.o  -o cmTC_2afbd 
+CMakeFiles/cmTC_2afbd.dir/CheckSymbolExists.c.o: In function `main':
 CheckSymbolExists.c:(.text+0x14): undefined reference to `pthread_create'
 CheckSymbolExists.c:(.text+0x18): undefined reference to `pthread_create'
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_64fe4.dir/build.make:97: recipe for target 'cmTC_64fe4' failed
-make[1]: *** [cmTC_64fe4] Error 1
+CMakeFiles/cmTC_2afbd.dir/build.make:97: recipe for target 'cmTC_2afbd' failed
+make[1]: *** [cmTC_2afbd] Error 1
 make[1]: Leaving directory '/home/xavier/catkin_ws/build/laser_scan_matcher/CMakeFiles/CMakeTmp'
-Makefile:126: recipe for target 'cmTC_64fe4/fast' failed
-make: *** [cmTC_64fe4/fast] Error 2
+Makefile:126: recipe for target 'cmTC_2afbd/fast' failed
+make: *** [cmTC_2afbd/fast] Error 2
 
 File /home/xavier/catkin_ws/build/laser_scan_matcher/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
 /* */
@@ -37,20 +37,20 @@ int main(int argc, char** argv)
 Determining if the function pthread_create exists in the pthreads failed with the following output:
 Change Dir: /home/xavier/catkin_ws/build/laser_scan_matcher/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_1dbf7/fast"
-/usr/bin/make -f CMakeFiles/cmTC_1dbf7.dir/build.make CMakeFiles/cmTC_1dbf7.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_eb329/fast"
+/usr/bin/make -f CMakeFiles/cmTC_eb329.dir/build.make CMakeFiles/cmTC_eb329.dir/build
 make[1]: Entering directory '/home/xavier/catkin_ws/build/laser_scan_matcher/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_1dbf7.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_1dbf7.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
-Linking C executable cmTC_1dbf7
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1dbf7.dir/link.txt --verbose=1
-/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_1dbf7.dir/CheckFunctionExists.c.o  -o cmTC_1dbf7 -lpthreads 
+Building C object CMakeFiles/cmTC_eb329.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_eb329.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
+Linking C executable cmTC_eb329
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_eb329.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_eb329.dir/CheckFunctionExists.c.o  -o cmTC_eb329 -lpthreads 
 /usr/bin/ld: cannot find -lpthreads
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_1dbf7.dir/build.make:97: recipe for target 'cmTC_1dbf7' failed
-make[1]: *** [cmTC_1dbf7] Error 1
+CMakeFiles/cmTC_eb329.dir/build.make:97: recipe for target 'cmTC_eb329' failed
+make[1]: *** [cmTC_eb329] Error 1
 make[1]: Leaving directory '/home/xavier/catkin_ws/build/laser_scan_matcher/CMakeFiles/CMakeTmp'
-Makefile:126: recipe for target 'cmTC_1dbf7/fast' failed
-make: *** [cmTC_1dbf7/fast] Error 2
+Makefile:126: recipe for target 'cmTC_eb329/fast' failed
+make: *** [cmTC_eb329/fast] Error 2
 
 
