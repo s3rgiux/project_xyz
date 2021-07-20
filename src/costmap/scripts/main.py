@@ -28,6 +28,7 @@ MIN_ANGLE = -3.1415 / 2
 MAX_ANGLE = 3.1415 / 2
 LIMIT_MIN_X = 0.15
 LIMIT_MAX_X = 3.7
+PI = 3.1415
 
 class image_converter:
 
@@ -54,6 +55,7 @@ class image_converter:
     self.fin_lon=0.4
     self.people=False
     self.low_speed=False
+    self.lidar_rotated=True
     self.mask9=np.array([[-6, -6, -6, -7, -7, -3, -3, -4,-4, -4, -4, -5, -5, 0, 0, 0, 0, 0, 0, 5, 5, 4 , 4 , 4, 4, 3, 3, 7, 7, 6, 6, 6 ],
                         [-6, -6, -6, -7, -7, -3, -3, -4,-4, -4, -4, -5, -5, 0, 0, 0, 0, 0, 0, 5, 5, 4 , 4 , 4, 4, 3, 3, 7, 7, 6, 6, 6],
                         [-6, -6, -6, -7, -7, -3, -3, -4,-4, -4, -4, -5, -5, 0, 0, 0, 0, 0, 0, 5, 5, 4 , 4 , 4, 4, 3, 3, 7, 7, 6, 6, 6 ],
@@ -153,23 +155,67 @@ class image_converter:
     else:
       self.low_speed=False
 
+  def convert_rotation(self, angle):
+    rotated = angle + PI
+    if rotated > PI:
+      rotated = rotated - 2 * PI
+    return rotated
+
+  def convert_rotations(self, angle_dists):
+    converted = []
+    for (angle, distance) in angle_dists:
+      rotated = self.convert_rotation(angle)
+      converted.append((rotated, distance))
+    return converted
+  
+  # :returns: list[(angle, distance)]
+  def angle_and_distance(self, scan_message):
+    angle_dists = []
+    for i, angle in enumerate(np.arange(scan_message.angle_min, scan_message.angle_max, scan_message.angle_increment)):
+      distance = scan_message.ranges[i]
+      angle_dists.append((angle, distance))
+    return angle_dists
+
+  
+  def filter_scans(self, angle_distances):
+    filtered_angle_dists = []
+    for (angle, distance) in angle_distances:
+      if not np.isinf(distance) and \
+         distance > LIMIT_MIN_X and \
+         distance < LIMIT_MAX_X and \
+         angle > MIN_ANGLE and \
+         angle < MAX_ANGLE:
+        filtered_angle_dists.append((angle, distance))
+    return filtered_angle_dists
+      
   
   def callbackLaser(self, msg):
+    # convert angles and distances
+    angle_distances = self.angle_and_distance(msg)
+  
+    # convert axes of rplidar into hokuyo
+    if self.lidar_rotated:
+      angle_distances = self.convert_rotations(angle_distances)
+    
+    # remove unused data
+    angle_distances = self.filter_scans(angle_distances)
+    #print (angle_distances)
     lidar_matrix = np.zeros((COSTMAP_HEIGHT, COSTMAP_WIDTH), dtype="uint8")
     border_lidar_matrix = np.ones((COSTMAP_HEIGHT, COSTMAP_WIDTH), dtype="uint8")
+    #generate the matrix of points from lidar
+    for (angle, distance) in angle_distances:
+      y = round(distance * np.cos(angle) * 125 / LIMIT_MAX_X, 0)
+      x = round(distance * np.sin(angle) * 104 / LIMIT_MAX_X, 0)
+      lidar_matrix[OFFSET_COSMAP_Y-int(y), OFFSET_COSMAP_X-int(x)] = 255
+      border_lidar_matrix[OFFSET_COSMAP_Y-int(y), OFFSET_COSMAP_X-int(x)] = 255
 
-    for i, theta in enumerate(np.arange(msg.angle_min, msg.angle_max, msg.angle_increment)):
-      if not np.isinf(msg.ranges[i]) and msg.ranges[i] > LIMIT_MIN_X and msg.ranges[i] < LIMIT_MAX_X and theta > MIN_ANGLE and theta < MAX_ANGLE:
-        y = round(msg.ranges[i] * np.cos(theta) * 125 / LIMIT_MAX_X, 0)
-        x = round(msg.ranges[i] * np.sin(theta) * 104 / LIMIT_MAX_X, 0)
-        lidar_matrix[OFFSET_COSMAP_Y-int(y), OFFSET_COSMAP_X-int(x)] = 255
-        border_lidar_matrix[OFFSET_COSMAP_Y-int(y), OFFSET_COSMAP_X-int(x)] = 255
     kernel = np.ones((3,3),np.uint8)
+    #dilate the points form lidar to create a zone to avoid
     dil = cv2.dilate(lidar_matrix,kernel,iterations = 1)
     cost1 = cv2.dilate(dil,kernel,iterations = 2)
     cost2 = cv2.dilate(cost1,kernel,iterations = self.dilation)
 
-    
+    #debug purposes
     # find contours in the thresholded image
     cnts = cv2.findContours(cost2, cv2.RETR_EXTERNAL,
 	                          cv2.CHAIN_APPROX_SIMPLE)

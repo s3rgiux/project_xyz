@@ -42,7 +42,7 @@ class PeopLidarExtract:
         
     
     def pubobs(self):
-        if(time.time() - self.last_time > 0.5):
+        if(time.time() - self.last_time > 0.35):
             self.angulo.data = -500
             self.ang_dist.x = -0.01
             self.ang_dist.y = -0.01

@@ -574,7 +574,7 @@ void calc_100hz(){
     }
     distanciaPeople2 = sqrt(center_x * center_x + center_y * center_y) * 100;
     ang_peop_lidar = 90 - atan2(center_x,center_y) * 180 / 3.1416 ;   
-    if(lidar_people_status>0 && stopped_functions == true && yolo_status>0){
+    if(lidar_people_status > 0 && stopped_functions == true && yolo_status > 0){
         restart_follow_variables();
         ROS_INFO("restar folow variable");
         stopped_functions = false;
@@ -596,6 +596,7 @@ void calc_100hz(){
                
                 pitakuru_state_msg.state = "KARUGAMO";
                 pitakuru_state_msg.state_karugamo = "tracking_lidar";
+                pitakuru_state_msg.state_shelf = "no_problem";
                 pitakuru_state_msg.trackeds.linear.x = distanciaPeople2;
                 pitakuru_state_msg.trackeds.linear.y = ang_peop_lidar;
                 pitakuru_state_msg.trackeds.linear.z = lidar_people_status;
@@ -613,31 +614,20 @@ void calc_100hz(){
             }
 
             else if(danger == false  && (lidar_people_status < 0 || (lidar_people_status > 0 && distanciaPeople2 >= near_far_distance)) && stopped_functions == false){
-                missing_track+= 1;
-                ROS_INFO("miss %i",missing_track);
+                
                     if(lidar_failed == false && low_voltage == false){
                         blink_blue2(0.25);
                     }
-                    if(missing_track>4){
-                        pitakuru_state_msg.state = "KARUGAMO";
-                        pitakuru_state_msg.state_karugamo = "losting_with_lidar";
-                        pitakuru_state_msg.trackeds.linear.x = distanciaPeople2;
-                        pitakuru_state_msg.trackeds.linear.y = ang_peop_lidar;
-                        pitakuru_state_msg.trackeds.linear.z = lidar_people_status;
-                        pitakuru_state_msg.trackeds.angular.x = dist_peop_cam;
-                        pitakuru_state_msg.trackeds.angular.y = ang_peop_yolo;
-                        pitakuru_state_msg.trackeds.angular.z = yolo_status;
-                        state_pub.publish(pitakuru_state_msg);
-                    }
+                    
                     ros::Time time_now = ros::Time::now();
                     ros::Duration duration = time_now - last_time_tracking;
                     if(duration.toSec()>duration_to_lost){
                         last_time_tracking = ros::Time::now();
                         pitakuru_state_msg.state = "KARUGAMO";
                         pitakuru_state_msg.state_karugamo = "lost";
+                        pitakuru_state_msg.state_shelf = "passed_lost_time";
+                        state_pub.publish(pitakuru_state_msg);
                         alert_lost_voice_sound();
-                                         
-                        
                         stopped_functions = true;
                         tracking_lidar = false;
                         ROS_INFO("LOST");
@@ -658,6 +648,10 @@ void calc_100hz(){
                         vel_steer.linear.x = (vel_steer.linear.x/21) * 0.1045;
                         vel_steer.angular.z = (vel_steer.angular.z/21) * 0.1045;
                         speed_publisher.publish(vel_steer);
+                        pitakuru_state_msg.ctrl_front = ctrl_front_follow;
+                        pitakuru_state_msg.ctrl_side = ctrl_ang;
+                        pitakuru_state_msg.state_shelf = "in_process_to_lost";
+                        state_pub.publish(pitakuru_state_msg);
                     }
                 
             }
@@ -674,6 +668,7 @@ void calc_100hz(){
                 pitakuru_state_msg.trackeds.angular.x = dist_peop_cam;
                 pitakuru_state_msg.trackeds.angular.y = ang_peop_yolo;
                 pitakuru_state_msg.trackeds.angular.z = yolo_status;
+                pitakuru_state_msg.state_shelf = "in_stopped_functions";
                 state_pub.publish(pitakuru_state_msg);
 
                 sound_counter++;
@@ -688,6 +683,8 @@ void calc_100hz(){
                     vel_steer.angular.z = ctrl_yaw;
                     vel_steer.linear.x = ((vel_steer.linear.x/21) * 0.1045)/10;
                     vel_steer.angular.z = ((vel_steer.angular.z/21) * 0.1045)/2;
+                    pitakuru_state_msg.ctrl_front = ctrl_front_follow;
+                    pitakuru_state_msg.ctrl_side = ctrl_ang;
                     speed_publisher.publish(vel_steer);
                 }else{
                     ctrl_front_follow = (1-smooth_accel_stop) * (0)+(smooth_accel_stop * ctrl_front_follow);
@@ -697,6 +694,8 @@ void calc_100hz(){
                     vel_steer.linear.x = ((vel_steer.linear.x/21) * 0.1045)/10;
                     vel_steer.angular.z = ((vel_steer.angular.z/21) * 0.1045)/2;
                     speed_publisher.publish(vel_steer);
+                    pitakuru_state_msg.ctrl_front = ctrl_front_follow;
+                    pitakuru_state_msg.ctrl_side = ctrl_ang;
                     tracked_pos.x = -.050;
                     tracked_pos.y = -.050;   
                 }      
@@ -730,7 +729,7 @@ void publish_lost_tracked(){
 // tracking target is near to robot
 void near(){
        if(mode_follow && danger != true && stopped_functions == false){            
-            ang_peop_lidar = 90- atan2(center_x,center_y) * 180 / 3.1416 ;
+            ang_peop_lidar = 90 - atan2(center_x,center_y) * 180 / 3.1416 ;
             distanciaPeople2 = sqrt(center_x * center_x+center_y * center_y) * 100;
             ROS_INFO("near() an%f d%f",ang_peop_lidar,distanciaPeople2);
             tracked_angle = ang_peop_lidar;
