@@ -42,7 +42,7 @@ class SwitchInputOn(object):
                 self.status_on = True
                 self.counter_to_power_on = 0
                 rospy.logerr("starting")
-                subprocess.call(["roslaunch", "pitakuru", "pitakuru_rplidar_people.launch"])
+                subprocess.call(["roslaunch", "pitakuru", "pitakuru_full_yolo_mbf.launch"])
                 rospy.logerr("matando desde on")
 
 if __name__ == "__main__":

@@ -32,7 +32,7 @@
 
     <!-- package for configure obstacle detector node -->
  
-    <include file="$(find obstacle_detector)/launch/test_experim.launch"/>  
+    <include file="$(find obstacle_detector)/launch/test_experim_hokuyo.launch"/>  
  
 
     <include file="$(find darknet_ros)/launch/yolo_v3.launch"/> 
