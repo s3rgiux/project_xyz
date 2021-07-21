@@ -6,7 +6,7 @@ import os
 import rospy
 import subprocess
 from pitakuru.msg import TriggerAction
-
+from time import sleep
 
 class SwitchInputOn(object):
     def __init__(self):
@@ -47,6 +47,7 @@ class SwitchInputOn(object):
 
 if __name__ == "__main__":
     switch_input = SwitchInputOn()
+    sleep(7.0)
     switch_input.request_current_state()
     ROS_RATE = 30
     R = rospy.Rate(ROS_RATE)

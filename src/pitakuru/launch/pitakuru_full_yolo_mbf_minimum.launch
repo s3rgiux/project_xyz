@@ -19,7 +19,7 @@
 -->
     <!-- カメラから画像を読み込んで配信 -->
 
-
+ <!--  
  <node name="uvc_camera_node" pkg="uvc_camera" type="uvc_camera_node" output="screen"> 
     <param name="device" type="string" value="/dev/video0"/>
     <param name="width" type="int" value="640"/> 
@@ -28,22 +28,22 @@
     <param name="camera_info_url" value="file://$(find pitakuru)/config/bright_env/aruco/camera640.yaml"/>
     </node>
 
-
+ -->
 <!-- launch file for ps4 controller -->
 <!-- -->
 <include file="$(find joy)/launch/joytestps4.launch"/> 
 
     <!-- 音声再生 -->
-
+ <!-- 
     <node pkg="pitakuru" type="sound.py" name="sound" />
-
+ -->
     <!-- package for configure obstacle detector node -->
  <!-- 
     <include file="$(find obstacle_detector)/launch/test_experim_hokuyo.launch"/>  
 -->
-
+<!-- 
     <include file="$(find obstacle_detector)/launch/test_experim.launch"/>  
-
+-->
 
 <!-- keiganモーター制御/オドメトリ算出ノード -->
 <node pkg="pypro" name="pitakuru_wheels" type="pitakuruWheels.py">
@@ -51,12 +51,12 @@
 </node>
 
 
-
+<!-- 
     <include file="$(find darknet_ros)/launch/yolo_v3.launch"/> 
     <include file="$(find sort_track)/launch/sort_big.launch"/> 
     <node pkg="peop_extract" type="peop_ext_sort.py" name="peop_ext_yolo"/>
 
-
+-->
 
 
 <node pkg="pitakuru" name="pitakuru_lidar_detect_fail" type="lidar_detect.py"/>
@@ -119,7 +119,7 @@
 
 <!-- extract obstacles form region of interest and send to control_xy -->
 
-
+  <!--  
 <node pkg="obs_extract" type="main_sorted_kalman.py" name="obj_track" >
 <param name="front_detection"    type="double"	value="3.5"/> 
 <param name="side_detection"    type="double"	value="2.5"/>  
@@ -132,7 +132,7 @@
 <param name="dilation"    type="int"	value="4"/> 
 </node>
 
-
+  -->
 
 
 

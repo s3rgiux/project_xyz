@@ -4,63 +4,47 @@
     <arg name="jsdev" default="/dev/input/js0"/>
     <rosparam file="$(find pitakuru)/config/bright_env/pitakuru.yaml" command="load" ns="pitakuru" />
 
-
-
  <!-- スイッチの入出力制御 -->
-   
+    
     <node pkg="pitakuru" type="switch.py" name="switch">
         <rosparam command="load" file="$(find pitakuru)/config/bright_env/switch.yaml" />
     </node>
 
     <!-- ステートマシン (状態遷移) -->
-
-  <!--  
     <node pkg="pitakuru" type="states.py" name="states"/>
--->
     <!-- カメラから画像を読み込んで配信 -->
-
-
- <node name="uvc_camera_node" pkg="uvc_camera" type="uvc_camera_node" output="screen"> 
+ <node name="uvc_camera_node" pkg="uvc_camera" type="uvc_camera_node" output="screen"> -->
+    <!-- <param name="device" type="string" value="/dev/input/by-id/usb-KYE_Systems_Corp._USB_Camera_200901010001-event-if00"/> -->
     <param name="device" type="string" value="/dev/video0"/>
-    <param name="width" type="int" value="640"/> 
-    <param name="height" type="int" value="480"/> 
-    <param name="fps" type="int" value="7"/>
-    <param name="camera_info_url" value="file://$(find pitakuru)/config/bright_env/aruco/camera640.yaml"/>
+    <param name="width" type="int" value="640"/> <!-- 800 --> <!-- if you move image size you also need to modify cyaml -->
+    <param name="height" type="int" value="480"/> <!-- 600 -->
+    <param name="fps" type="int" value="7"/><!-- 24 -->
+    <param name="camera_info_url" value="file://$(find pitakuru)/config/bright_env/aruco/camera640.yaml"/><!-- camera600.yaml -->
     </node>
 
 
 <!-- launch file for ps4 controller -->
-<!-- -->
 <include file="$(find joy)/launch/joytestps4.launch"/> 
 
     <!-- 音声再生 -->
-
+    
     <node pkg="pitakuru" type="sound.py" name="sound" />
 
     <!-- package for configure obstacle detector node -->
- <!-- 
+ 
     <include file="$(find obstacle_detector)/launch/test_experim_hokuyo.launch"/>  
--->
+ 
 
-    <include file="$(find obstacle_detector)/launch/test_experim.launch"/>  
-
+    <include file="$(find darknet_ros)/launch/yolo_v3.launch"/> 
+    <include file="$(find sort_track)/launch/sort_big.launch"/> 
+    <node pkg="peop_extract" type="peop_ext_sort.py" name="peop_ext_yolo"/>
 
 <!-- keiganモーター制御/オドメトリ算出ノード -->
 <node pkg="pypro" name="pitakuru_wheels" type="pitakuruWheels.py">
 <param name="max_speed"    type="double"	value="3500"/>  <!-- max speed tah can be sent to motors-->
 </node>
 
-
-
-    <include file="$(find darknet_ros)/launch/yolo_v3.launch"/> 
-    <include file="$(find sort_track)/launch/sort_big.launch"/> 
-    <node pkg="peop_extract" type="peop_ext_sort.py" name="peop_ext_yolo"/>
-
-
-
-
 <node pkg="pitakuru" name="pitakuru_lidar_detect_fail" type="lidar_detect.py"/>
-
 
 <!-- control xy is the main program build in c++ to make it more fast needs to be compiled if a modification is made-->
 <node pkg="control_xy" type="control_xy_node_spline_follow_mixed" name="control_xy" output="screen">
@@ -118,8 +102,7 @@
 
 
 <!-- extract obstacles form region of interest and send to control_xy -->
-
-
+ 
 <node pkg="obs_extract" type="main_sorted_kalman.py" name="obj_track" >
 <param name="front_detection"    type="double"	value="3.5"/> 
 <param name="side_detection"    type="double"	value="2.5"/>  
@@ -127,32 +110,31 @@
 </node>
 
 
-
 <node pkg="costmap" type="main.py" name="cost_detect">
-<param name="dilation"    type="int"	value="4"/> 
+<param name="dilation"    type="int"	value="4"/> <!-- 3.5 --><!-- 5 -->
 </node>
 
 
-
-
-
-
-<!-- navigation -->
-
- <!--
- <include file="$(find pitakuru)/launch/navigation_mbf.launch"/>
-
-
-
-<node pkg="amcl" type="amcl" name="amcl"/>
-<node pkg="pitakuru" type="getGoal.py" name="getGoal" />
-<node name="frame_base" pkg="tf2_ros" type="static_transform_publisher" args="0 0 0 0 0 0 map my_frame"/>
 <node name="map_to_odom_base" pkg="tf2_ros" type="static_transform_publisher" args="0 0 0 0 0 0 map odom"/>
 
 
+<!-- navigation -->
+ <include file="$(find pitakuru)/launch/navigation_mbf.launch"/>
+
+
+<!-- -->
+<node pkg="amcl" type="amcl" name="amcl"/>
+<node pkg="pitakuru" type="getGoal.py" name="getGoal" />
+<!-- -->
+<node name="frame_base" pkg="tf2_ros" type="static_transform_publisher" args="0 0 0 0 0 0 map my_frame"/>
+
+<!-- rosbag nodes -->
+<arg name="record_flag" default="false" /> <!-- set to true if i want to record-->
 
 
 <arg name="map_file" default="$(find pitakuru)/maps/map.yaml"/>
 <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
--->
+
+
+
 </launch>

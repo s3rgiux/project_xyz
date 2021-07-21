@@ -44,7 +44,7 @@ public:
 
         // lidar
         // tracking target with lidar, Vector3(position x, y)
-        ang_subscriber2 = nh.subscribe("peopAng2", 2, &test_head::angPeopCallback4,this);
+        ang_subscriber2 = nh.subscribe("peopAng2", 2, &test_head::angPeopCallback,this);
         // costmap to avoid obstacles in people following mode calculated in cosmap/main.py?
         cost_subscriber = nh.subscribe("/costdetect", 1, &test_head::costCallback,this);
         // raw lidar scaned points, for danger mode
@@ -199,37 +199,42 @@ void stateCallback(const control_xy::TriggerAction& data){
         if(data.trigger == "collision" && collision == false){
             collisioned();
             collision = true;
+            /* [TODO: remove this sleep] */
             ros::Duration(0.5).sleep(); 
         
         // black button
         }else if(data.trigger == "break_release_button_on" && collision == true){
             remove_collision();
             mode_IDLE();
+            /* [TODO: remove this sleep] */
             ros::Duration(0.5).sleep(); 
 
         // yellow button
         } else if(data.trigger == "karugamo_button_on" && mode_follow == false  && collision == false){
             mode_people_follow();
+            /* [TODO: move into a function: void stop_motor()] */
             vel_steer.linear.x = 0;
             vel_steer.linear.y = 1;
             vel_steer.angular.z = 0;
             speed_publisher.publish(vel_steer);
+            /* [TODO: remove this sleep] */
             ros::Duration(0.4).sleep(); 
             
         } else if(data.trigger == "karugamo_button_on" && mode_follow == true  && collision == false){
             mode_IDLE();
+            /* [TODO: remove this sleep] */
             ros::Duration(0.4).sleep(); 
         }
        
 }
 
+/* create a node to check voltage */
 // if battery voltage is low, then blink led in red
 void check_low_volt(){
     if(low_voltage && lidar_failed == false && danger == false  ){
         blink_red(0.6);
     }
 }
-
 // get battery voltage and check it low or not.
 void voltsCallback(const std_msgs::Float32& msg){
     if((msg.data+0.1)<volts_charge ){
@@ -257,6 +262,8 @@ void costCallback(const geometry_msgs::Vector3& vector){
 }
 
 // get motor encoder values and calculate load weight
+/* [TODO:] create filter function */
+/* [TODO:] create common functions for right and left wheels */
 void amperageCallback(const control_xy::StateWheels& msg) {
     float flag;
     float trig_vel = 0.25;
@@ -383,11 +390,13 @@ void amperageCallback(const control_xy::StateWheels& msg) {
 // store target position with yolo
 void yoloCallback(const geometry_msgs::Vector3& msg){
     yolo_status = msg.x;
+    /* [TODO:] convert speed to rpm */
     dist_peop_cam = msg.y * 100;
     ang_peop_yolo = msg.z;
 }
 
 
+/* [TODO:] move these led function into switch.py */
 void blink_blue2(float dur){
     ros::Time time_now = ros::Time::now();
     ros::Duration duration = time_now - time_blink_bl;
@@ -455,6 +464,7 @@ void blink_change(float dur){
 
 
 // check whether lidar is stopped
+/* [TODO:] move this function into pitakuru/lidar_detect.py, reset lidar if it does not work and send alert command to switch.py */
 void check_scan_msg(){
     ros::Time time_now = ros::Time::now();
     ros::Duration duration = time_now - last_time_scan;
@@ -495,6 +505,7 @@ void check_scan_msg(){
     }
 }
 
+/* [TODO:] move this function main_sorted_kalman.py */
 // notificate if obstacle_detector with lidar does not detect.
 void check_people_obsta_msg(){
     ros::Time time_now = ros::Time::now();
@@ -509,6 +520,7 @@ void check_people_obsta_msg(){
 
 
 // reset people following variables
+/* [TODO:] move this function next to reset functions */
 void restart_follow_variables(){
     tracking_people = true;
     tracking_people = true;
@@ -705,7 +717,7 @@ void calc_100hz(){
 
 
 // store target position with lidar
-void angPeopCallback4(const geometry_msgs::Vector3& msg){
+void angPeopCallback(const geometry_msgs::Vector3& msg){
     center_x = msg.x;
     center_y = msg.y;
     lidar_people_status = msg.z;
@@ -727,6 +739,7 @@ void publish_lost_tracked(){
 }
 
 // tracking target is near to robot
+/* move this function in karugamo mode function */
 void near(){
        if(mode_follow && danger != true && stopped_functions == false){            
             ang_peop_lidar = 90 - atan2(center_x,center_y) * 180 / 3.1416 ;
@@ -822,6 +835,8 @@ void near(){
 }  
 
 
+// to find the danger obstacle and notify
+/* [TODO:] create a node for this function */ 
 void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan){        
     last_time_scan = ros::Time::now();
     if(danger && collision == false ){
@@ -1026,6 +1041,14 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan){
     }
 }
 
+// alert_command.sound = COLLISION_SOUND
+// pub.publish(alert_command)
+
+// void alert_sound(int data_type) {
+//     alerts_command.data = data_type;
+//     alerts_publisher.publish(alerts_command);
+// }
+
 
 // alert with sound or led
 void alert_collision_sound(){
@@ -1166,6 +1189,12 @@ void  alert_goto_wp1_voice_sound(){
 void  alert_goto_wp2_voice_sound(){
     alerts_command.data = 117;
     alerts_publisher.publish(alerts_command);
+}
+
+
+// reset all variables when the state was changed
+void reset_variables() {
+
 }
 
 // called when robot detect collision
