@@ -104,6 +104,7 @@ class KeyCtrlr:
         
     def enable_handler(self):
         result = self.pc.send_receive(cmd.Enable(self.id_R))
+        rospy.loginfo("eneble result right {}".format(result))
 
     def disable_handler(self):
         result = self.pc.send_receive(cmd.Disable(self.id_R))
@@ -134,6 +135,7 @@ class KeyCtrll:
         
     def enable_handler(self):
         result = self.pc.send_receive(cmd.Enable(self.id_L))
+        rospy.loginfo("eneble result left {}".format(result))
 
     def disable_handler(self):
         result = self.pc.send_receive(cmd.Disable(self.id_L))
@@ -159,20 +161,52 @@ class PitWheels:
         self.right_pub = rospy.Publisher('right_wheel', Float32, queue_size=1)
         self.current_pub = rospy.Publisher('amperage', Vector3, queue_size=1)
         self.state_wheels_pub = rospy.Publisher('stateWheels',StateWheels, queue_size=1)
-
-        pc = pyproacmd.ProaCmd('/dev/serial/by-id/usb-STMicroelectronics_STM32_STLink_066EFF323338424E43253746-if02', baud)
-        pc2 = pyproacmd.ProaCmd('/dev/serial/by-id/usb-STMicroelectronics_STM32_STLink_066FFF504955657867232916-if02', baud)
+        sleep(0.4)
+        self.pcon = pyproacmd.ProaCmd('/dev/serial/by-id/usb-STMicroelectronics_STM32_STLink_066EFF323338424E43253746-if02', baud)
+        self.pcon2 = pyproacmd.ProaCmd('/dev/serial/by-id/usb-STMicroelectronics_STM32_STLink_066FFF504955657867232916-if02', baud)
         self.left_w_rpm= Float32()
         self.right_w_rpm= Float32()
-        self.left_w_dev = KeyCtrlr(pc)
-        self.right_w_dev = KeyCtrll(pc2)
-        self.left_w_dev.enable_handler()
-        sleep(0.5)
-        self.right_w_dev.enable_handler()
-        sleep(0.5)
-        self.left_w_dev.enable_handler()
-        sleep(0.5)
-        self.right_w_dev.enable_handler()
+        #self.left_w_dev = KeyCtrlr(pc)
+        #self.right_w_dev = KeyCtrll(pc2)
+        sleep(0.1)
+        
+        try:
+            self.left_w_dev = KeyCtrlr(self.pcon)
+            self.left_w_dev.enable_handler()
+            self.left_w_dev.read_foc_handler()
+            self.left_w_dev.enable_handler()
+        except:
+            import traceback
+            traceback.print_exc()
+        sleep(0.25)
+        
+        try:
+            self.right_w_dev = KeyCtrll(self.pcon2)
+            self.right_w_dev.enable_handler()
+            self.right_w_dev.read_foc_handler()
+            self.right_w_dev.enable_handler()
+        except:
+            import traceback
+            traceback.print_exc()
+        sleep(0.25)
+        
+        try:
+            self.left_w_dev = KeyCtrlr(self.pcon)
+            self.left_w_dev.enable_handler()
+            self.left_w_dev.read_foc_handler()
+            self.left_w_dev.enable_handler()
+        except:
+            import traceback
+            traceback.print_exc()
+        sleep(0.25)
+        try:
+            self.right_w_dev = KeyCtrll(self.pcon2)
+            self.right_w_dev.enable_handler()
+            self.right_w_dev.read_foc_handler()
+            self.right_w_dev.enable_handler()
+        except:
+            import traceback
+            traceback.print_exc()
         print("Left Wheel Connected")
         rospy.loginfo("Connected to Left Wheel")
         print("Right Wheel Connected")
@@ -276,14 +310,44 @@ class PitWheels:
         self.odom_trans.transform.rotation = Quaternion(*q)
         print("reseting_odom")
     def enable_motors(self):
-        self.left_w_dev.enable_handler()
-        sleep(0.01)
-        self.right_w_dev.enable_handler()
+        try:
+            self.left_w_dev = KeyCtrlr(self.pcon)
+            self.left_w_dev.enable_handler()
+            self.left_w_dev.read_foc_handler()
+            self.left_w_dev.enable_handler()
+        except:
+            import traceback
+            traceback.print_exc()
+        try:
+            self.right_w_dev = KeyCtrll(self.pcon2)
+            self.right_w_dev.enable_handler()
+            self.right_w_dev.read_foc_handler()
+            self.right_w_dev.enable_handler()
+        except:
+            import traceback
+            traceback.print_exc()
+        #self.left_w_dev.enable_handler()
+        #sleep(0.01)
+        #self.right_w_dev.enable_handler()
     
     def disable_motors(self):
-        self.left_w_dev.disable_handler()
-        sleep(0.01)
-        self.right_w_dev.disable_handler()
+        try:
+            self.left_w_dev.disable_handler()
+            self.left_w_dev.read_foc_handler()
+            self.left_w_dev.disable_handler()
+        except:
+            import traceback
+            traceback.print_exc()
+        try:
+            self.right_w_dev.disable_handler()
+            self.right_w_dev.read_foc_handler()
+            self.right_w_dev.disable_handler()
+        except:
+            import traceback
+            traceback.print_exc()
+        #self.left_w_dev.disable_handler()
+        #sleep(0.01)
+        #self.right_w_dev.disable_handler()
 
     def pubodo2(self):
         try:

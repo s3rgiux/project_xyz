@@ -19,7 +19,7 @@
 -->
     <!-- カメラから画像を読み込んで配信 -->
 
-
+<!--  -->
  <node name="uvc_camera_node" pkg="uvc_camera" type="uvc_camera_node" output="screen"> 
     <param name="device" type="string" value="/dev/video0"/>
     <param name="width" type="int" value="640"/> 
@@ -34,15 +34,15 @@
 <include file="$(find joy)/launch/joytestps4.launch"/> 
 
     <!-- 音声再生 -->
-
+<!-- -->
     <node pkg="pitakuru" type="sound.py" name="sound" />
 
     <!-- package for configure obstacle detector node -->
  <!-- 
-    <include file="$(find obstacle_detector)/launch/test_experim_hokuyo.launch"/>  
+    <include file="$(find obstacle_detector)/launch/obstacle_detection_hokuyo.launch"/>  
 -->
 
-    <include file="$(find obstacle_detector)/launch/test_experim.launch"/>  
+    <include file="$(find obstacle_detector)/launch/obstacle_detection_rplidar.launch"/>  
 
 
 <!-- keiganモーター制御/オドメトリ算出ノード -->
@@ -51,16 +51,22 @@
 </node>
 
 
-
+<!-- -->
     <include file="$(find darknet_ros)/launch/yolo_v3.launch"/> 
+
+<!-- -->
     <include file="$(find sort_track)/launch/sort_big.launch"/> 
+
+
+
     <node pkg="peop_extract" type="peop_ext_sort.py" name="peop_ext_yolo"/>
 
 
 
-
+<!--  -->
+<!-- -->
 <node pkg="pitakuru" name="pitakuru_lidar_detect_fail" type="lidar_detect.py"/>
-
+  
 
 <!-- control xy is the main program build in c++ to make it more fast needs to be compiled if a modification is made-->
 <node pkg="control_xy" type="control_xy_node_spline_follow_mixed" name="control_xy" output="screen">
@@ -113,7 +119,7 @@
 <param name="max_break_distance"    type="double"	value="0.9"/> <!--time in second to see if is lost-->
 <param name="gain_follow_people"    type="double"	value="1.0"/> <!--time in second to see if is lost-->
 <param name="use_ps4_controller"    type="double"	value="1.0"/> <!--time in second to see if is lost-->
-<param name="use_hokuyo"    type="double"	value="1.0"/> <!--select 1 to use hokuyo-->
+<param name="use_hokuyo"    type="double"	value="0.0"/> <!--select 1 to use hokuyo-->
 </node>
 
 
@@ -135,7 +141,12 @@
 
 
 
+<!-- rosbag nodes -->
+<arg name="record_flag" default="true" /> <!-- set to true if i want to record-->
 
+<node pkg="rosbag" type="record" name="rosbag_record"
+ args = "record -o /home/xavier/floornew.bag /alerts /j0/joy /obstacles /pcl /peopAng /peopDist /raw_obstacles /rear_scan /rosout /rosout_agg /scan /state /tf /tf_static /trigger_action /peopAng2 /peopAngSpeed /peop_obst_id /peopAngSpeed /visualization_marker /peop_ang_yolo /peop_obst_id /sorted_tracked /stateWheels /pitakuru_states /tracked"  
+   if = "$(arg record_flag)" />
 
 <!-- navigation -->
 

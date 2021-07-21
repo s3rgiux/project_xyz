@@ -47,7 +47,7 @@ class SwitchInputOn(object):
 
 if __name__ == "__main__":
     switch_input = SwitchInputOn()
-    sleep(7.0)
+    sleep(0.01)
     switch_input.request_current_state()
     ROS_RATE = 30
     R = rospy.Rate(ROS_RATE)

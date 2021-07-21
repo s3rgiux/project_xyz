@@ -597,7 +597,7 @@ void calc_100hz(){
     }
    
     if(mode_follow && danger != true ){ 
-            if(lidar_people_status > 0 && stopped_functions == false && distanciaPeople2 < near_far_distance){
+            if(lidar_people_status > 0 && stopped_functions == false && distanciaPeople2 < near_far_distance && ang_peop_lidar>-90 && ang_peop_lidar<90){
                 tracked_angle = ang_peop_lidar;
                 last_time_tracking = ros::Time::now();
                 near();
@@ -638,6 +638,8 @@ void calc_100hz(){
                         pitakuru_state_msg.state = "KARUGAMO";
                         pitakuru_state_msg.state_karugamo = "lost";
                         pitakuru_state_msg.state_shelf = "passed_lost_time";
+                        pitakuru_state_msg.ctrl_front = ctrl_front_follow;
+                        pitakuru_state_msg.ctrl_side = ctrl_ang;
                         state_pub.publish(pitakuru_state_msg);
                         alert_lost_voice_sound();
                         stopped_functions = true;
@@ -672,16 +674,7 @@ void calc_100hz(){
                 if(lidar_failed == false && low_voltage == false){
                     blink_blue2(0.25);
                 }
-                pitakuru_state_msg.state = "KARUGAMO";
-                pitakuru_state_msg.state_karugamo = "losting_with_lidar";
-                pitakuru_state_msg.trackeds.linear.x = distanciaPeople2;
-                pitakuru_state_msg.trackeds.linear.y = ang_peop_lidar;
-                pitakuru_state_msg.trackeds.linear.z = lidar_people_status;
-                pitakuru_state_msg.trackeds.angular.x = dist_peop_cam;
-                pitakuru_state_msg.trackeds.angular.y = ang_peop_yolo;
-                pitakuru_state_msg.trackeds.angular.z = yolo_status;
-                pitakuru_state_msg.state_shelf = "in_stopped_functions";
-                state_pub.publish(pitakuru_state_msg);
+                
 
                 sound_counter++;
                 if(sound_counter%500 == 0){
@@ -710,7 +703,19 @@ void calc_100hz(){
                     pitakuru_state_msg.ctrl_side = ctrl_ang;
                     tracked_pos.x = -.050;
                     tracked_pos.y = -.050;   
-                }      
+                }  
+                pitakuru_state_msg.state = "KARUGAMO";
+                pitakuru_state_msg.state_karugamo = "losting_with_lidar";
+                pitakuru_state_msg.trackeds.linear.x = distanciaPeople2;
+                pitakuru_state_msg.trackeds.linear.y = ang_peop_lidar;
+                pitakuru_state_msg.trackeds.linear.z = lidar_people_status;
+                pitakuru_state_msg.trackeds.angular.x = dist_peop_cam;
+                pitakuru_state_msg.trackeds.angular.y = ang_peop_yolo;
+                pitakuru_state_msg.trackeds.angular.z = yolo_status;
+                pitakuru_state_msg.state_shelf = "in_stopped_functions";
+                pitakuru_state_msg.ctrl_front = ctrl_front_follow;
+                pitakuru_state_msg.ctrl_side = ctrl_ang;
+                state_pub.publish(pitakuru_state_msg);    
             } 
     }
 }
