@@ -272,8 +272,15 @@ void amperageCallback(const control_xy::StateWheels& msg) {
     float trig_vel = 0.25;
     float dt = 0.02;
     float alf = 0.75;
-    velocity_motor1 = abs(msg.left_vel);
-    velocity_motor2 = abs(msg.right_vel);
+    velocity_motor1 = msg.left_vel;
+    velocity_motor2 = msg.right_vel;
+    //It was done like that, because using absolute decimals were truncated
+    if (velocity_motor1 < 0){ 
+        velocity_motor1 = velocity_motor1 * -1;
+    }
+    if (velocity_motor2 < 0){
+        velocity_motor2 = velocity_motor2 * -1;
+    }
     if(abs(msg.right_vel) < trig_vel && abs(msg.left_vel) < trig_vel){
         integ_right_curr = 0;
         deriv_right_curr = 0;
@@ -849,18 +856,20 @@ void near(){
 void dangerCallback(const std_msgs::String& msg){
     // ROS_INFO("%s\n", msg.data.c_str());
     float velocity_tresh_stop = 1.0;
+    float control_tresh_stop = 500.0;
     // ROS_INFO("%d\n", danger);
     // ROS_INFO("%d\n", velocity_motor1 > velocity_tresh_stop);
     // ROS_INFO("%d\n", velocity_motor2 > velocity_tresh_stop);
     // ROS_INFO("%f\n", velocity_motor1);
     // ROS_INFO("%f\n", velocity_motor2);
     // ROS_INFO("%f\n", velocity_tresh_stop);
-    if ( danger == false && msg.data == "Danger" && velocity_motor1 > velocity_tresh_stop && velocity_motor2 > velocity_tresh_stop ){
+    if ( danger == false && msg.data == "Danger" && velocity_motor1 > velocity_tresh_stop && velocity_motor2 > velocity_tresh_stop && (ctrl_front_follow > control_tresh_stop || ctrl_front_manual > control_tresh_stop) ){
         alert_danger_no_sound();
         alert_danger_voice_sound();
         danger = true;
         free_way = false;
         detect_cont = 0;
+        ctrl_front_follow = 0;
         ctrl_front_manual = 0;
         ctrl_side_manual = 0;
         vel_steer.linear.x = 0;
@@ -876,7 +885,7 @@ void dangerCallback(const std_msgs::String& msg){
 
     danger_counter++;
 
-    if(danger && danger_counter % 2 == 0){
+    if(danger && danger_counter % 2 == 0 && ctrl_front_manual > 0){
         alert_danger_no_sound();
         vel_steer.linear.x = 0;
         vel_steer.angular.z = 0;
