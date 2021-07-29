@@ -55,7 +55,7 @@ class image_converter:
     self.fin_lon=0.4
     self.people=False
     self.low_speed = False
-    self.lidar_rotated = True #True for rplidar
+    self.lidar_rotated = False #True for rplidar
     self.mask9=np.array([[-6, -6, -6, -7, -7, -3, -3, -4,-4, -4, -4, -5, -5, 0, 0, 0, 0, 0, 0, 5, 5, 4 , 4 , 4, 4, 3, 3, 7, 7, 6, 6, 6 ],
                         [-6, -6, -6, -7, -7, -3, -3, -4,-4, -4, -4, -5, -5, 0, 0, 0, 0, 0, 0, 5, 5, 4 , 4 , 4, 4, 3, 3, 7, 7, 6, 6, 6],
                         [-6, -6, -6, -7, -7, -3, -3, -4,-4, -4, -4, -5, -5, 0, 0, 0, 0, 0, 0, 5, 5, 4 , 4 , 4, 4, 3, 3, 7, 7, 6, 6, 6 ],

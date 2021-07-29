@@ -38,11 +38,9 @@
     <node pkg="pitakuru" type="sound.py" name="sound" />
 
     <!-- package for configure obstacle detector node -->
- <!-- 
+ <!--  -->
     <include file="$(find obstacle_detector)/launch/obstacle_detection_hokuyo.launch"/>  
--->
 
-    <include file="$(find obstacle_detector)/launch/obstacle_detection_rplidar.launch"/>  
 
 
 <!-- keiganモーター制御/オドメトリ算出ノード -->
@@ -85,7 +83,7 @@
 <param name="smooth_accel_side_manual"    type="double"	value="0.93"/> <!-- acceletartion smooth max value up to 0.99   -->
 <param name="smooth_accel_side_follow"    type="double"	value="0.93"/> <!-- acceletartion smooth max value up to 0.99   -->
 <param name="smooth_accel_costmap"    type="double"	value="0.7"/> <!-- acceletartion smooth max value up to 0.99   -->
-<param name="smooth_accel_stop"    type="double"	value="0.952"/> <!-- acceletartion smooth max value up to 0.99   -->
+<param name="smooth_accel_stop"    type="double"	value="0.96"/> <!-- acceletartion smooth max value up to 0.99   -->
 <param name="max_speed_karugamo"    type="double"	value="1400"/> <!-- (not used depercated)max speed value for karugamo   -->
 <param name="max_speed_follow_heavy"    type="double"	value="2000"/> <!--1500--><!--3000--> <!--max speed value for frontal people follow-->
 <param name="max_speed_follow"    type="double"	value="2000"/> <!--1500--><!--3000--> <!--max speed value for frontal people follow-->
@@ -114,12 +112,12 @@
 <param name="count_to_miss"    type="double"	value="44"/> <!--counter that if overpass this then we lost people-->
 <param name="gain_to_costmap"    type="double"	value="1.5"/> <!--counter that if overpass this then we lost people-->
 <param name="vel_detect_costmap"    type="double"	value="700"/> <!--vel to start detect costmap--><!--0.6-->
-<param name="duration_to_lost"    type="double"	value="0.7"/> <!--time in second to see if is lost-->
+<param name="duration_to_lost"    type="double"	value="0.5"/> <!--time in second to see if is lost-->
 <param name="min_break_distance"    type="double"	value="0.7"/> <!--time in second to see if is lost-->
 <param name="max_break_distance"    type="double"	value="0.9"/> <!--time in second to see if is lost-->
 <param name="gain_follow_people"    type="double"	value="1.0"/> <!--time in second to see if is lost-->
 <param name="use_ps4_controller"    type="double"	value="1.0"/> <!--time in second to see if is lost-->
-<param name="use_hokuyo"    type="double"	value="0.0"/> <!--select 1 to use hokuyo-->
+<param name="use_hokuyo"    type="double"	value="1.0"/> <!--select 1 to use hokuyo-->
 </node>
 
 
@@ -145,7 +143,7 @@
 <arg name="record_flag" default="true" /> <!-- set to true if i want to record-->
 
 <node pkg="rosbag" type="record" name="rosbag_record"
- args = "record -o /home/xavier/floornew.bag /alerts /j0/joy /obstacles /pcl /peopAng /peopDist /raw_obstacles /rear_scan /rosout /rosout_agg /scan /state /tf /tf_static /trigger_action /peopAng2 /peopAngSpeed /peop_obst_id /peopAngSpeed /visualization_marker /peop_ang_yolo /peop_obst_id /sorted_tracked /stateWheels /pitakuru_states /tracked"  
+ args = "record -o /home/xavier/floornew.bag /alerts /j0/joy /obstacles /pcl /peopAng /peopDist /raw_obstacles /rear_scan /rosout /rosout_agg /scan /state /tf /tf_static /trigger_action /peopAng2 /peopAngSpeed /peop_obst_id /peopAngSpeed /visualization_marker /peop_ang_yolo /peop_obst_id /sorted_tracked /stateWheels /pitakuru_states /tracked /cmd_vel"  
    if = "$(arg record_flag)" />
 
 <!-- navigation -->

@@ -47,7 +47,7 @@ class SwitchInputOn(object):
 
 if __name__ == "__main__":
     switch_input = SwitchInputOn()
-    sleep(0.01)
+    sleep(10.0) #wait for led white start up time
     switch_input.request_current_state()
     ROS_RATE = 30
     R = rospy.Rate(ROS_RATE)

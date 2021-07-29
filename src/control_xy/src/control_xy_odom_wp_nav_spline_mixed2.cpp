@@ -61,6 +61,9 @@ public:
         // tracking target poisition with YOLO, see in people_ext_sort.py
         yolo_subscriber = nh.subscribe("/peop_ang_yolo", 1, &test_head::yoloCallback,this);
 
+
+        danger_suscriber = nh.subscribe("/Danger", 1, &test_head::dangerCallback,this);
+
         nh.getParam("/control_xy/break_front_distance", break_front_distance);
         nh.getParam("/control_xy/break_danger", break_danger);
         nh.getParam("/control_xy/low_vel_gain_follow", low_vel_gain_follow);
@@ -529,10 +532,10 @@ void restart_follow_variables(){
     tracked_pos.y = tracking_cy;
     tracked_pos.z = ang_peop_lidar;
     tracked_publisher.publish(tracked_pos);
-    ctrl_front_follow = 0;
-    ctrl_ang = 0;
-    vel_steer.linear.x = 0;
-    vel_steer.angular.z = 0;
+    //ctrl_front_follow = 0;
+    //ctrl_ang = 0;
+    //vel_steer.linear.x = 0;
+    //vel_steer.angular.z = 0;
     ctrl_add_side = 0;
     is_near = true;
     stopped_functions = false;
@@ -585,7 +588,10 @@ void calc_100hz(){
         speed_publisher.publish(vel_steer);
     }
     distanciaPeople2 = sqrt(center_x * center_x + center_y * center_y) * 100;
-    ang_peop_lidar = 90 - atan2(center_x,center_y) * 180 / 3.1416 ;   
+    ang_peop_lidar = 90 - atan2(center_x,center_y) * 180 / 3.1416 ; 
+    if(distanciaPeople2 > near_far_distance){
+        lidar_people_status=-1;
+    }
     if(lidar_people_status > 0 && stopped_functions == true && yolo_status > 0){
         restart_follow_variables();
         ROS_INFO("restar folow variable");
@@ -625,7 +631,7 @@ void calc_100hz(){
                 tracked_publisher.publish(tracked_pos);  
             }
 
-            else if(danger == false  && (lidar_people_status < 0 || (lidar_people_status > 0 && distanciaPeople2 >= near_far_distance)) && stopped_functions == false){
+            else if(danger == false  && (lidar_people_status < 0 || (lidar_people_status > 0 && distanciaPeople2 >= near_far_distance) || (ang_peop_lidar<-90 || ang_peop_lidar>90)) && stopped_functions == false){
                 
                     if(lidar_failed == false && low_voltage == false){
                         blink_blue2(0.25);
@@ -649,7 +655,6 @@ void calc_100hz(){
                         missing_track = 0;
                         tracking_cx = 0;
                         tracking_cy = 0;
-                        
                         ctrl_side_costmap = 0;
                         publish_lost_tracked();
                         missing_track = 0;
@@ -659,8 +664,8 @@ void calc_100hz(){
                         ctrl_yaw = 0;
                         vel_steer.linear.x = ctrl_front_follow;
                         vel_steer.angular.z = ctrl_yaw;
-                        vel_steer.linear.x = (vel_steer.linear.x/21) * 0.1045;
-                        vel_steer.angular.z = (vel_steer.angular.z/21) * 0.1045;
+                        vel_steer.linear.x = ((vel_steer.linear.x/21) * 0.1045)/10;
+                        vel_steer.angular.z = ((vel_steer.angular.z/21) * 0.1045)/2;
                         speed_publisher.publish(vel_steer);
                         pitakuru_state_msg.ctrl_front = ctrl_front_follow;
                         pitakuru_state_msg.ctrl_side = ctrl_ang;
@@ -726,6 +731,7 @@ void angPeopCallback(const geometry_msgs::Vector3& msg){
     center_x = msg.x;
     center_y = msg.y;
     lidar_people_status = msg.z;
+
     last_time_obstacle_received = ros::Time::now();    
 }
 
@@ -747,9 +753,10 @@ void publish_lost_tracked(){
 /* move this function in karugamo mode function */
 void near(){
        if(mode_follow && danger != true && stopped_functions == false){            
-            ang_peop_lidar = 90 - atan2(center_x,center_y) * 180 / 3.1416 ;
-            distanciaPeople2 = sqrt(center_x * center_x+center_y * center_y) * 100;
-            ROS_INFO("near() an%f d%f",ang_peop_lidar,distanciaPeople2);
+            //ang_peop_lidar = 90 - atan2(center_x,center_y) * 180 / 3.1416 ;
+            //distanciaPeople2 = sqrt(center_x * center_x+center_y * center_y) * 100;
+            //ROS_INFO("near() an%f d%f",ang_peop_lidar,distanciaPeople2);
+            
             tracked_angle = ang_peop_lidar;
             missing_track = 0;
             tracking_cx = center_x;
@@ -842,7 +849,8 @@ void near(){
 
 // to find the danger obstacle and notify
 /* [TODO:] create a node for this function */ 
-void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan){        
+void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan){ 
+    int num_detections_to_danger = 1;       
     last_time_scan = ros::Time::now();
     if(danger && collision == false ){
         danger_counter++;
@@ -856,13 +864,15 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan){
             alert_danger_voice_sound();
             ros::Duration(0.02).sleep(); 
             pitakuru_state_msg.state = "DANGER";
-                pitakuru_state_msg.state_karugamo = "losting_with_lidar";
-                state_pub.publish(pitakuru_state_msg);
+            pitakuru_state_msg.state_karugamo = "losting_with_lidar";
+            pitakuru_state_msg.ctrl_front = ctrl_front_follow;
+            pitakuru_state_msg.ctrl_side = ctrl_ang;
+            state_pub.publish(pitakuru_state_msg);
         }
     }
     
     if(last_mode_auto){
-        if(detect_cont>1 ){
+        if(detect_cont > num_detections_to_danger ){
                 danger = true;
                 free_way = false;
                 detect_cont = 0;
@@ -881,7 +891,7 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan){
                         ROS_INFO("found in %i",j);
                         pitakuru_state_msg.state_danger = "detected_break_danger1_auto";
                     }
-                    if(detect_cont>1){  
+                    if(detect_cont>num_detections_to_danger){  
                         return;
                     }
                 }else{
@@ -889,7 +899,7 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan){
                         detect_cont++;
                         ROS_INFO("close in %i",j);
                     }
-                    if(detect_cont>1){  
+                    if(detect_cont>num_detections_to_danger){  
                         return;
                     }
                 }
@@ -920,16 +930,21 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan){
     }
     
     if(danger == false && collision == false ){
-        if(detect_cont > 1 && mode_idle == false && (ctrl_front_manual > 400 || ctrl_front_follow > 400)){
+        if(detect_cont > num_detections_to_danger && mode_idle == false && (ctrl_front_manual > 400 || ctrl_front_follow > 400)){
                 danger = true;
                 free_way = false;
                 ROS_INFO("Danger1");
+                pitakuru_state_msg.state = "DANGER";
+                pitakuru_state_msg.ctrl_front = ctrl_front_follow;
+                pitakuru_state_msg.ctrl_side = ctrl_ang;
+                state_pub.publish(pitakuru_state_msg);
                 detect_cont = 0;
                 ctrl_front_manual = 0;
-                    ctrl_side_manual = 0;
-                    vel_steer.linear.x = 0;
-                    vel_steer.angular.z = 0;
-                    speed_publisher.publish(vel_steer);
+                ctrl_front_follow = 0;
+                ctrl_side_manual = 0;
+                vel_steer.linear.x = 0;
+                vel_steer.angular.z = 0;
+                speed_publisher.publish(vel_steer);
                 ros::Duration(0.05).sleep(); 
                 alert_danger_voice_sound();
                 danger_counter = 0;
@@ -954,7 +969,7 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan){
                     speed_publisher.publish(vel_steer);
                 }
                 ros::Duration(0.1).sleep(); 
-        }else if(detect_cont > 1 && mode_auto && (velocity_motor1 > 0.15 || velocity_motor2 > 0.15)){
+        }else if(detect_cont > num_detections_to_danger && mode_auto && (ctrl_front_manual > 400 || ctrl_front_follow > 400)){//(velocity_motor1 > 0.15 || velocity_motor2 > 0.15)){
                 danger = true;
                 free_way = false;
                 ROS_INFO("Danger1");
@@ -1000,22 +1015,23 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan){
                     if (scan -> ranges[j] <= break_front_distance && scan -> ranges[j] > 0.14 ){
                         detect_cont++;
                         ROS_INFO("found in %i",j);
-                        pitakuru_state_msg.state_danger = "detected_break_danger1";  
+                        pitakuru_state_msg.state_danger = "found_detection";  
                     }
-                    if(detect_cont>1){  
+                    if(detect_cont>num_detections_to_danger){  
                         return;
                     }
                 }else{
                     if (scan -> ranges[j] <= break_danger && scan -> ranges[j] > 0.14 ){
                         detect_cont++;
                         ROS_INFO("close in %i",j);
-                        pitakuru_state_msg.state_danger = "detected_break_danger1";
+                        pitakuru_state_msg.state_danger = "found_detection";
                     }
-                    if(detect_cont > 1){  
+                    if(detect_cont > num_detections_to_danger){  
                         return;
                     }
                 }
             }
+            pitakuru_state_msg.state_danger = "clear";
             detect_cont = 0;
             
         }
@@ -1025,22 +1041,23 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan){
                     if (scan -> ranges[j] <= break_front_distance && scan -> ranges[j] > 0.14 ){
                         detect_cont++;
                         ROS_INFO("found in %i",j);
-                        pitakuru_state_msg.state_danger = "detected_break_danger1";
+                        pitakuru_state_msg.state_danger = "found_detection";
                     }
-                    if(detect_cont>1){  
+                    if(detect_cont>num_detections_to_danger){  
                         return;
                     }
                 }else{
                     if (scan -> ranges[j] <= break_danger && scan -> ranges[j] >0.14 ){
                         detect_cont++;
                         ROS_INFO("close in %i",j);
-                        pitakuru_state_msg.state_danger = "detected_break_danger1";
+                        pitakuru_state_msg.state_danger = "found_detection";
                     }
-                    if(detect_cont > 1){  
+                    if(detect_cont > num_detections_to_danger){  
                         return;
                     }
                 }
             }
+            pitakuru_state_msg.state_danger = "clear";
             detect_cont = 0;   
         }
     }
@@ -1741,6 +1758,7 @@ private:
     ros::Subscriber cost_subscriber;    
     ros::Subscriber yolo_subscriber;
     ros::Subscriber goal_status_subscriber;
+    ros::Subscriber danger_suscriber;
 
     geometry_msgs::Twist vel_steer;
     geometry_msgs::Vector3 tracked_pos;
