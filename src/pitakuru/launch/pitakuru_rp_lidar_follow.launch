@@ -61,7 +61,7 @@
 
     <node pkg="peop_extract" type="peop_ext_sort.py" name="peop_ext_yolo"/>
 
-<node pkg="segement_obstacle_danger" name="segement_obstacle_danger_node" type="seg_obs_danger_intersecon.py"/>
+<node pkg="segement_obstacle_danger" name="segement_obstacle_danger_node" type="seg_obs_danger_intersection.py"/>
 
 
 <!--  -->
