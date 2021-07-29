@@ -846,222 +846,52 @@ void near(){
         }       
 }  
 
+void dangerCallback(const std_msgs::String& msg){
+    // ROS_INFO("%s\n", msg.data.c_str());
+    float velocity_tresh_stop = 1.0;
+    // ROS_INFO("%d\n", danger);
+    // ROS_INFO("%d\n", velocity_motor1 > velocity_tresh_stop);
+    // ROS_INFO("%d\n", velocity_motor2 > velocity_tresh_stop);
+    // ROS_INFO("%f\n", velocity_motor1);
+    // ROS_INFO("%f\n", velocity_motor2);
+    // ROS_INFO("%f\n", velocity_tresh_stop);
+    if ( danger == false && msg.data == "Danger" && velocity_motor1 > velocity_tresh_stop && velocity_motor2 > velocity_tresh_stop ){
+        alert_danger_no_sound();
+        alert_danger_voice_sound();
+        danger = true;
+        free_way = false;
+        detect_cont = 0;
+        ctrl_front_manual = 0;
+        ctrl_side_manual = 0;
+        vel_steer.linear.x = 0;
+        vel_steer.angular.z = 0;
+        speed_publisher.publish(vel_steer);
+        pitakuru_state_msg.state = "DANGER";
+        pitakuru_state_msg.ctrl_front = ctrl_front_follow;
+        pitakuru_state_msg.ctrl_side = ctrl_ang;
+        state_pub.publish(pitakuru_state_msg);
+    }else if(danger == false && msg.data == "Clear"){
+        free_way=true;
+    }
+
+    danger_counter++;
+
+    if(danger && danger_counter % 2 == 0){
+        alert_danger_no_sound();
+        vel_steer.linear.x = 0;
+        vel_steer.angular.z = 0;
+        speed_publisher.publish(vel_steer);
+    }
+}
 
 // to find the danger obstacle and notify
 /* [TODO:] create a node for this function */ 
 void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan){ 
     int num_detections_to_danger = 1;       
     last_time_scan = ros::Time::now();
-    if(danger && collision == false ){
-        danger_counter++;
-        alert_danger_no_sound();
-        if(danger_counter%10 == 0){
-            vel_steer.linear.x = 0;
-            vel_steer.angular.z = 0;
-            speed_publisher.publish(vel_steer);
-        }
-        if(danger_counter%100 == 0){
-            alert_danger_voice_sound();
-            ros::Duration(0.02).sleep(); 
-            pitakuru_state_msg.state = "DANGER";
-            pitakuru_state_msg.state_karugamo = "losting_with_lidar";
-            pitakuru_state_msg.ctrl_front = ctrl_front_follow;
-            pitakuru_state_msg.ctrl_side = ctrl_ang;
-            state_pub.publish(pitakuru_state_msg);
-        }
-    }
     
-    if(last_mode_auto){
-        if(detect_cont > num_detections_to_danger ){
-                danger = true;
-                free_way = false;
-                detect_cont = 0;
-                ctrl_front_manual = 0;
-                    ctrl_side_manual = 0;
-                    vel_steer.linear.x = 0;
-                    vel_steer.angular.z = 0;
-                    speed_publisher.publish(vel_steer);
-                ros::Duration(0.05).sleep(); 
-        }
-
-        for(int j = 0;j < 360;j++){
-                if((j>0&&j<34)||(j>326&&j<360)){
-                    if (scan -> ranges[j] <= 0.6 && scan -> ranges[j] > 0.14 ){
-                        detect_cont++;
-                        ROS_INFO("found in %i",j);
-                        pitakuru_state_msg.state_danger = "detected_break_danger1_auto";
-                    }
-                    if(detect_cont>num_detections_to_danger){  
-                        return;
-                    }
-                }else{
-                    if (scan -> ranges[j] <= break_danger && scan -> ranges[j] > 0.14 ){
-                        detect_cont++;
-                        ROS_INFO("close in %i",j);
-                    }
-                    if(detect_cont>num_detections_to_danger){  
-                        return;
-                    }
-                }
-            }
-            if(danger == true){
-                danger = false;
-                mode_AUTONOMOUS();
-                if(go_wp1){
-                    for (int h = 0; h<4;h++){
-                        pitakuru_state_msg.state_navigation = "goto_wp_1";
-                        state_pub.publish(pitakuru_state_msg);
-                    }
-                    ros::Duration(0.15).sleep(); 
-                    pitakuru_state_msg.state_navigation = "going_to_wp_1";
-                    state_pub.publish(pitakuru_state_msg);
-                }else if(go_wp2){
-                    for (int h = 0; h<4;h++){
-                        pitakuru_state_msg.state_navigation = "goto_wp_2";
-                        state_pub.publish(pitakuru_state_msg);
-                    }
-                    ros::Duration(0.15).sleep(); 
-                    pitakuru_state_msg.state_navigation = "going_to_wp_2";
-                    state_pub.publish(pitakuru_state_msg);   
-                }   
-            }
-            detect_cont = 0;
-            free_way = true;
-    }
     
-    if(danger == false && collision == false ){
-        if(detect_cont > num_detections_to_danger && mode_idle == false && (ctrl_front_manual > 400 || ctrl_front_follow > 400)){
-                danger = true;
-                free_way = false;
-                ROS_INFO("Danger1");
-                pitakuru_state_msg.state = "DANGER";
-                pitakuru_state_msg.ctrl_front = ctrl_front_follow;
-                pitakuru_state_msg.ctrl_side = ctrl_ang;
-                state_pub.publish(pitakuru_state_msg);
-                detect_cont = 0;
-                ctrl_front_manual = 0;
-                ctrl_front_follow = 0;
-                ctrl_side_manual = 0;
-                vel_steer.linear.x = 0;
-                vel_steer.angular.z = 0;
-                speed_publisher.publish(vel_steer);
-                ros::Duration(0.05).sleep(); 
-                alert_danger_voice_sound();
-                danger_counter = 0;
-                ros::Duration(0.02).sleep(); 
-                if (mode_manual && ctrl_front_manual >  0){
-                    ctrl_front_manual = 0;
-                    ctrl_side_manual = 0;
-                    vel_steer.linear.x = 0;
-                    vel_steer.angular.z = 0;
-                    speed_publisher.publish(vel_steer);
-                }else if(mode_follow){
-                    ctrl_front_follow = 0;
-                    ctrl_ang = 0;
-                    vel_steer.linear.x = 0;
-                    vel_steer.angular.z = 0;
-                    speed_publisher.publish(vel_steer);
-                }else if(mode_auto){
-                    ctrl_front_follow = 0;
-                    ctrl_ang = 0;
-                    vel_steer.linear.x = 0;
-                    vel_steer.angular.z = 0;
-                    speed_publisher.publish(vel_steer);
-                }
-                ros::Duration(0.1).sleep(); 
-        }else if(detect_cont > num_detections_to_danger && mode_auto && (ctrl_front_manual > 400 || ctrl_front_follow > 400)){//(velocity_motor1 > 0.15 || velocity_motor2 > 0.15)){
-                danger = true;
-                free_way = false;
-                ROS_INFO("Danger1");
-                pitakuru_state_msg.state = "DANGER";               
-                state_pub.publish(pitakuru_state_msg);
-                detect_cont = 0;
-                ctrl_front_manual = 0;
-                    ctrl_side_manual = 0;
-                    vel_steer.linear.x = 0;
-                    vel_steer.angular.z = 0;
-                    speed_publisher.publish(vel_steer);
-                ros::Duration(0.05).sleep(); 
-                alert_danger_voice_sound();
-                danger_counter = 0;
-                ros::Duration(0.02).sleep(); 
-                if (mode_manual && ctrl_front_manual  > 0){
-                    ctrl_front_manual = 0;
-                    ctrl_side_manual = 0;
-                    vel_steer.linear.x = 0;
-                    vel_steer.angular.z = 0;
-                    speed_publisher.publish(vel_steer);
-                }else if(mode_follow){
-                    ctrl_front_follow = 0;
-                    ctrl_ang = 0;
-                    vel_steer.linear.x = 0;
-                    vel_steer.angular.z = 0;
-                    speed_publisher.publish(vel_steer);
-                }else if(mode_auto){
-                    ctrl_front_follow = 0;
-                    ctrl_ang = 0;
-                    vel_steer.linear.x = 0;
-                    vel_steer.angular.z = 0;
-                    speed_publisher.publish(vel_steer);
-                }
-                ros::Duration(0.1).sleep(); 
-        }else{
-            free_way = true;
-        }
-        
-        if( (ctrl_front_manual >  400 || ctrl_front_follow  >  400 ) && use_hokuyo == 1){
-            for(int j = 0;j <= 720;j++){
-                if(j > 280 && j < 440){
-                    if (scan -> ranges[j] <= break_front_distance && scan -> ranges[j] > 0.14 ){
-                        detect_cont++;
-                        ROS_INFO("found in %i",j);
-                        pitakuru_state_msg.state_danger = "found_detection";  
-                    }
-                    if(detect_cont>num_detections_to_danger){  
-                        return;
-                    }
-                }else{
-                    if (scan -> ranges[j] <= break_danger && scan -> ranges[j] > 0.14 ){
-                        detect_cont++;
-                        ROS_INFO("close in %i",j);
-                        pitakuru_state_msg.state_danger = "found_detection";
-                    }
-                    if(detect_cont > num_detections_to_danger){  
-                        return;
-                    }
-                }
-            }
-            pitakuru_state_msg.state_danger = "clear";
-            detect_cont = 0;
-            
-        }
-        if( (ctrl_front_manual > 400 || ctrl_front_follow > 400) && use_hokuyo  != 1){
-            for(int j = 0;j<360;j++){
-                if((j>0&&j<34) || (j>326&&j<360)){
-                    if (scan -> ranges[j] <= break_front_distance && scan -> ranges[j] > 0.14 ){
-                        detect_cont++;
-                        ROS_INFO("found in %i",j);
-                        pitakuru_state_msg.state_danger = "found_detection";
-                    }
-                    if(detect_cont>num_detections_to_danger){  
-                        return;
-                    }
-                }else{
-                    if (scan -> ranges[j] <= break_danger && scan -> ranges[j] >0.14 ){
-                        detect_cont++;
-                        ROS_INFO("close in %i",j);
-                        pitakuru_state_msg.state_danger = "found_detection";
-                    }
-                    if(detect_cont > num_detections_to_danger){  
-                        return;
-                    }
-                }
-            }
-            pitakuru_state_msg.state_danger = "clear";
-            detect_cont = 0;   
-        }
-    }
-}
+} 
 
 // alert_command.sound = COLLISION_SOUND
 // pub.publish(alert_command)

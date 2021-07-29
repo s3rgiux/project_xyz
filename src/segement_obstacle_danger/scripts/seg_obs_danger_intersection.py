@@ -13,8 +13,8 @@ import detect_cross
 
 SLEEP_TIME = 0.001
 P0 = (0, 0)
-P1_1 = (1.06252, -0.28470) # r = 1.1[m] theta = -15deg ~ +15deg
-P1_2 = (1.06252, 0.28470)
+P1_1 = (-0.28470, 1.06252) # r = 1.1[m] theta = -15deg ~ +15deg
+P1_2 = (0.28470, 1.06252)
 
 
 class SegmentExtractor:
@@ -25,47 +25,21 @@ class SegmentExtractor:
         self.front_detection = 1.0 #rospy.get_param("/obj_track/front_detection")
         self.side_detection = 0.35 #rospy.get_param("/obj_track/side_detection")
         self.last_time_received_osbtacle_msg = time.time()
-        self.dangerous_circles = False
-        self.dangerous_segments = False
 
     def pubobs(self):
         if(time.time() - self.last_time_received_osbtacle_msg  > 0.35):
             self.last_time_received_osbtacle_msg  = time.time()
             msg = String()
-            msg.data="Clear"
+            msg.data = "Clear"
             self.danger_alert_publisher.publish(msg)
 
-    
-    def states_callback(self,states):
-        if states.state == "KARUGAMO":
-            print("KARUGAMO")
-        elif states.state == "MANUAL": 
-            print("MANUAL")
-        elif states.state == "IDLE":
-            print("IDLE")
+    def in_area_circle(self, circle):
+        q = (circle.center.y, circle.center.x)
+        return detect_cross.is_point_in_circle(P1_1, P1_2, q)
 
-
-
-    def is_inside_danger_area_circles(self,circle):
-        if circle.center.x > 0.0 and circle.center.x < self.front_detection and circle.center.y < self.side_detection and circle.center.y > -self.side_detection:
-            print("found_point circle {},{}".format(circle.center.x,circle.center.y))
-            return True
-        else:
-            return False
-
-    def is_inside_danger_area_segment(self,segment_points):
-        found_point_inside_danger_area = False
-        for point in segment_points:
-            x_point = point[0]
-            y_point = point[1]
-            if x_point > 0.0 and x_point < self.front_detection and y_point < self.side_detection and y_point > -self.side_detection:
-                print("found_point segment {},{}".format(x_point,y_point))
-                found_point_inside_danger_area = True
-        return found_point_inside_danger_area
-
-    def in_area(self, segment):
-        q0 = (segment.first_point.x, segment.first_point.y)
-        q1 = (segment.last_point.x, segment.last_point.y)
+    def in_area_linear(self, segment):
+        q0 = (segment.first_point.y, segment.first_point.x)
+        q1 = (segment.last_point.y, segment.last_point.x)
 
         return detect_cross.is_cross_linear(P0, P1_1, q0, q1) or \
                detect_cross.is_cross_linear(P0, P1_2, q0, q1) or \
@@ -74,28 +48,17 @@ class SegmentExtractor:
     # data : Obstacles(segments, circles)
     def obstacles_callback(self, data):
         message_danger = String()
+        message_danger.data = "Clear"
+
         for circle in data.circles:
-            if self.is_inside_danger_area_circles(circle):
-                self.dangerous_circles = True
+            if self.in_area_circle(circle):
+                message_danger.data = "Danger"
+        for segment in data.segments:
+            if self.in_area_linear(segment):
                 message_danger.data = "Danger"
                 self.danger_alert_publisher.publish(message_danger)
-
-            else:
-                self.dangerous_circles = False
-
-        for segment in data.segments:
-            print(segment)
-            print(self.in_area(segment))
-            if self.in_area(segment):
-
-                print("in area, danger")
-                # message_danger.data = "Danger"
-                # self.danger_alert_publisher.publish(message_danger)
-            else:
-                print("not in area")
-                # message_danger.data = "Clear"
-                # self.danger_alert_publisher.publish(message_danger)
-
+        
+        self.danger_alert_publisher.publish(message_danger)
         self.last_time_received_osbtacle_msg = time.time()
         
         

@@ -1,4 +1,4 @@
-from math import sqrt
+from math import sqrt, atan2
 
 # if 2 lines are not been cross, this returns None
 # else this returns a cross point
@@ -22,7 +22,7 @@ def line_cross_point(p0, p1, q0, q1):
 
 def intersection(p0, p1, r, cx=0, cy=0):
     x0, y0 = p0
-    x1, y1 =p1
+    x1, y1 = p1
 
     xd = x1 - x0
     yd = y1 - y0
@@ -54,8 +54,8 @@ def circle_cross_points(p0, p1, r, cx=0, cy=0):
     b = xd * x + yd * y
     c = x**2 + y**2 - r**2
     d = b**2 - a*c
-    s1 = (-b + sqrt(d)) / a
-    s2 = (-b - sqrt(d)) / a
+    s1 = (-b + sqrt(abs(d))) / a
+    s2 = (-b - sqrt(abs(d))) / a
     return ((x0 + xd * s1, y0 + yd * s1), (x0 + xd * s2, y0 + yd * s2))
 
 
@@ -64,24 +64,59 @@ def is_cross_linear(p0, p1, q0, q1):
     if cross_point is None:
         return False
     cross_x, cross_y = cross_point
-    x0, y0 = p0
-    x1, y1 = p1
-    if x0 > x1:
-        return cross_x > x1 and x0 > cross_x
+    px0, py0 = p0
+    px1, py1 = p1
+    qx0, qy0 = q0
+    qx1, qy1 = q1
+    if qx0 > qx1:
+        if px0 > px1:
+            return cross_x >= px1 and px0 >= cross_x and cross_x >= qx1 and qx0 >= cross_x
+        else:
+            return cross_x <= px1 and px0 <= cross_x and cross_x >= qx1 and qx0 >= cross_x
     else:
-        return cross_x < x1 and x0 < cross_x
-
+        if px0 > px1:
+            return cross_x >= px1 and px0 >= cross_x and cross_x <= qx1 and qx0 <= cross_x
+        else:
+            return cross_x <= px1 and px0 <= cross_x and cross_x <= qx1 and qx0 <= cross_x
 
 
 def is_cross_circle(p0, p1, q0, q1):
-    r = sqrt(p0[0]**p0[0] + p0[1]**p0[1])
+    r = sqrt(p0[0]*p0[0] + p0[1]*p0[1])
     cross_points = circle_cross_points(q0, q1, r)
     if cross_points is None:
         return False
     ((cross0_x, cross0_y), (cross1_x, cross1_y)) = cross_points
-    x0, y0 = q0
-    x1, y1 = q1
-    if x0 > x1:
-        return cross0_x > x1 and x0 > cross0_x or cross1_x > x1 and x0 > cross1_x
+    px0, py0 = p0
+    px1, py1 = p1
+    qx0, qy0 = q0
+    qx1, qy1 = q1
+    if cross0_y < 0 and cross1_y < 0:
+        return False
+    if qx0 > qx1:
+        if px0 > px1:
+            return cross0_x >= px1 and px0 >= cross0_x and cross0_x >= qx1 and qx0 >= cross0_x
+        else:
+            return cross0_x <= px1 and px0 <= cross0_x and cross0_x >= qx1 and qx0 >= cross0_x
     else:
-        return cross0_x < x1 and x0 < cross0_x or cross1_x < x1 and x0 < cross1_x
+        if px0 > px1:
+            return cross0_x >= px1 and px0 >= cross0_x and cross0_x <= qx1 and qx0 <= cross0_x
+        else:
+            return cross0_x <= px1 and px0 <= cross0_x and cross0_x <= qx1 and qx0 <= cross0_x
+
+
+def angle(x, y):
+    return atan2(x, y)
+
+
+def is_point_in_circle(p0, p1, q):
+    px0, py0 = p0
+    px1, py1 = p1
+    qx, qy = q
+    dp = sqrt(px0 * px0 + py0 * py0)
+    dq = sqrt(qx * qx + qy * qy)
+    if dp < dq:
+        return False
+    if px0 > px1:
+        return angle(px0, py0) >= angle(qx, qy) and angle(px1, py1) <= angle(qx, qy)
+    else:
+        return angle(px0, py0) <= angle(qx, qy) and angle(px1, py1) >= angle(qx, qy)
