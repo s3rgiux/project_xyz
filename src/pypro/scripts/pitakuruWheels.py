@@ -162,8 +162,11 @@ class PitWheels:
         self.current_pub = rospy.Publisher('amperage', Vector3, queue_size=1)
         self.state_wheels_pub = rospy.Publisher('stateWheels',StateWheels, queue_size=1)
         sleep(0.4)
-        self.pcon = pyproacmd.ProaCmd('/dev/serial/by-id/usb-STMicroelectronics_STM32_STLink_066EFF323338424E43253746-if02', baud)
-        self.pcon2 = pyproacmd.ProaCmd('/dev/serial/by-id/usb-STMicroelectronics_STM32_STLink_066FFF504955657867232916-if02', baud)
+        
+        self.pcon = pyproacmd.ProaCmd('/dev/serial/by-id/usb-STMicroelectronics_STM32_STLink_0668FF343537424257252450-if02', baud)
+        self.pcon2 = pyproacmd.ProaCmd('/dev/serial/by-id/usb-STMicroelectronics_STM32_STLink_066FFF555449836687205519-if02', baud)
+        #self.pcon = pyproacmd.ProaCmd('/dev/serial/by-id/usb-STMicroelectronics_STM32_STLink_0668FF343537424257252450-if02', baud)
+        #self.pcon2 = pyproacmd.ProaCmd('/dev/serial/by-id/usb-STMicroelectronics_STM32_STLink_066FFF555449836687205519-if02', baud)
         self.left_w_rpm= Float32()
         self.right_w_rpm= Float32()
         #self.left_w_dev = KeyCtrlr(pc)

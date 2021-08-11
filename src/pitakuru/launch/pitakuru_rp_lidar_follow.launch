@@ -12,11 +12,7 @@
         <rosparam command="load" file="$(find pitakuru)/config/bright_env/switch.yaml" />
     </node>
 
-    <!-- ステートマシン (状態遷移) -->
 
-  <!--  
-    <node pkg="pitakuru" type="states.py" name="states"/>
--->
     <!-- カメラから画像を読み込んで配信 -->
 
 <!--  -->
@@ -37,10 +33,6 @@
 <!-- -->
     <node pkg="pitakuru" type="sound.py" name="sound" />
 
-    <!-- package for configure obstacle detector node -->
- <!-- 
-    <include file="$(find obstacle_detector)/launch/obstacle_detection_hokuyo.launch"/>  
--->
 
     <include file="$(find obstacle_detector)/launch/obstacle_detection_rplidar.launch"/>  
 
@@ -119,7 +111,7 @@
 <param name="min_break_distance"    type="double"	value="0.7"/> <!--time in second to see if is lost-->
 <param name="max_break_distance"    type="double"	value="0.9"/> <!--time in second to see if is lost-->
 <param name="gain_follow_people"    type="double"	value="1.0"/> <!--time in second to see if is lost-->
-<param name="use_ps4_controller"    type="double"	value="1.0"/> <!--time in second to see if is lost-->
+<param name="use_ps4_controller"    type="double"	value="0.0"/> <!--time in second to see if is lost-->
 <param name="use_hokuyo"    type="double"	value="0.0"/> <!--select 1 to use hokuyo-->
 </node>
 
@@ -140,31 +132,4 @@
 </node>
 
 
-
-
-<!-- rosbag nodes -->
-<arg name="record_flag" default="true" /> <!-- set to true if i want to record-->
-
-<node pkg="rosbag" type="record" name="rosbag_record"
- args = "record -o /home/xavier/floornew.bag /alerts /j0/joy /obstacles /pcl /peopAng /peopDist /raw_obstacles /rear_scan /rosout /rosout_agg /scan /state /tf /tf_static /trigger_action /peopAng2 /peopAngSpeed /peop_obst_id /peopAngSpeed /visualization_marker /peop_ang_yolo /peop_obst_id /sorted_tracked /stateWheels /pitakuru_states /tracked"  
-   if = "$(arg record_flag)" />
-
-<!-- navigation -->
-
- <!--
- <include file="$(find pitakuru)/launch/navigation_mbf.launch"/>
-
-
-
-<node pkg="amcl" type="amcl" name="amcl"/>
-<node pkg="pitakuru" type="getGoal.py" name="getGoal" />
-<node name="frame_base" pkg="tf2_ros" type="static_transform_publisher" args="0 0 0 0 0 0 map my_frame"/>
-<node name="map_to_odom_base" pkg="tf2_ros" type="static_transform_publisher" args="0 0 0 0 0 0 map odom"/>
-
-
-
-
-<arg name="map_file" default="$(find pitakuru)/maps/map.yaml"/>
-<node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
--->
 </launch>

@@ -1,9 +1,0 @@
-port_left: '/dev/serial/by-id/usb-STMicroelectronics_STM32_STLink_066FFF504955657867232916-if02'
-port_right: '/dev/serial/by-id/usb-STMicroelectronics_STM32_STLink_0672FF514948897767112023-if02'
-baud: 1000000
-interval: 0.3 # Control Interval [sec]
-left_id: 1
-right_id: 2
-forward_acc: 2.5 # [rpm/s]
-stop_acc: 4 # [rpm/s]
-backward_acc: 2.5 # [rpm/s]

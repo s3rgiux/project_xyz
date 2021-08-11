@@ -28,28 +28,28 @@ The CXX compiler identification is GNU, found in "/home/xavier/catkin_ws/build/d
 Determining if the C compiler works passed with the following output:
 Change Dir: /home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_0a811/fast"
-/usr/bin/make -f CMakeFiles/cmTC_0a811.dir/build.make CMakeFiles/cmTC_0a811.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_9fc64/fast"
+/usr/bin/make -f CMakeFiles/cmTC_9fc64.dir/build.make CMakeFiles/cmTC_9fc64.dir/build
 make[1]: Entering directory '/home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_0a811.dir/testCCompiler.c.o
-/usr/bin/cc    -o CMakeFiles/cmTC_0a811.dir/testCCompiler.c.o   -c /home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/CMakeTmp/testCCompiler.c
-Linking C executable cmTC_0a811
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0a811.dir/link.txt --verbose=1
-/usr/bin/cc      -rdynamic CMakeFiles/cmTC_0a811.dir/testCCompiler.c.o  -o cmTC_0a811 
+Building C object CMakeFiles/cmTC_9fc64.dir/testCCompiler.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_9fc64.dir/testCCompiler.c.o   -c /home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTC_9fc64
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9fc64.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_9fc64.dir/testCCompiler.c.o  -o cmTC_9fc64 
 make[1]: Leaving directory '/home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/CMakeTmp'
 
 
 Detecting C compiler ABI info compiled with the following output:
 Change Dir: /home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_34015/fast"
-/usr/bin/make -f CMakeFiles/cmTC_34015.dir/build.make CMakeFiles/cmTC_34015.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_70036/fast"
+/usr/bin/make -f CMakeFiles/cmTC_70036.dir/build.make CMakeFiles/cmTC_70036.dir/build
 make[1]: Entering directory '/home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_34015.dir/CMakeCCompilerABI.c.o
-/usr/bin/cc    -o CMakeFiles/cmTC_34015.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.10/Modules/CMakeCCompilerABI.c
-Linking C executable cmTC_34015
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_34015.dir/link.txt --verbose=1
-/usr/bin/cc     -v -rdynamic CMakeFiles/cmTC_34015.dir/CMakeCCompilerABI.c.o  -o cmTC_34015 
+Building C object CMakeFiles/cmTC_70036.dir/CMakeCCompilerABI.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_70036.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.10/Modules/CMakeCCompilerABI.c
+Linking C executable cmTC_70036
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_70036.dir/link.txt --verbose=1
+/usr/bin/cc     -v -rdynamic CMakeFiles/cmTC_70036.dir/CMakeCCompilerABI.c.o  -o cmTC_70036 
 Using built-in specs.
 COLLECT_GCC=/usr/bin/cc
 COLLECT_LTO_WRAPPER=/usr/lib/gcc/aarch64-linux-gnu/5/lto-wrapper
@@ -59,8 +59,8 @@ Thread model: posix
 gcc version 5.5.0 20171010 (Ubuntu/Linaro 5.5.0-12ubuntu1) 
 COMPILER_PATH=/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/:/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/
 LIBRARY_PATH=/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/:/usr/lib/gcc/aarch64-linux-gnu/5/../../../../lib/:/lib/aarch64-linux-gnu/:/lib/../lib/:/usr/lib/aarch64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/aarch64-linux-gnu/5/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_34015' '-mlittle-endian' '-mabi=lp64'
- /usr/lib/gcc/aarch64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/aarch64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/aarch64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/ccGc716M.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux --fix-cortex-a53-843419 -pie -z now -z relro -o cmTC_34015 /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/Scrt1.o /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crti.o /usr/lib/gcc/aarch64-linux-gnu/5/crtbeginS.o -L/usr/lib/gcc/aarch64-linux-gnu/5 -L/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu -L/usr/lib/gcc/aarch64-linux-gnu/5/../../../../lib -L/lib/aarch64-linux-gnu -L/lib/../lib -L/usr/lib/aarch64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/aarch64-linux-gnu/5/../../.. CMakeFiles/cmTC_34015.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/aarch64-linux-gnu/5/crtend.o /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_70036' '-mlittle-endian' '-mabi=lp64'
+ /usr/lib/gcc/aarch64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/aarch64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/aarch64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/cc14HiRE.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux --fix-cortex-a53-843419 -pie -z now -z relro -o cmTC_70036 /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/Scrt1.o /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crti.o /usr/lib/gcc/aarch64-linux-gnu/5/crtbeginS.o -L/usr/lib/gcc/aarch64-linux-gnu/5 -L/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu -L/usr/lib/gcc/aarch64-linux-gnu/5/../../../../lib -L/lib/aarch64-linux-gnu -L/lib/../lib -L/usr/lib/aarch64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/aarch64-linux-gnu/5/../../.. CMakeFiles/cmTC_70036.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/aarch64-linux-gnu/5/crtend.o /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crtn.o
 make[1]: Leaving directory '/home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/CMakeTmp'
 
 
@@ -68,14 +68,14 @@ Parsed C implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
   ignore line: [Change Dir: /home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_34015/fast"]
-  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_34015.dir/build.make CMakeFiles/cmTC_34015.dir/build]
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_70036/fast"]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_70036.dir/build.make CMakeFiles/cmTC_70036.dir/build]
   ignore line: [make[1]: Entering directory '/home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/CMakeTmp']
-  ignore line: [Building C object CMakeFiles/cmTC_34015.dir/CMakeCCompilerABI.c.o]
-  ignore line: [/usr/bin/cc    -o CMakeFiles/cmTC_34015.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.10/Modules/CMakeCCompilerABI.c]
-  ignore line: [Linking C executable cmTC_34015]
-  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_34015.dir/link.txt --verbose=1]
-  ignore line: [/usr/bin/cc     -v -rdynamic CMakeFiles/cmTC_34015.dir/CMakeCCompilerABI.c.o  -o cmTC_34015 ]
+  ignore line: [Building C object CMakeFiles/cmTC_70036.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/usr/bin/cc    -o CMakeFiles/cmTC_70036.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.10/Modules/CMakeCCompilerABI.c]
+  ignore line: [Linking C executable cmTC_70036]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_70036.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/cc     -v -rdynamic CMakeFiles/cmTC_70036.dir/CMakeCCompilerABI.c.o  -o cmTC_70036 ]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/usr/bin/cc]
   ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/aarch64-linux-gnu/5/lto-wrapper]
@@ -85,13 +85,13 @@ Parsed C implicit link information from above output:
   ignore line: [gcc version 5.5.0 20171010 (Ubuntu/Linaro 5.5.0-12ubuntu1) ]
   ignore line: [COMPILER_PATH=/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/:/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/]
   ignore line: [LIBRARY_PATH=/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/:/usr/lib/gcc/aarch64-linux-gnu/5/../../../../lib/:/lib/aarch64-linux-gnu/:/lib/../lib/:/usr/lib/aarch64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/aarch64-linux-gnu/5/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_34015' '-mlittle-endian' '-mabi=lp64']
-  link line: [ /usr/lib/gcc/aarch64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/aarch64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/aarch64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/ccGc716M.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux --fix-cortex-a53-843419 -pie -z now -z relro -o cmTC_34015 /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/Scrt1.o /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crti.o /usr/lib/gcc/aarch64-linux-gnu/5/crtbeginS.o -L/usr/lib/gcc/aarch64-linux-gnu/5 -L/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu -L/usr/lib/gcc/aarch64-linux-gnu/5/../../../../lib -L/lib/aarch64-linux-gnu -L/lib/../lib -L/usr/lib/aarch64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/aarch64-linux-gnu/5/../../.. CMakeFiles/cmTC_34015.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/aarch64-linux-gnu/5/crtend.o /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crtn.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_70036' '-mlittle-endian' '-mabi=lp64']
+  link line: [ /usr/lib/gcc/aarch64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/aarch64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/aarch64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/cc14HiRE.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux --fix-cortex-a53-843419 -pie -z now -z relro -o cmTC_70036 /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/Scrt1.o /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crti.o /usr/lib/gcc/aarch64-linux-gnu/5/crtbeginS.o -L/usr/lib/gcc/aarch64-linux-gnu/5 -L/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu -L/usr/lib/gcc/aarch64-linux-gnu/5/../../../../lib -L/lib/aarch64-linux-gnu -L/lib/../lib -L/usr/lib/aarch64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/aarch64-linux-gnu/5/../../.. CMakeFiles/cmTC_70036.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/aarch64-linux-gnu/5/crtend.o /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crtn.o]
     arg [/usr/lib/gcc/aarch64-linux-gnu/5/collect2] ==> ignore
     arg [-plugin] ==> ignore
     arg [/usr/lib/gcc/aarch64-linux-gnu/5/liblto_plugin.so] ==> ignore
     arg [-plugin-opt=/usr/lib/gcc/aarch64-linux-gnu/5/lto-wrapper] ==> ignore
-    arg [-plugin-opt=-fresolution=/tmp/ccGc716M.res] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/cc14HiRE.res] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
     arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -113,7 +113,7 @@ Parsed C implicit link information from above output:
     arg [-znow] ==> ignore
     arg [-zrelro] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_34015] ==> ignore
+    arg [cmTC_70036] ==> ignore
     arg [/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/Scrt1.o] ==> ignore
     arg [/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crti.o] ==> ignore
     arg [/usr/lib/gcc/aarch64-linux-gnu/5/crtbeginS.o] ==> ignore
@@ -125,7 +125,7 @@ Parsed C implicit link information from above output:
     arg [-L/usr/lib/aarch64-linux-gnu] ==> dir [/usr/lib/aarch64-linux-gnu]
     arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
     arg [-L/usr/lib/gcc/aarch64-linux-gnu/5/../../..] ==> dir [/usr/lib/gcc/aarch64-linux-gnu/5/../../..]
-    arg [CMakeFiles/cmTC_34015.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [CMakeFiles/cmTC_70036.dir/CMakeCCompilerABI.c.o] ==> ignore
     arg [-lgcc] ==> lib [gcc]
     arg [--push-state] ==> ignore
     arg [--as-needed] ==> ignore
@@ -157,14 +157,14 @@ Parsed C implicit link information from above output:
 Detecting C [-std=c11] compiler features compiled with the following output:
 Change Dir: /home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_f4c96/fast"
-/usr/bin/make -f CMakeFiles/cmTC_f4c96.dir/build.make CMakeFiles/cmTC_f4c96.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_13bcb/fast"
+/usr/bin/make -f CMakeFiles/cmTC_13bcb.dir/build.make CMakeFiles/cmTC_13bcb.dir/build
 make[1]: Entering directory '/home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_f4c96.dir/feature_tests.c.o
-/usr/bin/cc   -std=c11 -o CMakeFiles/cmTC_f4c96.dir/feature_tests.c.o   -c /home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/feature_tests.c
-Linking C executable cmTC_f4c96
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f4c96.dir/link.txt --verbose=1
-/usr/bin/cc      -rdynamic CMakeFiles/cmTC_f4c96.dir/feature_tests.c.o  -o cmTC_f4c96 
+Building C object CMakeFiles/cmTC_13bcb.dir/feature_tests.c.o
+/usr/bin/cc   -std=c11 -o CMakeFiles/cmTC_13bcb.dir/feature_tests.c.o   -c /home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/feature_tests.c
+Linking C executable cmTC_13bcb
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_13bcb.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_13bcb.dir/feature_tests.c.o  -o cmTC_13bcb 
 make[1]: Leaving directory '/home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/CMakeTmp'
 
 
@@ -177,14 +177,14 @@ make[1]: Leaving directory '/home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeF
 Detecting C [-std=c99] compiler features compiled with the following output:
 Change Dir: /home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_9e08e/fast"
-/usr/bin/make -f CMakeFiles/cmTC_9e08e.dir/build.make CMakeFiles/cmTC_9e08e.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_6dac4/fast"
+/usr/bin/make -f CMakeFiles/cmTC_6dac4.dir/build.make CMakeFiles/cmTC_6dac4.dir/build
 make[1]: Entering directory '/home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_9e08e.dir/feature_tests.c.o
-/usr/bin/cc   -std=c99 -o CMakeFiles/cmTC_9e08e.dir/feature_tests.c.o   -c /home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/feature_tests.c
-Linking C executable cmTC_9e08e
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9e08e.dir/link.txt --verbose=1
-/usr/bin/cc      -rdynamic CMakeFiles/cmTC_9e08e.dir/feature_tests.c.o  -o cmTC_9e08e 
+Building C object CMakeFiles/cmTC_6dac4.dir/feature_tests.c.o
+/usr/bin/cc   -std=c99 -o CMakeFiles/cmTC_6dac4.dir/feature_tests.c.o   -c /home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/feature_tests.c
+Linking C executable cmTC_6dac4
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6dac4.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_6dac4.dir/feature_tests.c.o  -o cmTC_6dac4 
 make[1]: Leaving directory '/home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/CMakeTmp'
 
 
@@ -197,14 +197,14 @@ make[1]: Leaving directory '/home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeF
 Detecting C [-std=c90] compiler features compiled with the following output:
 Change Dir: /home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_d9bbb/fast"
-/usr/bin/make -f CMakeFiles/cmTC_d9bbb.dir/build.make CMakeFiles/cmTC_d9bbb.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_de56c/fast"
+/usr/bin/make -f CMakeFiles/cmTC_de56c.dir/build.make CMakeFiles/cmTC_de56c.dir/build
 make[1]: Entering directory '/home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_d9bbb.dir/feature_tests.c.o
-/usr/bin/cc   -std=c90 -o CMakeFiles/cmTC_d9bbb.dir/feature_tests.c.o   -c /home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/feature_tests.c
-Linking C executable cmTC_d9bbb
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d9bbb.dir/link.txt --verbose=1
-/usr/bin/cc      -rdynamic CMakeFiles/cmTC_d9bbb.dir/feature_tests.c.o  -o cmTC_d9bbb 
+Building C object CMakeFiles/cmTC_de56c.dir/feature_tests.c.o
+/usr/bin/cc   -std=c90 -o CMakeFiles/cmTC_de56c.dir/feature_tests.c.o   -c /home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/feature_tests.c
+Linking C executable cmTC_de56c
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_de56c.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_de56c.dir/feature_tests.c.o  -o cmTC_de56c 
 make[1]: Leaving directory '/home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/CMakeTmp'
 
 
@@ -215,28 +215,28 @@ make[1]: Leaving directory '/home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeF
 Determining if the CXX compiler works passed with the following output:
 Change Dir: /home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_00d31/fast"
-/usr/bin/make -f CMakeFiles/cmTC_00d31.dir/build.make CMakeFiles/cmTC_00d31.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_09ad6/fast"
+/usr/bin/make -f CMakeFiles/cmTC_09ad6.dir/build.make CMakeFiles/cmTC_09ad6.dir/build
 make[1]: Entering directory '/home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_00d31.dir/testCXXCompiler.cxx.o
-/usr/bin/c++     -o CMakeFiles/cmTC_00d31.dir/testCXXCompiler.cxx.o -c /home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
-Linking CXX executable cmTC_00d31
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_00d31.dir/link.txt --verbose=1
-/usr/bin/c++       -rdynamic CMakeFiles/cmTC_00d31.dir/testCXXCompiler.cxx.o  -o cmTC_00d31 
+Building CXX object CMakeFiles/cmTC_09ad6.dir/testCXXCompiler.cxx.o
+/usr/bin/c++     -o CMakeFiles/cmTC_09ad6.dir/testCXXCompiler.cxx.o -c /home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTC_09ad6
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_09ad6.dir/link.txt --verbose=1
+/usr/bin/c++       -rdynamic CMakeFiles/cmTC_09ad6.dir/testCXXCompiler.cxx.o  -o cmTC_09ad6 
 make[1]: Leaving directory '/home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/CMakeTmp'
 
 
 Detecting CXX compiler ABI info compiled with the following output:
 Change Dir: /home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_198d5/fast"
-/usr/bin/make -f CMakeFiles/cmTC_198d5.dir/build.make CMakeFiles/cmTC_198d5.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_f30a1/fast"
+/usr/bin/make -f CMakeFiles/cmTC_f30a1.dir/build.make CMakeFiles/cmTC_f30a1.dir/build
 make[1]: Entering directory '/home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_198d5.dir/CMakeCXXCompilerABI.cpp.o
-/usr/bin/c++     -o CMakeFiles/cmTC_198d5.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.10/Modules/CMakeCXXCompilerABI.cpp
-Linking CXX executable cmTC_198d5
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_198d5.dir/link.txt --verbose=1
-/usr/bin/c++      -v -rdynamic CMakeFiles/cmTC_198d5.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_198d5 
+Building CXX object CMakeFiles/cmTC_f30a1.dir/CMakeCXXCompilerABI.cpp.o
+/usr/bin/c++     -o CMakeFiles/cmTC_f30a1.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.10/Modules/CMakeCXXCompilerABI.cpp
+Linking CXX executable cmTC_f30a1
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f30a1.dir/link.txt --verbose=1
+/usr/bin/c++      -v -rdynamic CMakeFiles/cmTC_f30a1.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_f30a1 
 Using built-in specs.
 COLLECT_GCC=/usr/bin/c++
 COLLECT_LTO_WRAPPER=/usr/lib/gcc/aarch64-linux-gnu/5/lto-wrapper
@@ -246,8 +246,8 @@ Thread model: posix
 gcc version 5.5.0 20171010 (Ubuntu/Linaro 5.5.0-12ubuntu1) 
 COMPILER_PATH=/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/:/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/
 LIBRARY_PATH=/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/:/usr/lib/gcc/aarch64-linux-gnu/5/../../../../lib/:/lib/aarch64-linux-gnu/:/lib/../lib/:/usr/lib/aarch64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/aarch64-linux-gnu/5/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_198d5' '-shared-libgcc' '-mlittle-endian' '-mabi=lp64'
- /usr/lib/gcc/aarch64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/aarch64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/aarch64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/ccA7cIXH.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/ --build-id --eh-frame-hdr --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux --fix-cortex-a53-843419 -pie -z now -z relro -o cmTC_198d5 /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/Scrt1.o /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crti.o /usr/lib/gcc/aarch64-linux-gnu/5/crtbeginS.o -L/usr/lib/gcc/aarch64-linux-gnu/5 -L/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu -L/usr/lib/gcc/aarch64-linux-gnu/5/../../../../lib -L/lib/aarch64-linux-gnu -L/lib/../lib -L/usr/lib/aarch64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/aarch64-linux-gnu/5/../../.. CMakeFiles/cmTC_198d5.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/aarch64-linux-gnu/5/crtend.o /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_f30a1' '-shared-libgcc' '-mlittle-endian' '-mabi=lp64'
+ /usr/lib/gcc/aarch64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/aarch64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/aarch64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/cc0V8lJk.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/ --build-id --eh-frame-hdr --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux --fix-cortex-a53-843419 -pie -z now -z relro -o cmTC_f30a1 /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/Scrt1.o /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crti.o /usr/lib/gcc/aarch64-linux-gnu/5/crtbeginS.o -L/usr/lib/gcc/aarch64-linux-gnu/5 -L/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu -L/usr/lib/gcc/aarch64-linux-gnu/5/../../../../lib -L/lib/aarch64-linux-gnu -L/lib/../lib -L/usr/lib/aarch64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/aarch64-linux-gnu/5/../../.. CMakeFiles/cmTC_f30a1.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/aarch64-linux-gnu/5/crtend.o /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crtn.o
 make[1]: Leaving directory '/home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/CMakeTmp'
 
 
@@ -255,14 +255,14 @@ Parsed CXX implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
   ignore line: [Change Dir: /home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_198d5/fast"]
-  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_198d5.dir/build.make CMakeFiles/cmTC_198d5.dir/build]
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_f30a1/fast"]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_f30a1.dir/build.make CMakeFiles/cmTC_f30a1.dir/build]
   ignore line: [make[1]: Entering directory '/home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/CMakeTmp']
-  ignore line: [Building CXX object CMakeFiles/cmTC_198d5.dir/CMakeCXXCompilerABI.cpp.o]
-  ignore line: [/usr/bin/c++     -o CMakeFiles/cmTC_198d5.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.10/Modules/CMakeCXXCompilerABI.cpp]
-  ignore line: [Linking CXX executable cmTC_198d5]
-  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_198d5.dir/link.txt --verbose=1]
-  ignore line: [/usr/bin/c++      -v -rdynamic CMakeFiles/cmTC_198d5.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_198d5 ]
+  ignore line: [Building CXX object CMakeFiles/cmTC_f30a1.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/usr/bin/c++     -o CMakeFiles/cmTC_f30a1.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.10/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Linking CXX executable cmTC_f30a1]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f30a1.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/c++      -v -rdynamic CMakeFiles/cmTC_f30a1.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_f30a1 ]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/usr/bin/c++]
   ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/aarch64-linux-gnu/5/lto-wrapper]
@@ -272,13 +272,13 @@ Parsed CXX implicit link information from above output:
   ignore line: [gcc version 5.5.0 20171010 (Ubuntu/Linaro 5.5.0-12ubuntu1) ]
   ignore line: [COMPILER_PATH=/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/:/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/]
   ignore line: [LIBRARY_PATH=/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/:/usr/lib/gcc/aarch64-linux-gnu/5/../../../../lib/:/lib/aarch64-linux-gnu/:/lib/../lib/:/usr/lib/aarch64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/aarch64-linux-gnu/5/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_198d5' '-shared-libgcc' '-mlittle-endian' '-mabi=lp64']
-  link line: [ /usr/lib/gcc/aarch64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/aarch64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/aarch64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/ccA7cIXH.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/ --build-id --eh-frame-hdr --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux --fix-cortex-a53-843419 -pie -z now -z relro -o cmTC_198d5 /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/Scrt1.o /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crti.o /usr/lib/gcc/aarch64-linux-gnu/5/crtbeginS.o -L/usr/lib/gcc/aarch64-linux-gnu/5 -L/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu -L/usr/lib/gcc/aarch64-linux-gnu/5/../../../../lib -L/lib/aarch64-linux-gnu -L/lib/../lib -L/usr/lib/aarch64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/aarch64-linux-gnu/5/../../.. CMakeFiles/cmTC_198d5.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/aarch64-linux-gnu/5/crtend.o /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crtn.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_f30a1' '-shared-libgcc' '-mlittle-endian' '-mabi=lp64']
+  link line: [ /usr/lib/gcc/aarch64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/aarch64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/aarch64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/cc0V8lJk.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/ --build-id --eh-frame-hdr --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux --fix-cortex-a53-843419 -pie -z now -z relro -o cmTC_f30a1 /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/Scrt1.o /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crti.o /usr/lib/gcc/aarch64-linux-gnu/5/crtbeginS.o -L/usr/lib/gcc/aarch64-linux-gnu/5 -L/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu -L/usr/lib/gcc/aarch64-linux-gnu/5/../../../../lib -L/lib/aarch64-linux-gnu -L/lib/../lib -L/usr/lib/aarch64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/aarch64-linux-gnu/5/../../.. CMakeFiles/cmTC_f30a1.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/aarch64-linux-gnu/5/crtend.o /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crtn.o]
     arg [/usr/lib/gcc/aarch64-linux-gnu/5/collect2] ==> ignore
     arg [-plugin] ==> ignore
     arg [/usr/lib/gcc/aarch64-linux-gnu/5/liblto_plugin.so] ==> ignore
     arg [-plugin-opt=/usr/lib/gcc/aarch64-linux-gnu/5/lto-wrapper] ==> ignore
-    arg [-plugin-opt=-fresolution=/tmp/ccA7cIXH.res] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/cc0V8lJk.res] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
     arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -300,7 +300,7 @@ Parsed CXX implicit link information from above output:
     arg [-znow] ==> ignore
     arg [-zrelro] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_198d5] ==> ignore
+    arg [cmTC_f30a1] ==> ignore
     arg [/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/Scrt1.o] ==> ignore
     arg [/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crti.o] ==> ignore
     arg [/usr/lib/gcc/aarch64-linux-gnu/5/crtbeginS.o] ==> ignore
@@ -312,7 +312,7 @@ Parsed CXX implicit link information from above output:
     arg [-L/usr/lib/aarch64-linux-gnu] ==> dir [/usr/lib/aarch64-linux-gnu]
     arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
     arg [-L/usr/lib/gcc/aarch64-linux-gnu/5/../../..] ==> dir [/usr/lib/gcc/aarch64-linux-gnu/5/../../..]
-    arg [CMakeFiles/cmTC_198d5.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [CMakeFiles/cmTC_f30a1.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
     arg [-lstdc++] ==> lib [stdc++]
     arg [-lm] ==> lib [m]
     arg [-lgcc_s] ==> lib [gcc_s]
@@ -340,14 +340,14 @@ Parsed CXX implicit link information from above output:
 Detecting CXX [-std=c++1z] compiler features compiled with the following output:
 Change Dir: /home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_2783d/fast"
-/usr/bin/make -f CMakeFiles/cmTC_2783d.dir/build.make CMakeFiles/cmTC_2783d.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_e4892/fast"
+/usr/bin/make -f CMakeFiles/cmTC_e4892.dir/build.make CMakeFiles/cmTC_e4892.dir/build
 make[1]: Entering directory '/home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_2783d.dir/feature_tests.cxx.o
-/usr/bin/c++    -std=c++1z -o CMakeFiles/cmTC_2783d.dir/feature_tests.cxx.o -c /home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_2783d
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2783d.dir/link.txt --verbose=1
-/usr/bin/c++       -rdynamic CMakeFiles/cmTC_2783d.dir/feature_tests.cxx.o  -o cmTC_2783d 
+Building CXX object CMakeFiles/cmTC_e4892.dir/feature_tests.cxx.o
+/usr/bin/c++    -std=c++1z -o CMakeFiles/cmTC_e4892.dir/feature_tests.cxx.o -c /home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_e4892
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e4892.dir/link.txt --verbose=1
+/usr/bin/c++       -rdynamic CMakeFiles/cmTC_e4892.dir/feature_tests.cxx.o  -o cmTC_e4892 
 make[1]: Leaving directory '/home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/CMakeTmp'
 
 
@@ -413,14 +413,14 @@ make[1]: Leaving directory '/home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeF
 Detecting CXX [-std=c++14] compiler features compiled with the following output:
 Change Dir: /home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_a1287/fast"
-/usr/bin/make -f CMakeFiles/cmTC_a1287.dir/build.make CMakeFiles/cmTC_a1287.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_469bf/fast"
+/usr/bin/make -f CMakeFiles/cmTC_469bf.dir/build.make CMakeFiles/cmTC_469bf.dir/build
 make[1]: Entering directory '/home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_a1287.dir/feature_tests.cxx.o
-/usr/bin/c++    -std=c++14 -o CMakeFiles/cmTC_a1287.dir/feature_tests.cxx.o -c /home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_a1287
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a1287.dir/link.txt --verbose=1
-/usr/bin/c++       -rdynamic CMakeFiles/cmTC_a1287.dir/feature_tests.cxx.o  -o cmTC_a1287 
+Building CXX object CMakeFiles/cmTC_469bf.dir/feature_tests.cxx.o
+/usr/bin/c++    -std=c++14 -o CMakeFiles/cmTC_469bf.dir/feature_tests.cxx.o -c /home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_469bf
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_469bf.dir/link.txt --verbose=1
+/usr/bin/c++       -rdynamic CMakeFiles/cmTC_469bf.dir/feature_tests.cxx.o  -o cmTC_469bf 
 make[1]: Leaving directory '/home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/CMakeTmp'
 
 
@@ -486,14 +486,14 @@ make[1]: Leaving directory '/home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeF
 Detecting CXX [-std=c++11] compiler features compiled with the following output:
 Change Dir: /home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_9ced8/fast"
-/usr/bin/make -f CMakeFiles/cmTC_9ced8.dir/build.make CMakeFiles/cmTC_9ced8.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_98fc4/fast"
+/usr/bin/make -f CMakeFiles/cmTC_98fc4.dir/build.make CMakeFiles/cmTC_98fc4.dir/build
 make[1]: Entering directory '/home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_9ced8.dir/feature_tests.cxx.o
-/usr/bin/c++    -std=c++11 -o CMakeFiles/cmTC_9ced8.dir/feature_tests.cxx.o -c /home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_9ced8
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9ced8.dir/link.txt --verbose=1
-/usr/bin/c++       -rdynamic CMakeFiles/cmTC_9ced8.dir/feature_tests.cxx.o  -o cmTC_9ced8 
+Building CXX object CMakeFiles/cmTC_98fc4.dir/feature_tests.cxx.o
+/usr/bin/c++    -std=c++11 -o CMakeFiles/cmTC_98fc4.dir/feature_tests.cxx.o -c /home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_98fc4
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_98fc4.dir/link.txt --verbose=1
+/usr/bin/c++       -rdynamic CMakeFiles/cmTC_98fc4.dir/feature_tests.cxx.o  -o cmTC_98fc4 
 make[1]: Leaving directory '/home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/CMakeTmp'
 
 
@@ -559,14 +559,14 @@ make[1]: Leaving directory '/home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeF
 Detecting CXX [-std=c++98] compiler features compiled with the following output:
 Change Dir: /home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_d326b/fast"
-/usr/bin/make -f CMakeFiles/cmTC_d326b.dir/build.make CMakeFiles/cmTC_d326b.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_134f6/fast"
+/usr/bin/make -f CMakeFiles/cmTC_134f6.dir/build.make CMakeFiles/cmTC_134f6.dir/build
 make[1]: Entering directory '/home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_d326b.dir/feature_tests.cxx.o
-/usr/bin/c++    -std=c++98 -o CMakeFiles/cmTC_d326b.dir/feature_tests.cxx.o -c /home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_d326b
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d326b.dir/link.txt --verbose=1
-/usr/bin/c++       -rdynamic CMakeFiles/cmTC_d326b.dir/feature_tests.cxx.o  -o cmTC_d326b 
+Building CXX object CMakeFiles/cmTC_134f6.dir/feature_tests.cxx.o
+/usr/bin/c++    -std=c++98 -o CMakeFiles/cmTC_134f6.dir/feature_tests.cxx.o -c /home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_134f6
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_134f6.dir/link.txt --verbose=1
+/usr/bin/c++       -rdynamic CMakeFiles/cmTC_134f6.dir/feature_tests.cxx.o  -o cmTC_134f6 
 make[1]: Leaving directory '/home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/CMakeTmp'
 
 
@@ -630,28 +630,28 @@ make[1]: Leaving directory '/home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeF
 Determining if the include file pthread.h exists passed with the following output:
 Change Dir: /home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_2bc75/fast"
-/usr/bin/make -f CMakeFiles/cmTC_2bc75.dir/build.make CMakeFiles/cmTC_2bc75.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_c061d/fast"
+/usr/bin/make -f CMakeFiles/cmTC_c061d.dir/build.make CMakeFiles/cmTC_c061d.dir/build
 make[1]: Entering directory '/home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_2bc75.dir/CheckIncludeFile.c.o
-/usr/bin/cc    -o CMakeFiles/cmTC_2bc75.dir/CheckIncludeFile.c.o   -c /home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/CMakeTmp/CheckIncludeFile.c
-Linking C executable cmTC_2bc75
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2bc75.dir/link.txt --verbose=1
-/usr/bin/cc      -rdynamic CMakeFiles/cmTC_2bc75.dir/CheckIncludeFile.c.o  -o cmTC_2bc75 
+Building C object CMakeFiles/cmTC_c061d.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_c061d.dir/CheckIncludeFile.c.o   -c /home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_c061d
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c061d.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_c061d.dir/CheckIncludeFile.c.o  -o cmTC_c061d 
 make[1]: Leaving directory '/home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/CMakeTmp'
 
 
 Determining if the function pthread_create exists in the pthread passed with the following output:
 Change Dir: /home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_cdcc9/fast"
-/usr/bin/make -f CMakeFiles/cmTC_cdcc9.dir/build.make CMakeFiles/cmTC_cdcc9.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_2f4c3/fast"
+/usr/bin/make -f CMakeFiles/cmTC_2f4c3.dir/build.make CMakeFiles/cmTC_2f4c3.dir/build
 make[1]: Entering directory '/home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_cdcc9.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_cdcc9.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
-Linking C executable cmTC_cdcc9
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_cdcc9.dir/link.txt --verbose=1
-/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_cdcc9.dir/CheckFunctionExists.c.o  -o cmTC_cdcc9 -lpthread 
+Building C object CMakeFiles/cmTC_2f4c3.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_2f4c3.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
+Linking C executable cmTC_2f4c3
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2f4c3.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_2f4c3.dir/CheckFunctionExists.c.o  -o cmTC_2f4c3 -lpthread 
 make[1]: Leaving directory '/home/xavier/catkin_ws/build/darknet_ros_msgs/CMakeFiles/CMakeTmp'
 
 

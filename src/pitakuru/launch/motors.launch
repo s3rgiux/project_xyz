@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-<launch>
- 
-<node pkg="pypro" name="pitakuru_wheels" type="pitakuruWheels.py">
-<param name="max_speed"    type="double"	value="3500"/>  <!-- max speed tah can be sent to motors-->
-</node>
-
-</launch>

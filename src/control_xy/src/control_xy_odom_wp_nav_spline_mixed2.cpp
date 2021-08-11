@@ -873,8 +873,14 @@ void dangerCallback(const std_msgs::String& msg){
         ctrl_front_manual = 0;
         ctrl_side_manual = 0;
         vel_steer.linear.x = 0;
+        vel_steer.linear.y = 0;
         vel_steer.angular.z = 0;
-        speed_publisher.publish(vel_steer);
+        for (int i=0;i<15;i++){
+            alert_danger_no_sound();
+            speed_publisher.publish(vel_steer);
+            ros::Duration(0.02).sleep();
+        }
+        alert_danger_voice_sound();
         pitakuru_state_msg.state = "DANGER";
         pitakuru_state_msg.ctrl_front = ctrl_front_follow;
         pitakuru_state_msg.ctrl_side = ctrl_ang;

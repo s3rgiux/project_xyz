@@ -415,7 +415,7 @@ laser_geometry_DIR:PATH=/opt/ros/melodic/share/laser_geometry/cmake
 lib:FILEPATH=/opt/ros/melodic/lib/librosconsole_bridge.so
 
 //The directory containing a CMake configuration file for map_msgs.
-map_msgs_DIR:PATH=/opt/ros/melodic/share/map_msgs/cmake
+map_msgs_DIR:PATH=/home/xavier/catkin_ws/devel/share/map_msgs/cmake
 
 //The directory containing a CMake configuration file for message_filters.
 message_filters_DIR:PATH=/opt/ros/melodic/share/message_filters/cmake

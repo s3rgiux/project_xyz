@@ -90,7 +90,7 @@ class SwitchInput(object):
         self.volts=current_states['A0']
         self.pow_btn=current_states['A1']
         volts_read = Float32()
-        volts_read.data=self.volts*0.03205#according to the resistor divider
+        volts_read.data=self.volts*0.03202 #according to the resistor divider
         self.pub_volt.publish(volts_read)
 
         if(self.pow_btn < 200):

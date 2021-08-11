@@ -1,3 +1,0 @@
-port_name: '/dev/serial/by-id/usb-Arduino_LLC_Arduino_Micro-if00'
-baudrate: 115200
-timeout: 0.1
