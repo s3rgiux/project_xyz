@@ -608,6 +608,26 @@ void calc_100hz(){
     if(lidar_people_status>0){
         stopped_functions = false;
     }
+
+    if (danger){
+        ctrl_front_manual = (1-smooth_accel_manual) * (joy_front * max_speed_manual_heavy)+(smooth_accel_manual * ctrl_front_manual);
+        if(ctrl_front_manual<0){
+            ctrl_side_manual = (1-smooth_accel_side_manual) * (joy_side * max_speed_side_manual) + (smooth_accel_side_manual * ctrl_side_manual);
+            vel_steer.linear.x = ctrl_front_manual;
+            vel_steer.angular.z = ctrl_side_manual;
+            vel_steer.linear.x = ((vel_steer.linear.x / 21) * 0.1045) / 10;
+            vel_steer.angular.z = ((vel_steer.angular.z / 21) * 0.1045) / 2;
+            if(joy_counter%8 == 0){
+                speed_publisher.publish(vel_steer);
+            }
+        }else{
+            vel_steer.linear.x = 0;
+            vel_steer.angular.z = 0;
+            if(joy_counter%8 == 0){
+                speed_publisher.publish(vel_steer);
+            }
+        }
+    }
    
     if(mode_follow && danger != true ){ 
             if(lidar_people_status > 0 && stopped_functions == false && distanciaPeople2 < near_far_distance && ang_peop_lidar>-90 && ang_peop_lidar<90){
@@ -1347,17 +1367,17 @@ void joyCallback(const sensor_msgs::Joy::ConstPtr& joy){
             btn_goto_wp2 = joy -> buttons[5];
         }
 
-        if(btn_circle == 1  && collision == false){
+        if(btn_circle == 1  && collision == false && danger != true){
             mode_MANUAL();
             ros::Duration(0.5).sleep(); 
-        }else if(btn_x == 1 && collision == false){
+        }else if(btn_x == 1 && collision == false && danger != true){
             mode_people_follow();
             vel_steer.linear.x = 0;
             vel_steer.linear.y = 1;
             vel_steer.angular.z = 0;
             speed_publisher.publish(vel_steer);
             ros::Duration(0.5).sleep(); 
-        }else if(btn_triangle && danger != true && collision == false ){
+        }else if(btn_triangle && collision == false ){
             mode_IDLE();
             ros::Duration(0.2).sleep(); 
         }else if(reseting_map == false&& btn_reset_map&& mode_manual && collision == false && danger == false){
@@ -1368,7 +1388,7 @@ void joyCallback(const sensor_msgs::Joy::ConstPtr& joy){
             saving_map = true;
             last_time_btn_save_reset_pressed = ros::Time::now();
             ros::Duration(0.3).sleep(); 
-        }else if(btn_square && free_way && collision == false){
+        }else if(btn_square && free_way && danger != true&& collision == false){
             mode_AUTONOMOUS();   
             do_nothing();
             ros::Duration(0.2).sleep(); 
