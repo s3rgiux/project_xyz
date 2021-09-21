@@ -63,6 +63,7 @@ public:
 
 
         danger_suscriber = nh.subscribe("/Danger", 1, &test_head::dangerCallback,this);
+        danger_back_suscriber = nh.subscribe("/danger_back", 1, &test_head::dangerBackCallback,this);
 
         nh.getParam("/control_xy/break_front_distance", break_front_distance);
         nh.getParam("/control_xy/break_danger", break_danger);
@@ -873,6 +874,54 @@ void near(){
         }       
 }  
 
+void dangerBackCallback(const std_msgs::String& msg){
+    // ROS_INFO("%s\n", msg.data.c_str());
+    float velocity_tresh_stop = 1.0;
+    float control_tresh_stop = -500.0;
+    // ROS_INFO("%d\n", danger);
+    // ROS_INFO("%d\n", velocity_motor1 > velocity_tresh_stop);
+    // ROS_INFO("%d\n", velocity_motor2 > velocity_tresh_stop);
+    // ROS_INFO("%f\n", velocity_motor1);
+    // ROS_INFO("%f\n", velocity_motor2);
+    // ROS_INFO("%f\n", velocity_tresh_stop);
+    if ( danger == false && msg.data == "Danger" && velocity_motor1 > velocity_tresh_stop && velocity_motor2 > velocity_tresh_stop && (ctrl_front_follow < control_tresh_stop || ctrl_front_manual < control_tresh_stop) ){
+        alert_danger_no_sound();
+        alert_danger_voice_sound();
+        danger = true;
+        free_way = false;
+        detect_cont = 0;
+        ctrl_front_follow = 0;
+        ctrl_front_manual = 0;
+        ctrl_side_manual = 0;
+        vel_steer.linear.x = 0;
+        vel_steer.linear.y = 0;
+        vel_steer.angular.z = 0;
+        for (int i=0;i<15;i++){
+            alert_danger_no_sound();
+            speed_publisher.publish(vel_steer);
+            ros::Duration(0.02).sleep();
+        }
+        alert_danger_voice_sound();
+        pitakuru_state_msg.state = "DANGER";
+        pitakuru_state_msg.ctrl_front = ctrl_front_follow;
+        pitakuru_state_msg.ctrl_side = ctrl_ang;
+        state_pub.publish(pitakuru_state_msg);
+    }else if(danger == false && msg.data == "Clear"){
+        free_way=true;
+    }
+
+    danger_counter++;
+
+    if(danger && danger_counter % 2 == 0 && ctrl_front_manual > 0){
+        alert_danger_no_sound();
+        vel_steer.linear.x = 0;
+        vel_steer.angular.z = 0;
+        speed_publisher.publish(vel_steer);
+    }
+}
+
+
+
 void dangerCallback(const std_msgs::String& msg){
     // ROS_INFO("%s\n", msg.data.c_str());
     float velocity_tresh_stop = 1.0;
@@ -919,13 +968,13 @@ void dangerCallback(const std_msgs::String& msg){
     }
 }
 
+
+
 // to find the danger obstacle and notify
 /* [TODO:] create a node for this function */ 
 void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan){ 
     int num_detections_to_danger = 1;       
     last_time_scan = ros::Time::now();
-    
-    
 } 
 
 // alert_command.sound = COLLISION_SOUND
@@ -1624,6 +1673,7 @@ private:
     ros::Subscriber yolo_subscriber;
     ros::Subscriber goal_status_subscriber;
     ros::Subscriber danger_suscriber;
+    ros::Subscriber danger_back_suscriber;
 
     geometry_msgs::Twist vel_steer;
     geometry_msgs::Vector3 tracked_pos;

@@ -23,7 +23,7 @@ find_package(catkin REQUIRED COMPONENTS
 )
 
 
-add_message_files(FILES CircleObstacle.msg SegmentObstacle.msg Obstacles.msg States.msg)
+add_message_files(FILES CircleObstacle.msg SegmentObstacle.msg Obstacles.msg States.msg DangerStates.msg)
 generate_messages(DEPENDENCIES std_msgs geometry_msgs)
 
 
