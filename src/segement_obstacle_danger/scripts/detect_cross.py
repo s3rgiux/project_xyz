@@ -86,6 +86,7 @@ def is_cross_circle(p0, p1, q0, q1):
     if cross_points is None:
         return False
     ((cross0_x, cross0_y), (cross1_x, cross1_y)) = cross_points
+    print("cross points ",cross_points)
     px0, py0 = p0
     px1, py1 = p1
     qx0, qy0 = q0

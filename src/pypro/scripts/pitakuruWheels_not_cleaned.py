@@ -227,8 +227,8 @@ class PitWheels:
         left wheel: front:x,left:-z,top:-y left-handed cordinate
         '''
         #self.left_w_dev = usbcontroller.USBController(params['left_w_addr'])
-        pc = pyproacmd.ProaCmd('/dev/serial/by-id/usb-STMicroelectronics_STM32_STLink_066EFF323338424E43253746-if02', baud)
-        pc2 = pyproacmd.ProaCmd('/dev/serial/by-id/usb-STMicroelectronics_STM32_STLink_066FFF504955657867232916-if02', baud)
+        pc = pyproacmd.ProaCmd('/dev/serial/by-id/usb-STMicroelectronics_STM32_STLink_0668FF343537424257252450-if02', baud)
+        pc2 = pyproacmd.ProaCmd('/dev/serial/by-id/usb-STMicroelectronics_STM32_STLink_066FFF555449836687205519-if02', baud)
         self.left_w_rpm= Float32()
         self.right_w_rpm= Float32()
         self.left_w_dev = KeyCtrlr(pc)

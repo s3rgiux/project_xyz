@@ -40,10 +40,13 @@ class SegmentExtractor:
     def in_area_linear(self, segment):
         q0 = (segment.first_point.y, segment.first_point.x)
         q1 = (segment.last_point.y, segment.last_point.x)
-
+        print("p0 p1 q0 q1", P0, P1_1, q0, q1 )
+        print("first detect", detect_cross.is_cross_linear(P0, P1_1, q0, q1))
+        print("second detect", detect_cross.is_cross_linear(P0, P1_2, q0, q1))
+        print("third detect", detect_cross.is_cross_circle(P1_1, P0, q0, q1))
         return detect_cross.is_cross_linear(P0, P1_1, q0, q1) or \
-               detect_cross.is_cross_linear(P0, P1_2, q0, q1) or \
-               detect_cross.is_cross_circle(P0, P1_1, q0, q1)
+               detect_cross.is_cross_linear(P0, P1_2, q0, q1)# or \
+               #detect_cross.is_cross_circle(P0, P1_1, q0, q1)
         
     # data : Obstacles(segments, circles)
     def obstacles_callback(self, data):
