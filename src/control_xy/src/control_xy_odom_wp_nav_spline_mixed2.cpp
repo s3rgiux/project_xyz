@@ -592,11 +592,14 @@ void calc_100hz(){
         alert_yellow_no_sound();
     }
     */
+    
     if(mode_idle && karugamo_counter%20 == 0 ){
         vel_steer.linear.x = 0;
         vel_steer.angular.z = 0;
         speed_publisher.publish(vel_steer);
     }
+    
+        
     distanciaPeople2 = sqrt(center_x * center_x + center_y * center_y) * 100;
     ang_peop_lidar = 90 - atan2(center_x,center_y) * 180 / 3.1416 ; 
     if(distanciaPeople2 > near_far_distance){
@@ -627,7 +630,7 @@ void calc_100hz(){
         }else{
             vel_steer.linear.x = 0;
             vel_steer.angular.z = 0;
-            if(joy_counter%8 == 0){
+            if(joy_counter % 8 == 0){
                 speed_publisher.publish(vel_steer);
             }
         }
@@ -637,6 +640,9 @@ void calc_100hz(){
             if(lidar_people_status > 0 && stopped_functions == false && distanciaPeople2 < near_far_distance && ang_peop_lidar>-90 && ang_peop_lidar<90){
                 tracked_angle = ang_peop_lidar;
                 last_time_tracking = ros::Time::now();
+                if(karugamo_counter % 400 == 0 ){
+                    alert_danger_sound();
+                }
                 near();
                 ROS_INFO("near()");
                 if(lidar_failed == false && changed_setting == false && low_voltage == false){
@@ -1634,7 +1640,6 @@ void joyCallback(const sensor_msgs::Joy::ConstPtr& joy){
         if(mode_manual){
             if(danger == false){
                 
-
                 if(heavy){
                     ctrl_front_manual = (1 - smooth_accel_manual) * (joy -> axes[1] * max_speed_manual_heavy)+(smooth_accel_manual * ctrl_front_manual);
                 }else{
@@ -1645,15 +1650,15 @@ void joyCallback(const sensor_msgs::Joy::ConstPtr& joy){
                 //if(90 > ctrl_front_manual && ctrl_front_manual > -90){
                 //    vel_steer.linear.x = 0.0;
                 //}
-                float treshold_detection_decceleration = 80;//this must be lower than the threshold stop
-                float treshold_stop = 85;
+                float treshold_detection_decceleration = 250;//this must be lower than the threshold stop
+                float treshold_stop = 405;
                 float joystick_thresh = 0.1;
                 if ((joystick_thresh > joy_front &&  ctrl_front_manual > treshold_detection_decceleration) ){
                     if( treshold_stop > ctrl_front_manual){
                         vel_steer.linear.x = 0.0;
                         ctrl_front_manual = 0;
                     }
-                }else if (joy_front > -joystick_thresh && -treshold_detection_decceleration > ctrl_front_manual){
+                }else if (joy_front > -joystick_thresh && - (treshold_detection_decceleration - (treshold_detection_decceleration / 2))  > ctrl_front_manual){
                     if(  ctrl_front_manual > -treshold_stop ){
                         vel_steer.linear.x = 0.0;
                         ctrl_front_manual = 0;
