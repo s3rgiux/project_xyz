@@ -885,7 +885,8 @@ void dangerBackCallback(const std_msgs::String& msg){
     // ROS_INFO("%f\n", velocity_motor1);
     // ROS_INFO("%f\n", velocity_motor2);
     // ROS_INFO("%f\n", velocity_tresh_stop);
-    if ( danger == false && msg.data == "Danger" && velocity_motor1 > velocity_tresh_stop && velocity_motor2 > velocity_tresh_stop && (ctrl_front_follow < control_tresh_stop || ctrl_front_manual < control_tresh_stop) ){
+    //if ( danger == false && msg.data == "Danger" && velocity_motor1 > velocity_tresh_stop && velocity_motor2 > velocity_tresh_stop && (ctrl_front_follow < control_tresh_stop || ctrl_front_manual < control_tresh_stop) ){
+    if ( msg.data == "Danger" && velocity_motor1 > velocity_tresh_stop && velocity_motor2 > velocity_tresh_stop && (ctrl_front_follow < control_tresh_stop || ctrl_front_manual < control_tresh_stop) ){
         alert_danger_no_sound();
         alert_danger_voice_sound();
         danger = true;

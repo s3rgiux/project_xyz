@@ -10,11 +10,11 @@ from scipy.interpolate import interp1d
 import numpy as np
 
 SLEEP_TIME = 0.001
-MIN_DISTANCE_INSIDE_AREA = 0.2 #0.3 #meters
-MAX_DISTANCE_INSIDE_AREA = 1.1 #1.1 #meters
+MIN_DISTANCE_INSIDE_AREA = 0.3 #0.3 #meters
+MAX_DISTANCE_INSIDE_AREA = 1.0 #1.1 #meters
 ANGLE_REGION_MIN = -2.1 #radians 1.57 = 90 deg
 ANGLE_REGION_MAX = 2.1 #radians
-RADIUS_SIMILARITY = 0.05
+RADIUS_SIMILARITY = 0.09
 
 class SegmentExtractor:
     def __init__(self):
