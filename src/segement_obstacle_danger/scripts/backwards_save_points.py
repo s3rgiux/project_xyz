@@ -7,9 +7,6 @@ from std_msgs.msg import String
 from segement_obstacle_danger.msg import Obstacles, States , DangerStates
 import time
 from scipy.interpolate import interp1d
-import shapely
-from shapely.geometry import LineString, Point
-import detect_cross
 import numpy as np
 
 SLEEP_TIME = 0.001
