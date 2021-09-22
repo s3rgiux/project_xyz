@@ -558,7 +558,7 @@ void restart_follow_variables(){
 // - notification led, sound to arduino
 void calc_100hz(){
     karugamo_counter++;
-    if(danger == false && collision == false && mode_manual){
+    /*if(danger == false && collision == false && mode_manual){
         ros::Time time_now = ros::Time::now();
         ros::Duration duration = time_now - last_time_btn_save_reset_pressed;
             if((duration.toSec())<17 && reseting_map){
@@ -591,6 +591,7 @@ void calc_100hz(){
     }else if(danger == false && collision == false && mode_auto && velocity_motor1<0.15 && velocity_motor2<0.15){
         alert_yellow_no_sound();
     }
+    */
     if(mode_idle && karugamo_counter%20 == 0 ){
         vel_steer.linear.x = 0;
         vel_steer.angular.z = 0;
@@ -611,7 +612,8 @@ void calc_100hz(){
         stopped_functions = false;
     }
 
-    if (danger && danger_back == false){
+    //if (danger && danger_back == false){
+    if (danger){
         ctrl_front_manual = (1-smooth_accel_manual) * (joy_front * max_speed_manual_heavy)+(smooth_accel_manual * ctrl_front_manual);
         if(ctrl_front_manual<0){
             ctrl_side_manual = (1-smooth_accel_side_manual) * (joy_side * max_speed_side_manual) + (smooth_accel_side_manual * ctrl_side_manual);
@@ -886,7 +888,7 @@ void dangerBackCallback(const std_msgs::String& msg){
     // ROS_INFO("%f\n", velocity_motor2);
     // ROS_INFO("%f\n", velocity_tresh_stop);
     //if ( danger == false && msg.data == "Danger" && velocity_motor1 > velocity_tresh_stop && velocity_motor2 > velocity_tresh_stop && (ctrl_front_follow < control_tresh_stop || ctrl_front_manual < control_tresh_stop) ){
-    if ( msg.data == "Danger" && velocity_motor1 > velocity_tresh_stop && velocity_motor2 > velocity_tresh_stop && (ctrl_front_follow < control_tresh_stop || ctrl_front_manual < control_tresh_stop) ){
+    if ( danger == false && msg.data == "Danger" && velocity_motor1 > velocity_tresh_stop && velocity_motor2 > velocity_tresh_stop && (ctrl_front_follow < control_tresh_stop || ctrl_front_manual < control_tresh_stop) ){
         alert_danger_no_sound();
         alert_danger_voice_sound();
         danger = true;
@@ -1395,6 +1397,12 @@ void joyCallback(const sensor_msgs::Joy::ConstPtr& joy){
         float btn_x,btn_square,btn_circle,btn_triangle;
         float btn_save_wp1,btn_save_wp2,btn_goto_wp1,btn_goto_wp2,btn_l3,btn_r3;
         float btn_reset_map,btn_saving_map;
+        btn_save_wp1 = false;
+        btn_save_wp2 = false;
+        btn_goto_wp1 = false;
+        btn_goto_wp2 = false;
+        btn_reset_map = false;
+        btn_saving_map = false;
         if(use_ps4_controller == 1){
             speed_button = joy -> axes[7];
             btn_x = joy -> buttons[1];
@@ -1522,7 +1530,7 @@ void joyCallback(const sensor_msgs::Joy::ConstPtr& joy){
                 last_time_changed = ros::Time::now();
                 ROS_INFO("Changed speed , follow  %f , manual %f",max_speed_follow,max_speed_manual);
                 if(mode_follow == true){
-                    max_speed_follow = max_speed_follow+(speed_button * 400);
+                    max_speed_follow = max_speed_follow + (speed_button * 400);
                     max_speed_follow_heavy = max_speed_follow_heavy+(speed_button * 400);
                     duration_change -= speed_button * 0.1;
                     frontal_gain_follow = max_speed_follow+200;
@@ -1625,16 +1633,36 @@ void joyCallback(const sensor_msgs::Joy::ConstPtr& joy){
         }
         if(mode_manual){
             if(danger == false){
+                
+
                 if(heavy){
-                    ctrl_front_manual = (1-smooth_accel_manual) * (joy -> axes[1] * max_speed_manual_heavy)+(smooth_accel_manual * ctrl_front_manual);
+                    ctrl_front_manual = (1 - smooth_accel_manual) * (joy -> axes[1] * max_speed_manual_heavy)+(smooth_accel_manual * ctrl_front_manual);
                 }else{
-                    ctrl_front_manual = (1-smooth_accel_manual) * (joy -> axes[1] * max_speed_manual)+(smooth_accel_manual * ctrl_front_manual);
+                    ctrl_front_manual = (1 - smooth_accel_manual) * (joy -> axes[1] * max_speed_manual)+(smooth_accel_manual * ctrl_front_manual);
                 }
+                
                 vel_steer.linear.x = ctrl_front_manual;
-                ctrl_side_manual = (1-smooth_accel_side_manual) * (joy -> axes[0] * max_speed_side_manual)+(smooth_accel_side_manual * ctrl_side_manual);
+                //if(90 > ctrl_front_manual && ctrl_front_manual > -90){
+                //    vel_steer.linear.x = 0.0;
+                //}
+                float treshold_detection_decceleration = 80;//this must be lower than the threshold stop
+                float treshold_stop = 85;
+                float joystick_thresh = 0.1;
+                if ((joystick_thresh > joy_front &&  ctrl_front_manual > treshold_detection_decceleration) ){
+                    if( treshold_stop > ctrl_front_manual){
+                        vel_steer.linear.x = 0.0;
+                        ctrl_front_manual = 0;
+                    }
+                }else if (joy_front > -joystick_thresh && -treshold_detection_decceleration > ctrl_front_manual){
+                    if(  ctrl_front_manual > -treshold_stop ){
+                        vel_steer.linear.x = 0.0;
+                        ctrl_front_manual = 0;
+                    }
+                }
+                ctrl_side_manual = (1 - smooth_accel_side_manual) * (joy -> axes[0] * max_speed_side_manual)+(smooth_accel_side_manual * ctrl_side_manual);
                 vel_steer.angular.z = ctrl_side_manual;
-                vel_steer.linear.x = ((vel_steer.linear.x/21) * 0.1045)/10;
-                vel_steer.angular.z = ((vel_steer.angular.z/21) * 0.1045)/2;
+                vel_steer.linear.x = ((vel_steer.linear.x / 21) * 0.1045) / 10;
+                vel_steer.angular.z = ((vel_steer.angular.z / 21) * 0.1045) / 2;
                 if(joy_counter % 8 == 0){
                     speed_publisher.publish(vel_steer);
                     state_pub.publish(pitakuru_state_msg);
@@ -1672,7 +1700,7 @@ private:
     ros::Subscriber joy_subscriber;
     ros::Subscriber subScan_;
     ros::Subscriber sub_amperage;
-    ros::Publisher state_pub;
+    ros::Publisher  state_pub;
     ros::Subscriber volts_subscriber;
     ros::Subscriber cost_subscriber;    
     ros::Subscriber yolo_subscriber;
