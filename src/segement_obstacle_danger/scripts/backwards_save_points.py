@@ -15,6 +15,9 @@ MAX_DISTANCE_INSIDE_AREA = 1.0 #1.1 #meters
 ANGLE_REGION_MIN = -2.1 #radians 1.57 = 90 deg
 ANGLE_REGION_MAX = 2.1 #radians
 RADIUS_SIMILARITY = 0.09
+DISTANCE_BACK_SHELF_MIN = 0.5
+DISTANCE_BACK_SHELF_MAX = 0.8
+NUM_POINTS_TO_DETECT_SHELF = 1
 
 class SegmentExtractor:
     def __init__(self):
@@ -31,14 +34,19 @@ class SegmentExtractor:
         self.msg = String()
         self.msg.data = "Clear"
         self.state_changed = False
+        self.has_shelf_back = False
+        self.num_points_inside_shelf_area = 0
 
 
     def states_callback(self,states):
         if states.state != self.last_state and states.state != "DANGER":
+            self.num_points_inside_shelf_area = 0
+            self.has_shelf_back = False
             self.state_changed = True
             self.last_state = states.state
             self.saved_circle_points = []
             self.saved_segment_points = []
+            
 
 
     def calculate_points(self, segment):
@@ -57,7 +65,19 @@ class SegmentExtractor:
 
         return points_interpolated
 
-    def is_point_inside_determined_area(self,pointx,pointy):
+    def is_point_inside_shelf_area(self, pointx, pointy):
+        is_inside_shelf_area = False
+        dist = np.sqrt(pointx * pointx + pointy * pointy)
+        angle = np.arctan2(pointy , pointx)
+        #print("dist shelf", dist, "num_points",self.num_points_inside_shelf_area, "angle",angle)
+        
+        if dist > DISTANCE_BACK_SHELF_MIN  and dist < DISTANCE_BACK_SHELF_MAX: # is inside circular area "Donut"
+            if angle < ANGLE_REGION_MIN or angle > ANGLE_REGION_MAX:
+                is_inside_shelf_area = True
+        
+        return is_inside_shelf_area
+        
+    def is_point_inside_determined_area(self, pointx, pointy):
         is_inside_area = False
         dist = np.sqrt(pointx * pointx + pointy * pointy)
         angle = np.arctan2(pointy , pointx)
@@ -72,7 +92,9 @@ class SegmentExtractor:
         is_circle_inside = False
         if self.is_point_inside_determined_area(circle.center.x,circle.center.y):
             is_circle_inside = True
-        
+        if self.is_point_inside_shelf_area(circle.center.x, circle.center.y):
+            self.num_points_inside_shelf_area = self.num_points_inside_shelf_area + 1
+            
         return is_circle_inside
 
     def is_inside_danger_area_segment(self,segment_points):
@@ -82,6 +104,8 @@ class SegmentExtractor:
             y_point = point[1]
             if self.is_point_inside_determined_area(x_point,y_point):
                 found_point_inside_danger_area = True
+            if self.is_point_inside_shelf_area(x_point,y_point):
+                self.num_points_inside_shelf_area = self.num_points_inside_shelf_area + 1
         return found_point_inside_danger_area
 
         
@@ -100,24 +124,32 @@ class SegmentExtractor:
                 if self.is_inside_danger_area_segment(points_in_segment): # check if segment is in area
                     self.saved_segment_points.append((segment.first_point.x , segment.first_point.y , segment.last_point.x , segment.last_point.y))                            
             self.state_changed = False
+            print("num_pts", self.num_points_inside_shelf_area)
+            if self.num_points_inside_shelf_area >= NUM_POINTS_TO_DETECT_SHELF:
+                self.has_shelf_back = True
+                print("shelf detected")
+            else:
+                print("shelf not detected")
+
         
         #check every circle and segment if was prevoiulsy seen
-        for circle in data.circles:
-            if self.is_inside_danger_area_circles(circle):
-                if len(self.saved_circle_points) > 0:
-                    if not self.is_in_list_circle(circle , self.saved_circle_points):
-                        self.msg.data = "Danger" #not found in list
-                else: # no prevously seen in list
-                    self.msg.data = "Danger"
+        if not self.has_shelf_back:
+            for circle in data.circles:
+                if self.is_inside_danger_area_circles(circle):
+                    if len(self.saved_circle_points) > 0:
+                        if not self.is_in_list_circle(circle , self.saved_circle_points):
+                            self.msg.data = "Danger" #not found in list
+                    else: # no prevously seen in list
+                        self.msg.data = "Danger"
 
-        for segment in data.segments:
-            points_in_segment = self.calculate_points(segment) # list of points in segment
-            if self.is_inside_danger_area_segment(points_in_segment):
-                if len(self.saved_segment_points) > 0:
-                    if not self.is_in_list_segment(segment, self.saved_segment_points):                            
-                        self.msg.data = "Danger" # new segment not in list
-                else: #no previous elements in list
-                    self.msg.data = "Danger"
+            for segment in data.segments:
+                points_in_segment = self.calculate_points(segment) # list of points in segment
+                if self.is_inside_danger_area_segment(points_in_segment):
+                    if len(self.saved_segment_points) > 0:
+                        if not self.is_in_list_segment(segment, self.saved_segment_points):                            
+                            self.msg.data = "Danger" # new segment not in list
+                    else: #no previous elements in list
+                        self.msg.data = "Danger"
         
         self.danger_alert_publisher.publish(self.msg)
 
