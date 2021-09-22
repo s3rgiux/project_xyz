@@ -593,15 +593,15 @@ void calc_100hz(){
     }
     */
     
-    if(mode_idle && karugamo_counter%20 == 0 ){
+    if(mode_idle && karugamo_counter % 20 == 0 ){
         vel_steer.linear.x = 0;
         vel_steer.angular.z = 0;
         speed_publisher.publish(vel_steer);
     }
     
-    float velocity_tresh_stop = 1;
+    float velocity_tresh_sound = 1;
     float control_tresh_sound = 200;
-    if (danger && mode_manual && velocity_motor1 > velocity_tresh_stop && velocity_motor2 > velocity_tresh_stop && ctrl_front_manual > control_tresh_sound ){
+    if (danger && mode_manual && velocity_motor1 > velocity_tresh_sound && velocity_motor2 > velocity_tresh_sound && (ctrl_front_manual > control_tresh_sound ||  control_tresh_sound > ctrl_front_manual > -control_tresh_sound ) ){
         alert_danger_sound();
     }
     distanciaPeople2 = sqrt(center_x * center_x + center_y * center_y) * 100;
