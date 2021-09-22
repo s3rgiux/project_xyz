@@ -599,7 +599,11 @@ void calc_100hz(){
         speed_publisher.publish(vel_steer);
     }
     
-        
+    float velocity_tresh_stop = 1;
+    float control_tresh_sound = 200;
+    if (danger && mode_manual && velocity_motor1 > velocity_tresh_stop && velocity_motor2 > velocity_tresh_stop && ctrl_front_manual > control_tresh_sound ){
+        alert_danger_sound();
+    }
     distanciaPeople2 = sqrt(center_x * center_x + center_y * center_y) * 100;
     ang_peop_lidar = 90 - atan2(center_x,center_y) * 180 / 3.1416 ; 
     if(distanciaPeople2 > near_far_distance){
