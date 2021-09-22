@@ -144,6 +144,7 @@ public:
         has_wp2 = false;
         reseting_map = false;
         saving_map = false;
+        danger_back = false;
     }
     ~test_head(){}
    
@@ -610,7 +611,7 @@ void calc_100hz(){
         stopped_functions = false;
     }
 
-    if (danger){
+    if (danger && danger_back == false){
         ctrl_front_manual = (1-smooth_accel_manual) * (joy_front * max_speed_manual_heavy)+(smooth_accel_manual * ctrl_front_manual);
         if(ctrl_front_manual<0){
             ctrl_side_manual = (1-smooth_accel_side_manual) * (joy_side * max_speed_side_manual) + (smooth_accel_side_manual * ctrl_side_manual);
@@ -877,7 +878,7 @@ void near(){
 void dangerBackCallback(const std_msgs::String& msg){
     // ROS_INFO("%s\n", msg.data.c_str());
     float velocity_tresh_stop = 1.0;
-    float control_tresh_stop = -500.0;
+    float control_tresh_stop = -400.0;
     // ROS_INFO("%d\n", danger);
     // ROS_INFO("%d\n", velocity_motor1 > velocity_tresh_stop);
     // ROS_INFO("%d\n", velocity_motor2 > velocity_tresh_stop);
@@ -889,6 +890,7 @@ void dangerBackCallback(const std_msgs::String& msg){
         alert_danger_voice_sound();
         danger = true;
         free_way = false;
+        danger_back = true;
         detect_cont = 0;
         ctrl_front_follow = 0;
         ctrl_front_manual = 0;
@@ -896,7 +898,7 @@ void dangerBackCallback(const std_msgs::String& msg){
         vel_steer.linear.x = 0;
         vel_steer.linear.y = 0;
         vel_steer.angular.z = 0;
-        for (int i=0;i<15;i++){
+        for (int i=0;i<35;i++){
             alert_danger_no_sound();
             speed_publisher.publish(vel_steer);
             ros::Duration(0.02).sleep();
@@ -907,7 +909,8 @@ void dangerBackCallback(const std_msgs::String& msg){
         pitakuru_state_msg.ctrl_side = ctrl_ang;
         state_pub.publish(pitakuru_state_msg);
     }else if(danger == false && msg.data == "Clear"){
-        free_way=true;
+        free_way = true;
+        //danger_back = false; 
     }
 
     danger_counter++;
@@ -1304,6 +1307,7 @@ void mode_MANUAL(){
 
 // reset variables when the state transit to idle mode
 void mode_IDLE(){
+    danger_back = false;
     vel_steer.linear.x = 0;
     vel_steer.linear.y = 0;
     vel_steer.angular.z = 0;
@@ -1619,7 +1623,7 @@ void joyCallback(const sensor_msgs::Joy::ConstPtr& joy){
                 ros::Duration(0.2).sleep(); 
         }
         if(mode_manual){
-            if(free_way){
+            if(danger == false){
                 if(heavy){
                     ctrl_front_manual = (1-smooth_accel_manual) * (joy -> axes[1] * max_speed_manual_heavy)+(smooth_accel_manual * ctrl_front_manual);
                 }else{
@@ -1630,11 +1634,11 @@ void joyCallback(const sensor_msgs::Joy::ConstPtr& joy){
                 vel_steer.angular.z = ctrl_side_manual;
                 vel_steer.linear.x = ((vel_steer.linear.x/21) * 0.1045)/10;
                 vel_steer.angular.z = ((vel_steer.angular.z/21) * 0.1045)/2;
-                if(joy_counter%8 == 0){
+                if(joy_counter % 8 == 0){
                     speed_publisher.publish(vel_steer);
                     state_pub.publish(pitakuru_state_msg);
                 }
-            }else{
+            }/*else{
        
                 ctrl_front_manual = (1-smooth_accel_manual) * (joy -> axes[1] * max_speed_manual_heavy)+(smooth_accel_manual * ctrl_front_manual);
                 if(ctrl_front_manual<0){
@@ -1653,7 +1657,7 @@ void joyCallback(const sensor_msgs::Joy::ConstPtr& joy){
                         speed_publisher.publish(vel_steer);
                     }
                 }          
-            }            
+            }   */         
         }
 }
    
@@ -1728,6 +1732,7 @@ private:
     bool last_mode_auto;
     bool has_wp1,has_wp2;
     bool reseting_map,saving_map;
+    bool danger_back;
 };
 
 int main(int argc, char **argv)

@@ -55,6 +55,9 @@
 
 <node pkg="segement_obstacle_danger" name="segement_obstacle_danger_node" type="seg_obs_danger_intersection.py"/>
 
+<node pkg="segement_obstacle_danger" name="segement_obstacle_danger_backwards_node" type="backwards_save_points.py"/>
+
+
 
 <!--  -->
 <!-- -->

@@ -11,9 +11,9 @@ import numpy as np
 
 SLEEP_TIME = 0.001
 MIN_DISTANCE_INSIDE_AREA = 0.2 #0.3 #meters
-MAX_DISTANCE_INSIDE_AREA = 0.5 #1.1 #meters
-ANGLE_REGION_MIN = -1.57 #radians
-ANGLE_REGION_MAX = 1.57 #radians
+MAX_DISTANCE_INSIDE_AREA = 1.1 #1.1 #meters
+ANGLE_REGION_MIN = -2.1 #radians 1.57 = 90 deg
+ANGLE_REGION_MAX = 2.1 #radians
 RADIUS_SIMILARITY = 0.05
 
 class SegmentExtractor:
@@ -34,7 +34,7 @@ class SegmentExtractor:
 
 
     def states_callback(self,states):
-        if states.state != self.last_state:
+        if states.state != self.last_state and states.state != "DANGER":
             self.state_changed = True
             self.last_state = states.state
             self.saved_circle_points = []
