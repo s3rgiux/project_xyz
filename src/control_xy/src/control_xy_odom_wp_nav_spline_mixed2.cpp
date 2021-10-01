@@ -601,8 +601,11 @@ void calc_100hz(){
     
     float velocity_tresh_sound = 1;
     float control_tresh_sound = 200;
-    if (danger && mode_manual && velocity_motor1 > velocity_tresh_sound && velocity_motor2 > velocity_tresh_sound && (ctrl_front_manual > control_tresh_sound ||  control_tresh_sound > ctrl_front_manual > -control_tresh_sound ) ){
-        alert_danger_sound();
+    //if (mode_manual && velocity_motor1 > velocity_tresh_sound && velocity_motor2 > velocity_tresh_sound && (ctrl_front_manual > control_tresh_sound ||  control_tresh_sound > ctrl_front_manual > -control_tresh_sound ) ){
+    if (mode_manual  && (ctrl_front_manual > control_tresh_sound ||  -control_tresh_sound > ctrl_front_manual ) ){
+        if(karugamo_counter % 400 == 0 ){
+            alert_saved_wp1_voice_sound();
+        }
     }
     distanciaPeople2 = sqrt(center_x * center_x + center_y * center_y) * 100;
     ang_peop_lidar = 90 - atan2(center_x,center_y) * 180 / 3.1416 ; 
@@ -619,8 +622,8 @@ void calc_100hz(){
         stopped_functions = false;
     }
 
-    //if (danger && danger_back == false){
-    if (danger){
+    if (danger && danger_back == false){
+    //if (danger){
         ctrl_front_manual = (1-smooth_accel_manual) * (joy_front * max_speed_manual_heavy)+(smooth_accel_manual * ctrl_front_manual);
         if(ctrl_front_manual<0){
             ctrl_side_manual = (1-smooth_accel_side_manual) * (joy_side * max_speed_side_manual) + (smooth_accel_side_manual * ctrl_side_manual);
@@ -628,13 +631,13 @@ void calc_100hz(){
             vel_steer.angular.z = ctrl_side_manual;
             vel_steer.linear.x = ((vel_steer.linear.x / 21) * 0.1045) / 10;
             vel_steer.angular.z = ((vel_steer.angular.z / 21) * 0.1045) / 2;
-            if(joy_counter%8 == 0){
+            if(joy_counter % 4 == 0){
                 speed_publisher.publish(vel_steer);
             }
         }else{
             vel_steer.linear.x = 0;
             vel_steer.angular.z = 0;
-            if(joy_counter % 8 == 0){
+            if(joy_counter % 4 == 0){
                 speed_publisher.publish(vel_steer);
             }
         }
@@ -898,7 +901,7 @@ void dangerBackCallback(const std_msgs::String& msg){
     // ROS_INFO("%f\n", velocity_motor2);
     // ROS_INFO("%f\n", velocity_tresh_stop);
     //if ( danger == false && msg.data == "Danger" && velocity_motor1 > velocity_tresh_stop && velocity_motor2 > velocity_tresh_stop && (ctrl_front_follow < control_tresh_stop || ctrl_front_manual < control_tresh_stop) ){
-    if ( danger == false && msg.data == "Danger" && velocity_motor1 > velocity_tresh_stop && velocity_motor2 > velocity_tresh_stop && (ctrl_front_follow < control_tresh_stop || ctrl_front_manual < control_tresh_stop) ){
+    if ( msg.data == "Danger" && velocity_motor1 > velocity_tresh_stop && velocity_motor2 > velocity_tresh_stop && (ctrl_front_follow < control_tresh_stop || ctrl_front_manual < control_tresh_stop) ){
         alert_danger_no_sound();
         alert_danger_voice_sound();
         danger = true;
@@ -921,9 +924,10 @@ void dangerBackCallback(const std_msgs::String& msg){
         pitakuru_state_msg.ctrl_front = ctrl_front_follow;
         pitakuru_state_msg.ctrl_side = ctrl_ang;
         state_pub.publish(pitakuru_state_msg);
-    }else if(danger == false && msg.data == "Clear"){
+    }//else if(danger == false && msg.data == "Clear"){
+    else if(msg.data == "Clear"){    
         free_way = true;
-        //danger_back = false; 
+        danger_back = false; 
     }
 
     danger_counter++;
@@ -1562,8 +1566,8 @@ void joyCallback(const sensor_msgs::Joy::ConstPtr& joy){
                 }
                 if(mode_manual){
                     duration_change -= speed_button * 0.1;
-                    max_speed_manual = max_speed_manual+(speed_button * 400);
-                    max_speed_manual_heavy =  max_speed_manual_heavy+(speed_button * 400);
+                    max_speed_manual = max_speed_manual + (speed_button * 400);
+                    max_speed_manual_heavy =  max_speed_manual_heavy + (speed_button * 400);
                     if(speed_button > 0.5){
                         break_front_distance += 0.05;
                         ROS_INFO("Changed break_distance_front %f ",break_front_distance);
@@ -1663,16 +1667,32 @@ void joyCallback(const sensor_msgs::Joy::ConstPtr& joy){
                         ctrl_front_manual = 0;
                     }
                 }else if (joy_front > -joystick_thresh && - (treshold_detection_decceleration - (treshold_detection_decceleration / 2))  > ctrl_front_manual){
-                    if(  ctrl_front_manual > -treshold_stop ){
+                    if(ctrl_front_manual > -treshold_stop ){
                         vel_steer.linear.x = 0.0;
                         ctrl_front_manual = 0;
                     }
                 }
                 ctrl_side_manual = (1 - smooth_accel_side_manual) * (joy -> axes[0] * max_speed_side_manual)+(smooth_accel_side_manual * ctrl_side_manual);
                 vel_steer.angular.z = ctrl_side_manual;
+
+                float treshold_detection_decceleration_side = 50;//this must be lower than the threshold stop
+                float treshold_stop_side = 70;
+                float joystick_thresh_side = 0.1;
+                if ((joystick_thresh_side > joy_side &&  ctrl_side_manual > treshold_detection_decceleration_side) ){
+                    if( treshold_stop_side > ctrl_side_manual){
+                        vel_steer.angular.z = 0.0;
+                        ctrl_side_manual = 0;
+                    }
+                }else if (joy_side > -joystick_thresh_side && - (treshold_detection_decceleration_side - (treshold_detection_decceleration_side / 2))  > ctrl_side_manual){
+                    if(  ctrl_side_manual > -treshold_stop_side ){
+                        vel_steer.angular.z = 0.0;
+                        ctrl_side_manual = 0;
+                    }
+                }
+
                 vel_steer.linear.x = ((vel_steer.linear.x / 21) * 0.1045) / 10;
                 vel_steer.angular.z = ((vel_steer.angular.z / 21) * 0.1045) / 2;
-                if(joy_counter % 8 == 0){
+                if(joy_counter % 4 == 0){
                     speed_publisher.publish(vel_steer);
                     state_pub.publish(pitakuru_state_msg);
                 }
