@@ -1666,7 +1666,7 @@ void joyCallback(const sensor_msgs::Joy::ConstPtr& joy){
                         vel_steer.linear.x = 0.0;
                         ctrl_front_manual = 0;
                     }
-                }else if (joy_front > -joystick_thresh && - (treshold_detection_decceleration - (treshold_detection_decceleration / 2))  > ctrl_front_manual){
+                }else if (joy_front > -joystick_thresh && -(treshold_detection_decceleration - (treshold_detection_decceleration / 2))  > ctrl_front_manual){
                     if(ctrl_front_manual > -treshold_stop ){
                         vel_steer.linear.x = 0.0;
                         ctrl_front_manual = 0;
