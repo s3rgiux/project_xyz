@@ -6,6 +6,7 @@ import rospy
 from pitakuru.msg import  TriggerAction
 from std_msgs.msg import Int16,Float32
 import subprocess
+import time
 
 
 class SwitchInput(object):
@@ -25,6 +26,7 @@ class SwitchInput(object):
         self.collision = False
         self.status_on = False
         self.count_status = 0
+        self.last_time_heartbeat = time.time()
         
 #//6 collision 5 danger 4 warning 3 karugamo 2 idle 1 manual
 #//8 peop follow 6 collision 5 danger 4 warning 3 nothing 2 idle 1 manual with sound
@@ -74,10 +76,15 @@ class SwitchInput(object):
 
     def shutdown(self):
         rospy.logwarn("shutting down switch node")
-        self.ser.write(b'0')
+        #self.ser.write(b'0')
         self.ser.close()
     
     def update(self):
+        #heartbeat
+        if (time.time()-self.last_time_heartbeat)>1:
+            self.last_time_heartbeat = time.time()
+            self.ser.write(b'9') # 9 will mean heartbeat meesage from ros 
+
         current_states_str = self.ser.readline()
         if not current_states_str:
             return
@@ -90,7 +97,7 @@ class SwitchInput(object):
         self.volts=current_states['A0']
         self.pow_btn=current_states['A1']
         volts_read = Float32()
-        volts_read.data=self.volts*0.03202 #according to the resistor divider
+        volts_read.data = self.volts * 0.03202 #according to the resistor divider
         self.pub_volt.publish(volts_read)
 
         if(self.pow_btn < 200):
@@ -103,7 +110,7 @@ class SwitchInput(object):
                 rospy.logerr("subprocess")
                 subprocess.call(["/home/xavier/pow_off.sh"])
                 rospy.logerr("subprocess")
-                self.status_on=False
+                self.status_on = False
         else:
             self.count_status=0
 

@@ -7,6 +7,7 @@ import rospy
 import subprocess
 from pitakuru.msg import TriggerAction
 from time import sleep
+import time
 
 class SwitchInputOn(object):
     def __init__(self):
@@ -20,16 +21,25 @@ class SwitchInputOn(object):
         self.alert = 0
         self.status_on = False
         self.counter_to_power_on = 0
+        self.last_time_heartbeat = time.time()
+        self.ser.write(b'9') # send 9. which will be intgerpreted as heartbeat meesage
+        self.request_current_state()#to turn on led white
 
     def request_current_state(self):
         self.ser.write(b'7')
 
     def shutdown(self):
         rospy.logwarn("shutting down switch node")
-        self.ser.write(b'0')
+        #self.ser.write(b'0')
         self.ser.close()
     
     def update(self):
+
+        #heartbeat
+        if (time.time()-self.last_time_heartbeat)>1:
+            self.last_time_heartbeat = time.time()
+            self.ser.write(b'9') # 99 will means heartbeat meesage from ros
+
         current_states_str = self.ser.readline()
         if not current_states_str:
             return
