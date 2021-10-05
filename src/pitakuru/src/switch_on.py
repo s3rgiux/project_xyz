@@ -36,7 +36,7 @@ class SwitchInputOn(object):
     def update(self):
 
         #heartbeat
-        if (time.time()-self.last_time_heartbeat)>1:
+        if (time.time() - self.last_time_heartbeat)>1:
             self.last_time_heartbeat = time.time()
             self.ser.write(b'9') # 99 will means heartbeat meesage from ros
 
