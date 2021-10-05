@@ -134,5 +134,11 @@
 <param name="dilation"    type="int"	value="4"/> 
 </node>
 
+<node pkg="costmap" type="auxiliary_lidar_costmap.py" name="cost_aux">
+<param name="dilation"    type="int"	value="4"/> 
+</node>
+
+
+<include file="$(find pitakuru)/launch/second_rplidar.launch"/> 
 
 </launch>
