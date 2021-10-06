@@ -47,9 +47,9 @@ public:
         ang_subscriber2 = nh.subscribe("peopAng2", 2, &test_head::angPeopCallback,this);
         // costmap to avoid obstacles in people following mode calculated in cosmap/main.py?
         cost_subscriber = nh.subscribe("/costdetect", 1, &test_head::costCallback,this);
+        cost_subscriber_auxiliar = nh.subscribe("/costdetect_aux", 1, &test_head::costCallbackAux,this);
         // raw lidar scaned points, for danger mode
         subScan_ = nh.subscribe("/scan", 1, &test_head::scanCallback,this);
-        
         // button and bumper sensors states on pitakuru notificated from arduino
         state_subscriber = nh.subscribe("/trigger_action", 1, &test_head::stateCallback,this);
         // motor vel, current : estimate the load weight and change accel params
@@ -264,6 +264,10 @@ void voltsCallback(const std_msgs::Float32& msg){
 // store received costmap
 void costCallback(const geometry_msgs::Vector3& vector){  
     cost_obst = vector.x;
+}
+// store received costmapauxiliar
+void costCallbackAux(const geometry_msgs::Vector3& vector){  
+    cost_obst_aux = vector.x;
 }
 
 // get motor encoder values and calculate load weight
@@ -813,10 +817,17 @@ void near(){
             ctrl_ang = low_vel_gain_follow * ang_peop_lidar - ctrl_ang/2;
             ctrl_add_side = (1 - smooth_accel_side_follow) * (joy_side * max_speed_side_follow) + (smooth_accel_side_follow * ctrl_add_side);
             pitakuru_state_msg.side_joystick = ctrl_add_side;
+            float cost_mix = 0;
             
+            if (cost_obst > cost_obst_aux){
+                cost_mix = cost_obst;
+            }else{
+                cost_mix = cost_obst_aux; 
+            }
+
             if(ctrl_front_follow  >= vel_detect_costmap){
                 pitakuru_state_msg.state_costmap = "costmap_active";
-                ctrl_side_costmap = (1 - smooth_accel_side_follow) * (cost_obst * max_speed_side_follow) + (smooth_accel_side_follow * ctrl_side_costmap);
+                ctrl_side_costmap = (1 - smooth_accel_side_follow) * (cost_mix * max_speed_side_follow) + (smooth_accel_side_follow * ctrl_side_costmap);
                 pitakuru_state_msg.costmap = ctrl_side_costmap;
             }else{
                 ctrl_side_costmap = 0;
@@ -1732,6 +1743,7 @@ private:
     ros::Publisher  state_pub;
     ros::Subscriber volts_subscriber;
     ros::Subscriber cost_subscriber;    
+    ros::Subscriber cost_subscriber_auxiliar; 
     ros::Subscriber yolo_subscriber;
     ros::Subscriber goal_status_subscriber;
     ros::Subscriber danger_suscriber;
@@ -1765,7 +1777,7 @@ private:
     int  heavy_by_right,heavy_by_left;
     double time_last_to_heavy;
     float velocity_motor1,velocity_motor2,vel_detect_scan,volts_charge,mid_curr_tresh,heavy_curr_tresh,avg_curr_tresh,peak_not_heavy_curr;
-    float cost_obst,ctrl_side_costmap,gain_to_costmap,smooth_accel_costmap,dist_peop_cam,yolo_status;
+    float cost_obst,cost_obst_aux,ctrl_side_costmap,gain_to_costmap,smooth_accel_costmap,dist_peop_cam,yolo_status;
     bool tracking_lidar;
     float lidar_people_status,max_speed_side_follow;
     float max_speed_follow_heavy;
