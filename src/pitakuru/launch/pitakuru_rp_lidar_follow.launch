@@ -34,7 +34,7 @@
     <node pkg="pitakuru" type="sound.py" name="sound" />
 
 
-    <include file="$(find obstacle_detector)/launch/obstacle_detection_rplidar.launch"/>  
+
 
 
 <!-- keiganモーター制御/オドメトリ算出ノード -->
@@ -139,6 +139,10 @@
 </node>
 
 
-<include file="$(find pitakuru)/launch/second_rplidar.launch"/> 
+<include file="$(find pitakuru)/launch/second_lidar.launch"/> 
 
+<!--  -->
+<!-- -->
+<include file="$(find pitakuru)/launch/obstacle_detection_rplidar.launch"/>  
+ 
 </launch>
