@@ -27,7 +27,7 @@
 
     <param name="ranges_num"        value="1000"/>
 
-    <param name="min_scanner_range" value="0.05"/>
+    <param name="min_scanner_range" value="0.30"/>
     <param name="max_scanner_range" value="10.0"/>
 
     <param name="min_x_range"       value="-10.0"/>
@@ -36,7 +36,7 @@
     <param name="max_y_range"       value="10.0"/>
 
     <param name="fixed_frame_id"   value="base_link"/>
-    <param name="target_frame_id"   value="base_link"/>
+    <param name="target_frame_id"   value="laser"/>
     <remap from="/front_scan" to="/scan_main"/>
     <remap from="/rear_scan" to="/scan_aux"/>
 
