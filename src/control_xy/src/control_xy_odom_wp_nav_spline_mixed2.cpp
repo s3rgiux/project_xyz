@@ -817,17 +817,17 @@ void near(){
             ctrl_ang = low_vel_gain_follow * ang_peop_lidar - ctrl_ang/2;
             ctrl_add_side = (1 - smooth_accel_side_follow) * (joy_side * max_speed_side_follow) + (smooth_accel_side_follow * ctrl_add_side);
             pitakuru_state_msg.side_joystick = ctrl_add_side;
-            float cost_mix = 0;
+            //float cost_mix = 0;
             
-            if (cost_obst > cost_obst_aux){
-                cost_mix = cost_obst;
-            }else{
-                cost_mix = cost_obst_aux; 
-            }
+            //if (cost_obst > cost_obst_aux){
+            //   cost_mix = cost_obst;
+            //}else{
+            //    cost_mix = cost_obst_aux; 
+            //}
 
             if(ctrl_front_follow  >= vel_detect_costmap){
                 pitakuru_state_msg.state_costmap = "costmap_active";
-                ctrl_side_costmap = (1 - smooth_accel_side_follow) * (cost_mix * max_speed_side_follow) + (smooth_accel_side_follow * ctrl_side_costmap);
+                ctrl_side_costmap = (1 - smooth_accel_side_follow) * (cost_obst * max_speed_side_follow) + (smooth_accel_side_follow * ctrl_side_costmap);
                 pitakuru_state_msg.costmap = ctrl_side_costmap;
             }else{
                 ctrl_side_costmap = 0;

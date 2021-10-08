@@ -14,18 +14,10 @@
 <remap from="/scan" to="/scan_aux"/>
 </node>
 
-<!-- 
-<node name="scanner_base_to_rear_scanner_aux" pkg="tf2_ros" type="static_transform_publisher" args="0.2 0 0 0 3.141592 -3.141592 base_link laser_aux" if = "$(arg rplidar_flag)"/>
--->
 
 <node name="scanner_base_to_rear_scanner_aux" pkg="tf2_ros" type="static_transform_publisher" args="0.2 0 0 3.141592 0 0 base_link laser_aux" if = "$(arg rplidar_flag)"/>
 
-  <node name="nodelet_manager_aux" pkg="nodelet" type="nodelet" args="manager" output="screen">
-    <param name="num_worker_threads" value="25"/>
-  </node>
 
-  <!-- 
-  <node name="rviz" pkg="rviz" type="rviz" output="screen" args="-d $(find obstacle_detector)/resources/obstacle_detector.rviz"/>
- -->
+
 </launch>
 <!-- -->
