@@ -1,0 +1,1 @@
+/home/xavier/catkin_ws/devel/.private/segement_obstacle_danger/share/roseus/ros/segement_obstacle_danger/msg/SegmentObstacle.l

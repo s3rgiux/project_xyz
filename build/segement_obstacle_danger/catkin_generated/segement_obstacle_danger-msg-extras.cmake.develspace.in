@@ -1,0 +1,2 @@
+set(segement_obstacle_danger_MESSAGE_FILES "/home/xavier/catkin_ws/src/segement_obstacle_danger/msg/CircleObstacle.msg;/home/xavier/catkin_ws/src/segement_obstacle_danger/msg/SegmentObstacle.msg;/home/xavier/catkin_ws/src/segement_obstacle_danger/msg/Obstacles.msg;/home/xavier/catkin_ws/src/segement_obstacle_danger/msg/States.msg;/home/xavier/catkin_ws/src/segement_obstacle_danger/msg/DangerStates.msg")
+set(segement_obstacle_danger_SERVICE_FILES "")

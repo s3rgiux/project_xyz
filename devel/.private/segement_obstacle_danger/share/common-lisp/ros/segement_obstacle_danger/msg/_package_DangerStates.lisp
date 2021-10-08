@@ -1,0 +1,10 @@
+(cl:in-package segement_obstacle_danger-msg)
+(cl:export '(STATE_FORWARD_CIRCLE-VAL
+          STATE_FORWARD_CIRCLE
+          STATE_BACKWARD_CIRCLE-VAL
+          STATE_BACKWARD_CIRCLE
+          STATE_FORWARD_SEGMENT-VAL
+          STATE_FORWARD_SEGMENT
+          STATE_BACKWARD_SEGMENT-VAL
+          STATE_BACKWARD_SEGMENT
+))

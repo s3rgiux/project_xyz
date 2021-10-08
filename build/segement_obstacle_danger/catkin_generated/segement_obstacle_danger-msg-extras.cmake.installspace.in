@@ -1,0 +1,2 @@
+set(segement_obstacle_danger_MESSAGE_FILES "msg/CircleObstacle.msg;msg/SegmentObstacle.msg;msg/Obstacles.msg;msg/States.msg;msg/DangerStates.msg")
+set(segement_obstacle_danger_SERVICE_FILES "")
