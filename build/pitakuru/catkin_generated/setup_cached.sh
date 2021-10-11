@@ -8,6 +8,9 @@
 
 # modified environment variables
 export CMAKE_PREFIX_PATH="/home/xavier/catkin_ws/devel/.private/pitakuru:$CMAKE_PREFIX_PATH"
+export LD_LIBRARY_PATH="/home/xavier/catkin_ws/devel/.private/pitakuru/lib:$LD_LIBRARY_PATH"
+export PKG_CONFIG_PATH="/home/xavier/catkin_ws/devel/.private/pitakuru/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PWD='/home/xavier/catkin_ws/build/pitakuru'
+export PYTHONPATH="/home/xavier/catkin_ws/devel/.private/pitakuru/lib/python2.7/dist-packages:$PYTHONPATH"
 export ROSLISP_PACKAGE_DIRECTORIES="/home/xavier/catkin_ws/devel/.private/pitakuru/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
 export ROS_PACKAGE_PATH="/home/xavier/catkin_ws/src/pitakuru:$ROS_PACKAGE_PATH"
