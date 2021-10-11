@@ -1,0 +1,1 @@
+/home/xavier/catkin_ws/devel/.private/ira_laser_tools/lib/python2.7/dist-packages/ira_laser_tools/cfg/__init__.py

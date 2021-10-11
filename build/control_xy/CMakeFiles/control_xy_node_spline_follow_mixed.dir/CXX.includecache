@@ -111,8 +111,6 @@ geometry_msgs/PoseWithCovarianceStamped.h
 -
 sensor_msgs/LaserScan.h
 /home/xavier/catkin_ws/src/control_xy/src/sensor_msgs/LaserScan.h
-nav_msgs/Odometry.h
--
 sensor_msgs/Joy.h
 /home/xavier/catkin_ws/src/control_xy/src/sensor_msgs/Joy.h
 math.h

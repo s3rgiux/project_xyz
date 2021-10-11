@@ -57,67 +57,7 @@ include CMakeFiles/control_xy_node_spline_follow.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/control_xy_node_spline_follow.dir/flags.make
 
-CMakeFiles/control_xy_node_spline_follow.dir/src/control_xy_odom_wp_nav_spline_follow.cpp.o: CMakeFiles/control_xy_node_spline_follow.dir/flags.make
-CMakeFiles/control_xy_node_spline_follow.dir/src/control_xy_odom_wp_nav_spline_follow.cpp.o: /home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_follow.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/control_xy/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/control_xy_node_spline_follow.dir/src/control_xy_odom_wp_nav_spline_follow.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/control_xy_node_spline_follow.dir/src/control_xy_odom_wp_nav_spline_follow.cpp.o -c /home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_follow.cpp
-
-CMakeFiles/control_xy_node_spline_follow.dir/src/control_xy_odom_wp_nav_spline_follow.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/control_xy_node_spline_follow.dir/src/control_xy_odom_wp_nav_spline_follow.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_follow.cpp > CMakeFiles/control_xy_node_spline_follow.dir/src/control_xy_odom_wp_nav_spline_follow.cpp.i
-
-CMakeFiles/control_xy_node_spline_follow.dir/src/control_xy_odom_wp_nav_spline_follow.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/control_xy_node_spline_follow.dir/src/control_xy_odom_wp_nav_spline_follow.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/xavier/catkin_ws/src/control_xy/src/control_xy_odom_wp_nav_spline_follow.cpp -o CMakeFiles/control_xy_node_spline_follow.dir/src/control_xy_odom_wp_nav_spline_follow.cpp.s
-
-CMakeFiles/control_xy_node_spline_follow.dir/src/control_xy_odom_wp_nav_spline_follow.cpp.o.requires:
-
-.PHONY : CMakeFiles/control_xy_node_spline_follow.dir/src/control_xy_odom_wp_nav_spline_follow.cpp.o.requires
-
-CMakeFiles/control_xy_node_spline_follow.dir/src/control_xy_odom_wp_nav_spline_follow.cpp.o.provides: CMakeFiles/control_xy_node_spline_follow.dir/src/control_xy_odom_wp_nav_spline_follow.cpp.o.requires
-	$(MAKE) -f CMakeFiles/control_xy_node_spline_follow.dir/build.make CMakeFiles/control_xy_node_spline_follow.dir/src/control_xy_odom_wp_nav_spline_follow.cpp.o.provides.build
-.PHONY : CMakeFiles/control_xy_node_spline_follow.dir/src/control_xy_odom_wp_nav_spline_follow.cpp.o.provides
-
-CMakeFiles/control_xy_node_spline_follow.dir/src/control_xy_odom_wp_nav_spline_follow.cpp.o.provides.build: CMakeFiles/control_xy_node_spline_follow.dir/src/control_xy_odom_wp_nav_spline_follow.cpp.o
-
-
-# Object files for target control_xy_node_spline_follow
-control_xy_node_spline_follow_OBJECTS = \
-"CMakeFiles/control_xy_node_spline_follow.dir/src/control_xy_odom_wp_nav_spline_follow.cpp.o"
-
-# External object files for target control_xy_node_spline_follow
-control_xy_node_spline_follow_EXTERNAL_OBJECTS =
-
-/home/xavier/catkin_ws/devel/.private/control_xy/lib/control_xy/control_xy_node_spline_follow: CMakeFiles/control_xy_node_spline_follow.dir/src/control_xy_odom_wp_nav_spline_follow.cpp.o
-/home/xavier/catkin_ws/devel/.private/control_xy/lib/control_xy/control_xy_node_spline_follow: CMakeFiles/control_xy_node_spline_follow.dir/build.make
-/home/xavier/catkin_ws/devel/.private/control_xy/lib/control_xy/control_xy_node_spline_follow: /opt/ros/melodic/lib/libroscpp.so
-/home/xavier/catkin_ws/devel/.private/control_xy/lib/control_xy/control_xy_node_spline_follow: /usr/lib/aarch64-linux-gnu/libboost_filesystem.so
-/home/xavier/catkin_ws/devel/.private/control_xy/lib/control_xy/control_xy_node_spline_follow: /opt/ros/melodic/lib/librosconsole.so
-/home/xavier/catkin_ws/devel/.private/control_xy/lib/control_xy/control_xy_node_spline_follow: /opt/ros/melodic/lib/librosconsole_log4cxx.so
-/home/xavier/catkin_ws/devel/.private/control_xy/lib/control_xy/control_xy_node_spline_follow: /opt/ros/melodic/lib/librosconsole_backend_interface.so
-/home/xavier/catkin_ws/devel/.private/control_xy/lib/control_xy/control_xy_node_spline_follow: /usr/lib/aarch64-linux-gnu/liblog4cxx.so
-/home/xavier/catkin_ws/devel/.private/control_xy/lib/control_xy/control_xy_node_spline_follow: /usr/lib/aarch64-linux-gnu/libboost_regex.so
-/home/xavier/catkin_ws/devel/.private/control_xy/lib/control_xy/control_xy_node_spline_follow: /opt/ros/melodic/lib/libxmlrpcpp.so
-/home/xavier/catkin_ws/devel/.private/control_xy/lib/control_xy/control_xy_node_spline_follow: /opt/ros/melodic/lib/libroscpp_serialization.so
-/home/xavier/catkin_ws/devel/.private/control_xy/lib/control_xy/control_xy_node_spline_follow: /opt/ros/melodic/lib/librostime.so
-/home/xavier/catkin_ws/devel/.private/control_xy/lib/control_xy/control_xy_node_spline_follow: /opt/ros/melodic/lib/libcpp_common.so
-/home/xavier/catkin_ws/devel/.private/control_xy/lib/control_xy/control_xy_node_spline_follow: /usr/lib/aarch64-linux-gnu/libboost_system.so
-/home/xavier/catkin_ws/devel/.private/control_xy/lib/control_xy/control_xy_node_spline_follow: /usr/lib/aarch64-linux-gnu/libboost_thread.so
-/home/xavier/catkin_ws/devel/.private/control_xy/lib/control_xy/control_xy_node_spline_follow: /usr/lib/aarch64-linux-gnu/libboost_chrono.so
-/home/xavier/catkin_ws/devel/.private/control_xy/lib/control_xy/control_xy_node_spline_follow: /usr/lib/aarch64-linux-gnu/libboost_date_time.so
-/home/xavier/catkin_ws/devel/.private/control_xy/lib/control_xy/control_xy_node_spline_follow: /usr/lib/aarch64-linux-gnu/libboost_atomic.so
-/home/xavier/catkin_ws/devel/.private/control_xy/lib/control_xy/control_xy_node_spline_follow: /usr/lib/aarch64-linux-gnu/libpthread.so
-/home/xavier/catkin_ws/devel/.private/control_xy/lib/control_xy/control_xy_node_spline_follow: /usr/lib/aarch64-linux-gnu/libconsole_bridge.so.0.4
-/home/xavier/catkin_ws/devel/.private/control_xy/lib/control_xy/control_xy_node_spline_follow: CMakeFiles/control_xy_node_spline_follow.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/xavier/catkin_ws/build/control_xy/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/xavier/catkin_ws/devel/.private/control_xy/lib/control_xy/control_xy_node_spline_follow"
-	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/control_xy_node_spline_follow.dir/link.txt --verbose=$(VERBOSE)
-
-# Rule to build all files generated by this target.
-CMakeFiles/control_xy_node_spline_follow.dir/build: /home/xavier/catkin_ws/devel/.private/control_xy/lib/control_xy/control_xy_node_spline_follow
-
-.PHONY : CMakeFiles/control_xy_node_spline_follow.dir/build
-
-CMakeFiles/control_xy_node_spline_follow.dir/requires: CMakeFiles/control_xy_node_spline_follow.dir/src/control_xy_odom_wp_nav_spline_follow.cpp.o.requires
+CMakeFiles/control_xy_node_spline_follow.dir/requires:
 
 .PHONY : CMakeFiles/control_xy_node_spline_follow.dir/requires
 

@@ -1,0 +1,8 @@
+prefix=/home/xavier/catkin_ws/devel/.private/ira_laser_tools
+
+Name: ira_laser_tools
+Description: Description of ira_laser_tools
+Version: 1.0.6
+Cflags: -I/home/xavier/catkin_ws/devel/.private/ira_laser_tools/include
+Libs: -L${prefix}/lib 
+Requires: 
