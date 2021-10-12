@@ -8,6 +8,7 @@ from sensor_msgs.msg import LaserScan
 import numpy as np
 import time
 import math
+import tf2_ros
 
 MIN_ANGLE = -3.12413907051
 MAX_ANGLE = 3.14159274101
@@ -43,24 +44,27 @@ class laser_merger:
         self.received_laser1 = False
         self.received_laser2 = False
         print("created")
+
+        self.tfBuffer = tf2_ros.Buffer()
+        self.listener = tf2_ros.TransformListener(self.tfBuffer)
         #self.dilation = rospy.get_param("/cost_detect/dilation")
 
 
     def callbackLaserAux(self,msg):
         self.laser_tmp2 = msg
         self.received_laser2 = True
-        #print("received aux ")
-        #print("received aux ", len(msg.ranges))
+
 
     def callbackLaserMain(self,msg):
         self.laser_tmp1 = msg
         self.received_laser1 = True
         self.laser_merged.ranges = self.mergeLasers(self.laser_tmp1 , self.laser_tmp2)
         self.laser_merged.header = self.laser_tmp1.header
+        self.laser_merged.header.stamp = rospy.Time.now()
         self.laser_merged = self.make_intensities(self.laser_merged)
-        self.laser_merged.angle_increment = 0.00217863568
+        self.laser_merged.angle_increment = ( np.absolute(self.min_ang) + np.absolute(self.max_ang) ) / STEPS
         self.laser_merged_publisher.publish(self.laser_merged)
-        #print("received main ", len(msg.ranges))
+
     def make_intensities(self,laser):
         for i, element in enumerate(laser.ranges):
             if math.isinf(element):
@@ -72,7 +76,6 @@ class laser_merger:
     def mergeLaserRanges(self, destinationRanges, laser_source):
         step = len(destinationRanges) / len(laser_source.ranges)
         for i, element in enumerate(laser_source.ranges):
-            #print("step ",step ,"index", int(i * step),"value", element)
             destinationRanges[int(i * step)] = element
 
         return destinationRanges
@@ -87,12 +90,24 @@ class laser_merger:
 
     def mergeLasers(self,laser_main,laser_aux):
         result_merged_ranges = np.zeros(STEPS)
-        #print("first merge")
         result_merged_ranges = self.mergeLaserRangesAux(result_merged_ranges , laser_aux)
-        #print("second merge")
         result_merged_ranges = self.mergeLaserRanges(result_merged_ranges , laser_main)
         
         return result_merged_ranges
+    
+    def lookTransformationMain(self):
+        try:
+            trans = self.tfBuffer.lookup_transform('base_link', 'laser', rospy.Time())
+        except (tf2_ros.LookupException, tf2_ros.ConnectivityException, tf2_ros.ExtrapolationException):
+            #rate.sleep()
+            continue
+    
+    def lookTransformationAux(self):
+        try:
+            trans = self.tfBuffer.lookup_transform('base_link', 'laser_aux', rospy.Time())
+        except (tf2_ros.LookupException, tf2_ros.ConnectivityException, tf2_ros.ExtrapolationException):
+            #rate.sleep()
+            continue
         
 
 def main(args):
