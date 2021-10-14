@@ -1,3 +1,8 @@
 build/
 devel/
 logs/
+build/
+devel/
+*.bag
+*.pgm
+*.yaml
