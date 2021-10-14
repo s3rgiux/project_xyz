@@ -18,17 +18,22 @@ TIME_INCREMENT = 0.003
 RANGE_MIN = 0.35
 RANGE_MAX = 50
 
-TRANSLATION_X_MAIN = 0.0
-TRANSLATION_Y_MAIN = 0.0
+TRANSLATION_X_MAIN  = 0.0
+TRANSLATION_Y_MAIN  = 0.0
 ANGLE_ROTATION_MAIN = 0.0
 
-TRANSLATION_X_AUX = 0.0
-TRANSLATION_Y_AUX = -0.20 #-0.20
+TRANSLATION_X_AUX  = 0.0
+TRANSLATION_Y_AUX  = -0.20
 ANGLE_ROTATION_AUX = 0.0
 
 ANGLE_SIMILARITY = 0.008
 
 
+#Coordianted system used
+#  Robot Front
+#       Y
+# -X        X
+#      -Y
 class laser_merger:
 
     def __init__(self):
