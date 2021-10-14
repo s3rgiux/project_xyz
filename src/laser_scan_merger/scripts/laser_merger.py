@@ -18,6 +18,15 @@ TIME_INCREMENT = 0.003
 RANGE_MIN = 0.35
 RANGE_MAX = 50
 
+TRANSLATION_X_MAIN = 0.0
+TRANSLATION_Y_MAIN = 0.0
+ANGLE_ROTATION_MAIN = 0.0
+
+TRANSLATION_X_AUX = 0.0
+TRANSLATION_Y_AUX = -0.20 #-0.20
+ANGLE_ROTATION_AUX = 0.0
+
+ANGLE_SIMILARITY = 0.008
 
 
 class laser_merger:
@@ -39,56 +48,41 @@ class laser_merger:
         self.laser_merged.time_increment = self.time_increment
         self.laser_merged.range_min = RANGE_MIN
         self.laser_merged.range_max = RANGE_MAX
-        
         self.laser_merged.ranges = np.zeros(STEPS)
-        self.laser_merged.intensities = 47 * np.ones(STEPS)
-        self.received_laser1 = False
-        self.received_laser2 = False
-        self.processing = False
+        self.laser_merged.intensities = 47 * np.ones(STEPS)       
         self.tfBuffer = tf2_ros.Buffer()
         self.listener = tf2_ros.TransformListener(self.tfBuffer)
 
-        #self.dilation = rospy.get_param("/cost_detect/dilation")
-
+        self.min_angle_aux  = rospy.get_param("/laser_merge/min_angle_aux" , MIN_ANGLE)
+        self.max_angle_aux  = rospy.get_param("/laser_merge/max_angle_aux" , MAX_ANGLE)
+        self.min_angle_main = rospy.get_param("/laser_merge/min_angle_main", MIN_ANGLE)
+        self.max_angle_main = rospy.get_param("/laser_merge/max_angle_main", MAX_ANGLE)
 
     def callbackLaserAux(self,msg):
-        TRANSLATION_X_AUX = 0.0
-        TRANSLATION_Y_AUX = -0.20 #-0.20
-        ANGLE_ROTATION_AUX = 0.0
-        
         #apply trasnformation
         arrayXY2 = self.convertLaserRangesToXY(msg)
         transformedXY2 = self.apply_transformation(arrayXY2 , TRANSLATION_X_AUX , TRANSLATION_Y_AUX , ANGLE_ROTATION_AUX)
         newranges2 = self.convertPointsToLaserRanges(transformedXY2, msg) #self.convertXYtoLAserRanges(transformedXY2, msg)
         msg = self.replaceLaserRanges(newranges2, msg)
-
         self.laser_tmp2 = msg
 
 
     def callbackLaserMain(self,msg):
-        TRANSLATION_X_MAIN = 0.0
-        TRANSLATION_Y_MAIN = 0.0
-        ANGLE_ROTATION_MAIN = 0.0
-
         self.laser_tmp1 = msg
-
-        self.received_laser1 = True
-        self.processing = True
         #ApplyTransformations in case is needed
-
         #arrayXY1 = self.convertLaserRangesToXY(self.laser_tmp1)
         #transformedXY1 = self.apply_transformation(arrayXY1 , TRANSLATION_X_MAIN , TRANSLATION_Y_MAIN , ANGLE_ROTATION_MAIN)
         #newranges = self.convertXYtoLAserRanges(transformedXY1, self.laser_tmp1)
         #self.laser_tmp1 = self.replaceLaserRanges(newranges, self.laser_tmp1)
-
         #Merge
         self.laser_merged.ranges = self.mergeLasers(self.laser_tmp1 , self.laser_tmp2)#laser_aux)
         self.laser_merged.header = self.laser_tmp1.header
         self.laser_merged.header.stamp = rospy.Time.now()
         self.laser_merged = self.make_intensities(self.laser_merged)
         self.laser_merged.angle_increment = ( np.absolute(self.min_ang) + np.absolute(self.max_ang) ) / STEPS
+
         self.laser_merged_publisher.publish(self.laser_merged)
-        self.processing = False
+
 
     
     #generate the intensities of the laaser
@@ -96,6 +90,7 @@ class laser_merger:
         for i, element in enumerate(laser.ranges):
             if math.isinf(element):
                 laser.intensities[i] = 0
+
         return laser
 
     # replace ranges on laser message for new_ranges_array
@@ -104,6 +99,7 @@ class laser_merger:
         for i , element in enumerate(new_ranges):
             new_laser_ranges[i] = element
         laser.ranges = new_laser_ranges
+
         return laser
 
     # put ranges of laser into a new array
@@ -133,21 +129,21 @@ class laser_merger:
                 if r > RANGE_MIN and r < RANGE_MAX:
                     distance_angles.append((auxiliarly_array[i][0] , auxiliarly_array[i][1]))
         serted_list = sorted(distance_angles, key=lambda x: x[1])
-        tolerance = 0.008
+        
         angles_array = np.arange(laser_ref.angle_min, laser_ref.angle_max, laser_ref.angle_increment)
         index = 0
         for element in auxiliarly_array:
             for i in range( index, len(laser_ref.ranges)): 
-                if angles_array[i-1] - element[1] < tolerance and angles_array[i-1] - element[1] > -tolerance:
+                if angles_array[i-1] - element[1] < ANGLE_SIMILARITY and angles_array[i-1] - element[1] > -ANGLE_SIMILARITY:
                     index = i
                     new_laser_ranges[i] = element[0]
                     break
+
         return new_laser_ranges
 
     # apply transformation matrix
     def apply_transformation(self, points, translation_x, translation_y, angle):
         transformed_points = np.zeros((len(points),2))
-
         for i, point in enumerate(points):
             if not np.isinf(point[0]):
                 x = point[0]  * np.cos(angle)  +  point[1] * np.sin(angle) + translation_x #rotation_x + traslation
@@ -179,7 +175,6 @@ class laser_merger:
             converted_array[i] = r
 
         return converted_array
-
 
     #merge main and aux lasers
     def mergeLasers(self,laser_main,laser_aux):
