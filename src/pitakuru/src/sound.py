@@ -89,6 +89,9 @@ class SoundNode():
         elif(data.data == 117):
             self.route = "/home/xavier/catkin_ws/src/pitakuru/assets/AGV_warning_3s.wav"
             self.entered = True
+        elif(data.data == 118):
+            self.route = "/home/xavier/catkin_ws/src/pitakuru/assets/careful.mp3"
+            self.entered = True
 
         if(self.entered):
             try: 

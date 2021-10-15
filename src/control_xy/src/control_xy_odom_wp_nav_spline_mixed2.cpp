@@ -1158,6 +1158,11 @@ void  alert_goto_wp2_voice_sound(){
     alerts_publisher.publish(alerts_command);
 }
 
+void  alert_careful_voice_sound(){
+    alerts_command.data = 118;
+    alerts_publisher.publish(alerts_command);
+}
+
 
 // reset all variables when the state was changed
 void reset_variables() {

@@ -2,10 +2,11 @@
 # -*- coding: utf-8 -*-
 from __future__ import division
 import rospy
+import time
 from time import sleep
 from std_msgs.msg import String
+from std_msgs.msg import Int16
 from segement_obstacle_danger.msg import Obstacles, States , DangerStates
-import time
 from scipy.interpolate import interp1d
 import numpy as np
 
@@ -19,11 +20,13 @@ DISTANCE_BACK_SHELF_MIN = 0.5
 DISTANCE_BACK_SHELF_MAX = 0.8
 NUM_POINTS_TO_DETECT_SHELF = 1
 
+
 class SegmentExtractor:
     def __init__(self):
         print("Segements_obtacles")
         #self.danger_alert_publisher = rospy.Publisher("danger_states",DangerStates, queue_size=1)
         self.danger_alert_publisher = rospy.Publisher("danger_back",String, queue_size=1)
+        self.sound_alert_publisher = rospy.Publisher("alerts",Int16, queue_size=1)
         self.obs_sub = rospy.Subscriber('/raw_obstacles', Obstacles, self.obstacles_callback, queue_size=1)
         self.states_sub = rospy.Subscriber('/pitakuru_states', States, self.states_callback, queue_size=1)
         self.front_detection = 1.1 #rospy.get_param("/obj_track/front_detection")
@@ -31,6 +34,7 @@ class SegmentExtractor:
         self.saved_circle_points = []
         self.saved_segment_points = []
         self.last_state = "IDLE"
+        self.current_state = "IDLE"
         self.msg = String()
         self.msg.data = "Clear"
         self.state_changed = False
@@ -40,6 +44,7 @@ class SegmentExtractor:
 
     def states_callback(self,states):
         if states.state != self.last_state and states.state != "DANGER":
+            self.current_state = states.state
             self.num_points_inside_shelf_area = 0
             self.has_shelf_back = False
             self.state_changed = True
@@ -128,6 +133,11 @@ class SegmentExtractor:
             if self.num_points_inside_shelf_area >= NUM_POINTS_TO_DETECT_SHELF:
                 self.has_shelf_back = True
                 print("shelf detected")
+                if self.current_state == "MANUAL":
+                    rospy.sleep(1)
+                    alert = Int16()
+                    alert.data = 118
+                    self.sound_alert_publisher.publish(alert)
             else:
                 print("shelf not detected")
 
