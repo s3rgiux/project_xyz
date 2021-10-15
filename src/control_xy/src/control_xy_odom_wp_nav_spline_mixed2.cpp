@@ -562,7 +562,7 @@ void restart_follow_variables(){
 // - notification led, sound to arduino
 void calc_100hz(){
     karugamo_counter++;
-    /*if(danger == false && collision == false && mode_manual){
+    if(danger == false && collision == false && mode_manual){
         ros::Time time_now = ros::Time::now();
         ros::Duration duration = time_now - last_time_btn_save_reset_pressed;
             if((duration.toSec())<17 && reseting_map){
@@ -595,7 +595,7 @@ void calc_100hz(){
     }else if(danger == false && collision == false && mode_auto && velocity_motor1<0.15 && velocity_motor2<0.15){
         alert_yellow_no_sound();
     }
-    */
+    
     
     if(mode_idle && karugamo_counter % 20 == 0 ){
         vel_steer.linear.x = 0;
