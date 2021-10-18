@@ -1433,7 +1433,7 @@ void joyCallback(const sensor_msgs::Joy::ConstPtr& joy){
         btn_goto_wp2 = false;
         btn_reset_map = false;
         btn_saving_map = false;
-        if(use_ps4_controller == 1){
+        if(self.use_ps4_controller == 1){
             speed_button = joy -> axes[7];
             btn_x = joy -> buttons[1];
             btn_triangle = joy -> buttons[3];
@@ -1455,8 +1455,12 @@ void joyCallback(const sensor_msgs::Joy::ConstPtr& joy){
             btn_circle = joy -> buttons[3];
             btn_save_wp1 = joy -> buttons[10];
             btn_save_wp2 = joy -> buttons[11];
-            btn_goto_wp1 = joy -> buttons[4];
-            btn_goto_wp2 = joy -> buttons[5];
+            btn_goto_wp1 = joy -> buttons[6];
+            btn_goto_wp2 = joy -> buttons[7];
+            btn_reset_map = joy -> buttons[4];
+            btn_saving_map = joy -> buttons[5];
+            btn_l3 = joy -> buttons[8];
+            btn_r3 = joy -> buttons[9];
         }
 
         if(btn_circle == 1  && collision == false && danger != true){

@@ -21,7 +21,7 @@ class GmapAmcl(object):
         self.wrini = 0.0
         self.read_vars()
         rospy.init_node('gmap_amcl')
-        self.sub = rospy.Subscriber('/j0/joy', Joy, self.callback,queue_size=1)
+        self.sub = rospy.Subscriber('/j0/joy', Joy, self.joy_callback,queue_size=1)
         rospy.Subscriber('/amcl_pose', geometry_msgs.msg.PoseWithCovarianceStamped, self.pose_callback, queue_size=1)
         rospy.Subscriber('/odom', Odometry, self.odom_callback, queue_size=1)
         self.pub_sys = rospy.Publisher('/syscommand', String, queue_size=1)
@@ -34,7 +34,8 @@ class GmapAmcl(object):
         self.saved_pose = geometry_msgs.msg.PoseWithCovarianceStamped()
         self.pose_amcl = geometry_msgs.msg.PoseWithCovarianceStamped()
 
-        
+        self.use_ps4_controller = False        
+
         self.gmap_running = False
         self.amcl_running = True
         self.last_time = time.time()
@@ -96,24 +97,44 @@ class GmapAmcl(object):
         print ("zini:",self.zrini)
         print ("wini:",self.wrini)
     def read_button(self, joy):
+
         (circle, triangle, square, cross,l1,r1,pad) = (False, False, False, False,False,False,False)
         button = joy.buttons
-        if len(button) < 4:
-            return (circle, triangle, square, cross,l1,r1,pad)
-        if button[1]:
-            cross = True
-        if button[2]:
-            circle = True
-        if button[3]:
-            triangle = True
-        if button[0]:
-            square = True
-        if button[4]:
-            l1 = True
-        if button[5]:
-            r1 = True
-        if button[13]:
-            pad = True
+        if self.use_ps4_controller:
+            if len(button) < 4:
+                return (circle, triangle, square, cross,l1,r1,pad)
+            if button[1]:
+                cross = True
+            if button[2]:
+                circle = True
+            if button[3]:
+                triangle = True
+            if button[0]:
+                square = True
+            if button[4]:
+                l1 = True
+            if button[5]:
+                r1 = True
+            if button[13]:
+                pad = True
+        else:
+            if len(button) < 4:
+                return (circle, triangle, square, cross,l1,r1,pad)
+            if button[2]:
+                cross = True
+            if button[3]:
+                circle = True
+            if button[1]:
+                triangle = True
+            if button[0]:
+                square = True
+            if button[4]:
+                l1 = True
+            if button[5]:
+                r1 = True
+            if button[9]:
+                pad = True #joystick button r3
+
 
         return (circle, triangle, square, cross,l1,r1,pad)
 
@@ -139,7 +160,7 @@ class GmapAmcl(object):
             if(time.time() - self.last_time > 1.0):
                 self.write_vars()
 
-    def callback(self, joy):
+    def joy_callback(self, joy):
 
         (circle, triangle, square, cross, l1, r1,pad) = self.read_button(joy)
 
@@ -161,6 +182,7 @@ class GmapAmcl(object):
                     subprocess.call(["rosnode","kill","/map_server"])
                     sleep(0.15)
                 self.gmap_running=True
+                print("launching gmapping")
                 subprocess.Popen(["roslaunch", "pitakuru", "gmapping.launch"])
                 print("launched gmapping")
                 sleep(0.2)

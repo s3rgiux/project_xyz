@@ -82,7 +82,8 @@ class laser_merger:
         #Merge
         self.laser_merged.ranges = self.mergeLasers(self.laser_tmp1 , self.laser_tmp2)#laser_aux)
         self.laser_merged.header = self.laser_tmp1.header
-        self.laser_merged.header.stamp = rospy.Time.now()
+        self.laser_merged.header = self.laser_tmp1.header
+        self.laser_merged.time_increment = self.laser_tmp1.time_increment
         self.laser_merged = self.make_intensities(self.laser_merged)
         self.laser_merged.angle_increment = ( np.absolute(self.min_ang) + np.absolute(self.max_ang) ) / STEPS
 

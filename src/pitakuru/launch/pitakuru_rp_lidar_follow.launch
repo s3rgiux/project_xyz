@@ -129,7 +129,6 @@
 </node>
 
 
-
 <node pkg="costmap" type="main.py" name="cost_detect">
 <param name="dilation"    type="int"	value="4"/> 
 </node>

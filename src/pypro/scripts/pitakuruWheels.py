@@ -146,9 +146,6 @@ class KeyCtrll:
             self.velm=result.resp.body[1]
             if result.resp.body[2] < 30 and result.resp.body[2] > -30:
                 self.current_motor=result.resp.body[2]
-    
-    def move_to_handler(self, pos):
-        result = self.pc.send_receive(cmd.MoveTo(self.id_L, pos))
 
     def close(self):
         self.pc.sclose()
@@ -169,8 +166,7 @@ class PitWheels:
         #self.pcon2 = pyproacmd.ProaCmd('/dev/serial/by-id/usb-STMicroelectronics_STM32_STLink_066EFF343537424257252456-if02', baud)
         self.left_w_rpm= Float32()
         self.right_w_rpm= Float32()
-        #self.left_w_dev = KeyCtrlr(pc)
-        #self.right_w_dev = KeyCtrll(pc2)
+
         sleep(0.1)
         	
         try:
@@ -292,9 +288,6 @@ class PitWheels:
         print(angs)
 
     
-
-    
-
     def reset_odom(self):
         self.x[0]=0
         self.x[1]=0
