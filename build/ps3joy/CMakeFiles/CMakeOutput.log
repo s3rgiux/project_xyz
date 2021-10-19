@@ -28,28 +28,28 @@ The CXX compiler identification is GNU, found in "/home/xavier/catkin_ws/build/p
 Determining if the C compiler works passed with the following output:
 Change Dir: /home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_bb319/fast"
-/usr/bin/make -f CMakeFiles/cmTC_bb319.dir/build.make CMakeFiles/cmTC_bb319.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_83ca4/fast"
+/usr/bin/make -f CMakeFiles/cmTC_83ca4.dir/build.make CMakeFiles/cmTC_83ca4.dir/build
 make[1]: Entering directory '/home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_bb319.dir/testCCompiler.c.o
-/usr/bin/cc    -o CMakeFiles/cmTC_bb319.dir/testCCompiler.c.o   -c /home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMakeTmp/testCCompiler.c
-Linking C executable cmTC_bb319
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_bb319.dir/link.txt --verbose=1
-/usr/bin/cc      CMakeFiles/cmTC_bb319.dir/testCCompiler.c.o  -o cmTC_bb319 
+Building C object CMakeFiles/cmTC_83ca4.dir/testCCompiler.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_83ca4.dir/testCCompiler.c.o   -c /home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTC_83ca4
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_83ca4.dir/link.txt --verbose=1
+/usr/bin/cc      CMakeFiles/cmTC_83ca4.dir/testCCompiler.c.o  -o cmTC_83ca4 
 make[1]: Leaving directory '/home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMakeTmp'
 
 
 Detecting C compiler ABI info compiled with the following output:
 Change Dir: /home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_2e0b6/fast"
-/usr/bin/make -f CMakeFiles/cmTC_2e0b6.dir/build.make CMakeFiles/cmTC_2e0b6.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_bae5b/fast"
+/usr/bin/make -f CMakeFiles/cmTC_bae5b.dir/build.make CMakeFiles/cmTC_bae5b.dir/build
 make[1]: Entering directory '/home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_2e0b6.dir/CMakeCCompilerABI.c.o
-/usr/bin/cc    -o CMakeFiles/cmTC_2e0b6.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.10/Modules/CMakeCCompilerABI.c
-Linking C executable cmTC_2e0b6
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2e0b6.dir/link.txt --verbose=1
-/usr/bin/cc     -v CMakeFiles/cmTC_2e0b6.dir/CMakeCCompilerABI.c.o  -o cmTC_2e0b6 
+Building C object CMakeFiles/cmTC_bae5b.dir/CMakeCCompilerABI.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_bae5b.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.10/Modules/CMakeCCompilerABI.c
+Linking C executable cmTC_bae5b
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_bae5b.dir/link.txt --verbose=1
+/usr/bin/cc     -v CMakeFiles/cmTC_bae5b.dir/CMakeCCompilerABI.c.o  -o cmTC_bae5b 
 Using built-in specs.
 COLLECT_GCC=/usr/bin/cc
 COLLECT_LTO_WRAPPER=/usr/lib/gcc/aarch64-linux-gnu/5/lto-wrapper
@@ -59,8 +59,8 @@ Thread model: posix
 gcc version 5.5.0 20171010 (Ubuntu/Linaro 5.5.0-12ubuntu1) 
 COMPILER_PATH=/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/:/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/
 LIBRARY_PATH=/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/:/usr/lib/gcc/aarch64-linux-gnu/5/../../../../lib/:/lib/aarch64-linux-gnu/:/lib/../lib/:/usr/lib/aarch64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/aarch64-linux-gnu/5/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_2e0b6' '-mlittle-endian' '-mabi=lp64'
- /usr/lib/gcc/aarch64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/aarch64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/aarch64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/ccSR3GLa.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr --hash-style=gnu --as-needed -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux --fix-cortex-a53-843419 -pie -z now -z relro -o cmTC_2e0b6 /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/Scrt1.o /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crti.o /usr/lib/gcc/aarch64-linux-gnu/5/crtbeginS.o -L/usr/lib/gcc/aarch64-linux-gnu/5 -L/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu -L/usr/lib/gcc/aarch64-linux-gnu/5/../../../../lib -L/lib/aarch64-linux-gnu -L/lib/../lib -L/usr/lib/aarch64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/aarch64-linux-gnu/5/../../.. CMakeFiles/cmTC_2e0b6.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/aarch64-linux-gnu/5/crtend.o /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_bae5b' '-mlittle-endian' '-mabi=lp64'
+ /usr/lib/gcc/aarch64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/aarch64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/aarch64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/ccVKPpbZ.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr --hash-style=gnu --as-needed -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux --fix-cortex-a53-843419 -pie -z now -z relro -o cmTC_bae5b /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/Scrt1.o /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crti.o /usr/lib/gcc/aarch64-linux-gnu/5/crtbeginS.o -L/usr/lib/gcc/aarch64-linux-gnu/5 -L/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu -L/usr/lib/gcc/aarch64-linux-gnu/5/../../../../lib -L/lib/aarch64-linux-gnu -L/lib/../lib -L/usr/lib/aarch64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/aarch64-linux-gnu/5/../../.. CMakeFiles/cmTC_bae5b.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/aarch64-linux-gnu/5/crtend.o /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crtn.o
 make[1]: Leaving directory '/home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMakeTmp'
 
 
@@ -68,14 +68,14 @@ Parsed C implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
   ignore line: [Change Dir: /home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_2e0b6/fast"]
-  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_2e0b6.dir/build.make CMakeFiles/cmTC_2e0b6.dir/build]
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_bae5b/fast"]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_bae5b.dir/build.make CMakeFiles/cmTC_bae5b.dir/build]
   ignore line: [make[1]: Entering directory '/home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMakeTmp']
-  ignore line: [Building C object CMakeFiles/cmTC_2e0b6.dir/CMakeCCompilerABI.c.o]
-  ignore line: [/usr/bin/cc    -o CMakeFiles/cmTC_2e0b6.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.10/Modules/CMakeCCompilerABI.c]
-  ignore line: [Linking C executable cmTC_2e0b6]
-  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2e0b6.dir/link.txt --verbose=1]
-  ignore line: [/usr/bin/cc     -v CMakeFiles/cmTC_2e0b6.dir/CMakeCCompilerABI.c.o  -o cmTC_2e0b6 ]
+  ignore line: [Building C object CMakeFiles/cmTC_bae5b.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/usr/bin/cc    -o CMakeFiles/cmTC_bae5b.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.10/Modules/CMakeCCompilerABI.c]
+  ignore line: [Linking C executable cmTC_bae5b]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_bae5b.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/cc     -v CMakeFiles/cmTC_bae5b.dir/CMakeCCompilerABI.c.o  -o cmTC_bae5b ]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/usr/bin/cc]
   ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/aarch64-linux-gnu/5/lto-wrapper]
@@ -85,13 +85,13 @@ Parsed C implicit link information from above output:
   ignore line: [gcc version 5.5.0 20171010 (Ubuntu/Linaro 5.5.0-12ubuntu1) ]
   ignore line: [COMPILER_PATH=/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/:/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/]
   ignore line: [LIBRARY_PATH=/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/:/usr/lib/gcc/aarch64-linux-gnu/5/../../../../lib/:/lib/aarch64-linux-gnu/:/lib/../lib/:/usr/lib/aarch64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/aarch64-linux-gnu/5/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_2e0b6' '-mlittle-endian' '-mabi=lp64']
-  link line: [ /usr/lib/gcc/aarch64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/aarch64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/aarch64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/ccSR3GLa.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr --hash-style=gnu --as-needed -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux --fix-cortex-a53-843419 -pie -z now -z relro -o cmTC_2e0b6 /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/Scrt1.o /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crti.o /usr/lib/gcc/aarch64-linux-gnu/5/crtbeginS.o -L/usr/lib/gcc/aarch64-linux-gnu/5 -L/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu -L/usr/lib/gcc/aarch64-linux-gnu/5/../../../../lib -L/lib/aarch64-linux-gnu -L/lib/../lib -L/usr/lib/aarch64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/aarch64-linux-gnu/5/../../.. CMakeFiles/cmTC_2e0b6.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/aarch64-linux-gnu/5/crtend.o /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crtn.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_bae5b' '-mlittle-endian' '-mabi=lp64']
+  link line: [ /usr/lib/gcc/aarch64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/aarch64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/aarch64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/ccVKPpbZ.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr --hash-style=gnu --as-needed -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux --fix-cortex-a53-843419 -pie -z now -z relro -o cmTC_bae5b /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/Scrt1.o /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crti.o /usr/lib/gcc/aarch64-linux-gnu/5/crtbeginS.o -L/usr/lib/gcc/aarch64-linux-gnu/5 -L/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu -L/usr/lib/gcc/aarch64-linux-gnu/5/../../../../lib -L/lib/aarch64-linux-gnu -L/lib/../lib -L/usr/lib/aarch64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/aarch64-linux-gnu/5/../../.. CMakeFiles/cmTC_bae5b.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/aarch64-linux-gnu/5/crtend.o /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crtn.o]
     arg [/usr/lib/gcc/aarch64-linux-gnu/5/collect2] ==> ignore
     arg [-plugin] ==> ignore
     arg [/usr/lib/gcc/aarch64-linux-gnu/5/liblto_plugin.so] ==> ignore
     arg [-plugin-opt=/usr/lib/gcc/aarch64-linux-gnu/5/lto-wrapper] ==> ignore
-    arg [-plugin-opt=-fresolution=/tmp/ccSR3GLa.res] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccVKPpbZ.res] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
     arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -112,7 +112,7 @@ Parsed C implicit link information from above output:
     arg [-znow] ==> ignore
     arg [-zrelro] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_2e0b6] ==> ignore
+    arg [cmTC_bae5b] ==> ignore
     arg [/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/Scrt1.o] ==> ignore
     arg [/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crti.o] ==> ignore
     arg [/usr/lib/gcc/aarch64-linux-gnu/5/crtbeginS.o] ==> ignore
@@ -124,7 +124,7 @@ Parsed C implicit link information from above output:
     arg [-L/usr/lib/aarch64-linux-gnu] ==> dir [/usr/lib/aarch64-linux-gnu]
     arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
     arg [-L/usr/lib/gcc/aarch64-linux-gnu/5/../../..] ==> dir [/usr/lib/gcc/aarch64-linux-gnu/5/../../..]
-    arg [CMakeFiles/cmTC_2e0b6.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [CMakeFiles/cmTC_bae5b.dir/CMakeCCompilerABI.c.o] ==> ignore
     arg [-lgcc] ==> lib [gcc]
     arg [--push-state] ==> ignore
     arg [--as-needed] ==> ignore
@@ -156,14 +156,14 @@ Parsed C implicit link information from above output:
 Detecting C [-std=c11] compiler features compiled with the following output:
 Change Dir: /home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_75989/fast"
-/usr/bin/make -f CMakeFiles/cmTC_75989.dir/build.make CMakeFiles/cmTC_75989.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_2d7bf/fast"
+/usr/bin/make -f CMakeFiles/cmTC_2d7bf.dir/build.make CMakeFiles/cmTC_2d7bf.dir/build
 make[1]: Entering directory '/home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_75989.dir/feature_tests.c.o
-/usr/bin/cc   -std=c11 -o CMakeFiles/cmTC_75989.dir/feature_tests.c.o   -c /home/xavier/catkin_ws/build/ps3joy/CMakeFiles/feature_tests.c
-Linking C executable cmTC_75989
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_75989.dir/link.txt --verbose=1
-/usr/bin/cc      CMakeFiles/cmTC_75989.dir/feature_tests.c.o  -o cmTC_75989 
+Building C object CMakeFiles/cmTC_2d7bf.dir/feature_tests.c.o
+/usr/bin/cc   -std=c11 -o CMakeFiles/cmTC_2d7bf.dir/feature_tests.c.o   -c /home/xavier/catkin_ws/build/ps3joy/CMakeFiles/feature_tests.c
+Linking C executable cmTC_2d7bf
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2d7bf.dir/link.txt --verbose=1
+/usr/bin/cc      CMakeFiles/cmTC_2d7bf.dir/feature_tests.c.o  -o cmTC_2d7bf 
 make[1]: Leaving directory '/home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMakeTmp'
 
 
@@ -176,14 +176,14 @@ make[1]: Leaving directory '/home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMake
 Detecting C [-std=c99] compiler features compiled with the following output:
 Change Dir: /home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_066c9/fast"
-/usr/bin/make -f CMakeFiles/cmTC_066c9.dir/build.make CMakeFiles/cmTC_066c9.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_f1a36/fast"
+/usr/bin/make -f CMakeFiles/cmTC_f1a36.dir/build.make CMakeFiles/cmTC_f1a36.dir/build
 make[1]: Entering directory '/home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_066c9.dir/feature_tests.c.o
-/usr/bin/cc   -std=c99 -o CMakeFiles/cmTC_066c9.dir/feature_tests.c.o   -c /home/xavier/catkin_ws/build/ps3joy/CMakeFiles/feature_tests.c
-Linking C executable cmTC_066c9
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_066c9.dir/link.txt --verbose=1
-/usr/bin/cc      CMakeFiles/cmTC_066c9.dir/feature_tests.c.o  -o cmTC_066c9 
+Building C object CMakeFiles/cmTC_f1a36.dir/feature_tests.c.o
+/usr/bin/cc   -std=c99 -o CMakeFiles/cmTC_f1a36.dir/feature_tests.c.o   -c /home/xavier/catkin_ws/build/ps3joy/CMakeFiles/feature_tests.c
+Linking C executable cmTC_f1a36
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f1a36.dir/link.txt --verbose=1
+/usr/bin/cc      CMakeFiles/cmTC_f1a36.dir/feature_tests.c.o  -o cmTC_f1a36 
 make[1]: Leaving directory '/home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMakeTmp'
 
 
@@ -196,14 +196,14 @@ make[1]: Leaving directory '/home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMake
 Detecting C [-std=c90] compiler features compiled with the following output:
 Change Dir: /home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_51c43/fast"
-/usr/bin/make -f CMakeFiles/cmTC_51c43.dir/build.make CMakeFiles/cmTC_51c43.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_d8c82/fast"
+/usr/bin/make -f CMakeFiles/cmTC_d8c82.dir/build.make CMakeFiles/cmTC_d8c82.dir/build
 make[1]: Entering directory '/home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_51c43.dir/feature_tests.c.o
-/usr/bin/cc   -std=c90 -o CMakeFiles/cmTC_51c43.dir/feature_tests.c.o   -c /home/xavier/catkin_ws/build/ps3joy/CMakeFiles/feature_tests.c
-Linking C executable cmTC_51c43
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_51c43.dir/link.txt --verbose=1
-/usr/bin/cc      CMakeFiles/cmTC_51c43.dir/feature_tests.c.o  -o cmTC_51c43 
+Building C object CMakeFiles/cmTC_d8c82.dir/feature_tests.c.o
+/usr/bin/cc   -std=c90 -o CMakeFiles/cmTC_d8c82.dir/feature_tests.c.o   -c /home/xavier/catkin_ws/build/ps3joy/CMakeFiles/feature_tests.c
+Linking C executable cmTC_d8c82
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d8c82.dir/link.txt --verbose=1
+/usr/bin/cc      CMakeFiles/cmTC_d8c82.dir/feature_tests.c.o  -o cmTC_d8c82 
 make[1]: Leaving directory '/home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMakeTmp'
 
 
@@ -214,28 +214,28 @@ make[1]: Leaving directory '/home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMake
 Determining if the CXX compiler works passed with the following output:
 Change Dir: /home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_14164/fast"
-/usr/bin/make -f CMakeFiles/cmTC_14164.dir/build.make CMakeFiles/cmTC_14164.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_6f1d6/fast"
+/usr/bin/make -f CMakeFiles/cmTC_6f1d6.dir/build.make CMakeFiles/cmTC_6f1d6.dir/build
 make[1]: Entering directory '/home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_14164.dir/testCXXCompiler.cxx.o
-/usr/bin/c++     -o CMakeFiles/cmTC_14164.dir/testCXXCompiler.cxx.o -c /home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
-Linking CXX executable cmTC_14164
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_14164.dir/link.txt --verbose=1
-/usr/bin/c++       CMakeFiles/cmTC_14164.dir/testCXXCompiler.cxx.o  -o cmTC_14164 
+Building CXX object CMakeFiles/cmTC_6f1d6.dir/testCXXCompiler.cxx.o
+/usr/bin/c++     -o CMakeFiles/cmTC_6f1d6.dir/testCXXCompiler.cxx.o -c /home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTC_6f1d6
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6f1d6.dir/link.txt --verbose=1
+/usr/bin/c++       CMakeFiles/cmTC_6f1d6.dir/testCXXCompiler.cxx.o  -o cmTC_6f1d6 
 make[1]: Leaving directory '/home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMakeTmp'
 
 
 Detecting CXX compiler ABI info compiled with the following output:
 Change Dir: /home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_69c44/fast"
-/usr/bin/make -f CMakeFiles/cmTC_69c44.dir/build.make CMakeFiles/cmTC_69c44.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_95eb2/fast"
+/usr/bin/make -f CMakeFiles/cmTC_95eb2.dir/build.make CMakeFiles/cmTC_95eb2.dir/build
 make[1]: Entering directory '/home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_69c44.dir/CMakeCXXCompilerABI.cpp.o
-/usr/bin/c++     -o CMakeFiles/cmTC_69c44.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.10/Modules/CMakeCXXCompilerABI.cpp
-Linking CXX executable cmTC_69c44
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_69c44.dir/link.txt --verbose=1
-/usr/bin/c++      -v CMakeFiles/cmTC_69c44.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_69c44 
+Building CXX object CMakeFiles/cmTC_95eb2.dir/CMakeCXXCompilerABI.cpp.o
+/usr/bin/c++     -o CMakeFiles/cmTC_95eb2.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.10/Modules/CMakeCXXCompilerABI.cpp
+Linking CXX executable cmTC_95eb2
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_95eb2.dir/link.txt --verbose=1
+/usr/bin/c++      -v CMakeFiles/cmTC_95eb2.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_95eb2 
 Using built-in specs.
 COLLECT_GCC=/usr/bin/c++
 COLLECT_LTO_WRAPPER=/usr/lib/gcc/aarch64-linux-gnu/5/lto-wrapper
@@ -245,8 +245,8 @@ Thread model: posix
 gcc version 5.5.0 20171010 (Ubuntu/Linaro 5.5.0-12ubuntu1) 
 COMPILER_PATH=/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/:/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/
 LIBRARY_PATH=/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/:/usr/lib/gcc/aarch64-linux-gnu/5/../../../../lib/:/lib/aarch64-linux-gnu/:/lib/../lib/:/usr/lib/aarch64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/aarch64-linux-gnu/5/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_69c44' '-shared-libgcc' '-mlittle-endian' '-mabi=lp64'
- /usr/lib/gcc/aarch64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/aarch64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/aarch64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/cc4ybgd6.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/ --build-id --eh-frame-hdr --hash-style=gnu --as-needed -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux --fix-cortex-a53-843419 -pie -z now -z relro -o cmTC_69c44 /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/Scrt1.o /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crti.o /usr/lib/gcc/aarch64-linux-gnu/5/crtbeginS.o -L/usr/lib/gcc/aarch64-linux-gnu/5 -L/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu -L/usr/lib/gcc/aarch64-linux-gnu/5/../../../../lib -L/lib/aarch64-linux-gnu -L/lib/../lib -L/usr/lib/aarch64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/aarch64-linux-gnu/5/../../.. CMakeFiles/cmTC_69c44.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/aarch64-linux-gnu/5/crtend.o /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_95eb2' '-shared-libgcc' '-mlittle-endian' '-mabi=lp64'
+ /usr/lib/gcc/aarch64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/aarch64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/aarch64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/ccIzqlpS.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/ --build-id --eh-frame-hdr --hash-style=gnu --as-needed -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux --fix-cortex-a53-843419 -pie -z now -z relro -o cmTC_95eb2 /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/Scrt1.o /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crti.o /usr/lib/gcc/aarch64-linux-gnu/5/crtbeginS.o -L/usr/lib/gcc/aarch64-linux-gnu/5 -L/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu -L/usr/lib/gcc/aarch64-linux-gnu/5/../../../../lib -L/lib/aarch64-linux-gnu -L/lib/../lib -L/usr/lib/aarch64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/aarch64-linux-gnu/5/../../.. CMakeFiles/cmTC_95eb2.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/aarch64-linux-gnu/5/crtend.o /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crtn.o
 make[1]: Leaving directory '/home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMakeTmp'
 
 
@@ -254,14 +254,14 @@ Parsed CXX implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
   ignore line: [Change Dir: /home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_69c44/fast"]
-  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_69c44.dir/build.make CMakeFiles/cmTC_69c44.dir/build]
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_95eb2/fast"]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_95eb2.dir/build.make CMakeFiles/cmTC_95eb2.dir/build]
   ignore line: [make[1]: Entering directory '/home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMakeTmp']
-  ignore line: [Building CXX object CMakeFiles/cmTC_69c44.dir/CMakeCXXCompilerABI.cpp.o]
-  ignore line: [/usr/bin/c++     -o CMakeFiles/cmTC_69c44.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.10/Modules/CMakeCXXCompilerABI.cpp]
-  ignore line: [Linking CXX executable cmTC_69c44]
-  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_69c44.dir/link.txt --verbose=1]
-  ignore line: [/usr/bin/c++      -v CMakeFiles/cmTC_69c44.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_69c44 ]
+  ignore line: [Building CXX object CMakeFiles/cmTC_95eb2.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/usr/bin/c++     -o CMakeFiles/cmTC_95eb2.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.10/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Linking CXX executable cmTC_95eb2]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_95eb2.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/c++      -v CMakeFiles/cmTC_95eb2.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_95eb2 ]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/usr/bin/c++]
   ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/aarch64-linux-gnu/5/lto-wrapper]
@@ -271,13 +271,13 @@ Parsed CXX implicit link information from above output:
   ignore line: [gcc version 5.5.0 20171010 (Ubuntu/Linaro 5.5.0-12ubuntu1) ]
   ignore line: [COMPILER_PATH=/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/:/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/]
   ignore line: [LIBRARY_PATH=/usr/lib/gcc/aarch64-linux-gnu/5/:/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/:/usr/lib/gcc/aarch64-linux-gnu/5/../../../../lib/:/lib/aarch64-linux-gnu/:/lib/../lib/:/usr/lib/aarch64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/aarch64-linux-gnu/5/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_69c44' '-shared-libgcc' '-mlittle-endian' '-mabi=lp64']
-  link line: [ /usr/lib/gcc/aarch64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/aarch64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/aarch64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/cc4ybgd6.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/ --build-id --eh-frame-hdr --hash-style=gnu --as-needed -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux --fix-cortex-a53-843419 -pie -z now -z relro -o cmTC_69c44 /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/Scrt1.o /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crti.o /usr/lib/gcc/aarch64-linux-gnu/5/crtbeginS.o -L/usr/lib/gcc/aarch64-linux-gnu/5 -L/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu -L/usr/lib/gcc/aarch64-linux-gnu/5/../../../../lib -L/lib/aarch64-linux-gnu -L/lib/../lib -L/usr/lib/aarch64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/aarch64-linux-gnu/5/../../.. CMakeFiles/cmTC_69c44.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/aarch64-linux-gnu/5/crtend.o /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crtn.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_95eb2' '-shared-libgcc' '-mlittle-endian' '-mabi=lp64']
+  link line: [ /usr/lib/gcc/aarch64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/aarch64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/aarch64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/ccIzqlpS.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --sysroot=/ --build-id --eh-frame-hdr --hash-style=gnu --as-needed -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux --fix-cortex-a53-843419 -pie -z now -z relro -o cmTC_95eb2 /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/Scrt1.o /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crti.o /usr/lib/gcc/aarch64-linux-gnu/5/crtbeginS.o -L/usr/lib/gcc/aarch64-linux-gnu/5 -L/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu -L/usr/lib/gcc/aarch64-linux-gnu/5/../../../../lib -L/lib/aarch64-linux-gnu -L/lib/../lib -L/usr/lib/aarch64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/aarch64-linux-gnu/5/../../.. CMakeFiles/cmTC_95eb2.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/aarch64-linux-gnu/5/crtend.o /usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crtn.o]
     arg [/usr/lib/gcc/aarch64-linux-gnu/5/collect2] ==> ignore
     arg [-plugin] ==> ignore
     arg [/usr/lib/gcc/aarch64-linux-gnu/5/liblto_plugin.so] ==> ignore
     arg [-plugin-opt=/usr/lib/gcc/aarch64-linux-gnu/5/lto-wrapper] ==> ignore
-    arg [-plugin-opt=-fresolution=/tmp/cc4ybgd6.res] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccIzqlpS.res] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
     arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -298,7 +298,7 @@ Parsed CXX implicit link information from above output:
     arg [-znow] ==> ignore
     arg [-zrelro] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_69c44] ==> ignore
+    arg [cmTC_95eb2] ==> ignore
     arg [/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/Scrt1.o] ==> ignore
     arg [/usr/lib/gcc/aarch64-linux-gnu/5/../../../aarch64-linux-gnu/crti.o] ==> ignore
     arg [/usr/lib/gcc/aarch64-linux-gnu/5/crtbeginS.o] ==> ignore
@@ -310,7 +310,7 @@ Parsed CXX implicit link information from above output:
     arg [-L/usr/lib/aarch64-linux-gnu] ==> dir [/usr/lib/aarch64-linux-gnu]
     arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
     arg [-L/usr/lib/gcc/aarch64-linux-gnu/5/../../..] ==> dir [/usr/lib/gcc/aarch64-linux-gnu/5/../../..]
-    arg [CMakeFiles/cmTC_69c44.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [CMakeFiles/cmTC_95eb2.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
     arg [-lstdc++] ==> lib [stdc++]
     arg [-lm] ==> lib [m]
     arg [-lgcc_s] ==> lib [gcc_s]
@@ -338,14 +338,14 @@ Parsed CXX implicit link information from above output:
 Detecting CXX [-std=c++1z] compiler features compiled with the following output:
 Change Dir: /home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_ba2db/fast"
-/usr/bin/make -f CMakeFiles/cmTC_ba2db.dir/build.make CMakeFiles/cmTC_ba2db.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_a68bd/fast"
+/usr/bin/make -f CMakeFiles/cmTC_a68bd.dir/build.make CMakeFiles/cmTC_a68bd.dir/build
 make[1]: Entering directory '/home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_ba2db.dir/feature_tests.cxx.o
-/usr/bin/c++    -std=c++1z -o CMakeFiles/cmTC_ba2db.dir/feature_tests.cxx.o -c /home/xavier/catkin_ws/build/ps3joy/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_ba2db
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ba2db.dir/link.txt --verbose=1
-/usr/bin/c++       CMakeFiles/cmTC_ba2db.dir/feature_tests.cxx.o  -o cmTC_ba2db 
+Building CXX object CMakeFiles/cmTC_a68bd.dir/feature_tests.cxx.o
+/usr/bin/c++    -std=c++1z -o CMakeFiles/cmTC_a68bd.dir/feature_tests.cxx.o -c /home/xavier/catkin_ws/build/ps3joy/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_a68bd
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a68bd.dir/link.txt --verbose=1
+/usr/bin/c++       CMakeFiles/cmTC_a68bd.dir/feature_tests.cxx.o  -o cmTC_a68bd 
 make[1]: Leaving directory '/home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMakeTmp'
 
 
@@ -411,14 +411,14 @@ make[1]: Leaving directory '/home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMake
 Detecting CXX [-std=c++14] compiler features compiled with the following output:
 Change Dir: /home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_97030/fast"
-/usr/bin/make -f CMakeFiles/cmTC_97030.dir/build.make CMakeFiles/cmTC_97030.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_3ce4b/fast"
+/usr/bin/make -f CMakeFiles/cmTC_3ce4b.dir/build.make CMakeFiles/cmTC_3ce4b.dir/build
 make[1]: Entering directory '/home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_97030.dir/feature_tests.cxx.o
-/usr/bin/c++    -std=c++14 -o CMakeFiles/cmTC_97030.dir/feature_tests.cxx.o -c /home/xavier/catkin_ws/build/ps3joy/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_97030
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_97030.dir/link.txt --verbose=1
-/usr/bin/c++       CMakeFiles/cmTC_97030.dir/feature_tests.cxx.o  -o cmTC_97030 
+Building CXX object CMakeFiles/cmTC_3ce4b.dir/feature_tests.cxx.o
+/usr/bin/c++    -std=c++14 -o CMakeFiles/cmTC_3ce4b.dir/feature_tests.cxx.o -c /home/xavier/catkin_ws/build/ps3joy/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_3ce4b
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3ce4b.dir/link.txt --verbose=1
+/usr/bin/c++       CMakeFiles/cmTC_3ce4b.dir/feature_tests.cxx.o  -o cmTC_3ce4b 
 make[1]: Leaving directory '/home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMakeTmp'
 
 
@@ -484,14 +484,14 @@ make[1]: Leaving directory '/home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMake
 Detecting CXX [-std=c++11] compiler features compiled with the following output:
 Change Dir: /home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_b7708/fast"
-/usr/bin/make -f CMakeFiles/cmTC_b7708.dir/build.make CMakeFiles/cmTC_b7708.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_c5d04/fast"
+/usr/bin/make -f CMakeFiles/cmTC_c5d04.dir/build.make CMakeFiles/cmTC_c5d04.dir/build
 make[1]: Entering directory '/home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_b7708.dir/feature_tests.cxx.o
-/usr/bin/c++    -std=c++11 -o CMakeFiles/cmTC_b7708.dir/feature_tests.cxx.o -c /home/xavier/catkin_ws/build/ps3joy/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_b7708
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b7708.dir/link.txt --verbose=1
-/usr/bin/c++       CMakeFiles/cmTC_b7708.dir/feature_tests.cxx.o  -o cmTC_b7708 
+Building CXX object CMakeFiles/cmTC_c5d04.dir/feature_tests.cxx.o
+/usr/bin/c++    -std=c++11 -o CMakeFiles/cmTC_c5d04.dir/feature_tests.cxx.o -c /home/xavier/catkin_ws/build/ps3joy/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_c5d04
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c5d04.dir/link.txt --verbose=1
+/usr/bin/c++       CMakeFiles/cmTC_c5d04.dir/feature_tests.cxx.o  -o cmTC_c5d04 
 make[1]: Leaving directory '/home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMakeTmp'
 
 
@@ -557,14 +557,14 @@ make[1]: Leaving directory '/home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMake
 Detecting CXX [-std=c++98] compiler features compiled with the following output:
 Change Dir: /home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_12917/fast"
-/usr/bin/make -f CMakeFiles/cmTC_12917.dir/build.make CMakeFiles/cmTC_12917.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_29f96/fast"
+/usr/bin/make -f CMakeFiles/cmTC_29f96.dir/build.make CMakeFiles/cmTC_29f96.dir/build
 make[1]: Entering directory '/home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_12917.dir/feature_tests.cxx.o
-/usr/bin/c++    -std=c++98 -o CMakeFiles/cmTC_12917.dir/feature_tests.cxx.o -c /home/xavier/catkin_ws/build/ps3joy/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_12917
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_12917.dir/link.txt --verbose=1
-/usr/bin/c++       CMakeFiles/cmTC_12917.dir/feature_tests.cxx.o  -o cmTC_12917 
+Building CXX object CMakeFiles/cmTC_29f96.dir/feature_tests.cxx.o
+/usr/bin/c++    -std=c++98 -o CMakeFiles/cmTC_29f96.dir/feature_tests.cxx.o -c /home/xavier/catkin_ws/build/ps3joy/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_29f96
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_29f96.dir/link.txt --verbose=1
+/usr/bin/c++       CMakeFiles/cmTC_29f96.dir/feature_tests.cxx.o  -o cmTC_29f96 
 make[1]: Leaving directory '/home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMakeTmp'
 
 
@@ -628,28 +628,28 @@ make[1]: Leaving directory '/home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMake
 Determining if the include file pthread.h exists passed with the following output:
 Change Dir: /home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_3ee65/fast"
-/usr/bin/make -f CMakeFiles/cmTC_3ee65.dir/build.make CMakeFiles/cmTC_3ee65.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_fbdbe/fast"
+/usr/bin/make -f CMakeFiles/cmTC_fbdbe.dir/build.make CMakeFiles/cmTC_fbdbe.dir/build
 make[1]: Entering directory '/home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_3ee65.dir/CheckIncludeFile.c.o
-/usr/bin/cc    -o CMakeFiles/cmTC_3ee65.dir/CheckIncludeFile.c.o   -c /home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMakeTmp/CheckIncludeFile.c
-Linking C executable cmTC_3ee65
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3ee65.dir/link.txt --verbose=1
-/usr/bin/cc      -rdynamic CMakeFiles/cmTC_3ee65.dir/CheckIncludeFile.c.o  -o cmTC_3ee65 
+Building C object CMakeFiles/cmTC_fbdbe.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_fbdbe.dir/CheckIncludeFile.c.o   -c /home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_fbdbe
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_fbdbe.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_fbdbe.dir/CheckIncludeFile.c.o  -o cmTC_fbdbe 
 make[1]: Leaving directory '/home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMakeTmp'
 
 
 Determining if the function pthread_create exists in the pthread passed with the following output:
 Change Dir: /home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_d8f99/fast"
-/usr/bin/make -f CMakeFiles/cmTC_d8f99.dir/build.make CMakeFiles/cmTC_d8f99.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_4458e/fast"
+/usr/bin/make -f CMakeFiles/cmTC_4458e.dir/build.make CMakeFiles/cmTC_4458e.dir/build
 make[1]: Entering directory '/home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_d8f99.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_d8f99.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
-Linking C executable cmTC_d8f99
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d8f99.dir/link.txt --verbose=1
-/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_d8f99.dir/CheckFunctionExists.c.o  -o cmTC_d8f99 -lpthread 
+Building C object CMakeFiles/cmTC_4458e.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_4458e.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
+Linking C executable cmTC_4458e
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4458e.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_4458e.dir/CheckFunctionExists.c.o  -o cmTC_4458e -lpthread 
 make[1]: Leaving directory '/home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMakeTmp'
 
 

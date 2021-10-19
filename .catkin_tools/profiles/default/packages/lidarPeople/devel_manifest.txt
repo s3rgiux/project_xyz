@@ -1,5 +1,0 @@
-lidarPeople
-/home/xavier/catkin_ws/devel/.private/lidarPeople/cmake.lock /home/xavier/catkin_ws/devel/./cmake.lock
-/home/xavier/catkin_ws/devel/.private/lidarPeople/share/lidarPeople/cmake/lidarPeopleConfig-version.cmake /home/xavier/catkin_ws/devel/share/lidarPeople/cmake/lidarPeopleConfig-version.cmake
-/home/xavier/catkin_ws/devel/.private/lidarPeople/share/lidarPeople/cmake/lidarPeopleConfig.cmake /home/xavier/catkin_ws/devel/share/lidarPeople/cmake/lidarPeopleConfig.cmake
-/home/xavier/catkin_ws/devel/.private/lidarPeople/lib/pkgconfig/lidarPeople.pc /home/xavier/catkin_ws/devel/lib/pkgconfig/lidarPeople.pc

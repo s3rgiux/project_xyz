@@ -8,8 +8,6 @@
 
 # modified environment variables
 export CMAKE_PREFIX_PATH="/home/xavier/catkin_ws/devel/.private/transfo:$CMAKE_PREFIX_PATH"
-export LD_LIBRARY_PATH="/home/xavier/catkin_ws/devel/.private/transfo/lib:$LD_LIBRARY_PATH"
 export PWD='/home/xavier/catkin_ws/build/transfo'
-export PYTHONPATH="/home/xavier/catkin_ws/devel/.private/transfo/lib/python2.7/dist-packages:$PYTHONPATH"
 export ROSLISP_PACKAGE_DIRECTORIES="/home/xavier/catkin_ws/devel/.private/transfo/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
 export ROS_PACKAGE_PATH="/home/xavier/catkin_ws/src/transfo:$ROS_PACKAGE_PATH"

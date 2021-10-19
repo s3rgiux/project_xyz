@@ -1433,7 +1433,7 @@ void joyCallback(const sensor_msgs::Joy::ConstPtr& joy){
         btn_goto_wp2 = false;
         btn_reset_map = false;
         btn_saving_map = false;
-        if(self.use_ps4_controller == 1){
+        if(use_ps4_controller == 1){
             speed_button = joy -> axes[7];
             btn_x = joy -> buttons[1];
             btn_triangle = joy -> buttons[3];

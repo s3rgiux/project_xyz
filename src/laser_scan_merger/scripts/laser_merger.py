@@ -37,10 +37,10 @@ ANGLE_SIMILARITY = 0.008
 class laser_merger:
 
     def __init__(self):
-        self.laser_merged_publisher = rospy.Publisher("/scan_merged", LaserScan, queue_size = 1)
-        self.laser_debug = rospy.Publisher("/scan_debug", LaserScan, queue_size = 1)
-        self.laser1_sub = rospy.Subscriber('/scan_main', LaserScan, self.callbackLaserMain, queue_size = 1)
-        self.laser2_sub = rospy.Subscriber('/scan_aux', LaserScan, self.callbackLaserAux, queue_size = 1)
+        self.laser_merged_publisher = rospy.Publisher("/scan_merged", LaserScan, queue_size = 5)
+        self.laser_debug = rospy.Publisher("/scan_debug", LaserScan, queue_size = 2)
+        self.laser1_sub = rospy.Subscriber('/scan_main', LaserScan, self.callbackLaserMain, queue_size = 2)
+        self.laser2_sub = rospy.Subscriber('/scan_aux', LaserScan, self.callbackLaserAux, queue_size = 2)
         self.min_ang = MIN_ANGLE
         self.max_ang = MAX_ANGLE
         self.angle_increment = ANGLE_INCREMENT
@@ -82,8 +82,9 @@ class laser_merger:
         #Merge
         self.laser_merged.ranges = self.mergeLasers(self.laser_tmp1 , self.laser_tmp2)#laser_aux)
         self.laser_merged.header = self.laser_tmp1.header
-        self.laser_merged.header = self.laser_tmp1.header
-        self.laser_merged.time_increment = self.laser_tmp1.scan_time/len(self.laser_merged.ranges)#self.laser_tmp1.time_increment
+        self.laser_merged.header.frame_id = "laser_merged"
+        self.laser_merged.header.stamp = rospy.Time.now()
+        self.laser_merged.time_increment = self.laser_tmp1.scan_time/len(self.laser_merged.ranges)
         self.laser_merged = self.make_intensities(self.laser_merged)
         self.laser_merged.angle_increment = ( np.absolute(self.min_ang) + np.absolute(self.max_ang) ) / STEPS
         self.laser_merged.scan_time = self.laser_tmp1.scan_time
@@ -185,7 +186,7 @@ class laser_merger:
 
     #merge main and aux lasers
     def mergeLasers(self,laser_main,laser_aux):
-        result_merged_ranges = np.zeros(STEPS)
+        result_merged_ranges = np.ones(STEPS) * np.inf#np.zeros(STEPS)
         result_merged_ranges = self.mergeLaserRangesAux(result_merged_ranges , laser_aux)
         result_merged_ranges = self.mergeLaserRanges(result_merged_ranges , laser_main)
         

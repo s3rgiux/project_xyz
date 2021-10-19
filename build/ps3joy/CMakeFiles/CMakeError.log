@@ -1,23 +1,23 @@
 Determining if the pthread_create exist failed with the following output:
 Change Dir: /home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_38020/fast"
-/usr/bin/make -f CMakeFiles/cmTC_38020.dir/build.make CMakeFiles/cmTC_38020.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_a2f94/fast"
+/usr/bin/make -f CMakeFiles/cmTC_a2f94.dir/build.make CMakeFiles/cmTC_a2f94.dir/build
 make[1]: Entering directory '/home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_38020.dir/CheckSymbolExists.c.o
-/usr/bin/cc    -o CMakeFiles/cmTC_38020.dir/CheckSymbolExists.c.o   -c /home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMakeTmp/CheckSymbolExists.c
-Linking C executable cmTC_38020
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_38020.dir/link.txt --verbose=1
-/usr/bin/cc      -rdynamic CMakeFiles/cmTC_38020.dir/CheckSymbolExists.c.o  -o cmTC_38020 
-CMakeFiles/cmTC_38020.dir/CheckSymbolExists.c.o: In function `main':
+Building C object CMakeFiles/cmTC_a2f94.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_a2f94.dir/CheckSymbolExists.c.o   -c /home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_a2f94
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a2f94.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_a2f94.dir/CheckSymbolExists.c.o  -o cmTC_a2f94 
+CMakeFiles/cmTC_a2f94.dir/CheckSymbolExists.c.o: In function `main':
 CheckSymbolExists.c:(.text+0x14): undefined reference to `pthread_create'
 CheckSymbolExists.c:(.text+0x18): undefined reference to `pthread_create'
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_38020.dir/build.make:97: recipe for target 'cmTC_38020' failed
-make[1]: *** [cmTC_38020] Error 1
+CMakeFiles/cmTC_a2f94.dir/build.make:97: recipe for target 'cmTC_a2f94' failed
+make[1]: *** [cmTC_a2f94] Error 1
 make[1]: Leaving directory '/home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMakeTmp'
-Makefile:126: recipe for target 'cmTC_38020/fast' failed
-make: *** [cmTC_38020/fast] Error 2
+Makefile:126: recipe for target 'cmTC_a2f94/fast' failed
+make: *** [cmTC_a2f94/fast] Error 2
 
 File /home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
 /* */
@@ -37,20 +37,20 @@ int main(int argc, char** argv)
 Determining if the function pthread_create exists in the pthreads failed with the following output:
 Change Dir: /home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_921fe/fast"
-/usr/bin/make -f CMakeFiles/cmTC_921fe.dir/build.make CMakeFiles/cmTC_921fe.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_bb968/fast"
+/usr/bin/make -f CMakeFiles/cmTC_bb968.dir/build.make CMakeFiles/cmTC_bb968.dir/build
 make[1]: Entering directory '/home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_921fe.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_921fe.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
-Linking C executable cmTC_921fe
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_921fe.dir/link.txt --verbose=1
-/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_921fe.dir/CheckFunctionExists.c.o  -o cmTC_921fe -lpthreads 
+Building C object CMakeFiles/cmTC_bb968.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_bb968.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
+Linking C executable cmTC_bb968
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_bb968.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_bb968.dir/CheckFunctionExists.c.o  -o cmTC_bb968 -lpthreads 
 /usr/bin/ld: cannot find -lpthreads
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_921fe.dir/build.make:97: recipe for target 'cmTC_921fe' failed
-make[1]: *** [cmTC_921fe] Error 1
+CMakeFiles/cmTC_bb968.dir/build.make:97: recipe for target 'cmTC_bb968' failed
+make[1]: *** [cmTC_bb968] Error 1
 make[1]: Leaving directory '/home/xavier/catkin_ws/build/ps3joy/CMakeFiles/CMakeTmp'
-Makefile:126: recipe for target 'cmTC_921fe/fast' failed
-make: *** [cmTC_921fe/fast] Error 2
+Makefile:126: recipe for target 'cmTC_bb968/fast' failed
+make: *** [cmTC_bb968/fast] Error 2
 
 

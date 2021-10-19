@@ -8,8 +8,6 @@
 
 # modified environment variables
 export CMAKE_PREFIX_PATH="/home/xavier/catkin_ws/devel/.private/shelf_size:$CMAKE_PREFIX_PATH"
-export LD_LIBRARY_PATH="/home/xavier/catkin_ws/devel/.private/shelf_size/lib:$LD_LIBRARY_PATH"
-export PKG_CONFIG_PATH="/home/xavier/catkin_ws/devel/.private/shelf_size/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PWD='/home/xavier/catkin_ws/build/shelf_size'
 export ROSLISP_PACKAGE_DIRECTORIES="/home/xavier/catkin_ws/devel/.private/shelf_size/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
 export ROS_PACKAGE_PATH="/home/xavier/catkin_ws/src/shelf_size:$ROS_PACKAGE_PATH"

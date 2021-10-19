@@ -1,4 +1,4 @@
-slam_gmapping2/gmapping
+slam_gmapping/gmapping2
 /home/xavier/catkin_ws/devel/.private/gmapping2/cmake.lock /home/xavier/catkin_ws/devel/./cmake.lock
 /home/xavier/catkin_ws/devel/.private/gmapping2/share/gmapping2/cmake/gmapping2Config-version.cmake /home/xavier/catkin_ws/devel/share/gmapping2/cmake/gmapping2Config-version.cmake
 /home/xavier/catkin_ws/devel/.private/gmapping2/share/gmapping2/cmake/gmapping2Config.cmake /home/xavier/catkin_ws/devel/share/gmapping2/cmake/gmapping2Config.cmake

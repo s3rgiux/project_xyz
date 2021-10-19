@@ -9,7 +9,7 @@
 
 
 <arg name="use_map_topic" default="true"/>  
-  <arg name="scan_topic" default="scan_main" />
+  <arg name="scan_topic" default="/scan_merged" />
 <arg name="initial_pose_x" default="0.0"/>
   <arg name="initial_pose_y" default="0.0"/>
   <arg name="initial_pose_a" default="0.0"/>
@@ -17,7 +17,7 @@
     <!-- 自己位置推定 -->
     <node pkg="amcl" type="amcl" name="amcl">
         <rosparam file="$(find pitakuru)/config/amcl.yaml" command="load" />
-        <remap from="scan" to="/scan_main" />
+        <remap from="scan" to="//scan_merged" />
         <param name="use_map_topic" value="$(arg use_map_topic)"/>
         <param name="odom_frame_id" value="odom"/>
     </node> 
