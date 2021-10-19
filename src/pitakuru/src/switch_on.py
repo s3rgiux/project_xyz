@@ -52,7 +52,8 @@ class SwitchInputOn(object):
                 self.status_on = True
                 self.counter_to_power_on = 0
                 rospy.logerr("starting")
-                subprocess.call(["roslaunch", "pitakuru", "pitakuru_rp_lidar_follow.launch"])
+                subprocess.call(["roslaunch", "pitakuru", "pitakuru_mbf_second_lidar.launch"])
+                #subprocess.call(["roslaunch", "pitakuru", "pitakuru_rp_lidar_follow.launch"])
                 rospy.logerr("matando desde on")
 
 if __name__ == "__main__":
