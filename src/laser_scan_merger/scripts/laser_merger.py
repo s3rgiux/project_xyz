@@ -83,11 +83,12 @@ class laser_merger:
         self.laser_merged.ranges = self.mergeLasers(self.laser_tmp1 , self.laser_tmp2)#laser_aux)
         self.laser_merged.header = self.laser_tmp1.header
         self.laser_merged.header = self.laser_tmp1.header
-        self.laser_merged.time_increment = self.laser_tmp1.time_increment
+        self.laser_merged.time_increment = self.laser_tmp1.scan_time/len(self.laser_merged.ranges)#self.laser_tmp1.time_increment
         self.laser_merged = self.make_intensities(self.laser_merged)
         self.laser_merged.angle_increment = ( np.absolute(self.min_ang) + np.absolute(self.max_ang) ) / STEPS
-
+        self.laser_merged.scan_time = self.laser_tmp1.scan_time
         self.laser_merged_publisher.publish(self.laser_merged)
+        
 
 
     
