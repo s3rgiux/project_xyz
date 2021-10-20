@@ -17,7 +17,7 @@
     <!-- 自己位置推定 -->
     <node pkg="amcl" type="amcl" name="amcl">
         <rosparam file="$(find pitakuru)/config/amcl.yaml" command="load" />
-        <remap from="scan" to="//scan_merged" />
+        <remap from="scan" to="/scan_merged" />
         <param name="use_map_topic" value="$(arg use_map_topic)"/>
         <param name="odom_frame_id" value="odom"/>
     </node> 
