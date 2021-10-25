@@ -155,5 +155,7 @@
 <node pkg="pitakuru" type="gmap_amcl.py" name="gmap_amcl" />
 <node pkg="pitakuru" type="getGoal.py" name="getGoal" />
 
+<node pkg="rosserial_python" type="serial_node.py" name="rosserial" args="tcp" />
+
 
 </launch>

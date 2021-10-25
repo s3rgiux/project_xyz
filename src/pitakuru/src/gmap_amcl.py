@@ -54,11 +54,13 @@ class GmapAmcl(object):
             f.write("y="+str(self.pose_amcl.pose.pose.position.y)+"\n")
             f.write("rz="+str(self.pose_amcl.pose.pose.orientation.z)+"\n")
             f.write("rww="+str(self.pose_amcl.pose.pose.orientation.w)+"\n")
+            f.close()
         with open('/home/xavier/catkin_ws/src/pitakuru/config/initodom.txt','w') as f:
             f.write("x="+str(self.odom_pose.pose.pose.position.x)+"\n")
             f.write("y="+str(self.odom_pose.pose.pose.position.y)+"\n")
             f.write("rz="+str(self.odom_pose.pose.pose.orientation.z)+"\n")
             f.write("rww="+str(self.odom_pose.pose.pose.orientation.w)+"\n")
+            f.close()
 
 
     def read_vars(self):
