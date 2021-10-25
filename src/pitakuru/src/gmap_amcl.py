@@ -33,6 +33,10 @@ class GmapAmcl(object):
         self.actual_tf = geometry_msgs.msg.PoseWithCovarianceStamped()
         self.saved_pose = geometry_msgs.msg.PoseWithCovarianceStamped()
         self.pose_amcl = geometry_msgs.msg.PoseWithCovarianceStamped()
+        self.pose_amcl.pose.pose.position.x = self.xini
+        self.pose_amcl.pose.pose.position.y = self.yini
+        self.pose_amcl.pose.pose.orientation.z = self.zrini
+        self.pose_amcl.pose.pose.orientation.w = self.wrini
 
         self.use_ps4_controller = False        
 
