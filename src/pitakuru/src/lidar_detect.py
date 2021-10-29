@@ -17,6 +17,7 @@ class lidar_detect:
         self._sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.timeout = 5
         self._sock.settimeout(self.timeout)
+        rospy.on_shutdown(self.shutdown)
         sleep(10.0)
         print("connected")
         self.start_time = time.time()
@@ -36,6 +37,9 @@ class lidar_detect:
 
     def callbackLaser(self,msg):
         self.last_time = time.time()
+    
+    def shutdown(self):
+        subprocess.call(["rosservice","call","/stop_motor"])
 
 def main(args):
     rospy.init_node('lidar_detect', anonymous=True)

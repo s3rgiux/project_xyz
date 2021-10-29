@@ -52,16 +52,19 @@ class SwitchInputOn(object):
                 self.status_on = True
                 self.counter_to_power_on = 0
                 rospy.logerr("starting")
-                subprocess.call(["roslaunch", "pitakuru", "pitakuru_mbf_second_lidar.launch"])
+                
                 #subprocess.call(["roslaunch", "pitakuru", "pitakuru_rp_lidar_follow.launch"])
                 rospy.logerr("matando desde on")
 
 if __name__ == "__main__":
-    switch_input = SwitchInputOn()
     sleep(10.0) #wait for led white start up time
-    switch_input.request_current_state()
-    ROS_RATE = 30
-    R = rospy.Rate(ROS_RATE)
-    while not rospy.is_shutdown():
-        switch_input.update()
-        R.sleep()
+    subprocess.call(["roslaunch", "pitakuru", "pitakuru_mbf_second_lidar.launch"])
+    #switch_input = SwitchInputOn()
+    
+    #switch_input.request_current_state()
+    
+    #ROS_RATE = 30
+    #R = rospy.Rate(ROS_RATE)
+    #while not rospy.is_shutdown():
+        #switch_input.update()
+        #R.sleep()
