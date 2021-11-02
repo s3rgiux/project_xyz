@@ -12,6 +12,8 @@ import time
 
 SLEEP_TIME = 0.001
 
+MAX_DISTANCE_SEARCH = 1.9
+
 class PeopLidarExtract:
     def __init__(self):
         print("Obstacle_extarctor")
@@ -56,14 +58,14 @@ class PeopLidarExtract:
             self.try_to_search = False
             self.got_obj_lidar = False
 
-    def search_nearest(self,data):
+    def search_nearest(self, data, max_distance_search):
         lst = []
-        self.count_to_track = self.count_to_track+1
+        self.count_to_track = self.count_to_track + 1
         self.searching = True
         print("ang_yolo")
         print(self.yolo_ang)
         for x in data.circles:
-            if x.center.x > -0.5 and x.center.x < self.front_detection and x.center.y < self.side_detection and x.center.y > -self.side_detection:              
+            if x.center.x > -0.5 and x.center.x < max_distance_search and x.center.y < self.side_detection and x.center.y > -self.side_detection:              
                 ang  =  90-np.arctan2(x.center.x, x.center.y) * 180 / np.pi
                 dist  = np.sqrt(x.center.x*x.center.x+x.center.y*x.center.y)
                 if np.abs(ang-self.yolo_ang)<9:
@@ -74,7 +76,7 @@ class PeopLidarExtract:
             for n in (lst):
                 e_x = n.center.x
                 e_y = n.center.y
-                dist = np.sqrt(e_x*e_x+e_y*e_y)
+                dist = np.sqrt(e_x*e_x + e_y*e_y)
                 ang_obj =  90 - np.arctan2(n.center.x, n.center.y) * 180 / np.pi
                 print("appended for sort")
                 if(dist > 0.25 and dist < 4.0):
@@ -156,7 +158,7 @@ class PeopLidarExtract:
         self.received_obstacles = data
         if(self.try_to_search and self.yolo_ang >- 35 and self.yolo_ang < 35):
             print("sent_data")
-            self.search_nearest(data)
+            self.search_nearest(data, MAX_DISTANCE_SEARCH)
         lst = []
         inradious = []
         if self.searching == False:
