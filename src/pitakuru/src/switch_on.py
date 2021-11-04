@@ -58,7 +58,7 @@ class SwitchInputOn(object):
 
 if __name__ == "__main__":
     sleep(10.0) #wait for led white start up time
-    subprocess.call(["roslaunch", "pitakuru", "pitakuru_mbf_second_lidar.launch"])
+    subprocess.call(["roslaunch", "pitakuru", "pitakuru_mbf_no_second_lidar.launch"])
     #switch_input = SwitchInputOn()
     
     #switch_input.request_current_state()
