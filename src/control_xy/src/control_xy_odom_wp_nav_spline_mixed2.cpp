@@ -31,6 +31,8 @@ public:
     {
         // robot speed command with Twisted(linear.x, angular.z, linear.y:flag, but not used)
         speed_publisher = nh.advertise<geometry_msgs::Twist>(nh.resolveName("/cmd_vel"), 1);
+        //send_command to disble_enable motors
+        enable_disable_pub = nh.advertise<std_msgs::String>(nh.resolveName("/enable_disable"), 1);
         // tracking target with lidar, Vector3(position x, y, z:angular)
         tracked_publisher = nh.advertise<geometry_msgs::Vector3>(nh.resolveName("/tracked"), 2);
         // it shows colors, sounds and blink or not
@@ -145,6 +147,8 @@ public:
         reseting_map = false;
         saving_map = false;
         danger_back = false;
+        motors_enabled = true;
+        status_led_yellow = false;
     }
     ~test_head(){}
    
@@ -445,6 +449,22 @@ void blink_yellow(float dur){
     }
 }
 
+void blink_green(float dur){
+    ros::Time time_now = ros::Time::now();
+    ros::Duration duration = time_now - time_blink_green;
+    if(duration.toSec() > dur){
+        
+        time_blink_green = time_now;
+        if(status_led_green){
+            status_led_green = false;
+            alert_idle_no_sound();
+        }else{
+            status_led_green = true;
+            alert_turn_off_led();
+        }
+    }
+}
+
 void blink_red(float dur){
     ros::Time time_now = ros::Time::now();
     ros::Duration duration = time_now - time_blink_red;
@@ -562,6 +582,9 @@ void restart_follow_variables(){
 // - notification led, sound to arduino
 void calc_100hz(){
     karugamo_counter++;
+    if(!motors_enabled){
+        blink_green(0.9);
+    }
     if(danger == false && collision == false && mode_manual){
         ros::Time time_now = ros::Time::now();
         ros::Duration duration = time_now - last_time_btn_save_reset_pressed;
@@ -1421,6 +1444,19 @@ void blink_green_sleep(float t){
     ros::Duration(t).sleep();
 }
 
+void disable_motors(){
+    enable_disable_msg.data = "disable";
+    enable_disable_pub.publish(enable_disable_msg);
+    motors_enabled = false;
+}
+
+void enable_motors(){
+    enable_disable_msg.data = "enable";
+    enable_disable_pub.publish(enable_disable_msg);
+    motors_enabled = true;
+    
+}
+
 void joyCallback(const sensor_msgs::Joy::ConstPtr& joy){
         joy_counter++;
         float speed_button;
@@ -1462,84 +1498,81 @@ void joyCallback(const sensor_msgs::Joy::ConstPtr& joy){
             btn_l3 = joy -> buttons[8];
             btn_r3 = joy -> buttons[9];
         }
-
-        if(btn_circle == 1  && collision == false && danger != true){
+        if (motors_enabled){
+            if(btn_circle == 1  && collision == false && danger != true){
             mode_MANUAL();
             ros::Duration(0.5).sleep(); 
-        }else if(btn_x == 1 && collision == false && danger != true){
-            mode_people_follow();
-            vel_steer.linear.x = 0;
-            vel_steer.linear.y = 1;
-            vel_steer.angular.z = 0;
-            speed_publisher.publish(vel_steer);
-            ros::Duration(0.5).sleep(); 
-        }else if(btn_triangle && collision == false ){
-            mode_IDLE();
-            ros::Duration(0.2).sleep(); 
-        }else if(reseting_map == false&& btn_reset_map&& mode_manual && collision == false && danger == false){
-            reseting_map = true;
-            last_time_btn_save_reset_pressed = ros::Time::now();
-            ros::Duration(0.3).sleep(); 
-        }else if(btn_saving_map&& mode_manual && collision == false && danger == false){
-            saving_map = true;
-            last_time_btn_save_reset_pressed = ros::Time::now();
-            ros::Duration(0.3).sleep(); 
-        }else if(btn_square && free_way && danger != true&& collision == false){
-            mode_AUTONOMOUS();   
-            do_nothing();
-            ros::Duration(0.2).sleep(); 
-        }else if(btn_save_wp1 == 1){
-            pitakuru_state_msg.state_navigation =  "save_wp_1";
-            state_pub.publish(pitakuru_state_msg);
-            alert_saved_wp1_voice_sound();
-            ros::Duration(0.1).sleep(); 
-            pitakuru_state_msg.state_navigation =  "saved_wp_1";
-            state_pub.publish(pitakuru_state_msg);
-            has_wp1 = true;
-        }else if(btn_save_wp2 == 1){
-            pitakuru_state_msg.state_navigation =  "save_wp_2";
-            state_pub.publish(pitakuru_state_msg);
-            alert_saved_wp2_voice_sound();
-            ros::Duration(0.1).sleep(); 
-            pitakuru_state_msg.state_navigation =  "saved_wp_2";
-            state_pub.publish(pitakuru_state_msg);
-            has_wp2 =  true;
-        }else if(btn_goto_wp1 == 1&&mode_auto && has_wp1){
-            pitakuru_state_msg.state_navigation =  "goto_wp_1";
-            state_pub.publish(pitakuru_state_msg);
-            alert_goto_wp1_voice_sound();
-            ros::Duration(0.1).sleep(); 
-            pitakuru_state_msg.state_navigation =  "going_to_wp_1";
-            state_pub.publish(pitakuru_state_msg);
-            go_wp1 =  true;
-            go_wp2 =  false;
-        }else if(btn_goto_wp2 == 1 && mode_auto&&has_wp2){
-            pitakuru_state_msg.state_navigation = "goto_wp_2";
-            state_pub.publish(pitakuru_state_msg);
-            alert_goto_wp2_voice_sound();
-            ros::Duration(0.1).sleep(); 
-            pitakuru_state_msg.state_navigation =  "going_to_wp_2";
-            state_pub.publish(pitakuru_state_msg);
-            go_wp2 =  true;
-            go_wp1 =  false;
-        }else if(btn_l3 == 1){
-            pitakuru_state_msg.state_navigation =  "save_wp";
-            state_pub.publish(pitakuru_state_msg);
-            alert_saved_wp2_voice_sound();
-            ros::Duration(0.3).sleep(); 
-            pitakuru_state_msg.state_navigation =  "saved_wp";
-            state_pub.publish(pitakuru_state_msg);
-            has_wp2 =  true;
-            has_wp1 =  true;
-        }else if(btn_r3 == 1){
-            pitakuru_state_msg.state_navigation = "clear";
-            state_pub.publish(pitakuru_state_msg);
-            alert_saved_wp2_voice_sound();
-            ros::Duration(0.1).sleep(); 
-            pitakuru_state_msg.state_navigation = "cleared";
-            state_pub.publish(pitakuru_state_msg);
-            has_wp2 =  true;
-            has_wp1 =  true;
+            }else if(btn_x == 1 && collision == false && danger != true){
+                mode_people_follow();
+                vel_steer.linear.x = 0;
+                vel_steer.linear.y = 1;
+                vel_steer.angular.z = 0;
+                speed_publisher.publish(vel_steer);
+                ros::Duration(0.5).sleep(); 
+            }else if(btn_triangle && collision == false ){
+                mode_IDLE();
+                ros::Duration(0.2).sleep(); 
+            }else if(reseting_map == false&& btn_reset_map&& mode_manual && collision == false && danger == false){
+                reseting_map = true;
+                last_time_btn_save_reset_pressed = ros::Time::now();
+                ros::Duration(0.3).sleep(); 
+            }else if(btn_saving_map&& mode_manual && collision == false && danger == false){
+                saving_map = true;
+                last_time_btn_save_reset_pressed = ros::Time::now();
+                ros::Duration(0.3).sleep(); 
+            }else if(btn_square && free_way && danger != true&& collision == false ){
+                mode_AUTONOMOUS();   
+                do_nothing();
+                ros::Duration(0.2).sleep(); 
+            }else if(btn_save_wp1 == 1){
+                pitakuru_state_msg.state_navigation =  "save_wp_1";
+                state_pub.publish(pitakuru_state_msg);
+                alert_saved_wp1_voice_sound();
+                ros::Duration(0.1).sleep(); 
+                pitakuru_state_msg.state_navigation =  "saved_wp_1";
+                state_pub.publish(pitakuru_state_msg);
+                has_wp1 = true;
+            }else if(btn_save_wp2 == 1){
+                pitakuru_state_msg.state_navigation =  "save_wp_2";
+                state_pub.publish(pitakuru_state_msg);
+                alert_saved_wp2_voice_sound();
+                ros::Duration(0.1).sleep(); 
+                pitakuru_state_msg.state_navigation =  "saved_wp_2";
+                state_pub.publish(pitakuru_state_msg);
+                has_wp2 =  true;
+            }else if(btn_goto_wp1 == 1&&mode_auto && has_wp1){
+                pitakuru_state_msg.state_navigation =  "goto_wp_1";
+                state_pub.publish(pitakuru_state_msg);
+                alert_goto_wp1_voice_sound();
+                ros::Duration(0.1).sleep(); 
+                pitakuru_state_msg.state_navigation =  "going_to_wp_1";
+                state_pub.publish(pitakuru_state_msg);
+                go_wp1 =  true;
+                go_wp2 =  false;
+            }else if(btn_goto_wp2 == 1 && mode_auto && has_wp2){
+                pitakuru_state_msg.state_navigation = "goto_wp_2";
+                state_pub.publish(pitakuru_state_msg);
+                alert_goto_wp2_voice_sound();
+                ros::Duration(0.1).sleep(); 
+                pitakuru_state_msg.state_navigation =  "going_to_wp_2";
+                state_pub.publish(pitakuru_state_msg);
+                go_wp2 =  true;
+                go_wp1 =  false;
+            }else if(btn_l3 == 1){
+                
+            }
+        }
+        
+        
+        if(btn_r3 == 1){
+            if(motors_enabled){
+                disable_motors();
+            }else{
+                enable_motors();
+                mode_IDLE();
+            }
+            ros::Duration(0.5).sleep();
+            
         }
 
         joy_front = joy -> axes[1];
@@ -1757,7 +1790,8 @@ private:
     ros::Subscriber goal_status_subscriber;
     ros::Subscriber danger_suscriber;
     ros::Subscriber danger_back_suscriber;
-
+    ros::Publisher enable_disable_pub;
+    std_msgs::String enable_disable_msg;
     geometry_msgs::Twist vel_steer;
     geometry_msgs::Vector3 tracked_pos;
     control_xy::States pitakuru_state_msg;
@@ -1791,9 +1825,9 @@ private:
     float lidar_people_status,max_speed_side_follow;
     float max_speed_follow_heavy;
     float vel_detect_costmap;
-    bool status_led_blue,status_led_yellow,status_led_red;
+    bool status_led_blue,status_led_yellow,status_led_red,status_led_green;
     double duration_to_lost;
-    ros::Time time_blink_bl,time_blink_scan,time_blink_red,time_blink_yellow;
+    ros::Time time_blink_bl,time_blink_scan,time_blink_red,time_blink_yellow,time_blink_green;
     ros::Time  last_time_tracking;
     ros::Time  last_time_scan;
     ros::Time  last_time_obstacle_received;
@@ -1811,7 +1845,7 @@ private:
     bool last_mode_auto;
     bool has_wp1,has_wp2;
     bool reseting_map,saving_map;
-    bool danger_back;
+    bool danger_back,motors_enabled;
 };
 
 int main(int argc, char **argv)

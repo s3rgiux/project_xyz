@@ -21,6 +21,7 @@ from pypro.msg import StateWheels
 from sensor_msgs.msg import Joy
 
 
+
 D_RIGHT= 0.104#0.109 #0.1045#0.098#    #m, right wheel radius
 D_LEFT= 0.104 #0.109 #0.1045#0.098#     #m, left wheel radius
 ACC = 20
@@ -159,7 +160,8 @@ class PitWheels:
         self.current_pub = rospy.Publisher('amperage', Vector3, queue_size=1)
         self.state_wheels_pub = rospy.Publisher('stateWheels',StateWheels, queue_size=1)
         sleep(0.4)
-        
+        rospy.Subscriber('/enable_disable', String, self.received_command_callback, queue_size = 1)
+    
         self.pcon = pyproacmd.ProaCmd('/dev/serial/by-id/usb-STMicroelectronics_STM32_STLink_0668FF343537424257252450-if02', baud)
         self.pcon2 = pyproacmd.ProaCmd('/dev/serial/by-id/usb-STMicroelectronics_STM32_STLink_066FFF555449836687205519-if02', baud)
         #self.pcon = pyproacmd.ProaCmd('/dev/serial/by-id/usb-STMicroelectronics_STM32_STLink_066DFF343537424257252319-if02', baud)
@@ -246,6 +248,11 @@ class PitWheels:
         rospy.Subscriber('/cmd_vel', Twist, self.command_vel_callback, queue_size = 1)
         self.read_vars()
        
+    def received_command_callback(self, msg):
+        if msg.data == "enable":
+            self.enable_motors()
+        elif msg.data == "disable":
+            self.disable_motors()
 
     def read_vars(self):
         ffile = open('/home/xavier/catkin_ws/src/pitakuru/config/initodom.txt','r').read()
