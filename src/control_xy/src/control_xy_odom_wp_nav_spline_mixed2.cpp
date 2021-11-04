@@ -842,7 +842,7 @@ void near(){
             }
             vel_steer.angular.z = ctrl_ang;
 
-            if(distanciaPeople2>dist_robot_people){
+            if(distanciaPeople2 > dist_robot_people){
                 float  norm_dist,dist_conv;
                 dist_conv = distanciaPeople2;
                 if(dist_conv>max_dist_toacc){

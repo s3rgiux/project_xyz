@@ -66,8 +66,8 @@ class PeopLidarExtract:
         print(self.yolo_ang)
         for x in data.circles:
             if x.center.x > -0.5 and x.center.x < max_distance_search and x.center.y < self.side_detection and x.center.y > -self.side_detection:              
-                ang  =  90-np.arctan2(x.center.x, x.center.y) * 180 / np.pi
-                dist  = np.sqrt(x.center.x*x.center.x+x.center.y*x.center.y)
+                ang  =  90 - np.arctan2(x.center.x, x.center.y) * 180 / np.pi
+                dist  = np.sqrt(x.center.x * x.center.x + x.center.y * x.center.y)
                 if np.abs(ang-self.yolo_ang)<9:
                     lst.append(x)
         if len(lst) != 0:
