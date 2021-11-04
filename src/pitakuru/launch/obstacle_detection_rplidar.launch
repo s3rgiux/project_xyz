@@ -23,34 +23,22 @@
 <node name="scanner_base_to_merge_scanner" pkg="tf2_ros" type="static_transform_publisher" args="0 0 0 3.141592 0 0 base_link laser_merged" if = "$(arg rplidar_flag)"/>
 
  
-<node pkg="ira_laser_tools" name="laserscan_multi_merger" type="laserscan_multi_merger" output="screen">
-	<param name="destination_frame" value="laser"/>
-	<param name="cloud_destination_topic" value="/pcl"/>
-	<param name="scan_destination_topic" value="/scan"/>
-	<param name="laserscan_topics" value ="/scan_main /scan_aux" /> 
-	<param name="angle_min" value="-3.14"/>
-	<param name="angle_max" value="3.14"/>
-	<param name="angle_increment" value="0.005"/> 
-	<param name="scan_time" value="0.0333333"/>
-	<param name="range_min" value="0.30"/>
-	<param name="range_max" value="50.0"/>
-</node>
 
-<!-- 
+
 <node name="scans_merger" pkg="obstacle_detector" type="scans_merger_node">
     <param name="active"            value="true"/>
     <param name="publish_scan"      value="true"/>
     <param name="publish_pcl"       value="true"/>
 
-    <param name="ranges_num"        value="2880"/>
+    <param name="ranges_num"        value="1500"/>
 
     <param name="min_scanner_range" value="0.05"/>
-    <param name="max_scanner_range" value="10.0"/>
+    <param name="max_scanner_range" value="50.0"/>
 
-    <param name="min_x_range"       value="-10.0"/>
-    <param name="max_x_range"       value="10.0"/>
-    <param name="min_y_range"       value="-10.0"/>
-    <param name="max_y_range"       value="10.0"/>
+    <param name="min_x_range"       value="-50.0"/>
+    <param name="max_x_range"       value="50.0"/>
+    <param name="min_y_range"       value="-50.0"/>
+    <param name="max_y_range"       value="50.0"/>
 
     <param name="fixed_frame_id"   value="laser"/>
     <param name="target_frame_id"   value="laser"/>
@@ -58,9 +46,6 @@
     <remap from="/rear_scan" to="/scan_aux"/>
   </node>
 
--->
-<node name="laser_merge_scan"  pkg="laser_scan_merger"  type="laser_merger.py" output="screen">
-</node>
 
 <node name="obstacles_points_raw"  pkg="segement_obstacle_danger"  type="frontal_detection_raw_points.py" output="screen">
 </node>

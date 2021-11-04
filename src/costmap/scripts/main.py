@@ -43,7 +43,7 @@ class image_converter:
     
     
     self.bridge = CvBridge()
-    self.laser_sub = rospy.Subscriber('/scan', LaserScan, self.callbackLaser,queue_size=1)
+    self.laser_sub = rospy.Subscriber('/scan_main', LaserScan, self.callbackLaser,queue_size=1)
     self.cmd_vel_sub = rospy.Subscriber('/cmd_vel', Twist, self.vel_callback, queue_size=1)
     self.dilation = rospy.get_param("/cost_detect/dilation")
     self.angulo= Float32()
