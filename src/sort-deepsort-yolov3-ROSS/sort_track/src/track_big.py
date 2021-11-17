@@ -15,7 +15,6 @@ from cv_bridge import CvBridge
 import cv2
 from sort_track.msg import IntList
 from sort_track.msg import people_box,peoples
-
 import time
 from time import sleep
 
@@ -29,13 +28,11 @@ class trackclass:
 		self.cost_threhold = rospy.get_param('~cost_threhold')
 		self.min_hits = rospy.get_param('~min_hits')
 		self.max_age = rospy.get_param('~max_age')
-
 		#Subscribe to darknet_ros to get BoundingBoxes from YOLOv3
 		sub_detection = rospy.Subscriber(self.detection_topic, BoundingBoxes , self.callback_det)
 		#Publish results of object tracking
 		self.pub_trackers = rospy.Publisher('sorted_tracked',IntList, queue_size=2) #self.tracker_topic, IntList, queue_size=2)
 		self.pub_peoples = rospy.Publisher('peoples_sorted_tracked',peoples, queue_size=2) #self.tracker_topic, IntList, queue_size=2)
-
 		self.tracker = sort.Sort(max_age=self.max_age, min_hits=self.min_hits) #create instance of the SORT tracker
 		self.track = []
 		self.msg = IntList()
@@ -43,7 +40,6 @@ class trackclass:
 		self.people_box = people_box()
 		self.people_msg = peoples()
 		
-
 	def callback_det(self,data):
 		detec = []
 		ntrackers = []
@@ -94,16 +90,6 @@ class trackclass:
 			self.pub_peoples.publish(people_msg_no)
 			self.pub_trackers.publish(self.msg)
 
-			
-	def callback_image(self,data):
-		bridge = CvBridge()
-		#cv_rgb = bridge.imgmsg_to_cv2(data, "bgr8")
-		#TO DO: FIND BETTER AND MORE ACCURATE WAY TO SHOW BOUNDING BOXES!!
-		#Detection bounding box
-		#cv2.rectangle(cv_rgb, (int(self.detections[0][0]), int(self.detections[0][1])), (int(self.detections[0][2]), int(self.detections[0][3])), (100, 255, 50), 1)
-		#cv2.putText(cv_rgb , "person", (int(self.detections[0][0]), int(self.detections[0][1])), cv2.FONT_HERSHEY_SIMPLEX, 1.0, (100, 255, 50), lineType=cv2.LINE_AA)	
-		#cv2.imshow("YOLO+SORT", cv_rgb)
-		#cv2.waitKey(3)
 
 def main():
 	rospy.init_node('tracker_node', anonymous = True)

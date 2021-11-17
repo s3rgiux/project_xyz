@@ -156,5 +156,9 @@
 
 <node pkg="rosserial_python" type="serial_node.py" name="rosserial" args="tcp" />
 
+<node pkg="bridge" type="publisher.py" name="pub_images_server"/>
+
+
+
 
 </launch>
