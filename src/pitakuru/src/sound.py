@@ -11,7 +11,7 @@ class SoundNode():
 
     def __init__(self):
         rospy.init_node('SoundNode')
-	self.sub_alerts = rospy.Subscriber('/alerts', Int16, self.alerts_cb,queue_size=1)
+        self.sub_alerts = rospy.Subscriber('/alerts', Int16, self.alerts_cb,queue_size=1)
         self.entered = False
         self.cancel = False
         self.gpid = 0
@@ -19,7 +19,7 @@ class SoundNode():
     def alerts_cb(self,data):
 #// 6 collision 5 danger 4 warning 3 karugamo 2 idle 1 manual
 #//8 peop follow 6 collision 5 danger 4 warning 3 nothing 2 idle 1 manual
-
+        print(data.data)
         if(data.data == 1):
             self.route="/home/xavier/catkin_ws/src/pitakuru/assets/manual-japanese.mp3"
             self.entered=True
@@ -92,6 +92,10 @@ class SoundNode():
         elif(data.data == 118):
             self.route = "/home/xavier/catkin_ws/src/pitakuru/assets/careful.mp3"
             self.entered = True
+        elif(data.data == 150):
+            self.route = "/home/xavier/catkin_ws/src/pitakuru/assets/robot_approaching_please_becareful.mp3"
+            self.entered = True
+
 
         if(self.entered):
             try: 

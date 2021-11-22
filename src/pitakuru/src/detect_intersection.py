@@ -15,7 +15,7 @@ import math
 #       Y
 # -X        X
 #      -Y
-class laser_merger:
+class DetectIntersection:
 
     def __init__(self):
        
@@ -74,8 +74,8 @@ class laser_merger:
 
 
 def main(args):
-    rospy.init_node('laser_merger', anonymous=True)
-    laser_merge_obj = laser_merger()
+    rospy.init_node('DetectIntersection', anonymous=True)
+    laser_merge_obj = DetectIntersection()
     while not rospy.is_shutdown():
         time.sleep(0.02)
 

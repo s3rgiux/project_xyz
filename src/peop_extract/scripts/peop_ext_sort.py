@@ -7,7 +7,7 @@ from math import sqrt
 import rospy
 import numpy as np
 from time import sleep
-from std_msgs.msg import Float32
+from std_msgs.msg import Float32, Int16
 from std_msgs.msg import *
 from geometry_msgs.msg import Vector3
 from peop_extract.msg import people_box, peoples, States
@@ -27,7 +27,7 @@ class PeopleExtractSort:
     def __init__(self):
         # tracking target Vector3(x:[1-tracking, -1-not_tracking], y:distance[m], z:angle[degree]) with YOLO
         self.people_position_publisher = rospy.Publisher("/peop_ang_yolo", Vector3, queue_size=2)
-        
+        self.alerts_sound_publisher = rospy.Publisher("/alerts", Int16, queue_size = 1)
         # tracking target Vector3(x:orig_x, y:orig_y, z:angular, in other nodes, usually this is used as flag_tracking_or_not, if it is positive then tracking) detected with LiDAR
         rospy.Subscriber('/tracked', Vector3, self.tracked_callback, queue_size=2)
         # detected peoples with YOLO and SORT
@@ -46,7 +46,10 @@ class PeopleExtractSort:
         self.current_biggest_people = people_box()
         self.current_biggest_people.id = -1
 
+        self.last_time_detected_3_people = time.time()
+
         self.reset_karugamo_state()
+        self.msg_alert = Int16()
 
 
     def pubobs(self):
@@ -122,7 +125,15 @@ class PeopleExtractSort:
         curent_biggest_area = 0
         
         people = [detected_bbox for detected_bbox in data.people if int(detected_bbox.id) != -1]
+        if len(people) >= 3 and time.time() - self.last_time_detected_3_people > 15 : 
+            # detected at least 3 people and passed mopre the 15 seconds
+            self.last_time_detected_3_people = time.time()
+            #found at least 3 peoples to make a sound
+            self.msg_alert = 150 # 150 will play a sound of be careful
+            self.alerts_sound_publisher.publish(self.msg_alert)
+
         for detected_bbox in people:
+
             # found target with yolo
             if self.has_detected_people and self.is_tracking_bbox(detected_bbox):
                 angle_degree = self.bbox_angle_from_camera(detected_bbox)

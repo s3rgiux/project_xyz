@@ -588,7 +588,7 @@ void calc_100hz(){
     if(danger == false && collision == false && mode_manual){
         ros::Time time_now = ros::Time::now();
         ros::Duration duration = time_now - last_time_btn_save_reset_pressed;
-            if((duration.toSec())<17 && reseting_map){
+            if((duration.toSec()) < 17 && reseting_map){
                 blink_yellow(0.25);
             }else if(reseting_map){
                 reseting_map = false;
@@ -603,7 +603,7 @@ void calc_100hz(){
     }
     if(danger == false && collision == false && mode_auto && (velocity_motor1>0.15 || velocity_motor2>0.15)){
         blink_yellow(0.4);
-        if(karugamo_counter%390 == 0){
+        if(karugamo_counter % 390 == 0){
             alert_navigating_voice_sound();
             if(go_wp1){
                 pitakuru_state_msg.state_navigation = "going_to_wp_1";
@@ -630,7 +630,7 @@ void calc_100hz(){
     float control_tresh_sound = 200;
     //if (mode_manual && velocity_motor1 > velocity_tresh_sound && velocity_motor2 > velocity_tresh_sound && (ctrl_front_manual > control_tresh_sound ||  control_tresh_sound > ctrl_front_manual > -control_tresh_sound ) ){
     if (mode_manual  && (ctrl_front_manual > control_tresh_sound ||  -control_tresh_sound > ctrl_front_manual ) ){
-        if(karugamo_counter % 400 == 0 ){
+        if(karugamo_counter % 600 == 0 ){
             alert_saved_wp1_voice_sound();
         }
     }
