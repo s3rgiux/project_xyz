@@ -1,0 +1,10 @@
+prefix=/home/xavier/catkin_ws/devel
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+Name: csm
+Description: The C(anonical) Scan Matcher
+Requires: gsl
+Version: 
+Libs: -L. -L/usr/lib/aarch64-linux-gnu -L/usr/lib/aarch64-linux-gnu -lgsl -lgslcblas -lm /usr/lib/aarch64-linux-gnu/libcairo.so -L${libdir} -lcsm-static 
+Cflags:  -I/usr/include  -I/usr/include/cairo -I${includedir}
