@@ -1,0 +1,7 @@
+string TYPE_ACTIVE = "active"
+string TYPE_ERROR = "error"
+string TYPE_WARNING = "warning"
+
+string type
+---
+---

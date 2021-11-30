@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<launch>
+
+<arg name="map_file" default="/home/sergio/olimpo2.yaml"/>
+
+<arg name="rvizconfig" default="$(find dolly)/rviz/navigation.rviz" />
+<arg name="model" default="$(find dolly)/urdf/dolly.urdf.xacro"/>
+
+<!--
+<include file="$(find ps3joy)/launch/ps3.launch"/>
+
+<node pkg="gamepad" type="gamepad_node" name="gamepad_node" output="screen">	
+</node>
+
+
+<arg name="connect_mode" value="usb" />
+    <arg name="right_w_addr" value="/dev/serial/by-id/usb-FTDI_FT230X_Basic_UART_DM00LKQH-if00-port0" />
+    <arg name="left_w_addr" value="/dev/serial/by-id/usb-FTDI_FT230X_Basic_UART_DM00LPRW-if00-port0
+" />
+
+
+ keiganモーター制御/オドメトリ算出ノード
+    <node pkg="dolly" name="km_dolly_wheels" type="km_wheels.py">
+        <param name="connect_mode" value="$(arg connect_mode)" />
+        <param name="right_w_addr" value="$(arg right_w_addr)" />
+        <param name="left_w_addr" value="$(arg left_w_addr)" />
+    </node>
+ -->
+
+<param name="robot_description" command="$(find xacro)/xacro --inorder $(arg model)" />
+
+ <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+<node pkg="conversion" type="quatCo.py" name="quatCo" output="screen">	
+</node>
+
+<include file="$(find rplidar_ros)/launch/rplidar.launch" />
+<node pkg="tf" type="static_transform_publisher" name="laser_frame" args="0 0 0 0 0 0 1 base_link laser 10" />
+
+<node pkg="map_server" type="map_server" name="map_server" args="$(arg map_file)"/>
+
+
+
+   <!--  自己位置推定 
+    <node pkg="amcl" type="amcl" name="amcl">
+        <rosparam file="$(find dolly)/config/amcl.yaml" command="load" />
+        <remap from="scan" to="/scan" />
+        <param name="use_map_topic" value="$(arg use_map_topic)"/>
+        <param name="odom_frame_id" value="odom"/> 
+    </node>
+-->
+
+#### start the laser scan_matcher ##############################
+  <arg name="publish_covariance" default="false"/>
+  <group if="$(arg publish_covariance)">
+    <param name="laser_scan_matcher_node/do_compute_covariance" value="1"/>
+    <param name="laser_scan_matcher_node/publish_pose_with_covariance" value="true"/>
+    <param name="laser_scan_matcher_node/publish_pose_with_covariance_stamped" value="true"/>
+  </group>
+  <node pkg="laser_scan_matcher" type="laser_scan_matcher_node"
+    name="laser_scan_matcher_node" output="screen">
+    <param name="max_iterations" value="10"/>
+  </node>
+
+
+<param name="use_gui" value="true"/>   
+    <!-- rvizノード起動設定 -->
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="true" />
+
+
+</launch>

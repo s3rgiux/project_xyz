@@ -1,0 +1,15 @@
+string state
+string state_karugamo
+string state_collision
+string state_danger
+string state_costmap
+string state_manual
+string state_scan
+string state_load
+string state_shelf
+string state_navigation
+float32 costmap
+float32 side_joystick
+float32 ctrl_front
+float32 ctrl_side
+geometry_msgs/Twist trackeds

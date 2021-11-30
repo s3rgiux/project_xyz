@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<launch>
+
+<node pkg="conversion" type="quatCo.py" name="quatCo" output="screen">	
+</node>
+<arg name="rvizconfig" default="$(find dolly)/rviz/navigation.rviz" />
+
+<!--
+<include file="$(find ps3joy)/launch/ps3.launch"/>
+
+<node pkg="gamepad" type="gamepad_node" name="gamepad_node" output="screen">	
+</node>
+
+
+<arg name="connect_mode" value="usb" />
+<arg name="right_w_addr" value="/dev/serial/by-id/usb-FTDI_FT230X_Basic_UART_DM00LKQH-if00-port0"/>
+<arg name="left_w_addr" value="/dev/serial/by-id/usb-FTDI_FT230X_Basic_UART_DM00LPRW-if00-port0"/>
+
+
+ keiganモーター制御/オドメトリ算出ノード
+    <node pkg="dolly" name="km_dolly_wheels" type="km_wheels.py">
+        <param name="connect_mode" value="$(arg connect_mode)" />
+        <param name="right_w_addr" value="$(arg right_w_addr)" />
+        <param name="left_w_addr" value="$(arg left_w_addr)" />
+    </node>
+ -->
+
+
+<include file="$(find rplidar_ros)/launch/rplidar.launch" />
+<node pkg="tf" type="static_transform_publisher" name="laser_frame" args="0 0 0 0 0 0 1 base_link laser 10" />
+
+
+
+<include file="$(find gmapping)/launch/slam_gmapping_pr2.launch" />
+
+<!--
+<launch><nodepkg="tf"type="static_transform_publisher"name="base_link_to_laser"args="0.0 0.0 0.0 0.0 0.0 0.0 /base_link /laser 40" /> 
+
+
+<param name="use_sim_time" value="false"/>
+<node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen">
+<param name="map_udpate_interval" value="1.0"/>
+<param name="delta" value="0.02"/>
+</node>
+-->
+
+<param name="use_gui" value="true"/>
+    <!-- rvizノード起動設定 -->
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="true" />
+
+
+
+</launch>

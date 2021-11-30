@@ -1,0 +1,99 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+import numpy as np
+
+import rospy
+from fiducial_msgs.msg import Fiducial
+from sensor_msgs.msg import Joy
+from pitakuru.msg import DriveWheel, State
+
+
+class PIDControl(object):
+    def thresh_theta(self, theta):
+        if theta > math.pi:
+            return theta - 2*math.pi
+        return theta
+    
+    def update(self, distance, angle):
+        theta = self.thresh_theta(theta)
+
+        interval = rospy.get_param('/movement/interval')
+        max_speed_rpm = rospy.get_param('/movement/max_speed_rpm')
+        speed_p = rospy.get_param('/movement/speed_p')
+        steer_p = rospy.get_param('/movement/steer_p')
+        steer_i = rospy.get_param('/movement/steer_i')
+        steer_d = rospy.get_param('/movement/steer_d')
+
+        v = min(speed_p * distance, max_speed_rpm)
+        self.eI = self.eI + interval * theta; # Integral
+
+        delta_v = steer_p * theta + steer_i * self.eI + steer_d * (theta - self.theta_old) / interval
+        self.theta_old = theta
+
+        left_rpm = v - delta_v
+        right_rpm = v + delta_v
+        return (left_rpm, right_rpm)
+
+
+class StopListerner():
+    pass
+
+
+class Movement(object):
+    state = State.STATE_IDLE
+    listeners = dict()
+    current_rpm = dict(left=0.0, right=0.0)
+
+    def __init__(self):
+        rospy.init_node('Movement')
+        self.fiducial_sub = rospy.Subscriber('fiducials', Fiducial, callback=self.receive_target)
+        self.state_sub = rospy.Subscriber('state', State, callback=self.change_state)
+        self.joy_sub = rospy.Subscriber('joy', Joy, callback=self.receive_joy)
+        self.pub = rospy.Publisher('drive_wheel_desired', DriveWheel, queue_size=1)
+    
+    def add_state_listener(self, state, listener):
+        self.listeners[state] = listener
+
+    def receive_target(self, pose2d):
+        theta = data.theta
+        left_left, right_left = self.pid_ctrl.update(dist, theta)
+        drive_wheel = DriveWheel(left_rpm=left_rpm, right_rpm=right_rpm)
+        self.pub.publish(drive_wheel)
+
+    def receive_joy(self, joy):
+        if self.state == State.STATE_ACTIVE_MANUAL:
+            axes = joy.axes
+            (ud, lr) = (axes[7], axes[6])
+            max_ud = rospy.get_param('/movement/manual/max_ud')
+            max_lr = rospy.get_param('/movement/manual/max_lr')
+            if ud != 0.0:
+                msg = DriveWheel(ud*max_ud, ud*max_ud)
+                self.pub.publish(msg)
+            elif lr != 0.0:
+                msg = DriveWheel(-lr*max_lr, lr*max_lr)
+                self.pub.publish(msg)
+            else:
+                msg = DriveWheel(0.0, 0.0)
+                self.pub.publish(msg)
+
+    def change_state(self, state):
+        self.state = state.state
+
+
+if __name__ == '__main__':
+    movement = Movement()
+    # 動作制御リスナーを追加
+    movement.add_state_listener(State.STATE_IDLE, StopListerner())
+    movement.add_state_listener(State.STATE_SHUTDOWN, StopListerner())
+    movement.add_state_listener(State.STATE_ERROR_OBSTACLE, StopListerner())
+    movement.add_state_listener(State.STATE_ERROR_COLLISION, StopListerner())
+    # movement.add_state_listener(State.STATE_ACTIVE_MANUAL, ManualListerner())
+    movement.add_state_listener(State.STATE_ACTIVE_KARUGAMO, KarugamoListerner())
+
+    # 制御周期
+    ROS_RATE = 30
+    R = rospy.Rate(ROS_RATE)
+    # [ctrl]+[c]でプログラムの終了するまでループ
+    while not rospy.is_shutdown():
+        R.sleep()

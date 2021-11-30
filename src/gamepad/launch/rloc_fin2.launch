@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<launch>
+
+	<!--
+		HECTOR STUFF
+	-->
+	
+<include file="$(find hector_slam_launch)/launch/tutorial.launch"/>
+
+<node pkg="lidarPeople" type="main.py" name="lidarPeople_node" output="screen">	
+</node>
+<node pkg="peopleDetector" type="main.py" name="peopleDetector_node" output="screen">	
+</node>
+
+<node pkg="control_xy" type="control_xy_node" name="control_xy_node" output="screen">	
+</node>
+
+
+</launch>

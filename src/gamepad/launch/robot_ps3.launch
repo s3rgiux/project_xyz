@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<launch>
+<arg name="connect_mode" value="usb" />
+    <arg name="right_w_addr" value="/dev/serial/by-id/usb-FTDI_FT230X_Basic_UART_DM00LKQH-if00-port0" />
+    <arg name="left_w_addr" value="/dev/serial/by-id/usb-FTDI_FT230X_Basic_UART_DM00LPRW-if00-port0" />
+<arg name="map_file" default="/home/sergio/mapa.yaml"/>
+<arg name="use_map_topic" default="true"/>
+
+<include file="$(find ps3joy)/launch/ps3.launch"/>
+	<!-- <node pkg="gamepad" type="gamepad_node" name="gamepad_node" output="screen">	
+	</node>-->
+
+	<node pkg="conversion" type="quatCo.py" name="quatCo" output="screen">	
+	</node>
+
+<!-- keiganモーター制御/オドメトリ算出ノード -->
+    <node pkg="dolly" name="km_dolly_wheels" type="km_wheels.py">
+        <param name="connect_mode" value="$(arg connect_mode)" />
+        <param name="right_w_addr" value="$(arg right_w_addr)" />
+        <param name="left_w_addr" value="$(arg left_w_addr)" />
+    </node>
+
+
+<include file="$(find rplidar_ros)/launch/rplidar.launch" />
+<node pkg="tf" type="static_transform_publisher" name="laser_frame" args="0 0 0 0 0 0 1 base_link laser 10" />
+
+<!--<include file="$(find gmapping)/launch/slam_gmapping_pr2.launch" />-->
+
+
+<node pkg="map_server" type="map_server" name="map_server" args="$(arg map_file)"/>
+
+    <!-- 自己位置推定 -->
+    <node pkg="amcl" type="amcl" name="amcl">
+        <rosparam file="$(find dolly)/config/amcl.yaml" command="load" />
+        <remap from="scan" to="/scan" />
+        <param name="use_map_topic" value="$(arg use_map_topic)"/>
+        <param name="odom_frame_id" value="odom"/>
+    </node>
+
+
+ <!-- ナビゲーション -->
+    <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+      <rosparam file="$(find dolly)/config/move_base/move_base_params.yaml" command="load" />
+      <rosparam file="$(find dolly)/config/move_base/costmap_common_params.yaml" command="load" ns="global_costmap" />
+      <rosparam file="$(find dolly)/config/move_base/costmap_common_params.yaml" command="load" ns="local_costmap" />
+      <rosparam file="$(find dolly)/config/move_base/local_costmap_params.yaml" command="load" />
+      <rosparam file="$(find dolly)/config/move_base/global_costmap_params.yaml" command="load" />
+      <rosparam file="$(find dolly)/config/move_base/base_local_planner_params.yaml" command="load" />
+
+      <param name="global_costmap/laser_scan_sensor/sensor_frame" value="laser_link" />
+      <param name="global_costmap/laser_scan_sensor/topic" value="scan" />
+      <param name="global_costmap/global_frame" value="map" />
+      <param name="global_costmap/robot_base_frame" value="base_link" />
+      <param name="local_costmap/laser_scan_sensor/sensor_frame" value="laser_link" />
+      <param name="local_costmap/laser_scan_sensor/topic" value="scan" />
+      <param name="local_costmap/global_frame" value="odom" />
+      <param name="local_costmap/robot_base_frame" value="base_link" />
+      <remap from="cmd_vel" to="/cmd_vel" />
+      <remap from="odom" to="/odom" />
+    </node>
+
+
+</launch>

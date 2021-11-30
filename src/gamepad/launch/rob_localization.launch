@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<launch>
+
+<arg name="map_file" default="/home/sergio/hanazo2.yaml"/>
+
+<arg name="rvizconfig" default="$(find dolly)/rviz/navigation.rviz" />
+<arg name="model" default="$(find dolly)/urdf/dolly.urdf.xacro"/>
+
+
+<include file="$(find ps3joy)/launch/ps3.launch"/>
+
+<node pkg="gamepad" type="gamepad_node" name="gamepad_node" output="screen">	
+</node>
+
+
+<arg name="connect_mode" value="usb" />
+    <arg name="right_w_addr" value="/dev/serial/by-id/usb-FTDI_FT230X_Basic_UART_DM00LKQH-if00-port0" />
+    <arg name="left_w_addr" value="/dev/serial/by-id/usb-FTDI_FT230X_Basic_UART_DM00LPRW-if00-port0
+" />
+
+
+<!-- keiganモーター制御/オドメトリ算出ノード -->
+    <node pkg="dolly" name="km_dolly_wheels" type="km_wheels.py">
+        <param name="connect_mode" value="$(arg connect_mode)" />
+        <param name="right_w_addr" value="$(arg right_w_addr)" />
+        <param name="left_w_addr" value="$(arg left_w_addr)" />
+    </node>
+
+
+<param name="robot_description" command="$(find xacro)/xacro --inorder $(arg model)" />
+
+ <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+<node pkg="conversion" type="quatCo.py" name="quatCo" output="screen">	
+</node>
+
+<include file="$(find rplidar_ros)/launch/rplidar.launch" />
+<node pkg="tf" type="static_transform_publisher" name="laser_frame" args="0 0 0 0 0 0 1 base_link laser 10" />
+
+<node pkg="map_server" type="map_server" name="map_server" args="$(arg map_file)"/>
+
+
+
+   <!--  自己位置推定 
+    <node pkg="amcl" type="amcl" name="amcl">
+        <rosparam file="$(find dolly)/config/amcl.yaml" command="load" />
+        <remap from="scan" to="/scan" />
+        <param name="use_map_topic" value="$(arg use_map_topic)"/>
+        <param name="odom_frame_id" value="odom"/> 
+    </node>
+-->
+
+<arg name="use_map_topic" default="true"/>  
+  <arg name="scan_topic" default="scan" />
+<arg name="initial_pose_x" default="0.0"/>
+  <arg name="initial_pose_y" default="0.0"/>
+  <arg name="initial_pose_a" default="0.0"/>
+
+
+  <node pkg="amcl" type="amcl" name="amcl">
+    <param name="use_map_topic" value="$(arg use_map_topic)"/>
+    <!-- Publish scans from best pose at a max of 10 Hz -->
+    <param name="odom_model_type" value="diff"/> <!-- diff-corrected -->
+    <param name="odom_alpha5" value="0.1"/>
+    <param name="gui_publish_rate" value="10.0"/> <!-- scans from best pose at a max of 10 Hz -->
+    <param name="laser_max_beams" value="80"/> <!-- num laser beam para hacer localización -->
+    <param name="laser_max_range" value="12.0"/>
+    <param name="min_particles" value="1500"/> <!-- 500 -->
+    <param name="max_particles" value="10000"/><!-- 2500 -->
+    <param name="kld_err" value="0.05"/>
+    <param name="kld_z" value="0.99"/>
+    <param name="odom_alpha1" value="0.2"/> <!-- expected noise odometry rotation-->
+    <param name="odom_alpha2" value="0.2"/> <!-- expected noise odometry rotation-->
+    <!-- translation std dev, m -->
+    <param name="odom_alpha3" value="0.2"/> <!-- expected noise odometry rotation-->
+    <param name="odom_alpha4" value="0.2"/><!-- expected noise odometry rotation-->
+    <param name="laser_z_hit" value="0.5"/> <!-- ruido en laser good-->
+    <param name="laser_z_short" value="0.05"/>
+    <param name="laser_z_max" value="0.05"/>
+    <param name="laser_z_rand" value="0.5"/> <!-- ruido laser noise-->
+    <param name="laser_sigma_hit" value="0.2"/>
+    <param name="laser_lambda_short" value="0.1"/>
+    <param name="laser_model_type" value="likelihood_field"/>
+    <!-- <param name="laser_model_type" value="beam"/> -->
+    <param name="laser_likelihood_max_dist" value="2.0"/>
+    <param name="update_min_d" value="0.08"/> <!--0.25 dist update-->
+    <param name="update_min_a" value="0.08"/> <!--0.2 angle update-->
+    <param name="odom_frame_id" value="odom"/>
+    <param name="resample_interval" value="1"/>
+    <!-- Increase tolerance because the computer can get quite busy -->
+    <param name="transform_tolerance" value="1.0"/>
+    <param name="recovery_alpha_slow" value="0.0"/>
+    <param name="recovery_alpha_fast" value="0.0"/>
+    <remap from="scan" to="$(arg scan_topic)"/>
+  </node>
+
+
+<param name="use_gui" value="true"/>   
+    <!-- rvizノード起動設定 -->
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="true" />
+
+
+</launch>

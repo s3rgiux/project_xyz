@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<launch>
+
+<arg name="map_file" default="/home/sergio/olimpo3.yaml"/>
+
+<arg name="rvizconfig" default="$(find dolly)/rviz/navigation.rviz" />
+<arg name="model" default="$(find dolly)/urdf/dolly.urdf.xacro"/>
+
+
+<include file="$(find ps3joy)/launch/ps3.launch"/>
+<include file="$(find usb_cam)/launch/usb_cam-test2cam.launch"/>
+
+
+<arg name="connect_mode" value="usb" />
+<arg name="right_w_addr" value="/dev/serial/by-id/usb-FTDI_FT230X_Basic_UART_DM00LKQH-if00-port0"/>
+<arg name="left_w_addr" value="/dev/serial/by-id/usb-FTDI_FT230X_Basic_UART_DM00LPRW-if00-port0
+"/>
+
+<node pkg="dolly" name="km_dolly_wheels" type="km_wheels.py">
+<param name="connect_mode" value="$(arg connect_mode)" />
+<param name="right_w_addr" value="$(arg right_w_addr)" />
+<param name="left_w_addr" value="$(arg left_w_addr)" />
+</node>
+ 
+
+<param name="robot_description" command="$(find xacro)/xacro --inorder $(arg model)" />
+
+ <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+<node pkg="conversion" type="quatCo.py" name="quatCo" output="screen">	
+</node>
+
+<node pkg="conversion" type="quatCo2.py" name="quatCo2" output="screen">	
+</node>
+
+<include file="$(find rplidar_ros)/launch/rplidar.launch" />
+<node pkg="tf" type="static_transform_publisher" name="laser_frame" args="0 0 0 0 0 0 1 base_link laser 100" />
+	<!--
+		HECTOR STUFF
+	-->
+	
+
+
+<!--
+
+<param name="use_gui" value="true"/>   
+     rvizノード起動設定 
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="true" />
+
+-->
+
+
+
+
+
+
+</launch>

@@ -1,0 +1,6 @@
+[submodule "ira_laser_tools"]
+	path = ira_laser_tools
+	url = https://github.com/iralabdisco/ira_laser_tools
+[submodule "src/ira_laser_tools"]
+	path = src/ira_laser_tools
+	url = https://github.com/iralabdisco/ira_laser_tools
