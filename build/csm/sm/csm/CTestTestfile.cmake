@@ -1,5 +1,5 @@
 # CMake generated Testfile for 
-# Source directory: /home/xavier/catkin_ws/src/csm/sm/csm
+# Source directory: /home/xavier/catkin_ws/src/csm2/sm/csm
 # Build directory: /home/xavier/catkin_ws/build/csm/sm/csm
 # 
 # This file includes the relevant testing commands required for 

@@ -1,4 +1,4 @@
-# Install script for directory: /home/xavier/catkin_ws/src/scan_tools/laser_ortho_projector
+# Install script for directory: /home/xavier/catkin_ws/src/scan_tools2/laser_ortho_projector
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -140,7 +140,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/laser_ortho_projector" TYPE FILE FILES "/home/xavier/catkin_ws/src/scan_tools/laser_ortho_projector/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/laser_ortho_projector" TYPE FILE FILES "/home/xavier/catkin_ws/src/scan_tools2/laser_ortho_projector/package.xml")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -184,7 +184,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/laser_ortho_projector" TYPE DIRECTORY FILES "/home/xavier/catkin_ws/src/scan_tools/laser_ortho_projector/include/laser_ortho_projector/")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/laser_ortho_projector" TYPE DIRECTORY FILES "/home/xavier/catkin_ws/src/scan_tools2/laser_ortho_projector/include/laser_ortho_projector/")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -208,11 +208,11 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/laser_ortho_projector" TYPE FILE FILES "/home/xavier/catkin_ws/src/scan_tools/laser_ortho_projector/laser_ortho_projector_nodelet.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/laser_ortho_projector" TYPE FILE FILES "/home/xavier/catkin_ws/src/scan_tools2/laser_ortho_projector/laser_ortho_projector_nodelet.xml")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/laser_ortho_projector" TYPE DIRECTORY FILES "/home/xavier/catkin_ws/src/scan_tools/laser_ortho_projector/demo")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/laser_ortho_projector" TYPE DIRECTORY FILES "/home/xavier/catkin_ws/src/scan_tools2/laser_ortho_projector/demo")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)

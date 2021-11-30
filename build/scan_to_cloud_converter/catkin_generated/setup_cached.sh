@@ -10,4 +10,4 @@
 export CMAKE_PREFIX_PATH="/home/xavier/catkin_ws/devel/.private/scan_to_cloud_converter:$CMAKE_PREFIX_PATH"
 export PWD='/home/xavier/catkin_ws/build/scan_to_cloud_converter'
 export ROSLISP_PACKAGE_DIRECTORIES="/home/xavier/catkin_ws/devel/.private/scan_to_cloud_converter/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
-export ROS_PACKAGE_PATH="/home/xavier/catkin_ws/src/scan_tools/scan_to_cloud_converter:$ROS_PACKAGE_PATH"
+export ROS_PACKAGE_PATH="/home/xavier/catkin_ws/src/scan_tools2/scan_to_cloud_converter:$ROS_PACKAGE_PATH"

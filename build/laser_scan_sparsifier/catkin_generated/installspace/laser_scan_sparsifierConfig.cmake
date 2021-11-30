@@ -67,7 +67,7 @@ set(laser_scan_sparsifier_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("FALSE" STREQUAL "TRUE")
-  set(laser_scan_sparsifier_SOURCE_PREFIX /home/xavier/catkin_ws/src/scan_tools/laser_scan_sparsifier)
+  set(laser_scan_sparsifier_SOURCE_PREFIX /home/xavier/catkin_ws/src/scan_tools2/laser_scan_sparsifier)
   set(laser_scan_sparsifier_DEVEL_PREFIX /home/xavier/catkin_ws/devel/.private/laser_scan_sparsifier)
   set(laser_scan_sparsifier_INSTALL_PREFIX "")
   set(laser_scan_sparsifier_PREFIX ${laser_scan_sparsifier_DEVEL_PREFIX})

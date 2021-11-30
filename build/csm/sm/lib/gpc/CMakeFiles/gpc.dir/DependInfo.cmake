@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/xavier/catkin_ws/src/csm/sm/lib/gpc/gpc.c" "/home/xavier/catkin_ws/build/csm/sm/lib/gpc/CMakeFiles/gpc.dir/gpc.o"
-  "/home/xavier/catkin_ws/src/csm/sm/lib/gpc/gpc_utils.c" "/home/xavier/catkin_ws/build/csm/sm/lib/gpc/CMakeFiles/gpc.dir/gpc_utils.o"
+  "/home/xavier/catkin_ws/src/csm2/sm/lib/gpc/gpc.c" "/home/xavier/catkin_ws/build/csm/sm/lib/gpc/CMakeFiles/gpc.dir/gpc.o"
+  "/home/xavier/catkin_ws/src/csm2/sm/lib/gpc/gpc_utils.c" "/home/xavier/catkin_ws/build/csm/sm/lib/gpc/CMakeFiles/gpc.dir/gpc_utils.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
@@ -17,8 +17,8 @@ set(CMAKE_TARGET_DEFINITIONS_C
 
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
-  "/home/xavier/catkin_ws/src/csm/sm/lib"
-  "/home/xavier/catkin_ws/src/csm/sm"
+  "/home/xavier/catkin_ws/src/csm2/sm/lib"
+  "/home/xavier/catkin_ws/src/csm2/sm"
   "."
   )
 

@@ -1,4 +1,4 @@
-move_base_flex/mbf_abstract_nav
+move_base_flex2/mbf_abstract_nav
 /home/xavier/catkin_ws/devel/.private/mbf_abstract_nav/cmake.lock /home/xavier/catkin_ws/devel/./cmake.lock
 /home/xavier/catkin_ws/devel/.private/mbf_abstract_nav/include/mbf_abstract_nav/MoveBaseFlexConfig.h /home/xavier/catkin_ws/devel/include/mbf_abstract_nav/MoveBaseFlexConfig.h
 /home/xavier/catkin_ws/devel/.private/mbf_abstract_nav/share/mbf_abstract_nav/cmake/mbf_abstract_navConfig-version.cmake /home/xavier/catkin_ws/devel/share/mbf_abstract_nav/cmake/mbf_abstract_navConfig-version.cmake

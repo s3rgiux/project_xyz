@@ -43,7 +43,7 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/xavier/catkin_ws/src/csm
+CMAKE_SOURCE_DIR = /home/xavier/catkin_ws/src/csm2
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/xavier/catkin_ws/build/csm
@@ -58,17 +58,17 @@ include sm/CMakeFiles/json_pipe.dir/progress.make
 include sm/CMakeFiles/json_pipe.dir/flags.make
 
 sm/CMakeFiles/json_pipe.dir/apps/json_pipe.o: sm/CMakeFiles/json_pipe.dir/flags.make
-sm/CMakeFiles/json_pipe.dir/apps/json_pipe.o: /home/xavier/catkin_ws/src/csm/sm/apps/json_pipe.c
+sm/CMakeFiles/json_pipe.dir/apps/json_pipe.o: /home/xavier/catkin_ws/src/csm2/sm/apps/json_pipe.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object sm/CMakeFiles/json_pipe.dir/apps/json_pipe.o"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/json_pipe.dir/apps/json_pipe.o   -c /home/xavier/catkin_ws/src/csm/sm/apps/json_pipe.c
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/json_pipe.dir/apps/json_pipe.o   -c /home/xavier/catkin_ws/src/csm2/sm/apps/json_pipe.c
 
 sm/CMakeFiles/json_pipe.dir/apps/json_pipe.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/json_pipe.dir/apps/json_pipe.i"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/apps/json_pipe.c > CMakeFiles/json_pipe.dir/apps/json_pipe.i
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/apps/json_pipe.c > CMakeFiles/json_pipe.dir/apps/json_pipe.i
 
 sm/CMakeFiles/json_pipe.dir/apps/json_pipe.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/json_pipe.dir/apps/json_pipe.s"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/apps/json_pipe.c -o CMakeFiles/json_pipe.dir/apps/json_pipe.s
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/apps/json_pipe.c -o CMakeFiles/json_pipe.dir/apps/json_pipe.s
 
 sm/CMakeFiles/json_pipe.dir/apps/json_pipe.o.requires:
 
@@ -109,6 +109,6 @@ sm/CMakeFiles/json_pipe.dir/clean:
 .PHONY : sm/CMakeFiles/json_pipe.dir/clean
 
 sm/CMakeFiles/json_pipe.dir/depend:
-	cd /home/xavier/catkin_ws/build/csm && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/xavier/catkin_ws/src/csm /home/xavier/catkin_ws/src/csm/sm /home/xavier/catkin_ws/build/csm /home/xavier/catkin_ws/build/csm/sm /home/xavier/catkin_ws/build/csm/sm/CMakeFiles/json_pipe.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/xavier/catkin_ws/build/csm && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/xavier/catkin_ws/src/csm2 /home/xavier/catkin_ws/src/csm2/sm /home/xavier/catkin_ws/build/csm /home/xavier/catkin_ws/build/csm/sm /home/xavier/catkin_ws/build/csm/sm/CMakeFiles/json_pipe.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : sm/CMakeFiles/json_pipe.dir/depend
 

@@ -1,5 +1,5 @@
 # CMake generated Testfile for 
-# Source directory: /home/xavier/catkin_ws/src/scan_tools/ncd_parser
+# Source directory: /home/xavier/catkin_ws/src/scan_tools2/ncd_parser
 # Build directory: /home/xavier/catkin_ws/build/ncd_parser
 # 
 # This file includes the relevant testing commands required for 

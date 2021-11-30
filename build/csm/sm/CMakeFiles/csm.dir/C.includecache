@@ -6,69 +6,69 @@
 
 #IncludeRegexTransform: 
 
-/home/xavier/catkin_ws/src/csm/sm/csm/algos.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/algos.h
 gsl/gsl_vector.h
 -
 gsl/gsl_matrix.h
 -
 hsm/hsm.h
-/home/xavier/catkin_ws/src/csm/sm/csm/hsm/hsm.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/hsm/hsm.h
 hsm/hsm_interface.h
-/home/xavier/catkin_ws/src/csm/sm/csm/hsm/hsm_interface.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/hsm/hsm_interface.h
 laser_data.h
-/home/xavier/catkin_ws/src/csm/sm/csm/laser_data.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/laser_data.h
 
-/home/xavier/catkin_ws/src/csm/sm/csm/clustering.c
+/home/xavier/catkin_ws/src/csm2/sm/csm/clustering.c
 math.h
 -
 csm_all.h
-/home/xavier/catkin_ws/src/csm/sm/csm/csm_all.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/csm_all.h
 
-/home/xavier/catkin_ws/src/csm/sm/csm/csm.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/csm.h
 laser_data.h
-/home/xavier/catkin_ws/src/csm/sm/csm/laser_data.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/laser_data.h
 laser_data_drawing.h
-/home/xavier/catkin_ws/src/csm/sm/csm/laser_data_drawing.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/laser_data_drawing.h
 laser_data_json.h
-/home/xavier/catkin_ws/src/csm/sm/csm/laser_data_json.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/laser_data_json.h
 algos.h
-/home/xavier/catkin_ws/src/csm/sm/csm/algos.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/algos.h
 utils.h
-/home/xavier/catkin_ws/src/csm/sm/csm/utils.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/utils.h
 
-/home/xavier/catkin_ws/src/csm/sm/csm/csm_all.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/csm_all.h
 csm.h
-/home/xavier/catkin_ws/src/csm/sm/csm/csm.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/csm.h
 json_journal.h
-/home/xavier/catkin_ws/src/csm/sm/csm/json_journal.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/json_journal.h
 logging.h
-/home/xavier/catkin_ws/src/csm/sm/csm/logging.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/logging.h
 math_utils.h
-/home/xavier/catkin_ws/src/csm/sm/csm/math_utils.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/math_utils.h
 math_utils_gsl.h
-/home/xavier/catkin_ws/src/csm/sm/csm/math_utils_gsl.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/math_utils_gsl.h
 
-/home/xavier/catkin_ws/src/csm/sm/csm/gpm/gpm.c
+/home/xavier/catkin_ws/src/csm2/sm/csm/gpm/gpm.c
 gsl/gsl_histogram.h
 -
 gsl/gsl_matrix.h
 -
 ../csm_all.h
-/home/xavier/catkin_ws/src/csm/sm/csm/csm_all.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/csm_all.h
 gpm.h
-/home/xavier/catkin_ws/src/csm/sm/csm/gpm/gpm.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/gpm/gpm.h
 egsl/egsl_macros.h
 -
 
-/home/xavier/catkin_ws/src/csm/sm/csm/gpm/gpm.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/gpm/gpm.h
 gsl/gsl_vector.h
 -
 gsl/gsl_histogram.h
 -
 ../csm_all.h
-/home/xavier/catkin_ws/src/csm/sm/csm/csm_all.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/csm_all.h
 
-/home/xavier/catkin_ws/src/csm/sm/csm/hsm/hsm.c
+/home/xavier/catkin_ws/src/csm2/sm/csm/hsm/hsm.c
 stdlib.h
 -
 math.h
@@ -80,31 +80,31 @@ assert.h
 time.h
 -
 ../csm_all.h
-/home/xavier/catkin_ws/src/csm/sm/csm/csm_all.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/csm_all.h
 hsm.h
-/home/xavier/catkin_ws/src/csm/sm/csm/hsm/hsm.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/hsm/hsm.h
 
-/home/xavier/catkin_ws/src/csm/sm/csm/hsm/hsm.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/hsm/hsm.h
 stdlib.h
 -
 
-/home/xavier/catkin_ws/src/csm/sm/csm/hsm/hsm_interface.c
+/home/xavier/catkin_ws/src/csm2/sm/csm/hsm/hsm_interface.c
 options/options.h
 -
 assert.h
 -
 ../csm_all.h
-/home/xavier/catkin_ws/src/csm/sm/csm/csm_all.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/csm_all.h
 
-/home/xavier/catkin_ws/src/csm/sm/csm/hsm/hsm_interface.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/hsm/hsm_interface.h
 options/options.h
 -
 hsm.h
-/home/xavier/catkin_ws/src/csm/sm/csm/hsm/hsm.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/hsm/hsm.h
 
-/home/xavier/catkin_ws/src/csm/sm/csm/icp/fast_math.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/icp/fast_math.h
 
-/home/xavier/catkin_ws/src/csm/sm/csm/icp/icp.c
+/home/xavier/catkin_ws/src/csm2/sm/csm/icp/icp.c
 math.h
 -
 string.h
@@ -116,35 +116,35 @@ gpc/gpc.h
 egsl/egsl_macros.h
 -
 ../csm_all.h
-/home/xavier/catkin_ws/src/csm/sm/csm/csm_all.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/csm_all.h
 icp.h
-/home/xavier/catkin_ws/src/csm/sm/csm/icp/icp.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/icp/icp.h
 
-/home/xavier/catkin_ws/src/csm/sm/csm/icp/icp.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/icp/icp.h
 gpc/gpc.h
 -
 ../csm_all.h
-/home/xavier/catkin_ws/src/csm/sm/csm/csm_all.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/csm_all.h
 
-/home/xavier/catkin_ws/src/csm/sm/csm/icp/icp_corr_dumb.c
+/home/xavier/catkin_ws/src/csm2/sm/csm/icp/icp_corr_dumb.c
 gsl/gsl_vector.h
 -
 icp.h
-/home/xavier/catkin_ws/src/csm/sm/csm/icp/icp.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/icp/icp.h
 ../csm_all.h
-/home/xavier/catkin_ws/src/csm/sm/csm/csm_all.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/csm_all.h
 
-/home/xavier/catkin_ws/src/csm/sm/csm/icp/icp_corr_tricks.c
+/home/xavier/catkin_ws/src/csm2/sm/csm/icp/icp_corr_tricks.c
 gsl/gsl_vector.h
 -
 icp.h
-/home/xavier/catkin_ws/src/csm/sm/csm/icp/icp.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/icp/icp.h
 ../csm_all.h
-/home/xavier/catkin_ws/src/csm/sm/csm/csm_all.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/csm_all.h
 fast_math.h
-/home/xavier/catkin_ws/src/csm/sm/csm/icp/fast_math.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/icp/fast_math.h
 
-/home/xavier/catkin_ws/src/csm/sm/csm/icp/icp_covariance.c
+/home/xavier/catkin_ws/src/csm2/sm/csm/icp/icp_covariance.c
 math.h
 -
 gsl/gsl_math.h
@@ -152,17 +152,17 @@ gsl/gsl_math.h
 egsl/egsl_macros.h
 -
 icp.h
-/home/xavier/catkin_ws/src/csm/sm/csm/icp/icp.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/icp/icp.h
 ../csm_all.h
-/home/xavier/catkin_ws/src/csm/sm/csm/csm_all.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/csm_all.h
 
-/home/xavier/catkin_ws/src/csm/sm/csm/icp/icp_debug.c
+/home/xavier/catkin_ws/src/csm2/sm/csm/icp/icp_debug.c
 string.h
 -
 icp.h
-/home/xavier/catkin_ws/src/csm/sm/csm/icp/icp.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/icp/icp.h
 
-/home/xavier/catkin_ws/src/csm/sm/csm/icp/icp_loop.c
+/home/xavier/catkin_ws/src/csm2/sm/csm/icp/icp_loop.c
 math.h
 -
 string.h
@@ -174,23 +174,23 @@ gpc/gpc.h
 egsl/egsl_macros.h
 -
 ../csm_all.h
-/home/xavier/catkin_ws/src/csm/sm/csm/csm_all.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/csm_all.h
 icp.h
-/home/xavier/catkin_ws/src/csm/sm/csm/icp/icp.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/icp/icp.h
 
-/home/xavier/catkin_ws/src/csm/sm/csm/icp/icp_outliers.c
+/home/xavier/catkin_ws/src/csm2/sm/csm/icp/icp_outliers.c
 math.h
 -
 icp.h
-/home/xavier/catkin_ws/src/csm/sm/csm/icp/icp.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/icp/icp.h
 
-/home/xavier/catkin_ws/src/csm/sm/csm/json_journal.c
+/home/xavier/catkin_ws/src/csm2/sm/csm/json_journal.c
 assert.h
 -
 json_journal.h
-/home/xavier/catkin_ws/src/csm/sm/csm/json_journal.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/json_journal.h
 
-/home/xavier/catkin_ws/src/csm/sm/csm/json_journal.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/json_journal.h
 stdio.h
 -
 json-c/json.h
@@ -198,9 +198,9 @@ json-c/json.h
 json-c/json_more_utils.h
 -
 laser_data_json.h
-/home/xavier/catkin_ws/src/csm/sm/csm/laser_data_json.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/laser_data_json.h
 
-/home/xavier/catkin_ws/src/csm/sm/csm/laser_data.c
+/home/xavier/catkin_ws/src/csm2/sm/csm/laser_data.c
 math.h
 -
 stdlib.h
@@ -208,27 +208,27 @@ stdlib.h
 string.h
 -
 csm_all.h
-/home/xavier/catkin_ws/src/csm/sm/csm/csm_all.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/csm_all.h
 
-/home/xavier/catkin_ws/src/csm/sm/csm/laser_data.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/laser_data.h
 sys/time.h
 -
 stdio.h
 -
 restrict.h
-/home/xavier/catkin_ws/src/csm/sm/csm/restrict.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/restrict.h
 laser_data_inline.h
-/home/xavier/catkin_ws/src/csm/sm/csm/laser_data_inline.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/laser_data_inline.h
 
-/home/xavier/catkin_ws/src/csm/sm/csm/laser_data_bbox.c
+/home/xavier/catkin_ws/src/csm2/sm/csm/laser_data_bbox.c
 laser_data_drawing.h
-/home/xavier/catkin_ws/src/csm/sm/csm/laser_data_drawing.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/laser_data_drawing.h
 math_utils.h
-/home/xavier/catkin_ws/src/csm/sm/csm/math_utils.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/math_utils.h
 logging.h
-/home/xavier/catkin_ws/src/csm/sm/csm/logging.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/logging.h
 
-/home/xavier/catkin_ws/src/csm/sm/csm/laser_data_cairo.c
+/home/xavier/catkin_ws/src/csm2/sm/csm/laser_data_cairo.c
 string.h
 -
 cairo-pdf.h
@@ -238,19 +238,19 @@ stdlib.h
 limits.h
 -
 laser_data_cairo.h
-/home/xavier/catkin_ws/src/csm/sm/csm/laser_data_cairo.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/laser_data_cairo.h
 
-/home/xavier/catkin_ws/src/csm/sm/csm/laser_data_cairo.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/laser_data_cairo.h
 cairo.h
 -
 options/options.h
 -
 ../csm/csm_all.h
-/home/xavier/catkin_ws/src/csm/sm/csm/csm_all.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/csm_all.h
 ../csm/laser_data_drawing.h
-/home/xavier/catkin_ws/src/csm/sm/csm/laser_data_drawing.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/laser_data_drawing.h
 
-/home/xavier/catkin_ws/src/csm/sm/csm/laser_data_carmen.c
+/home/xavier/catkin_ws/src/csm2/sm/csm/laser_data_carmen.c
 string.h
 -
 math.h
@@ -258,41 +258,41 @@ math.h
 ctype.h
 -
 csm_all.h
-/home/xavier/catkin_ws/src/csm/sm/csm/csm_all.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/csm_all.h
 
-/home/xavier/catkin_ws/src/csm/sm/csm/laser_data_drawing.c
+/home/xavier/catkin_ws/src/csm2/sm/csm/laser_data_drawing.c
 string.h
 -
 strings.h
 -
 laser_data_drawing.h
-/home/xavier/catkin_ws/src/csm/sm/csm/laser_data_drawing.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/laser_data_drawing.h
 logging.h
-/home/xavier/catkin_ws/src/csm/sm/csm/logging.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/logging.h
 math_utils.h
-/home/xavier/catkin_ws/src/csm/sm/csm/math_utils.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/math_utils.h
 
-/home/xavier/catkin_ws/src/csm/sm/csm/laser_data_drawing.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/laser_data_drawing.h
 laser_data.h
-/home/xavier/catkin_ws/src/csm/sm/csm/laser_data.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/laser_data.h
 
-/home/xavier/catkin_ws/src/csm/sm/csm/laser_data_fisher.c
+/home/xavier/catkin_ws/src/csm2/sm/csm/laser_data_fisher.c
 math.h
 -
 egsl/egsl_macros.h
 -
 csm_all.h
-/home/xavier/catkin_ws/src/csm/sm/csm/csm_all.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/csm_all.h
 
-/home/xavier/catkin_ws/src/csm/sm/csm/laser_data_inline.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/laser_data_inline.h
 gsl/gsl_math.h
 -
 gsl/gsl_vector.h
 -
 csm.h
-/home/xavier/catkin_ws/src/csm/sm/csm/csm.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/csm.h
 
-/home/xavier/catkin_ws/src/csm/sm/csm/laser_data_json.c
+/home/xavier/catkin_ws/src/csm2/sm/csm/laser_data_json.c
 errno.h
 -
 string.h
@@ -302,9 +302,9 @@ math.h
 ctype.h
 -
 csm_all.h
-/home/xavier/catkin_ws/src/csm/sm/csm/csm_all.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/csm_all.h
 
-/home/xavier/catkin_ws/src/csm/sm/csm/laser_data_json.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/laser_data_json.h
 gsl/gsl_matrix.h
 -
 gsl/gsl_vector.h
@@ -314,19 +314,19 @@ json-c/json.h
 json-c/json_more_utils.h
 -
 laser_data.h
-/home/xavier/catkin_ws/src/csm/sm/csm/laser_data.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/laser_data.h
 algos.h
-/home/xavier/catkin_ws/src/csm/sm/csm/algos.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/algos.h
 
-/home/xavier/catkin_ws/src/csm/sm/csm/laser_data_load.c
+/home/xavier/catkin_ws/src/csm2/sm/csm/laser_data_load.c
 ctype.h
 -
 csm_all.h
-/home/xavier/catkin_ws/src/csm/sm/csm/csm_all.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/csm_all.h
 laser_data_drawing.h
-/home/xavier/catkin_ws/src/csm/sm/csm/laser_data_drawing.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/laser_data_drawing.h
 
-/home/xavier/catkin_ws/src/csm/sm/csm/logging.c
+/home/xavier/catkin_ws/src/csm2/sm/csm/logging.c
 sys/param.h
 -
 stdarg.h
@@ -340,129 +340,129 @@ stdio.h
 assert.h
 -
 logging.h
-/home/xavier/catkin_ws/src/csm/sm/csm/logging.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/logging.h
 csm_all.h
-/home/xavier/catkin_ws/src/csm/sm/csm/csm_all.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/csm_all.h
 
-/home/xavier/catkin_ws/src/csm/sm/csm/logging.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/logging.h
 
-/home/xavier/catkin_ws/src/csm/sm/csm/math_utils.c
+/home/xavier/catkin_ws/src/csm2/sm/csm/math_utils.c
 assert.h
 -
 gsl/gsl_nan.h
 -
 csm_all.h
-/home/xavier/catkin_ws/src/csm/sm/csm/csm_all.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/csm_all.h
 
-/home/xavier/catkin_ws/src/csm/sm/csm/math_utils.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/math_utils.h
 
-/home/xavier/catkin_ws/src/csm/sm/csm/math_utils_gsl.c
+/home/xavier/catkin_ws/src/csm2/sm/csm/math_utils_gsl.c
 csm_all.h
-/home/xavier/catkin_ws/src/csm/sm/csm/csm_all.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/csm_all.h
 
-/home/xavier/catkin_ws/src/csm/sm/csm/math_utils_gsl.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/math_utils_gsl.h
 gsl/gsl_math.h
 -
 egsl/egsl.h
 -
 laser_data.h
-/home/xavier/catkin_ws/src/csm/sm/csm/laser_data.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/laser_data.h
 
-/home/xavier/catkin_ws/src/csm/sm/csm/mbicp/MbICP.c
+/home/xavier/catkin_ws/src/csm2/sm/csm/mbicp/MbICP.c
 MbICP.h
-/home/xavier/catkin_ws/src/csm/sm/csm/mbicp/MbICP.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/mbicp/MbICP.h
 MbICP2.h
-/home/xavier/catkin_ws/src/csm/sm/csm/mbicp/MbICP2.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/mbicp/MbICP2.h
 calcul.h
-/home/xavier/catkin_ws/src/csm/sm/csm/mbicp/calcul.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/mbicp/calcul.h
 sp_matrix.h
-/home/xavier/catkin_ws/src/csm/sm/csm/mbicp/sp_matrix.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/mbicp/sp_matrix.h
 stdio.h
 -
 math.h
 -
 percolate.h
-/home/xavier/catkin_ws/src/csm/sm/csm/mbicp/percolate.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/mbicp/percolate.h
 
-/home/xavier/catkin_ws/src/csm/sm/csm/mbicp/MbICP.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/mbicp/MbICP.h
 TData.h
-/home/xavier/catkin_ws/src/csm/sm/csm/mbicp/TData.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/mbicp/TData.h
 
-/home/xavier/catkin_ws/src/csm/sm/csm/mbicp/MbICP2.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/mbicp/MbICP2.h
 TData.h
-/home/xavier/catkin_ws/src/csm/sm/csm/mbicp/TData.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/mbicp/TData.h
 
-/home/xavier/catkin_ws/src/csm/sm/csm/mbicp/TData.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/mbicp/TData.h
 
-/home/xavier/catkin_ws/src/csm/sm/csm/mbicp/calcul.c
+/home/xavier/catkin_ws/src/csm2/sm/csm/mbicp/calcul.c
 calcul.h
-/home/xavier/catkin_ws/src/csm/sm/csm/mbicp/calcul.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/mbicp/calcul.h
 
-/home/xavier/catkin_ws/src/csm/sm/csm/mbicp/calcul.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/mbicp/calcul.h
 stdio.h
 -
 math.h
 -
 TData.h
-/home/xavier/catkin_ws/src/csm/sm/csm/mbicp/TData.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/mbicp/TData.h
 
-/home/xavier/catkin_ws/src/csm/sm/csm/mbicp/mbicp_interface.c
+/home/xavier/catkin_ws/src/csm2/sm/csm/mbicp/mbicp_interface.c
 ../csm_all.h
-/home/xavier/catkin_ws/src/csm/sm/csm/csm_all.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/csm_all.h
 
-/home/xavier/catkin_ws/src/csm/sm/csm/mbicp/percolate.c
+/home/xavier/catkin_ws/src/csm2/sm/csm/mbicp/percolate.c
 stdio.h
 -
 percolate.h
-/home/xavier/catkin_ws/src/csm/sm/csm/mbicp/percolate.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/mbicp/percolate.h
 
-/home/xavier/catkin_ws/src/csm/sm/csm/mbicp/percolate.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/mbicp/percolate.h
 MbICP2.h
-/home/xavier/catkin_ws/src/csm/sm/csm/mbicp/MbICP2.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/mbicp/MbICP2.h
 TData.h
-/home/xavier/catkin_ws/src/csm/sm/csm/mbicp/TData.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/mbicp/TData.h
 
-/home/xavier/catkin_ws/src/csm/sm/csm/mbicp/sp_matrix.c
+/home/xavier/catkin_ws/src/csm2/sm/csm/mbicp/sp_matrix.c
 stdio.h
 -
 sp_matrix.h
-/home/xavier/catkin_ws/src/csm/sm/csm/mbicp/sp_matrix.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/mbicp/sp_matrix.h
 
-/home/xavier/catkin_ws/src/csm/sm/csm/mbicp/sp_matrix.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/mbicp/sp_matrix.h
 
-/home/xavier/catkin_ws/src/csm/sm/csm/orientation.c
+/home/xavier/catkin_ws/src/csm2/sm/csm/orientation.c
 math.h
 -
 gsl/gsl_nan.h
 -
 csm_all.h
-/home/xavier/catkin_ws/src/csm/sm/csm/csm_all.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/csm_all.h
 egsl/egsl_macros.h
 -
 
-/home/xavier/catkin_ws/src/csm/sm/csm/restrict.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/restrict.h
 gsl/gsl_matrix.h
 -
 
-/home/xavier/catkin_ws/src/csm/sm/csm/sm_options.c
+/home/xavier/catkin_ws/src/csm2/sm/csm/sm_options.c
 options/options.h
 -
 csm_all.h
-/home/xavier/catkin_ws/src/csm/sm/csm/csm_all.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/csm_all.h
 
-/home/xavier/catkin_ws/src/csm/sm/csm/utils.c
+/home/xavier/catkin_ws/src/csm2/sm/csm/utils.c
 string.h
 -
 errno.h
 -
 csm_all.h
-/home/xavier/catkin_ws/src/csm/sm/csm/csm_all.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/csm_all.h
 
-/home/xavier/catkin_ws/src/csm/sm/csm/utils.h
+/home/xavier/catkin_ws/src/csm2/sm/csm/utils.h
 stdio.h
 -
 
-/home/xavier/catkin_ws/src/csm/sm/lib/egsl/egsl.c
+/home/xavier/catkin_ws/src/csm2/sm/lib/egsl/egsl.c
 gsl/gsl_matrix.h
 -
 gsl/gsl_blas.h
@@ -476,35 +476,35 @@ math.h
 string.h
 -
 egsl.h
-/home/xavier/catkin_ws/src/csm/sm/lib/egsl/egsl.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/egsl/egsl.h
 egsl_imp.h
-/home/xavier/catkin_ws/src/csm/sm/lib/egsl/egsl_imp.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/egsl/egsl_imp.h
 
-/home/xavier/catkin_ws/src/csm/sm/lib/egsl/egsl.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/egsl/egsl.h
 gsl/gsl_vector.h
 -
 gsl/gsl_matrix.h
 -
 
-/home/xavier/catkin_ws/src/csm/sm/lib/egsl/egsl_conversions.c
+/home/xavier/catkin_ws/src/csm2/sm/lib/egsl/egsl_conversions.c
 egsl.h
-/home/xavier/catkin_ws/src/csm/sm/lib/egsl/egsl.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/egsl/egsl.h
 
-/home/xavier/catkin_ws/src/csm/sm/lib/egsl/egsl_imp.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/egsl/egsl_imp.h
 egsl.h
-/home/xavier/catkin_ws/src/csm/sm/lib/egsl/egsl.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/egsl/egsl.h
 
-/home/xavier/catkin_ws/src/csm/sm/lib/egsl/egsl_macros.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/egsl/egsl_macros.h
 egsl.h
-/home/xavier/catkin_ws/src/csm/sm/lib/egsl/egsl.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/egsl/egsl.h
 
-/home/xavier/catkin_ws/src/csm/sm/lib/egsl/egsl_misc.c
+/home/xavier/catkin_ws/src/csm2/sm/lib/egsl/egsl_misc.c
 math.h
 -
 egsl.h
-/home/xavier/catkin_ws/src/csm/sm/lib/egsl/egsl.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/egsl/egsl.h
 
-/home/xavier/catkin_ws/src/csm/sm/lib/egsl/egsl_ops.c
+/home/xavier/catkin_ws/src/csm2/sm/lib/egsl/egsl_ops.c
 gsl/gsl_matrix.h
 -
 gsl/gsl_blas.h
@@ -514,27 +514,27 @@ gsl/gsl_linalg.h
 gsl/gsl_eigen.h
 -
 egsl.h
-/home/xavier/catkin_ws/src/csm/sm/lib/egsl/egsl.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/egsl/egsl.h
 
-/home/xavier/catkin_ws/src/csm/sm/lib/gpc/gpc.c
+/home/xavier/catkin_ws/src/csm2/sm/lib/gpc/gpc.c
 math.h
 -
 gsl/gsl_math.h
 -
 gpc.h
-/home/xavier/catkin_ws/src/csm/sm/lib/gpc/gpc.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/gpc/gpc.h
 gpc_utils.h
-/home/xavier/catkin_ws/src/csm/sm/lib/gpc/gpc_utils.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/gpc/gpc_utils.h
 
-/home/xavier/catkin_ws/src/csm/sm/lib/gpc/gpc.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/gpc/gpc.h
 
-/home/xavier/catkin_ws/src/csm/sm/lib/gpc/gpc_utils.c
+/home/xavier/catkin_ws/src/csm2/sm/lib/gpc/gpc_utils.c
 gpc.h
-/home/xavier/catkin_ws/src/csm/sm/lib/gpc/gpc.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/gpc/gpc.h
 gpc_utils.h
-/home/xavier/catkin_ws/src/csm/sm/lib/gpc/gpc_utils.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/gpc/gpc_utils.h
 
-/home/xavier/catkin_ws/src/csm/sm/lib/gpc/gpc_utils.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/gpc/gpc_utils.h
 gsl/gsl_matrix.h
 -
 gsl/gsl_blas.h
@@ -544,15 +544,15 @@ gsl/gsl_linalg.h
 gsl/gsl_poly.h
 -
 
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/JSON_checker.c
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/JSON_checker.c
 JSON_checker.h
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/JSON_checker.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/JSON_checker.h
 
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/JSON_checker.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/JSON_checker.h
 
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/arraylist.c
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/arraylist.c
 config.h
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/config.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/config.h
 stdlib.h
 -
 string.h
@@ -560,17 +560,17 @@ string.h
 strings.h
 -
 bits.h
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/bits.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/bits.h
 arraylist.h
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/arraylist.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/arraylist.h
 
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/arraylist.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/arraylist.h
 
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/bits.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/bits.h
 
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/debug.c
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/debug.c
 config.h
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/config.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/config.h
 stdio.h
 -
 stdlib.h
@@ -586,29 +586,29 @@ unistd.h
 sys/param.h
 -
 debug.h
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/debug.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/debug.h
 
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/debug.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/debug.h
 
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json.h
 bits.h
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/bits.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/bits.h
 debug.h
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/debug.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/debug.h
 linkhash.h
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/linkhash.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/linkhash.h
 arraylist.h
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/arraylist.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/arraylist.h
 json_util.h
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_util.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_util.h
 json_object.h
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_object.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_object.h
 json_tokener.h
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_tokener.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_tokener.h
 json_more_utils.h
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_more_utils.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_more_utils.h
 
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_more_utils.c
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_more_utils.c
 string.h
 -
 ctype.h
@@ -622,31 +622,31 @@ errno.h
 math.h
 -
 debug.h
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/debug.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/debug.h
 bits.h
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/bits.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/bits.h
 json_object.h
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_object.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_object.h
 json_more_utils.h
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_more_utils.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_more_utils.h
 json_tokener.h
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_tokener.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_tokener.h
 JSON_checker.h
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/JSON_checker.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/JSON_checker.h
 linkhash.h
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/linkhash.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/linkhash.h
 
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_more_utils.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_more_utils.h
 stdio.h
 -
 json_object.h
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_object.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_object.h
 
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_object.c
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_object.c
 assert.h
 -
 config.h
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/config.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/config.h
 stdio.h
 -
 stdlib.h
@@ -656,29 +656,29 @@ string.h
 strings.h
 -
 debug.h
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/debug.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/debug.h
 printbuf.h
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/printbuf.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/printbuf.h
 linkhash.h
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/linkhash.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/linkhash.h
 arraylist.h
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/arraylist.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/arraylist.h
 json_object.h
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_object.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_object.h
 json_object_private.h
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_object_private.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_object_private.h
 json_tokener.h
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_tokener.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_tokener.h
 
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_object.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_object.h
 
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_object_private.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_object_private.h
 json_object.h
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_object.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_object.h
 
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_tokener.c
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_tokener.c
 config.h
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/config.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/config.h
 stdio.h
 -
 stdlib.h
@@ -690,25 +690,25 @@ string.h
 strings.h
 -
 bits.h
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/bits.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/bits.h
 debug.h
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/debug.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/debug.h
 printbuf.h
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/printbuf.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/printbuf.h
 arraylist.h
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/arraylist.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/arraylist.h
 json_object.h
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_object.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_object.h
 json_tokener.h
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_tokener.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_tokener.h
 
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_tokener.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_tokener.h
 json_object.h
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_object.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_object.h
 
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_util.c
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_util.c
 config.h
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/config.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/config.h
 stdio.h
 -
 stdlib.h
@@ -732,25 +732,25 @@ windows.h
 io.h
 -
 bits.h
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/bits.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/bits.h
 debug.h
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/debug.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/debug.h
 printbuf.h
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/printbuf.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/printbuf.h
 json_object.h
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_object.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_object.h
 json_tokener.h
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_tokener.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_tokener.h
 json_util.h
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_util.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_util.h
 
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_util.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_util.h
 json_object.h
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_object.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_object.h
 
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/linkhash.c
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/linkhash.c
 config.h
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/config.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/config.h
 stdio.h
 -
 string.h
@@ -764,13 +764,13 @@ stddef.h
 limits.h
 -
 linkhash.h
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/linkhash.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/linkhash.h
 
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/linkhash.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/linkhash.h
 
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/printbuf.c
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/printbuf.c
 config.h
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/config.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/config.h
 stdio.h
 -
 stdlib.h
@@ -780,15 +780,15 @@ string.h
 stdarg.h
 -
 bits.h
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/bits.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/bits.h
 debug.h
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/debug.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/debug.h
 printbuf.h
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/printbuf.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/printbuf.h
 
-/home/xavier/catkin_ws/src/csm/sm/lib/json-c/printbuf.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/printbuf.h
 
-/home/xavier/catkin_ws/src/csm/sm/lib/options/options.c
+/home/xavier/catkin_ws/src/csm2/sm/lib/options/options.c
 errno.h
 -
 limits.h
@@ -810,13 +810,13 @@ libgen.h
 string.h
 -
 options.h
-/home/xavier/catkin_ws/src/csm/sm/lib/options/options.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/options/options.h
 
-/home/xavier/catkin_ws/src/csm/sm/lib/options/options.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/options/options.h
 stdio.h
 -
 
-/home/xavier/catkin_ws/src/csm/sm/lib/options/options_interface.c
+/home/xavier/catkin_ws/src/csm2/sm/lib/options/options_interface.c
 errno.h
 -
 stdlib.h
@@ -826,7 +826,7 @@ stdio.h
 string.h
 -
 options.h
-/home/xavier/catkin_ws/src/csm/sm/lib/options/options.h
+/home/xavier/catkin_ws/src/csm2/sm/lib/options/options.h
 
 config.h
 

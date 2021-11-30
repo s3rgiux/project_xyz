@@ -67,7 +67,7 @@ set(laser_ortho_projector_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("FALSE" STREQUAL "TRUE")
-  set(laser_ortho_projector_SOURCE_PREFIX /home/xavier/catkin_ws/src/scan_tools/laser_ortho_projector)
+  set(laser_ortho_projector_SOURCE_PREFIX /home/xavier/catkin_ws/src/scan_tools2/laser_ortho_projector)
   set(laser_ortho_projector_DEVEL_PREFIX /home/xavier/catkin_ws/devel/.private/laser_ortho_projector)
   set(laser_ortho_projector_INSTALL_PREFIX "")
   set(laser_ortho_projector_PREFIX ${laser_ortho_projector_DEVEL_PREFIX})

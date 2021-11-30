@@ -6,23 +6,23 @@
 
 #IncludeRegexTransform: 
 
-/home/xavier/catkin_ws/src/scan_tools/laser_scan_sparsifier/include/laser_scan_sparsifier/laser_scan_sparsifier.h
+/home/xavier/catkin_ws/src/scan_tools2/laser_scan_sparsifier/include/laser_scan_sparsifier/laser_scan_sparsifier.h
 ros/ros.h
 -
 sensor_msgs/LaserScan.h
 -
 
-/home/xavier/catkin_ws/src/scan_tools/laser_scan_sparsifier/include/laser_scan_sparsifier/laser_scan_sparsifier_nodelet.h
+/home/xavier/catkin_ws/src/scan_tools2/laser_scan_sparsifier/include/laser_scan_sparsifier/laser_scan_sparsifier_nodelet.h
 nodelet/nodelet.h
 -
 pluginlib/class_list_macros.h
 -
 laser_scan_sparsifier/laser_scan_sparsifier.h
-/home/xavier/catkin_ws/src/scan_tools/laser_scan_sparsifier/include/laser_scan_sparsifier/laser_scan_sparsifier/laser_scan_sparsifier.h
+/home/xavier/catkin_ws/src/scan_tools2/laser_scan_sparsifier/include/laser_scan_sparsifier/laser_scan_sparsifier/laser_scan_sparsifier.h
 
-/home/xavier/catkin_ws/src/scan_tools/laser_scan_sparsifier/src/laser_scan_sparsifier_nodelet.cpp
+/home/xavier/catkin_ws/src/scan_tools2/laser_scan_sparsifier/src/laser_scan_sparsifier_nodelet.cpp
 laser_scan_sparsifier/laser_scan_sparsifier_nodelet.h
-/home/xavier/catkin_ws/src/scan_tools/laser_scan_sparsifier/src/laser_scan_sparsifier/laser_scan_sparsifier_nodelet.h
+/home/xavier/catkin_ws/src/scan_tools2/laser_scan_sparsifier/src/laser_scan_sparsifier/laser_scan_sparsifier_nodelet.h
 
 /opt/ros/melodic/include/class_loader/class_loader.hpp
 boost/bind.hpp

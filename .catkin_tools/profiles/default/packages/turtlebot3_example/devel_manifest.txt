@@ -1,4 +1,4 @@
-turtlebot3/turtlebot3_example
+turtlebot32/turtlebot3_example
 /home/xavier/catkin_ws/devel/.private/turtlebot3_example/cmake.lock /home/xavier/catkin_ws/devel/./cmake.lock
 /home/xavier/catkin_ws/devel/.private/turtlebot3_example/include/turtlebot3_example/Turtlebot3Action.h /home/xavier/catkin_ws/devel/include/turtlebot3_example/Turtlebot3Action.h
 /home/xavier/catkin_ws/devel/.private/turtlebot3_example/include/turtlebot3_example/Turtlebot3Goal.h /home/xavier/catkin_ws/devel/include/turtlebot3_example/Turtlebot3Goal.h

@@ -43,7 +43,7 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/xavier/catkin_ws/src/csm
+CMAKE_SOURCE_DIR = /home/xavier/catkin_ws/src/csm2
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/xavier/catkin_ws/build/csm
@@ -58,17 +58,17 @@ include sm/CMakeFiles/test_json_ld.dir/progress.make
 include sm/CMakeFiles/test_json_ld.dir/flags.make
 
 sm/CMakeFiles/test_json_ld.dir/apps/test_json_ld.o: sm/CMakeFiles/test_json_ld.dir/flags.make
-sm/CMakeFiles/test_json_ld.dir/apps/test_json_ld.o: /home/xavier/catkin_ws/src/csm/sm/apps/test_json_ld.c
+sm/CMakeFiles/test_json_ld.dir/apps/test_json_ld.o: /home/xavier/catkin_ws/src/csm2/sm/apps/test_json_ld.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object sm/CMakeFiles/test_json_ld.dir/apps/test_json_ld.o"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/test_json_ld.dir/apps/test_json_ld.o   -c /home/xavier/catkin_ws/src/csm/sm/apps/test_json_ld.c
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/test_json_ld.dir/apps/test_json_ld.o   -c /home/xavier/catkin_ws/src/csm2/sm/apps/test_json_ld.c
 
 sm/CMakeFiles/test_json_ld.dir/apps/test_json_ld.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/test_json_ld.dir/apps/test_json_ld.i"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/apps/test_json_ld.c > CMakeFiles/test_json_ld.dir/apps/test_json_ld.i
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/apps/test_json_ld.c > CMakeFiles/test_json_ld.dir/apps/test_json_ld.i
 
 sm/CMakeFiles/test_json_ld.dir/apps/test_json_ld.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/test_json_ld.dir/apps/test_json_ld.s"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/apps/test_json_ld.c -o CMakeFiles/test_json_ld.dir/apps/test_json_ld.s
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/apps/test_json_ld.c -o CMakeFiles/test_json_ld.dir/apps/test_json_ld.s
 
 sm/CMakeFiles/test_json_ld.dir/apps/test_json_ld.o.requires:
 
@@ -109,6 +109,6 @@ sm/CMakeFiles/test_json_ld.dir/clean:
 .PHONY : sm/CMakeFiles/test_json_ld.dir/clean
 
 sm/CMakeFiles/test_json_ld.dir/depend:
-	cd /home/xavier/catkin_ws/build/csm && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/xavier/catkin_ws/src/csm /home/xavier/catkin_ws/src/csm/sm /home/xavier/catkin_ws/build/csm /home/xavier/catkin_ws/build/csm/sm /home/xavier/catkin_ws/build/csm/sm/CMakeFiles/test_json_ld.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/xavier/catkin_ws/build/csm && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/xavier/catkin_ws/src/csm2 /home/xavier/catkin_ws/src/csm2/sm /home/xavier/catkin_ws/build/csm /home/xavier/catkin_ws/build/csm/sm /home/xavier/catkin_ws/build/csm/sm/CMakeFiles/test_json_ld.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : sm/CMakeFiles/test_json_ld.dir/depend
 

@@ -67,7 +67,7 @@ set(urg_node_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("FALSE" STREQUAL "TRUE")
-  set(urg_node_SOURCE_PREFIX /home/xavier/catkin_ws/src/urg_node)
+  set(urg_node_SOURCE_PREFIX /home/xavier/catkin_ws/src/urg_node2)
   set(urg_node_DEVEL_PREFIX /home/xavier/catkin_ws/devel/.private/urg_node)
   set(urg_node_INSTALL_PREFIX "")
   set(urg_node_PREFIX ${urg_node_DEVEL_PREFIX})

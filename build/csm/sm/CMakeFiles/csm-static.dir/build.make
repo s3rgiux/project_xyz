@@ -43,7 +43,7 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/xavier/catkin_ws/src/csm
+CMAKE_SOURCE_DIR = /home/xavier/catkin_ws/src/csm2
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/xavier/catkin_ws/build/csm
@@ -58,17 +58,17 @@ include sm/CMakeFiles/csm-static.dir/progress.make
 include sm/CMakeFiles/csm-static.dir/flags.make
 
 sm/CMakeFiles/csm-static.dir/csm/clustering.o: sm/CMakeFiles/csm-static.dir/flags.make
-sm/CMakeFiles/csm-static.dir/csm/clustering.o: /home/xavier/catkin_ws/src/csm/sm/csm/clustering.c
+sm/CMakeFiles/csm-static.dir/csm/clustering.o: /home/xavier/catkin_ws/src/csm2/sm/csm/clustering.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object sm/CMakeFiles/csm-static.dir/csm/clustering.o"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/clustering.o   -c /home/xavier/catkin_ws/src/csm/sm/csm/clustering.c
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/clustering.o   -c /home/xavier/catkin_ws/src/csm2/sm/csm/clustering.c
 
 sm/CMakeFiles/csm-static.dir/csm/clustering.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/csm-static.dir/csm/clustering.i"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/csm/clustering.c > CMakeFiles/csm-static.dir/csm/clustering.i
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/csm/clustering.c > CMakeFiles/csm-static.dir/csm/clustering.i
 
 sm/CMakeFiles/csm-static.dir/csm/clustering.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/csm-static.dir/csm/clustering.s"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/csm/clustering.c -o CMakeFiles/csm-static.dir/csm/clustering.s
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/csm/clustering.c -o CMakeFiles/csm-static.dir/csm/clustering.s
 
 sm/CMakeFiles/csm-static.dir/csm/clustering.o.requires:
 
@@ -82,17 +82,17 @@ sm/CMakeFiles/csm-static.dir/csm/clustering.o.provides.build: sm/CMakeFiles/csm-
 
 
 sm/CMakeFiles/csm-static.dir/csm/gpm/gpm.o: sm/CMakeFiles/csm-static.dir/flags.make
-sm/CMakeFiles/csm-static.dir/csm/gpm/gpm.o: /home/xavier/catkin_ws/src/csm/sm/csm/gpm/gpm.c
+sm/CMakeFiles/csm-static.dir/csm/gpm/gpm.o: /home/xavier/catkin_ws/src/csm2/sm/csm/gpm/gpm.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object sm/CMakeFiles/csm-static.dir/csm/gpm/gpm.o"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/gpm/gpm.o   -c /home/xavier/catkin_ws/src/csm/sm/csm/gpm/gpm.c
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/gpm/gpm.o   -c /home/xavier/catkin_ws/src/csm2/sm/csm/gpm/gpm.c
 
 sm/CMakeFiles/csm-static.dir/csm/gpm/gpm.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/csm-static.dir/csm/gpm/gpm.i"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/csm/gpm/gpm.c > CMakeFiles/csm-static.dir/csm/gpm/gpm.i
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/csm/gpm/gpm.c > CMakeFiles/csm-static.dir/csm/gpm/gpm.i
 
 sm/CMakeFiles/csm-static.dir/csm/gpm/gpm.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/csm-static.dir/csm/gpm/gpm.s"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/csm/gpm/gpm.c -o CMakeFiles/csm-static.dir/csm/gpm/gpm.s
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/csm/gpm/gpm.c -o CMakeFiles/csm-static.dir/csm/gpm/gpm.s
 
 sm/CMakeFiles/csm-static.dir/csm/gpm/gpm.o.requires:
 
@@ -106,17 +106,17 @@ sm/CMakeFiles/csm-static.dir/csm/gpm/gpm.o.provides.build: sm/CMakeFiles/csm-sta
 
 
 sm/CMakeFiles/csm-static.dir/csm/icp/icp.o: sm/CMakeFiles/csm-static.dir/flags.make
-sm/CMakeFiles/csm-static.dir/csm/icp/icp.o: /home/xavier/catkin_ws/src/csm/sm/csm/icp/icp.c
+sm/CMakeFiles/csm-static.dir/csm/icp/icp.o: /home/xavier/catkin_ws/src/csm2/sm/csm/icp/icp.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object sm/CMakeFiles/csm-static.dir/csm/icp/icp.o"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/icp/icp.o   -c /home/xavier/catkin_ws/src/csm/sm/csm/icp/icp.c
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/icp/icp.o   -c /home/xavier/catkin_ws/src/csm2/sm/csm/icp/icp.c
 
 sm/CMakeFiles/csm-static.dir/csm/icp/icp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/csm-static.dir/csm/icp/icp.i"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/csm/icp/icp.c > CMakeFiles/csm-static.dir/csm/icp/icp.i
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/csm/icp/icp.c > CMakeFiles/csm-static.dir/csm/icp/icp.i
 
 sm/CMakeFiles/csm-static.dir/csm/icp/icp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/csm-static.dir/csm/icp/icp.s"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/csm/icp/icp.c -o CMakeFiles/csm-static.dir/csm/icp/icp.s
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/csm/icp/icp.c -o CMakeFiles/csm-static.dir/csm/icp/icp.s
 
 sm/CMakeFiles/csm-static.dir/csm/icp/icp.o.requires:
 
@@ -130,17 +130,17 @@ sm/CMakeFiles/csm-static.dir/csm/icp/icp.o.provides.build: sm/CMakeFiles/csm-sta
 
 
 sm/CMakeFiles/csm-static.dir/csm/icp/icp_corr_dumb.o: sm/CMakeFiles/csm-static.dir/flags.make
-sm/CMakeFiles/csm-static.dir/csm/icp/icp_corr_dumb.o: /home/xavier/catkin_ws/src/csm/sm/csm/icp/icp_corr_dumb.c
+sm/CMakeFiles/csm-static.dir/csm/icp/icp_corr_dumb.o: /home/xavier/catkin_ws/src/csm2/sm/csm/icp/icp_corr_dumb.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object sm/CMakeFiles/csm-static.dir/csm/icp/icp_corr_dumb.o"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/icp/icp_corr_dumb.o   -c /home/xavier/catkin_ws/src/csm/sm/csm/icp/icp_corr_dumb.c
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/icp/icp_corr_dumb.o   -c /home/xavier/catkin_ws/src/csm2/sm/csm/icp/icp_corr_dumb.c
 
 sm/CMakeFiles/csm-static.dir/csm/icp/icp_corr_dumb.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/csm-static.dir/csm/icp/icp_corr_dumb.i"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/csm/icp/icp_corr_dumb.c > CMakeFiles/csm-static.dir/csm/icp/icp_corr_dumb.i
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/csm/icp/icp_corr_dumb.c > CMakeFiles/csm-static.dir/csm/icp/icp_corr_dumb.i
 
 sm/CMakeFiles/csm-static.dir/csm/icp/icp_corr_dumb.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/csm-static.dir/csm/icp/icp_corr_dumb.s"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/csm/icp/icp_corr_dumb.c -o CMakeFiles/csm-static.dir/csm/icp/icp_corr_dumb.s
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/csm/icp/icp_corr_dumb.c -o CMakeFiles/csm-static.dir/csm/icp/icp_corr_dumb.s
 
 sm/CMakeFiles/csm-static.dir/csm/icp/icp_corr_dumb.o.requires:
 
@@ -154,17 +154,17 @@ sm/CMakeFiles/csm-static.dir/csm/icp/icp_corr_dumb.o.provides.build: sm/CMakeFil
 
 
 sm/CMakeFiles/csm-static.dir/csm/icp/icp_corr_tricks.o: sm/CMakeFiles/csm-static.dir/flags.make
-sm/CMakeFiles/csm-static.dir/csm/icp/icp_corr_tricks.o: /home/xavier/catkin_ws/src/csm/sm/csm/icp/icp_corr_tricks.c
+sm/CMakeFiles/csm-static.dir/csm/icp/icp_corr_tricks.o: /home/xavier/catkin_ws/src/csm2/sm/csm/icp/icp_corr_tricks.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object sm/CMakeFiles/csm-static.dir/csm/icp/icp_corr_tricks.o"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/icp/icp_corr_tricks.o   -c /home/xavier/catkin_ws/src/csm/sm/csm/icp/icp_corr_tricks.c
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/icp/icp_corr_tricks.o   -c /home/xavier/catkin_ws/src/csm2/sm/csm/icp/icp_corr_tricks.c
 
 sm/CMakeFiles/csm-static.dir/csm/icp/icp_corr_tricks.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/csm-static.dir/csm/icp/icp_corr_tricks.i"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/csm/icp/icp_corr_tricks.c > CMakeFiles/csm-static.dir/csm/icp/icp_corr_tricks.i
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/csm/icp/icp_corr_tricks.c > CMakeFiles/csm-static.dir/csm/icp/icp_corr_tricks.i
 
 sm/CMakeFiles/csm-static.dir/csm/icp/icp_corr_tricks.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/csm-static.dir/csm/icp/icp_corr_tricks.s"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/csm/icp/icp_corr_tricks.c -o CMakeFiles/csm-static.dir/csm/icp/icp_corr_tricks.s
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/csm/icp/icp_corr_tricks.c -o CMakeFiles/csm-static.dir/csm/icp/icp_corr_tricks.s
 
 sm/CMakeFiles/csm-static.dir/csm/icp/icp_corr_tricks.o.requires:
 
@@ -178,17 +178,17 @@ sm/CMakeFiles/csm-static.dir/csm/icp/icp_corr_tricks.o.provides.build: sm/CMakeF
 
 
 sm/CMakeFiles/csm-static.dir/csm/icp/icp_covariance.o: sm/CMakeFiles/csm-static.dir/flags.make
-sm/CMakeFiles/csm-static.dir/csm/icp/icp_covariance.o: /home/xavier/catkin_ws/src/csm/sm/csm/icp/icp_covariance.c
+sm/CMakeFiles/csm-static.dir/csm/icp/icp_covariance.o: /home/xavier/catkin_ws/src/csm2/sm/csm/icp/icp_covariance.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object sm/CMakeFiles/csm-static.dir/csm/icp/icp_covariance.o"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/icp/icp_covariance.o   -c /home/xavier/catkin_ws/src/csm/sm/csm/icp/icp_covariance.c
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/icp/icp_covariance.o   -c /home/xavier/catkin_ws/src/csm2/sm/csm/icp/icp_covariance.c
 
 sm/CMakeFiles/csm-static.dir/csm/icp/icp_covariance.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/csm-static.dir/csm/icp/icp_covariance.i"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/csm/icp/icp_covariance.c > CMakeFiles/csm-static.dir/csm/icp/icp_covariance.i
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/csm/icp/icp_covariance.c > CMakeFiles/csm-static.dir/csm/icp/icp_covariance.i
 
 sm/CMakeFiles/csm-static.dir/csm/icp/icp_covariance.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/csm-static.dir/csm/icp/icp_covariance.s"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/csm/icp/icp_covariance.c -o CMakeFiles/csm-static.dir/csm/icp/icp_covariance.s
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/csm/icp/icp_covariance.c -o CMakeFiles/csm-static.dir/csm/icp/icp_covariance.s
 
 sm/CMakeFiles/csm-static.dir/csm/icp/icp_covariance.o.requires:
 
@@ -202,17 +202,17 @@ sm/CMakeFiles/csm-static.dir/csm/icp/icp_covariance.o.provides.build: sm/CMakeFi
 
 
 sm/CMakeFiles/csm-static.dir/csm/icp/icp_loop.o: sm/CMakeFiles/csm-static.dir/flags.make
-sm/CMakeFiles/csm-static.dir/csm/icp/icp_loop.o: /home/xavier/catkin_ws/src/csm/sm/csm/icp/icp_loop.c
+sm/CMakeFiles/csm-static.dir/csm/icp/icp_loop.o: /home/xavier/catkin_ws/src/csm2/sm/csm/icp/icp_loop.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object sm/CMakeFiles/csm-static.dir/csm/icp/icp_loop.o"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/icp/icp_loop.o   -c /home/xavier/catkin_ws/src/csm/sm/csm/icp/icp_loop.c
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/icp/icp_loop.o   -c /home/xavier/catkin_ws/src/csm2/sm/csm/icp/icp_loop.c
 
 sm/CMakeFiles/csm-static.dir/csm/icp/icp_loop.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/csm-static.dir/csm/icp/icp_loop.i"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/csm/icp/icp_loop.c > CMakeFiles/csm-static.dir/csm/icp/icp_loop.i
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/csm/icp/icp_loop.c > CMakeFiles/csm-static.dir/csm/icp/icp_loop.i
 
 sm/CMakeFiles/csm-static.dir/csm/icp/icp_loop.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/csm-static.dir/csm/icp/icp_loop.s"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/csm/icp/icp_loop.c -o CMakeFiles/csm-static.dir/csm/icp/icp_loop.s
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/csm/icp/icp_loop.c -o CMakeFiles/csm-static.dir/csm/icp/icp_loop.s
 
 sm/CMakeFiles/csm-static.dir/csm/icp/icp_loop.o.requires:
 
@@ -226,17 +226,17 @@ sm/CMakeFiles/csm-static.dir/csm/icp/icp_loop.o.provides.build: sm/CMakeFiles/cs
 
 
 sm/CMakeFiles/csm-static.dir/csm/icp/icp_outliers.o: sm/CMakeFiles/csm-static.dir/flags.make
-sm/CMakeFiles/csm-static.dir/csm/icp/icp_outliers.o: /home/xavier/catkin_ws/src/csm/sm/csm/icp/icp_outliers.c
+sm/CMakeFiles/csm-static.dir/csm/icp/icp_outliers.o: /home/xavier/catkin_ws/src/csm2/sm/csm/icp/icp_outliers.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object sm/CMakeFiles/csm-static.dir/csm/icp/icp_outliers.o"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/icp/icp_outliers.o   -c /home/xavier/catkin_ws/src/csm/sm/csm/icp/icp_outliers.c
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/icp/icp_outliers.o   -c /home/xavier/catkin_ws/src/csm2/sm/csm/icp/icp_outliers.c
 
 sm/CMakeFiles/csm-static.dir/csm/icp/icp_outliers.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/csm-static.dir/csm/icp/icp_outliers.i"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/csm/icp/icp_outliers.c > CMakeFiles/csm-static.dir/csm/icp/icp_outliers.i
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/csm/icp/icp_outliers.c > CMakeFiles/csm-static.dir/csm/icp/icp_outliers.i
 
 sm/CMakeFiles/csm-static.dir/csm/icp/icp_outliers.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/csm-static.dir/csm/icp/icp_outliers.s"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/csm/icp/icp_outliers.c -o CMakeFiles/csm-static.dir/csm/icp/icp_outliers.s
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/csm/icp/icp_outliers.c -o CMakeFiles/csm-static.dir/csm/icp/icp_outliers.s
 
 sm/CMakeFiles/csm-static.dir/csm/icp/icp_outliers.o.requires:
 
@@ -250,17 +250,17 @@ sm/CMakeFiles/csm-static.dir/csm/icp/icp_outliers.o.provides.build: sm/CMakeFile
 
 
 sm/CMakeFiles/csm-static.dir/csm/icp/icp_debug.o: sm/CMakeFiles/csm-static.dir/flags.make
-sm/CMakeFiles/csm-static.dir/csm/icp/icp_debug.o: /home/xavier/catkin_ws/src/csm/sm/csm/icp/icp_debug.c
+sm/CMakeFiles/csm-static.dir/csm/icp/icp_debug.o: /home/xavier/catkin_ws/src/csm2/sm/csm/icp/icp_debug.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object sm/CMakeFiles/csm-static.dir/csm/icp/icp_debug.o"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/icp/icp_debug.o   -c /home/xavier/catkin_ws/src/csm/sm/csm/icp/icp_debug.c
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/icp/icp_debug.o   -c /home/xavier/catkin_ws/src/csm2/sm/csm/icp/icp_debug.c
 
 sm/CMakeFiles/csm-static.dir/csm/icp/icp_debug.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/csm-static.dir/csm/icp/icp_debug.i"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/csm/icp/icp_debug.c > CMakeFiles/csm-static.dir/csm/icp/icp_debug.i
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/csm/icp/icp_debug.c > CMakeFiles/csm-static.dir/csm/icp/icp_debug.i
 
 sm/CMakeFiles/csm-static.dir/csm/icp/icp_debug.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/csm-static.dir/csm/icp/icp_debug.s"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/csm/icp/icp_debug.c -o CMakeFiles/csm-static.dir/csm/icp/icp_debug.s
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/csm/icp/icp_debug.c -o CMakeFiles/csm-static.dir/csm/icp/icp_debug.s
 
 sm/CMakeFiles/csm-static.dir/csm/icp/icp_debug.o.requires:
 
@@ -274,17 +274,17 @@ sm/CMakeFiles/csm-static.dir/csm/icp/icp_debug.o.provides.build: sm/CMakeFiles/c
 
 
 sm/CMakeFiles/csm-static.dir/csm/mbicp/mbicp_interface.o: sm/CMakeFiles/csm-static.dir/flags.make
-sm/CMakeFiles/csm-static.dir/csm/mbicp/mbicp_interface.o: /home/xavier/catkin_ws/src/csm/sm/csm/mbicp/mbicp_interface.c
+sm/CMakeFiles/csm-static.dir/csm/mbicp/mbicp_interface.o: /home/xavier/catkin_ws/src/csm2/sm/csm/mbicp/mbicp_interface.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object sm/CMakeFiles/csm-static.dir/csm/mbicp/mbicp_interface.o"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/mbicp/mbicp_interface.o   -c /home/xavier/catkin_ws/src/csm/sm/csm/mbicp/mbicp_interface.c
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/mbicp/mbicp_interface.o   -c /home/xavier/catkin_ws/src/csm2/sm/csm/mbicp/mbicp_interface.c
 
 sm/CMakeFiles/csm-static.dir/csm/mbicp/mbicp_interface.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/csm-static.dir/csm/mbicp/mbicp_interface.i"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/csm/mbicp/mbicp_interface.c > CMakeFiles/csm-static.dir/csm/mbicp/mbicp_interface.i
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/csm/mbicp/mbicp_interface.c > CMakeFiles/csm-static.dir/csm/mbicp/mbicp_interface.i
 
 sm/CMakeFiles/csm-static.dir/csm/mbicp/mbicp_interface.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/csm-static.dir/csm/mbicp/mbicp_interface.s"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/csm/mbicp/mbicp_interface.c -o CMakeFiles/csm-static.dir/csm/mbicp/mbicp_interface.s
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/csm/mbicp/mbicp_interface.c -o CMakeFiles/csm-static.dir/csm/mbicp/mbicp_interface.s
 
 sm/CMakeFiles/csm-static.dir/csm/mbicp/mbicp_interface.o.requires:
 
@@ -298,17 +298,17 @@ sm/CMakeFiles/csm-static.dir/csm/mbicp/mbicp_interface.o.provides.build: sm/CMak
 
 
 sm/CMakeFiles/csm-static.dir/csm/mbicp/MbICP.o: sm/CMakeFiles/csm-static.dir/flags.make
-sm/CMakeFiles/csm-static.dir/csm/mbicp/MbICP.o: /home/xavier/catkin_ws/src/csm/sm/csm/mbicp/MbICP.c
+sm/CMakeFiles/csm-static.dir/csm/mbicp/MbICP.o: /home/xavier/catkin_ws/src/csm2/sm/csm/mbicp/MbICP.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object sm/CMakeFiles/csm-static.dir/csm/mbicp/MbICP.o"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/mbicp/MbICP.o   -c /home/xavier/catkin_ws/src/csm/sm/csm/mbicp/MbICP.c
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/mbicp/MbICP.o   -c /home/xavier/catkin_ws/src/csm2/sm/csm/mbicp/MbICP.c
 
 sm/CMakeFiles/csm-static.dir/csm/mbicp/MbICP.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/csm-static.dir/csm/mbicp/MbICP.i"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/csm/mbicp/MbICP.c > CMakeFiles/csm-static.dir/csm/mbicp/MbICP.i
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/csm/mbicp/MbICP.c > CMakeFiles/csm-static.dir/csm/mbicp/MbICP.i
 
 sm/CMakeFiles/csm-static.dir/csm/mbicp/MbICP.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/csm-static.dir/csm/mbicp/MbICP.s"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/csm/mbicp/MbICP.c -o CMakeFiles/csm-static.dir/csm/mbicp/MbICP.s
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/csm/mbicp/MbICP.c -o CMakeFiles/csm-static.dir/csm/mbicp/MbICP.s
 
 sm/CMakeFiles/csm-static.dir/csm/mbicp/MbICP.o.requires:
 
@@ -322,17 +322,17 @@ sm/CMakeFiles/csm-static.dir/csm/mbicp/MbICP.o.provides.build: sm/CMakeFiles/csm
 
 
 sm/CMakeFiles/csm-static.dir/csm/mbicp/calcul.o: sm/CMakeFiles/csm-static.dir/flags.make
-sm/CMakeFiles/csm-static.dir/csm/mbicp/calcul.o: /home/xavier/catkin_ws/src/csm/sm/csm/mbicp/calcul.c
+sm/CMakeFiles/csm-static.dir/csm/mbicp/calcul.o: /home/xavier/catkin_ws/src/csm2/sm/csm/mbicp/calcul.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object sm/CMakeFiles/csm-static.dir/csm/mbicp/calcul.o"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/mbicp/calcul.o   -c /home/xavier/catkin_ws/src/csm/sm/csm/mbicp/calcul.c
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/mbicp/calcul.o   -c /home/xavier/catkin_ws/src/csm2/sm/csm/mbicp/calcul.c
 
 sm/CMakeFiles/csm-static.dir/csm/mbicp/calcul.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/csm-static.dir/csm/mbicp/calcul.i"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/csm/mbicp/calcul.c > CMakeFiles/csm-static.dir/csm/mbicp/calcul.i
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/csm/mbicp/calcul.c > CMakeFiles/csm-static.dir/csm/mbicp/calcul.i
 
 sm/CMakeFiles/csm-static.dir/csm/mbicp/calcul.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/csm-static.dir/csm/mbicp/calcul.s"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/csm/mbicp/calcul.c -o CMakeFiles/csm-static.dir/csm/mbicp/calcul.s
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/csm/mbicp/calcul.c -o CMakeFiles/csm-static.dir/csm/mbicp/calcul.s
 
 sm/CMakeFiles/csm-static.dir/csm/mbicp/calcul.o.requires:
 
@@ -346,17 +346,17 @@ sm/CMakeFiles/csm-static.dir/csm/mbicp/calcul.o.provides.build: sm/CMakeFiles/cs
 
 
 sm/CMakeFiles/csm-static.dir/csm/mbicp/percolate.o: sm/CMakeFiles/csm-static.dir/flags.make
-sm/CMakeFiles/csm-static.dir/csm/mbicp/percolate.o: /home/xavier/catkin_ws/src/csm/sm/csm/mbicp/percolate.c
+sm/CMakeFiles/csm-static.dir/csm/mbicp/percolate.o: /home/xavier/catkin_ws/src/csm2/sm/csm/mbicp/percolate.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object sm/CMakeFiles/csm-static.dir/csm/mbicp/percolate.o"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/mbicp/percolate.o   -c /home/xavier/catkin_ws/src/csm/sm/csm/mbicp/percolate.c
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/mbicp/percolate.o   -c /home/xavier/catkin_ws/src/csm2/sm/csm/mbicp/percolate.c
 
 sm/CMakeFiles/csm-static.dir/csm/mbicp/percolate.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/csm-static.dir/csm/mbicp/percolate.i"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/csm/mbicp/percolate.c > CMakeFiles/csm-static.dir/csm/mbicp/percolate.i
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/csm/mbicp/percolate.c > CMakeFiles/csm-static.dir/csm/mbicp/percolate.i
 
 sm/CMakeFiles/csm-static.dir/csm/mbicp/percolate.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/csm-static.dir/csm/mbicp/percolate.s"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/csm/mbicp/percolate.c -o CMakeFiles/csm-static.dir/csm/mbicp/percolate.s
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/csm/mbicp/percolate.c -o CMakeFiles/csm-static.dir/csm/mbicp/percolate.s
 
 sm/CMakeFiles/csm-static.dir/csm/mbicp/percolate.o.requires:
 
@@ -370,17 +370,17 @@ sm/CMakeFiles/csm-static.dir/csm/mbicp/percolate.o.provides.build: sm/CMakeFiles
 
 
 sm/CMakeFiles/csm-static.dir/csm/mbicp/sp_matrix.o: sm/CMakeFiles/csm-static.dir/flags.make
-sm/CMakeFiles/csm-static.dir/csm/mbicp/sp_matrix.o: /home/xavier/catkin_ws/src/csm/sm/csm/mbicp/sp_matrix.c
+sm/CMakeFiles/csm-static.dir/csm/mbicp/sp_matrix.o: /home/xavier/catkin_ws/src/csm2/sm/csm/mbicp/sp_matrix.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object sm/CMakeFiles/csm-static.dir/csm/mbicp/sp_matrix.o"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/mbicp/sp_matrix.o   -c /home/xavier/catkin_ws/src/csm/sm/csm/mbicp/sp_matrix.c
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/mbicp/sp_matrix.o   -c /home/xavier/catkin_ws/src/csm2/sm/csm/mbicp/sp_matrix.c
 
 sm/CMakeFiles/csm-static.dir/csm/mbicp/sp_matrix.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/csm-static.dir/csm/mbicp/sp_matrix.i"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/csm/mbicp/sp_matrix.c > CMakeFiles/csm-static.dir/csm/mbicp/sp_matrix.i
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/csm/mbicp/sp_matrix.c > CMakeFiles/csm-static.dir/csm/mbicp/sp_matrix.i
 
 sm/CMakeFiles/csm-static.dir/csm/mbicp/sp_matrix.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/csm-static.dir/csm/mbicp/sp_matrix.s"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/csm/mbicp/sp_matrix.c -o CMakeFiles/csm-static.dir/csm/mbicp/sp_matrix.s
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/csm/mbicp/sp_matrix.c -o CMakeFiles/csm-static.dir/csm/mbicp/sp_matrix.s
 
 sm/CMakeFiles/csm-static.dir/csm/mbicp/sp_matrix.o.requires:
 
@@ -394,17 +394,17 @@ sm/CMakeFiles/csm-static.dir/csm/mbicp/sp_matrix.o.provides.build: sm/CMakeFiles
 
 
 sm/CMakeFiles/csm-static.dir/csm/hsm/hsm.o: sm/CMakeFiles/csm-static.dir/flags.make
-sm/CMakeFiles/csm-static.dir/csm/hsm/hsm.o: /home/xavier/catkin_ws/src/csm/sm/csm/hsm/hsm.c
+sm/CMakeFiles/csm-static.dir/csm/hsm/hsm.o: /home/xavier/catkin_ws/src/csm2/sm/csm/hsm/hsm.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object sm/CMakeFiles/csm-static.dir/csm/hsm/hsm.o"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/hsm/hsm.o   -c /home/xavier/catkin_ws/src/csm/sm/csm/hsm/hsm.c
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/hsm/hsm.o   -c /home/xavier/catkin_ws/src/csm2/sm/csm/hsm/hsm.c
 
 sm/CMakeFiles/csm-static.dir/csm/hsm/hsm.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/csm-static.dir/csm/hsm/hsm.i"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/csm/hsm/hsm.c > CMakeFiles/csm-static.dir/csm/hsm/hsm.i
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/csm/hsm/hsm.c > CMakeFiles/csm-static.dir/csm/hsm/hsm.i
 
 sm/CMakeFiles/csm-static.dir/csm/hsm/hsm.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/csm-static.dir/csm/hsm/hsm.s"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/csm/hsm/hsm.c -o CMakeFiles/csm-static.dir/csm/hsm/hsm.s
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/csm/hsm/hsm.c -o CMakeFiles/csm-static.dir/csm/hsm/hsm.s
 
 sm/CMakeFiles/csm-static.dir/csm/hsm/hsm.o.requires:
 
@@ -418,17 +418,17 @@ sm/CMakeFiles/csm-static.dir/csm/hsm/hsm.o.provides.build: sm/CMakeFiles/csm-sta
 
 
 sm/CMakeFiles/csm-static.dir/csm/hsm/hsm_interface.o: sm/CMakeFiles/csm-static.dir/flags.make
-sm/CMakeFiles/csm-static.dir/csm/hsm/hsm_interface.o: /home/xavier/catkin_ws/src/csm/sm/csm/hsm/hsm_interface.c
+sm/CMakeFiles/csm-static.dir/csm/hsm/hsm_interface.o: /home/xavier/catkin_ws/src/csm2/sm/csm/hsm/hsm_interface.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building C object sm/CMakeFiles/csm-static.dir/csm/hsm/hsm_interface.o"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/hsm/hsm_interface.o   -c /home/xavier/catkin_ws/src/csm/sm/csm/hsm/hsm_interface.c
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/hsm/hsm_interface.o   -c /home/xavier/catkin_ws/src/csm2/sm/csm/hsm/hsm_interface.c
 
 sm/CMakeFiles/csm-static.dir/csm/hsm/hsm_interface.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/csm-static.dir/csm/hsm/hsm_interface.i"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/csm/hsm/hsm_interface.c > CMakeFiles/csm-static.dir/csm/hsm/hsm_interface.i
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/csm/hsm/hsm_interface.c > CMakeFiles/csm-static.dir/csm/hsm/hsm_interface.i
 
 sm/CMakeFiles/csm-static.dir/csm/hsm/hsm_interface.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/csm-static.dir/csm/hsm/hsm_interface.s"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/csm/hsm/hsm_interface.c -o CMakeFiles/csm-static.dir/csm/hsm/hsm_interface.s
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/csm/hsm/hsm_interface.c -o CMakeFiles/csm-static.dir/csm/hsm/hsm_interface.s
 
 sm/CMakeFiles/csm-static.dir/csm/hsm/hsm_interface.o.requires:
 
@@ -442,17 +442,17 @@ sm/CMakeFiles/csm-static.dir/csm/hsm/hsm_interface.o.provides.build: sm/CMakeFil
 
 
 sm/CMakeFiles/csm-static.dir/csm/json_journal.o: sm/CMakeFiles/csm-static.dir/flags.make
-sm/CMakeFiles/csm-static.dir/csm/json_journal.o: /home/xavier/catkin_ws/src/csm/sm/csm/json_journal.c
+sm/CMakeFiles/csm-static.dir/csm/json_journal.o: /home/xavier/catkin_ws/src/csm2/sm/csm/json_journal.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building C object sm/CMakeFiles/csm-static.dir/csm/json_journal.o"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/json_journal.o   -c /home/xavier/catkin_ws/src/csm/sm/csm/json_journal.c
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/json_journal.o   -c /home/xavier/catkin_ws/src/csm2/sm/csm/json_journal.c
 
 sm/CMakeFiles/csm-static.dir/csm/json_journal.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/csm-static.dir/csm/json_journal.i"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/csm/json_journal.c > CMakeFiles/csm-static.dir/csm/json_journal.i
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/csm/json_journal.c > CMakeFiles/csm-static.dir/csm/json_journal.i
 
 sm/CMakeFiles/csm-static.dir/csm/json_journal.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/csm-static.dir/csm/json_journal.s"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/csm/json_journal.c -o CMakeFiles/csm-static.dir/csm/json_journal.s
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/csm/json_journal.c -o CMakeFiles/csm-static.dir/csm/json_journal.s
 
 sm/CMakeFiles/csm-static.dir/csm/json_journal.o.requires:
 
@@ -466,17 +466,17 @@ sm/CMakeFiles/csm-static.dir/csm/json_journal.o.provides.build: sm/CMakeFiles/cs
 
 
 sm/CMakeFiles/csm-static.dir/csm/laser_data.o: sm/CMakeFiles/csm-static.dir/flags.make
-sm/CMakeFiles/csm-static.dir/csm/laser_data.o: /home/xavier/catkin_ws/src/csm/sm/csm/laser_data.c
+sm/CMakeFiles/csm-static.dir/csm/laser_data.o: /home/xavier/catkin_ws/src/csm2/sm/csm/laser_data.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building C object sm/CMakeFiles/csm-static.dir/csm/laser_data.o"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/laser_data.o   -c /home/xavier/catkin_ws/src/csm/sm/csm/laser_data.c
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/laser_data.o   -c /home/xavier/catkin_ws/src/csm2/sm/csm/laser_data.c
 
 sm/CMakeFiles/csm-static.dir/csm/laser_data.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/csm-static.dir/csm/laser_data.i"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/csm/laser_data.c > CMakeFiles/csm-static.dir/csm/laser_data.i
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/csm/laser_data.c > CMakeFiles/csm-static.dir/csm/laser_data.i
 
 sm/CMakeFiles/csm-static.dir/csm/laser_data.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/csm-static.dir/csm/laser_data.s"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/csm/laser_data.c -o CMakeFiles/csm-static.dir/csm/laser_data.s
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/csm/laser_data.c -o CMakeFiles/csm-static.dir/csm/laser_data.s
 
 sm/CMakeFiles/csm-static.dir/csm/laser_data.o.requires:
 
@@ -490,17 +490,17 @@ sm/CMakeFiles/csm-static.dir/csm/laser_data.o.provides.build: sm/CMakeFiles/csm-
 
 
 sm/CMakeFiles/csm-static.dir/csm/laser_data_carmen.o: sm/CMakeFiles/csm-static.dir/flags.make
-sm/CMakeFiles/csm-static.dir/csm/laser_data_carmen.o: /home/xavier/catkin_ws/src/csm/sm/csm/laser_data_carmen.c
+sm/CMakeFiles/csm-static.dir/csm/laser_data_carmen.o: /home/xavier/catkin_ws/src/csm2/sm/csm/laser_data_carmen.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building C object sm/CMakeFiles/csm-static.dir/csm/laser_data_carmen.o"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/laser_data_carmen.o   -c /home/xavier/catkin_ws/src/csm/sm/csm/laser_data_carmen.c
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/laser_data_carmen.o   -c /home/xavier/catkin_ws/src/csm2/sm/csm/laser_data_carmen.c
 
 sm/CMakeFiles/csm-static.dir/csm/laser_data_carmen.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/csm-static.dir/csm/laser_data_carmen.i"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/csm/laser_data_carmen.c > CMakeFiles/csm-static.dir/csm/laser_data_carmen.i
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/csm/laser_data_carmen.c > CMakeFiles/csm-static.dir/csm/laser_data_carmen.i
 
 sm/CMakeFiles/csm-static.dir/csm/laser_data_carmen.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/csm-static.dir/csm/laser_data_carmen.s"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/csm/laser_data_carmen.c -o CMakeFiles/csm-static.dir/csm/laser_data_carmen.s
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/csm/laser_data_carmen.c -o CMakeFiles/csm-static.dir/csm/laser_data_carmen.s
 
 sm/CMakeFiles/csm-static.dir/csm/laser_data_carmen.o.requires:
 
@@ -514,17 +514,17 @@ sm/CMakeFiles/csm-static.dir/csm/laser_data_carmen.o.provides.build: sm/CMakeFil
 
 
 sm/CMakeFiles/csm-static.dir/csm/laser_data_fisher.o: sm/CMakeFiles/csm-static.dir/flags.make
-sm/CMakeFiles/csm-static.dir/csm/laser_data_fisher.o: /home/xavier/catkin_ws/src/csm/sm/csm/laser_data_fisher.c
+sm/CMakeFiles/csm-static.dir/csm/laser_data_fisher.o: /home/xavier/catkin_ws/src/csm2/sm/csm/laser_data_fisher.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building C object sm/CMakeFiles/csm-static.dir/csm/laser_data_fisher.o"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/laser_data_fisher.o   -c /home/xavier/catkin_ws/src/csm/sm/csm/laser_data_fisher.c
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/laser_data_fisher.o   -c /home/xavier/catkin_ws/src/csm2/sm/csm/laser_data_fisher.c
 
 sm/CMakeFiles/csm-static.dir/csm/laser_data_fisher.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/csm-static.dir/csm/laser_data_fisher.i"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/csm/laser_data_fisher.c > CMakeFiles/csm-static.dir/csm/laser_data_fisher.i
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/csm/laser_data_fisher.c > CMakeFiles/csm-static.dir/csm/laser_data_fisher.i
 
 sm/CMakeFiles/csm-static.dir/csm/laser_data_fisher.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/csm-static.dir/csm/laser_data_fisher.s"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/csm/laser_data_fisher.c -o CMakeFiles/csm-static.dir/csm/laser_data_fisher.s
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/csm/laser_data_fisher.c -o CMakeFiles/csm-static.dir/csm/laser_data_fisher.s
 
 sm/CMakeFiles/csm-static.dir/csm/laser_data_fisher.o.requires:
 
@@ -538,17 +538,17 @@ sm/CMakeFiles/csm-static.dir/csm/laser_data_fisher.o.provides.build: sm/CMakeFil
 
 
 sm/CMakeFiles/csm-static.dir/csm/laser_data_json.o: sm/CMakeFiles/csm-static.dir/flags.make
-sm/CMakeFiles/csm-static.dir/csm/laser_data_json.o: /home/xavier/catkin_ws/src/csm/sm/csm/laser_data_json.c
+sm/CMakeFiles/csm-static.dir/csm/laser_data_json.o: /home/xavier/catkin_ws/src/csm2/sm/csm/laser_data_json.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building C object sm/CMakeFiles/csm-static.dir/csm/laser_data_json.o"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/laser_data_json.o   -c /home/xavier/catkin_ws/src/csm/sm/csm/laser_data_json.c
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/laser_data_json.o   -c /home/xavier/catkin_ws/src/csm2/sm/csm/laser_data_json.c
 
 sm/CMakeFiles/csm-static.dir/csm/laser_data_json.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/csm-static.dir/csm/laser_data_json.i"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/csm/laser_data_json.c > CMakeFiles/csm-static.dir/csm/laser_data_json.i
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/csm/laser_data_json.c > CMakeFiles/csm-static.dir/csm/laser_data_json.i
 
 sm/CMakeFiles/csm-static.dir/csm/laser_data_json.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/csm-static.dir/csm/laser_data_json.s"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/csm/laser_data_json.c -o CMakeFiles/csm-static.dir/csm/laser_data_json.s
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/csm/laser_data_json.c -o CMakeFiles/csm-static.dir/csm/laser_data_json.s
 
 sm/CMakeFiles/csm-static.dir/csm/laser_data_json.o.requires:
 
@@ -562,17 +562,17 @@ sm/CMakeFiles/csm-static.dir/csm/laser_data_json.o.provides.build: sm/CMakeFiles
 
 
 sm/CMakeFiles/csm-static.dir/csm/laser_data_load.o: sm/CMakeFiles/csm-static.dir/flags.make
-sm/CMakeFiles/csm-static.dir/csm/laser_data_load.o: /home/xavier/catkin_ws/src/csm/sm/csm/laser_data_load.c
+sm/CMakeFiles/csm-static.dir/csm/laser_data_load.o: /home/xavier/catkin_ws/src/csm2/sm/csm/laser_data_load.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building C object sm/CMakeFiles/csm-static.dir/csm/laser_data_load.o"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/laser_data_load.o   -c /home/xavier/catkin_ws/src/csm/sm/csm/laser_data_load.c
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/laser_data_load.o   -c /home/xavier/catkin_ws/src/csm2/sm/csm/laser_data_load.c
 
 sm/CMakeFiles/csm-static.dir/csm/laser_data_load.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/csm-static.dir/csm/laser_data_load.i"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/csm/laser_data_load.c > CMakeFiles/csm-static.dir/csm/laser_data_load.i
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/csm/laser_data_load.c > CMakeFiles/csm-static.dir/csm/laser_data_load.i
 
 sm/CMakeFiles/csm-static.dir/csm/laser_data_load.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/csm-static.dir/csm/laser_data_load.s"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/csm/laser_data_load.c -o CMakeFiles/csm-static.dir/csm/laser_data_load.s
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/csm/laser_data_load.c -o CMakeFiles/csm-static.dir/csm/laser_data_load.s
 
 sm/CMakeFiles/csm-static.dir/csm/laser_data_load.o.requires:
 
@@ -586,17 +586,17 @@ sm/CMakeFiles/csm-static.dir/csm/laser_data_load.o.provides.build: sm/CMakeFiles
 
 
 sm/CMakeFiles/csm-static.dir/csm/laser_data_drawing.o: sm/CMakeFiles/csm-static.dir/flags.make
-sm/CMakeFiles/csm-static.dir/csm/laser_data_drawing.o: /home/xavier/catkin_ws/src/csm/sm/csm/laser_data_drawing.c
+sm/CMakeFiles/csm-static.dir/csm/laser_data_drawing.o: /home/xavier/catkin_ws/src/csm2/sm/csm/laser_data_drawing.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building C object sm/CMakeFiles/csm-static.dir/csm/laser_data_drawing.o"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/laser_data_drawing.o   -c /home/xavier/catkin_ws/src/csm/sm/csm/laser_data_drawing.c
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/laser_data_drawing.o   -c /home/xavier/catkin_ws/src/csm2/sm/csm/laser_data_drawing.c
 
 sm/CMakeFiles/csm-static.dir/csm/laser_data_drawing.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/csm-static.dir/csm/laser_data_drawing.i"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/csm/laser_data_drawing.c > CMakeFiles/csm-static.dir/csm/laser_data_drawing.i
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/csm/laser_data_drawing.c > CMakeFiles/csm-static.dir/csm/laser_data_drawing.i
 
 sm/CMakeFiles/csm-static.dir/csm/laser_data_drawing.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/csm-static.dir/csm/laser_data_drawing.s"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/csm/laser_data_drawing.c -o CMakeFiles/csm-static.dir/csm/laser_data_drawing.s
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/csm/laser_data_drawing.c -o CMakeFiles/csm-static.dir/csm/laser_data_drawing.s
 
 sm/CMakeFiles/csm-static.dir/csm/laser_data_drawing.o.requires:
 
@@ -610,17 +610,17 @@ sm/CMakeFiles/csm-static.dir/csm/laser_data_drawing.o.provides.build: sm/CMakeFi
 
 
 sm/CMakeFiles/csm-static.dir/csm/laser_data_bbox.o: sm/CMakeFiles/csm-static.dir/flags.make
-sm/CMakeFiles/csm-static.dir/csm/laser_data_bbox.o: /home/xavier/catkin_ws/src/csm/sm/csm/laser_data_bbox.c
+sm/CMakeFiles/csm-static.dir/csm/laser_data_bbox.o: /home/xavier/catkin_ws/src/csm2/sm/csm/laser_data_bbox.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building C object sm/CMakeFiles/csm-static.dir/csm/laser_data_bbox.o"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/laser_data_bbox.o   -c /home/xavier/catkin_ws/src/csm/sm/csm/laser_data_bbox.c
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/laser_data_bbox.o   -c /home/xavier/catkin_ws/src/csm2/sm/csm/laser_data_bbox.c
 
 sm/CMakeFiles/csm-static.dir/csm/laser_data_bbox.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/csm-static.dir/csm/laser_data_bbox.i"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/csm/laser_data_bbox.c > CMakeFiles/csm-static.dir/csm/laser_data_bbox.i
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/csm/laser_data_bbox.c > CMakeFiles/csm-static.dir/csm/laser_data_bbox.i
 
 sm/CMakeFiles/csm-static.dir/csm/laser_data_bbox.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/csm-static.dir/csm/laser_data_bbox.s"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/csm/laser_data_bbox.c -o CMakeFiles/csm-static.dir/csm/laser_data_bbox.s
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/csm/laser_data_bbox.c -o CMakeFiles/csm-static.dir/csm/laser_data_bbox.s
 
 sm/CMakeFiles/csm-static.dir/csm/laser_data_bbox.o.requires:
 
@@ -634,17 +634,17 @@ sm/CMakeFiles/csm-static.dir/csm/laser_data_bbox.o.provides.build: sm/CMakeFiles
 
 
 sm/CMakeFiles/csm-static.dir/csm/logging.o: sm/CMakeFiles/csm-static.dir/flags.make
-sm/CMakeFiles/csm-static.dir/csm/logging.o: /home/xavier/catkin_ws/src/csm/sm/csm/logging.c
+sm/CMakeFiles/csm-static.dir/csm/logging.o: /home/xavier/catkin_ws/src/csm2/sm/csm/logging.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building C object sm/CMakeFiles/csm-static.dir/csm/logging.o"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/logging.o   -c /home/xavier/catkin_ws/src/csm/sm/csm/logging.c
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/logging.o   -c /home/xavier/catkin_ws/src/csm2/sm/csm/logging.c
 
 sm/CMakeFiles/csm-static.dir/csm/logging.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/csm-static.dir/csm/logging.i"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/csm/logging.c > CMakeFiles/csm-static.dir/csm/logging.i
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/csm/logging.c > CMakeFiles/csm-static.dir/csm/logging.i
 
 sm/CMakeFiles/csm-static.dir/csm/logging.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/csm-static.dir/csm/logging.s"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/csm/logging.c -o CMakeFiles/csm-static.dir/csm/logging.s
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/csm/logging.c -o CMakeFiles/csm-static.dir/csm/logging.s
 
 sm/CMakeFiles/csm-static.dir/csm/logging.o.requires:
 
@@ -658,17 +658,17 @@ sm/CMakeFiles/csm-static.dir/csm/logging.o.provides.build: sm/CMakeFiles/csm-sta
 
 
 sm/CMakeFiles/csm-static.dir/csm/math_utils.o: sm/CMakeFiles/csm-static.dir/flags.make
-sm/CMakeFiles/csm-static.dir/csm/math_utils.o: /home/xavier/catkin_ws/src/csm/sm/csm/math_utils.c
+sm/CMakeFiles/csm-static.dir/csm/math_utils.o: /home/xavier/catkin_ws/src/csm2/sm/csm/math_utils.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building C object sm/CMakeFiles/csm-static.dir/csm/math_utils.o"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/math_utils.o   -c /home/xavier/catkin_ws/src/csm/sm/csm/math_utils.c
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/math_utils.o   -c /home/xavier/catkin_ws/src/csm2/sm/csm/math_utils.c
 
 sm/CMakeFiles/csm-static.dir/csm/math_utils.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/csm-static.dir/csm/math_utils.i"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/csm/math_utils.c > CMakeFiles/csm-static.dir/csm/math_utils.i
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/csm/math_utils.c > CMakeFiles/csm-static.dir/csm/math_utils.i
 
 sm/CMakeFiles/csm-static.dir/csm/math_utils.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/csm-static.dir/csm/math_utils.s"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/csm/math_utils.c -o CMakeFiles/csm-static.dir/csm/math_utils.s
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/csm/math_utils.c -o CMakeFiles/csm-static.dir/csm/math_utils.s
 
 sm/CMakeFiles/csm-static.dir/csm/math_utils.o.requires:
 
@@ -682,17 +682,17 @@ sm/CMakeFiles/csm-static.dir/csm/math_utils.o.provides.build: sm/CMakeFiles/csm-
 
 
 sm/CMakeFiles/csm-static.dir/csm/math_utils_gsl.o: sm/CMakeFiles/csm-static.dir/flags.make
-sm/CMakeFiles/csm-static.dir/csm/math_utils_gsl.o: /home/xavier/catkin_ws/src/csm/sm/csm/math_utils_gsl.c
+sm/CMakeFiles/csm-static.dir/csm/math_utils_gsl.o: /home/xavier/catkin_ws/src/csm2/sm/csm/math_utils_gsl.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building C object sm/CMakeFiles/csm-static.dir/csm/math_utils_gsl.o"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/math_utils_gsl.o   -c /home/xavier/catkin_ws/src/csm/sm/csm/math_utils_gsl.c
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/math_utils_gsl.o   -c /home/xavier/catkin_ws/src/csm2/sm/csm/math_utils_gsl.c
 
 sm/CMakeFiles/csm-static.dir/csm/math_utils_gsl.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/csm-static.dir/csm/math_utils_gsl.i"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/csm/math_utils_gsl.c > CMakeFiles/csm-static.dir/csm/math_utils_gsl.i
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/csm/math_utils_gsl.c > CMakeFiles/csm-static.dir/csm/math_utils_gsl.i
 
 sm/CMakeFiles/csm-static.dir/csm/math_utils_gsl.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/csm-static.dir/csm/math_utils_gsl.s"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/csm/math_utils_gsl.c -o CMakeFiles/csm-static.dir/csm/math_utils_gsl.s
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/csm/math_utils_gsl.c -o CMakeFiles/csm-static.dir/csm/math_utils_gsl.s
 
 sm/CMakeFiles/csm-static.dir/csm/math_utils_gsl.o.requires:
 
@@ -706,17 +706,17 @@ sm/CMakeFiles/csm-static.dir/csm/math_utils_gsl.o.provides.build: sm/CMakeFiles/
 
 
 sm/CMakeFiles/csm-static.dir/csm/orientation.o: sm/CMakeFiles/csm-static.dir/flags.make
-sm/CMakeFiles/csm-static.dir/csm/orientation.o: /home/xavier/catkin_ws/src/csm/sm/csm/orientation.c
+sm/CMakeFiles/csm-static.dir/csm/orientation.o: /home/xavier/catkin_ws/src/csm2/sm/csm/orientation.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building C object sm/CMakeFiles/csm-static.dir/csm/orientation.o"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/orientation.o   -c /home/xavier/catkin_ws/src/csm/sm/csm/orientation.c
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/orientation.o   -c /home/xavier/catkin_ws/src/csm2/sm/csm/orientation.c
 
 sm/CMakeFiles/csm-static.dir/csm/orientation.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/csm-static.dir/csm/orientation.i"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/csm/orientation.c > CMakeFiles/csm-static.dir/csm/orientation.i
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/csm/orientation.c > CMakeFiles/csm-static.dir/csm/orientation.i
 
 sm/CMakeFiles/csm-static.dir/csm/orientation.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/csm-static.dir/csm/orientation.s"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/csm/orientation.c -o CMakeFiles/csm-static.dir/csm/orientation.s
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/csm/orientation.c -o CMakeFiles/csm-static.dir/csm/orientation.s
 
 sm/CMakeFiles/csm-static.dir/csm/orientation.o.requires:
 
@@ -730,17 +730,17 @@ sm/CMakeFiles/csm-static.dir/csm/orientation.o.provides.build: sm/CMakeFiles/csm
 
 
 sm/CMakeFiles/csm-static.dir/csm/sm_options.o: sm/CMakeFiles/csm-static.dir/flags.make
-sm/CMakeFiles/csm-static.dir/csm/sm_options.o: /home/xavier/catkin_ws/src/csm/sm/csm/sm_options.c
+sm/CMakeFiles/csm-static.dir/csm/sm_options.o: /home/xavier/catkin_ws/src/csm2/sm/csm/sm_options.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building C object sm/CMakeFiles/csm-static.dir/csm/sm_options.o"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/sm_options.o   -c /home/xavier/catkin_ws/src/csm/sm/csm/sm_options.c
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/sm_options.o   -c /home/xavier/catkin_ws/src/csm2/sm/csm/sm_options.c
 
 sm/CMakeFiles/csm-static.dir/csm/sm_options.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/csm-static.dir/csm/sm_options.i"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/csm/sm_options.c > CMakeFiles/csm-static.dir/csm/sm_options.i
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/csm/sm_options.c > CMakeFiles/csm-static.dir/csm/sm_options.i
 
 sm/CMakeFiles/csm-static.dir/csm/sm_options.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/csm-static.dir/csm/sm_options.s"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/csm/sm_options.c -o CMakeFiles/csm-static.dir/csm/sm_options.s
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/csm/sm_options.c -o CMakeFiles/csm-static.dir/csm/sm_options.s
 
 sm/CMakeFiles/csm-static.dir/csm/sm_options.o.requires:
 
@@ -754,17 +754,17 @@ sm/CMakeFiles/csm-static.dir/csm/sm_options.o.provides.build: sm/CMakeFiles/csm-
 
 
 sm/CMakeFiles/csm-static.dir/csm/utils.o: sm/CMakeFiles/csm-static.dir/flags.make
-sm/CMakeFiles/csm-static.dir/csm/utils.o: /home/xavier/catkin_ws/src/csm/sm/csm/utils.c
+sm/CMakeFiles/csm-static.dir/csm/utils.o: /home/xavier/catkin_ws/src/csm2/sm/csm/utils.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building C object sm/CMakeFiles/csm-static.dir/csm/utils.o"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/utils.o   -c /home/xavier/catkin_ws/src/csm/sm/csm/utils.c
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/utils.o   -c /home/xavier/catkin_ws/src/csm2/sm/csm/utils.c
 
 sm/CMakeFiles/csm-static.dir/csm/utils.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/csm-static.dir/csm/utils.i"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/csm/utils.c > CMakeFiles/csm-static.dir/csm/utils.i
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/csm/utils.c > CMakeFiles/csm-static.dir/csm/utils.i
 
 sm/CMakeFiles/csm-static.dir/csm/utils.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/csm-static.dir/csm/utils.s"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/csm/utils.c -o CMakeFiles/csm-static.dir/csm/utils.s
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/csm/utils.c -o CMakeFiles/csm-static.dir/csm/utils.s
 
 sm/CMakeFiles/csm-static.dir/csm/utils.o.requires:
 
@@ -778,17 +778,17 @@ sm/CMakeFiles/csm-static.dir/csm/utils.o.provides.build: sm/CMakeFiles/csm-stati
 
 
 sm/CMakeFiles/csm-static.dir/lib/egsl/egsl.o: sm/CMakeFiles/csm-static.dir/flags.make
-sm/CMakeFiles/csm-static.dir/lib/egsl/egsl.o: /home/xavier/catkin_ws/src/csm/sm/lib/egsl/egsl.c
+sm/CMakeFiles/csm-static.dir/lib/egsl/egsl.o: /home/xavier/catkin_ws/src/csm2/sm/lib/egsl/egsl.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building C object sm/CMakeFiles/csm-static.dir/lib/egsl/egsl.o"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/lib/egsl/egsl.o   -c /home/xavier/catkin_ws/src/csm/sm/lib/egsl/egsl.c
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/lib/egsl/egsl.o   -c /home/xavier/catkin_ws/src/csm2/sm/lib/egsl/egsl.c
 
 sm/CMakeFiles/csm-static.dir/lib/egsl/egsl.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/csm-static.dir/lib/egsl/egsl.i"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/lib/egsl/egsl.c > CMakeFiles/csm-static.dir/lib/egsl/egsl.i
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/lib/egsl/egsl.c > CMakeFiles/csm-static.dir/lib/egsl/egsl.i
 
 sm/CMakeFiles/csm-static.dir/lib/egsl/egsl.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/csm-static.dir/lib/egsl/egsl.s"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/lib/egsl/egsl.c -o CMakeFiles/csm-static.dir/lib/egsl/egsl.s
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/lib/egsl/egsl.c -o CMakeFiles/csm-static.dir/lib/egsl/egsl.s
 
 sm/CMakeFiles/csm-static.dir/lib/egsl/egsl.o.requires:
 
@@ -802,17 +802,17 @@ sm/CMakeFiles/csm-static.dir/lib/egsl/egsl.o.provides.build: sm/CMakeFiles/csm-s
 
 
 sm/CMakeFiles/csm-static.dir/lib/egsl/egsl_conversions.o: sm/CMakeFiles/csm-static.dir/flags.make
-sm/CMakeFiles/csm-static.dir/lib/egsl/egsl_conversions.o: /home/xavier/catkin_ws/src/csm/sm/lib/egsl/egsl_conversions.c
+sm/CMakeFiles/csm-static.dir/lib/egsl/egsl_conversions.o: /home/xavier/catkin_ws/src/csm2/sm/lib/egsl/egsl_conversions.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building C object sm/CMakeFiles/csm-static.dir/lib/egsl/egsl_conversions.o"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/lib/egsl/egsl_conversions.o   -c /home/xavier/catkin_ws/src/csm/sm/lib/egsl/egsl_conversions.c
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/lib/egsl/egsl_conversions.o   -c /home/xavier/catkin_ws/src/csm2/sm/lib/egsl/egsl_conversions.c
 
 sm/CMakeFiles/csm-static.dir/lib/egsl/egsl_conversions.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/csm-static.dir/lib/egsl/egsl_conversions.i"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/lib/egsl/egsl_conversions.c > CMakeFiles/csm-static.dir/lib/egsl/egsl_conversions.i
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/lib/egsl/egsl_conversions.c > CMakeFiles/csm-static.dir/lib/egsl/egsl_conversions.i
 
 sm/CMakeFiles/csm-static.dir/lib/egsl/egsl_conversions.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/csm-static.dir/lib/egsl/egsl_conversions.s"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/lib/egsl/egsl_conversions.c -o CMakeFiles/csm-static.dir/lib/egsl/egsl_conversions.s
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/lib/egsl/egsl_conversions.c -o CMakeFiles/csm-static.dir/lib/egsl/egsl_conversions.s
 
 sm/CMakeFiles/csm-static.dir/lib/egsl/egsl_conversions.o.requires:
 
@@ -826,17 +826,17 @@ sm/CMakeFiles/csm-static.dir/lib/egsl/egsl_conversions.o.provides.build: sm/CMak
 
 
 sm/CMakeFiles/csm-static.dir/lib/egsl/egsl_misc.o: sm/CMakeFiles/csm-static.dir/flags.make
-sm/CMakeFiles/csm-static.dir/lib/egsl/egsl_misc.o: /home/xavier/catkin_ws/src/csm/sm/lib/egsl/egsl_misc.c
+sm/CMakeFiles/csm-static.dir/lib/egsl/egsl_misc.o: /home/xavier/catkin_ws/src/csm2/sm/lib/egsl/egsl_misc.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building C object sm/CMakeFiles/csm-static.dir/lib/egsl/egsl_misc.o"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/lib/egsl/egsl_misc.o   -c /home/xavier/catkin_ws/src/csm/sm/lib/egsl/egsl_misc.c
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/lib/egsl/egsl_misc.o   -c /home/xavier/catkin_ws/src/csm2/sm/lib/egsl/egsl_misc.c
 
 sm/CMakeFiles/csm-static.dir/lib/egsl/egsl_misc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/csm-static.dir/lib/egsl/egsl_misc.i"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/lib/egsl/egsl_misc.c > CMakeFiles/csm-static.dir/lib/egsl/egsl_misc.i
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/lib/egsl/egsl_misc.c > CMakeFiles/csm-static.dir/lib/egsl/egsl_misc.i
 
 sm/CMakeFiles/csm-static.dir/lib/egsl/egsl_misc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/csm-static.dir/lib/egsl/egsl_misc.s"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/lib/egsl/egsl_misc.c -o CMakeFiles/csm-static.dir/lib/egsl/egsl_misc.s
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/lib/egsl/egsl_misc.c -o CMakeFiles/csm-static.dir/lib/egsl/egsl_misc.s
 
 sm/CMakeFiles/csm-static.dir/lib/egsl/egsl_misc.o.requires:
 
@@ -850,17 +850,17 @@ sm/CMakeFiles/csm-static.dir/lib/egsl/egsl_misc.o.provides.build: sm/CMakeFiles/
 
 
 sm/CMakeFiles/csm-static.dir/lib/egsl/egsl_ops.o: sm/CMakeFiles/csm-static.dir/flags.make
-sm/CMakeFiles/csm-static.dir/lib/egsl/egsl_ops.o: /home/xavier/catkin_ws/src/csm/sm/lib/egsl/egsl_ops.c
+sm/CMakeFiles/csm-static.dir/lib/egsl/egsl_ops.o: /home/xavier/catkin_ws/src/csm2/sm/lib/egsl/egsl_ops.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building C object sm/CMakeFiles/csm-static.dir/lib/egsl/egsl_ops.o"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/lib/egsl/egsl_ops.o   -c /home/xavier/catkin_ws/src/csm/sm/lib/egsl/egsl_ops.c
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/lib/egsl/egsl_ops.o   -c /home/xavier/catkin_ws/src/csm2/sm/lib/egsl/egsl_ops.c
 
 sm/CMakeFiles/csm-static.dir/lib/egsl/egsl_ops.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/csm-static.dir/lib/egsl/egsl_ops.i"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/lib/egsl/egsl_ops.c > CMakeFiles/csm-static.dir/lib/egsl/egsl_ops.i
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/lib/egsl/egsl_ops.c > CMakeFiles/csm-static.dir/lib/egsl/egsl_ops.i
 
 sm/CMakeFiles/csm-static.dir/lib/egsl/egsl_ops.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/csm-static.dir/lib/egsl/egsl_ops.s"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/lib/egsl/egsl_ops.c -o CMakeFiles/csm-static.dir/lib/egsl/egsl_ops.s
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/lib/egsl/egsl_ops.c -o CMakeFiles/csm-static.dir/lib/egsl/egsl_ops.s
 
 sm/CMakeFiles/csm-static.dir/lib/egsl/egsl_ops.o.requires:
 
@@ -874,17 +874,17 @@ sm/CMakeFiles/csm-static.dir/lib/egsl/egsl_ops.o.provides.build: sm/CMakeFiles/c
 
 
 sm/CMakeFiles/csm-static.dir/lib/gpc/gpc.o: sm/CMakeFiles/csm-static.dir/flags.make
-sm/CMakeFiles/csm-static.dir/lib/gpc/gpc.o: /home/xavier/catkin_ws/src/csm/sm/lib/gpc/gpc.c
+sm/CMakeFiles/csm-static.dir/lib/gpc/gpc.o: /home/xavier/catkin_ws/src/csm2/sm/lib/gpc/gpc.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building C object sm/CMakeFiles/csm-static.dir/lib/gpc/gpc.o"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/lib/gpc/gpc.o   -c /home/xavier/catkin_ws/src/csm/sm/lib/gpc/gpc.c
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/lib/gpc/gpc.o   -c /home/xavier/catkin_ws/src/csm2/sm/lib/gpc/gpc.c
 
 sm/CMakeFiles/csm-static.dir/lib/gpc/gpc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/csm-static.dir/lib/gpc/gpc.i"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/lib/gpc/gpc.c > CMakeFiles/csm-static.dir/lib/gpc/gpc.i
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/lib/gpc/gpc.c > CMakeFiles/csm-static.dir/lib/gpc/gpc.i
 
 sm/CMakeFiles/csm-static.dir/lib/gpc/gpc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/csm-static.dir/lib/gpc/gpc.s"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/lib/gpc/gpc.c -o CMakeFiles/csm-static.dir/lib/gpc/gpc.s
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/lib/gpc/gpc.c -o CMakeFiles/csm-static.dir/lib/gpc/gpc.s
 
 sm/CMakeFiles/csm-static.dir/lib/gpc/gpc.o.requires:
 
@@ -898,17 +898,17 @@ sm/CMakeFiles/csm-static.dir/lib/gpc/gpc.o.provides.build: sm/CMakeFiles/csm-sta
 
 
 sm/CMakeFiles/csm-static.dir/lib/gpc/gpc_utils.o: sm/CMakeFiles/csm-static.dir/flags.make
-sm/CMakeFiles/csm-static.dir/lib/gpc/gpc_utils.o: /home/xavier/catkin_ws/src/csm/sm/lib/gpc/gpc_utils.c
+sm/CMakeFiles/csm-static.dir/lib/gpc/gpc_utils.o: /home/xavier/catkin_ws/src/csm2/sm/lib/gpc/gpc_utils.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building C object sm/CMakeFiles/csm-static.dir/lib/gpc/gpc_utils.o"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/lib/gpc/gpc_utils.o   -c /home/xavier/catkin_ws/src/csm/sm/lib/gpc/gpc_utils.c
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/lib/gpc/gpc_utils.o   -c /home/xavier/catkin_ws/src/csm2/sm/lib/gpc/gpc_utils.c
 
 sm/CMakeFiles/csm-static.dir/lib/gpc/gpc_utils.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/csm-static.dir/lib/gpc/gpc_utils.i"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/lib/gpc/gpc_utils.c > CMakeFiles/csm-static.dir/lib/gpc/gpc_utils.i
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/lib/gpc/gpc_utils.c > CMakeFiles/csm-static.dir/lib/gpc/gpc_utils.i
 
 sm/CMakeFiles/csm-static.dir/lib/gpc/gpc_utils.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/csm-static.dir/lib/gpc/gpc_utils.s"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/lib/gpc/gpc_utils.c -o CMakeFiles/csm-static.dir/lib/gpc/gpc_utils.s
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/lib/gpc/gpc_utils.c -o CMakeFiles/csm-static.dir/lib/gpc/gpc_utils.s
 
 sm/CMakeFiles/csm-static.dir/lib/gpc/gpc_utils.o.requires:
 
@@ -922,17 +922,17 @@ sm/CMakeFiles/csm-static.dir/lib/gpc/gpc_utils.o.provides.build: sm/CMakeFiles/c
 
 
 sm/CMakeFiles/csm-static.dir/lib/json-c/arraylist.o: sm/CMakeFiles/csm-static.dir/flags.make
-sm/CMakeFiles/csm-static.dir/lib/json-c/arraylist.o: /home/xavier/catkin_ws/src/csm/sm/lib/json-c/arraylist.c
+sm/CMakeFiles/csm-static.dir/lib/json-c/arraylist.o: /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/arraylist.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building C object sm/CMakeFiles/csm-static.dir/lib/json-c/arraylist.o"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/lib/json-c/arraylist.o   -c /home/xavier/catkin_ws/src/csm/sm/lib/json-c/arraylist.c
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/lib/json-c/arraylist.o   -c /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/arraylist.c
 
 sm/CMakeFiles/csm-static.dir/lib/json-c/arraylist.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/csm-static.dir/lib/json-c/arraylist.i"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/lib/json-c/arraylist.c > CMakeFiles/csm-static.dir/lib/json-c/arraylist.i
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/arraylist.c > CMakeFiles/csm-static.dir/lib/json-c/arraylist.i
 
 sm/CMakeFiles/csm-static.dir/lib/json-c/arraylist.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/csm-static.dir/lib/json-c/arraylist.s"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/lib/json-c/arraylist.c -o CMakeFiles/csm-static.dir/lib/json-c/arraylist.s
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/arraylist.c -o CMakeFiles/csm-static.dir/lib/json-c/arraylist.s
 
 sm/CMakeFiles/csm-static.dir/lib/json-c/arraylist.o.requires:
 
@@ -946,17 +946,17 @@ sm/CMakeFiles/csm-static.dir/lib/json-c/arraylist.o.provides.build: sm/CMakeFile
 
 
 sm/CMakeFiles/csm-static.dir/lib/json-c/debug.o: sm/CMakeFiles/csm-static.dir/flags.make
-sm/CMakeFiles/csm-static.dir/lib/json-c/debug.o: /home/xavier/catkin_ws/src/csm/sm/lib/json-c/debug.c
+sm/CMakeFiles/csm-static.dir/lib/json-c/debug.o: /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/debug.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building C object sm/CMakeFiles/csm-static.dir/lib/json-c/debug.o"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/lib/json-c/debug.o   -c /home/xavier/catkin_ws/src/csm/sm/lib/json-c/debug.c
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/lib/json-c/debug.o   -c /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/debug.c
 
 sm/CMakeFiles/csm-static.dir/lib/json-c/debug.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/csm-static.dir/lib/json-c/debug.i"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/lib/json-c/debug.c > CMakeFiles/csm-static.dir/lib/json-c/debug.i
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/debug.c > CMakeFiles/csm-static.dir/lib/json-c/debug.i
 
 sm/CMakeFiles/csm-static.dir/lib/json-c/debug.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/csm-static.dir/lib/json-c/debug.s"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/lib/json-c/debug.c -o CMakeFiles/csm-static.dir/lib/json-c/debug.s
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/debug.c -o CMakeFiles/csm-static.dir/lib/json-c/debug.s
 
 sm/CMakeFiles/csm-static.dir/lib/json-c/debug.o.requires:
 
@@ -970,17 +970,17 @@ sm/CMakeFiles/csm-static.dir/lib/json-c/debug.o.provides.build: sm/CMakeFiles/cs
 
 
 sm/CMakeFiles/csm-static.dir/lib/json-c/JSON_checker.o: sm/CMakeFiles/csm-static.dir/flags.make
-sm/CMakeFiles/csm-static.dir/lib/json-c/JSON_checker.o: /home/xavier/catkin_ws/src/csm/sm/lib/json-c/JSON_checker.c
+sm/CMakeFiles/csm-static.dir/lib/json-c/JSON_checker.o: /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/JSON_checker.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building C object sm/CMakeFiles/csm-static.dir/lib/json-c/JSON_checker.o"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/lib/json-c/JSON_checker.o   -c /home/xavier/catkin_ws/src/csm/sm/lib/json-c/JSON_checker.c
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/lib/json-c/JSON_checker.o   -c /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/JSON_checker.c
 
 sm/CMakeFiles/csm-static.dir/lib/json-c/JSON_checker.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/csm-static.dir/lib/json-c/JSON_checker.i"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/lib/json-c/JSON_checker.c > CMakeFiles/csm-static.dir/lib/json-c/JSON_checker.i
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/JSON_checker.c > CMakeFiles/csm-static.dir/lib/json-c/JSON_checker.i
 
 sm/CMakeFiles/csm-static.dir/lib/json-c/JSON_checker.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/csm-static.dir/lib/json-c/JSON_checker.s"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/lib/json-c/JSON_checker.c -o CMakeFiles/csm-static.dir/lib/json-c/JSON_checker.s
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/JSON_checker.c -o CMakeFiles/csm-static.dir/lib/json-c/JSON_checker.s
 
 sm/CMakeFiles/csm-static.dir/lib/json-c/JSON_checker.o.requires:
 
@@ -994,17 +994,17 @@ sm/CMakeFiles/csm-static.dir/lib/json-c/JSON_checker.o.provides.build: sm/CMakeF
 
 
 sm/CMakeFiles/csm-static.dir/lib/json-c/json_more_utils.o: sm/CMakeFiles/csm-static.dir/flags.make
-sm/CMakeFiles/csm-static.dir/lib/json-c/json_more_utils.o: /home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_more_utils.c
+sm/CMakeFiles/csm-static.dir/lib/json-c/json_more_utils.o: /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_more_utils.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building C object sm/CMakeFiles/csm-static.dir/lib/json-c/json_more_utils.o"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/lib/json-c/json_more_utils.o   -c /home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_more_utils.c
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/lib/json-c/json_more_utils.o   -c /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_more_utils.c
 
 sm/CMakeFiles/csm-static.dir/lib/json-c/json_more_utils.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/csm-static.dir/lib/json-c/json_more_utils.i"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_more_utils.c > CMakeFiles/csm-static.dir/lib/json-c/json_more_utils.i
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_more_utils.c > CMakeFiles/csm-static.dir/lib/json-c/json_more_utils.i
 
 sm/CMakeFiles/csm-static.dir/lib/json-c/json_more_utils.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/csm-static.dir/lib/json-c/json_more_utils.s"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_more_utils.c -o CMakeFiles/csm-static.dir/lib/json-c/json_more_utils.s
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_more_utils.c -o CMakeFiles/csm-static.dir/lib/json-c/json_more_utils.s
 
 sm/CMakeFiles/csm-static.dir/lib/json-c/json_more_utils.o.requires:
 
@@ -1018,17 +1018,17 @@ sm/CMakeFiles/csm-static.dir/lib/json-c/json_more_utils.o.provides.build: sm/CMa
 
 
 sm/CMakeFiles/csm-static.dir/lib/json-c/json_object.o: sm/CMakeFiles/csm-static.dir/flags.make
-sm/CMakeFiles/csm-static.dir/lib/json-c/json_object.o: /home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_object.c
+sm/CMakeFiles/csm-static.dir/lib/json-c/json_object.o: /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_object.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building C object sm/CMakeFiles/csm-static.dir/lib/json-c/json_object.o"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/lib/json-c/json_object.o   -c /home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_object.c
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/lib/json-c/json_object.o   -c /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_object.c
 
 sm/CMakeFiles/csm-static.dir/lib/json-c/json_object.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/csm-static.dir/lib/json-c/json_object.i"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_object.c > CMakeFiles/csm-static.dir/lib/json-c/json_object.i
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_object.c > CMakeFiles/csm-static.dir/lib/json-c/json_object.i
 
 sm/CMakeFiles/csm-static.dir/lib/json-c/json_object.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/csm-static.dir/lib/json-c/json_object.s"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_object.c -o CMakeFiles/csm-static.dir/lib/json-c/json_object.s
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_object.c -o CMakeFiles/csm-static.dir/lib/json-c/json_object.s
 
 sm/CMakeFiles/csm-static.dir/lib/json-c/json_object.o.requires:
 
@@ -1042,17 +1042,17 @@ sm/CMakeFiles/csm-static.dir/lib/json-c/json_object.o.provides.build: sm/CMakeFi
 
 
 sm/CMakeFiles/csm-static.dir/lib/json-c/json_tokener.o: sm/CMakeFiles/csm-static.dir/flags.make
-sm/CMakeFiles/csm-static.dir/lib/json-c/json_tokener.o: /home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_tokener.c
+sm/CMakeFiles/csm-static.dir/lib/json-c/json_tokener.o: /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_tokener.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building C object sm/CMakeFiles/csm-static.dir/lib/json-c/json_tokener.o"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/lib/json-c/json_tokener.o   -c /home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_tokener.c
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/lib/json-c/json_tokener.o   -c /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_tokener.c
 
 sm/CMakeFiles/csm-static.dir/lib/json-c/json_tokener.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/csm-static.dir/lib/json-c/json_tokener.i"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_tokener.c > CMakeFiles/csm-static.dir/lib/json-c/json_tokener.i
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_tokener.c > CMakeFiles/csm-static.dir/lib/json-c/json_tokener.i
 
 sm/CMakeFiles/csm-static.dir/lib/json-c/json_tokener.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/csm-static.dir/lib/json-c/json_tokener.s"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_tokener.c -o CMakeFiles/csm-static.dir/lib/json-c/json_tokener.s
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_tokener.c -o CMakeFiles/csm-static.dir/lib/json-c/json_tokener.s
 
 sm/CMakeFiles/csm-static.dir/lib/json-c/json_tokener.o.requires:
 
@@ -1066,17 +1066,17 @@ sm/CMakeFiles/csm-static.dir/lib/json-c/json_tokener.o.provides.build: sm/CMakeF
 
 
 sm/CMakeFiles/csm-static.dir/lib/json-c/json_util.o: sm/CMakeFiles/csm-static.dir/flags.make
-sm/CMakeFiles/csm-static.dir/lib/json-c/json_util.o: /home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_util.c
+sm/CMakeFiles/csm-static.dir/lib/json-c/json_util.o: /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_util.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building C object sm/CMakeFiles/csm-static.dir/lib/json-c/json_util.o"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/lib/json-c/json_util.o   -c /home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_util.c
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/lib/json-c/json_util.o   -c /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_util.c
 
 sm/CMakeFiles/csm-static.dir/lib/json-c/json_util.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/csm-static.dir/lib/json-c/json_util.i"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_util.c > CMakeFiles/csm-static.dir/lib/json-c/json_util.i
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_util.c > CMakeFiles/csm-static.dir/lib/json-c/json_util.i
 
 sm/CMakeFiles/csm-static.dir/lib/json-c/json_util.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/csm-static.dir/lib/json-c/json_util.s"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_util.c -o CMakeFiles/csm-static.dir/lib/json-c/json_util.s
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_util.c -o CMakeFiles/csm-static.dir/lib/json-c/json_util.s
 
 sm/CMakeFiles/csm-static.dir/lib/json-c/json_util.o.requires:
 
@@ -1090,17 +1090,17 @@ sm/CMakeFiles/csm-static.dir/lib/json-c/json_util.o.provides.build: sm/CMakeFile
 
 
 sm/CMakeFiles/csm-static.dir/lib/json-c/linkhash.o: sm/CMakeFiles/csm-static.dir/flags.make
-sm/CMakeFiles/csm-static.dir/lib/json-c/linkhash.o: /home/xavier/catkin_ws/src/csm/sm/lib/json-c/linkhash.c
+sm/CMakeFiles/csm-static.dir/lib/json-c/linkhash.o: /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/linkhash.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building C object sm/CMakeFiles/csm-static.dir/lib/json-c/linkhash.o"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/lib/json-c/linkhash.o   -c /home/xavier/catkin_ws/src/csm/sm/lib/json-c/linkhash.c
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/lib/json-c/linkhash.o   -c /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/linkhash.c
 
 sm/CMakeFiles/csm-static.dir/lib/json-c/linkhash.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/csm-static.dir/lib/json-c/linkhash.i"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/lib/json-c/linkhash.c > CMakeFiles/csm-static.dir/lib/json-c/linkhash.i
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/linkhash.c > CMakeFiles/csm-static.dir/lib/json-c/linkhash.i
 
 sm/CMakeFiles/csm-static.dir/lib/json-c/linkhash.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/csm-static.dir/lib/json-c/linkhash.s"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/lib/json-c/linkhash.c -o CMakeFiles/csm-static.dir/lib/json-c/linkhash.s
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/linkhash.c -o CMakeFiles/csm-static.dir/lib/json-c/linkhash.s
 
 sm/CMakeFiles/csm-static.dir/lib/json-c/linkhash.o.requires:
 
@@ -1114,17 +1114,17 @@ sm/CMakeFiles/csm-static.dir/lib/json-c/linkhash.o.provides.build: sm/CMakeFiles
 
 
 sm/CMakeFiles/csm-static.dir/lib/json-c/printbuf.o: sm/CMakeFiles/csm-static.dir/flags.make
-sm/CMakeFiles/csm-static.dir/lib/json-c/printbuf.o: /home/xavier/catkin_ws/src/csm/sm/lib/json-c/printbuf.c
+sm/CMakeFiles/csm-static.dir/lib/json-c/printbuf.o: /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/printbuf.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building C object sm/CMakeFiles/csm-static.dir/lib/json-c/printbuf.o"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/lib/json-c/printbuf.o   -c /home/xavier/catkin_ws/src/csm/sm/lib/json-c/printbuf.c
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/lib/json-c/printbuf.o   -c /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/printbuf.c
 
 sm/CMakeFiles/csm-static.dir/lib/json-c/printbuf.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/csm-static.dir/lib/json-c/printbuf.i"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/lib/json-c/printbuf.c > CMakeFiles/csm-static.dir/lib/json-c/printbuf.i
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/printbuf.c > CMakeFiles/csm-static.dir/lib/json-c/printbuf.i
 
 sm/CMakeFiles/csm-static.dir/lib/json-c/printbuf.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/csm-static.dir/lib/json-c/printbuf.s"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/lib/json-c/printbuf.c -o CMakeFiles/csm-static.dir/lib/json-c/printbuf.s
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/printbuf.c -o CMakeFiles/csm-static.dir/lib/json-c/printbuf.s
 
 sm/CMakeFiles/csm-static.dir/lib/json-c/printbuf.o.requires:
 
@@ -1138,17 +1138,17 @@ sm/CMakeFiles/csm-static.dir/lib/json-c/printbuf.o.provides.build: sm/CMakeFiles
 
 
 sm/CMakeFiles/csm-static.dir/lib/options/options.o: sm/CMakeFiles/csm-static.dir/flags.make
-sm/CMakeFiles/csm-static.dir/lib/options/options.o: /home/xavier/catkin_ws/src/csm/sm/lib/options/options.c
+sm/CMakeFiles/csm-static.dir/lib/options/options.o: /home/xavier/catkin_ws/src/csm2/sm/lib/options/options.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building C object sm/CMakeFiles/csm-static.dir/lib/options/options.o"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/lib/options/options.o   -c /home/xavier/catkin_ws/src/csm/sm/lib/options/options.c
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/lib/options/options.o   -c /home/xavier/catkin_ws/src/csm2/sm/lib/options/options.c
 
 sm/CMakeFiles/csm-static.dir/lib/options/options.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/csm-static.dir/lib/options/options.i"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/lib/options/options.c > CMakeFiles/csm-static.dir/lib/options/options.i
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/lib/options/options.c > CMakeFiles/csm-static.dir/lib/options/options.i
 
 sm/CMakeFiles/csm-static.dir/lib/options/options.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/csm-static.dir/lib/options/options.s"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/lib/options/options.c -o CMakeFiles/csm-static.dir/lib/options/options.s
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/lib/options/options.c -o CMakeFiles/csm-static.dir/lib/options/options.s
 
 sm/CMakeFiles/csm-static.dir/lib/options/options.o.requires:
 
@@ -1162,17 +1162,17 @@ sm/CMakeFiles/csm-static.dir/lib/options/options.o.provides.build: sm/CMakeFiles
 
 
 sm/CMakeFiles/csm-static.dir/lib/options/options_interface.o: sm/CMakeFiles/csm-static.dir/flags.make
-sm/CMakeFiles/csm-static.dir/lib/options/options_interface.o: /home/xavier/catkin_ws/src/csm/sm/lib/options/options_interface.c
+sm/CMakeFiles/csm-static.dir/lib/options/options_interface.o: /home/xavier/catkin_ws/src/csm2/sm/lib/options/options_interface.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building C object sm/CMakeFiles/csm-static.dir/lib/options/options_interface.o"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/lib/options/options_interface.o   -c /home/xavier/catkin_ws/src/csm/sm/lib/options/options_interface.c
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/lib/options/options_interface.o   -c /home/xavier/catkin_ws/src/csm2/sm/lib/options/options_interface.c
 
 sm/CMakeFiles/csm-static.dir/lib/options/options_interface.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/csm-static.dir/lib/options/options_interface.i"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/lib/options/options_interface.c > CMakeFiles/csm-static.dir/lib/options/options_interface.i
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/lib/options/options_interface.c > CMakeFiles/csm-static.dir/lib/options/options_interface.i
 
 sm/CMakeFiles/csm-static.dir/lib/options/options_interface.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/csm-static.dir/lib/options/options_interface.s"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/lib/options/options_interface.c -o CMakeFiles/csm-static.dir/lib/options/options_interface.s
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/lib/options/options_interface.c -o CMakeFiles/csm-static.dir/lib/options/options_interface.s
 
 sm/CMakeFiles/csm-static.dir/lib/options/options_interface.o.requires:
 
@@ -1186,17 +1186,17 @@ sm/CMakeFiles/csm-static.dir/lib/options/options_interface.o.provides.build: sm/
 
 
 sm/CMakeFiles/csm-static.dir/csm/laser_data_cairo.o: sm/CMakeFiles/csm-static.dir/flags.make
-sm/CMakeFiles/csm-static.dir/csm/laser_data_cairo.o: /home/xavier/catkin_ws/src/csm/sm/csm/laser_data_cairo.c
+sm/CMakeFiles/csm-static.dir/csm/laser_data_cairo.o: /home/xavier/catkin_ws/src/csm2/sm/csm/laser_data_cairo.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building C object sm/CMakeFiles/csm-static.dir/csm/laser_data_cairo.o"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/laser_data_cairo.o   -c /home/xavier/catkin_ws/src/csm/sm/csm/laser_data_cairo.c
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/csm-static.dir/csm/laser_data_cairo.o   -c /home/xavier/catkin_ws/src/csm2/sm/csm/laser_data_cairo.c
 
 sm/CMakeFiles/csm-static.dir/csm/laser_data_cairo.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/csm-static.dir/csm/laser_data_cairo.i"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/csm/laser_data_cairo.c > CMakeFiles/csm-static.dir/csm/laser_data_cairo.i
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/csm/laser_data_cairo.c > CMakeFiles/csm-static.dir/csm/laser_data_cairo.i
 
 sm/CMakeFiles/csm-static.dir/csm/laser_data_cairo.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/csm-static.dir/csm/laser_data_cairo.s"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/csm/laser_data_cairo.c -o CMakeFiles/csm-static.dir/csm/laser_data_cairo.s
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/csm/laser_data_cairo.c -o CMakeFiles/csm-static.dir/csm/laser_data_cairo.s
 
 sm/CMakeFiles/csm-static.dir/csm/laser_data_cairo.o.requires:
 
@@ -1378,6 +1378,6 @@ sm/CMakeFiles/csm-static.dir/clean:
 .PHONY : sm/CMakeFiles/csm-static.dir/clean
 
 sm/CMakeFiles/csm-static.dir/depend:
-	cd /home/xavier/catkin_ws/build/csm && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/xavier/catkin_ws/src/csm /home/xavier/catkin_ws/src/csm/sm /home/xavier/catkin_ws/build/csm /home/xavier/catkin_ws/build/csm/sm /home/xavier/catkin_ws/build/csm/sm/CMakeFiles/csm-static.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/xavier/catkin_ws/build/csm && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/xavier/catkin_ws/src/csm2 /home/xavier/catkin_ws/src/csm2/sm /home/xavier/catkin_ws/build/csm /home/xavier/catkin_ws/build/csm/sm /home/xavier/catkin_ws/build/csm/sm/CMakeFiles/csm-static.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : sm/CMakeFiles/csm-static.dir/depend
 

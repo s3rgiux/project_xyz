@@ -195,7 +195,7 @@ CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 CSM_BINARY_DIR:STATIC=/home/xavier/catkin_ws/build/csm/sm
 
 //Value Computed by CMake
-CSM_SOURCE_DIR:STATIC=/home/xavier/catkin_ws/src/csm/sm
+CSM_SOURCE_DIR:STATIC=/home/xavier/catkin_ws/src/csm2/sm
 
 //Single output directory for building all executables.
 EXECUTABLE_OUTPUT_PATH:PATH=
@@ -225,7 +225,7 @@ PKGCONFIG_EXECUTABLE:FILEPATH=/usr/bin/pkg-config
 Project_BINARY_DIR:STATIC=/home/xavier/catkin_ws/build/csm
 
 //Value Computed by CMake
-Project_SOURCE_DIR:STATIC=/home/xavier/catkin_ws/src/csm
+Project_SOURCE_DIR:STATIC=/home/xavier/catkin_ws/src/csm2
 
 //Dependencies for the target
 csm-static_LIB_DEPENDS:STATIC=general;-L. -L/usr/lib/aarch64-linux-gnu -L/usr/lib/aarch64-linux-gnu -lgsl -lgslcblas -lm /usr/lib/aarch64-linux-gnu/libcairo.so;
@@ -324,7 +324,7 @@ CMAKE_GENERATOR_PLATFORM:INTERNAL=
 CMAKE_GENERATOR_TOOLSET:INTERNAL=
 //Source directory with the top level CMakeLists.txt file for this
 // project
-CMAKE_HOME_DIRECTORY:INTERNAL=/home/xavier/catkin_ws/src/csm
+CMAKE_HOME_DIRECTORY:INTERNAL=/home/xavier/catkin_ws/src/csm2
 //Install .so files without execute permission.
 CMAKE_INSTALL_SO_NO_EXE:INTERNAL=1
 //ADVANCED property for variable: CMAKE_LINKER

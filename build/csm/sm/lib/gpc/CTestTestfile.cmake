@@ -1,5 +1,5 @@
 # CMake generated Testfile for 
-# Source directory: /home/xavier/catkin_ws/src/csm/sm/lib/gpc
+# Source directory: /home/xavier/catkin_ws/src/csm2/sm/lib/gpc
 # Build directory: /home/xavier/catkin_ws/build/csm/sm/lib/gpc
 # 
 # This file includes the relevant testing commands required for 

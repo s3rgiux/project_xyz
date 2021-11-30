@@ -1,4 +1,4 @@
-move_base_flex/mbf_msgs
+move_base_flex2/mbf_msgs
 /home/xavier/catkin_ws/devel/.private/mbf_msgs/cmake.lock /home/xavier/catkin_ws/devel/./cmake.lock
 /home/xavier/catkin_ws/devel/.private/mbf_msgs/include/mbf_msgs/CheckPoseRequest.h /home/xavier/catkin_ws/devel/include/mbf_msgs/CheckPoseRequest.h
 /home/xavier/catkin_ws/devel/.private/mbf_msgs/include/mbf_msgs/ExePathGoal.h /home/xavier/catkin_ws/devel/include/mbf_msgs/ExePathGoal.h

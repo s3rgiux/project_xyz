@@ -1,4 +1,4 @@
-# Install script for directory: /home/xavier/catkin_ws/src/scan_tools/polar_scan_matcher
+# Install script for directory: /home/xavier/catkin_ws/src/scan_tools2/polar_scan_matcher
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -140,7 +140,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/polar_scan_matcher" TYPE FILE FILES "/home/xavier/catkin_ws/src/scan_tools/polar_scan_matcher/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/polar_scan_matcher" TYPE FILE FILES "/home/xavier/catkin_ws/src/scan_tools2/polar_scan_matcher/package.xml")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -160,7 +160,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/polar_scan_matcher" TYPE DIRECTORY FILES "/home/xavier/catkin_ws/src/scan_tools/polar_scan_matcher/include/polar_scan_matcher/")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/polar_scan_matcher" TYPE DIRECTORY FILES "/home/xavier/catkin_ws/src/scan_tools2/polar_scan_matcher/include/polar_scan_matcher/")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)

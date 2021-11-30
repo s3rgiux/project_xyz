@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/xavier/catkin_ws/src/scan_tools/polar_scan_matcher/include/polar_scan_matcher/polar_match.h
+/home/xavier/catkin_ws/src/scan_tools2/polar_scan_matcher/include/polar_scan_matcher/polar_match.h
 stdio.h
 -
 iostream
@@ -22,7 +22,7 @@ string.h
 vector
 -
 
-/home/xavier/catkin_ws/src/scan_tools/polar_scan_matcher/src/polar_match.cpp
+/home/xavier/catkin_ws/src/scan_tools2/polar_scan_matcher/src/polar_match.cpp
 polar_scan_matcher/polar_match.h
-/home/xavier/catkin_ws/src/scan_tools/polar_scan_matcher/src/polar_scan_matcher/polar_match.h
+/home/xavier/catkin_ws/src/scan_tools2/polar_scan_matcher/src/polar_scan_matcher/polar_match.h
 

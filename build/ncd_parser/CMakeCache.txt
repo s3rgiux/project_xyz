@@ -373,7 +373,7 @@ message_runtime_DIR:PATH=/opt/ros/melodic/share/message_runtime/cmake
 ncd_parser_BINARY_DIR:STATIC=/home/xavier/catkin_ws/build/ncd_parser
 
 //Value Computed by CMake
-ncd_parser_SOURCE_DIR:STATIC=/home/xavier/catkin_ws/src/scan_tools/ncd_parser
+ncd_parser_SOURCE_DIR:STATIC=/home/xavier/catkin_ws/src/scan_tools2/ncd_parser
 
 //The directory containing a CMake configuration file for rosconsole.
 rosconsole_DIR:PATH=/opt/ros/melodic/share/rosconsole/cmake
@@ -513,7 +513,7 @@ CMAKE_HAVE_PTHREAD_CREATE:INTERNAL=1
 CMAKE_HAVE_PTHREAD_H:INTERNAL=1
 //Source directory with the top level CMakeLists.txt file for this
 // project
-CMAKE_HOME_DIRECTORY:INTERNAL=/home/xavier/catkin_ws/src/scan_tools/ncd_parser
+CMAKE_HOME_DIRECTORY:INTERNAL=/home/xavier/catkin_ws/src/scan_tools2/ncd_parser
 //Install .so files without execute permission.
 CMAKE_INSTALL_SO_NO_EXE:INTERNAL=1
 //ADVANCED property for variable: CMAKE_LINKER

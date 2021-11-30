@@ -1,4 +1,4 @@
-move_base_flex/mbf_costmap_core
+move_base_flex2/mbf_costmap_core
 /home/xavier/catkin_ws/devel/.private/mbf_costmap_core/cmake.lock /home/xavier/catkin_ws/devel/./cmake.lock
 /home/xavier/catkin_ws/devel/.private/mbf_costmap_core/share/mbf_costmap_core/cmake/mbf_costmap_coreConfig.cmake /home/xavier/catkin_ws/devel/share/mbf_costmap_core/cmake/mbf_costmap_coreConfig.cmake
 /home/xavier/catkin_ws/devel/.private/mbf_costmap_core/share/mbf_costmap_core/cmake/mbf_costmap_coreConfig-version.cmake /home/xavier/catkin_ws/devel/share/mbf_costmap_core/cmake/mbf_costmap_coreConfig-version.cmake

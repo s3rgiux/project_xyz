@@ -43,7 +43,7 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/xavier/catkin_ws/src/csm
+CMAKE_SOURCE_DIR = /home/xavier/catkin_ws/src/csm2
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/xavier/catkin_ws/build/csm
@@ -58,17 +58,17 @@ include sm/lib/egsl/CMakeFiles/egsl_test_allocation.dir/progress.make
 include sm/lib/egsl/CMakeFiles/egsl_test_allocation.dir/flags.make
 
 sm/lib/egsl/CMakeFiles/egsl_test_allocation.dir/egsl_test_allocation.o: sm/lib/egsl/CMakeFiles/egsl_test_allocation.dir/flags.make
-sm/lib/egsl/CMakeFiles/egsl_test_allocation.dir/egsl_test_allocation.o: /home/xavier/catkin_ws/src/csm/sm/lib/egsl/egsl_test_allocation.c
+sm/lib/egsl/CMakeFiles/egsl_test_allocation.dir/egsl_test_allocation.o: /home/xavier/catkin_ws/src/csm2/sm/lib/egsl/egsl_test_allocation.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object sm/lib/egsl/CMakeFiles/egsl_test_allocation.dir/egsl_test_allocation.o"
-	cd /home/xavier/catkin_ws/build/csm/sm/lib/egsl && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/egsl_test_allocation.dir/egsl_test_allocation.o   -c /home/xavier/catkin_ws/src/csm/sm/lib/egsl/egsl_test_allocation.c
+	cd /home/xavier/catkin_ws/build/csm/sm/lib/egsl && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/egsl_test_allocation.dir/egsl_test_allocation.o   -c /home/xavier/catkin_ws/src/csm2/sm/lib/egsl/egsl_test_allocation.c
 
 sm/lib/egsl/CMakeFiles/egsl_test_allocation.dir/egsl_test_allocation.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/egsl_test_allocation.dir/egsl_test_allocation.i"
-	cd /home/xavier/catkin_ws/build/csm/sm/lib/egsl && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/lib/egsl/egsl_test_allocation.c > CMakeFiles/egsl_test_allocation.dir/egsl_test_allocation.i
+	cd /home/xavier/catkin_ws/build/csm/sm/lib/egsl && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/lib/egsl/egsl_test_allocation.c > CMakeFiles/egsl_test_allocation.dir/egsl_test_allocation.i
 
 sm/lib/egsl/CMakeFiles/egsl_test_allocation.dir/egsl_test_allocation.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/egsl_test_allocation.dir/egsl_test_allocation.s"
-	cd /home/xavier/catkin_ws/build/csm/sm/lib/egsl && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/lib/egsl/egsl_test_allocation.c -o CMakeFiles/egsl_test_allocation.dir/egsl_test_allocation.s
+	cd /home/xavier/catkin_ws/build/csm/sm/lib/egsl && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/lib/egsl/egsl_test_allocation.c -o CMakeFiles/egsl_test_allocation.dir/egsl_test_allocation.s
 
 sm/lib/egsl/CMakeFiles/egsl_test_allocation.dir/egsl_test_allocation.o.requires:
 
@@ -109,6 +109,6 @@ sm/lib/egsl/CMakeFiles/egsl_test_allocation.dir/clean:
 .PHONY : sm/lib/egsl/CMakeFiles/egsl_test_allocation.dir/clean
 
 sm/lib/egsl/CMakeFiles/egsl_test_allocation.dir/depend:
-	cd /home/xavier/catkin_ws/build/csm && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/xavier/catkin_ws/src/csm /home/xavier/catkin_ws/src/csm/sm/lib/egsl /home/xavier/catkin_ws/build/csm /home/xavier/catkin_ws/build/csm/sm/lib/egsl /home/xavier/catkin_ws/build/csm/sm/lib/egsl/CMakeFiles/egsl_test_allocation.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/xavier/catkin_ws/build/csm && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/xavier/catkin_ws/src/csm2 /home/xavier/catkin_ws/src/csm2/sm/lib/egsl /home/xavier/catkin_ws/build/csm /home/xavier/catkin_ws/build/csm/sm/lib/egsl /home/xavier/catkin_ws/build/csm/sm/lib/egsl/CMakeFiles/egsl_test_allocation.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : sm/lib/egsl/CMakeFiles/egsl_test_allocation.dir/depend
 

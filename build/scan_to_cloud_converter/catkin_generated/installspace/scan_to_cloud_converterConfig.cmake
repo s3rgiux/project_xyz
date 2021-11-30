@@ -67,7 +67,7 @@ set(scan_to_cloud_converter_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("FALSE" STREQUAL "TRUE")
-  set(scan_to_cloud_converter_SOURCE_PREFIX /home/xavier/catkin_ws/src/scan_tools/scan_to_cloud_converter)
+  set(scan_to_cloud_converter_SOURCE_PREFIX /home/xavier/catkin_ws/src/scan_tools2/scan_to_cloud_converter)
   set(scan_to_cloud_converter_DEVEL_PREFIX /home/xavier/catkin_ws/devel/.private/scan_to_cloud_converter)
   set(scan_to_cloud_converter_INSTALL_PREFIX "")
   set(scan_to_cloud_converter_PREFIX ${scan_to_cloud_converter_DEVEL_PREFIX})

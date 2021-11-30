@@ -14,6 +14,10 @@ CMakeFiles/rplidarNode.dir/sdk/src/arch/linux/net_socket.cpp.o
  /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/include/rplidar_driver.h
  /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/include/rplidar_protocol.h
  /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/include/rptypes.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/include/sl_lidar_cmd.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/include/sl_lidar_driver.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/include/sl_lidar_protocol.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/include/sl_types.h
  /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/src/arch/linux/arch_linux.h
  /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/src/arch/macOS/arch_macOS.h
  /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/src/arch/macOS/timer.h
@@ -36,6 +40,10 @@ CMakeFiles/rplidarNode.dir/sdk/src/hal/thread.cpp.o
  /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/include/rplidar_driver.h
  /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/include/rplidar_protocol.h
  /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/include/rptypes.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/include/sl_lidar_cmd.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/include/sl_lidar_driver.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/include/sl_lidar_protocol.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/include/sl_types.h
  /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/src/arch/linux/arch_linux.h
  /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/src/arch/linux/thread.hpp
  /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/src/arch/macOS/arch_macOS.h
@@ -56,6 +64,11 @@ CMakeFiles/rplidarNode.dir/sdk/src/rplidar_driver.cpp.o
  /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/include/rplidar_driver.h
  /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/include/rplidar_protocol.h
  /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/include/rptypes.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/include/sl_crc.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/include/sl_lidar_cmd.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/include/sl_lidar_driver.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/include/sl_lidar_protocol.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/include/sl_types.h
  /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/src/arch/macOS/timer.h
  /home/xavier/catkin_ws/src/rplidar_ros-master/sdk/src/arch/linux/arch_linux.h
  /home/xavier/catkin_ws/src/rplidar_ros-master/sdk/src/arch/macOS/arch_macOS.h
@@ -70,16 +83,72 @@ CMakeFiles/rplidarNode.dir/sdk/src/rplidar_driver.cpp.o
  /home/xavier/catkin_ws/src/rplidar_ros-master/sdk/src/hal/types.h
  /home/xavier/catkin_ws/src/rplidar_ros-master/sdk/src/hal/util.h
  /home/xavier/catkin_ws/src/rplidar_ros-master/sdk/src/rplidar_driver.cpp
- /home/xavier/catkin_ws/src/rplidar_ros-master/sdk/src/rplidar_driver_TCP.h
- /home/xavier/catkin_ws/src/rplidar_ros-master/sdk/src/rplidar_driver_impl.h
- /home/xavier/catkin_ws/src/rplidar_ros-master/sdk/src/rplidar_driver_serial.h
  /home/xavier/catkin_ws/src/rplidar_ros-master/sdk/src/sdkcommon.h
-CMakeFiles/rplidarNode.dir/src/node.cpp.o
+CMakeFiles/rplidarNode.dir/sdk/src/sl_crc.cpp.o
+ /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/include/sl_crc.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/include/sl_lidar_cmd.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/include/sl_lidar_protocol.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/include/sl_types.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/sdk/src/sl_crc.cpp
+CMakeFiles/rplidarNode.dir/sdk/src/sl_lidar_driver.cpp.o
  /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/include/rplidar.h
  /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/include/rplidar_cmd.h
  /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/include/rplidar_driver.h
  /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/include/rplidar_protocol.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/include/rptypes.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/include/sl_crc.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/include/sl_lidar_cmd.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/include/sl_lidar_driver.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/include/sl_lidar_protocol.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/include/sl_types.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/src/arch/macOS/timer.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/sdk/src/arch/linux/arch_linux.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/sdk/src/arch/macOS/arch_macOS.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/sdk/src/arch/win32/arch_win32.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/sdk/src/arch/win32/timer.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/sdk/src/hal/abs_rxtx.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/sdk/src/hal/assert.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/sdk/src/hal/event.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/sdk/src/hal/locker.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/sdk/src/hal/socket.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/sdk/src/hal/thread.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/sdk/src/hal/types.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/sdk/src/hal/util.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/sdk/src/sdkcommon.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/sdk/src/sl_lidar_driver.cpp
+CMakeFiles/rplidarNode.dir/sdk/src/sl_serial_channel.cpp.o
+ /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/include/sl_lidar_cmd.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/include/sl_lidar_driver.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/include/sl_lidar_protocol.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/include/sl_types.h
  /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/src/hal/types.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/sdk/src/hal/abs_rxtx.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/sdk/src/hal/socket.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/sdk/src/sl_serial_channel.cpp
+CMakeFiles/rplidarNode.dir/sdk/src/sl_tcp_channel.cpp.o
+ /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/include/sl_lidar_cmd.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/include/sl_lidar_driver.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/include/sl_lidar_protocol.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/include/sl_types.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/src/hal/types.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/sdk/src/hal/abs_rxtx.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/sdk/src/hal/socket.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/sdk/src/sl_tcp_channel.cpp
+CMakeFiles/rplidarNode.dir/sdk/src/sl_udp_channel.cpp.o
+ /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/include/sl_lidar_cmd.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/include/sl_lidar_driver.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/include/sl_lidar_protocol.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/include/sl_types.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/src/hal/types.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/sdk/src/hal/abs_rxtx.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/sdk/src/hal/socket.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/sdk/src/sl_udp_channel.cpp
+CMakeFiles/rplidarNode.dir/src/node.cpp.o
+ /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/include/sl_lidar.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/include/sl_lidar_cmd.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/include/sl_lidar_driver.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/include/sl_lidar_protocol.h
+ /home/xavier/catkin_ws/src/rplidar_ros-master/./sdk/include/sl_types.h
  /home/xavier/catkin_ws/src/rplidar_ros-master/src/node.cpp
  /opt/ros/melodic/include/ros/advertise_options.h
  /opt/ros/melodic/include/ros/advertise_service_options.h

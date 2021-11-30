@@ -43,7 +43,7 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/xavier/catkin_ws/src/urg_node
+CMAKE_SOURCE_DIR = /home/xavier/catkin_ws/src/urg_node2
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/xavier/catkin_ws/build/urg_node
@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/xavier/catkin_ws/build/urg_node
 include CMakeFiles/run_tests_urg_node_roslaunch-check_launch_urg_lidar.launch.dir/progress.make
 
 CMakeFiles/run_tests_urg_node_roslaunch-check_launch_urg_lidar.launch:
-	catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/catkin/cmake/test/run_tests.py /home/xavier/catkin_ws/build/urg_node/test_results/urg_node/roslaunch-check_launch_urg_lidar.launch.xml "/usr/bin/cmake -E make_directory /home/xavier/catkin_ws/build/urg_node/test_results/urg_node" "/opt/ros/melodic/share/roslaunch/cmake/../scripts/roslaunch-check -o \"/home/xavier/catkin_ws/build/urg_node/test_results/urg_node/roslaunch-check_launch_urg_lidar.launch.xml\" \"/home/xavier/catkin_ws/src/urg_node/launch/urg_lidar.launch\" "
+	catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/catkin/cmake/test/run_tests.py /home/xavier/catkin_ws/build/urg_node/test_results/urg_node/roslaunch-check_launch_urg_lidar.launch.xml "/usr/bin/cmake -E make_directory /home/xavier/catkin_ws/build/urg_node/test_results/urg_node" "/opt/ros/melodic/share/roslaunch/cmake/../scripts/roslaunch-check -o \"/home/xavier/catkin_ws/build/urg_node/test_results/urg_node/roslaunch-check_launch_urg_lidar.launch.xml\" \"/home/xavier/catkin_ws/src/urg_node2/launch/urg_lidar.launch\" "
 
 run_tests_urg_node_roslaunch-check_launch_urg_lidar.launch: CMakeFiles/run_tests_urg_node_roslaunch-check_launch_urg_lidar.launch
 run_tests_urg_node_roslaunch-check_launch_urg_lidar.launch: CMakeFiles/run_tests_urg_node_roslaunch-check_launch_urg_lidar.launch.dir/build.make
@@ -71,6 +71,6 @@ CMakeFiles/run_tests_urg_node_roslaunch-check_launch_urg_lidar.launch.dir/clean:
 .PHONY : CMakeFiles/run_tests_urg_node_roslaunch-check_launch_urg_lidar.launch.dir/clean
 
 CMakeFiles/run_tests_urg_node_roslaunch-check_launch_urg_lidar.launch.dir/depend:
-	cd /home/xavier/catkin_ws/build/urg_node && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/xavier/catkin_ws/src/urg_node /home/xavier/catkin_ws/src/urg_node /home/xavier/catkin_ws/build/urg_node /home/xavier/catkin_ws/build/urg_node /home/xavier/catkin_ws/build/urg_node/CMakeFiles/run_tests_urg_node_roslaunch-check_launch_urg_lidar.launch.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/xavier/catkin_ws/build/urg_node && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/xavier/catkin_ws/src/urg_node2 /home/xavier/catkin_ws/src/urg_node2 /home/xavier/catkin_ws/build/urg_node /home/xavier/catkin_ws/build/urg_node /home/xavier/catkin_ws/build/urg_node/CMakeFiles/run_tests_urg_node_roslaunch-check_launch_urg_lidar.launch.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/run_tests_urg_node_roslaunch-check_launch_urg_lidar.launch.dir/depend
 

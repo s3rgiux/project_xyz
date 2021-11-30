@@ -1,4 +1,4 @@
-scan_tools/laser_scan_sparsifier
+scan_tools2/laser_scan_sparsifier
 /home/xavier/catkin_ws/devel/.private/laser_scan_sparsifier/cmake.lock /home/xavier/catkin_ws/devel/./cmake.lock
 /home/xavier/catkin_ws/devel/.private/laser_scan_sparsifier/share/laser_scan_sparsifier/cmake/laser_scan_sparsifierConfig-version.cmake /home/xavier/catkin_ws/devel/share/laser_scan_sparsifier/cmake/laser_scan_sparsifierConfig-version.cmake
 /home/xavier/catkin_ws/devel/.private/laser_scan_sparsifier/share/laser_scan_sparsifier/cmake/laser_scan_sparsifierConfig.cmake /home/xavier/catkin_ws/devel/share/laser_scan_sparsifier/cmake/laser_scan_sparsifierConfig.cmake

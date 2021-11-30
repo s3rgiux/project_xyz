@@ -67,7 +67,7 @@ set(polar_scan_matcher_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("FALSE" STREQUAL "TRUE")
-  set(polar_scan_matcher_SOURCE_PREFIX /home/xavier/catkin_ws/src/scan_tools/polar_scan_matcher)
+  set(polar_scan_matcher_SOURCE_PREFIX /home/xavier/catkin_ws/src/scan_tools2/polar_scan_matcher)
   set(polar_scan_matcher_DEVEL_PREFIX /home/xavier/catkin_ws/devel/.private/polar_scan_matcher)
   set(polar_scan_matcher_INSTALL_PREFIX "")
   set(polar_scan_matcher_PREFIX ${polar_scan_matcher_DEVEL_PREFIX})

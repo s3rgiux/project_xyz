@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/xavier/catkin_ws/src/scan_tools/laser_scan_sparsifier/src/laser_scan_sparsifier_node.cpp" "/home/xavier/catkin_ws/build/laser_scan_sparsifier/CMakeFiles/laser_scan_sparsifier_node.dir/src/laser_scan_sparsifier_node.cpp.o"
+  "/home/xavier/catkin_ws/src/scan_tools2/laser_scan_sparsifier/src/laser_scan_sparsifier_node.cpp" "/home/xavier/catkin_ws/build/laser_scan_sparsifier/CMakeFiles/laser_scan_sparsifier_node.dir/src/laser_scan_sparsifier_node.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -17,7 +17,7 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "/home/xavier/catkin_ws/src/scan_tools/laser_scan_sparsifier/include"
+  "/home/xavier/catkin_ws/src/scan_tools2/laser_scan_sparsifier/include"
   "/opt/ros/melodic/include"
   "/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
   )

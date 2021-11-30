@@ -1,4 +1,4 @@
-# Install script for directory: /home/xavier/catkin_ws/src/scan_tools/scan_to_cloud_converter
+# Install script for directory: /home/xavier/catkin_ws/src/scan_tools2/scan_to_cloud_converter
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -140,7 +140,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/scan_to_cloud_converter" TYPE FILE FILES "/home/xavier/catkin_ws/src/scan_tools/scan_to_cloud_converter/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/scan_to_cloud_converter" TYPE FILE FILES "/home/xavier/catkin_ws/src/scan_tools2/scan_to_cloud_converter/package.xml")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)

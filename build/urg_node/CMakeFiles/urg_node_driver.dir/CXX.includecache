@@ -40,7 +40,7 @@ dynamic_reconfigure/config_init_mutex.h
 boost/any.hpp
 -
 
-/home/xavier/catkin_ws/src/urg_node/include/urg_node/urg_c_wrapper.h
+/home/xavier/catkin_ws/src/urg_node2/include/urg_node/urg_c_wrapper.h
 stdexcept
 -
 sstream
@@ -58,7 +58,7 @@ urg_c/urg_sensor.h
 urg_c/urg_utils.h
 -
 
-/home/xavier/catkin_ws/src/urg_node/include/urg_node/urg_node_driver.h
+/home/xavier/catkin_ws/src/urg_node2/include/urg_node/urg_node_driver.h
 string
 -
 ros/ros.h
@@ -76,11 +76,11 @@ urg_node/URGConfig.h
 std_srvs/Trigger.h
 -
 urg_node/urg_c_wrapper.h
-/home/xavier/catkin_ws/src/urg_node/include/urg_node/urg_node/urg_c_wrapper.h
+/home/xavier/catkin_ws/src/urg_node2/include/urg_node/urg_node/urg_c_wrapper.h
 
-/home/xavier/catkin_ws/src/urg_node/src/urg_node_driver.cpp
+/home/xavier/catkin_ws/src/urg_node2/src/urg_node_driver.cpp
 urg_node/urg_node_driver.h
-/home/xavier/catkin_ws/src/urg_node/src/urg_node/urg_node_driver.h
+/home/xavier/catkin_ws/src/urg_node2/src/urg_node/urg_node_driver.h
 tf/tf.h
 -
 string

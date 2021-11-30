@@ -5,6 +5,11 @@ file(REMOVE_RECURSE
   "CMakeFiles/rplidarNode.dir/sdk/src/arch/linux/timer.cpp.o"
   "CMakeFiles/rplidarNode.dir/sdk/src/hal/thread.cpp.o"
   "CMakeFiles/rplidarNode.dir/sdk/src/rplidar_driver.cpp.o"
+  "CMakeFiles/rplidarNode.dir/sdk/src/sl_crc.cpp.o"
+  "CMakeFiles/rplidarNode.dir/sdk/src/sl_lidar_driver.cpp.o"
+  "CMakeFiles/rplidarNode.dir/sdk/src/sl_serial_channel.cpp.o"
+  "CMakeFiles/rplidarNode.dir/sdk/src/sl_tcp_channel.cpp.o"
+  "CMakeFiles/rplidarNode.dir/sdk/src/sl_udp_channel.cpp.o"
   "/home/xavier/catkin_ws/devel/.private/rplidar_ros/lib/rplidar_ros/rplidarNode.pdb"
   "/home/xavier/catkin_ws/devel/.private/rplidar_ros/lib/rplidar_ros/rplidarNode"
 )

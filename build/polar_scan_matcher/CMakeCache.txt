@@ -376,7 +376,7 @@ polar_scan_matcher_BINARY_DIR:STATIC=/home/xavier/catkin_ws/build/polar_scan_mat
 polar_scan_matcher_LIB_DEPENDS:STATIC=
 
 //Value Computed by CMake
-polar_scan_matcher_SOURCE_DIR:STATIC=/home/xavier/catkin_ws/src/scan_tools/polar_scan_matcher
+polar_scan_matcher_SOURCE_DIR:STATIC=/home/xavier/catkin_ws/src/scan_tools2/polar_scan_matcher
 
 //The directory containing a CMake configuration file for rosconsole.
 rosconsole_DIR:PATH=/opt/ros/melodic/share/rosconsole/cmake
@@ -516,7 +516,7 @@ CMAKE_HAVE_PTHREAD_CREATE:INTERNAL=1
 CMAKE_HAVE_PTHREAD_H:INTERNAL=1
 //Source directory with the top level CMakeLists.txt file for this
 // project
-CMAKE_HOME_DIRECTORY:INTERNAL=/home/xavier/catkin_ws/src/scan_tools/polar_scan_matcher
+CMAKE_HOME_DIRECTORY:INTERNAL=/home/xavier/catkin_ws/src/scan_tools2/polar_scan_matcher
 //Install .so files without execute permission.
 CMAKE_INSTALL_SO_NO_EXE:INTERNAL=1
 //ADVANCED property for variable: CMAKE_LINKER

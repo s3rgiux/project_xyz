@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/xavier/catkin_ws/src/scan_tools/ncd_parser/include/ncd_parser/ncd_parser.h
+/home/xavier/catkin_ws/src/scan_tools2/ncd_parser/include/ncd_parser/ncd_parser.h
 iostream
 -
 fstream
@@ -18,9 +18,9 @@ tf/transform_broadcaster.h
 sensor_msgs/LaserScan.h
 -
 
-/home/xavier/catkin_ws/src/scan_tools/ncd_parser/src/ncd_parser.cpp
+/home/xavier/catkin_ws/src/scan_tools2/ncd_parser/src/ncd_parser.cpp
 ncd_parser/ncd_parser.h
-/home/xavier/catkin_ws/src/scan_tools/ncd_parser/src/ncd_parser/ncd_parser.h
+/home/xavier/catkin_ws/src/scan_tools2/ncd_parser/src/ncd_parser/ncd_parser.h
 
 /opt/ros/melodic/include/geometry_msgs/Point.h
 string

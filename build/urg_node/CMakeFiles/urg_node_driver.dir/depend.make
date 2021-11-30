@@ -3,9 +3,9 @@
 
 CMakeFiles/urg_node_driver.dir/src/urg_node_driver.cpp.o: /home/xavier/catkin_ws/devel/.private/urg_node/include/urg_node/Status.h
 CMakeFiles/urg_node_driver.dir/src/urg_node_driver.cpp.o: /home/xavier/catkin_ws/devel/.private/urg_node/include/urg_node/URGConfig.h
-CMakeFiles/urg_node_driver.dir/src/urg_node_driver.cpp.o: /home/xavier/catkin_ws/src/urg_node/include/urg_node/urg_c_wrapper.h
-CMakeFiles/urg_node_driver.dir/src/urg_node_driver.cpp.o: /home/xavier/catkin_ws/src/urg_node/include/urg_node/urg_node_driver.h
-CMakeFiles/urg_node_driver.dir/src/urg_node_driver.cpp.o: /home/xavier/catkin_ws/src/urg_node/src/urg_node_driver.cpp
+CMakeFiles/urg_node_driver.dir/src/urg_node_driver.cpp.o: /home/xavier/catkin_ws/src/urg_node2/include/urg_node/urg_c_wrapper.h
+CMakeFiles/urg_node_driver.dir/src/urg_node_driver.cpp.o: /home/xavier/catkin_ws/src/urg_node2/include/urg_node/urg_node_driver.h
+CMakeFiles/urg_node_driver.dir/src/urg_node_driver.cpp.o: /home/xavier/catkin_ws/src/urg_node2/src/urg_node_driver.cpp
 CMakeFiles/urg_node_driver.dir/src/urg_node_driver.cpp.o: /opt/ros/melodic/include/diagnostic_msgs/DiagnosticArray.h
 CMakeFiles/urg_node_driver.dir/src/urg_node_driver.cpp.o: /opt/ros/melodic/include/diagnostic_msgs/DiagnosticStatus.h
 CMakeFiles/urg_node_driver.dir/src/urg_node_driver.cpp.o: /opt/ros/melodic/include/diagnostic_msgs/KeyValue.h

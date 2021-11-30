@@ -1,4 +1,4 @@
-# Install script for directory: /home/xavier/catkin_ws/src/csm/sm
+# Install script for directory: /home/xavier/catkin_ws/src/csm2/sm
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

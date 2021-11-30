@@ -67,7 +67,7 @@ set(ncd_parser_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("FALSE" STREQUAL "TRUE")
-  set(ncd_parser_SOURCE_PREFIX /home/xavier/catkin_ws/src/scan_tools/ncd_parser)
+  set(ncd_parser_SOURCE_PREFIX /home/xavier/catkin_ws/src/scan_tools2/ncd_parser)
   set(ncd_parser_DEVEL_PREFIX /home/xavier/catkin_ws/devel/.private/ncd_parser)
   set(ncd_parser_INSTALL_PREFIX "")
   set(ncd_parser_PREFIX ${ncd_parser_DEVEL_PREFIX})

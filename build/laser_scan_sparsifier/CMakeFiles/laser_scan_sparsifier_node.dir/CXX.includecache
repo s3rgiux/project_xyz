@@ -6,15 +6,15 @@
 
 #IncludeRegexTransform: 
 
-/home/xavier/catkin_ws/src/scan_tools/laser_scan_sparsifier/include/laser_scan_sparsifier/laser_scan_sparsifier.h
+/home/xavier/catkin_ws/src/scan_tools2/laser_scan_sparsifier/include/laser_scan_sparsifier/laser_scan_sparsifier.h
 ros/ros.h
 -
 sensor_msgs/LaserScan.h
 -
 
-/home/xavier/catkin_ws/src/scan_tools/laser_scan_sparsifier/src/laser_scan_sparsifier_node.cpp
+/home/xavier/catkin_ws/src/scan_tools2/laser_scan_sparsifier/src/laser_scan_sparsifier_node.cpp
 laser_scan_sparsifier/laser_scan_sparsifier.h
-/home/xavier/catkin_ws/src/scan_tools/laser_scan_sparsifier/src/laser_scan_sparsifier/laser_scan_sparsifier.h
+/home/xavier/catkin_ws/src/scan_tools2/laser_scan_sparsifier/src/laser_scan_sparsifier/laser_scan_sparsifier.h
 
 /opt/ros/melodic/include/ros/advertise_options.h
 ros/forwards.h

@@ -1,4 +1,4 @@
-# Install script for directory: /home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter
+# Install script for directory: /home/xavier/catkin_ws/src/scan_tools2/laser_scan_splitter
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -140,7 +140,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/laser_scan_splitter" TYPE FILE FILES "/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/laser_scan_splitter" TYPE FILE FILES "/home/xavier/catkin_ws/src/scan_tools2/laser_scan_splitter/package.xml")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -184,7 +184,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/laser_scan_splitter" TYPE DIRECTORY FILES "/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/include/laser_scan_splitter/")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/laser_scan_splitter" TYPE DIRECTORY FILES "/home/xavier/catkin_ws/src/scan_tools2/laser_scan_splitter/include/laser_scan_splitter/")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -208,11 +208,11 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/laser_scan_splitter" TYPE FILE FILES "/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/laser_scan_splitter_nodelet.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/laser_scan_splitter" TYPE FILE FILES "/home/xavier/catkin_ws/src/scan_tools2/laser_scan_splitter/laser_scan_splitter_nodelet.xml")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/laser_scan_splitter" TYPE DIRECTORY FILES "/home/xavier/catkin_ws/src/scan_tools/laser_scan_splitter/demo")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/laser_scan_splitter" TYPE DIRECTORY FILES "/home/xavier/catkin_ws/src/scan_tools2/laser_scan_splitter/demo")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)

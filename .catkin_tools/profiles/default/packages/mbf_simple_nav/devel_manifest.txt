@@ -1,4 +1,4 @@
-move_base_flex/mbf_simple_nav
+move_base_flex2/mbf_simple_nav
 /home/xavier/catkin_ws/devel/.private/mbf_simple_nav/cmake.lock /home/xavier/catkin_ws/devel/./cmake.lock
 /home/xavier/catkin_ws/devel/.private/mbf_simple_nav/share/mbf_simple_nav/cmake/mbf_simple_navConfig-version.cmake /home/xavier/catkin_ws/devel/share/mbf_simple_nav/cmake/mbf_simple_navConfig-version.cmake
 /home/xavier/catkin_ws/devel/.private/mbf_simple_nav/share/mbf_simple_nav/cmake/mbf_simple_navConfig.cmake /home/xavier/catkin_ws/devel/share/mbf_simple_nav/cmake/mbf_simple_navConfig.cmake

@@ -170,7 +170,7 @@ json_object.h
 stdio.h
 -
 
-/home/xavier/catkin_ws/src/scan_tools/laser_scan_matcher/include/laser_scan_matcher/laser_scan_matcher.h
+/home/xavier/catkin_ws/src/scan_tools2/laser_scan_matcher/include/laser_scan_matcher/laser_scan_matcher.h
 ros/ros.h
 -
 sensor_msgs/Imu.h
@@ -206,7 +206,7 @@ pcl_ros/point_cloud.h
 csm/csm_all.h
 -
 
-/home/xavier/catkin_ws/src/scan_tools/laser_scan_matcher/src/laser_scan_matcher_node.cpp
+/home/xavier/catkin_ws/src/scan_tools2/laser_scan_matcher/src/laser_scan_matcher_node.cpp
 laser_scan_matcher/laser_scan_matcher.h
 -
 

@@ -48,7 +48,7 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/xavier/catkin_ws/src/scan_tools/laser_scan_matcher
+CMAKE_SOURCE_DIR = /home/xavier/catkin_ws/src/scan_tools2/laser_scan_matcher
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/xavier/catkin_ws/build/laser_scan_matcher

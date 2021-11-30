@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/xavier/catkin_ws/src/urg_node/include/urg_node/urg_c_wrapper.h
+/home/xavier/catkin_ws/src/urg_node2/include/urg_node/urg_c_wrapper.h
 stdexcept
 -
 sstream
@@ -24,7 +24,7 @@ urg_c/urg_sensor.h
 urg_c/urg_utils.h
 -
 
-/home/xavier/catkin_ws/src/urg_node/src/getID.cpp
+/home/xavier/catkin_ws/src/urg_node2/src/getID.cpp
 urg_node/urg_c_wrapper.h
 -
 vector
