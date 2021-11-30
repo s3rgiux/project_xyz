@@ -162,8 +162,8 @@ class PitWheels:
         sleep(0.4)
         rospy.Subscriber('/enable_disable', String, self.received_command_callback, queue_size = 1)
     
-        self.pcon = pyproacmd.ProaCmd('/dev/serial/by-id/usb-STMicroelectronics_STM32_STLink_066FFF343537424257252255-if02', baud)
-        self.pcon2 = pyproacmd.ProaCmd('/dev/serial/by-id/usb-STMicroelectronics_STM32_STLink_066FFF555449836687205519-if02', baud)
+        self.pcon = pyproacmd.ProaCmd('/dev/serial/by-id/usb-STMicroelectronics_STM32_STLink_0673FF343537424257252511-if02', baud)
+        self.pcon2 = pyproacmd.ProaCmd('/dev/serial/by-id/usb-STMicroelectronics_STM32_STLink_066AFF343537424257254242-if02', baud)
         #self.pcon = pyproacmd.ProaCmd('/dev/serial/by-id/usb-STMicroelectronics_STM32_STLink_066DFF343537424257252319-if02', baud)
         #self.pcon2 = pyproacmd.ProaCmd('/dev/serial/by-id/usb-STMicroelectronics_STM32_STLink_066EFF343537424257252456-if02', baud)
         self.left_w_rpm= Float32()
