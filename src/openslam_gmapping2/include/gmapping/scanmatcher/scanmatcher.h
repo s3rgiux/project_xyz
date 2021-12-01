@@ -8,7 +8,7 @@
 #include <iostream>
 #include <gmapping/utils/gvalues.h>
 #include <gmapping/scanmatcher/scanmatcher_export.h>
-#define LASER_MAXBEAMS 3072
+#define LASER_MAXBEAMS 6144
 //2048
 
 namespace GMapping {
