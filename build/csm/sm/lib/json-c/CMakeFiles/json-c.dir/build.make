@@ -43,7 +43,7 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/xavier/catkin_ws/src/csm2
+CMAKE_SOURCE_DIR = /home/xavier/catkin_ws/src/csm
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/xavier/catkin_ws/build/csm
@@ -58,17 +58,17 @@ include sm/lib/json-c/CMakeFiles/json-c.dir/progress.make
 include sm/lib/json-c/CMakeFiles/json-c.dir/flags.make
 
 sm/lib/json-c/CMakeFiles/json-c.dir/arraylist.o: sm/lib/json-c/CMakeFiles/json-c.dir/flags.make
-sm/lib/json-c/CMakeFiles/json-c.dir/arraylist.o: /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/arraylist.c
+sm/lib/json-c/CMakeFiles/json-c.dir/arraylist.o: /home/xavier/catkin_ws/src/csm/sm/lib/json-c/arraylist.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object sm/lib/json-c/CMakeFiles/json-c.dir/arraylist.o"
-	cd /home/xavier/catkin_ws/build/csm/sm/lib/json-c && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/json-c.dir/arraylist.o   -c /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/arraylist.c
+	cd /home/xavier/catkin_ws/build/csm/sm/lib/json-c && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/json-c.dir/arraylist.o   -c /home/xavier/catkin_ws/src/csm/sm/lib/json-c/arraylist.c
 
 sm/lib/json-c/CMakeFiles/json-c.dir/arraylist.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/json-c.dir/arraylist.i"
-	cd /home/xavier/catkin_ws/build/csm/sm/lib/json-c && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/arraylist.c > CMakeFiles/json-c.dir/arraylist.i
+	cd /home/xavier/catkin_ws/build/csm/sm/lib/json-c && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/lib/json-c/arraylist.c > CMakeFiles/json-c.dir/arraylist.i
 
 sm/lib/json-c/CMakeFiles/json-c.dir/arraylist.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/json-c.dir/arraylist.s"
-	cd /home/xavier/catkin_ws/build/csm/sm/lib/json-c && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/arraylist.c -o CMakeFiles/json-c.dir/arraylist.s
+	cd /home/xavier/catkin_ws/build/csm/sm/lib/json-c && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/lib/json-c/arraylist.c -o CMakeFiles/json-c.dir/arraylist.s
 
 sm/lib/json-c/CMakeFiles/json-c.dir/arraylist.o.requires:
 
@@ -82,17 +82,17 @@ sm/lib/json-c/CMakeFiles/json-c.dir/arraylist.o.provides.build: sm/lib/json-c/CM
 
 
 sm/lib/json-c/CMakeFiles/json-c.dir/debug.o: sm/lib/json-c/CMakeFiles/json-c.dir/flags.make
-sm/lib/json-c/CMakeFiles/json-c.dir/debug.o: /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/debug.c
+sm/lib/json-c/CMakeFiles/json-c.dir/debug.o: /home/xavier/catkin_ws/src/csm/sm/lib/json-c/debug.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object sm/lib/json-c/CMakeFiles/json-c.dir/debug.o"
-	cd /home/xavier/catkin_ws/build/csm/sm/lib/json-c && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/json-c.dir/debug.o   -c /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/debug.c
+	cd /home/xavier/catkin_ws/build/csm/sm/lib/json-c && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/json-c.dir/debug.o   -c /home/xavier/catkin_ws/src/csm/sm/lib/json-c/debug.c
 
 sm/lib/json-c/CMakeFiles/json-c.dir/debug.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/json-c.dir/debug.i"
-	cd /home/xavier/catkin_ws/build/csm/sm/lib/json-c && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/debug.c > CMakeFiles/json-c.dir/debug.i
+	cd /home/xavier/catkin_ws/build/csm/sm/lib/json-c && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/lib/json-c/debug.c > CMakeFiles/json-c.dir/debug.i
 
 sm/lib/json-c/CMakeFiles/json-c.dir/debug.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/json-c.dir/debug.s"
-	cd /home/xavier/catkin_ws/build/csm/sm/lib/json-c && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/debug.c -o CMakeFiles/json-c.dir/debug.s
+	cd /home/xavier/catkin_ws/build/csm/sm/lib/json-c && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/lib/json-c/debug.c -o CMakeFiles/json-c.dir/debug.s
 
 sm/lib/json-c/CMakeFiles/json-c.dir/debug.o.requires:
 
@@ -106,17 +106,17 @@ sm/lib/json-c/CMakeFiles/json-c.dir/debug.o.provides.build: sm/lib/json-c/CMakeF
 
 
 sm/lib/json-c/CMakeFiles/json-c.dir/json_object.o: sm/lib/json-c/CMakeFiles/json-c.dir/flags.make
-sm/lib/json-c/CMakeFiles/json-c.dir/json_object.o: /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_object.c
+sm/lib/json-c/CMakeFiles/json-c.dir/json_object.o: /home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_object.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object sm/lib/json-c/CMakeFiles/json-c.dir/json_object.o"
-	cd /home/xavier/catkin_ws/build/csm/sm/lib/json-c && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/json-c.dir/json_object.o   -c /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_object.c
+	cd /home/xavier/catkin_ws/build/csm/sm/lib/json-c && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/json-c.dir/json_object.o   -c /home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_object.c
 
 sm/lib/json-c/CMakeFiles/json-c.dir/json_object.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/json-c.dir/json_object.i"
-	cd /home/xavier/catkin_ws/build/csm/sm/lib/json-c && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_object.c > CMakeFiles/json-c.dir/json_object.i
+	cd /home/xavier/catkin_ws/build/csm/sm/lib/json-c && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_object.c > CMakeFiles/json-c.dir/json_object.i
 
 sm/lib/json-c/CMakeFiles/json-c.dir/json_object.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/json-c.dir/json_object.s"
-	cd /home/xavier/catkin_ws/build/csm/sm/lib/json-c && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_object.c -o CMakeFiles/json-c.dir/json_object.s
+	cd /home/xavier/catkin_ws/build/csm/sm/lib/json-c && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_object.c -o CMakeFiles/json-c.dir/json_object.s
 
 sm/lib/json-c/CMakeFiles/json-c.dir/json_object.o.requires:
 
@@ -130,17 +130,17 @@ sm/lib/json-c/CMakeFiles/json-c.dir/json_object.o.provides.build: sm/lib/json-c/
 
 
 sm/lib/json-c/CMakeFiles/json-c.dir/json_tokener.o: sm/lib/json-c/CMakeFiles/json-c.dir/flags.make
-sm/lib/json-c/CMakeFiles/json-c.dir/json_tokener.o: /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_tokener.c
+sm/lib/json-c/CMakeFiles/json-c.dir/json_tokener.o: /home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_tokener.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object sm/lib/json-c/CMakeFiles/json-c.dir/json_tokener.o"
-	cd /home/xavier/catkin_ws/build/csm/sm/lib/json-c && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/json-c.dir/json_tokener.o   -c /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_tokener.c
+	cd /home/xavier/catkin_ws/build/csm/sm/lib/json-c && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/json-c.dir/json_tokener.o   -c /home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_tokener.c
 
 sm/lib/json-c/CMakeFiles/json-c.dir/json_tokener.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/json-c.dir/json_tokener.i"
-	cd /home/xavier/catkin_ws/build/csm/sm/lib/json-c && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_tokener.c > CMakeFiles/json-c.dir/json_tokener.i
+	cd /home/xavier/catkin_ws/build/csm/sm/lib/json-c && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_tokener.c > CMakeFiles/json-c.dir/json_tokener.i
 
 sm/lib/json-c/CMakeFiles/json-c.dir/json_tokener.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/json-c.dir/json_tokener.s"
-	cd /home/xavier/catkin_ws/build/csm/sm/lib/json-c && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_tokener.c -o CMakeFiles/json-c.dir/json_tokener.s
+	cd /home/xavier/catkin_ws/build/csm/sm/lib/json-c && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_tokener.c -o CMakeFiles/json-c.dir/json_tokener.s
 
 sm/lib/json-c/CMakeFiles/json-c.dir/json_tokener.o.requires:
 
@@ -154,17 +154,17 @@ sm/lib/json-c/CMakeFiles/json-c.dir/json_tokener.o.provides.build: sm/lib/json-c
 
 
 sm/lib/json-c/CMakeFiles/json-c.dir/json_util.o: sm/lib/json-c/CMakeFiles/json-c.dir/flags.make
-sm/lib/json-c/CMakeFiles/json-c.dir/json_util.o: /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_util.c
+sm/lib/json-c/CMakeFiles/json-c.dir/json_util.o: /home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_util.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object sm/lib/json-c/CMakeFiles/json-c.dir/json_util.o"
-	cd /home/xavier/catkin_ws/build/csm/sm/lib/json-c && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/json-c.dir/json_util.o   -c /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_util.c
+	cd /home/xavier/catkin_ws/build/csm/sm/lib/json-c && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/json-c.dir/json_util.o   -c /home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_util.c
 
 sm/lib/json-c/CMakeFiles/json-c.dir/json_util.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/json-c.dir/json_util.i"
-	cd /home/xavier/catkin_ws/build/csm/sm/lib/json-c && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_util.c > CMakeFiles/json-c.dir/json_util.i
+	cd /home/xavier/catkin_ws/build/csm/sm/lib/json-c && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_util.c > CMakeFiles/json-c.dir/json_util.i
 
 sm/lib/json-c/CMakeFiles/json-c.dir/json_util.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/json-c.dir/json_util.s"
-	cd /home/xavier/catkin_ws/build/csm/sm/lib/json-c && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_util.c -o CMakeFiles/json-c.dir/json_util.s
+	cd /home/xavier/catkin_ws/build/csm/sm/lib/json-c && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_util.c -o CMakeFiles/json-c.dir/json_util.s
 
 sm/lib/json-c/CMakeFiles/json-c.dir/json_util.o.requires:
 
@@ -178,17 +178,17 @@ sm/lib/json-c/CMakeFiles/json-c.dir/json_util.o.provides.build: sm/lib/json-c/CM
 
 
 sm/lib/json-c/CMakeFiles/json-c.dir/linkhash.o: sm/lib/json-c/CMakeFiles/json-c.dir/flags.make
-sm/lib/json-c/CMakeFiles/json-c.dir/linkhash.o: /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/linkhash.c
+sm/lib/json-c/CMakeFiles/json-c.dir/linkhash.o: /home/xavier/catkin_ws/src/csm/sm/lib/json-c/linkhash.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object sm/lib/json-c/CMakeFiles/json-c.dir/linkhash.o"
-	cd /home/xavier/catkin_ws/build/csm/sm/lib/json-c && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/json-c.dir/linkhash.o   -c /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/linkhash.c
+	cd /home/xavier/catkin_ws/build/csm/sm/lib/json-c && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/json-c.dir/linkhash.o   -c /home/xavier/catkin_ws/src/csm/sm/lib/json-c/linkhash.c
 
 sm/lib/json-c/CMakeFiles/json-c.dir/linkhash.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/json-c.dir/linkhash.i"
-	cd /home/xavier/catkin_ws/build/csm/sm/lib/json-c && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/linkhash.c > CMakeFiles/json-c.dir/linkhash.i
+	cd /home/xavier/catkin_ws/build/csm/sm/lib/json-c && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/lib/json-c/linkhash.c > CMakeFiles/json-c.dir/linkhash.i
 
 sm/lib/json-c/CMakeFiles/json-c.dir/linkhash.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/json-c.dir/linkhash.s"
-	cd /home/xavier/catkin_ws/build/csm/sm/lib/json-c && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/linkhash.c -o CMakeFiles/json-c.dir/linkhash.s
+	cd /home/xavier/catkin_ws/build/csm/sm/lib/json-c && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/lib/json-c/linkhash.c -o CMakeFiles/json-c.dir/linkhash.s
 
 sm/lib/json-c/CMakeFiles/json-c.dir/linkhash.o.requires:
 
@@ -202,17 +202,17 @@ sm/lib/json-c/CMakeFiles/json-c.dir/linkhash.o.provides.build: sm/lib/json-c/CMa
 
 
 sm/lib/json-c/CMakeFiles/json-c.dir/printbuf.o: sm/lib/json-c/CMakeFiles/json-c.dir/flags.make
-sm/lib/json-c/CMakeFiles/json-c.dir/printbuf.o: /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/printbuf.c
+sm/lib/json-c/CMakeFiles/json-c.dir/printbuf.o: /home/xavier/catkin_ws/src/csm/sm/lib/json-c/printbuf.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object sm/lib/json-c/CMakeFiles/json-c.dir/printbuf.o"
-	cd /home/xavier/catkin_ws/build/csm/sm/lib/json-c && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/json-c.dir/printbuf.o   -c /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/printbuf.c
+	cd /home/xavier/catkin_ws/build/csm/sm/lib/json-c && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/json-c.dir/printbuf.o   -c /home/xavier/catkin_ws/src/csm/sm/lib/json-c/printbuf.c
 
 sm/lib/json-c/CMakeFiles/json-c.dir/printbuf.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/json-c.dir/printbuf.i"
-	cd /home/xavier/catkin_ws/build/csm/sm/lib/json-c && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/printbuf.c > CMakeFiles/json-c.dir/printbuf.i
+	cd /home/xavier/catkin_ws/build/csm/sm/lib/json-c && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/lib/json-c/printbuf.c > CMakeFiles/json-c.dir/printbuf.i
 
 sm/lib/json-c/CMakeFiles/json-c.dir/printbuf.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/json-c.dir/printbuf.s"
-	cd /home/xavier/catkin_ws/build/csm/sm/lib/json-c && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/printbuf.c -o CMakeFiles/json-c.dir/printbuf.s
+	cd /home/xavier/catkin_ws/build/csm/sm/lib/json-c && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/lib/json-c/printbuf.c -o CMakeFiles/json-c.dir/printbuf.s
 
 sm/lib/json-c/CMakeFiles/json-c.dir/printbuf.o.requires:
 
@@ -226,17 +226,17 @@ sm/lib/json-c/CMakeFiles/json-c.dir/printbuf.o.provides.build: sm/lib/json-c/CMa
 
 
 sm/lib/json-c/CMakeFiles/json-c.dir/JSON_checker.o: sm/lib/json-c/CMakeFiles/json-c.dir/flags.make
-sm/lib/json-c/CMakeFiles/json-c.dir/JSON_checker.o: /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/JSON_checker.c
+sm/lib/json-c/CMakeFiles/json-c.dir/JSON_checker.o: /home/xavier/catkin_ws/src/csm/sm/lib/json-c/JSON_checker.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object sm/lib/json-c/CMakeFiles/json-c.dir/JSON_checker.o"
-	cd /home/xavier/catkin_ws/build/csm/sm/lib/json-c && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/json-c.dir/JSON_checker.o   -c /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/JSON_checker.c
+	cd /home/xavier/catkin_ws/build/csm/sm/lib/json-c && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/json-c.dir/JSON_checker.o   -c /home/xavier/catkin_ws/src/csm/sm/lib/json-c/JSON_checker.c
 
 sm/lib/json-c/CMakeFiles/json-c.dir/JSON_checker.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/json-c.dir/JSON_checker.i"
-	cd /home/xavier/catkin_ws/build/csm/sm/lib/json-c && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/JSON_checker.c > CMakeFiles/json-c.dir/JSON_checker.i
+	cd /home/xavier/catkin_ws/build/csm/sm/lib/json-c && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/lib/json-c/JSON_checker.c > CMakeFiles/json-c.dir/JSON_checker.i
 
 sm/lib/json-c/CMakeFiles/json-c.dir/JSON_checker.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/json-c.dir/JSON_checker.s"
-	cd /home/xavier/catkin_ws/build/csm/sm/lib/json-c && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/JSON_checker.c -o CMakeFiles/json-c.dir/JSON_checker.s
+	cd /home/xavier/catkin_ws/build/csm/sm/lib/json-c && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/lib/json-c/JSON_checker.c -o CMakeFiles/json-c.dir/JSON_checker.s
 
 sm/lib/json-c/CMakeFiles/json-c.dir/JSON_checker.o.requires:
 
@@ -250,17 +250,17 @@ sm/lib/json-c/CMakeFiles/json-c.dir/JSON_checker.o.provides.build: sm/lib/json-c
 
 
 sm/lib/json-c/CMakeFiles/json-c.dir/json_more_utils.o: sm/lib/json-c/CMakeFiles/json-c.dir/flags.make
-sm/lib/json-c/CMakeFiles/json-c.dir/json_more_utils.o: /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_more_utils.c
+sm/lib/json-c/CMakeFiles/json-c.dir/json_more_utils.o: /home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_more_utils.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object sm/lib/json-c/CMakeFiles/json-c.dir/json_more_utils.o"
-	cd /home/xavier/catkin_ws/build/csm/sm/lib/json-c && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/json-c.dir/json_more_utils.o   -c /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_more_utils.c
+	cd /home/xavier/catkin_ws/build/csm/sm/lib/json-c && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/json-c.dir/json_more_utils.o   -c /home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_more_utils.c
 
 sm/lib/json-c/CMakeFiles/json-c.dir/json_more_utils.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/json-c.dir/json_more_utils.i"
-	cd /home/xavier/catkin_ws/build/csm/sm/lib/json-c && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_more_utils.c > CMakeFiles/json-c.dir/json_more_utils.i
+	cd /home/xavier/catkin_ws/build/csm/sm/lib/json-c && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_more_utils.c > CMakeFiles/json-c.dir/json_more_utils.i
 
 sm/lib/json-c/CMakeFiles/json-c.dir/json_more_utils.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/json-c.dir/json_more_utils.s"
-	cd /home/xavier/catkin_ws/build/csm/sm/lib/json-c && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_more_utils.c -o CMakeFiles/json-c.dir/json_more_utils.s
+	cd /home/xavier/catkin_ws/build/csm/sm/lib/json-c && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_more_utils.c -o CMakeFiles/json-c.dir/json_more_utils.s
 
 sm/lib/json-c/CMakeFiles/json-c.dir/json_more_utils.o.requires:
 
@@ -325,6 +325,6 @@ sm/lib/json-c/CMakeFiles/json-c.dir/clean:
 .PHONY : sm/lib/json-c/CMakeFiles/json-c.dir/clean
 
 sm/lib/json-c/CMakeFiles/json-c.dir/depend:
-	cd /home/xavier/catkin_ws/build/csm && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/xavier/catkin_ws/src/csm2 /home/xavier/catkin_ws/src/csm2/sm/lib/json-c /home/xavier/catkin_ws/build/csm /home/xavier/catkin_ws/build/csm/sm/lib/json-c /home/xavier/catkin_ws/build/csm/sm/lib/json-c/CMakeFiles/json-c.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/xavier/catkin_ws/build/csm && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/xavier/catkin_ws/src/csm /home/xavier/catkin_ws/src/csm/sm/lib/json-c /home/xavier/catkin_ws/build/csm /home/xavier/catkin_ws/build/csm/sm/lib/json-c /home/xavier/catkin_ws/build/csm/sm/lib/json-c/CMakeFiles/json-c.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : sm/lib/json-c/CMakeFiles/json-c.dir/depend
 

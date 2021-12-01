@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/xavier/catkin_ws/src/csm2/sm/apps/ld_cluster_curv.c" "/home/xavier/catkin_ws/build/csm/sm/CMakeFiles/ld_cluster_curv.dir/apps/ld_cluster_curv.o"
+  "/home/xavier/catkin_ws/src/csm/sm/apps/ld_cluster_curv.c" "/home/xavier/catkin_ws/build/csm/sm/CMakeFiles/ld_cluster_curv.dir/apps/ld_cluster_curv.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
@@ -16,8 +16,8 @@ set(CMAKE_TARGET_DEFINITIONS_C
 
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
-  "/home/xavier/catkin_ws/src/csm2/sm/lib"
-  "/home/xavier/catkin_ws/src/csm2/sm"
+  "/home/xavier/catkin_ws/src/csm/sm/lib"
+  "/home/xavier/catkin_ws/src/csm/sm"
   "."
   )
 

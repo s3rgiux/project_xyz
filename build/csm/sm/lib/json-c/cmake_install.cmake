@@ -1,4 +1,4 @@
-# Install script for directory: /home/xavier/catkin_ws/src/csm2/sm/lib/json-c
+# Install script for directory: /home/xavier/catkin_ws/src/csm/sm/lib/json-c
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,18 +39,18 @@ endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/json-c" TYPE FILE FILES
-    "/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/JSON_checker.h"
-    "/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/arraylist.h"
-    "/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/bits.h"
-    "/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/debug.h"
-    "/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json.h"
-    "/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_more_utils.h"
-    "/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_object.h"
-    "/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_object_private.h"
-    "/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_tokener.h"
-    "/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_util.h"
-    "/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/linkhash.h"
-    "/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/printbuf.h"
+    "/home/xavier/catkin_ws/src/csm/sm/lib/json-c/JSON_checker.h"
+    "/home/xavier/catkin_ws/src/csm/sm/lib/json-c/arraylist.h"
+    "/home/xavier/catkin_ws/src/csm/sm/lib/json-c/bits.h"
+    "/home/xavier/catkin_ws/src/csm/sm/lib/json-c/debug.h"
+    "/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json.h"
+    "/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_more_utils.h"
+    "/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_object.h"
+    "/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_object_private.h"
+    "/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_tokener.h"
+    "/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_util.h"
+    "/home/xavier/catkin_ws/src/csm/sm/lib/json-c/linkhash.h"
+    "/home/xavier/catkin_ws/src/csm/sm/lib/json-c/printbuf.h"
     "/home/xavier/catkin_ws/build/csm/config.h"
     )
 endif()

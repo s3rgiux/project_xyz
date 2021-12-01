@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<launch>
+   <node pkg="pypro" name="pitakuru_wheels" type="pitakuruWheels.py">
+<param name="max_speed"    type="double"	value="3500"/>  <!-- max speed tah can be sent to motors-->
+</node>
+<arg name="record_flag" default="true" /> <!-- set to true if i want to record-->
+<node pkg="rosbag" type="record" name="rosbag_record"
+ args = "record -o /home/xavier/odom.bag /scan /state /tf /tf_static /odom /stateWheels /odom"  
+   if = "$(arg record_flag)" />
+</launch>

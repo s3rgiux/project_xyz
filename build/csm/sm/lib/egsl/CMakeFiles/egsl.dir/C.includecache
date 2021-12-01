@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/xavier/catkin_ws/src/csm2/sm/lib/egsl/egsl.c
+/home/xavier/catkin_ws/src/csm/sm/lib/egsl/egsl.c
 gsl/gsl_matrix.h
 -
 gsl/gsl_blas.h
@@ -20,31 +20,31 @@ math.h
 string.h
 -
 egsl.h
-/home/xavier/catkin_ws/src/csm2/sm/lib/egsl/egsl.h
+/home/xavier/catkin_ws/src/csm/sm/lib/egsl/egsl.h
 egsl_imp.h
-/home/xavier/catkin_ws/src/csm2/sm/lib/egsl/egsl_imp.h
+/home/xavier/catkin_ws/src/csm/sm/lib/egsl/egsl_imp.h
 
-/home/xavier/catkin_ws/src/csm2/sm/lib/egsl/egsl.h
+/home/xavier/catkin_ws/src/csm/sm/lib/egsl/egsl.h
 gsl/gsl_vector.h
 -
 gsl/gsl_matrix.h
 -
 
-/home/xavier/catkin_ws/src/csm2/sm/lib/egsl/egsl_conversions.c
+/home/xavier/catkin_ws/src/csm/sm/lib/egsl/egsl_conversions.c
 egsl.h
-/home/xavier/catkin_ws/src/csm2/sm/lib/egsl/egsl.h
+/home/xavier/catkin_ws/src/csm/sm/lib/egsl/egsl.h
 
-/home/xavier/catkin_ws/src/csm2/sm/lib/egsl/egsl_imp.h
+/home/xavier/catkin_ws/src/csm/sm/lib/egsl/egsl_imp.h
 egsl.h
-/home/xavier/catkin_ws/src/csm2/sm/lib/egsl/egsl.h
+/home/xavier/catkin_ws/src/csm/sm/lib/egsl/egsl.h
 
-/home/xavier/catkin_ws/src/csm2/sm/lib/egsl/egsl_misc.c
+/home/xavier/catkin_ws/src/csm/sm/lib/egsl/egsl_misc.c
 math.h
 -
 egsl.h
-/home/xavier/catkin_ws/src/csm2/sm/lib/egsl/egsl.h
+/home/xavier/catkin_ws/src/csm/sm/lib/egsl/egsl.h
 
-/home/xavier/catkin_ws/src/csm2/sm/lib/egsl/egsl_ops.c
+/home/xavier/catkin_ws/src/csm/sm/lib/egsl/egsl_ops.c
 gsl/gsl_matrix.h
 -
 gsl/gsl_blas.h
@@ -54,5 +54,5 @@ gsl/gsl_linalg.h
 gsl/gsl_eigen.h
 -
 egsl.h
-/home/xavier/catkin_ws/src/csm2/sm/lib/egsl/egsl.h
+/home/xavier/catkin_ws/src/csm/sm/lib/egsl/egsl.h
 

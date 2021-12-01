@@ -1,4 +1,4 @@
-# Install script for directory: /home/xavier/catkin_ws/src/csm2/sm/pkg-config
+# Install script for directory: /home/xavier/catkin_ws/src/csm/sm/pkg-config
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -38,6 +38,6 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/xavier/catkin_ws/src/csm2/sm/pkg-config/csm.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/xavier/catkin_ws/src/csm/sm/pkg-config/csm.pc")
 endif()
 

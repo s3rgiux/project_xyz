@@ -43,7 +43,7 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/xavier/catkin_ws/src/csm2
+CMAKE_SOURCE_DIR = /home/xavier/catkin_ws/src/csm
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/xavier/catkin_ws/build/csm
@@ -58,17 +58,17 @@ include sm/CMakeFiles/json2carmen.dir/progress.make
 include sm/CMakeFiles/json2carmen.dir/flags.make
 
 sm/CMakeFiles/json2carmen.dir/apps/json2carmen.o: sm/CMakeFiles/json2carmen.dir/flags.make
-sm/CMakeFiles/json2carmen.dir/apps/json2carmen.o: /home/xavier/catkin_ws/src/csm2/sm/apps/json2carmen.c
+sm/CMakeFiles/json2carmen.dir/apps/json2carmen.o: /home/xavier/catkin_ws/src/csm/sm/apps/json2carmen.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object sm/CMakeFiles/json2carmen.dir/apps/json2carmen.o"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/json2carmen.dir/apps/json2carmen.o   -c /home/xavier/catkin_ws/src/csm2/sm/apps/json2carmen.c
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/json2carmen.dir/apps/json2carmen.o   -c /home/xavier/catkin_ws/src/csm/sm/apps/json2carmen.c
 
 sm/CMakeFiles/json2carmen.dir/apps/json2carmen.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/json2carmen.dir/apps/json2carmen.i"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/apps/json2carmen.c > CMakeFiles/json2carmen.dir/apps/json2carmen.i
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/apps/json2carmen.c > CMakeFiles/json2carmen.dir/apps/json2carmen.i
 
 sm/CMakeFiles/json2carmen.dir/apps/json2carmen.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/json2carmen.dir/apps/json2carmen.s"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/apps/json2carmen.c -o CMakeFiles/json2carmen.dir/apps/json2carmen.s
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/apps/json2carmen.c -o CMakeFiles/json2carmen.dir/apps/json2carmen.s
 
 sm/CMakeFiles/json2carmen.dir/apps/json2carmen.o.requires:
 
@@ -109,6 +109,6 @@ sm/CMakeFiles/json2carmen.dir/clean:
 .PHONY : sm/CMakeFiles/json2carmen.dir/clean
 
 sm/CMakeFiles/json2carmen.dir/depend:
-	cd /home/xavier/catkin_ws/build/csm && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/xavier/catkin_ws/src/csm2 /home/xavier/catkin_ws/src/csm2/sm /home/xavier/catkin_ws/build/csm /home/xavier/catkin_ws/build/csm/sm /home/xavier/catkin_ws/build/csm/sm/CMakeFiles/json2carmen.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/xavier/catkin_ws/build/csm && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/xavier/catkin_ws/src/csm /home/xavier/catkin_ws/src/csm/sm /home/xavier/catkin_ws/build/csm /home/xavier/catkin_ws/build/csm/sm /home/xavier/catkin_ws/build/csm/sm/CMakeFiles/json2carmen.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : sm/CMakeFiles/json2carmen.dir/depend
 

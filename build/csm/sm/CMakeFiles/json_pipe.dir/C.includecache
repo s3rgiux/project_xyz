@@ -6,59 +6,59 @@
 
 #IncludeRegexTransform: 
 
-/home/xavier/catkin_ws/src/csm2/sm/apps/json_pipe.c
+/home/xavier/catkin_ws/src/csm/sm/apps/json_pipe.c
 ../csm/csm_all.h
-/home/xavier/catkin_ws/src/csm2/sm/csm/csm_all.h
+/home/xavier/catkin_ws/src/csm/sm/csm/csm_all.h
 options/options.h
 -
 
-/home/xavier/catkin_ws/src/csm2/sm/csm/algos.h
+/home/xavier/catkin_ws/src/csm/sm/csm/algos.h
 gsl/gsl_vector.h
 -
 gsl/gsl_matrix.h
 -
 hsm/hsm.h
-/home/xavier/catkin_ws/src/csm2/sm/csm/hsm/hsm.h
+/home/xavier/catkin_ws/src/csm/sm/csm/hsm/hsm.h
 hsm/hsm_interface.h
-/home/xavier/catkin_ws/src/csm2/sm/csm/hsm/hsm_interface.h
+/home/xavier/catkin_ws/src/csm/sm/csm/hsm/hsm_interface.h
 laser_data.h
-/home/xavier/catkin_ws/src/csm2/sm/csm/laser_data.h
+/home/xavier/catkin_ws/src/csm/sm/csm/laser_data.h
 
-/home/xavier/catkin_ws/src/csm2/sm/csm/csm.h
+/home/xavier/catkin_ws/src/csm/sm/csm/csm.h
 laser_data.h
-/home/xavier/catkin_ws/src/csm2/sm/csm/laser_data.h
+/home/xavier/catkin_ws/src/csm/sm/csm/laser_data.h
 laser_data_drawing.h
-/home/xavier/catkin_ws/src/csm2/sm/csm/laser_data_drawing.h
+/home/xavier/catkin_ws/src/csm/sm/csm/laser_data_drawing.h
 laser_data_json.h
-/home/xavier/catkin_ws/src/csm2/sm/csm/laser_data_json.h
+/home/xavier/catkin_ws/src/csm/sm/csm/laser_data_json.h
 algos.h
-/home/xavier/catkin_ws/src/csm2/sm/csm/algos.h
+/home/xavier/catkin_ws/src/csm/sm/csm/algos.h
 utils.h
-/home/xavier/catkin_ws/src/csm2/sm/csm/utils.h
+/home/xavier/catkin_ws/src/csm/sm/csm/utils.h
 
-/home/xavier/catkin_ws/src/csm2/sm/csm/csm_all.h
+/home/xavier/catkin_ws/src/csm/sm/csm/csm_all.h
 csm.h
-/home/xavier/catkin_ws/src/csm2/sm/csm/csm.h
+/home/xavier/catkin_ws/src/csm/sm/csm/csm.h
 json_journal.h
-/home/xavier/catkin_ws/src/csm2/sm/csm/json_journal.h
+/home/xavier/catkin_ws/src/csm/sm/csm/json_journal.h
 logging.h
-/home/xavier/catkin_ws/src/csm2/sm/csm/logging.h
+/home/xavier/catkin_ws/src/csm/sm/csm/logging.h
 math_utils.h
-/home/xavier/catkin_ws/src/csm2/sm/csm/math_utils.h
+/home/xavier/catkin_ws/src/csm/sm/csm/math_utils.h
 math_utils_gsl.h
-/home/xavier/catkin_ws/src/csm2/sm/csm/math_utils_gsl.h
+/home/xavier/catkin_ws/src/csm/sm/csm/math_utils_gsl.h
 
-/home/xavier/catkin_ws/src/csm2/sm/csm/hsm/hsm.h
+/home/xavier/catkin_ws/src/csm/sm/csm/hsm/hsm.h
 stdlib.h
 -
 
-/home/xavier/catkin_ws/src/csm2/sm/csm/hsm/hsm_interface.h
+/home/xavier/catkin_ws/src/csm/sm/csm/hsm/hsm_interface.h
 options/options.h
 -
 hsm.h
-/home/xavier/catkin_ws/src/csm2/sm/csm/hsm/hsm.h
+/home/xavier/catkin_ws/src/csm/sm/csm/hsm/hsm.h
 
-/home/xavier/catkin_ws/src/csm2/sm/csm/json_journal.h
+/home/xavier/catkin_ws/src/csm/sm/csm/json_journal.h
 stdio.h
 -
 json-c/json.h
@@ -66,31 +66,31 @@ json-c/json.h
 json-c/json_more_utils.h
 -
 laser_data_json.h
-/home/xavier/catkin_ws/src/csm2/sm/csm/laser_data_json.h
+/home/xavier/catkin_ws/src/csm/sm/csm/laser_data_json.h
 
-/home/xavier/catkin_ws/src/csm2/sm/csm/laser_data.h
+/home/xavier/catkin_ws/src/csm/sm/csm/laser_data.h
 sys/time.h
 -
 stdio.h
 -
 restrict.h
-/home/xavier/catkin_ws/src/csm2/sm/csm/restrict.h
+/home/xavier/catkin_ws/src/csm/sm/csm/restrict.h
 laser_data_inline.h
-/home/xavier/catkin_ws/src/csm2/sm/csm/laser_data_inline.h
+/home/xavier/catkin_ws/src/csm/sm/csm/laser_data_inline.h
 
-/home/xavier/catkin_ws/src/csm2/sm/csm/laser_data_drawing.h
+/home/xavier/catkin_ws/src/csm/sm/csm/laser_data_drawing.h
 laser_data.h
-/home/xavier/catkin_ws/src/csm2/sm/csm/laser_data.h
+/home/xavier/catkin_ws/src/csm/sm/csm/laser_data.h
 
-/home/xavier/catkin_ws/src/csm2/sm/csm/laser_data_inline.h
+/home/xavier/catkin_ws/src/csm/sm/csm/laser_data_inline.h
 gsl/gsl_math.h
 -
 gsl/gsl_vector.h
 -
 csm.h
-/home/xavier/catkin_ws/src/csm2/sm/csm/csm.h
+/home/xavier/catkin_ws/src/csm/sm/csm/csm.h
 
-/home/xavier/catkin_ws/src/csm2/sm/csm/laser_data_json.h
+/home/xavier/catkin_ws/src/csm/sm/csm/laser_data_json.h
 gsl/gsl_matrix.h
 -
 gsl/gsl_vector.h
@@ -100,79 +100,79 @@ json-c/json.h
 json-c/json_more_utils.h
 -
 laser_data.h
-/home/xavier/catkin_ws/src/csm2/sm/csm/laser_data.h
+/home/xavier/catkin_ws/src/csm/sm/csm/laser_data.h
 algos.h
-/home/xavier/catkin_ws/src/csm2/sm/csm/algos.h
+/home/xavier/catkin_ws/src/csm/sm/csm/algos.h
 
-/home/xavier/catkin_ws/src/csm2/sm/csm/logging.h
+/home/xavier/catkin_ws/src/csm/sm/csm/logging.h
 
-/home/xavier/catkin_ws/src/csm2/sm/csm/math_utils.h
+/home/xavier/catkin_ws/src/csm/sm/csm/math_utils.h
 
-/home/xavier/catkin_ws/src/csm2/sm/csm/math_utils_gsl.h
+/home/xavier/catkin_ws/src/csm/sm/csm/math_utils_gsl.h
 gsl/gsl_math.h
 -
 egsl/egsl.h
 -
 laser_data.h
-/home/xavier/catkin_ws/src/csm2/sm/csm/laser_data.h
+/home/xavier/catkin_ws/src/csm/sm/csm/laser_data.h
 
-/home/xavier/catkin_ws/src/csm2/sm/csm/restrict.h
+/home/xavier/catkin_ws/src/csm/sm/csm/restrict.h
 gsl/gsl_matrix.h
 -
 
-/home/xavier/catkin_ws/src/csm2/sm/csm/utils.h
+/home/xavier/catkin_ws/src/csm/sm/csm/utils.h
 stdio.h
 -
 
-/home/xavier/catkin_ws/src/csm2/sm/lib/egsl/egsl.h
+/home/xavier/catkin_ws/src/csm/sm/lib/egsl/egsl.h
 gsl/gsl_vector.h
 -
 gsl/gsl_matrix.h
 -
 
-/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/arraylist.h
+/home/xavier/catkin_ws/src/csm/sm/lib/json-c/arraylist.h
 
-/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/bits.h
+/home/xavier/catkin_ws/src/csm/sm/lib/json-c/bits.h
 
-/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/debug.h
+/home/xavier/catkin_ws/src/csm/sm/lib/json-c/debug.h
 
-/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json.h
+/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json.h
 bits.h
-/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/bits.h
+/home/xavier/catkin_ws/src/csm/sm/lib/json-c/bits.h
 debug.h
-/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/debug.h
+/home/xavier/catkin_ws/src/csm/sm/lib/json-c/debug.h
 linkhash.h
-/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/linkhash.h
+/home/xavier/catkin_ws/src/csm/sm/lib/json-c/linkhash.h
 arraylist.h
-/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/arraylist.h
+/home/xavier/catkin_ws/src/csm/sm/lib/json-c/arraylist.h
 json_util.h
-/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_util.h
+/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_util.h
 json_object.h
-/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_object.h
+/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_object.h
 json_tokener.h
-/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_tokener.h
+/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_tokener.h
 json_more_utils.h
-/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_more_utils.h
+/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_more_utils.h
 
-/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_more_utils.h
+/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_more_utils.h
 stdio.h
 -
 json_object.h
-/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_object.h
+/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_object.h
 
-/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_object.h
+/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_object.h
 
-/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_tokener.h
+/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_tokener.h
 json_object.h
-/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_object.h
+/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_object.h
 
-/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_util.h
+/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_util.h
 json_object.h
-/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/json_object.h
+/home/xavier/catkin_ws/src/csm/sm/lib/json-c/json_object.h
 
-/home/xavier/catkin_ws/src/csm2/sm/lib/json-c/linkhash.h
+/home/xavier/catkin_ws/src/csm/sm/lib/json-c/linkhash.h
 
-/home/xavier/catkin_ws/src/csm2/sm/lib/options/options.h
+/home/xavier/catkin_ws/src/csm/sm/lib/options/options.h
 stdio.h
 -
 

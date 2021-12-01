@@ -1,4 +1,4 @@
-# Install script for directory: /home/xavier/catkin_ws/src/csm2/sm/lib/options
+# Install script for directory: /home/xavier/catkin_ws/src/csm/sm/lib/options
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -38,7 +38,7 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/options" TYPE FILE FILES "/home/xavier/catkin_ws/src/csm2/sm/lib/options/options.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/options" TYPE FILE FILES "/home/xavier/catkin_ws/src/csm/sm/lib/options/options.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)

@@ -43,7 +43,7 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/xavier/catkin_ws/src/csm2
+CMAKE_SOURCE_DIR = /home/xavier/catkin_ws/src/csm
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/xavier/catkin_ws/build/csm
@@ -58,17 +58,17 @@ include sm/CMakeFiles/sm1.dir/progress.make
 include sm/CMakeFiles/sm1.dir/flags.make
 
 sm/CMakeFiles/sm1.dir/apps/sm1.o: sm/CMakeFiles/sm1.dir/flags.make
-sm/CMakeFiles/sm1.dir/apps/sm1.o: /home/xavier/catkin_ws/src/csm2/sm/apps/sm1.c
+sm/CMakeFiles/sm1.dir/apps/sm1.o: /home/xavier/catkin_ws/src/csm/sm/apps/sm1.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object sm/CMakeFiles/sm1.dir/apps/sm1.o"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/sm1.dir/apps/sm1.o   -c /home/xavier/catkin_ws/src/csm2/sm/apps/sm1.c
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/sm1.dir/apps/sm1.o   -c /home/xavier/catkin_ws/src/csm/sm/apps/sm1.c
 
 sm/CMakeFiles/sm1.dir/apps/sm1.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/sm1.dir/apps/sm1.i"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/apps/sm1.c > CMakeFiles/sm1.dir/apps/sm1.i
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/apps/sm1.c > CMakeFiles/sm1.dir/apps/sm1.i
 
 sm/CMakeFiles/sm1.dir/apps/sm1.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/sm1.dir/apps/sm1.s"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/apps/sm1.c -o CMakeFiles/sm1.dir/apps/sm1.s
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/apps/sm1.c -o CMakeFiles/sm1.dir/apps/sm1.s
 
 sm/CMakeFiles/sm1.dir/apps/sm1.o.requires:
 
@@ -109,6 +109,6 @@ sm/CMakeFiles/sm1.dir/clean:
 .PHONY : sm/CMakeFiles/sm1.dir/clean
 
 sm/CMakeFiles/sm1.dir/depend:
-	cd /home/xavier/catkin_ws/build/csm && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/xavier/catkin_ws/src/csm2 /home/xavier/catkin_ws/src/csm2/sm /home/xavier/catkin_ws/build/csm /home/xavier/catkin_ws/build/csm/sm /home/xavier/catkin_ws/build/csm/sm/CMakeFiles/sm1.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/xavier/catkin_ws/build/csm && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/xavier/catkin_ws/src/csm /home/xavier/catkin_ws/src/csm/sm /home/xavier/catkin_ws/build/csm /home/xavier/catkin_ws/build/csm/sm /home/xavier/catkin_ws/build/csm/sm/CMakeFiles/sm1.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : sm/CMakeFiles/sm1.dir/depend
 

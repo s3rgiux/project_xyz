@@ -43,7 +43,7 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/xavier/catkin_ws/src/csm2
+CMAKE_SOURCE_DIR = /home/xavier/catkin_ws/src/csm
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/xavier/catkin_ws/build/csm
@@ -58,17 +58,17 @@ include sm/CMakeFiles/ld_cluster_curv.dir/progress.make
 include sm/CMakeFiles/ld_cluster_curv.dir/flags.make
 
 sm/CMakeFiles/ld_cluster_curv.dir/apps/ld_cluster_curv.o: sm/CMakeFiles/ld_cluster_curv.dir/flags.make
-sm/CMakeFiles/ld_cluster_curv.dir/apps/ld_cluster_curv.o: /home/xavier/catkin_ws/src/csm2/sm/apps/ld_cluster_curv.c
+sm/CMakeFiles/ld_cluster_curv.dir/apps/ld_cluster_curv.o: /home/xavier/catkin_ws/src/csm/sm/apps/ld_cluster_curv.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xavier/catkin_ws/build/csm/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object sm/CMakeFiles/ld_cluster_curv.dir/apps/ld_cluster_curv.o"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ld_cluster_curv.dir/apps/ld_cluster_curv.o   -c /home/xavier/catkin_ws/src/csm2/sm/apps/ld_cluster_curv.c
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ld_cluster_curv.dir/apps/ld_cluster_curv.o   -c /home/xavier/catkin_ws/src/csm/sm/apps/ld_cluster_curv.c
 
 sm/CMakeFiles/ld_cluster_curv.dir/apps/ld_cluster_curv.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ld_cluster_curv.dir/apps/ld_cluster_curv.i"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm2/sm/apps/ld_cluster_curv.c > CMakeFiles/ld_cluster_curv.dir/apps/ld_cluster_curv.i
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/xavier/catkin_ws/src/csm/sm/apps/ld_cluster_curv.c > CMakeFiles/ld_cluster_curv.dir/apps/ld_cluster_curv.i
 
 sm/CMakeFiles/ld_cluster_curv.dir/apps/ld_cluster_curv.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ld_cluster_curv.dir/apps/ld_cluster_curv.s"
-	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm2/sm/apps/ld_cluster_curv.c -o CMakeFiles/ld_cluster_curv.dir/apps/ld_cluster_curv.s
+	cd /home/xavier/catkin_ws/build/csm/sm && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/xavier/catkin_ws/src/csm/sm/apps/ld_cluster_curv.c -o CMakeFiles/ld_cluster_curv.dir/apps/ld_cluster_curv.s
 
 sm/CMakeFiles/ld_cluster_curv.dir/apps/ld_cluster_curv.o.requires:
 
@@ -109,6 +109,6 @@ sm/CMakeFiles/ld_cluster_curv.dir/clean:
 .PHONY : sm/CMakeFiles/ld_cluster_curv.dir/clean
 
 sm/CMakeFiles/ld_cluster_curv.dir/depend:
-	cd /home/xavier/catkin_ws/build/csm && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/xavier/catkin_ws/src/csm2 /home/xavier/catkin_ws/src/csm2/sm /home/xavier/catkin_ws/build/csm /home/xavier/catkin_ws/build/csm/sm /home/xavier/catkin_ws/build/csm/sm/CMakeFiles/ld_cluster_curv.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/xavier/catkin_ws/build/csm && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/xavier/catkin_ws/src/csm /home/xavier/catkin_ws/src/csm/sm /home/xavier/catkin_ws/build/csm /home/xavier/catkin_ws/build/csm/sm /home/xavier/catkin_ws/build/csm/sm/CMakeFiles/ld_cluster_curv.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : sm/CMakeFiles/ld_cluster_curv.dir/depend
 

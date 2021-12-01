@@ -1,5 +1,5 @@
 # CMake generated Testfile for 
-# Source directory: /home/xavier/catkin_ws/src/csm2/sm/lib/egsl
+# Source directory: /home/xavier/catkin_ws/src/csm/sm/lib/egsl
 # Build directory: /home/xavier/catkin_ws/build/csm/sm/lib/egsl
 # 
 # This file includes the relevant testing commands required for 

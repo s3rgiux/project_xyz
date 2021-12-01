@@ -35,7 +35,7 @@ class PointsDanger:
         #self.danger_alert_publisher = rospy.Publisher("danger_states",DangerStates, queue_size=1)
         self.danger_alert_publisher = rospy.Publisher("Danger",String, queue_size=1)
         self.sound_alert_publisher = rospy.Publisher("alerts",Int16, queue_size=1)
-        self.laser_sub = rospy.Subscriber('/scan_merged', LaserScan, self.laser_callback, queue_size=1)
+        self.laser_sub = rospy.Subscriber('/scan', LaserScan, self.laser_callback, queue_size=1)
         self.states_sub = rospy.Subscriber('/pitakuru_states', States, self.states_callback, queue_size=1)
         self.front_detection = 1.1 #rospy.get_param("/obj_track/front_detection")
         self.side_detection = 0.4 #rospy.get_param("/obj_track/side_detection")

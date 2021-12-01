@@ -1,23 +1,23 @@
 Determining if the pthread_create exist failed with the following output:
 Change Dir: /home/xavier/catkin_ws/build/joy/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_ba7fe/fast"
-/usr/bin/make -f CMakeFiles/cmTC_ba7fe.dir/build.make CMakeFiles/cmTC_ba7fe.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_66dc4/fast"
+/usr/bin/make -f CMakeFiles/cmTC_66dc4.dir/build.make CMakeFiles/cmTC_66dc4.dir/build
 make[1]: Entering directory '/home/xavier/catkin_ws/build/joy/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_ba7fe.dir/CheckSymbolExists.c.o
-/usr/bin/cc    -o CMakeFiles/cmTC_ba7fe.dir/CheckSymbolExists.c.o   -c /home/xavier/catkin_ws/build/joy/CMakeFiles/CMakeTmp/CheckSymbolExists.c
-Linking C executable cmTC_ba7fe
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ba7fe.dir/link.txt --verbose=1
-/usr/bin/cc      -rdynamic CMakeFiles/cmTC_ba7fe.dir/CheckSymbolExists.c.o  -o cmTC_ba7fe 
-CMakeFiles/cmTC_ba7fe.dir/CheckSymbolExists.c.o: In function `main':
+Building C object CMakeFiles/cmTC_66dc4.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_66dc4.dir/CheckSymbolExists.c.o   -c /home/xavier/catkin_ws/build/joy/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_66dc4
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_66dc4.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_66dc4.dir/CheckSymbolExists.c.o  -o cmTC_66dc4 
+CMakeFiles/cmTC_66dc4.dir/CheckSymbolExists.c.o: In function `main':
 CheckSymbolExists.c:(.text+0x14): undefined reference to `pthread_create'
 CheckSymbolExists.c:(.text+0x18): undefined reference to `pthread_create'
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_ba7fe.dir/build.make:97: recipe for target 'cmTC_ba7fe' failed
-make[1]: *** [cmTC_ba7fe] Error 1
+CMakeFiles/cmTC_66dc4.dir/build.make:97: recipe for target 'cmTC_66dc4' failed
+make[1]: *** [cmTC_66dc4] Error 1
 make[1]: Leaving directory '/home/xavier/catkin_ws/build/joy/CMakeFiles/CMakeTmp'
-Makefile:126: recipe for target 'cmTC_ba7fe/fast' failed
-make: *** [cmTC_ba7fe/fast] Error 2
+Makefile:126: recipe for target 'cmTC_66dc4/fast' failed
+make: *** [cmTC_66dc4/fast] Error 2
 
 File /home/xavier/catkin_ws/build/joy/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
 /* */
@@ -37,20 +37,20 @@ int main(int argc, char** argv)
 Determining if the function pthread_create exists in the pthreads failed with the following output:
 Change Dir: /home/xavier/catkin_ws/build/joy/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_8afc3/fast"
-/usr/bin/make -f CMakeFiles/cmTC_8afc3.dir/build.make CMakeFiles/cmTC_8afc3.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_aabad/fast"
+/usr/bin/make -f CMakeFiles/cmTC_aabad.dir/build.make CMakeFiles/cmTC_aabad.dir/build
 make[1]: Entering directory '/home/xavier/catkin_ws/build/joy/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_8afc3.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_8afc3.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
-Linking C executable cmTC_8afc3
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8afc3.dir/link.txt --verbose=1
-/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_8afc3.dir/CheckFunctionExists.c.o  -o cmTC_8afc3 -lpthreads 
+Building C object CMakeFiles/cmTC_aabad.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_aabad.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
+Linking C executable cmTC_aabad
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_aabad.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_aabad.dir/CheckFunctionExists.c.o  -o cmTC_aabad -lpthreads 
 /usr/bin/ld: cannot find -lpthreads
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_8afc3.dir/build.make:97: recipe for target 'cmTC_8afc3' failed
-make[1]: *** [cmTC_8afc3] Error 1
+CMakeFiles/cmTC_aabad.dir/build.make:97: recipe for target 'cmTC_aabad' failed
+make[1]: *** [cmTC_aabad] Error 1
 make[1]: Leaving directory '/home/xavier/catkin_ws/build/joy/CMakeFiles/CMakeTmp'
-Makefile:126: recipe for target 'cmTC_8afc3/fast' failed
-make: *** [cmTC_8afc3/fast] Error 2
+Makefile:126: recipe for target 'cmTC_aabad/fast' failed
+make: *** [cmTC_aabad/fast] Error 2
 
 

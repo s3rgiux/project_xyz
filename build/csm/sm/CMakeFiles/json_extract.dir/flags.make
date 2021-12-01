@@ -6,5 +6,5 @@ C_FLAGS =   -I/usr/include  -I/usr/include/cairo -std=c99 -fPIC -ggdb -Wall
 
 C_DEFINES = -DHAVE_GSL -DLINUX
 
-C_INCLUDES = -I/home/xavier/catkin_ws/src/csm2/sm/lib -I/home/xavier/catkin_ws/src/csm2/sm -I/home/xavier/catkin_ws/build/csm 
+C_INCLUDES = -I/home/xavier/catkin_ws/src/csm/sm/lib -I/home/xavier/catkin_ws/src/csm/sm -I/home/xavier/catkin_ws/build/csm 
 

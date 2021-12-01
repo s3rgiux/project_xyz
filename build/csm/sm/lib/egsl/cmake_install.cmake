@@ -1,4 +1,4 @@
-# Install script for directory: /home/xavier/catkin_ws/src/csm2/sm/lib/egsl
+# Install script for directory: /home/xavier/catkin_ws/src/csm/sm/lib/egsl
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,9 +39,9 @@ endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/egsl" TYPE FILE FILES
-    "/home/xavier/catkin_ws/src/csm2/sm/lib/egsl/egsl.h"
-    "/home/xavier/catkin_ws/src/csm2/sm/lib/egsl/egsl_imp.h"
-    "/home/xavier/catkin_ws/src/csm2/sm/lib/egsl/egsl_macros.h"
+    "/home/xavier/catkin_ws/src/csm/sm/lib/egsl/egsl.h"
+    "/home/xavier/catkin_ws/src/csm/sm/lib/egsl/egsl_imp.h"
+    "/home/xavier/catkin_ws/src/csm/sm/lib/egsl/egsl_macros.h"
     )
 endif()
 
