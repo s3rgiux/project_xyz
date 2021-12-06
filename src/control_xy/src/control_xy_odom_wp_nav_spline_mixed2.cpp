@@ -59,6 +59,9 @@ public:
         // battery voltage
         volts_subscriber = nh.subscribe("/volts", 1, &test_head::voltsCallback,this);
 
+        // battery voltage
+        line_direction_subscriber = nh.subscribe("/line_direction", 1, &test_head::lineDirectionCallback,this);
+
         // yolo
         // tracking target poisition with YOLO, see in people_ext_sort.py
         yolo_subscriber = nh.subscribe("/peop_ang_yolo", 1, &test_head::yoloCallback,this);
@@ -264,6 +267,11 @@ void voltsCallback(const std_msgs::Float32& msg){
         counter_low_voltage = 0;
     }
 }    
+
+// get line direction.
+void lineDirectionCallback(const std_msgs::Float32& msg){
+    angle_direction_line_follow = msg.data;
+} 
 
 // store received costmap
 void costCallback(const geometry_msgs::Vector3& vector){  
@@ -585,6 +593,9 @@ void calc_100hz(){
     if(!motors_enabled){
         blink_green(0.9);
     }
+    if(line_follow_mode ){
+        do_line_follow();
+    }
     if(danger == false && collision == false && mode_manual){
         ros::Time time_now = ros::Time::now();
         ros::Duration duration = time_now - last_time_btn_save_reset_pressed;
@@ -819,6 +830,19 @@ void publish_lost_tracked(){
     tracked_pos.z = 0;
     tracked_publisher.publish(tracked_pos);
 }
+
+
+//line_follow
+void do_line_follow(){
+    vel_steer.linear.x = 500;
+    vel_steer.linear.z = angle_direction_line_follow; 
+
+    vel_steer.linear.x = ((vel_steer.linear.x/21) * 0.1045)/10;
+    vel_steer.angular.z = ((vel_steer.angular.z/21) * 0.1045)/2;
+    if(karugamo_counter % 2 == 0){
+        speed_publisher.publish(vel_steer);
+    }     
+}  
 
 // tracking target is near to robot
 /* move this function in karugamo mode function */
@@ -1214,6 +1238,7 @@ void collisioned(){
     mode_manual = false;
     mode_karugamo = false;
     mode_follow = false;
+    line_follow_mode = false;
     free_way = false;
     tracking_people = false;
     ctrl_front_follow = 0;
@@ -1239,6 +1264,7 @@ void remove_collision(){
     mode_manual = false;
     mode_karugamo = false;
     mode_follow = false;
+    line_follow_mode = false;
     danger = false;
     free_way = true;
     tracking_people = false;
@@ -1269,6 +1295,7 @@ void remove_collision(){
 void do_nothing(){
     detect_curr_inc_left = false;
     detect_curr_inc_right = false;
+    line_follow_mode = false;
     low_voltage = false;
     mode_idle = false;
     mode_karugamo = false;
@@ -1299,6 +1326,7 @@ void do_nothing(){
 void mode_AUTONOMOUS(){
     detect_curr_inc_left = false;
     detect_curr_inc_right = false;
+    line_follow_mode = false;
     low_voltage = false;
     mode_idle = false;
     mode_karugamo = false;
@@ -1328,12 +1356,49 @@ void mode_AUTONOMOUS(){
 }
 
 // reset variables when the state transit to manual
+void mode_LINE_FOLLOW(){
+    detect_curr_inc_left = false;
+    detect_curr_inc_right = false;
+    low_voltage = false;
+    mode_idle = false;
+    mode_karugamo = false;
+    line_follow_mode = true;
+    mode_manual = false;
+    mode_follow = false;
+    tracking_people = false;
+    mode_auto = false;
+    danger = false;
+    free_way = true;
+    stopped_functions = false;
+    ROS_INFO("Mode Manual");
+    alerts_command.data = 1;
+    alerts_publisher.publish(alerts_command);
+    ctrl_front_follow = 0;
+    ctrl_ang = 0;
+    ctrl_front_manual = 0;
+    ctrl_side_manual = 0;
+    detect_cont = 0;
+    vel_steer.linear.x = 0;
+    vel_steer.linear.y = 1;
+    vel_steer.angular.z = 0;
+    speed_publisher.publish(vel_steer);
+    publish_lost_tracked();
+    pitakuru_state_msg.state = "LINE_FOLLOW";
+    state_pub.publish(pitakuru_state_msg);
+    detect_cont = 0;
+    low_voltage = false;
+    last_mode_auto = false;
+}
+
+
+// reset variables when the state transit to manual
 void mode_MANUAL(){
     detect_curr_inc_left = false;
     detect_curr_inc_right = false;
     low_voltage = false;
     mode_idle = false;
     mode_karugamo = false;
+    line_follow_mode = false;
     mode_manual = true;
     mode_follow = false;
     tracking_people = false;
@@ -1375,6 +1440,7 @@ void mode_IDLE(){
     stopped_functions = false;
     low_voltage = false;
     free_way = true;
+    line_follow_mode = false;
     mode_idle = true;
     mode_karugamo = false;
     mode_manual = false;
@@ -1411,6 +1477,7 @@ void mode_people_follow()
     mode_idle = false;
     mode_karugamo = false;
     mode_manual = false;
+    line_follow_mode = false;
     mode_follow = true;
     tracking_people = false;
     mode_auto = false;
@@ -1462,13 +1529,13 @@ void joyCallback(const sensor_msgs::Joy::ConstPtr& joy){
         float speed_button;
         float btn_x,btn_square,btn_circle,btn_triangle;
         float btn_save_wp1,btn_save_wp2,btn_goto_wp1,btn_goto_wp2,btn_l3,btn_r3;
-        float btn_reset_map,btn_saving_map;
+        float btn_l1,btn_r1;
         btn_save_wp1 = false;
         btn_save_wp2 = false;
         btn_goto_wp1 = false;
         btn_goto_wp2 = false;
-        btn_reset_map = false;
-        btn_saving_map = false;
+        btn_l1 = false;
+        btn_r1 = false;
         if(use_ps4_controller == 1){
             speed_button = joy -> axes[7];
             btn_x = joy -> buttons[1];
@@ -1481,8 +1548,8 @@ void joyCallback(const sensor_msgs::Joy::ConstPtr& joy){
             btn_goto_wp2 = joy -> buttons[7];
             btn_l3 = joy -> buttons[11];
             btn_r3 = joy -> buttons[12];
-            btn_reset_map = joy -> buttons[4];
-            btn_saving_map = joy -> buttons[5];
+            btn_l1 = joy -> buttons[4];
+            btn_r1 = joy -> buttons[5];
         }else{
             speed_button = joy -> axes[5];
             btn_x = joy -> buttons[2];
@@ -1493,8 +1560,8 @@ void joyCallback(const sensor_msgs::Joy::ConstPtr& joy){
             btn_save_wp2 = joy -> buttons[11];
             btn_goto_wp1 = joy -> buttons[6];
             btn_goto_wp2 = joy -> buttons[7];
-            btn_reset_map = joy -> buttons[4];
-            btn_saving_map = joy -> buttons[5];
+            btn_l1 = joy -> buttons[4];
+            btn_r1 = joy -> buttons[5];
             btn_l3 = joy -> buttons[8];
             btn_r3 = joy -> buttons[9];
         }
@@ -1512,11 +1579,14 @@ void joyCallback(const sensor_msgs::Joy::ConstPtr& joy){
             }else if(btn_triangle && collision == false ){
                 mode_IDLE();
                 ros::Duration(0.2).sleep(); 
-            }else if(reseting_map == false&& btn_reset_map&& mode_manual && collision == false && danger == false){
-                reseting_map = true;
-                last_time_btn_save_reset_pressed = ros::Time::now();
-                ros::Duration(0.3).sleep(); 
-            }else if(btn_saving_map&& mode_manual && collision == false && danger == false){
+            }//else if(reseting_map == false&& btn_l1&& mode_manual && collision == false && danger == false){
+             //   reseting_map = true;
+             //   last_time_btn_save_reset_pressed = ros::Time::now();
+             //   ros::Duration(0.3).sleep(); 
+            else if (btn_l1 && collision == false && danger == false) {
+                mode_LINE_FOLLOW();
+                ros::Duration(0.2).sleep();
+            }else if(btn_r1&& mode_manual && collision == false && danger == false){
                 saving_map = true;
                 last_time_btn_save_reset_pressed = ros::Time::now();
                 ros::Duration(0.3).sleep(); 
@@ -1790,13 +1860,14 @@ private:
     ros::Subscriber goal_status_subscriber;
     ros::Subscriber danger_suscriber;
     ros::Subscriber danger_back_suscriber;
+    ros::Subscriber line_direction_subscriber;
     ros::Publisher enable_disable_pub;
     std_msgs::String enable_disable_msg;
     geometry_msgs::Twist vel_steer;
     geometry_msgs::Vector3 tracked_pos;
     control_xy::States pitakuru_state_msg;
 
-    bool danger, mode_idle,mode_karugamo,mode_manual,mode_follow,free_way,collision,mode_auto;
+    bool danger, mode_idle,mode_karugamo,mode_manual,mode_follow,free_way,collision,mode_auto,line_follow_mode;
     float ctrl_yaw,distanciaPeople2,break_front_distance,break_danger,max_speed_follow,max_speed_manual,max_speed_manual_heavy,ctrl_ang;
     float low_vel_gain_follow,ctrl_side_manual,max_speed_side_manual;
     bool tracking_people;
@@ -1838,7 +1909,7 @@ private:
     bool low_voltage,lidar_failed;
     int counter_changed,counter_low_voltage,joy_counter,karugamo_counter;
     float min_break_distance,max_break_distance,smooth_accel_side_follow;
-    float gain_follow_people;
+    float gain_follow_people,angle_direction_line_follow;
     float use_ps4_controller,use_hokuyo;
     bool is_navigating,is_arrived_goal,go_wp1,go_wp2;
     int count_arrived;

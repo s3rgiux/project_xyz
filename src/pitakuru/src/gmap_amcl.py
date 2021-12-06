@@ -169,7 +169,7 @@ class GmapAmcl(object):
     def joy_callback(self, joy):
 
         (circle, triangle, square, cross, l1, r1,pad) = self.read_button(joy)
-
+        
         if l1:
             print("l1")
 
@@ -212,6 +212,7 @@ class GmapAmcl(object):
                     self.pub_init_pose.publish(self.saved_pose)                    
         else:
             return
+            
 
 
 
