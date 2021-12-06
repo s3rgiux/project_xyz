@@ -60,7 +60,7 @@ public:
         volts_subscriber = nh.subscribe("/volts", 1, &test_head::voltsCallback,this);
 
         // battery voltage
-        line_direction_subscriber = nh.subscribe("/line_direction", 1, &test_head::lineDirectionCallback,this);
+        line_direction_subscriber = nh.subscribe("/line_detector/line_direction", 1, &test_head::lineDirectionCallback,this);
 
         // yolo
         // tracking target poisition with YOLO, see in people_ext_sort.py
@@ -834,14 +834,14 @@ void publish_lost_tracked(){
 
 //line_follow
 void do_line_follow(){
-    vel_steer.linear.x = 500;
-    vel_steer.linear.z = angle_direction_line_follow; 
+    vel_steer.linear.x = 300;
+    vel_steer.angular.z = angle_direction_line_follow; 
 
     vel_steer.linear.x = ((vel_steer.linear.x/21) * 0.1045)/10;
     vel_steer.angular.z = ((vel_steer.angular.z/21) * 0.1045)/2;
     if(karugamo_counter % 2 == 0){
         speed_publisher.publish(vel_steer);
-    }     
+    }
 }  
 
 // tracking target is near to robot
@@ -1370,9 +1370,8 @@ void mode_LINE_FOLLOW(){
     danger = false;
     free_way = true;
     stopped_functions = false;
-    ROS_INFO("Mode Manual");
-    alerts_command.data = 1;
-    alerts_publisher.publish(alerts_command);
+    ROS_INFO("Mode LINE");
+    
     ctrl_front_follow = 0;
     ctrl_ang = 0;
     ctrl_front_manual = 0;

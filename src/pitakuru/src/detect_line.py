@@ -12,9 +12,9 @@ class Follower:
         #cv.namedWindow('BGR Image', 1)  #'BGR Image'という名前の画像表示のウィンドウを作成
         #cv.namedWindow('MASK', 1)   #'MASK'という名前の画像表示のウィンドウを作成
         #cv.namedWindow('MASKED', 1) #'MASK'という名前の画像表示のウィンドウを作成
-        self.image_sub = rospy.Subscriber('image_raw', Image, self.image_callback)   #Image型で画像トピックを購読し，コールバック関数を呼ぶ
+        self.image_sub   = rospy.Subscriber('image_raw', Image, self.image_callback)   #Image型で画像トピックを購読し，コールバック関数を呼ぶ
         self.cmd_vel_pub = rospy.Publisher('cmd_vel', Twist, queue_size = 1)
-        self.image_pub = rospy.Publisher("image_lane",Image)
+        self.image_pub   = rospy.Publisher("image_lane",Image)
         self.image_mask1 = rospy.Publisher("image_mask1",Image)
         self.image_mask2 = rospy.Publisher("image_mask2",Image)
 

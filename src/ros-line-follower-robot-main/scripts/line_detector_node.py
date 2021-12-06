@@ -25,7 +25,7 @@ class LineDetector:
     def image_callback_raw(self, msg):
         try:
             cv_image = self.bridge.imgmsg_to_cv2(msg, "passthrough")
-            roi = cv_image[300:,80:400]
+            roi = cv_image[300:,120:360]
 
             # Output the processed message
             #image_message = self.bridge.cv2_to_imgmsg(roi, "passthrough")
@@ -90,7 +90,7 @@ class LineDetector:
         self.image_pub.publish(image_message)
         
         
-        steer_multiplier = 1
+        steer_multiplier = -250
         steer_slowdown_amount = 0.5
         dir_target = self.line_offset * steer_multiplier
         dir_slowdown = 1.0 - (abs(dir_target) * steer_slowdown_amount)
