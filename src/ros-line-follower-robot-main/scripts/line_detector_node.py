@@ -25,8 +25,8 @@ class LineDetector:
     def image_callback_raw(self, msg):
         try:
             cv_image = self.bridge.imgmsg_to_cv2(msg, "passthrough")
-            roi = cv_image[300:,120:360]
-
+            #roi = cv_image[300:,140:340]
+            roi = cv_image[300:,:]
             # Output the processed message
             #image_message = self.bridge.cv2_to_imgmsg(roi, "passthrough")
             #self.image_pub.publish(image_message)
@@ -47,10 +47,15 @@ class LineDetector:
         cv_image = cv2.GaussianBlur(cv_image, (7, 7), 0)
 
         # Threshold the image
-        (T, threshold_image) = cv2.threshold(cv_image, 180, 255, cv2.THRESH_BINARY)
-        
+        (T, threshold_image) = cv2.threshold(cv_image, 220, 255, cv2.THRESH_BINARY)
+        #(T, threshold_image) = cv2.threshold(cv_image, 160, 255, cv2.THRESH_BINARY)
+        WIDE_RECT = 60
         # Overlay black box on top of image
-        cv2.rectangle(threshold_image, (0, 0), (256, 110), (0,0,0), -1)
+        cv2.rectangle(threshold_image, (0, 0),   (256, 130), (0,0,0), -1) #110), (0,0,0), -1)
+        # Overlay black box on left of image
+        cv2.rectangle(threshold_image, (0, 0),   (WIDE_RECT, 256), (0,0,0), -1) #110), (0,0,0), -1)
+        # Overlay black box on right of image
+        cv2.rectangle(threshold_image, (int(256 - WIDE_RECT), 0), (256, 256), (0,0,0), -1) #110), (0,0,0), -1)
         
         # Get center of the thresholded image
         M = cv2.moments(threshold_image)

@@ -834,7 +834,7 @@ void publish_lost_tracked(){
 
 //line_follow
 void do_line_follow(){
-    vel_steer.linear.x = 300;
+    vel_steer.linear.x = speed_line_follow;
     vel_steer.angular.z = angle_direction_line_follow; 
 
     vel_steer.linear.x = ((vel_steer.linear.x/21) * 0.1045)/10;
@@ -1373,6 +1373,7 @@ void mode_LINE_FOLLOW(){
     ROS_INFO("Mode LINE");
     
     ctrl_front_follow = 0;
+    speed_line_follow = 300;
     ctrl_ang = 0;
     ctrl_front_manual = 0;
     ctrl_side_manual = 0;
@@ -1660,11 +1661,14 @@ void joyCallback(const sensor_msgs::Joy::ConstPtr& joy){
             }
         }
         
-        if(speed_button != 0 && (mode_manual || mode_follow) && lidar_failed == false ){
+        if(speed_button != 0 && (mode_manual || mode_follow  || line_follow_mode) && lidar_failed == false ){
                 
                 changed_setting = true;
                 last_time_changed = ros::Time::now();
                 ROS_INFO("Changed speed , follow  %f , manual %f",max_speed_follow,max_speed_manual);
+                if(line_follow_mode ){
+                    speed_line_follow = speed_line_follow + (speed_button * 50);
+                }
                 if(mode_follow == true){
                     max_speed_follow = max_speed_follow + (speed_button * 400);
                     max_speed_follow_heavy = max_speed_follow_heavy+(speed_button * 400);
@@ -1893,7 +1897,7 @@ private:
     float cost_obst,cost_obst_aux,ctrl_side_costmap,gain_to_costmap,smooth_accel_costmap,dist_peop_cam,yolo_status;
     bool tracking_lidar;
     float lidar_people_status,max_speed_side_follow;
-    float max_speed_follow_heavy;
+    float max_speed_follow_heavy,speed_line_follow;
     float vel_detect_costmap;
     bool status_led_blue,status_led_yellow,status_led_red,status_led_green;
     double duration_to_lost;
