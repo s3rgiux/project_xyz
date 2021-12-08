@@ -151,11 +151,11 @@
 
 <arg name="map_file" default="$(find pitakuru)/maps/map.yaml"/>
 <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
-<!-- 
+
 <node pkg="pitakuru" type="gmap_amcl.py" name="gmap_amcl" />
 
 <node pkg="pitakuru" type="getGoal.py" name="getGoal" />
--->
+
 
  <rosparam ns="rate" file="$(find line_follower)/config/rate_config.yaml" />
 

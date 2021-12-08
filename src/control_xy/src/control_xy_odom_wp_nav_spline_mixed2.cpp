@@ -440,6 +440,21 @@ void blink_blue2(float dur){
     }
 }
 
+void blink_blue_strong(float dur){
+    ros::Time time_now = ros::Time::now();
+    ros::Duration duration = time_now - time_blink_bl;
+    if((duration.toSec())>dur){
+        time_blink_bl = time_now;
+        if(status_led_blue){
+            status_led_blue = false;
+            alert_manual_no_sound();
+        }else{
+            status_led_blue = true;
+            alert_turn_off_led();
+        }
+    }
+}
+
 
 void blink_yellow(float dur){
     ros::Time time_now = ros::Time::now();
@@ -593,8 +608,9 @@ void calc_100hz(){
     if(!motors_enabled){
         blink_green(0.9);
     }
-    if(line_follow_mode ){
+    if(danger == false &&line_follow_mode ){
         do_line_follow();
+        blink_blue_strong(1.0);
     }
     if(danger == false && collision == false && mode_manual){
         ros::Time time_now = ros::Time::now();
@@ -1010,7 +1026,7 @@ void dangerCallback(const std_msgs::String& msg){
     // ROS_INFO("%f\n", velocity_motor1);
     // ROS_INFO("%f\n", velocity_motor2);
     // ROS_INFO("%f\n", velocity_tresh_stop);
-    if ( danger == false && msg.data == "Danger" && velocity_motor1 > velocity_tresh_stop && velocity_motor2 > velocity_tresh_stop && (ctrl_front_follow > control_tresh_stop || ctrl_front_manual > control_tresh_stop) ){
+    if ( danger == false && msg.data == "Danger" && velocity_motor1 > velocity_tresh_stop && velocity_motor2 > velocity_tresh_stop && (ctrl_front_follow > control_tresh_stop || ctrl_front_manual > control_tresh_stop || line_follow_mode) ){
         alert_danger_no_sound();
         alert_danger_voice_sound();
         danger = true;
@@ -1579,13 +1595,13 @@ void joyCallback(const sensor_msgs::Joy::ConstPtr& joy){
             }else if(btn_triangle && collision == false ){
                 mode_IDLE();
                 ros::Duration(0.2).sleep(); 
-            }//else if(reseting_map == false&& btn_l1&& mode_manual && collision == false && danger == false){
-             //   reseting_map = true;
-             //   last_time_btn_save_reset_pressed = ros::Time::now();
-             //   ros::Duration(0.3).sleep(); 
-            else if (btn_l1 && collision == false && danger == false) {
-                mode_LINE_FOLLOW();
-                ros::Duration(0.2).sleep();
+            }else if(reseting_map == false&& btn_l1&& mode_manual && collision == false && danger == false){
+                reseting_map = true;
+                last_time_btn_save_reset_pressed = ros::Time::now();
+                ros::Duration(0.3).sleep(); 
+            //else if (btn_l1 && collision == false && danger == false) {
+                //mode_LINE_FOLLOW();
+                //ros::Duration(0.2).sleep();
             }else if(btn_r1&& mode_manual && collision == false && danger == false){
                 saving_map = true;
                 last_time_btn_save_reset_pressed = ros::Time::now();
@@ -1594,14 +1610,16 @@ void joyCallback(const sensor_msgs::Joy::ConstPtr& joy){
                 mode_AUTONOMOUS();   
                 do_nothing();
                 ros::Duration(0.2).sleep(); 
-            }else if(btn_save_wp1 == 1){
-                pitakuru_state_msg.state_navigation =  "save_wp_1";
-                state_pub.publish(pitakuru_state_msg);
-                alert_saved_wp1_voice_sound();
-                ros::Duration(0.1).sleep(); 
-                pitakuru_state_msg.state_navigation =  "saved_wp_1";
-                state_pub.publish(pitakuru_state_msg);
-                has_wp1 = true;
+            }else if(btn_save_wp1 == 1 && collision == false && danger == false){
+                mode_LINE_FOLLOW();
+                ros::Duration(0.2).sleep();
+                //pitakuru_state_msg.state_navigation =  "save_wp_1";
+                //state_pub.publish(pitakuru_state_msg);
+                //alert_saved_wp1_voice_sound();
+                //ros::Duration(0.1).sleep(); 
+                //pitakuru_state_msg.state_navigation =  "saved_wp_1";
+                //state_pub.publish(pitakuru_state_msg);
+                //has_wp1 = true;
             }else if(btn_save_wp2 == 1){
                 pitakuru_state_msg.state_navigation =  "save_wp_2";
                 state_pub.publish(pitakuru_state_msg);
