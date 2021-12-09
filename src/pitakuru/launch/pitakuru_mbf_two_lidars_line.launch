@@ -156,6 +156,8 @@
 
 <node pkg="pitakuru" type="getGoal.py" name="getGoal" />
 
+<node pkg="pitakuru" type="detect_intersection.py" name="detect_intersection" />
+
 
  <rosparam ns="rate" file="$(find line_follower)/config/rate_config.yaml" />
 

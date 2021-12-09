@@ -59,9 +59,11 @@ public:
         // battery voltage
         volts_subscriber = nh.subscribe("/volts", 1, &test_head::voltsCallback,this);
 
-        // battery voltage
+        // line direction for line follow
         line_direction_subscriber = nh.subscribe("/line_detector/line_direction", 1, &test_head::lineDirectionCallback,this);
 
+        // 
+        ratio_subscriber = nh.subscribe("/intersection_ratio", 1, &test_head::ratioCallback,this);
         // yolo
         // tracking target poisition with YOLO, see in people_ext_sort.py
         yolo_subscriber = nh.subscribe("/peop_ang_yolo", 1, &test_head::yoloCallback,this);
@@ -152,6 +154,11 @@ public:
         danger_back = false;
         motors_enabled = true;
         status_led_yellow = false;
+        on_intersection = false;
+        tmp_max_speed_manual = max_speed_manual;
+        tmp_max_speed_follow = max_speed_follow;
+        tmp_max_speed_manual_heavy = max_speed_manual_heavy;
+        tmp_max_speed_follow_heavy = max_speed_follow_heavy;
     }
     ~test_head(){}
    
@@ -247,6 +254,46 @@ void check_low_volt(){
         blink_red(0.6);
     }
 }
+
+// get ratio to detect intersection.
+void ratioCallback(const std_msgs::Float32& msg){
+    ros::Time time_now = ros::Time::now();
+    ros::Duration duration = time_now - last_time_detected_intersection;
+    if (msg.data < 0.45 && on_intersection == false){
+        //blink_yellow(0.3);
+        on_intersection = true;
+        last_time_detected_intersection = ros::Time::now();
+        tmp_max_speed_manual = max_speed_manual;
+        tmp_max_speed_follow = max_speed_follow;
+        tmp_max_speed_manual_heavy = max_speed_manual_heavy;
+        tmp_max_speed_follow_heavy = max_speed_follow_heavy;
+        max_speed_manual = tmp_max_speed_manual / 4;  
+        max_speed_follow = tmp_max_speed_follow / 4;
+        max_speed_manual_heavy = tmp_max_speed_manual_heavy / 4;
+        max_speed_follow_heavy = tmp_max_speed_follow_heavy / 4;
+    } else if(msg.data > 0.55 && on_intersection && duration.toSec() > 7){
+        on_intersection = false;
+        max_speed_manual = tmp_max_speed_manual;
+        max_speed_follow = tmp_max_speed_follow;
+        max_speed_manual_heavy = tmp_max_speed_manual_heavy;
+        max_speed_follow_heavy = tmp_max_speed_follow_heavy;
+
+    }
+    
+    /*
+    if (msg.data < 0.43 && duration.toSec() > 7){
+        last_time_detected_intersection =  ros::Time::now();
+        on_intersection = true;
+    }
+    if(duration.toSec() < 3 && on_intersection){
+        blink_yellow(0.3);
+    }
+    if(duration.toSec() > 6 ){
+        on_intersection = false;
+    }
+    */
+}   
+
 // get battery voltage and check it low or not.
 void voltsCallback(const std_msgs::Float32& msg){
     if((msg.data+0.1)<volts_charge ){
@@ -1879,6 +1926,7 @@ private:
     ros::Subscriber cost_subscriber_auxiliar; 
     ros::Subscriber yolo_subscriber;
     ros::Subscriber goal_status_subscriber;
+    ros::Subscriber ratio_subscriber;
     ros::Subscriber danger_suscriber;
     ros::Subscriber danger_back_suscriber;
     ros::Subscriber line_direction_subscriber;
@@ -1925,6 +1973,7 @@ private:
     ros::Time  last_time_obstacle_received;
     ros::Time  last_time_changed;
     ros::Time  last_time_btn_save_reset_pressed;
+    ros::Time  last_time_detected_intersection;
     bool changed_setting;
     float duration_change;
     bool low_voltage,lidar_failed;
@@ -1937,7 +1986,8 @@ private:
     bool last_mode_auto;
     bool has_wp1,has_wp2;
     bool reseting_map,saving_map;
-    bool danger_back,motors_enabled;
+    bool danger_back,motors_enabled, on_intersection;
+    float tmp_max_speed_manual,tmp_max_speed_follow,tmp_max_speed_manual_heavy,tmp_max_speed_follow_heavy;
 };
 
 int main(int argc, char **argv)
