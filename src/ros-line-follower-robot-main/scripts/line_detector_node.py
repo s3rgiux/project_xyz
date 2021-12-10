@@ -47,7 +47,7 @@ class LineDetector:
         cv_image = cv2.GaussianBlur(cv_image, (7, 7), 0)
 
         # Threshold the image
-        (T, threshold_image) = cv2.threshold(cv_image, 220, 255, cv2.THRESH_BINARY)
+        (T, threshold_image) = cv2.threshold(cv_image, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
         #(T, threshold_image) = cv2.threshold(cv_image, 160, 255, cv2.THRESH_BINARY)
         WIDE_RECT = 60
         # Overlay black box on top of image

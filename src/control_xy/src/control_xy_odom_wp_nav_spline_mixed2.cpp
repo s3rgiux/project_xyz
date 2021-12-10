@@ -263,35 +263,11 @@ void ratioCallback(const std_msgs::Float32& msg){
         //blink_yellow(0.3);
         on_intersection = true;
         last_time_detected_intersection = ros::Time::now();
-        tmp_max_speed_manual = max_speed_manual;
-        tmp_max_speed_follow = max_speed_follow;
-        tmp_max_speed_manual_heavy = max_speed_manual_heavy;
-        tmp_max_speed_follow_heavy = max_speed_follow_heavy;
-        max_speed_manual = tmp_max_speed_manual / 4;  
-        max_speed_follow = tmp_max_speed_follow / 4;
-        max_speed_manual_heavy = tmp_max_speed_manual_heavy / 4;
-        max_speed_follow_heavy = tmp_max_speed_follow_heavy / 4;
-    } else if(msg.data > 0.55 && on_intersection && duration.toSec() > 7){
+        
+    } else if(msg.data > 0.55 && on_intersection && duration.toSec() > 3){
         on_intersection = false;
-        max_speed_manual = tmp_max_speed_manual;
-        max_speed_follow = tmp_max_speed_follow;
-        max_speed_manual_heavy = tmp_max_speed_manual_heavy;
-        max_speed_follow_heavy = tmp_max_speed_follow_heavy;
-
+        alert_manual_no_sound();
     }
-    
-    /*
-    if (msg.data < 0.43 && duration.toSec() > 7){
-        last_time_detected_intersection =  ros::Time::now();
-        on_intersection = true;
-    }
-    if(duration.toSec() < 3 && on_intersection){
-        blink_yellow(0.3);
-    }
-    if(duration.toSec() > 6 ){
-        on_intersection = false;
-    }
-    */
 }   
 
 // get battery voltage and check it low or not.
@@ -658,6 +634,9 @@ void calc_100hz(){
     if(danger == false &&line_follow_mode ){
         do_line_follow();
         blink_blue_strong(1.0);
+    }
+    if(on_intersection && !danger ){
+        blink_yellow(0.2);
     }
     if(danger == false && collision == false && mode_manual){
         ros::Time time_now = ros::Time::now();
