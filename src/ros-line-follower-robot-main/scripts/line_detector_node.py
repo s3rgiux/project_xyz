@@ -24,9 +24,11 @@ class LineDetector:
 
     def image_callback_raw(self, msg):
         try:
-            cv_image = self.bridge.imgmsg_to_cv2(msg, "passthrough")
+            cv_image = self.bridge.imgmsg_to_cv2(msg, "bgr8")
             #roi = cv_image[300:,140:340]
             roi = cv_image[300:,:]
+            cv2.imwrite("roi.png",roi)
+            
             # Output the processed message
             #image_message = self.bridge.cv2_to_imgmsg(roi, "passthrough")
             #self.image_pub.publish(image_message)
@@ -41,13 +43,23 @@ class LineDetector:
     def process_image(self, cv_image):
         # Downscale to 256x256
         cv_image = cv2.resize(cv_image, (256, 256), interpolation = cv2.INTER_AREA)
-
+        cv2.imwrite("roi_resized.png",cv_image)
         # Change to grayscale and blur a bit
         cv_image = cv2.cvtColor(cv_image, cv2.COLOR_BGR2GRAY)
-        cv_image = cv2.GaussianBlur(cv_image, (7, 7), 0)
+        cv_image = cv2.GaussianBlur(cv_image, (5, 5), 0)
+        C_b = 200
+        m = np.mean(cv_image)
+        #image_message = self.bridge.cv2_to_imgmsg(cv_image, "passthrough")
+        #self.image_pub.publish(image_message)
+        
+        if m > C_b:
+            cv_image[cv_image < C_b] = 0
+            cv_image = cv2.equalizeHist(cv_image)
 
         # Threshold the image
-        (T, threshold_image) = cv2.threshold(cv_image, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+        #(T, threshold_image) = cv2.threshold(cv_image, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+        threshold_image = cv2.adaptiveThreshold(cv_image, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C,
+                                          cv2.THRESH_BINARY, 109, -10)
         #(T, threshold_image) = cv2.threshold(cv_image, 160, 255, cv2.THRESH_BINARY)
         WIDE_RECT = 60
         # Overlay black box on top of image
