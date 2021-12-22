@@ -1,0 +1,5 @@
+move_base_flex2/mbf_abstract_core
+/home/xavier/catkin_ws/devel/.private/mbf_abstract_core/cmake.lock /home/xavier/catkin_ws/devel/./cmake.lock
+/home/xavier/catkin_ws/devel/.private/mbf_abstract_core/share/mbf_abstract_core/cmake/mbf_abstract_coreConfig-version.cmake /home/xavier/catkin_ws/devel/share/mbf_abstract_core/cmake/mbf_abstract_coreConfig-version.cmake
+/home/xavier/catkin_ws/devel/.private/mbf_abstract_core/share/mbf_abstract_core/cmake/mbf_abstract_coreConfig.cmake /home/xavier/catkin_ws/devel/share/mbf_abstract_core/cmake/mbf_abstract_coreConfig.cmake
+/home/xavier/catkin_ws/devel/.private/mbf_abstract_core/lib/pkgconfig/mbf_abstract_core.pc /home/xavier/catkin_ws/devel/lib/pkgconfig/mbf_abstract_core.pc

@@ -1,0 +1,5 @@
+shelf_size
+/home/xavier/catkin_ws/devel/.private/shelf_size/cmake.lock /home/xavier/catkin_ws/devel/./cmake.lock
+/home/xavier/catkin_ws/devel/.private/shelf_size/share/shelf_size/cmake/shelf_sizeConfig.cmake /home/xavier/catkin_ws/devel/share/shelf_size/cmake/shelf_sizeConfig.cmake
+/home/xavier/catkin_ws/devel/.private/shelf_size/share/shelf_size/cmake/shelf_sizeConfig-version.cmake /home/xavier/catkin_ws/devel/share/shelf_size/cmake/shelf_sizeConfig-version.cmake
+/home/xavier/catkin_ws/devel/.private/shelf_size/lib/pkgconfig/shelf_size.pc /home/xavier/catkin_ws/devel/lib/pkgconfig/shelf_size.pc

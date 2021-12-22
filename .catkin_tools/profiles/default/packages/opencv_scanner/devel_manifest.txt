@@ -1,0 +1,5 @@
+opencv_scanner
+/home/xavier/catkin_ws/devel/.private/opencv_scanner/cmake.lock /home/xavier/catkin_ws/devel/./cmake.lock
+/home/xavier/catkin_ws/devel/.private/opencv_scanner/share/opencv_scanner/cmake/opencv_scannerConfig-version.cmake /home/xavier/catkin_ws/devel/share/opencv_scanner/cmake/opencv_scannerConfig-version.cmake
+/home/xavier/catkin_ws/devel/.private/opencv_scanner/share/opencv_scanner/cmake/opencv_scannerConfig.cmake /home/xavier/catkin_ws/devel/share/opencv_scanner/cmake/opencv_scannerConfig.cmake
+/home/xavier/catkin_ws/devel/.private/opencv_scanner/lib/pkgconfig/opencv_scanner.pc /home/xavier/catkin_ws/devel/lib/pkgconfig/opencv_scanner.pc

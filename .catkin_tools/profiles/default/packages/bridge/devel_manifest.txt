@@ -1,0 +1,5 @@
+bridge
+/home/xavier/catkin_ws/devel/.private/bridge/cmake.lock /home/xavier/catkin_ws/devel/./cmake.lock
+/home/xavier/catkin_ws/devel/.private/bridge/share/bridge/cmake/bridgeConfig.cmake /home/xavier/catkin_ws/devel/share/bridge/cmake/bridgeConfig.cmake
+/home/xavier/catkin_ws/devel/.private/bridge/share/bridge/cmake/bridgeConfig-version.cmake /home/xavier/catkin_ws/devel/share/bridge/cmake/bridgeConfig-version.cmake
+/home/xavier/catkin_ws/devel/.private/bridge/lib/pkgconfig/bridge.pc /home/xavier/catkin_ws/devel/lib/pkgconfig/bridge.pc

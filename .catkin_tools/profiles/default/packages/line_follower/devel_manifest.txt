@@ -1,0 +1,5 @@
+ros-line-follower-robot-main
+/home/xavier/catkin_ws/devel/.private/line_follower/cmake.lock /home/xavier/catkin_ws/devel/./cmake.lock
+/home/xavier/catkin_ws/devel/.private/line_follower/share/line_follower/cmake/line_followerConfig.cmake /home/xavier/catkin_ws/devel/share/line_follower/cmake/line_followerConfig.cmake
+/home/xavier/catkin_ws/devel/.private/line_follower/share/line_follower/cmake/line_followerConfig-version.cmake /home/xavier/catkin_ws/devel/share/line_follower/cmake/line_followerConfig-version.cmake
+/home/xavier/catkin_ws/devel/.private/line_follower/lib/pkgconfig/line_follower.pc /home/xavier/catkin_ws/devel/lib/pkgconfig/line_follower.pc
